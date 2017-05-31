@@ -1,0 +1,6 @@
+server:
+  port: 8465
+logging:
+  file: /java/C2S_LOGS/provider-ui/provider-ui.log
+info:
+  component: Provider UI
