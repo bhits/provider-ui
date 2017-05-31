@@ -1,0 +1,81 @@
+//C2S Custom Palettes
+
+.dark-bluegrey {color: #426575;}
+
+//background colors
+.bg-white {background-color: white !important;}
+
+
+
+//C2S Custom Theme
+$mat-deep-plumb: (
+  50: #9B8D9B,
+  100: #9B8D9B,
+  200: #9B8D9B,
+  300: #7D6A7C,
+  400: #7D6A7C,
+  500: #644F63,
+  600: #644F63,
+  700: #493648,
+  800: #331D32,
+  900: #331D32,
+
+  A100: #9B8D9B,
+  A200: #7D6A7C,
+  A400: #644F63,
+  A700: #331D32,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: $black-87-opacity,
+  )
+);
+
+
+$mat-deep-sea-foam: (
+  50: #CDE6F0,
+  100: #CDE6F0,
+  200: #98C6D7,
+  300: #98C6D7,
+  400: #68A2B8,
+  500: #68A2B8,
+  600: #438199,
+  700: #438199,
+  800: #2A6B84,
+  900: #2A6B84,
+  A100: #CDE6F0,
+  A200: #98C6D7,
+  A400: #68A2B8,
+  A700: #438199,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: $black-87-opacity,
+  )
+);
+
+.color-test {
+  color: mat-color($mat-deep-sea-foam, 800);
+}

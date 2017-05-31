@@ -1,0 +1,121 @@
+body {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif" !important;
+  font-size: 62.5%;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 2.8em;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 2.2em;
+}
+
+//flow
+.pre-wrap {
+  white-space: pre-wrap;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+//style
+.italic {
+  font-style: italic;
+}
+
+.center {
+  text-align: center;
+}
+
+.pull-left {
+  float: Left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.middle {
+  vertical-align: middle;
+}
+
+.inline {
+  display: inline-block !important;
+}
+
+.center-sm-left {
+  text-align: center;
+  @media (max-width: 599px) {
+    text-align: left;
+  }
+}
+
+//size
+.font-size8 {
+  font-size: .8em;
+}
+
+.font-size9 {
+  font-size: .9em;
+}
+
+.font-size10 {
+  font-size: 1em;
+}
+
+.font-size11 {
+  font-size: 1.1em;
+}
+
+.font-size12 {
+  font-size: 1.2em;
+}
+
+.font-size13 {
+  font-size: 1.3em;
+}
+
+.font-size14 {
+  font-size: 1.4em;
+}
+
+.font-size15 {
+  font-size: 1.5em;
+}
+
+.font-size16 {
+  font-size: 1.6em;
+}
+
+.font-size18 {
+  font-size: 1.8em;
+}
+
+.font-size20 {
+  font-size: 2em;
+}
+
+//weight
+.font-weight700 {
+  font-weight: 700;
+}
+
+.font-weight600 {
+  font-weight: 600;
+}
+
+.font-weight500 {
+  font-weight: 500;
+}
+
+.font-weight300 {
+  font-weight: 300;
+}
+
+.font-weight100 {
+  font-weight: 100;
+}
