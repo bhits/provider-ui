@@ -1,0 +1,11 @@
+.avatar-header {
+  > img {
+    @media (max-width: 599px) {
+      height: 38px;
+    }
+  }
+  > .img-circle {
+    border: 1px solid #644F63;
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,38 @@
+.login-background {
+  background-color: #BCDEDB;
+  background-image: url("../../../assets/img/c2s-background.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+}
+
+.login-form {
+  width: 350px;
+  margin: 4em auto;
+  padding: 3em 2em 2em 2em;
+  background-color: rgba(250, 250, 250, .9);
+  border: 1px solid #ebebeb;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px, rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
+  font-size: 1em;
+  button[disabled] {
+    background-color: #E2DCE2 !important;
+  }
+}
+
+.has-error {
+  color: brown;
+}
+
+.full-width {
+  width: 100%;
+}
+
+input {
+  font-size: 1.7em !important;
+}
+
+c2s-control-messages {
+  font-size: 1.4em;
+  color: #eb0404;
+}

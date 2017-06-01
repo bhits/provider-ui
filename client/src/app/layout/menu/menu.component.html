@@ -1,0 +1,11 @@
+<button md-button [mdMenuTriggerFor]="menu" class="menu-button menu-border-left">menu</button>
+
+<md-menu #menu="mdMenu">
+  <md-list>
+    <md-list-item *ngFor="let menuItem of menuItems">
+      <button md-menu-item (click)="navigateTo(menuItem.text, menuItem.routerLink)">
+        <span>{{menuItem.text}}</span>
+      </button>
+    </md-list-item>
+  </md-list>
+</md-menu>
