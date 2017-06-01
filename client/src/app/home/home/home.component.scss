@@ -1,0 +1,59 @@
+.home-card {
+  flex: 1 1 300px;
+  padding: 0;
+  max-width: 350px;
+  text-align: left;
+  &:hover{cursor: pointer;}
+  @media (max-width: 599px) {
+    flex: 1 1 0;
+  }
+
+  img {
+    margin: 0;
+  }
+  md-card-header {
+    background-color: #9e9e9e;
+    border-radius: 3px 3px 0 0;
+    color: white;
+    padding: 15px;
+    margin: 0;
+    line-height: 4em;
+    md-card-title {
+      font-size: 2.6em;
+      margin: 0;
+    }
+  }
+  md-card-content {
+    font-size: 1em;
+    position: relative;
+  }
+  md-chip {
+    font-weight: 500;
+    font-size: 16px !important;
+  }
+  button {
+    position: absolute;
+    top: -25px;
+    right: 25px;
+    background-color: #FF7BAC;
+    color: white;
+    md-icon {
+      font-weight: 700;
+      font-size: 2.6em;
+      padding: 16px 12px 0 0;
+    }
+  }
+  &.contacts {
+    md-card-header {
+      background-color: #644F63;
+      color: white;
+    }
+  }
+  &.consents {
+    md-card-header {
+      background-color: #243852;
+      color: white;
+    }
+  }
+}
+

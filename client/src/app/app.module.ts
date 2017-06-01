@@ -1,11 +1,14 @@
+import "hammerjs";
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
 
 import {AppComponent} from "./app.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {ConsentModule} from "app/consent/consent.module";
+import {CoreModule} from "app/core/core.module";
+import {HomeModule} from "./home/home.module";
+import {LayoutModule} from "./layout/layout.module";
+import {UserModule} from "app/user/user.module";
+import {AppRoutingModule} from "app/app-routing.module";
 
 @NgModule({
   declarations: [
@@ -15,13 +18,15 @@ import {ConsentModule} from "app/consent/consent.module";
     // Angular Modules
     BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
-    HttpModule,
 
     // Third Party Modules
 
-    // Provider UI Modules
-    ConsentModule
+    // Staff UI Modules
+    CoreModule,
+    HomeModule,
+    LayoutModule,
+    UserModule,
+    AppRoutingModule // Order matters, this must in the end
   ],
   providers: [],
   bootstrap: [AppComponent]

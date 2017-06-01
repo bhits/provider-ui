@@ -1,0 +1,23 @@
+.menu-button {
+  font-size: 18px;
+  font-weight: 400;
+  padding: 7px 0px;
+  min-width: 80px;
+  color: #6C4E70;
+  &.menu-border-left {
+    border-left: 1px solid #CEC8D2;
+  }
+  &:hover {
+    background-color: #6C4E70 !important;
+    color: white;
+  }
+}
+
+md-list-item {
+  button.mat-menu-item {
+    &:hover {
+      background-color: #3FA3BA;
+      color: white;
+    }
+  }
+}

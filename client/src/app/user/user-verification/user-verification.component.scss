@@ -1,0 +1,38 @@
+.verification-card {
+  flex: 1 1 340px;
+  margin-top: 20px;
+  padding: 0;
+  max-width: 100%;
+  text-align: left;
+  @media (max-width: 599px) {
+    flex: 1 1 0;
+  }
+  img {
+    margin: 0;
+  }
+  md-card-header {
+    background-color: #E2DCE2;
+    border-radius: 3px 3px 0 0;
+    color: #644F63;
+    padding: 5px 10px;
+    margin: 5px;
+    line-height: 4em;
+    .md-card-title {
+      text-transform: uppercase;
+      font-size: 1.4em;
+      line-height: normal;
+      margin: 0 0 0 -10px;
+    }
+  }
+  md-card-content {
+    font-size: 1em;
+    position: relative;
+  }
+  md-card-footer {
+    position: relative;
+  }
+  md-chip {
+    font-weight: 500;
+    font-size: 16px !important;
+  }
+}

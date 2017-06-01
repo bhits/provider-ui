@@ -1,0 +1,34 @@
+<div class="p-t-75 p-l-lg p-b-md p-r-lg">
+  <div class="center-sm-left">
+    <h1 class="m-n p-t-sm">Welcome to Consent2Share admin!</h1>
+    <h2 class="m-t-sm m-t-sm">You are now ready to manage your users.</h2>
+  </div>
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
+
+    <md-card class="home-card contacts" (click)="navigateTo()">
+      <md-card-header class="middle">
+        <md-card-title>
+          <div class="m-n">My <span class="font-weight700">Users</span></div>
+        </md-card-title>
+      </md-card-header>
+      <md-card-content class="p-md">
+        <button md-fab>
+          <md-icon class="md-24 font-weight500">add</md-icon>
+        </button>
+        <md-chip-list class="p-15">
+          <md-chip color="primary" selected="true" class="font-size16">Step 1.</md-chip>
+        </md-chip-list>
+        <h2 class="m-t-xs">
+          Begin by creating the users.
+        </h2>
+        <div class="center middle">
+          <img md-card-image src="assets/img/contacts.svg" [ngStyle]="{'width': '75%'}">
+        </div>
+        <div class="p-t-xs font-size12"><span class="font-weight700 font-size16">{{numberOfUsers}}</span>
+          User{{numberOfUsers !== 1 ? 's' : ''}}
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
