@@ -32,7 +32,7 @@ const consentRoutes: Routes = [
 export class ConsentRoutingModule {
 }
 
-export const routedComponents = [
+export const consentRoutedComponents = [
   ConsentsComponent,
   ConsentListComponent,
   SegmentationComponent
