@@ -10,7 +10,7 @@ export class ApiUrlService {
       ["userListUrl", "/users"],
 
       // External api Url maps
-      ["UmsBaseUrl", "/staff-ui-api/ums"],
+      ["UmsBaseUrl", "/provider-ui-api/ums"],
       ["uaaTokenUrl", "/uaa/oauth/token"],
       ["uaaUserInfoUrl", "/uaa/userinfo"]
     ]

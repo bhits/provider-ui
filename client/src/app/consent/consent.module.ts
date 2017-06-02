@@ -1,8 +1,9 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 
-import {ConsentRoutingModule, consentsRoutedComponents} from "./consent-routing.module";
+import {ConsentRoutingModule, routedComponents} from "./consent-routing.module";
 import {SharedModule} from "../shared/shared.module";
+import { ConsentListComponent } from './consent-list/consent-list.component';
 import {ConsentService} from "./shared/consent.service";
 
 @NgModule({
@@ -11,8 +12,7 @@ import {ConsentService} from "./shared/consent.service";
     SharedModule,
     ConsentRoutingModule
   ],
-  declarations: [consentsRoutedComponents],
-  providers: [ConsentService]
+  declarations: [routedComponents, ConsentListComponent]
 })
 export class ConsentModule {
 }
