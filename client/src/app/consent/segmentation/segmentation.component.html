@@ -1,0 +1,34 @@
+<div class="p-t-75 p-l-md p-r-md p-b">
+  <h1 class="">Segment Document</h1>
+
+  <form [formGroup]="segmentationFrom" novalidate>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <md-input-container class="full-width font-size20">
+          <input mdInput placeholder="Authorise Provider NPI" formControlName="from">
+        </md-input-container>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <md-input-container class="full-width font-size20">
+          <input mdInput placeholder="Disclosure Provider NPI" formControlName="to">
+        </md-input-container>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <md-select placeholder="Purpose of Use" formControlName="purposeOfUse"
+                   class="full-width font-size20">
+        </md-select>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <div class="full-width font-size20">
+          <input type="file" placeholder="Select document to segment" formControlName="document">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
