@@ -9,6 +9,7 @@ import {HomeModule} from "./home/home.module";
 import {LayoutModule} from "./layout/layout.module";
 import {UserModule} from "app/user/user.module";
 import {AppRoutingModule} from "app/app-routing.module";
+import {ConsentModule} from "app/consent/consent.module";
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import {AppRoutingModule} from "app/app-routing.module";
 
     // Third Party Modules
 
-    // Staff UI Modules
+    // Provider UI Modules
     CoreModule,
+    ConsentModule,
     HomeModule,
     LayoutModule,
     UserModule,
