@@ -5,14 +5,14 @@
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <md-input-container class="full-width font-size20">
-          <input mdInput placeholder="Authorise Provider NPI" formControlName="from">
+          <input mdInput placeholder="Authorize Provider NPI" formControlName="intermediaryNpi">
         </md-input-container>
       </div>
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <md-input-container class="full-width font-size20">
-          <input mdInput placeholder="Disclosure Provider NPI" formControlName="to">
+          <input mdInput placeholder="Disclosure Provider NPI" formControlName="recipientNpi">
         </md-input-container>
       </div>
     </div>
@@ -23,10 +23,21 @@
         </md-select>
       </div>
     </div>
+    <br>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <label class="upload-button">
+          <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event)" formControlName="document" [uploadInput]="uploadInput">
+          <a md-raised-button >Choose File To Upload</a>
+        </label>
+      </div>
+    </div>
+    <br>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <div class="full-width font-size20">
-          <input type="file" placeholder="Select document to segment" formControlName="document">
+          <!--<input type="button" value="submit">-->
+          <a md-raised-button (click)="segmentDocument()">Segment Document</a>
         </div>
       </div>
     </div>
