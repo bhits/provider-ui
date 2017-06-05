@@ -22,6 +22,21 @@ export class TokenService {
     this.sessionStorageService.clear(this.OAUTH_TOKEN_KEY);
   }
 
+  public createAuthorizationHeaderObject(){
+    let token = this.getOauthToken();
+    let customHeaders = {};
+    if (token && token['access_token']) {
+      let access_token = token['access_token'];
+      let access_token_string = 'Bearer ' + access_token;
+      customHeaders = {
+        "Authorization": access_token_string
+      };
+    }else{
+      // FIXME: Replace this with proper error handling.
+      throw new Error("token variable check failed");
+    }
+    return customHeaders;
+  }
   public hasScope(scope: string): boolean {
     if (this.getOauthToken()) {
       const uaaToken: AuthorizationResponse = this.getOauthToken();
