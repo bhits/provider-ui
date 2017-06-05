@@ -7,11 +7,13 @@ import {UserVerificationComponent} from "./user-verification/user-verification.c
 import {UserPipe} from "./shared/user.pipe";
 import {UserCreationLookupService} from "./shared/user-creation-lookup.service";
 import {ConsentModule} from "../consent/consent.module";
+import {ProviderModule} from "../provider/provider.module";
 
 @NgModule({
   imports: [
     CommonModule,
     ConsentModule,
+    ProviderModule,
     SharedModule,
     UserRoutingModule
   ],

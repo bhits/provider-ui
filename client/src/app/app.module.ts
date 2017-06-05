@@ -10,6 +10,7 @@ import {LayoutModule} from "./layout/layout.module";
 import {UserModule} from "app/user/user.module";
 import {AppRoutingModule} from "app/app-routing.module";
 import {ConsentModule} from "app/consent/consent.module";
+import {ProviderModule} from "./provider/provider.module";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {ConsentModule} from "app/consent/consent.module";
     ConsentModule,
     HomeModule,
     LayoutModule,
+    ProviderModule,
     UserModule,
     AppRoutingModule // Order matters, this must in the end
   ],
