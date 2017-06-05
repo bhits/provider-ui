@@ -1,3 +1,44 @@
-<p>
-  provider-list works!
-</p>
+<div>
+  <div>
+    <div class="p-md white font-size20 font-weight500 bg-dark-blue border-radius4 center-sm-left">
+      OK! You must add at least two contacts before sharing your health information.
+    </div>
+  </div>
+
+  <div fxLayout="column" [ngStyle]="{'padding-top': '20px'}">
+    <div fxLayoutAlign="center">
+      <a md-raised-button class="plus-button" fxFlex="0 1 370px" routerLink="/providers/search">
+        <md-icon class="font-weight700">add</md-icon>
+        Add a Health Provider</a>
+    </div>
+    <div fxLayoutAlign="center">
+      <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
+           fxLayoutGap="10px">
+        <div fxFlex="0 1 100px" class="font-size18 font-weight500 right">
+          Show List by
+        </div>
+        <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
+          <span class="fa fa-user-md fa-4x"></span>
+        </md-card>
+        <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
+          <span class="fa fa-hospital-o fa-4x"></span>
+        </md-card>
+        <md-card class="filter-card center disabled" md-raised-button fxFlex="0 0 60px">
+          <span class="fa fa-user fa-4x"></span>
+        </md-card>
+      </div>
+    </div>
+
+    <div fxLayoutAlign="center">
+    </div>
+    <div class="section-border">
+      <div class="bg-xlite-teal p-t-md p-b-md" fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap"
+           fxLayoutGap="15px"
+           fxLayoutAlign="center">
+      </div>
+    </div>
+    <div fxLayoutAlign="center">
+    </div>
+  </div>
+</div>
+

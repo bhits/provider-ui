@@ -5,7 +5,281 @@ html {
 body {
   font-size: 62.5%;
   min-height: 100%;
-  background-color: #F0F9F8;
+  background-color: rgba(188, 222, 219, .2);
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+.mat-input-placeholder-wrapper {
+  top: -1.2em !important;
+}
+
+.mat-input-placeholder.mat-float.mat-focused, .mat-input-placeholder.mat-float:not(.mat-empty) {
+}
+
+// ------------------------------------------------------------- create consent styling -------------//
+.lineHeight28 {
+  line-height: 28px !important;
+}
+
+md-chip {
+  margin: 5px;
+  border-radius: 4px !important;
+  font-size: 1em !important;
+  padding: 4px 8px !important;
+  &.consents {
+  }
+  &.medInfo {
+    background-color: #8a1004 !important;
+  }
+  &.purposeOfUse {
+    background-color: pink !important;
+  }
+}
+
+md-chip span.md-chip-icon-text {
+  position: relative;
+  bottom: 5px;
+  margin: 1px;
+}
+
+div.md2-datepicker-input {
+  margin-right: 10px;
+  min-width: auto;
+  padding-right: 0;
+  input.md2-datepicker-value {
+    font-size: 15px !important;
+  }
+}
+
+// pagination -------------------------------------------------- pagination //
+$dark-blue: #2f526d;
+
+ul.ng2-pagination {
+  padding: 5px !important;
+  .disabled {
+    color: #9bb5ce !important;
+  }
+}
+
+.ng2-pagination li:not(.pagination-previous):not(.pagination-next):not(.current) {
+  a {
+    color: $dark-blue !important;
+    &:hover {
+      font-size: 1.8em;
+      background-color: transparent;
+      padding-top: 0;
+      padding-bottom: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.ng2-pagination li {
+  font-size: 1.7em;
+  font-weight: 500;
+
+  padding: 0 !important;
+  font-size: 1.5em;
+  font-weight: 500;
+  vertical-align: middle;
+
+  &.current {
+    padding: 8px 14px !important;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    vertical-align: middle;
+    background-color: #6c4e70 !important;
+  }
+  div {
+    text-align: center;
+  }
+  &.pagination-previous {
+    a {
+      color: $dark-blue !important;
+      &:hover {
+        font-size: 1.3em;
+        background-color: transparent;
+        cursor: pointer;
+      }
+    }
+    &.disabled {
+      margin-right: 5px;
+    }
+  }
+
+  &.pagination-next {
+    a {
+      color: $dark-blue !important;
+      &:hover {
+        font-size: 1.3em;
+        background-color: transparent;
+        cursor: pointer;
+      }
+    }
+    &.disabled {
+      margin-left: 5px;
+    }
+  }
+}
+
+// provider-multi-add styles ----------------------------------- //
+
+// dialog styles ----------------------------------------------- modal - dialog //
+.my-providers {
+  div.md2-dialog-header {
+    background-color: #711414 !important;
+  }
+}
+
+div.md2-dialog-header {
+  //background-color: #3fa3ba !important;
+  background-color: #6C4E70 !important;
+}
+
+div.md2-dialog-body {
+  font-size: 1.8em;
+  font-weight: 500;
+  md-card {
+    padding: 0 !important;
+    md-card-title {
+      background-color: #34638c !important;
+      color: white;
+      padding: 10px 15px;
+      font-size: 22px;
+      font-weight: 200;
+    }
+  }
+}
+
+md2-dialog-footer button {
+  &:not(:last-of-type) {
+    margin-right: 10px;
+  }
+}
+
+.mat-radio-label {
+  padding-bottom: 5px;
+  white-space: inherit !important;
+}
+
+// provider-search styles -------------------------------------- provider search //
+
+.provider-search-card {
+  &.mat-card {
+    padding: 0;
+  }
+  md2-accordion-tab .md2-accordion-header {
+    color: white !important;
+    //background-color: #243852;
+    background-color: #2f526d;
+    padding: 10px;
+    max-height: inherit;
+  }
+  .mat-card-title {
+    margin: 0;
+    padding-left: 15px;
+  }
+  .md2-accordion-header-icon {
+    border-color: white !important;
+    right: 20px;
+    top: 23px !important;
+  }
+  .md2-accordion-tab-active .md2-accordion-header-icon {
+    border-color: white !important;
+    top: 27px !important;
+  }
+
+}
+
+.row-to-column960-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media (min-width: 960px) {
+    flex-direction: row;
+  }
+}
+
+.toolbar-base {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  //background-color: #BCDEDB;
+  background-color: #eaeaea;
+  flex-wrap: nowrap;
+  md-toolbar-row {
+    min-height: inherit !important;
+    height: auto !important;
+    white-space: inherit !important;
+    color: #243852;
+    font-size: 1em;
+  }
+  .mat-mini-fab {
+    color: white;
+    font-size: 1.2em;
+    background-color: #644f63;
+  }
+}
+
+.mat-input-wrapper {
+  padding-bottom: 0 !important;
+}
+
+// end provider-search styles ---------------------------------- //
+
+.toolbar-header {
+  padding-left: 10px;
+  @media (max-width: 959px) {
+    padding: 10px;
+    font-size: .8em;
+  }
+}
+
+.highlight {
+  &:hover {
+    background-color: rgba(250, 235, 215, .4);
+    border: thin solid #FEB652;
+  }
+}
+
+// ------------------------------------------//
+.plus-button {
+  background-color: #24a69a !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+.section-border {
+  border: 2px solid #bdcdd4;
+  border-radius: 2px;
+  &.hover:hover {
+    border: 3px solid #24a69a;
+  }
+}
+
+.section-border-thin {
+  border: 1px solid #bdcdd4;
+  border-radius: 2px;
+  &.hover:hover {
+    border: 2px solid #efbf78;
+  }
 }
 
 .flex-min-height-max {
@@ -27,7 +301,45 @@ body {
   border-radius: 50%;
 }
 
-/***** MARGINS & PADDINGS *****/
+a:link {
+  text-decoration: none;
+}
+
+//------------------------------------------------- border radius ----//
+.border-radius2 {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.border-radius4 {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.border-radius6 {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.border-radius8 {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+//---------------------------------------------------- position ----//
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+//------------------------------------------- MARGINS & PADDINGS -----//
 //padding
 .p-none {
   padding: 0 !important;
@@ -103,6 +415,22 @@ body {
 }
 
 //padding-right
+.p-r-n-15 {
+  padding-right: -15px;
+}
+
+.p-r-n-sm {
+  padding-right: -10px;
+}
+
+.p-r-n-xs {
+  padding-right: -5px;
+}
+
+.p-r-n-xxs {
+  padding-right: -1px;
+}
+
 .p-r-none {
   padding-right: 0 !important;
 }
@@ -169,6 +497,22 @@ body {
 }
 
 //padding-left
+.p-l-n-15 {
+  padding-left: -15px;
+}
+
+.p-l-n-sm {
+  padding-left: -10px;
+}
+
+.p-l-n-xs {
+  padding-left: -5px;
+}
+
+.p-l-n-xxs {
+  padding-left: -1px;
+}
+
 .p-l-none {
   padding-left: 0 !important;
 }
@@ -490,5 +834,18 @@ body {
   border-bottom: 2px solid #644f63;
 }
 
+.border-bottom-purple-thin {
+  border-bottom: 1px solid #644f63;
+}
 
+.border-bottom-white {
+  border-bottom: 2px solid white;
+}
 
+.border-top-purple {
+  border-top: 2px solid #644f63;
+}
+
+.border-top-white {
+  border-top: 2px solid white;
+}

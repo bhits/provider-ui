@@ -1,0 +1,13 @@
+.filter-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #6C4E70;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  color: #cccccc;
+  padding: 0;
+  font-size: 1em;
+  &.disabled {opacity: .35;}
+}

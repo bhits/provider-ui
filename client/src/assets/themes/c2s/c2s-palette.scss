@@ -1,11 +1,35 @@
 //C2S Custom Palettes
+$forest-green: #008b8b;
+$dark-green: #104952;
+$lite-blue: #daeaf7;
+$navy-blue: #33668C;
+$dark-blue: #2f526d;
+$plus-green: #24a69a;
+$xlite-teal: #e5eded;
+$dark-bluegrey: #426575;
 
-.dark-bluegrey {color: #426575;}
+.dark-bluegrey {color:$dark-bluegrey;}
 
 //background colors
+
 .bg-white {background-color: white !important;}
+.bg-forest-green {background-color: #008b8b;}
+.bg-dark-green {background-color: #104952;}
+.bg-lite-blue {background-color: #daeaf7;}
+.bg-navy-blue {background-color: #33668C;}
+.bg-plus-green {background-color: #24a69a !important;}
+.bg-xlite-teal {background-color: #e5eded;}
+.bg-dark-bluegrey {background-color:#426575;}
+.bg-dark-blue {background-color: #2f526d;}
+.bg-maroon {background-color: #8a1004;}
 
-
+.white {color: white;}
+.black {color: black;}
+.navy-blue {color: #33668C;}
+.dark-blue {color:#2f526d;}
+.current-blue {color: #3fa3ba;}
+.ribbon-blue {color: #50687F;}
+.maroon {color: #8a1004;}
 
 //C2S Custom Theme
 $mat-deep-plumb: (
