@@ -216,6 +216,9 @@
           </md2-accordion-tab>
         </md2-accordion>
       </form>
+      <div [hidden]="!hasSearchResult" [ngStyle]="{'padding-top': '30px'}">
+        <c2s-provider-search-result [providerResult]="searchResponse"></c2s-provider-search-result>
+      </div>
     </div>
   </md-card>
 </div>

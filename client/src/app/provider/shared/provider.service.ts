@@ -5,6 +5,7 @@ import {ProviderRequestQuery} from "app/provider/shared/provider-request-query.m
 import {Observable} from "rxjs/Observable";
 import {ProviderSearchResponse} from "app/provider/shared/provider-search-response.model";
 import {ApiUrlService} from "app/shared/api-url.service";
+import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
 
 @Injectable()
 export class ProviderService {
@@ -21,6 +22,21 @@ export class ProviderService {
     return this.http.get(SEARCH_PROVIDERS_URL, {search: params})
       .map((resp: Response) => <ProviderSearchResponse>(resp.json()))
       .catch(this.exceptionService.handleError);
+  }
+
+  public loadNewSearchProvidersResult(page: number, providerResult: ProviderSearchResponse): Observable<ProviderSearchResponse> {
+    if (providerResult != null) {
+      let pageNumberParam: string = "&page=" + page;
+      const NEW_PAGE_URL: string = providerResult._links.self.href.concat(pageNumberParam);
+
+      return this.http.get(NEW_PAGE_URL)
+        .map((resp: Response) => <ProviderSearchResponse>(resp.json()))
+        .catch(this.exceptionService.handleError);
+    }
+  }
+
+  public isSearchResultInProviderList(provider: FlattenedSmallProvider, providerList: FlattenedSmallProvider[]): boolean {
+    return providerList.filter((p) => provider.npi === p.npi).length > 0;
   }
 
   private buildRequestParams(requestParams: ProviderRequestQuery): URLSearchParams {
