@@ -7,7 +7,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CoreModule} from "app/core/core.module";
 import {HomeModule} from "./home/home.module";
 import {LayoutModule} from "./layout/layout.module";
-import {UserModule} from "app/user/user.module";
+import {PatientModule} from "app/patient/patient.module";
 import {AppRoutingModule} from "app/app-routing.module";
 import {ConsentModule} from "app/consent/consent.module";
 import {ProviderModule} from "./provider/provider.module";
@@ -28,8 +28,8 @@ import {ProviderModule} from "./provider/provider.module";
     ConsentModule,
     HomeModule,
     LayoutModule,
+    PatientModule,
     ProviderModule,
-    UserModule,
     AppRoutingModule // Order matters, this must in the end
   ],
   providers: [],
