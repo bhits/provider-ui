@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {ConsentProvider} from "../shared/consent-provider.model";
 import {PaginationInstance} from "ng2-pagination";
 import {NotificationService} from "../../shared/notification.service";
 import {ProviderService} from "../shared/provider.service";
 import {Patient} from "../../patient/shared/patient.model";
+import {Provider} from "app/provider/shared/provider.model";
 
 @Component({
   selector: 'c2s-provider-list',
@@ -13,9 +13,8 @@ import {Patient} from "../../patient/shared/patient.model";
 export class ProviderListComponent implements OnInit {
   @Input()
   public patient: Patient;
-
-  private selectedProvider: ConsentProvider;
-  public providers: ConsentProvider[];
+  private selectedProvider: Provider;
+  public providers: Provider[];
   public paginationConfig: PaginationInstance = {
     itemsPerPage: 6,
     currentPage: 1
@@ -27,11 +26,18 @@ export class ProviderListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.providers = this.providerService.getProviders(this.patient.mrn)
+    this.providerService.getProviders(this.patient.mrn)
+      .subscribe(
+        (consentProviders) => {
+          this.providers = consentProviders;
+        },
+        err => {
+          this.notificationService.show("Failed in getting providers.");
+        }
+      );
   }
 
-  onPageChange(number: number) {
+  public onPageChange(number: number) {
     this.paginationConfig.currentPage = number;
   }
-
 }

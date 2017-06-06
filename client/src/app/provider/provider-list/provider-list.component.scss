@@ -11,3 +11,54 @@
   font-size: 1em;
   &.disabled {opacity: .35;}
 }
+
+.provider-card {
+  flex: 1 1 340px;
+  margin-top: 20px;
+  padding: 0;
+  max-width: 400px;
+  text-align: left;
+  @media (max-width: 599px){
+    flex: 1 1 0;
+  }
+
+  md-card-header {
+    background-color: #BCDEDB;
+    border-radius: 3px 3px 0 0;
+    color:#644F63;
+    padding: 5px 10px;
+    margin: 5px;
+    line-height: 4em;
+
+    .md-card-title {
+      text-transform: uppercase;
+      font-size: 1.4em;
+      line-height:normal;
+      margin: 0 0 0 -10px;
+    }
+  }
+  md-card-content {font-size: 1em; position: relative;}
+  md-chip {font-weight: 500; font-size: 16px !important;}
+  button {
+    height: 40px;
+    width:40px;
+    position: absolute;
+    top: -20px;
+    right: 25px;
+    background-color:rgba(253, 140, 0, .45);
+    color: white;
+    md-icon {font-weight: 700; font-size: 2em; padding: 8px 3px 0 0;}
+    span {font-weight: 300; font-size: 1.8em; padding: 10px 0 0 0;}
+    &:hover {
+      background-color: #c7332c;
+      span {font-weight: 500;}
+    }
+    &:disabled {
+      background-color: #aaaaaa;
+      color: #331D32;
+    }
+    @media (max-width: 599px){
+      top: -20px;
+    }
+  }
+}

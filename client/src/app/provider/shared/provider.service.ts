@@ -6,7 +6,7 @@ import {Observable} from "rxjs/Observable";
 import {ProviderSearchResponse} from "app/provider/shared/provider-search-response.model";
 import {ApiUrlService} from "app/shared/api-url.service";
 import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
-import {ConsentProvider} from "./consent-provider.model";
+import {Provider} from "app/provider/shared/provider.model";
 
 @Injectable()
 export class ProviderService {
@@ -16,10 +16,10 @@ export class ProviderService {
               private exceptionService: ExceptionService) {
   }
 
-  getProviders(patientId: string): Observable<ConsentProvider[]> {
+  getProviders(patientId: string): Observable<Provider[]> {
     const resourceUrl = this.apiUrlService.getPcmBaseUrl().concat("/patients/").concat(patientId).concat("/providers");
     return this.http.get(resourceUrl)
-      .map((resp: Response) => <ConsentProvider>(resp.json()))
+      .map((resp: Response) => <Provider[]>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
 
