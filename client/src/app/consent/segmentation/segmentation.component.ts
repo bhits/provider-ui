@@ -18,7 +18,7 @@ export class SegmentationComponent implements OnInit {
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
   public humanizeBytes: Function;
-
+  public segmentedDocument : any;
 
   constructor( private formBuilder: FormBuilder,
                private consentService: ConsentService,
@@ -51,7 +51,7 @@ export class SegmentationComponent implements OnInit {
     });
   }
 
-  onUploadOutput(output: UploadOutput): void {
+  onUploadOutput(output: UploadOutput, segmentDocumentDialog: any): void {
     if (output.type === UploadOutputType.ADDED_TO_QUEUE.toString()) {
       this.files.push(output.file); // add file to array when added
     } else if (output.type === UploadOutputType.UPLOADING.toString()) {
@@ -63,7 +63,13 @@ export class SegmentationComponent implements OnInit {
       this.files = this.files.filter((file: UploadFile) => file !== output.file);
     } else if (output.type === UploadOutputType.DONE.toString()) {
       // Handle download of filed
-      console.log(output.file.response);
+      if(output && output.file && output.file.response){
+        this.segmentedDocument = output.file.response;
+        segmentDocumentDialog.open();
+      }else{
+        // Handle segmentation error
+      }
+
     }
   }
 
@@ -93,5 +99,18 @@ export class SegmentationComponent implements OnInit {
         headers: this.tokenService.createAuthorizationHeaderObject()
     };
     return uploadInput;
+  }
+
+  downloadSegementedDocument(segmentDocumentDialog: any){
+    console.log(this.segmentedDocument );
+    segmentDocumentDialog.close();
+  }
+
+  closeDialog(segmentDocumentDialog: any){
+    segmentDocumentDialog.close();
+  }
+
+  navigateTo(){
+    // Handle routing after closing the dialog
   }
 }

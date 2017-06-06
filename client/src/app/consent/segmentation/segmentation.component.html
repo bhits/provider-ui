@@ -57,7 +57,7 @@
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <label class="upload-button">
-          <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event)" formControlName="document" [uploadInput]="uploadInput">
+          <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)" formControlName="document" [uploadInput]="uploadInput">
           <a md-raised-button >Choose File To Upload</a>
         </label>
       </div>
@@ -73,3 +73,17 @@
     </div>
   </form>
 </div>
+
+<md2-dialog #segmentDocumentDialog (onClose)="navigateTo()">
+  <md2-dialog-title>Download Segmented Document</md2-dialog-title>
+  <md2-dialog-content>
+    <div class="center">
+      <button md-raised-button (click)="closeDialog(segmentDocumentDialog)">
+        Cancel
+      </button>
+      <button md-raised-button color="primary" (click)="downloadSegementedDocument(segmentDocumentDialog)">
+        Download document
+      </button>
+    </div>
+  </md2-dialog-content>
+</md2-dialog>
