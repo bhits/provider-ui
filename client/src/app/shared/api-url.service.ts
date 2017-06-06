@@ -7,7 +7,7 @@ export class ApiUrlService {
       // Internal routes maps
       ["loginUrl", "/login"],
       ["homeUrl", "/home"],
-      ["userListUrl", "/users"],
+      ["patientListUrl", "/patients"],
 
       // External api Url maps
       ["UmsBaseUrl", "/provider-ui-api/ums"],
@@ -27,8 +27,8 @@ export class ApiUrlService {
     return this.urls.get('homeUrl');
   }
 
-  getUserListUrl(): string {
-    return this.urls.get('userListUrl');
+  getPatientListUrl(): string {
+    return this.urls.get('patientListUrl');
   }
 
   getUmsBaseUrl(): string {
