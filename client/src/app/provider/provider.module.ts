@@ -4,6 +4,7 @@ import {CommonModule} from "@angular/common";
 import {ProviderRoutingModule, routedComponents} from "./provider-routing.module";
 import {ProviderListComponent} from "./provider-list/provider-list.component";
 import {SharedModule} from "app/shared/shared.module";
+import {ProviderService} from "./shared/provider.service";
 
 @NgModule({
   imports: [
@@ -12,6 +13,9 @@ import {SharedModule} from "app/shared/shared.module";
     SharedModule
   ],
   declarations: [routedComponents, ProviderListComponent],
+  providers: [
+    ProviderService
+  ],
   exports: [ProviderListComponent]
 })
 export class ProviderModule {

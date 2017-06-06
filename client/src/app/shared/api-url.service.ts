@@ -10,6 +10,7 @@ export class ApiUrlService {
       ["userListUrl", "/users"],
 
       // External api Url maps
+      ["PlsBaseUrl", "/provider-ui-api/pls"],
       ["UmsBaseUrl", "/provider-ui-api/ums"],
       ["uaaTokenUrl", "/uaa/oauth/token"],
       ["uaaUserInfoUrl", "/uaa/userinfo"]
@@ -29,6 +30,10 @@ export class ApiUrlService {
 
   getUserListUrl(): string {
     return this.urls.get('userListUrl');
+  }
+
+  getPlsBaseUrl(): string {
+    return this.urls.get("PlsBaseUrl");
   }
 
   getUmsBaseUrl(): string {

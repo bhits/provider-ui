@@ -12,6 +12,7 @@ export class ProviderSearchComponent implements OnInit {
   public accordionTab: boolean = true;
   public title: string = "Add Providers";
 
+  //Todo: Get from Backend
   public states = [
     {stateCode: 'AZ', stateValue: 'ARIZONA'},
     {stateCode: 'DC', stateValue: 'DISTRICT OF COLUMBIA'},
