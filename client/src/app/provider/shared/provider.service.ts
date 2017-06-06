@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http, Response, URLSearchParams} from "@angular/http";
+import {Headers, Http, Response, URLSearchParams} from "@angular/http";
 import {ExceptionService} from "../../shared/exception.service";
 import {ProviderRequestQuery} from "app/provider/shared/provider-request-query.model";
 import {Observable} from "rxjs/Observable";
@@ -7,9 +7,11 @@ import {ProviderSearchResponse} from "app/provider/shared/provider-search-respon
 import {ApiUrlService} from "app/shared/api-url.service";
 import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
 import {FHIR_US_NPI_SYSTEM, Provider} from "app/provider/shared/provider.model";
+import {Identifier} from "app/shared/identifier.model";
 
 @Injectable()
 export class ProviderService {
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private apiUrlService: ApiUrlService,
               private http: Http,
@@ -58,6 +60,20 @@ export class ProviderService {
     return this.http.delete(DELETE_PROVIDERS_URL)
       .map(() => null)
       .catch(this.exceptionService.handleError);
+  }
+
+  public addProviders(patientMrn: string, providers: FlattenedSmallProvider[]): Observable<void> {
+    const ADD_PROVIDERS_URL = this.apiUrlService.getPcmBaseUrl().concat("/patients/").concat(patientMrn).concat("/providers");
+    if (providers != null) {
+      let identifiers: Identifier[] = [];
+      providers.forEach(
+        provider => identifiers.push(new Identifier(FHIR_US_NPI_SYSTEM, provider.npi))
+      );
+      return this.http
+        .post(ADD_PROVIDERS_URL, JSON.stringify({identifiers: identifiers}), {headers: this.headers})
+        .map(() => null)
+        .catch(this.exceptionService.handleError);
+    }
   }
 
   private buildRequestParams(requestParams: ProviderRequestQuery): URLSearchParams {
