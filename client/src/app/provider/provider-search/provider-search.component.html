@@ -56,8 +56,8 @@
                           <md-select fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px"
                                      placeholder="Please Select State(Required)"
                                      formControlName="state">
-                            <md-option *ngFor="let state of states" [value]="state.stateCode">
-                              {{ state.stateValue }}
+                            <md-option *ngFor="let state of states" [value]="state.code">
+                              {{ state.displayName }}
                             </md-option>
                           </md-select>
                         </div>
@@ -169,8 +169,8 @@
                           <md-select fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px"
                                      placeholder="Gender(Optional)"
                                      formControlName="genderCode">
-                            <md-option *ngFor="let gender of genderGroup" [value]="gender.genderCode">
-                              {{ gender.genderValue }}
+                            <md-option *ngFor="let gender of genders" [value]="gender.code">
+                              {{ gender.displayName }}
                             </md-option>
                           </md-select>
                         </div>
