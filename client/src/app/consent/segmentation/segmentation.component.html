@@ -48,8 +48,10 @@
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <md-select placeholder="Select One" formControlName="purposeOfUse"
-                   class="full-width font-size20">
+        <md-select placeholder="Select One" formControlName="purposeOfUse">
+          <md-option *ngFor="let purposeOfUse of purposeOfUses" [value]="purposeOfUse.id" >
+            {{ purposeOfUse.display }}
+          </md-option>
         </md-select>
       </div>
     </div>

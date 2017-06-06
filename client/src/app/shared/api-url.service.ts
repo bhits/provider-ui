@@ -13,7 +13,8 @@ export class ApiUrlService {
       ["UmsBaseUrl", "/provider-ui-api/ums"],
       ["uaaTokenUrl", "/uaa/oauth/token"],
       ["uaaUserInfoUrl", "/uaa/userinfo"],
-      ["pepBaseUrl", "/provider-ui-api/pep"]
+      ["pepBaseUrl", "/provider-ui-api/pep"],
+      ["pcmBaseUrl", "/provider-ui-api/pcm"]
     ]
   );
 
@@ -46,5 +47,9 @@ export class ApiUrlService {
 
   getPepUrl(): string {
     return this.urls.get('pepBaseUrl');
+  }
+
+  getPcmBaseUrl(): string {
+    return this.urls.get('pcmBaseUrl');
   }
 }

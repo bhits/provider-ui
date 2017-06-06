@@ -7,6 +7,7 @@ import {TokenService} from "../../security/shared/token.service";
 import {UploadOutputType} from "../shared/upload-output-type.enum";
 import {SegmentationRequest} from "../shared/segmentation-request";
 import {ConsentService} from "../shared/consent.service";
+import {SharePurpose} from "app/consent/shared/share-purpose.model";
 
 @Component({
   selector: 'c2s-segmentation',
@@ -19,6 +20,7 @@ export class SegmentationComponent implements OnInit {
   public uploadInput: EventEmitter<UploadInput>;
   public humanizeBytes: Function;
   public segmentedDocument : any;
+  public purposeOfUses: SharePurpose[]=[] ;
 
   constructor( private formBuilder: FormBuilder,
                private consentService: ConsentService,
@@ -32,6 +34,13 @@ export class SegmentationComponent implements OnInit {
 
   ngOnInit() {
     this.segmentationFrom = this.buildSegementationForm();
+    this.consentService.getPurposeOfUses().subscribe(
+      (purposeOfUses: SharePurpose[])=>this.purposeOfUses = purposeOfUses,
+      this.handleSegmentationError);
+  }
+
+  handleSegmentationError(error: any){
+    console.log(error);
   }
 
   private buildSegementationForm(): FormGroup{
@@ -108,9 +117,5 @@ export class SegmentationComponent implements OnInit {
 
   closeDialog(segmentDocumentDialog: any){
     segmentDocumentDialog.close();
-  }
-
-  navigateTo(){
-    // Handle routing after closing the dialog
   }
 }
