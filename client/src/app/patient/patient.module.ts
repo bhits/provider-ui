@@ -1,22 +1,22 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-
-import {PatientsComponent} from './patients/patients.component';
-import {PatientVerificationComponent} from './patient-verification/patient-verification.component';
-import {PatientListComponent} from './patient-list/patient-list.component';
-import {PatientCreateEditComponent} from './patient-create-edit/patient-create-edit.component';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {PatientVerificationComponent} from "./patient-verification/patient-verification.component";
 import {SharedModule} from "../shared/shared.module";
 import {PatientPipe} from "./shared/patient.pipe";
 import {PatientService} from "./shared/patient.service";
 import {PatientCreationLookupService} from "./shared/patient-creation-lookup.service";
-import {routedComponents, routedResolveServices, PatientRoutingModule} from "./patient-routing.module";
+import {PatientRoutingModule, routedComponents, routedResolveServices} from "./patient-routing.module";
+import {ProviderModule} from "../provider/provider.module";
+import {ConsentModule} from "app/consent/consent.module";
 
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
-    PatientRoutingModule
+    ConsentModule,
+    PatientRoutingModule,
+    ProviderModule,
+    SharedModule
   ],
   declarations: [
     routedComponents,

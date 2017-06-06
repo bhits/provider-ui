@@ -3,7 +3,7 @@ import {ConsentProvider} from "../shared/consent-provider.model";
 import {PaginationInstance} from "ng2-pagination";
 import {NotificationService} from "../../shared/notification.service";
 import {ProviderService} from "../shared/provider.service";
-import {User} from "app/user/shared/user.model";
+import {Patient} from "../../patient/shared/patient.model";
 
 @Component({
   selector: 'c2s-provider-list',
@@ -11,7 +11,9 @@ import {User} from "app/user/shared/user.model";
   styleUrls: ['./provider-list.component.scss']
 })
 export class ProviderListComponent implements OnInit {
-  @Input() public patient: User;
+  @Input()
+  public patient: Patient;
+
   private selectedProvider: ConsentProvider;
   public providers: ConsentProvider[];
   public paginationConfig: PaginationInstance = {

@@ -3,7 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {ProvidersComponent} from "./providers/providers.component";
 import {ProviderSearchComponent} from "./provider-search/provider-search.component";
 import {CanActivateAuthGuardService} from "../security/shared/can-activate-auth-guard.service";
-import {UserCreationLookupResolveService} from "../user/shared/user-creation-lookup-resolve.service";
+import {PatientCreationLookupResolveService} from "../patient/shared/patient-creation-lookup-resolve.service";
 
 const providerRoutes: Routes = [
   {
@@ -16,7 +16,7 @@ const providerRoutes: Routes = [
         path: 'search',
         component: ProviderSearchComponent,
         resolve: {
-          userCreationLookupInfo: UserCreationLookupResolveService
+          patientCreationLookupInfo: PatientCreationLookupResolveService
         }
       }
     ]

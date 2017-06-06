@@ -4,9 +4,9 @@ import {ValidationRules} from "app/shared/validation-rules.model";
 import {ProviderService} from "app/provider/shared/provider.service";
 import {ProviderRequestQuery} from "app/provider/shared/provider-request-query.model";
 import {ProviderSearchResponse} from "app/provider/shared/provider-search-response.model";
-import {UserCreationLookupInfo} from "app/user/shared/user-creation-lookup-info.model";
 import {ActivatedRoute} from "@angular/router";
-import {BaseUserCreationLookup} from "app/user/shared/base-user-creation-lookup.model";
+import {BasePatientCreationLookup} from "../../patient/shared/base-patient-creation-lookup.model";
+import {PatientCreationLookupInfo} from "../../patient/shared/patient-creation-lookup-info.model";
 
 @Component({
   selector: 'c2s-provider-search',
@@ -19,8 +19,8 @@ export class ProviderSearchComponent implements OnInit {
   public searchResponse: ProviderSearchResponse;
   public hasSearchResult: boolean = false;
   public title: string = "Add Providers";
-  public genders: BaseUserCreationLookup[];
-  public states: BaseUserCreationLookup[];
+  public genders: BasePatientCreationLookup[];
+  public states: BasePatientCreationLookup[];
 
   public PROVIDER_TYPE = {
     INDIVIDUAL: 'individual',
@@ -38,9 +38,9 @@ export class ProviderSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    let userCreationLookupInfo: UserCreationLookupInfo = this.route.snapshot.data['userCreationLookupInfo'];
-    this.genders = userCreationLookupInfo.genderCodes;
-    this.states = userCreationLookupInfo.stateCodes;
+    let patientCreationLookupInfo: PatientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
+    this.genders = patientCreationLookupInfo.genderCodes;
+    this.states = patientCreationLookupInfo.stateCodes;
     // build search form parent group
     this.searchProviderFrom = this.formBuilder.group({
       locatingType: this.initLocatingTypeFormGroup(),
