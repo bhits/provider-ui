@@ -6,8 +6,8 @@ export const MENU_ITEMS: MenuItem[] = [
     routerLink: "/home"
   },
   {
-    text: "Users",
-    routerLink: "/users"
+    text: "Patients",
+    routerLink: "/patients"
   },
   {
     text: "Logout",

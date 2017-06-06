@@ -1,0 +1,102 @@
+<div  class="p-sm" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="15px">
+  <div fxFlex class="section-border p-sm">
+    <md-toolbar  class="border-radius4" color="primary" fxLayoutAlign="center">
+      <i class="material-icons">playlist_add_check</i>
+      <h3 class="m-l-sm">
+        Please select to add.
+      </h3>
+    </md-toolbar>
+    <div class="center">
+      <pagination-controls
+        previousLabel="Previous"
+        nextLabel="Next"
+        (pageChange)="getPage($event)">
+      </pagination-controls>
+    </div>
+    <div fxLayoutAlign="center" *ngIf="loading">
+      <md-spinner></md-spinner>
+    </div>
+    <div *ngIf="providerResult?._embedded['providers'].length===0">
+      <md-toolbar fxLayoutAlign="center" color="warn">Sorry, There is no provider found!</md-toolbar>
+    </div>
+    <div class="section-border-thin m-b-md" fxLayout="column" fxLayoutAlign="center"
+         *ngFor="let provider of asyncProviderResult | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems}">
+      <!--case 1: ready to add-->
+      <div [ngStyle]="{'background-color': '#dff0d8', 'border':'1px solid #d5e2d0'}"
+           *ngIf="canSelectProvider(provider)">
+        <div fxLayout="column" fxFlexOffset="15px">
+          <div fxLayout="row" fxLayoutAlign="start">
+            <p class="font-size14 font-weight500">{{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider | flattenedSmallProvider: 'npi'}}]</span></p>
+          </div>
+          <div>
+            <div class="font-size14 m-t-n-sm" fxLayout="row" fxLayoutAlign="left center">
+              <!--<div>-->
+              <button md-icon-button (click)="addProviders(provider)" fxFlex="0 0 auto">
+                <md-icon class="text-dark-green">add_box</md-icon>
+              </button>
+              <span fxFlex="1 auto">Select this provider.</span>
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--case 2: current provider has already been added in patient's provider list-->
+      <div [ngStyle]="{'background-color': '#f5f5f5', 'border':'1px solid #d5e2d0'}"
+           *ngIf="isInProviderList(provider)">
+        <div fxLayout="column" fxFlexOffset="15px">
+          <div fxLayout="row" fxLayoutAlign="start">
+            <p class="font-size14 font-weight500">{{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider | flattenedSmallProvider: 'npi'}}]</span></p>
+          </div>
+          <div>
+            <div class="font-size14 m-t-n-sm" fxLayout="row" fxLayoutAlign="left center">
+              <!--<div>-->
+              <button md-icon-button disabled fxFlex="0 0 auto">
+                <md-icon class="navy-blue">check_circle</md-icon>
+              </button>
+              <span fxFlex="1 auto">This Provider has already in your provider list.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--case 3: current provider has been added in waiting list-->
+      <div class="relative" [ngStyle]="{'background-color': '#f5f5f5', 'border':'1px solid #d5e2d0'}"
+           *ngIf="isProviderSelected(provider)">
+        <span class="top-right-ribbon"></span>
+        <div fxLayout="column" fxFlexOffset="15px">
+          <div fxLayout="row" fxLayoutAlign="start">
+            <p class="font-size14 font-weight500">{{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider | flattenedSmallProvider: 'npi'}}]</span></p>
+          </div>
+          <div>
+            <div class="font-size14 m-t-n-sm" fxLayout="row" fxLayoutAlign="left center">
+              <button md-icon-button disabled fxFlex="0 0 auto">
+                <md-icon class="ribbon-blue">add_box</md-icon>
+              </button>
+              <span class="font-weight700 ribbon-blue" fxFlex="1 auto">
+                  Provider currently added.
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div [ngStyle]="{'border':'1px solid #d5e2d0'}">
+        <div fxFlexOffset="20px">
+          <p class="font-size13 m-b-xs" fxLayoutAlign="left">{{provider | flattenedSmallProvider: 'address'}}</p>
+          <p class="font-size15 font-weight500 m-t-xs" fxLayoutAlign="left">{{provider | flattenedSmallProvider: 'phone'| usPhoneNumber}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="center">
+      <pagination-controls
+        previousLabel="Previous"
+        nextLabel="Next"
+        (pageChange)="getPage($event)">
+      </pagination-controls>
+    </div>
+  </div>
+  <div fxFlex class="section-border p-sm">
+    <md-toolbar color="primary" fxLayoutAlign="center">
+      <i class="material-icons">playlist_add</i>
+      <h3 class="m-l-sm">Selections to add</h3>
+    </md-toolbar>
+  </div>
+</div>

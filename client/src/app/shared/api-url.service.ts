@@ -10,6 +10,8 @@ export class ApiUrlService {
       ["patientListUrl", "/patients"],
 
       // External api Url maps
+      ["PlsBaseUrl", "/provider-ui-api/pls"],
+      ["PcmBaseUrl", "/provider-ui-api/pcm"],
       ["UmsBaseUrl", "/provider-ui-api/ums"],
       ["uaaTokenUrl", "/uaa/oauth/token"],
       ["uaaUserInfoUrl", "/uaa/userinfo"]
@@ -29,6 +31,14 @@ export class ApiUrlService {
 
   getPatientListUrl(): string {
     return this.urls.get('patientListUrl');
+  }
+
+  getPcmBaseUrl(): string {
+    return this.urls.get("PcmBaseUrl");
+  }
+
+  getPlsBaseUrl(): string {
+    return this.urls.get("PlsBaseUrl");
   }
 
   getUmsBaseUrl(): string {

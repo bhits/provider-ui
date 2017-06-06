@@ -1,0 +1,28 @@
+<md-toolbar class="toolbar-base" color="accent">
+  Search Consent by required fields
+</md-toolbar>
+<form [formGroup]="consentSearchFrom" class="consent-search-form" novalidate>
+  <div fxLayout="column">
+    <md-input-container class="full-width font-size20">
+      <input mdInput placeholder="From Provider" formControlName="fromProvider">
+    </md-input-container>
+    <md-input-container class="full-width font-size20">
+      <input mdInput placeholder="To Provider" formControlName="toProvider">
+    </md-input-container>
+    <md-select placeholder="Purpose Of Use" formControlName="purposeOfUse"
+               class="full-width font-size20">
+      <md-option *ngFor="let purposeOfUse of purposeOfUses" [value]="purposeOfUse.value">
+        {{ purposeOfUse.display }}
+      </md-option>
+    </md-select>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+    <button md-raised-button color="primary">
+      <strong>Cancel</strong>
+    </button>
+    <button md-raised-button color="primary"
+            [disabled]="consentSearchFrom.invalid">
+      <strong>Search</strong>
+    </button>
+  </div>
+</form>
