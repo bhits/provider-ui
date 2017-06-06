@@ -1,6 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationRules} from "app/shared/validation-rules.model";
+import {ProviderService} from "app/provider/shared/provider.service";
+import {ProviderRequestQuery} from "app/provider/shared/provider-request-query.model";
+import {ProviderSearchResponse} from "app/provider/shared/provider-search-response.model";
 
 @Component({
   selector: 'c2s-provider-search',
@@ -10,6 +13,8 @@ import {ValidationRules} from "app/shared/validation-rules.model";
 export class ProviderSearchComponent implements OnInit {
   public searchProviderFrom: FormGroup;
   public accordionTab: boolean = true;
+  public searchResponse: ProviderSearchResponse;
+  public hasSearchResult: boolean = false;
   public title: string = "Add Providers";
 
   //Todo: Get from Backend
@@ -35,7 +40,8 @@ export class ProviderSearchComponent implements OnInit {
     ZIP: 'zip'
   };
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private providerService: ProviderService) {
   }
 
   ngOnInit() {
@@ -230,5 +236,45 @@ export class ProviderSearchComponent implements OnInit {
 
   public resetAccordionTab(): void {
     this.accordionTab = true;
+  }
+
+  public clearForm(): void {
+    this.searchProviderFrom.reset();
+    this.setLocatingType(this.LOCATING_TYPE.STATE_CITY);
+    this.setProviderType(this.PROVIDER_TYPE.INDIVIDUAL);
+  }
+
+  public searchProviders(): void {
+    let requestParams: ProviderRequestQuery = this.prepareSearchProviders();
+
+    this.providerService.searchProviders(requestParams)
+      .subscribe(res => {
+        this.searchResponse = res;
+        this.hasSearchResult = true;
+      });
+    this.accordionTab = false;
+  }
+
+  private prepareSearchProviders(): ProviderRequestQuery {
+    const formModel = this.searchProviderFrom.value;
+    const individualRequestParams: ProviderRequestQuery = {
+      state: formModel.locatingType.stateCity.state,
+      city: formModel.locatingType.stateCity.city,
+      zipCode: formModel.locatingType.zip.zipCode,
+      lastName: formModel.providerType.individual.lastName,
+      firstName: formModel.providerType.individual.firstName,
+      genderCode: formModel.providerType.individual.genderCode,
+      phone: formModel.providerType.individual.phone
+    };
+
+    if (formModel.providerType.type === this.PROVIDER_TYPE.INDIVIDUAL) {
+      return individualRequestParams;
+    } else {
+      let organizationRequestParams: ProviderRequestQuery = {
+        orgName: formModel.providerType.organization.orgName,
+        phone: formModel.providerType.organization.phone
+      };
+      return Object.assign(individualRequestParams, organizationRequestParams);
+    }
   }
 }

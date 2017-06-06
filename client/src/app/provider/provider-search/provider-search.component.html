@@ -206,10 +206,10 @@
               </div>
             </md-card-content>
             <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="15px" class="p-r">
-              <button md-raised-button color="primary" [disabled]="searchProviderFrom.pristine">
+              <button md-raised-button color="primary" (click)="clearForm()" [disabled]="searchProviderFrom.pristine">
                 <strong>Clear All</strong>
               </button>
-              <button md-raised-button color="primary"
+              <button md-raised-button color="primary" (click)="searchProviders()"
                       [disabled]="searchProviderFrom.invalid"><strong>Search</strong>
               </button>
             </div>
