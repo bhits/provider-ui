@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UploadOutput, UploadInput, UploadFile, humanizeBytes} from 'ngx-uploader';
 
 
@@ -37,16 +37,16 @@ export class SegmentationComponent implements OnInit {
   private buildSegementationForm(): FormGroup{
     return this.formBuilder.group({
       intermediaryNpi: [null,
-        []
+        [ Validators.required]
       ],
       recipientNpi: [null,
-        []
+        [ Validators.required]
       ],
       purposeOfUse: [null,
-        []
+        [ Validators.required]
       ],
       document: [null,
-        []
+        [ Validators.required]
       ],
     });
   }
