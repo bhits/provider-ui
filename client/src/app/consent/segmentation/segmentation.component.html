@@ -1,12 +1,37 @@
 <div class="p-t-75 p-l-md p-r-md p-b">
-  <h1 class="">Segment Document</h1>
-
+  <h1>Document Segmentation</h1>
+  <div fxLayoutAlign="left">
+    <div style="padding-top: 20px">
+      <div style="background-color: #DEBCC9;" class="p-md font-size18 font-weight center-sm-left" >
+        Set the options to segment this document according to the
+        consent selected.
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="20px">
+    <div fxFlex>
+      <p><br>
+      <span >Patient Name: <strong>Barbara Baker </strong> </span>
+      <span >Patient DOB: <strong>05/01/1977</strong> </span>
+      </p>
+    </div>
+  </div>
   <form [formGroup]="segmentationFrom" novalidate>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <div><span><h2>Authorizes:</h2></span></div>
+      </div>
+    </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <md-input-container class="full-width font-size20">
           <input mdInput placeholder="Authorize Provider NPI" formControlName="intermediaryNpi">
         </md-input-container>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <div><span><h2>To Disclose to:</h2></span></div>
       </div>
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
@@ -18,7 +43,12 @@
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <md-select placeholder="Purpose of Use" formControlName="purposeOfUse"
+        <div><span><h2>Purpose Of Use:</h2></span></div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <md-select placeholder="Select One" formControlName="purposeOfUse"
                    class="full-width font-size20">
         </md-select>
       </div>
