@@ -1,20 +1,22 @@
-import {Component, Input, OnInit, SimpleChanges} from "@angular/core";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {ProviderSearchResponse} from "../shared/provider-search-response.model";
 import {FlattenedSmallProvider} from "app/shared/flattened-small-provider.model";
 import {Observable} from "rxjs/Observable";
 import {ProviderService} from "app/provider/shared/provider.service";
 import {UtilityService} from "../../shared/utility.service";
+import {Provider} from "app/provider/shared/provider.model";
+import {NotificationService} from "app/shared/notification.service";
 
 @Component({
   selector: 'c2s-provider-search-result',
   templateUrl: './provider-search-result.component.html',
   styleUrls: ['./provider-search-result.component.scss']
 })
-export class ProviderSearchResultComponent implements OnInit {
+export class ProviderSearchResultComponent implements OnInit, OnChanges {
   @Input() providerResult: ProviderSearchResponse;
 
-  private providerList: FlattenedSmallProvider[] = [];
+  private providerList: Provider[] = [];
   selectedProviders: FlattenedSmallProvider[] = [];
   asyncProviderResult: Observable<FlattenedSmallProvider[]>;
   private searchResponse: ProviderSearchResponse;
@@ -25,7 +27,8 @@ export class ProviderSearchResultComponent implements OnInit {
   private totalPages: number;
   loading: boolean;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private notificationService: NotificationService,
+              private route: ActivatedRoute,
               private providerService: ProviderService,
               private utilityService: UtilityService) {
   }
@@ -39,7 +42,19 @@ export class ProviderSearchResultComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.providerList = this.route.snapshot.data['providers'];
+    this.route.params.subscribe(params => {
+      const patientMrn: string = params['patientMrn'];
+      this.providerService.getProviders(patientMrn)
+        .subscribe(
+          (providers) => {
+            this.providerList = providers;
+            console.log(this.providerList);
+          },
+          err => {
+            this.notificationService.show("Failed in getting providers.");
+          }
+        );
+    });
   }
 
   getPage(page: number) {

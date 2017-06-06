@@ -31,8 +31,8 @@ export class ProviderListComponent implements OnInit {
   ngOnInit() {
     this.providerService.getProviders(this.patient.mrn)
       .subscribe(
-        (consentProviders) => {
-          this.providers = consentProviders;
+        (providers) => {
+          this.providers = providers;
         },
         err => {
           this.notificationService.show("Failed in getting providers.");

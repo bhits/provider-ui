@@ -43,7 +43,7 @@ export class ProviderService {
     }
   }
 
-  public isSearchResultInProviderList(provider: FlattenedSmallProvider, providerList: FlattenedSmallProvider[]): boolean {
+  public isSearchResultInProviderList(provider: FlattenedSmallProvider, providerList: Provider[]): boolean {
     return providerList.filter((p) => provider.npi === p.npi).length > 0;
   }
 

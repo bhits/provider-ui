@@ -1,6 +1,6 @@
-<div  class="p-sm" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="15px">
+<div class="p-sm" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="15px">
   <div fxFlex class="section-border p-sm">
-    <md-toolbar  class="border-radius4" color="primary" fxLayoutAlign="center">
+    <md-toolbar class="border-radius4" color="primary" fxLayoutAlign="center">
       <i class="material-icons">playlist_add_check</i>
       <h3 class="m-l-sm">
         Please select to add.
@@ -26,7 +26,9 @@
            *ngIf="canSelectProvider(provider)">
         <div fxLayout="column" fxFlexOffset="15px">
           <div fxLayout="row" fxLayoutAlign="start">
-            <p class="font-size14 font-weight500">{{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider | flattenedSmallProvider: 'npi'}}]</span></p>
+            <p class="font-size14 font-weight500">
+              {{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider.npi}}]</span>
+            </p>
           </div>
           <div>
             <div class="font-size14 m-t-n-sm" fxLayout="row" fxLayoutAlign="left center">
@@ -45,7 +47,9 @@
            *ngIf="isInProviderList(provider)">
         <div fxLayout="column" fxFlexOffset="15px">
           <div fxLayout="row" fxLayoutAlign="start">
-            <p class="font-size14 font-weight500">{{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider | flattenedSmallProvider: 'npi'}}]</span></p>
+            <p class="font-size14 font-weight500">
+              {{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider.npi}}]</span>
+            </p>
           </div>
           <div>
             <div class="font-size14 m-t-n-sm" fxLayout="row" fxLayoutAlign="left center">
@@ -64,7 +68,9 @@
         <span class="top-right-ribbon"></span>
         <div fxLayout="column" fxFlexOffset="15px">
           <div fxLayout="row" fxLayoutAlign="start">
-            <p class="font-size14 font-weight500">{{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider | flattenedSmallProvider: 'npi'}}]</span></p>
+            <p class="font-size14 font-weight500">
+              {{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider.npi}}]</span>
+            </p>
           </div>
           <div>
             <div class="font-size14 m-t-n-sm" fxLayout="row" fxLayoutAlign="left center">
@@ -81,7 +87,8 @@
       <div [ngStyle]="{'border':'1px solid #d5e2d0'}">
         <div fxFlexOffset="20px">
           <p class="font-size13 m-b-xs" fxLayoutAlign="left">{{provider | flattenedSmallProvider: 'address'}}</p>
-          <p class="font-size15 font-weight500 m-t-xs" fxLayoutAlign="left">{{provider | flattenedSmallProvider: 'phone'| usPhoneNumber}}</p>
+          <p class="font-size15 font-weight500 m-t-xs" fxLayoutAlign="left">
+            {{provider.practiceLocationAddressTelephoneNumber | usPhoneNumber}}</p>
         </div>
       </div>
     </div>
