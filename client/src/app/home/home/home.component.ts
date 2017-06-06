@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ApiUrlService} from "../../shared/api-url.service";
 import {UtilityService} from "../../shared/utility.service";
-import {UserService} from "../../user/shared/user.service";
+import {PatientService} from "../../patient/shared/patient.service";
 
 @Component({
   selector: 'c2s-home',
@@ -9,19 +9,19 @@ import {UserService} from "../../user/shared/user.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public numberOfUsers: number = 0;
+  public numberOfPatients: number = 0;
 
   constructor(private apiUrlService: ApiUrlService,
-              private userService: UserService,
+              private patientService: PatientService,
               private utilityService: UtilityService) {
   }
 
   ngOnInit() {
     const FIRST_PAGE: number = 0;
-    this.userService.getUsers(FIRST_PAGE)
+    this.patientService.getPatients(FIRST_PAGE)
       .subscribe(
-        (users) => {
-          this.numberOfUsers = users.totalElements
+        (patients) => {
+          this.numberOfPatients = patients.totalElements
         },
         (err) => {
           console.log(err);
@@ -30,6 +30,6 @@ export class HomeComponent implements OnInit {
   }
 
   navigateTo() {
-    this.utilityService.navigateTo(this.apiUrlService.getUserListUrl());
+    this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
   }
 }
