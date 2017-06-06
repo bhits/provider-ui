@@ -7,6 +7,7 @@ import {SharedModule} from "app/shared/shared.module";
 import {ProviderService} from "./shared/provider.service";
 import {ProviderSearchResultComponent} from "./provider-search-result/provider-search-result.component";
 import {FlattenedSmallProviderPipe} from "./shared/flattened-small-provider.pipe";
+import { ProviderPipe } from './shared/provider.pipe';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {FlattenedSmallProviderPipe} from "./shared/flattened-small-provider.pipe
     routedComponents,
     ProviderListComponent,
     ProviderSearchResultComponent,
-    FlattenedSmallProviderPipe
+    FlattenedSmallProviderPipe,
+    ProviderPipe
   ],
   providers: [
     ProviderService

@@ -1,7 +1,7 @@
 import {Identifier} from "../../shared/identifier.model";
 import {Address} from "../../shared/address.model";
 
-export class ConsentProvider {
+export class Provider {
   id: number;
   npi?: string;
   identifiers: Identifier[];
