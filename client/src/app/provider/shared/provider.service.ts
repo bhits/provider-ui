@@ -47,6 +47,13 @@ export class ProviderService {
     return providerList.filter((p) => provider.npi === p.npi).length > 0;
   }
 
+  public deleteProvider(patientId: string, providerId: number): Observable<void> {
+    const DELETE_PROVIDERS_URL = `${this.apiUrlService.getPcmBaseUrl()}/patients/${patientId}/providers/${providerId}`;
+    return this.http.delete(DELETE_PROVIDERS_URL)
+      .map(() => null)
+      .catch(this.exceptionService.handleError);
+  }
+
   private buildRequestParams(requestParams: ProviderRequestQuery): URLSearchParams {
     const PROJECTION: string = "FlattenSmallProvider";
 

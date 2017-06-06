@@ -19,7 +19,6 @@ export class ProviderListComponent implements OnInit {
     itemsPerPage: 6,
     currentPage: 1
   };
-  public accordionTab: boolean = true;
 
   constructor(private notificationService: NotificationService,
               private providerService: ProviderService) {
@@ -39,5 +38,26 @@ export class ProviderListComponent implements OnInit {
 
   public onPageChange(number: number) {
     this.paginationConfig.currentPage = number;
+  }
+
+  public openConfirmDialog(dialog: any, provider: Provider) {
+    dialog.open();
+    this.selectedProvider = provider;
+  }
+
+  public confirmDeleteProvider(dialog: any) {
+    dialog.close();
+    if (this.selectedProvider != null) {
+      this.providerService.deleteProvider(this.patient.mrn, this.selectedProvider.id)
+        .subscribe(
+          () => {
+            this.providers = this.providers.filter(p => p !== this.selectedProvider);
+            this.notificationService.show("Success in deleting provider.");
+          },
+          err => {
+            this.notificationService.show("Failed to delete the provider, please try again later...");
+            console.log(err);
+          });
+    }
   }
 }
