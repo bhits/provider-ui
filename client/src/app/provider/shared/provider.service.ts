@@ -16,8 +16,8 @@ export class ProviderService {
               private exceptionService: ExceptionService) {
   }
 
-  getProviders(patientId: string): Observable<Provider[]> {
-    const resourceUrl = this.apiUrlService.getPcmBaseUrl().concat("/patients/").concat(patientId).concat("/providers");
+  getProviders(patientMrn: string): Observable<Provider[]> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl().concat("/patients/").concat(patientMrn).concat("/providers");
     return this.http.get(resourceUrl)
       .map((resp: Response) => <Provider[]>(resp.json()))
       .catch(this.exceptionService.handleError);
@@ -47,8 +47,8 @@ export class ProviderService {
     return providerList.filter((p) => provider.npi === p.npi).length > 0;
   }
 
-  public deleteProvider(patientId: string, providerId: number): Observable<void> {
-    const DELETE_PROVIDERS_URL = `${this.apiUrlService.getPcmBaseUrl()}/patients/${patientId}/providers/${providerId}`;
+  public deleteProvider(patientMrn: string, providerId: number): Observable<void> {
+    const DELETE_PROVIDERS_URL = `${this.apiUrlService.getPcmBaseUrl()}/patients/${patientMrn}/providers/${providerId}`;
     return this.http.delete(DELETE_PROVIDERS_URL)
       .map(() => null)
       .catch(this.exceptionService.handleError);

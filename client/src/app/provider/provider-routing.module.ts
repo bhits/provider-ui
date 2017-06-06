@@ -13,7 +13,7 @@ const providerRoutes: Routes = [
     canActivateChild: [CanActivateAuthGuardService],
     children: [
       {
-        path: 'search',
+        path: 'search/:patientMrn',
         component: ProviderSearchComponent,
         resolve: {
           patientCreationLookupInfo: PatientCreationLookupResolveService

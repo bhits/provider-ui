@@ -7,7 +7,7 @@
 
   <div fxLayout="column" [ngStyle]="{'padding-top': '20px'}">
     <div fxLayoutAlign="center">
-      <a md-raised-button class="plus-button" fxFlex="0 1 370px" routerLink="/providers/search">
+      <a md-raised-button class="plus-button" fxFlex="0 1 370px" (click)="redirectToPatientProvidersSearch()">
         <md-icon class="font-weight700">add</md-icon>
         Add a Health Provider</a>
     </div>

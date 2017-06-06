@@ -4,6 +4,8 @@ import {NotificationService} from "../../shared/notification.service";
 import {ProviderService} from "../shared/provider.service";
 import {Patient} from "../../patient/shared/patient.model";
 import {Provider} from "app/provider/shared/provider.model";
+import {UtilityService} from "../../shared/utility.service";
+import {ApiUrlService} from "../../shared/api-url.service";
 
 @Component({
   selector: 'c2s-provider-list',
@@ -20,8 +22,10 @@ export class ProviderListComponent implements OnInit {
     currentPage: 1
   };
 
-  constructor(private notificationService: NotificationService,
-              private providerService: ProviderService) {
+  constructor(private apiUrlService: ApiUrlService,
+              private notificationService: NotificationService,
+              private providerService: ProviderService,
+              private utilityService: UtilityService) {
   }
 
   ngOnInit() {
@@ -59,5 +63,10 @@ export class ProviderListComponent implements OnInit {
             console.log(err);
           });
     }
+  }
+
+  public redirectToPatientProvidersSearch(): void {
+    const searchPatientProvidersUrl: string = this.apiUrlService.getPatientProvidersSearchUrl().concat("/" + this.patient.mrn);
+    this.utilityService.navigateTo(searchPatientProvidersUrl)
   }
 }
