@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Observable";
 import {ProviderSearchResponse} from "app/provider/shared/provider-search-response.model";
 import {ApiUrlService} from "app/shared/api-url.service";
 import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
+import {ConsentProvider} from "./consent-provider.model";
 
 @Injectable()
 export class ProviderService {
@@ -13,6 +14,13 @@ export class ProviderService {
   constructor(private apiUrlService: ApiUrlService,
               private http: Http,
               private exceptionService: ExceptionService) {
+  }
+
+  getProviders(patientId: string): Observable<ConsentProvider[]> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl().concat("/patients/").concat(patientId).concat("/providers");
+    return this.http.get(resourceUrl)
+      .map((resp: Response) => <ConsentProvider>(resp.json()))
+      .catch(this.exceptionService.handleError);
   }
 
   public searchProviders(requestParams: ProviderRequestQuery): Observable<ProviderSearchResponse> {

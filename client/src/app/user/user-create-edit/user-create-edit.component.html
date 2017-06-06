@@ -209,7 +209,7 @@
           </md-card-title>
         </md2-accordion-header>
         <h1>{{this.editingUser | user: 'fullName'}}'s Provider List</h1>
-        <c2s-provider-list></c2s-provider-list>
+        <c2s-provider-list [patient]="editingUser"></c2s-provider-list>
       </md2-accordion-tab>
     </md2-accordion>
   </div>
