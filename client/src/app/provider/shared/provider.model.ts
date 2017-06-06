@@ -3,7 +3,6 @@ import {Address} from "../../shared/address.model";
 
 export class Provider {
   id: number;
-  npi?: string;
   identifiers: Identifier[];
   address: Address;
   providerType: string;

@@ -6,7 +6,7 @@ import {Observable} from "rxjs/Observable";
 import {ProviderSearchResponse} from "app/provider/shared/provider-search-response.model";
 import {ApiUrlService} from "app/shared/api-url.service";
 import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
-import {Provider} from "app/provider/shared/provider.model";
+import {FHIR_US_NPI_SYSTEM, Provider} from "app/provider/shared/provider.model";
 
 @Injectable()
 export class ProviderService {
@@ -44,7 +44,13 @@ export class ProviderService {
   }
 
   public isSearchResultInProviderList(provider: FlattenedSmallProvider, providerList: Provider[]): boolean {
-    return providerList.filter((p) => provider.npi === p.npi).length > 0;
+    return providerList
+        .filter(
+          (p) => provider.npi === p.identifiers
+            .filter(id => id.system === FHIR_US_NPI_SYSTEM)
+            .map(id => id.value)
+            .pop()
+        ).length > 0;
   }
 
   public deleteProvider(patientMrn: string, providerId: number): Observable<void> {

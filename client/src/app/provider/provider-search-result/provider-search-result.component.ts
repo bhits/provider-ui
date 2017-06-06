@@ -48,7 +48,6 @@ export class ProviderSearchResultComponent implements OnInit, OnChanges {
         .subscribe(
           (providers) => {
             this.providerList = providers;
-            console.log(this.providerList);
           },
           err => {
             this.notificationService.show("Failed in getting providers.");
@@ -57,7 +56,7 @@ export class ProviderSearchResultComponent implements OnInit, OnChanges {
     });
   }
 
-  getPage(page: number) {
+  public getPage(page: number) {
     const SEARCH_RESPONSE_KEY: string = "providers";
 
     this.loading = true;
@@ -75,21 +74,21 @@ export class ProviderSearchResultComponent implements OnInit, OnChanges {
     }
   }
 
-  addProviders(provider: FlattenedSmallProvider) {
+  public addProviders(provider: FlattenedSmallProvider) {
     this.selectedProviders.push(provider);
   }
 
-  isInProviderList(provider: FlattenedSmallProvider): boolean {
+  public isInProviderList(provider: FlattenedSmallProvider): boolean {
     return this.providerService.isSearchResultInProviderList(provider, this.providerList);
   }
 
-  isProviderSelected(provider: FlattenedSmallProvider): boolean {
+  public isProviderSelected(provider: FlattenedSmallProvider): boolean {
     if (this.selectedProviders != null) {
       return this.selectedProviders.filter((p) => provider.npi === p.npi).length > 0;
     }
   }
 
-  canSelectProvider(provider: FlattenedSmallProvider): boolean {
+  public canSelectProvider(provider: FlattenedSmallProvider): boolean {
     return !this.isProviderSelected(provider) && !this.isInProviderList(provider);
   }
 }
