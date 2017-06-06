@@ -5,6 +5,8 @@ import {ProviderRoutingModule, routedComponents} from "./provider-routing.module
 import {ProviderListComponent} from "./provider-list/provider-list.component";
 import {SharedModule} from "app/shared/shared.module";
 import {ProviderService} from "./shared/provider.service";
+import {ProviderSearchResultComponent} from "./provider-search-result/provider-search-result.component";
+import {FlattenedSmallProviderPipe} from "./shared/flattened-small-provider.pipe";
 
 @NgModule({
   imports: [
@@ -12,7 +14,12 @@ import {ProviderService} from "./shared/provider.service";
     ProviderRoutingModule,
     SharedModule
   ],
-  declarations: [routedComponents, ProviderListComponent],
+  declarations: [
+    routedComponents,
+    ProviderListComponent,
+    ProviderSearchResultComponent,
+    FlattenedSmallProviderPipe
+  ],
   providers: [
     ProviderService
   ],
