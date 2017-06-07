@@ -7,6 +7,7 @@ import {ProviderService} from "app/provider/shared/provider.service";
 import {UtilityService} from "../../shared/utility.service";
 import {Provider} from "app/provider/shared/provider.model";
 import {NotificationService} from "app/shared/notification.service";
+import {Patient} from "app/patient/shared/patient.model";
 
 @Component({
   selector: 'c2s-provider-search-result',
@@ -42,18 +43,16 @@ export class ProviderSearchResultComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      const patientMrn: string = params['patientMrn'];
-      this.providerService.getProviders(patientMrn)
-        .subscribe(
-          (providers) => {
-            this.providerList = providers;
-          },
-          err => {
-            this.notificationService.show("Failed in getting providers.");
-          }
-        );
-    });
+    let patient: Patient = this.route.snapshot.data['patient'];
+    this.providerService.getProviders(patient.mrn)
+      .subscribe(
+        (providers) => {
+          this.providerList = providers;
+        },
+        err => {
+          this.notificationService.show("Failed in getting providers.");
+        }
+      );
   }
 
   public getPage(page: number) {

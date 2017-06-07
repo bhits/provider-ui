@@ -4,6 +4,7 @@ import {ProvidersComponent} from "./providers/providers.component";
 import {ProviderSearchComponent} from "./provider-search/provider-search.component";
 import {CanActivateAuthGuardService} from "../security/shared/can-activate-auth-guard.service";
 import {PatientCreationLookupResolveService} from "../patient/shared/patient-creation-lookup-resolve.service";
+import {PatientResolveService} from "app/patient/shared/patient-resolve.service";
 
 const providerRoutes: Routes = [
   {
@@ -13,10 +14,11 @@ const providerRoutes: Routes = [
     canActivateChild: [CanActivateAuthGuardService],
     children: [
       {
-        path: 'search/:patientMrn',
+        path: 'search/:patientId',
         component: ProviderSearchComponent,
         resolve: {
-          patientCreationLookupInfo: PatientCreationLookupResolveService
+          patientCreationLookupInfo: PatientCreationLookupResolveService,
+          patient: PatientResolveService
         }
       }
     ]

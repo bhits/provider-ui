@@ -71,7 +71,7 @@ export class PatientCreateEditComponent implements OnInit {
         params => {
           if (params['patientId']) {
             // Edit mode
-            this.title = "Edit Patient";
+            this.title = "Patient Profile";
             let patient: Patient = this.route.snapshot.data['patient'];
             this.isEditMode = patient.id != null;
             this.patientId = patient.id;
