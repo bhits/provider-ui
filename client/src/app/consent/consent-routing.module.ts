@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {ConsentsComponent} from "app/consent/consents/consents.component";
 import {CanActivateAuthGuardService} from "app/security/shared/can-activate-auth-guard.service";
-import {ConsentListComponent} from "app/consent/consent-list/consent-list.component";
+import {ConsentCreateEditComponent} from "app/consent/consent-create-edit/consent-create-edit.component";
 
 const consentRoutes: Routes = [
   {
@@ -13,7 +13,7 @@ const consentRoutes: Routes = [
     children: [
       {
         path: 'create',
-        component: ConsentListComponent
+        component: ConsentCreateEditComponent
       }
     ]
   }
@@ -26,7 +26,7 @@ const consentRoutes: Routes = [
 export class ConsentRoutingModule {
 }
 
-export const consentRoutedComponents = [
+export const routedConsentComponents = [
   ConsentsComponent,
-  ConsentListComponent
+  ConsentCreateEditComponent
 ];

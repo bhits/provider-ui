@@ -1,96 +1,102 @@
-<div>
-  <div>
+<md2-accordion multiple="false">
+  <md2-accordion-tab>
+    <md2-accordion-header class="">
+      <md-card-title align="start"><i class="fa fa-user-plus"></i>
+        Patient's Providers
+      </md-card-title>
+    </md2-accordion-header>
     <div class="p-md white font-size20 font-weight500 bg-dark-blue border-radius4 center-sm-left">
       OK! You must add at least two contacts before sharing your health information.
     </div>
-  </div>
-
-  <div fxLayout="column" [ngStyle]="{'padding-top': '20px'}">
-    <div fxLayoutAlign="center">
-      <a md-raised-button class="plus-button" fxFlex="0 1 370px" (click)="redirectToPatientProvidersSearch()">
-        <md-icon class="font-weight700">add</md-icon>
-        Add a Health Provider</a>
-    </div>
-    <div fxLayoutAlign="center">
-      <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
-           fxLayoutGap="10px">
-        <div fxFlex="0 1 100px" class="font-size18 font-weight500 right">
-          Show List by
-        </div>
-        <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
-          <span class="fa fa-user-md fa-4x"></span>
-        </md-card>
-        <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
-          <span class="fa fa-hospital-o fa-4x"></span>
-        </md-card>
-        <md-card class="filter-card center disabled" md-raised-button fxFlex="0 0 60px">
-          <span class="fa fa-user fa-4x"></span>
-        </md-card>
-      </div>
-    </div>
-
-    <div style="padding-top: 20px;" *ngIf="noProvider; else hasProvider">
-      <div style="background-color: #DEBCC9" class="p-md font-size18 font-weight center-sm-left">
-        There are currently no Providers available. Please click the "Add a Health Provider" button to create a new
-        provider.
-      </div>
-    </div>
-    <ng-template #hasProvider>
+    <div fxLayout="column" [ngStyle]="{'padding-top': '20px'}">
       <div fxLayoutAlign="center">
-        <pagination-controls previousLabel="Previous" nextLabel="Next"
-                             (pageChange)="onPageChange($event)">
-        </pagination-controls>
+        <a md-raised-button class="plus-button" fxFlex="0 1 370px" (click)="redirectToPatientProvidersSearch()">
+          <md-icon class="font-weight700">add</md-icon>
+          Add a Health Provider</a>
       </div>
-      <div class="section-border">
-        <div class="bg-xlite-teal p-t-md p-b-md" fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap"
-             fxLayoutGap="15px" fxLayoutAlign="center">
-          <md-card class="provider-card" *ngFor="let provider of providers | paginate: paginationConfig">
-            <md-card-header>
-              <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
-                <div class="fa fa-2x fa-address-card"></div>
-                <div class="m-l-xs font-weight700">{{provider | provider: 'name'}}</div>
-              </div>
-            </md-card-header>
-
-            <md-card-content class="p-t-xs p-b p-l-md p-r-md">
-              <div>
-                <button md-fab [disabled]="!provider.deletable" (click)="openConfirmDialog(confirm, provider)">
-                  <span class="fa fa-trash fa-lg font-weight500" aria-hidden="true"></span>
-                </button>
-              </div>
-              <div class="flexcontainer column" fxLayoutWrap="wrap">
-                <div fxFlex="1 1 auto">
-                  <div class="font-size12 p-b-xxs">NPI</div>
-                  <div class="font-size14 font-weight600 m-b-xs">{{provider | provider: 'npi'}}</div>
-                  <div class="font-size12 p-b-xxs">Address</div>
-                  <div class="font-size14 font-weight700 m-b-xs">{{provider | provider: 'address'}}</div>
-                  <div class="font-size12 p-b-xxs">Contact Number</div>
-                  <div class="font-size14 font-weight700 p-b-xs">{{provider | provider: 'phone' | usPhoneNumber}}</div>
-                </div>
-              </div>
-            </md-card-content>
+      <div fxLayoutAlign="center">
+        <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
+             fxLayoutGap="10px">
+          <div fxFlex="0 1 100px" class="font-size18 font-weight500 right">
+            Show List by
+          </div>
+          <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
+            <span class="fa fa-user-md fa-4x"></span>
+          </md-card>
+          <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
+            <span class="fa fa-hospital-o fa-4x"></span>
+          </md-card>
+          <md-card class="filter-card center disabled" md-raised-button fxFlex="0 0 60px">
+            <span class="fa fa-user fa-4x"></span>
           </md-card>
         </div>
       </div>
-      <div fxLayoutAlign="center">
-        <pagination-controls previousLabel="Previous" nextLabel="Next"
-                             (pageChange)="onPageChange($event)">
-        </pagination-controls>
+
+      <div style="padding-top: 20px;" *ngIf="noProvider; else hasProvider">
+        <div style="background-color: #DEBCC9" class="p-md font-size18 font-weight center-sm-left">
+          There are currently no Providers available. Please click the "Add a Health Provider" button to create a new
+          provider.
+        </div>
       </div>
-    </ng-template>
-  </div>
-</div>
-<div>
-  <md2-dialog #confirm>
-    <md2-dialog-title>Delete provider</md2-dialog-title>
-    Are you sure you want to delete this provider?
-    <md2-dialog-footer>
-      <button md-raised-button color="primary" (click)="confirmDeleteProvider(confirm)">
-        OK
-      </button>
-      <button md-raised-button (click)="confirm.close()">
-        Cancel
-      </button>
-    </md2-dialog-footer>
-  </md2-dialog>
-</div>
+      <ng-template #hasProvider>
+        <div fxLayoutAlign="center">
+          <pagination-controls previousLabel="Previous" nextLabel="Next"
+                               (pageChange)="onPageChange($event)">
+          </pagination-controls>
+        </div>
+        <div class="section-border">
+          <div class="bg-xlite-teal p-t-md p-b-md" fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap"
+               fxLayoutGap="15px" fxLayoutAlign="center">
+            <md-card class="provider-card" *ngFor="let provider of providers | paginate: paginationConfig">
+              <md-card-header>
+                <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
+                  <div class="fa fa-2x fa-address-card"></div>
+                  <div class="m-l-xs font-weight700">{{provider | provider: 'name'}}</div>
+                </div>
+              </md-card-header>
+
+              <md-card-content class="p-t-xs p-b p-l-md p-r-md">
+                <div>
+                  <button md-fab [disabled]="!provider.deletable" (click)="openConfirmDialog(confirm, provider)">
+                    <span class="fa fa-trash fa-lg font-weight500" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="flexcontainer column" fxLayoutWrap="wrap">
+                  <div fxFlex="1 1 auto">
+                    <div class="font-size12 p-b-xxs">NPI</div>
+                    <div class="font-size14 font-weight600 m-b-xs">{{provider | provider: 'npi'}}</div>
+                    <div class="font-size12 p-b-xxs">Address</div>
+                    <div class="font-size14 font-weight700 m-b-xs">{{provider | provider: 'address'}}</div>
+                    <div class="font-size12 p-b-xxs">Contact Number</div>
+                    <div class="font-size14 font-weight700 p-b-xs">{{provider | provider: 'phone' | usPhoneNumber}}
+                    </div>
+                  </div>
+                </div>
+              </md-card-content>
+            </md-card>
+          </div>
+        </div>
+        <div fxLayoutAlign="center">
+          <pagination-controls previousLabel="Previous" nextLabel="Next"
+                               (pageChange)="onPageChange($event)">
+          </pagination-controls>
+        </div>
+      </ng-template>
+    </div>
+
+    <div>
+      <md2-dialog #confirm>
+        <md2-dialog-title>Delete provider</md2-dialog-title>
+        Are you sure you want to delete this provider?
+        <md2-dialog-footer>
+          <button md-raised-button color="primary" (click)="confirmDeleteProvider(confirm)">
+            OK
+          </button>
+          <button md-raised-button (click)="confirm.close()">
+            Cancel
+          </button>
+        </md2-dialog-footer>
+      </md2-dialog>
+    </div>
+  </md2-accordion-tab>
+</md2-accordion>
