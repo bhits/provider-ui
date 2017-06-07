@@ -4,7 +4,7 @@
     </div>
   </div>
   <div fxLayoutAlign="center" [ngStyle]="{'padding-bottom': '20px'}">
-    <button md-raised-button color="primary" class="plus-button">
+    <button md-raised-button color="primary" class="plus-button" (click)="redirectToPatientConsentsCreate()">
       <md-icon class="font-weight700" >add</md-icon>
       <strong>Add a new consent</strong>
     </button>

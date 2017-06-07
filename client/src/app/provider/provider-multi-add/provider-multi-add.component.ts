@@ -29,7 +29,7 @@ export class ProviderMultiAddComponent implements OnInit {
   public confirmAddProviders(dialog: any, selectedProviders: FlattenedSmallProvider[]) {
     dialog.close();
     if (selectedProviders != null) {
-      const PROVIDER_LIST_URL: string = "/patients/edit/".concat(this.patient.id.toString());
+      const PROVIDER_LIST_URL: string = "/patients".concat("/" + this.patient.id);
       this.providerService.addProviders(this.patient.mrn, selectedProviders)
         .subscribe(
           () => {

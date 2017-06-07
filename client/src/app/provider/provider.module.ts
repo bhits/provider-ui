@@ -1,7 +1,11 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 
-import {ProviderRoutingModule, routedComponents} from "./provider-routing.module";
+import {
+  ProviderRoutingModule,
+  routedProviderComponents,
+  routedProviderResolveServices
+} from "./provider-routing.module";
 import {ProviderListComponent} from "./provider-list/provider-list.component";
 import {SharedModule} from "app/shared/shared.module";
 import {ProviderService} from "./shared/provider.service";
@@ -17,7 +21,7 @@ import {ProviderMultiAddComponent} from "./provider-multi-add/provider-multi-add
     SharedModule
   ],
   declarations: [
-    routedComponents,
+    routedProviderComponents,
     ProviderListComponent,
     ProviderMultiAddComponent,
     ProviderSearchResultComponent,
@@ -25,6 +29,7 @@ import {ProviderMultiAddComponent} from "./provider-multi-add/provider-multi-add
     ProviderPipe
   ],
   providers: [
+    routedProviderResolveServices,
     ProviderService
   ],
   exports: [ProviderListComponent]
