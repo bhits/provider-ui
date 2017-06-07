@@ -58,8 +58,4 @@ export class ApiUrlService {
   getPepUrl(): string {
     return this.urls.get('pepBaseUrl');
   }
-
-  getPcmBaseUrl(): string {
-    return this.urls.get('pcmBaseUrl');
-  }
 }

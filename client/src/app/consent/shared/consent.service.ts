@@ -23,8 +23,4 @@ export class ConsentService {
       .map((resp: Response) => <SharePurpose[]>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
-
-  getProviderByNpi(npi:number){
-
-  }
 }

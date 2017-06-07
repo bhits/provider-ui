@@ -4,17 +4,19 @@ import {UploadOutput, UploadInput, UploadFile, humanizeBytes} from 'ngx-uploader
 
 
 import {TokenService} from "../../security/shared/token.service";
-import {UploadOutputType} from "../shared/upload-output-type.enum";
-import {SegmentationRequest} from "../shared/segmentation-request";
-import {ConsentService} from "../shared/consent.service";
 import {SharePurpose} from "app/consent/shared/share-purpose.model";
+import {UploadOutputType} from "../../consent/shared/upload-output-type.enum";
+import {SegmentationRequest} from "../shared/segmentation-request";
+import {ConsentService} from "../../consent/shared/consent.service";
+
 
 @Component({
-  selector: 'c2s-segmentation',
-  templateUrl: './segmentation.component.html',
-  styleUrls: ['./segmentation.component.scss']
+  selector: 'c2s-segment-document',
+  templateUrl: './segment-document.component.html',
+  styleUrls: ['./segment-document.component.scss']
 })
-export class SegmentationComponent implements OnInit {
+export class SegmentDocumentComponent implements OnInit {
+
   public segmentationFrom: FormGroup;
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
@@ -109,13 +111,13 @@ export class SegmentationComponent implements OnInit {
 
   private prepareUploadInputObject(formModel:any): UploadInput{
     let uploadInput: UploadInput = {
-        type: 'uploadAll',
-        fieldName: 'file',
-        url: this.consentService.getPepSegmentationDocumentUrl(),
-        method: 'POST',
-        data: this.prepareSegmentationRequestObject(formModel),
-        concurrency: 1, // set sequential uploading of files with concurrency 1
-        headers: this.tokenService.createAuthorizationHeaderObject()
+      type: 'uploadAll',
+      fieldName: 'file',
+      url: this.consentService.getPepSegmentationDocumentUrl(),
+      method: 'POST',
+      data: this.prepareSegmentationRequestObject(formModel),
+      concurrency: 1, // set sequential uploading of files with concurrency 1
+      headers: this.tokenService.createAuthorizationHeaderObject()
     };
     return uploadInput;
   }
@@ -128,4 +130,5 @@ export class SegmentationComponent implements OnInit {
   closeDialog(segmentDocumentDialog: any){
     segmentDocumentDialog.close();
   }
+
 }
