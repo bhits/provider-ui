@@ -43,10 +43,16 @@ export class ProviderMultiAddComponent implements OnInit {
     }
   }
 
-  public confirmDeleteProvider(dialog: any, provider: FlattenedSmallProvider) {
-    dialog.close();
-    if (provider != name) {
+  public toOpenDeleteProvider(dialog: any, provider: FlattenedSmallProvider) {
+    dialog.open();
+    if (provider != null) {
       this.currentProvider = provider;
+    }
+  }
+
+  public confirmDeleteProvider(dialog: any) {
+    dialog.close();
+    if (this.currentProvider != null) {
       this.providers.splice(this.providers.indexOf(this.currentProvider), 1);
     }
   }
