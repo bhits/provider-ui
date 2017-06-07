@@ -82,6 +82,16 @@ export class SegmentationComponent implements OnInit {
     }
   }
 
+  onBlurOnAuthorizeProvider(npi:any){
+    //get for provider from the backend
+    console.log("Authorize:  " + npi);
+  }
+
+
+  onBlurOnDisclosureProvider(npi:any){
+    //get for provider from the backend
+  }
+
   segmentDocument(): void {
     const formModel = this.segmentationFrom.value;
     this.uploadInput.emit(this.prepareUploadInputObject(formModel));
