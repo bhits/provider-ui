@@ -29,7 +29,10 @@
     "ng2-pagination": "^2.0.1",
     "ng2-slim-loading-bar": "^2.4.0",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "ngx-uploader": "^3.0.6",
+    "@ngx-translate/http-loader": "0.0.3",
+    "@ngx-translate/core": "^6.0.1"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",

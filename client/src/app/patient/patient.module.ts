@@ -1,5 +1,8 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import { NgUploaderModule } from 'ngx-uploader';
+
+
 import {PatientVerificationComponent} from "./patient-verification/patient-verification.component";
 import {SharedModule} from "../shared/shared.module";
 import {PatientPipe} from "./shared/patient.pipe";
@@ -8,6 +11,8 @@ import {PatientCreationLookupService} from "./shared/patient-creation-lookup.ser
 import {PatientRoutingModule, routedComponents, routedResolveServices} from "./patient-routing.module";
 import {ProviderModule} from "../provider/provider.module";
 import {ConsentModule} from "app/consent/consent.module";
+import { SegmentPatientHealthRecordComponent } from './segment-patient-health-record/segment-patient-health-record.component';
+import { SegmentDocumentComponent } from './segment-document/segment-document.component';
 
 
 @NgModule({
@@ -16,12 +21,15 @@ import {ConsentModule} from "app/consent/consent.module";
     ConsentModule,
     PatientRoutingModule,
     ProviderModule,
+    NgUploaderModule,
     SharedModule
   ],
   declarations: [
     routedComponents,
     PatientVerificationComponent,
-    PatientPipe
+    PatientPipe,
+    SegmentPatientHealthRecordComponent,
+    SegmentDocumentComponent
   ],
   providers: [
     routedResolveServices,

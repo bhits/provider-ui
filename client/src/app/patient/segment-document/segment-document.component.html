@@ -1,0 +1,91 @@
+<div class="p-t-75 p-l-md p-r-md p-b">
+  <h1>Document Segmentation</h1>
+  <div fxLayoutAlign="left">
+    <div style="padding-top: 20px">
+      <div style="background-color: #DEBCC9;" class="p-md font-size18 font-weight center-sm-left" >
+        Set the options to segment this document according to the
+        consent selected.
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="20px">
+    <div fxFlex>
+      <p><br>
+        <span >Patient Name: <strong>Barbara Baker </strong> </span>
+        <span >Patient DOB: <strong>05/01/1977</strong> </span>
+      </p>
+    </div>
+  </div>
+  <form [formGroup]="segmentationFrom" novalidate>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <div><span><h2>Authorizes:</h2></span></div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <md-input-container class="full-width font-size20">
+          <input mdInput placeholder="Authorize Provider NPI" #authorizeProvider (blur)="onBlurOnAuthorizeProvider($event.target.value)" formControlName="intermediaryNpi">
+        </md-input-container>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <div><span><h2>To Disclose to:</h2></span></div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <md-input-container class="full-width font-size20">
+          <input mdInput placeholder="Disclosure Provider NPI"  #disclosureProvider (blur)="onBlurOnDisclosureProvider($event.target.value)" formControlName="recipientNpi">
+        </md-input-container>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <div><span><h2>Purpose Of Use:</h2></span></div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <md-select placeholder="Select One" formControlName="purposeOfUse">
+          <md-option *ngFor="let purposeOfUse of purposeOfUses" [value]="purposeOfUse.id" >
+            {{ purposeOfUse.display }}
+          </md-option>
+        </md-select>
+      </div>
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <label class="upload-button">
+          <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)" formControlName="document" [uploadInput]="uploadInput">
+          <a md-raised-button >Choose File To Upload</a>
+        </label>
+      </div>
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <div class="full-width font-size20">
+          <!--<input type="button" value="submit">-->
+          <a md-raised-button (click)="segmentDocument()">Segment Document</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<md2-dialog #segmentDocumentDialog (onClose)="navigateTo()">
+  <md2-dialog-title>Download Segmented Document</md2-dialog-title>
+  <md2-dialog-content>
+    <div class="center">
+      <button md-raised-button (click)="closeDialog(segmentDocumentDialog)">
+        Cancel
+      </button>
+      <button md-raised-button color="primary" (click)="downloadSegementedDocument(segmentDocumentDialog)">
+        Download document
+      </button>
+    </div>
+  </md2-dialog-content>
+</md2-dialog>
