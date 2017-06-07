@@ -68,7 +68,7 @@ export class ProviderListComponent implements OnInit {
   }
 
   public redirectToPatientProvidersSearch(): void {
-    const searchPatientProvidersUrl: string = this.apiUrlService.getPatientProvidersSearchUrl().concat("/" + this.patient.id);
+    const searchPatientProvidersUrl: string = "/patients".concat("/" + this.patient.id).concat(this.apiUrlService.getPatientProvidersSearchUrl());
     this.utilityService.navigateTo(searchPatientProvidersUrl)
   }
 }

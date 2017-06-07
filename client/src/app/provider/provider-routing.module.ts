@@ -8,13 +8,13 @@ import {PatientResolveService} from "app/patient/shared/patient-resolve.service"
 
 const providerRoutes: Routes = [
   {
-    path: 'providers',
+    path: 'patients',
     component: ProvidersComponent,
     canActivate: [CanActivateAuthGuardService],
     canActivateChild: [CanActivateAuthGuardService],
     children: [
       {
-        path: 'search/:patientId',
+        path: ':patientId/providers/search',
         component: ProviderSearchComponent,
         resolve: {
           patientCreationLookupInfo: PatientCreationLookupResolveService,

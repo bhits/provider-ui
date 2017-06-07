@@ -63,7 +63,7 @@ export class PatientListComponent implements OnInit {
   }
 
   public redirectToPatientEdit(patient: Patient) {
-    const editPatientUrl: string = `${"/patients/edit"}/${patient.id}`;
+    const editPatientUrl: string = "/patients".concat("/" + patient.id);
     this.utilityService.navigateTo(editPatientUrl)
   }
 }
