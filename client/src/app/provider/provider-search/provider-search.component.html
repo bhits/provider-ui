@@ -61,8 +61,9 @@
                             </md-option>
                           </md-select>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="center" class="p-t-xs">
-                        </div>
+                        <c2s-control-validation-error-message fxLayoutAlign="center"
+                                                              [control]="searchProviderFrom.get('locatingType.stateCity.state')">
+                        </c2s-control-validation-error-message>
                       </div>
 
                       <div fxLayout="column" formGroupName="stateCity" class="p-t-sm">
@@ -71,10 +72,9 @@
                             <input mdInput placeholder="City(Required)" formControlName="city">
                           </md-input-container>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
+                        <c2s-control-validation-error-message fxLayoutAlign="center"
+                                                              [control]="searchProviderFrom.get('locatingType.stateCity.city')">
+                        </c2s-control-validation-error-message>
                       </div>
                     </div>
                   </div>
@@ -87,10 +87,10 @@
                             <input mdInput placeholder="Zip Code(Required)" formControlName="zipCode">
                           </md-input-container>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
+                        <c2s-control-validation-error-message fxLayoutAlign="center"
+                                                              [customMessage]="zipErrorMessage"
+                                                              [control]="searchProviderFrom.get('locatingType.zip.zipCode')">
+                        </c2s-control-validation-error-message>
                       </div>
                     </div>
                   </div>
@@ -138,10 +138,9 @@
                             <input mdInput placeholder="Last Name(Required)" formControlName="lastName"/>
                           </md-input-container>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
+                        <c2s-control-validation-error-message fxLayoutAlign="center"
+                                                              [control]="searchProviderFrom.get('providerType.individual.lastName')">
+                        </c2s-control-validation-error-message>
                       </div>
 
                       <div fxLayout="column" formGroupName="individual" class="p-t-sm">
@@ -150,8 +149,9 @@
                             <input mdInput placeholder="First Name(Optional)" formControlName="firstName">
                           </md-input-container>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
+                        <c2s-control-validation-error-message fxLayoutAlign="center"
+                                                              [control]="searchProviderFrom.get('providerType.individual.firstName')">
+                        </c2s-control-validation-error-message>
                       </div>
 
                       <div fxLayout="column" formGroupName="individual" class="p-t-sm">
@@ -160,8 +160,10 @@
                             <input mdInput placeholder="Telephone(Optional)" formControlName="phone">
                           </md-input-container>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="center" fxLayoutWrap="wrap" class="m-b-sm">
-                        </div>
+                        <c2s-control-validation-error-message fxLayoutAlign="center"
+                                                              [customMessage]="phoneErrorMessage"
+                                                              [control]="searchProviderFrom.get('providerType.individual.phone')">
+                        </c2s-control-validation-error-message>
                       </div>
 
                       <div fxLayout="column" formGroupName="individual" class="p-t-sm">
@@ -186,10 +188,9 @@
                             <input mdInput placeholder="Facility Name(Required)" formControlName="orgName"/>
                           </md-input-container>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
+                        <c2s-control-validation-error-message fxLayoutAlign="center"
+                                                              [control]="searchProviderFrom.get('providerType.organization.orgName')">
+                        </c2s-control-validation-error-message>
                       </div>
                       <div fxLayout="column" formGroupName="organization" class="p-t-sm">
                         <div fxLayout="row" fxLayoutAlign="center">
@@ -197,8 +198,10 @@
                             <input mdInput placeholder="Telephone(Optional)" formControlName="phone">
                           </md-input-container>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="center">
-                        </div>
+                        <c2s-control-validation-error-message fxLayoutAlign="center"
+                                                              [customMessage]="phoneErrorMessage"
+                                                              [control]="searchProviderFrom.get('providerType.organization.phone')">
+                        </c2s-control-validation-error-message>
                       </div>
                     </div>
                   </div>

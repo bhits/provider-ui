@@ -28,7 +28,7 @@ const patientRoutes: Routes = [
         }
       },
       {
-        path: 'edit/:patientId',
+        path: ':patientId',
         component: PatientCreateEditComponent,
         canDeactivate: [CanDeactivateGuardService],
         resolve: {

@@ -1,5 +1,9 @@
 <div class="p-t-75 p-l-md p-r-md p-b">
   <h1 class="">{{title}}</h1>
+  <div class="flexcontainer row" fxLayoutAlign="start" *ngIf="isEditMode">
+    <div class="fa fa-4x fa-address-book"></div>
+    <h2>{{editingPatient | patient: 'fullName'}}</h2>
+  </div>
   <div style="padding-bottom: 20px" *ngIf="isEditMode">
     <md2-accordion multiple="false">
       <md2-accordion-tab>
@@ -210,7 +214,6 @@
             Patient's Providers
           </md-card-title>
         </md2-accordion-header>
-        <h1>{{editingPatient | patient: 'fullName'}}'s Provider List</h1>
         <c2s-provider-list [patient]="editingPatient"></c2s-provider-list>
       </md2-accordion-tab>
     </md2-accordion>
@@ -224,8 +227,7 @@
             Patient's Consents
           </md-card-title>
         </md2-accordion-header>
-        <h1>{{editingPatient | patient: 'fullName'}}'s Consent List</h1>
-        <c2s-consent-list></c2s-consent-list>
+        <c2s-consent-list [patient]="editingPatient"></c2s-consent-list>
       </md2-accordion-tab>
     </md2-accordion>
   </div>

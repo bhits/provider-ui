@@ -4,6 +4,8 @@ import {NotificationService} from "../../shared/notification.service";
 import {ProviderService} from "../shared/provider.service";
 import {Patient} from "../../patient/shared/patient.model";
 import {Provider} from "app/provider/shared/provider.model";
+import {UtilityService} from "../../shared/utility.service";
+import {ApiUrlService} from "../../shared/api-url.service";
 
 @Component({
   selector: 'c2s-provider-list',
@@ -15,20 +17,24 @@ export class ProviderListComponent implements OnInit {
   public patient: Patient;
   private selectedProvider: Provider;
   public providers: Provider[];
+  public noProvider: boolean = false;
   public paginationConfig: PaginationInstance = {
     itemsPerPage: 6,
     currentPage: 1
   };
 
-  constructor(private notificationService: NotificationService,
-              private providerService: ProviderService) {
+  constructor(private apiUrlService: ApiUrlService,
+              private notificationService: NotificationService,
+              private providerService: ProviderService,
+              private utilityService: UtilityService) {
   }
 
   ngOnInit() {
     this.providerService.getProviders(this.patient.mrn)
       .subscribe(
-        (consentProviders) => {
-          this.providers = consentProviders;
+        (providers) => {
+          this.providers = providers;
+          this.noProvider = providers.length === 0;
         },
         err => {
           this.notificationService.show("Failed in getting providers.");
@@ -59,5 +65,10 @@ export class ProviderListComponent implements OnInit {
             console.log(err);
           });
     }
+  }
+
+  public redirectToPatientProvidersSearch(): void {
+    const searchPatientProvidersUrl: string = "/patients".concat("/" + this.patient.id).concat(this.apiUrlService.getPatientProvidersSearchUrl());
+    this.utilityService.navigateTo(searchPatientProvidersUrl)
   }
 }

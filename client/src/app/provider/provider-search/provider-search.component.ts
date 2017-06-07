@@ -18,9 +18,10 @@ export class ProviderSearchComponent implements OnInit {
   public accordionTab: boolean = true;
   public searchResponse: ProviderSearchResponse;
   public hasSearchResult: boolean = false;
-  public title: string = "Add Providers";
   public genders: BasePatientCreationLookup[];
   public states: BasePatientCreationLookup[];
+  public zipErrorMessage: string = ValidationRules.ZIP_MESSAGE;
+  public phoneErrorMessage: string = ValidationRules.PHONE_MESSAGE;
 
   public PROVIDER_TYPE = {
     INDIVIDUAL: 'individual',
@@ -66,7 +67,7 @@ export class ProviderSearchComponent implements OnInit {
     // initialize state city model
     return {
       state: ['', Validators.required],
-      city: ['',
+      city: [null,
         [
           Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH),
           Validators.maxLength(ValidationRules.NORMAL_MAX_LENGTH),
@@ -100,7 +101,7 @@ export class ProviderSearchComponent implements OnInit {
   private initProviderIndividualModel() {
     // initialize individual model
     return {
-      lastName: ['',
+      lastName: [null,
         [
           Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH),
           Validators.maxLength(ValidationRules.NORMAL_MAX_LENGTH),
@@ -114,7 +115,7 @@ export class ProviderSearchComponent implements OnInit {
         ]
       ],
       genderCode: '',
-      phone: ['', Validators.pattern(ValidationRules.PHONE_PATTERN)]
+      phone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)]
     };
   }
 
@@ -128,7 +129,7 @@ export class ProviderSearchComponent implements OnInit {
           Validators.required
         ]
       ],
-      phone: ['', Validators.pattern(ValidationRules.PHONE_PATTERN)]
+      phone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)]
     };
   }
 
