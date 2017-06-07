@@ -1,5 +1,7 @@
 
-import {Identifier} from "./identifier.model";
+
+
+import {Identifier} from "../../shared/identifier.model";
 
 export class SharePurpose {
   description: string;

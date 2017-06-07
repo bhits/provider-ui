@@ -40,7 +40,7 @@ export function createTranslateLoader(http: Http) {
         deps: [Http]
       }
     }),
-    // Staff UI Modules
+    // Provider UI Modules
     CoreModule,
     ConsentModule,
     HomeModule,

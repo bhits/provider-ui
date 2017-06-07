@@ -15,8 +15,7 @@ export class ApiUrlService {
       ["UmsBaseUrl", "/provider-ui-api/ums"],
       ["uaaTokenUrl", "/uaa/oauth/token"],
       ["uaaUserInfoUrl", "/uaa/userinfo"],
-      ["pepBaseUrl", "/provider-ui-api/pep"],
-      ["pcmBaseUrl", "/provider-ui-api/pcm"]
+      ["pepBaseUrl", "/provider-ui-api/pep"]
     ]
   );
 
