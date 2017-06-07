@@ -1,6 +1,6 @@
 <div class="p-t-75 p-l-md p-r-md p-b">
   <h1 class="">{{title}}</h1>
-  <div class="flexcontainer row" fxLayoutAlign="start">
+  <div class="flexcontainer row" fxLayoutAlign="start" *ngIf="isEditMode">
     <div class="fa fa-4x fa-address-book"></div>
     <h2>{{editingPatient | patient: 'fullName'}}</h2>
   </div>
