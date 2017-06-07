@@ -5,6 +5,7 @@ import {Http, RequestOptions, XHRBackend} from "@angular/http";
 import {httpInterceptorServiceFactory} from "./http-interceptor.service";
 import {TokenService} from "../security/shared/token.service";
 import {GlobalEventManagementService} from "./global-event-management.service";
+import {CustomTranslateService} from "./custom-translate.service";
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import {GlobalEventManagementService} from "./global-event-management.service";
   declarations: [],
   providers: [
     GlobalEventManagementService,
+    CustomTranslateService,
     {
       provide: Http,
       useFactory: httpInterceptorServiceFactory,

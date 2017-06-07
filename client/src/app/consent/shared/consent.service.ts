@@ -24,4 +24,7 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
+  getProviderByNpi(npi:number){
+
+  }
 }
