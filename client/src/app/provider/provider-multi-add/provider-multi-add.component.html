@@ -25,7 +25,7 @@
       <tr *ngFor="let provider of providers">
         <td>
           <div>
-            <button md-icon-button color="warn" (click)="confirmDelete.open()">
+            <button md-icon-button color="warn" (click)="toOpenDeleteProvider(confirmDelete, provider)">
               <md-icon>delete_forever</md-icon>
             </button>
           </div>
@@ -66,7 +66,7 @@
       <button md-raised-button (click)="confirmDelete.close()">
         Cancel
       </button>
-      <button md-raised-button color="primary" (click)="confirmDeleteProvider(confirmDelete, provider)">
+      <button md-raised-button color="primary" (click)="confirmDeleteProvider(confirmDelete)">
         OK
       </button>
     </md2-dialog-footer>

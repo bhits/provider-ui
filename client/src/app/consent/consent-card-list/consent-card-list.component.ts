@@ -1,14 +1,14 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {UtilityService} from "../../shared/utility.service";
 import {Patient} from "../../patient/shared/patient.model";
-import {ApiUrlService} from "app/shared/api-url.service";
+import {ApiUrlService} from "../../shared/api-url.service";
+import {UtilityService} from "../../shared/utility.service";
 
 @Component({
-  selector: 'c2s-consent-list',
-  templateUrl: './consent-list.component.html',
-  styleUrls: ['./consent-list.component.scss']
+  selector: 'c2s-consent-card-list',
+  templateUrl: './consent-card-list.component.html',
+  styleUrls: ['./consent-card-list.component.scss']
 })
-export class ConsentListComponent implements OnInit {
+export class ConsentCardListComponent implements OnInit {
   @Input()
   public patient: Patient;
 

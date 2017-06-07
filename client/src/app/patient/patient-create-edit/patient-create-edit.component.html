@@ -5,16 +5,7 @@
     <h2>{{editingPatient | patient: 'fullName'}}</h2>
   </div>
   <div style="padding-bottom: 20px" *ngIf="isEditMode">
-    <md2-accordion multiple="false">
-      <md2-accordion-tab>
-        <md2-accordion-header class="">
-          <md-card-title align="start"><i class="fa fa-user-plus"></i>
-            Account Activation/Verification Code
-          </md-card-title>
-        </md2-accordion-header>
-        <c2s-patient-verification [patient]="editingPatient"></c2s-patient-verification>
-      </md2-accordion-tab>
-    </md2-accordion>
+    <c2s-patient-verification [patient]="editingPatient"></c2s-patient-verification>
   </div>
 
   <md2-accordion multiple="false">
@@ -207,30 +198,8 @@
   </md2-accordion>
 
   <div style="padding-bottom: 20px" *ngIf="isEditMode">
-    <md2-accordion multiple="false">
-      <md2-accordion-tab>
-        <md2-accordion-header class="">
-          <md-card-title align="start"><i class="fa fa-user-plus"></i>
-            Patient's Providers
-          </md-card-title>
-        </md2-accordion-header>
-        <c2s-provider-list [patient]="editingPatient"></c2s-provider-list>
-      </md2-accordion-tab>
-    </md2-accordion>
+    <c2s-provider-list [patient]="editingPatient"></c2s-provider-list>
+    <c2s-consent-card-list [patient]="editingPatient"></c2s-consent-card-list>
+    <c2s-segment-patient-health-record></c2s-segment-patient-health-record>
   </div>
-
-  <div style="padding-bottom: 20px" *ngIf="isEditMode">
-    <md2-accordion multiple="false">
-      <md2-accordion-tab>
-        <md2-accordion-header class="">
-          <md-card-title align="start"><i class="fa fa-user-plus"></i>
-            Patient's Consents
-          </md-card-title>
-        </md2-accordion-header>
-        <c2s-consent-list [patient]="editingPatient"></c2s-consent-list>
-      </md2-accordion-tab>
-    </md2-accordion>
-  </div>
-
-  <c2s-segment-patient-health-record></c2s-segment-patient-health-record>
 </div>
