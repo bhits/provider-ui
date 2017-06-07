@@ -6,13 +6,13 @@ import {ConsentListComponent} from "app/consent/consent-list/consent-list.compon
 
 const consentRoutes: Routes = [
   {
-    path: 'patients',
+    path: 'patients/:patientId/consents',
     component: ConsentsComponent,
     canActivate: [CanActivateAuthGuardService],
     canActivateChild: [CanActivateAuthGuardService],
     children: [
       {
-        path: ':patientId/consents/create',
+        path: 'create',
         component: ConsentListComponent
       }
     ]
