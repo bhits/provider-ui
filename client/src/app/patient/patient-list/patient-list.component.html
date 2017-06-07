@@ -1,0 +1,100 @@
+<div class="p-t-75 p-l-md p-r-md p-b">
+  <h1 class="">My Patients</h1>
+  <div>
+    <div style="background-color: #BCDEDB;" class="p-md font-size18 font-weight center-sm-left">OK! You are now ready to
+      manage your patients.
+    </div>
+  </div>
+
+  <div fxLayout="column" [ngStyle]="{'padding-top': '20px'}">
+    <div fxLayoutAlign="center" fxLayout="column">
+      <md-input-container class="search-field font-size20">
+        <input mdInput type="search" placeholder="Search by first and last name"
+               #searchField (keyup)="search(searchField.value)"/>
+      </md-input-container>
+      <div *ngIf="searchPatients">
+        <md-list>
+          <md-list-item *ngFor="let patient of searchPatients">
+            <button md-menu-item (click)="redirectToPatientEdit(patient)">
+              <span>{{patient.firstName}}</span>
+              <span>{{patient.lastName}}</span>
+            </button>
+          </md-list-item>
+        </md-list>
+      </div>
+    </div>
+    <br><br>
+    <div fxLayoutAlign="center">
+      <a md-raised-button fxFlex="0 1 500px" routerLink="/patients/create" color="primary">
+        <md-icon class="font-weight700">add</md-icon>
+        Create a Patient Record</a>
+    </div>
+    <div fxLayoutAlign="center">
+      <div class="m-t-lg p-b-sm border-bottom-purple" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
+           fxLayoutGap="10px">
+        <div fxFlex="0 1 100px" class="font-size18 font-weight500 right">
+          Show List by
+        </div>
+        <md-card class="filter-card center disabled" md-raised-button fxFlex="0 0 60px">
+          <span class="fa fa-user-md fa-4x"></span>
+        </md-card>
+        <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
+          <span class="fa fa-user fa-4x"></span>
+        </md-card>
+      </div>
+    </div>
+
+    <div fxLayoutAlign="center">
+      <div style="padding-top: 20px">
+        <div style="background-color: #DEBCC9;" class="p-md font-size18 font-weight center-sm-left" *ngIf="noResult">
+          There are currently no Patients available. Please click the "Create a Patient Record" button to create a new patient.
+        </div>
+      </div>
+      <pagination-controls (pageChange)="getPage($event)" *ngIf="!noResult"></pagination-controls>
+      <md-spinner *ngIf="loading"></md-spinner>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
+      <md-card class="patient-card"
+               *ngFor="let patient of asyncPatients | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
+        <md-card-header>
+          <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
+            <div class="fa fa-2x fa-address-book"></div>
+            <div class="m-l-xs font-weight700">{{patient | patient: 'fullName'}}</div>
+          </div>
+        </md-card-header>
+
+        <md-card-content class="p-t p-b p-l-md p-r-md">
+          <div>
+            <button md-fab (click)="redirectToPatientEdit(patient)">
+              <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="flexcontainer row" fxLayoutWrap="wrap">
+            <div fxFlex="0 1 120px">
+              <div class="m-t-xs flexcontainer column">
+                <div>
+                  <div class="font-size12 p-b-xxs">Contact Number</div>
+                  <div class="font-size14 font-weight500 p-b-sm">{{patient | patient: 'homePhone'| usPhoneNumber}}
+                  </div>
+                  <div class="font-size12 p-b-xxs">Date of Birth</div>
+                  <div class="font-size14 font-weight600">{{patient | patient: 'birthDate' | date}}</div>
+                </div>
+              </div>
+            </div>
+            <div fxFlex="1 0 120px">
+              <div class="m-t-xs flexcontainer column">
+                <div fxLayout="column">
+                  <div class="font-size12 p-b-xxs">Address</div>
+                  <div class="font-size14 font-weight700">{{patient | patient: 'homeAddress'}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div fxLayoutAlign="center">
+      <pagination-controls (pageChange)="getPage($event)" *ngIf="!noResult"></pagination-controls>
+    </div>
+  </div>
+</div>

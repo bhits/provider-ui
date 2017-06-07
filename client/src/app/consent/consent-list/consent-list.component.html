@@ -1,5 +1,13 @@
-<div class="p-t-75 p-l-md p-r-md p-b">
-  <h1 class="">Consent List</h1>
-
-
+<div>
+  <div hidden>
+    <div style="background-color: #e6aaa6;" class="p-md font-size18 font-weight center-sm-left">There currently are NO Consents on record.
+    </div>
+  </div>
+  <div fxLayoutAlign="center" [ngStyle]="{'padding-bottom': '20px'}">
+    <button md-raised-button color="primary" class="plus-button">
+      <md-icon class="font-weight700" >add</md-icon>
+      <strong>Add a new consent</strong>
+    </button>
+  </div>
+  <c2s-consent-search></c2s-consent-search>
 </div>

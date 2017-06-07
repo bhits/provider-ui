@@ -5,6 +5,8 @@ import {Md2Module} from "md2";
 
 import {ConsentRoutingModule, consentRoutedComponents} from "./consent-routing.module";
 import {SharedModule} from "../shared/shared.module";
+import {ConsentListComponent} from "./consent-list/consent-list.component";
+import { ConsentSearchComponent } from './consent-search/consent-search.component';
 import {ConsentService} from "./shared/consent.service";
 
 @NgModule({
@@ -15,7 +17,8 @@ import {ConsentService} from "./shared/consent.service";
     NgUploaderModule,
     ConsentRoutingModule
   ],
-  declarations: [consentRoutedComponents],
+  declarations: [consentRoutedComponents, ConsentSearchComponent],
+  exports: [ConsentListComponent],
   providers: [ConsentService]
 })
 export class ConsentModule {

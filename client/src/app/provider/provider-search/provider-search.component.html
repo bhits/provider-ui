@@ -1,0 +1,224 @@
+<div class="p-t-75 p-l-md p-r-md p-b">
+  <h1>Search Providers</h1>
+
+  <md-card class="provider-search-card">
+    <div class="containerX">
+      <form [formGroup]="searchProviderFrom" novalidate>
+        <md2-accordion multiple="false" (open)="resetAccordionTab()">
+          <md2-accordion-tab [active]="accordionTab">
+
+            <md2-accordion-header>
+              <md-card-title align="start"><i class="material-icons middle m-r-xs">search</i>
+                Search
+              </md-card-title>
+            </md2-accordion-header>
+
+            <md-card-content class="m-l-sm m-r-sm">
+              <div class="section-border hover p-xs">
+                <md-toolbar class="toolbar-base">
+                  <button md-mini-fab aria-label="Step 1">
+                    <span>1</span>
+                  </button>
+                  <span class="toolbar-header">
+                    Step 1. Please enter the provider State and City OR Zip Code.
+                  </span>
+                </md-toolbar>
+
+                <div formGroupName="locatingType">
+                  <div class="p-sm p-b m-t-xs bg-lite-blue">
+                    <div class="font-size12 font-weight400 p-t-sm p-b-sm center">PLEASE CHOOSE ONE.</div>
+
+                    <div class="row-to-column960-centered">
+                      <button fxFlex="1 0 auto" fxFlex.gt-sm="0 1 400px" class="toggle toggle-block"
+                              (click)="setLocatingType(LOCATING_TYPE.STATE_CITY)"
+                              [class.toggle-default]="!isStateCityType()"
+                              [class.toggle-primary]="isStateCityType()">
+                        <strong>Enter State and City</strong>
+                      </button>
+
+                      <div class="p-l-sm p-r-sm center">
+                        <h3>OR</h3>
+                      </div>
+
+                      <button fxFlex="1 0 auto" fxFlex.gt-sm="0 1 400px" fxLayoutAlign="center"
+                              class="toggle toggle-block"
+                              (click)="setLocatingType(LOCATING_TYPE.ZIP)"
+                              [class.toggle-default]="isStateCityType()"
+                              [class.toggle-primary]="!isStateCityType()">
+                        <strong>Enter Zip Code</strong>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="p-sm m-t" *ngIf="isStateCityType()">
+                    <div class="p-b-sm">
+                      <div fxLayout="column" formGroupName="stateCity">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <md-select fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px"
+                                     placeholder="Please Select State(Required)"
+                                     formControlName="state">
+                            <md-option *ngFor="let state of states" [value]="state.code">
+                              {{ state.displayName }}
+                            </md-option>
+                          </md-select>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center" class="p-t-xs">
+                        </div>
+                      </div>
+
+                      <div fxLayout="column" formGroupName="stateCity" class="p-t-sm">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <md-input-container fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px">
+                            <input mdInput placeholder="City(Required)" formControlName="city">
+                          </md-input-container>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="p-sm m-t-xs" *ngIf="!isStateCityType()">
+                    <div class="p-b-sm">
+                      <div fxLayout="column" formGroupName="zip">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <md-input-container fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px">
+                            <input mdInput placeholder="Zip Code(Required)" formControlName="zipCode">
+                          </md-input-container>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="m-t section-border hover p-xs">
+                <md-toolbar class="toolbar-base">
+                  <button md-mini-fab aria-label="Step 2">
+                    <span>2</span>
+                  </button>
+                  <span class="toolbar-header">
+                    Step 2. Please enter the provider Facility Name OR Provider Name and Other Criteria.
+                  </span>
+                </md-toolbar>
+
+                <div formGroupName="providerType">
+                  <div class="p-sm p-b m-t-xs bg-lite-blue">
+                    <div class="font-size12 font-weight400 p-t-sm p-b-sm center">PLEASE CHOOSE ONE.</div>
+                    <div class="row-to-column960-centered">
+                      <button fxFlex="1 0 auto" fxFlex.gt-sm="0 1 400px" class="toggle toggle-block"
+                              (click)="setProviderType(PROVIDER_TYPE.INDIVIDUAL)"
+                              [class.toggle-default]="!isIndividualProviderType()"
+                              [class.toggle-primary]="isIndividualProviderType()">
+                        <strong>Enter Provider Name and Other Criteria</strong>
+                      </button>
+
+                      <div class="p-l-sm p-r-sm center"><h3>OR</h3></div>
+
+                      <button fxFlex="1 0 auto" fxFlex.gt-sm="0 1 400px" class="toggle toggle-block"
+                              (click)="setProviderType(PROVIDER_TYPE.ORGANIZATION)"
+                              [class.toggle-default]="isIndividualProviderType()"
+                              [class.toggle-primary]="!isIndividualProviderType()">
+                        <strong>Enter Facility Name</strong>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="p-sm m-t-xs" *ngIf="isIndividualProviderType()">
+                    <div class="p-b-sm">
+
+                      <div fxLayout="column" formGroupName="individual">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <md-input-container fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px">
+                            <input mdInput placeholder="Last Name(Required)" formControlName="lastName"/>
+                          </md-input-container>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                      </div>
+
+                      <div fxLayout="column" formGroupName="individual" class="p-t-sm">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <md-input-container fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px">
+                            <input mdInput placeholder="First Name(Optional)" formControlName="firstName">
+                          </md-input-container>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                      </div>
+
+                      <div fxLayout="column" formGroupName="individual" class="p-t-sm">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <md-input-container fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px">
+                            <input mdInput placeholder="Telephone(Optional)" formControlName="phone">
+                          </md-input-container>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center" fxLayoutWrap="wrap" class="m-b-sm">
+                        </div>
+                      </div>
+
+                      <div fxLayout="column" formGroupName="individual" class="p-t-sm">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <md-select fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px"
+                                     placeholder="Gender(Optional)"
+                                     formControlName="genderCode">
+                            <md-option *ngFor="let gender of genders" [value]="gender.code">
+                              {{ gender.displayName }}
+                            </md-option>
+                          </md-select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="p-sm m-t-xs" *ngIf="!isIndividualProviderType()">
+                    <div class="p-b-sm">
+                      <div fxLayout="column" formGroupName="organization">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <md-input-container fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px">
+                            <input mdInput placeholder="Facility Name(Required)" formControlName="orgName"/>
+                          </md-input-container>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                      </div>
+                      <div fxLayout="column" formGroupName="organization" class="p-t-sm">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <md-input-container fxFlex="1 0 auto" fxFlex.gt-sm="0 1 600px">
+                            <input mdInput placeholder="Telephone(Optional)" formControlName="phone">
+                          </md-input-container>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </md-card-content>
+            <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="15px" class="p-r">
+              <button md-raised-button color="primary" (click)="clearForm()" [disabled]="searchProviderFrom.pristine">
+                <strong>Clear All</strong>
+              </button>
+              <button md-raised-button color="primary" (click)="searchProviders()"
+                      [disabled]="searchProviderFrom.invalid"><strong>Search</strong>
+              </button>
+            </div>
+          </md2-accordion-tab>
+        </md2-accordion>
+      </form>
+      <div [hidden]="!hasSearchResult" [ngStyle]="{'padding-top': '30px'}">
+        <c2s-provider-search-result [providerResult]="searchResponse"></c2s-provider-search-result>
+      </div>
+    </div>
+  </md-card>
+</div>
