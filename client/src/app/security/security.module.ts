@@ -8,6 +8,7 @@ import {SessionStorageService} from "./shared/session-storage.service";
 import {CanActivateAuthGuardService} from "./shared/can-activate-auth-guard.service";
 import {AuthorizationService} from "app/security/shared/authorization.service";
 import {CanDeactivateGuardService} from "./shared/can-deactivate-guard.service";
+import {ProfileService} from "./shared/profile.service";
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import {CanDeactivateGuardService} from "./shared/can-deactivate-guard.service";
     CanActivateAuthGuardService,
     CanDeactivateGuardService,
     SessionStorageService,
+    ProfileService,
     TokenService
   ]
 })

@@ -7,7 +7,7 @@ export class Profile {
   name: string;
   birthDate?: Date;
 
-  constructor(userName: string) {
-    this.userName = userName;
-  }
+  // constructor(userName: string) {
+  //   this.userName = userName;
+  // }
 }
