@@ -22,52 +22,65 @@
                fxLayoutGap="10px">
           </div>
         </div>
-        <div fxLayoutAlign="center">
-          <pagination-controls (pageChange)="getPage($event)" *ngIf="!noResult"></pagination-controls>
-          <md-spinner *ngIf="loading"></md-spinner>
+        <div style="padding-top: 20px;" *ngIf="noConsent; else hasConsent">
+          <div style="background-color: #DEBCC9" class="p-md font-size18 font-weight center-sm-left">
+            There are currently no Consents available. Please click the "Add a new consent" button to create a new
+            consent.
+          </div>
         </div>
-        <!--Consent Card Start-->
-        <md-card class="p-none"
-                 *ngFor="let consent of asyncConsents | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
-          <md-card-content class="m-b-n border-bottom-purple-thin">
-            <div fxLayout="column">
-              <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px"
-                   class="consent-card-header"
-                   (click)="toggleDetailsVisible(el)">
-                <div fxFlex="1 1 35%">
-                  <div fxLayout="column">
-                    <div class="font-size11 font-weight600 m-b-xs">Authorized to share
+        <ng-template #hasConsent>
+          <div fxLayoutAlign="center">
+            <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+            <md-spinner *ngIf="loading"></md-spinner>
+          </div>
+          <!--Consent Card Start-->
+          <md-card class="p-none"
+                   *ngFor="let consent of asyncConsents | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
+            <md-card-content class="m-b-n border-bottom-purple-thin">
+              <div fxLayout="column">
+                <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px"
+                     class="consent-card-header"
+                     (click)="toggleDetailsVisible(el)">
+                  <div fxFlex="1 1 35%">
+                    <div fxLayout="column">
+                      <div class="font-size11 font-weight600 m-b-xs">Authorized to share</div>
+                      <div class="font-size12" *ngFor="let fromProvider of consent.fromProviders">
+                        {{fromProvider | provider: 'name'}}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div fxFlex="1 1 35%">
-                  <div fxLAyout="column">
-                    <div class="font-size11 font-weight600 m-b-xs">Sharing with:</div>
-                  </div>
-                </div>
-                <div fxFlex="1 auto">
-                  <div fxLayout="column">
-                    <div class="font-size11 font-weight600">Effective Dates:
+                  <div fxFlex="1 1 35%">
+                    <div fxLAyout="column">
+                      <div class="font-size11 font-weight600 m-b-xs">Sharing with:</div>
                     </div>
                   </div>
-                </div>
+                  <div fxFlex="1 auto">
+                    <div fxLayout="column">
+                      <div class="font-size11 font-weight600">Effective Dates:
+                      </div>
+                    </div>
+                  </div>
 
-                <div class="transition p-l p-r" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
-                     (window:resize)="onResize($event, el)"
-                     [style.height]="getHeightPx()" #el>
-                  <div fxFlex>
-                    <h3><strong>Medical Information disclosed:</strong></h3>
-                  </div>
-                  <div fxFlex>
-                    <h3><strong>
-                      Share the following purposes:</strong></h3>
+                  <div class="transition p-l p-r" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+                       (window:resize)="onResize($event, el)"
+                       [style.height]="getHeightPx()" #el>
+                    <div fxFlex>
+                      <h3><strong>Medical Information disclosed:</strong></h3>
+                    </div>
+                    <div fxFlex>
+                      <h3><strong>
+                        Share the following purposes:</strong></h3>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </md-card-content>
-        </md-card>
-        <!--Consent Card End-->
+            </md-card-content>
+          </md-card>
+          <!--Consent Card End-->
+          <div fxLayoutAlign="center">
+            <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+          </div>
+        </ng-template>
       </div>
     </div>
   </md2-accordion-tab>

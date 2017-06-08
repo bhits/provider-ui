@@ -19,7 +19,7 @@ export class ConsentListComponent implements OnInit {
   public totalPages: number = 0;
   public itemsPerPage: number = 0;
   public currentPage: number = 1;
-  public noResult: boolean = false;
+  public noConsent: boolean = false;
   public loading: boolean = false;
   public asyncConsents: Observable<Consent[]>;
 
@@ -39,7 +39,7 @@ export class ConsentListComponent implements OnInit {
     this.loading = true;
     this.asyncConsents = this.consentService.getConsents(this.patient.mrn, page - 1)
       .do((patients: PageableData<Consent>) => {
-        this.noResult = patients.totalElements === 0;
+        this.noConsent = patients.totalElements === 0;
         this.totalItems = patients.totalElements;
         this.totalPages = patients.totalPages;
         this.itemsPerPage = patients.size;

@@ -16,6 +16,7 @@ import {Md2Module} from "md2";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {Ng2PaginationModule} from "ng2-pagination";
+import {ProviderPipe} from "./provider.pipe";
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {Ng2PaginationModule} from "ng2-pagination";
     UsPhoneNumberPipe,
     ControlValidationErrorMessageComponent,
     ConfirmDialogComponent,
-    ShowHidePasswordComponent
+    ShowHidePasswordComponent,
+    ProviderPipe
   ],
   entryComponents: [ConfirmDialogComponent],
   providers: [
@@ -46,6 +48,7 @@ import {Ng2PaginationModule} from "ng2-pagination";
     ReactiveFormsModule,
     Ng2PaginationModule,
     ShowHidePasswordComponent,
+    ProviderPipe,
     UsPhoneNumberPipe
   ]
 })
