@@ -118,10 +118,11 @@ export class ConsentListComponent implements OnInit {
 
   public confirmDeleteConsent(dialog: any, consent: Consent) {
     dialog.close();
+    let consentId: number = consent.id;
     this.consentService.deleteConsent(this.patient.mrn, consent.id)
       .subscribe(
         () => {
-          // this.consents = this.consents.filter(consent => consent['id'] !== consent.id);
+          this.asyncConsents = this.asyncConsents.filter(consent => consent['id'] !== consentId);
           this.notificationService.show("Success in deleting consent.");
         },
         err => {
