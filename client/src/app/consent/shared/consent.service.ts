@@ -7,6 +7,8 @@ import {ExceptionService} from "app/shared/exception.service";
 import {Consent} from "app/consent/shared/consent.model";
 import {PageableData} from "app/shared/pageable-data.model";
 import {BinaryFile} from "app/shared/binary-file.model";
+import {NotificationService} from "app/shared/notification.service";
+import {UtilityService} from "app/shared/utility.service";
 
 @Injectable()
 export class ConsentService {
@@ -15,27 +17,46 @@ export class ConsentService {
 
   constructor(private http: Http,
               private apiUrlService: ApiUrlService,
-              private exceptionService: ExceptionService) {
+              private exceptionService: ExceptionService,
+              private notificationService: NotificationService,
+              private utilityService: UtilityService) {
   }
 
   public getConsents(patientMrn: string, page: number): Observable<PageableData<Consent>> {
     let params: URLSearchParams = new URLSearchParams();
     params.set('page', page.toString());
-    const resourceUrl = this.apiUrlService.getPcmBaseUrl().concat("/patients/").concat(patientMrn).concat("/consents");
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/");
     return this.http.get(resourceUrl, {search: params})
       .map((resp: Response) => <PageableData<Consent>>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
 
   public deleteConsent(patientMrn: string, id: number): Observable<void> {
-    const resourceUrl = this.apiUrlService.getPcmBaseUrl().concat("/patients/").concat(patientMrn).concat("/consents").concat("/" + id);
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + id);
     return this.http.delete(resourceUrl)
       .map(() => null)
       .catch(this.exceptionService.handleError);
   }
 
   public getSavedConsentPdf(patientMrn: string, id: number): Observable<BinaryFile> {
-    const resourceUrl = this.apiUrlService.getPcmBaseUrl().concat("/patients/").concat(patientMrn).concat("/consents").concat("/" + id);
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + id);
+    const format: string = "pdf";
+    return this.getConsentAsBinaryFile(resourceUrl, format);
+  }
+
+  getSignedConsentPdf(patientMrn: string, id: number): Observable<BinaryFile> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + id + "/attestation");
+    const format: string = "pdf";
+    return this.getConsentAsBinaryFile(resourceUrl, format);
+  }
+
+  getRevokedConsentPdf(patientMrn: string, id: number): Observable<BinaryFile> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + id + "/revocation");
     const format: string = "pdf";
     return this.getConsentAsBinaryFile(resourceUrl, format);
   }
@@ -46,6 +67,16 @@ export class ConsentService {
     return this.http.get(url, {search: params})
       .map((resp: Response) => <BinaryFile>(resp.json()))
       .catch(this.exceptionService.handleError);
+  }
+
+  public handleDownloadSuccess(pdf: BinaryFile, consentId: number, consentOptionsDialog: any, namePrefix: string, message: string) {
+    consentOptionsDialog.close();
+    this.utilityService.downloadFile(pdf.content, `${namePrefix}_${consentId}.pdf`, pdf.contentType);
+    this.notificationService.show(message);
+  }
+
+  public handleDownloadError(err: string) {
+    this.notificationService.show(err);
   }
 
   public getPepSegmentationDocumentUrl(): string {
