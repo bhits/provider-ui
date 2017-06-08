@@ -115,6 +115,54 @@
                     </md-chip>
                   </div>
                 </div>
+                <button md-raised-button color="primary" (click)="consentOptionsDialog.open()">
+                  Manage Consents
+                </button>
+                <div>
+                  <!--consentOptionsDialog Start-->
+                  <md2-dialog #consentOptionsDialog>
+                    <md2-dialog-title fxLayoutAlign="center">
+                      Consent Options
+                    </md2-dialog-title>
+                    <md-list>
+                      <md-list-item *ngFor="let consentOption of getConsentStageOptions(consent)">
+                        <div class="margin-20" fxFill>
+                          <a fxLayoutAlign="space-between" md-raised-button
+                             (click)="invokeAction(consent, consentOption, consentOptionsDialog, deleteConfirmationDialog)"
+                             *ngIf="selectConsentMethodOption(consentOption); else isNotMethodOption">
+                            <md-icon>{{consentOption.icon}}</md-icon>
+                            <span class="margin-20">{{consentOption.text}}</span>
+                          </a>
+                          <ng-template #isNotMethodOption>
+                            <a fxLayoutAlign="space-between" md-raised-button
+                               [routerLink]="getRouterLink(consent, consentOption)">
+                              <md-icon>{{consentOption.icon}}</md-icon>
+                              <span class="margin-20">{{consentOption.text}}</span>
+                            </a>
+                          </ng-template>
+                        </div>
+                      </md-list-item>
+                    </md-list>
+                  </md2-dialog>
+                  <!--consentOptionsDialog End-->
+
+                  <!--deleteConfirmationDialog Start-->
+                  <md2-dialog #deleteConfirmationDialog (onOpen)="consentOptionsDialog.close()">
+                    <md2-dialog-title>
+                      Delete Consent
+                    </md2-dialog-title>
+                    Are you sure you want to delete this consent?
+                    <md2-dialog-footer>
+                      <button md-raised-button color="primary" (click)="confirmDeleteConsent(deleteConfirmationDialog, consent)">
+                        OK
+                      </button>
+                      <button md-raised-button (click)="deleteConfirmationDialog.close()">
+                        Cancel
+                      </button>
+                    </md2-dialog-footer>
+                  </md2-dialog>
+                  <!--deleteConfirmationDialog End-->
+                </div>
               </div>
             </md-card-actions>
           </md-card>

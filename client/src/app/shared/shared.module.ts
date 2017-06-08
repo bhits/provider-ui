@@ -17,6 +17,7 @@ import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {Ng2PaginationModule} from "ng2-pagination";
 import {ProviderPipe} from "./provider.pipe";
+import {BrowserService} from "app/shared/browser.service";
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import {ProviderPipe} from "./provider.pipe";
   entryComponents: [ConfirmDialogComponent],
   providers: [
     ApiUrlService,
+    BrowserService,
     ConfirmDialogService,
     ExceptionService,
     NotificationService,

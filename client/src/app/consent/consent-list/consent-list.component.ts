@@ -6,6 +6,11 @@ import {Observable} from "rxjs/Observable";
 import {ConsentService} from "../shared/consent.service";
 import {PageableData} from "../../shared/pageable-data.model";
 import {Consent} from "../shared/consent.model";
+import {CONSENT_STAGES} from "app/consent/shared/consent-stages.model";
+import {ConsentStageOption} from "../shared/consent-stage-option.model";
+import {ConsentStageOptionKey} from "app/consent/shared/consent-stage-option-key.enum";
+import {BinaryFile} from "../../shared/binary-file.model";
+import {NotificationService} from "app/shared/notification.service";
 
 @Component({
   selector: 'c2s-consent-list',
@@ -28,6 +33,7 @@ export class ConsentListComponent implements OnInit {
 
   constructor(private apiUrlService: ApiUrlService,
               private consentService: ConsentService,
+              private notificationService: NotificationService,
               private utilityService: UtilityService) {
   }
 
@@ -71,5 +77,56 @@ export class ConsentListComponent implements OnInit {
     if (consent != null && consent.shareSensitivityCategories != null) {
       return consent.shareSensitivityCategories.length > 0;
     }
+  }
+
+  public getConsentStageOptions(consent: Consent): ConsentStageOption[] {
+    return CONSENT_STAGES
+      .filter(consentStage => consentStage.consentStage === consent.consentStage)
+      .map(consentStage => consentStage.options)
+      .pop();
+  }
+
+  public invokeAction(consent: Consent, consentOption: ConsentStageOption, consentOptionsDialog: any, deleteConfirmationDialog: any) {
+    switch (consentOption.key) {
+      case ConsentStageOptionKey.DELETE:
+        deleteConfirmationDialog.open();
+        break;
+      case ConsentStageOptionKey.DOWNLOAD_SAVED_PDF:
+        this.consentService.getSavedConsentPdf(this.patient.mrn, consent.id)
+          .subscribe(
+            (savedPdf: BinaryFile) => {
+              consentOptionsDialog.close();
+              this.utilityService.downloadFile(savedPdf.content, `${"Saved_Consent"}_${consent.id}.pdf`, savedPdf.contentType);
+              this.notificationService.show("Success in downloading consent.");
+            },
+            err => {
+              this.notificationService.show("Failed to add the provider, please try again later...");
+              console.log(err);
+            }
+          );
+        break;
+    }
+  }
+
+  public selectConsentMethodOption(consentOption: ConsentStageOption): boolean {
+    return consentOption.isMethod;
+  }
+
+  public getRouterLink(consent: Consent, consentOption: ConsentStageOption): any {
+    return consentOption.routerLink ? [consentOption.routerLink, consent.id] : '.'
+  }
+
+  public confirmDeleteConsent(dialog: any, consent: Consent) {
+    dialog.close();
+    this.consentService.deleteConsent(this.patient.mrn, consent.id)
+      .subscribe(
+        () => {
+          // this.consents = this.consents.filter(consent => consent['id'] !== consent.id);
+          this.notificationService.show("Success in deleting consent.");
+        },
+        err => {
+          this.notificationService.show("Failed to delete the consent, please try again later...");
+          console.log(err);
+        });
   }
 }
