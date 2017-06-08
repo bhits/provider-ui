@@ -8,11 +8,13 @@ import {UserProfileComponent} from "./user-profile/user-profile.component";
 import {MenuComponent} from "./menu/menu.component";
 import {CommonModule} from "@angular/common";
 import {MultiLanguageComponent} from "./multi-language/multi-language.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ],
   declarations: [
     LogoComponent,
