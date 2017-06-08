@@ -12,6 +12,8 @@ import {ProviderService} from "./shared/provider.service";
 import {ProviderSearchResultComponent} from "./provider-search-result/provider-search-result.component";
 import {FlattenedSmallProviderPipe} from "./shared/flattened-small-provider.pipe";
 import {ProviderMultiAddComponent} from "./provider-multi-add/provider-multi-add.component";
+import {ProviderCardListComponent} from "./provider-card-list/provider-card-list.component";
+import {ProviderCardComponent} from "./provider-card/provider-card.component";
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import {ProviderMultiAddComponent} from "./provider-multi-add/provider-multi-add
   ],
   declarations: [
     routedProviderComponents,
+    ProviderCardComponent,
+    ProviderCardListComponent,
     ProviderListComponent,
     ProviderMultiAddComponent,
     ProviderSearchResultComponent,
@@ -30,7 +34,7 @@ import {ProviderMultiAddComponent} from "./provider-multi-add/provider-multi-add
     routedProviderResolveServices,
     ProviderService
   ],
-  exports: [ProviderListComponent]
+  exports: [ProviderCardListComponent]
 })
 export class ProviderModule {
 }
