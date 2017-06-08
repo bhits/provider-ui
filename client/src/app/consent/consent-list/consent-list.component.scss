@@ -1,0 +1,23 @@
+.consent-card-header {
+  margin: 5px;
+  padding: 10px;
+  background-color: #bcdedb;
+}
+
+.consent-card-header:hover {
+  background-color: rgba(63, 81, 181, 0.2);
+}
+
+.mat-card-actions {
+  margin: 10px !important;
+}
+
+.transition {
+  overflow: hidden;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+}
+
+.margin-20 {
+  margin: 20px;
+}

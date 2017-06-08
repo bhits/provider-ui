@@ -1,23 +1,31 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import { NgUploaderModule } from 'ngx-uploader';
-import {Md2Module} from "md2";
+import {NgUploaderModule} from "ngx-uploader";
 
-import {ConsentRoutingModule, consentRoutedComponents} from "./consent-routing.module";
+import {ConsentRoutingModule, routedConsentComponents} from "./consent-routing.module";
 import {SharedModule} from "../shared/shared.module";
-import {ConsentListComponent} from "./consent-list/consent-list.component";
-import { ConsentSearchComponent } from './consent-search/consent-search.component';
+import {ConsentSearchComponent} from "./consent-search/consent-search.component";
 import {ConsentService} from "./shared/consent.service";
+import {ConsentListComponent} from "./consent-list/consent-list.component";
+import { SensitivityCategoryPipe } from './shared/sensitivity-category.pipe';
+import { SharePurposePipe } from './shared/share-purpose.pipe';
+import { ConsentStagePipe } from './shared/consent-stage.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
-    Md2Module,
     SharedModule,
     NgUploaderModule,
     ConsentRoutingModule
   ],
-  declarations: [consentRoutedComponents, ConsentSearchComponent],
+  declarations: [
+    routedConsentComponents,
+    ConsentListComponent,
+    ConsentSearchComponent,
+    SensitivityCategoryPipe,
+    SharePurposePipe,
+    ConsentStagePipe
+  ],
   exports: [ConsentListComponent],
   providers: [ConsentService]
 })

@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {FHIR_US_NPI_SYSTEM, Provider} from "./provider.model";
-import {UtilityService} from "../../shared/utility.service";
+import {UtilityService} from "./utility.service";
+import {FHIR_US_NPI_SYSTEM, Provider} from "../provider/shared/provider.model";
 
 type ArgType = "npi" | "name" | "phone" | "address";
 
@@ -8,7 +8,6 @@ type ArgType = "npi" | "name" | "phone" | "address";
   name: 'provider'
 })
 export class ProviderPipe implements PipeTransform {
-
   constructor(private utilityService: UtilityService) {
   }
 
@@ -51,5 +50,4 @@ export class ProviderPipe implements PipeTransform {
     }
     return ''
   }
-
 }

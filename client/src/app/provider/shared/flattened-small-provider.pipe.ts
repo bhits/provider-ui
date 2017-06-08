@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from "@angular/core";
 import {UtilityService} from "../../shared/utility.service";
 import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
 
-type ArgType = "npi" | "fullName" | "phone" | "address";
+type ArgType = "fullName" | "address";
 
 @Pipe({
   name: 'flattenedSmallProvider'
@@ -15,12 +15,8 @@ export class FlattenedSmallProviderPipe implements PipeTransform {
   transform(value: FlattenedSmallProvider, args?: ArgType): any {
     if (value) {
       switch (args) {
-        case "npi":
-          return value.id;
         case "fullName":
-          return FlattenedSmallProviderPipe.getName(value, 'firstName').concat(' ').concat(FlattenedSmallProviderPipe.getName(value, 'middleName')).concat(' ').concat(FlattenedSmallProviderPipe.getName(value, 'lastName'));
-        case "phone":
-          return value.practiceLocationAddressTelephoneNumber;
+          return FlattenedSmallProviderPipe.getName(value);
         case "address":
           const address = [];
           if (value.firstLinePracticeLocationAddress ||
@@ -42,7 +38,20 @@ export class FlattenedSmallProviderPipe implements PipeTransform {
     }
   }
 
-  private static getName(provider: FlattenedSmallProvider, key: string) {
+  private static getName(provider: FlattenedSmallProvider) {
+    let providerName: string;
+    switch (provider.entityTypeDisplayName) {
+      case "Individual":
+        providerName = FlattenedSmallProviderPipe.getFullName(provider, 'firstName').concat(' ').concat(FlattenedSmallProviderPipe.getFullName(provider, 'middleName')).concat(' ').concat(FlattenedSmallProviderPipe.getFullName(provider, 'lastName'));
+        break;
+      case "Organization":
+        providerName = provider.organizationName;
+        break;
+    }
+    return providerName;
+  }
+
+  private static getFullName(provider: FlattenedSmallProvider, key: string) {
     if (provider !== null && provider[key]) {
       return provider[key];
     }

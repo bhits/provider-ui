@@ -1,0 +1,74 @@
+<div fxLayout="column" fxLayoutAlign="center" [ngStyle]="{'padding-top': '20px'}">
+  <div>
+    <table [md2Data]="providers" [rowsPerPage]="10">
+      <thead>
+      <tr>
+        <th style="width: 5%">
+          <md-icon>mode_edit</md-icon>
+        </th>
+        <th style="width: 25%" md2SortBy="npi">NPI</th>
+        <th style="width: 70%">Name/Facility</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr [hidden]="!(providers.length == 0)">
+        <td style="width: 5%">
+          <md-icon>person_add</md-icon>
+        </td>
+        <td style="width: 70%">
+          <p>
+            No Providers currently selected.
+          </p>
+        </td>
+        <td></td>
+      </tr>
+      <tr *ngFor="let provider of providers">
+        <td>
+          <div>
+            <button md-icon-button color="warn" (click)="toOpenDeleteProvider(confirmDelete, provider)">
+              <md-icon>delete_forever</md-icon>
+            </button>
+          </div>
+        </td>
+        <td>{{provider.npi}}</td>
+        <td>{{provider | flattenedSmallProvider: 'fullName'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div fxLayoutAlign="left" [ngStyle]="{'padding-top': '20px'}">
+    <md2-dialog #confirmAdd>
+      <md2-dialog-title>
+        Add Selected Providers
+      </md2-dialog-title>
+      Are you sure you want to add the selected providers?
+      <md2-dialog-footer>
+        <button class="m-r" md-raised-button color="primary" (click)="confirmAddProviders(confirmAdd, providers)">
+          Cancel
+        </button>
+        <button md-raised-button color="primary" (click)="confirmAddProviders(confirmAdd, providers)">
+          OK
+        </button>
+      </md2-dialog-footer>
+    </md2-dialog>
+    <button md-raised-button color="primary" [disabled]="(providers.length==0)" (click)="confirmAdd.open()">
+      Add to Provider List
+    </button>
+  </div>
+</div>
+<div>
+  <md2-dialog #confirmDelete>
+    <md2-dialog-title>
+      Delete Provider
+    </md2-dialog-title>
+    Are you sure you want to delete this provider?
+    <md2-dialog-footer>
+      <button md-raised-button (click)="confirmDelete.close()">
+        Cancel
+      </button>
+      <button md-raised-button color="primary" (click)="confirmDeleteProvider(confirmDelete)">
+        OK
+      </button>
+    </md2-dialog-footer>
+  </md2-dialog>
+</div>
