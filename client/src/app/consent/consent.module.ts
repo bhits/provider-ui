@@ -7,6 +7,8 @@ import {SharedModule} from "../shared/shared.module";
 import {ConsentSearchComponent} from "./consent-search/consent-search.component";
 import {ConsentService} from "./shared/consent.service";
 import {ConsentListComponent} from "./consent-list/consent-list.component";
+import { SensitivityCategoryPipe } from './shared/sensitivity-category.pipe';
+import { SharePurposePipe } from './shared/share-purpose.pipe';
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import {ConsentListComponent} from "./consent-list/consent-list.component";
   declarations: [
     routedConsentComponents,
     ConsentListComponent,
-    ConsentSearchComponent
+    ConsentSearchComponent,
+    SensitivityCategoryPipe,
+    SharePurposePipe
   ],
   exports: [ConsentListComponent],
   providers: [ConsentService]

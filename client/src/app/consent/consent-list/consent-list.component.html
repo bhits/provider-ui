@@ -39,8 +39,7 @@
             <md-card-content class="m-b-n border-bottom-purple-thin">
               <div fxLayout="column">
                 <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px"
-                     class="consent-card-header"
-                     (click)="toggleDetailsVisible(el)">
+                     class="consent-card-header" (click)="toggleDetailsVisible(el)">
                   <div fxFlex="1 1 35%">
                     <div fxLayout="column">
                       <div class="font-size11 font-weight600 m-b-xs">Authorized to share</div>
@@ -52,25 +51,54 @@
                   <div fxFlex="1 1 35%">
                     <div fxLAyout="column">
                       <div class="font-size11 font-weight600 m-b-xs">Sharing with:</div>
+                      <div class="font-size12" *ngFor="let toProvider of consent.toProviders">
+                        {{toProvider | provider: 'name'}}
+                      </div>
                     </div>
                   </div>
                   <div fxFlex="1 auto">
                     <div fxLayout="column">
-                      <div class="font-size11 font-weight600">Effective Dates:
-                      </div>
+                      <div class="font-size11 font-weight600">Effective Dates:</div>
+                      <div class="font-size12">{{consent.startDate | date}} - {{consent.endDate | date}}</div>
                     </div>
                   </div>
+                </div>
 
-                  <div class="transition p-l p-r" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
-                       (window:resize)="onResize($event, el)"
-                       [style.height]="getHeightPx()" #el>
+                <div class="transition p-l p-r" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+                     (window:resize)="onResize($event, el)"
+                     [style.height]="getHeightPx()" #el>
+                  <div fxFlex *ngIf="hasDoNotShareSensitivityPolicyCodes(consent); else doShareSensitivityPolicy">
+                    <h3><strong>Medical Information disclosed:</strong></h3>
+                    <md-chip-list>
+                      <md-chip class="consents"
+                               *ngFor="let shareSensitivityCategory of consent.shareSensitivityCategories"
+                               color="accent" selected="true">
+                        <md-icon>lock</md-icon>
+                        <span
+                          class="md-chip-icon-text">{{shareSensitivityCategory | sensitivityCategory: 'value'}}</span>
+                      </md-chip>
+                    </md-chip-list>
+                  </div>
+                  <ng-template #doShareSensitivityPolicy>
                     <div fxFlex>
-                      <h3><strong>Medical Information disclosed:</strong></h3>
+                      <h3><strong>Sharing all medical information:</strong></h3>
+                      <md-chip-list>
+                        <md-chip class="consents" color="accent" selected="true">
+                          <md-icon>check_circle</md-icon>
+                          <span class="md-chip-icon-text">All my medical information can be shared.</span>
+                        </md-chip>
+                      </md-chip-list>
                     </div>
-                    <div fxFlex>
-                      <h3><strong>
-                        Share the following purposes:</strong></h3>
-                    </div>
+                  </ng-template>
+                  <div fxFlex>
+                    <h3><strong>Share the following purposes:</strong></h3>
+                    <md-chip-list>
+                      <md-chip class="consents" *ngFor="let sharePurpose of consent.sharePurposes"
+                               color="accent" selected="true">
+                        <md-icon>check_circle</md-icon>
+                        <span class="md-chip-icon-text">{{sharePurpose | sharePurpose: 'display'}}</span>
+                      </md-chip>
+                    </md-chip-list>
                   </div>
                 </div>
               </div>

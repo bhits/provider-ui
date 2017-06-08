@@ -66,4 +66,10 @@ export class ConsentListComponent implements OnInit {
   public getHeightPx(): string {
     return `${this.height}px`;
   }
+
+  public hasDoNotShareSensitivityPolicyCodes(consent: Consent): boolean {
+    if (consent != null && consent.shareSensitivityCategories != null) {
+      return consent.shareSensitivityCategories.length > 0;
+    }
+  }
 }
