@@ -1,3 +1,19 @@
 {
-
+  "HOME":{
+    "WELCOME_TITLE":"(Spanish)Welcome to Consent2Share admin!",
+    "WELCOME_SUB_TITLE":"You are now ready to manage your patients.",
+    "PATIENT_CARD":{
+      "TITLE":"My <span class=\"font-weight700\">Patients</span>",
+      "STEP":"Step 1.",
+      "TEXT":"Begin by creating the patients.",
+      "SINGULAR": "Patient",
+      "PLURAL": "Patients"
+    },
+    "MENU":{
+      "TITLE":"Menú",
+      "HOME":"Casa",
+      "PATIENTS":"Los pacientes",
+      "LOGOUT":"Salir"
+    }
+  }
 }
