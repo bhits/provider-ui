@@ -27,7 +27,7 @@
     <div fxLayoutAlign="center">
       <a md-raised-button fxFlex="0 1 500px" routerLink="/patients/create" color="primary">
         <md-icon class="font-weight700">add</md-icon>
-        Create a Patient Record</a>
+        Create a Patient Account</a>
     </div>
     <div fxLayoutAlign="center">
       <div class="m-t-lg p-b-sm border-bottom-purple" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
@@ -47,7 +47,7 @@
     <div fxLayoutAlign="center">
       <div style="padding-top: 20px">
         <div style="background-color: #DEBCC9;" class="p-md font-size18 font-weight center-sm-left" *ngIf="noResult">
-          There are currently no Patients available. Please click the "Create a Patient Record" button to create a new patient.
+          There are currently no Patients available. Please click the "Create a Patient Account" button to create a new patient.
         </div>
       </div>
       <pagination-controls (pageChange)="getPage($event)" *ngIf="!noResult"></pagination-controls>
