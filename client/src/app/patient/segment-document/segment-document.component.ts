@@ -8,6 +8,7 @@ import {SharePurpose} from "app/consent/shared/share-purpose.model";
 import {UploadOutputType} from "../../consent/shared/upload-output-type.enum";
 import {SegmentationRequest} from "../shared/segmentation-request";
 import {ConsentService} from "../../consent/shared/consent.service";
+import {UtilityService} from "app/shared/utility.service";
 
 
 @Component({
@@ -22,11 +23,13 @@ export class SegmentDocumentComponent implements OnInit {
   public uploadInput: EventEmitter<UploadInput>;
   public humanizeBytes: Function;
   public segmentedDocument : any;
+  public segmentedDocumentName : string;
   public purposeOfUses: SharePurpose[]=[] ;
 
   constructor( private formBuilder: FormBuilder,
                private consentService: ConsentService,
-               private tokenService: TokenService) {
+               private tokenService: TokenService,
+                private utilityService: UtilityService) {
     // local uploading files array
     this.files = [];
     // input events, we use this to emit data to ngx-uploader
@@ -74,13 +77,13 @@ export class SegmentDocumentComponent implements OnInit {
       this.files = this.files.filter((file: UploadFile) => file !== output.file);
     } else if (output.type === UploadOutputType.DONE.toString()) {
       // Handle download of filed
-      if(output && output.file && output.file.response){
-        this.segmentedDocument = output.file.response;
+      if(output && output.file && output.file.response && output.file.response.document){
+        this.segmentedDocumentName = output.file.name;
+        this.segmentedDocument = output.file.response.document;
         segmentDocumentDialog.open();
       }else{
-        // Handle segmentation error
+       console.log("Missing segmented document");
       }
-
     }
   }
 
@@ -123,7 +126,9 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   downloadSegementedDocument(segmentDocumentDialog: any){
-    console.log(this.segmentedDocument );
+    let filename = "segmented-".concat(this.segmentedDocumentName);
+    let documentFormat = "text/xml";
+    this.utilityService.downloadFile(this.segmentedDocument,filename,documentFormat );
     segmentDocumentDialog.close();
   }
 
