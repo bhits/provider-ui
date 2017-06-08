@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConsentCardListComponent } from './consent-card-list.component';
+import { ConsentListComponent } from './consent-list.component';
 
-describe('ConsentCardListComponent', () => {
-  let component: ConsentCardListComponent;
-  let fixture: ComponentFixture<ConsentCardListComponent>;
+describe('ConsentListComponent', () => {
+  let component: ConsentListComponent;
+  let fixture: ComponentFixture<ConsentListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConsentCardListComponent ]
+      declarations: [ ConsentListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConsentCardListComponent);
+    fixture = TestBed.createComponent(ConsentListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
