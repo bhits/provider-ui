@@ -12,4 +12,8 @@ export class PageFooterComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  getFullYear():number{
+    return (new Date()).getFullYear();
+  }
 }
