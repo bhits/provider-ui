@@ -106,6 +106,30 @@
           </div>
         </div>
 
+        <div formGroupName="identifier">
+          <div fxLayout="row" fxLayoutGap="20px">
+            <div fxFlex>
+              <md-select placeholder="Identifier System" formControlName="system"
+                         class="full-width font-size20" [disabled]="isEditMode">
+                <md-option *ngFor="let identifierSystem of identifierSystems" [value]="identifierSystem.system"  >
+                  {{ identifierSystem.display }}
+                </md-option>
+              </md-select>
+              <c2s-control-validation-error-message
+                [control]="createEditPatientForm.get('identifier.system')">
+              </c2s-control-validation-error-message>
+            </div>
+            <div fxFlex>
+              <md-input-container class="full-width font-size20">
+                <input mdInput placeholder="Identifier Value" formControlName="value">
+              </md-input-container>
+              <c2s-control-validation-error-message
+                [control]="createEditPatientForm.get('identifier.value')">
+              </c2s-control-validation-error-message>
+            </div>
+          </div>
+        </div>
+
         <h2>Additional Information</h2>
         <div formGroupName="homeAddress">
           <div fxLayout="row" fxLayoutGap="20px">

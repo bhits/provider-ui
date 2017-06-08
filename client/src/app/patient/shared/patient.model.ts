@@ -1,4 +1,5 @@
 import {Address} from "../../shared/address.model";
+import {Identifier} from "../../shared/identifier.model";
 
 export class Patient {
   id?: number;
@@ -18,4 +19,5 @@ export class Patient {
   locale: string;
   disabled?: boolean;
   mrn?: string;
+  identifiers:Identifier[];
 }

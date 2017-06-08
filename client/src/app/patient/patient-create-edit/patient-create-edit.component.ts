@@ -13,6 +13,7 @@ import {Observable} from "rxjs/Observable";
 import {ValidationService} from "../../shared/validation.service";
 import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.model";
 import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.model";
+import {IdentifierSystem} from "../shared/IdentifierSystem.model";
 
 @Component({
   selector: 'c2s-patient-create-edit',
@@ -32,6 +33,7 @@ export class PatientCreateEditComponent implements OnInit {
   public states: BasePatientCreationLookup[];
   public countries: BasePatientCreationLookup[];
   public roles: Role[];
+  public identifierSystems: IdentifierSystem[];
   public isEditMode: boolean = false;
   public phoneErrorMessage: string = ValidationRules.PHONE_MESSAGE;
   public ssnErrorMessage: string = ValidationRules.SSN_MESSAGE;
@@ -60,6 +62,8 @@ export class PatientCreateEditComponent implements OnInit {
     this.disabledRoles = patientCreationLookupInfo.roles
       .filter(role => role.code != "patient")
       .map(role => role.code);
+    this.identifierSystems=patientCreationLookupInfo.identifierSystems
+      .filter(identifierSystem => identifierSystem.systemGenerated !="1" && identifierSystem.display!="United States Social Security Number");
     this.createEditPatientForm = this.initCreateEditFormGroup();
     //Set patient as default role
     this.createEditPatientForm.controls['roles'].setValue([this.roles.filter(role => role.code === "patient").pop().code]);
@@ -116,7 +120,8 @@ export class PatientCreateEditComponent implements OnInit {
       homePhone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)],
       homeAddress: this.initAddressFormGroup(),
       roles: [null, Validators.required],
-      locale: [null, Validators.required]
+      locale: [null, Validators.required],
+      identifier: this.initIdentifierFormGroup()
     });
   }
 
@@ -128,6 +133,13 @@ export class PatientCreateEditComponent implements OnInit {
       stateCode: null,
       postalCode: [null, Validators.pattern(ValidationRules.ZIP_PATTERN)],
       countryCode: null
+    });
+  }
+
+  private initIdentifierFormGroup() {
+    return this.formBuilder.group({
+      system: [null, Validators.required],
+      value: [null, Validators.required]
     });
   }
 
@@ -151,7 +163,11 @@ export class PatientCreateEditComponent implements OnInit {
           countryCode: patient.homeAddress.countryCode
         },
         roles: patient.roles,
-        locale: patient.locale
+        locale: patient.locale,
+        identifier:{
+          system: patient.identifiers[0].system,
+          value: patient.identifiers[0].value
+      },
       })
     } else {
       this.createEditPatientForm.setValue({
@@ -172,7 +188,11 @@ export class PatientCreateEditComponent implements OnInit {
           countryCode: null
         },
         roles: patient.roles,
-        locale: patient.locale
+        locale: patient.locale,
+        identifier: {
+          system: patient.identifiers[0].system,
+          value: patient.identifiers[0].value
+        }
       })
     }
   }
@@ -222,6 +242,8 @@ export class PatientCreateEditComponent implements OnInit {
 
   private prepareCreateEditPatient(): Patient {
     const formModel = this.createEditPatientForm.value;
+    let identifiers = [];
+    identifiers.push(formModel.identifier);
     return {
       firstName: formModel.firstName,
       middleName: formModel.middleName,
@@ -233,7 +255,8 @@ export class PatientCreateEditComponent implements OnInit {
       homePhone: formModel.homePhone,
       homeAddress: formModel.homeAddress,
       roles: formModel.roles,
-      locale: formModel.locale
+      locale: formModel.locale,
+      identifiers: identifiers
     };
   }
 }
