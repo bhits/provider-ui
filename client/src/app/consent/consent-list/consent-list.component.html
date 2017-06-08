@@ -103,6 +103,20 @@
                 </div>
               </div>
             </md-card-content>
+            <md-card-actions>
+              <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center"
+                   class="p-l p-r p-b">
+                <div fxFlex="1 auto">
+                  <div class="font-size14">Consent State:
+                    <md-chip class="consents" color="{{consent.consentStage | consentStage: 'color'}}" selected="true">
+                      <md-icon>{{consent.consentStage | consentStage: 'icon'}}</md-icon>
+                      <span
+                        class="md-chip-icon-text"><strong>{{consent.consentStage | consentStage: 'text'}} </strong></span>
+                    </md-chip>
+                  </div>
+                </div>
+              </div>
+            </md-card-actions>
           </md-card>
           <!--Consent Card End-->
           <div fxLayoutAlign="center">

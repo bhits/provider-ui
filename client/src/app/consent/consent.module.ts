@@ -9,6 +9,7 @@ import {ConsentService} from "./shared/consent.service";
 import {ConsentListComponent} from "./consent-list/consent-list.component";
 import { SensitivityCategoryPipe } from './shared/sensitivity-category.pipe';
 import { SharePurposePipe } from './shared/share-purpose.pipe';
+import { ConsentStagePipe } from './shared/consent-stage.pipe';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { SharePurposePipe } from './shared/share-purpose.pipe';
     ConsentListComponent,
     ConsentSearchComponent,
     SensitivityCategoryPipe,
-    SharePurposePipe
+    SharePurposePipe,
+    ConsentStagePipe
   ],
   exports: [ConsentListComponent],
   providers: [ConsentService]
