@@ -1,0 +1,74 @@
+<md2-accordion multiple="false">
+  <md2-accordion-tab>
+    <md2-accordion-header class="">
+      <md-card-title align="start"><i class="fa fa-user-plus"></i>
+        Patient's Consents
+      </md-card-title>
+    </md2-accordion-header>
+    <div>
+      <div hidden>
+        <div style="background-color: #e6aaa6;" class="p-md font-size18 font-weight center-sm-left">There currently are
+          NO Consents on record.
+        </div>
+      </div>
+      <div fxLayout="column" [ngStyle]="{'padding-top': '20px'}">
+        <div fxLayoutAlign="center">
+          <a md-raised-button class="plus-button" fxFlex="0 1 370px" (click)="redirectToPatientConsentsCreate()">
+            <md-icon class="font-weight700">add</md-icon>
+            Add a new consent</a>
+        </div>
+        <div fxLayoutAlign="center">
+          <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
+               fxLayoutGap="10px">
+          </div>
+        </div>
+        <div fxLayoutAlign="center">
+          <pagination-controls (pageChange)="getPage($event)" *ngIf="!noResult"></pagination-controls>
+          <md-spinner *ngIf="loading"></md-spinner>
+        </div>
+        <!--Consent Card Start-->
+        <md-card class="p-none"
+                 *ngFor="let consent of asyncConsents | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
+          <md-card-content class="m-b-n border-bottom-purple-thin">
+            <div fxLayout="column">
+              <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px"
+                   class="consent-card-header"
+                   (click)="toggleDetailsVisible(el)">
+                <div fxFlex="1 1 35%">
+                  <div fxLayout="column">
+                    <div class="font-size11 font-weight600 m-b-xs">Authorized to share
+                    </div>
+                  </div>
+                </div>
+                <div fxFlex="1 1 35%">
+                  <div fxLAyout="column">
+                    <div class="font-size11 font-weight600 m-b-xs">Sharing with:</div>
+                  </div>
+                </div>
+                <div fxFlex="1 auto">
+                  <div fxLayout="column">
+                    <div class="font-size11 font-weight600">Effective Dates:
+                    </div>
+                  </div>
+                </div>
+
+                <div class="transition p-l p-r" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+                     (window:resize)="onResize($event, el)"
+                     [style.height]="getHeightPx()" #el>
+                  <div fxFlex>
+                    <h3><strong>Medical Information disclosed:</strong></h3>
+                  </div>
+                  <div fxFlex>
+                    <h3><strong>
+                      Share the following purposes:</strong></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </md-card-content>
+        </md-card>
+        <!--Consent Card End-->
+      </div>
+    </div>
+  </md2-accordion-tab>
+</md2-accordion>

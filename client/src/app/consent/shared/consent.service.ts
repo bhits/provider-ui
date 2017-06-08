@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
-import {Http, Response} from "@angular/http";
+import {Injectable} from "@angular/core";
+import {Http, Response, URLSearchParams} from "@angular/http";
 import {ApiUrlService} from "../../shared/api-url.service";
 import {Observable} from "rxjs/Observable";
 import {SharePurpose} from "./share-purpose.model";
 import {ExceptionService} from "app/shared/exception.service";
+import {Consent} from "app/consent/shared/consent.model";
+import {PageableData} from "app/shared/pageable-data.model";
 
 @Injectable()
 export class ConsentService {
@@ -12,13 +14,23 @@ export class ConsentService {
 
   constructor(private http: Http,
               private apiUrlService: ApiUrlService,
-              private exceptionService: ExceptionService) { }
+              private exceptionService: ExceptionService) {
+  }
 
-  getPepSegmentationDocumentUrl(): string{
+  public getConsents(patientMrn: string, page: number): Observable<PageableData<Consent>> {
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('page', page.toString());
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl().concat("/patients/").concat(patientMrn).concat("/consents");
+    return this.http.get(resourceUrl, {search: params})
+      .map((resp: Response) => <PageableData<Consent>>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+  public getPepSegmentationDocumentUrl(): string {
     return this.pepSegmentDocumentUrl;
   }
 
-  getPurposeOfUses(): Observable<SharePurpose[]> {
+  public getPurposeOfUses(): Observable<SharePurpose[]> {
     return this.http.get(this.pcmPurposeOfUseUrl)
       .map((resp: Response) => <SharePurpose[]>(resp.json()))
       .catch(this.exceptionService.handleError);

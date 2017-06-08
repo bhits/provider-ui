@@ -6,7 +6,7 @@ import {ConsentRoutingModule, routedConsentComponents} from "./consent-routing.m
 import {SharedModule} from "../shared/shared.module";
 import {ConsentSearchComponent} from "./consent-search/consent-search.component";
 import {ConsentService} from "./shared/consent.service";
-import {ConsentCardListComponent} from "./consent-card-list/consent-card-list.component";
+import {ConsentListComponent} from "./consent-list/consent-list.component";
 
 @NgModule({
   imports: [
@@ -17,10 +17,10 @@ import {ConsentCardListComponent} from "./consent-card-list/consent-card-list.co
   ],
   declarations: [
     routedConsentComponents,
-    ConsentCardListComponent,
+    ConsentListComponent,
     ConsentSearchComponent
   ],
-  exports: [ConsentCardListComponent],
+  exports: [ConsentListComponent],
   providers: [ConsentService]
 })
 export class ConsentModule {
