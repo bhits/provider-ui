@@ -1,0 +1,130 @@
+<md-card class="p-none">
+  <md-card-content class="m-b-n border-bottom-purple-thin">
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px"
+           class="consent-card-header" (click)="toggleDetailsVisible(el)">
+        <div fxFlex="1 1 35%">
+          <div fxLayout="column">
+            <div class="font-size11 font-weight600 m-b-xs">Authorized to share</div>
+            <div class="font-size12" *ngFor="let fromProvider of consent.fromProviders">
+              {{fromProvider | provider: 'name'}}
+            </div>
+          </div>
+        </div>
+        <div fxFlex="1 1 35%">
+          <div fxLAyout="column">
+            <div class="font-size11 font-weight600 m-b-xs">Sharing with:</div>
+            <div class="font-size12" *ngFor="let toProvider of consent.toProviders">
+              {{toProvider | provider: 'name'}}
+            </div>
+          </div>
+        </div>
+        <div fxFlex="1 auto">
+          <div fxLayout="column">
+            <div class="font-size11 font-weight600">Effective Dates:</div>
+            <div class="font-size12">{{consent.startDate | date}} - {{consent.endDate | date}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transition p-l p-r" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+           (window:resize)="onResize($event, el)"
+           [style.height]="getHeightPx()" #el>
+        <div fxFlex *ngIf="hasDoNotShareSensitivityPolicyCodes(); else doShareSensitivityPolicy">
+          <h3><strong>Medical Information disclosed:</strong></h3>
+          <md-chip-list>
+            <md-chip class="consents"
+                     *ngFor="let shareSensitivityCategory of consent.shareSensitivityCategories"
+                     color="accent" selected="true">
+              <md-icon>lock</md-icon>
+              <span class="md-chip-icon-text">{{shareSensitivityCategory | sensitivityCategory: 'display'}}</span>
+            </md-chip>
+          </md-chip-list>
+        </div>
+        <ng-template #doShareSensitivityPolicy>
+          <div fxFlex>
+            <h3><strong>Sharing all medical information:</strong></h3>
+            <md-chip-list>
+              <md-chip class="consents" color="accent" selected="true">
+                <md-icon>check_circle</md-icon>
+                <span class="md-chip-icon-text">All my medical information can be shared.</span>
+              </md-chip>
+            </md-chip-list>
+          </div>
+        </ng-template>
+        <div fxFlex>
+          <h3><strong>Share the following purposes:</strong></h3>
+          <md-chip-list>
+            <md-chip class="consents" *ngFor="let sharePurpose of consent.sharePurposes"
+                     color="accent" selected="true">
+              <md-icon>check_circle</md-icon>
+              <span class="md-chip-icon-text">{{sharePurpose | sharePurpose: 'display'}}</span>
+            </md-chip>
+          </md-chip-list>
+        </div>
+      </div>
+    </div>
+  </md-card-content>
+  <md-card-actions>
+    <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center"
+         class="p-l p-r p-b">
+      <div fxFlex="1 auto">
+        <div class="font-size14">Consent State:
+          <md-chip class="consents" color="{{consent.consentStage | consentStage: 'color'}}" selected="true">
+            <md-icon>{{consent.consentStage | consentStage: 'icon'}}</md-icon>
+            <span
+              class="md-chip-icon-text"><strong>{{consent.consentStage | consentStage: 'text'}} </strong></span>
+          </md-chip>
+        </div>
+      </div>
+      <button md-raised-button color="primary" (click)="consentOptionsDialog.open()">
+        Manage Consents
+      </button>
+    </div>
+  </md-card-actions>
+</md-card>
+<div>
+  <!--consentOptionsDialog Start-->
+  <md2-dialog #consentOptionsDialog>
+    <md2-dialog-title fxLayoutAlign="center">
+      Consent Options
+    </md2-dialog-title>
+    <md-list>
+      <md-list-item *ngFor="let consentOption of getConsentStageOptions(consent)">
+        <div class="margin-20" fxFill>
+          <a fxLayoutAlign="space-between" md-raised-button
+             (click)="invokeAction(consentOption, consentOptionsDialog, deleteConfirmationDialog)"
+             *ngIf="selectConsentMethodOption(consentOption); else isNotMethodOption">
+            <md-icon>{{consentOption.icon}}</md-icon>
+            <span class="margin-20">{{consentOption.text}}</span>
+          </a>
+          <ng-template #isNotMethodOption>
+            <a fxLayoutAlign="space-between" md-raised-button
+               [routerLink]="getRouterLink(consentOption)">
+              <md-icon>{{consentOption.icon}}</md-icon>
+              <span class="margin-20">{{consentOption.text}}</span>
+            </a>
+          </ng-template>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md2-dialog>
+  <!--consentOptionsDialog End-->
+
+  <!--deleteConfirmationDialog Start-->
+  <md2-dialog #deleteConfirmationDialog (onOpen)="consentOptionsDialog.close()">
+    <md2-dialog-title>
+      Delete Consent
+    </md2-dialog-title>
+    Are you sure you want to delete this consent?
+    <md2-dialog-footer>
+      <button md-raised-button color="primary" (click)="confirmDeleteConsent(deleteConfirmationDialog)">
+        OK
+      </button>
+      <button md-raised-button (click)="deleteConfirmationDialog.close()">
+        Cancel
+      </button>
+    </md2-dialog-footer>
+  </md2-dialog>
+  <!--deleteConfirmationDialog End-->
+</div>
