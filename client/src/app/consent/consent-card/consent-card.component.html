@@ -37,8 +37,7 @@
                      *ngFor="let shareSensitivityCategory of consent.shareSensitivityCategories"
                      color="accent" selected="true">
               <md-icon>lock</md-icon>
-              <span
-                class="md-chip-icon-text">{{shareSensitivityCategory | sensitivityCategory: 'value'}}</span>
+              <span class="md-chip-icon-text">{{shareSensitivityCategory | sensitivityCategory: 'display'}}</span>
             </md-chip>
           </md-chip-list>
         </div>
