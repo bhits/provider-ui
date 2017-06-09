@@ -18,6 +18,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {Ng2PaginationModule} from "ng2-pagination";
 import {ProviderPipe} from "./provider.pipe";
 import {BrowserService} from "app/shared/browser.service";
+import {PatientPipe} from "./patient.pipe";
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {BrowserService} from "app/shared/browser.service";
     ControlValidationErrorMessageComponent,
     ConfirmDialogComponent,
     ShowHidePasswordComponent,
-    ProviderPipe
+    ProviderPipe,
+    PatientPipe
   ],
   entryComponents: [ConfirmDialogComponent],
   providers: [
@@ -51,6 +53,7 @@ import {BrowserService} from "app/shared/browser.service";
     Ng2PaginationModule,
     ShowHidePasswordComponent,
     ProviderPipe,
+    PatientPipe,
     UsPhoneNumberPipe
   ]
 })

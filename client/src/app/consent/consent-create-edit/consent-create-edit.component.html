@@ -1,7 +1,7 @@
 <h1>Create Consents</h1>
 <md-grid-list cols="1">
   <md-card class="left-align">
-    <h1>I, Patient Local, hereby authorize...</h1>
+    <h1>I, {{selectedPatient | patient:"fullName"}}, hereby authorize...</h1>
   </md-card>
   <c2s-select-providers></c2s-select-providers>
   <md-card class="right-align">
