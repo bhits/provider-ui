@@ -5,6 +5,7 @@ import {UtilityService} from "../../shared/utility.service";
 import {Provider} from "app/provider/shared/provider.model";
 import {NotificationService} from "app/shared/notification.service";
 import {ApiUrlService} from "app/shared/api-url.service";
+import {PaginationInstance} from "ng2-pagination";
 
 @Component({
   selector: 'c2s-provider-card-list',
@@ -16,8 +17,11 @@ export class ProviderCardListComponent implements OnInit {
   public patient: Patient;
   public providers: Provider[];
   public noProvider: boolean = false;
-  public currentPage: number = 1;
-  public itemsPerPage: number = 6;
+  public paginationConfig: PaginationInstance = {
+    id: "provider-list",
+    itemsPerPage: 6,
+    currentPage: 1
+  };
 
   constructor(private apiUrlService: ApiUrlService,
               private notificationService: NotificationService,
@@ -39,7 +43,7 @@ export class ProviderCardListComponent implements OnInit {
   }
 
   public onPageChange(number: number) {
-    this.currentPage = number;
+    this.paginationConfig.currentPage = number;
   }
 
   public redirectToPatientProvidersSearch(): void {

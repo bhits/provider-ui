@@ -40,7 +40,7 @@
       </div>
       <ng-template #hasProvider>
         <div fxLayoutAlign="center">
-          <pagination-controls previousLabel="Previous" nextLabel="Next"
+          <pagination-controls id="{{paginationConfig.id}}" previousLabel="Previous" nextLabel="Next"
                                (pageChange)="onPageChange($event)">
           </pagination-controls>
         </div>
@@ -48,17 +48,12 @@
           <div class="bg-xlite-teal p-t-md p-b-md" fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap"
                fxLayoutGap="15px" fxLayoutAlign="center">
             <c2s-provider-card
-              *ngFor="let provider of providers | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage}"
+              *ngFor="let provider of providers | paginate: paginationConfig"
               [provider]="provider"
               [patient]="patient"
               (deleteProvider)="onDeleteProvider($event)">
             </c2s-provider-card>
           </div>
-        </div>
-        <div fxLayoutAlign="center">
-          <pagination-controls previousLabel="Previous" nextLabel="Next"
-                               (pageChange)="onPageChange($event)">
-          </pagination-controls>
         </div>
       </ng-template>
     </div>

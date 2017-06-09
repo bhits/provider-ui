@@ -22,9 +22,10 @@ export class ConsentService {
               private utilityService: UtilityService) {
   }
 
-  public getConsents(patientMrn: string, page: number): Observable<PageableData<Consent>> {
+  public getConsents(patientMrn: string, page: number, size: number): Observable<PageableData<Consent>> {
     let params: URLSearchParams = new URLSearchParams();
     params.set('page', page.toString());
+    params.set('size', size.toString());
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/");
     return this.http.get(resourceUrl, {search: params})
