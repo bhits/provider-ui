@@ -6,7 +6,6 @@ import {
   routedProviderComponents,
   routedProviderResolveServices
 } from "./provider-routing.module";
-import {ProviderListComponent} from "./provider-list/provider-list.component";
 import {SharedModule} from "app/shared/shared.module";
 import {ProviderService} from "./shared/provider.service";
 import {ProviderSearchResultComponent} from "./provider-search-result/provider-search-result.component";
@@ -25,7 +24,6 @@ import {ProviderCardComponent} from "./provider-card/provider-card.component";
     routedProviderComponents,
     ProviderCardComponent,
     ProviderCardListComponent,
-    ProviderListComponent,
     ProviderMultiAddComponent,
     ProviderSearchResultComponent,
     FlattenedSmallProviderPipe
