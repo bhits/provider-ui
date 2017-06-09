@@ -1,11 +1,14 @@
 import {Injectable} from "@angular/core";
 import {SessionStorageService} from "./session-storage.service";
 import {AuthorizationResponse} from "./authorization-response.model";
+import {Profile} from "../../core/profile.model";
+import {UmsProfile} from "./ums-profile.model";
 
 @Injectable()
 export class TokenService {
   private OAUTH_TOKEN_KEY: string = 'c2s-oauth-token';
-  private USER_INFO_KEY: string = 'c2s-userinfo-token';
+  private USER_PROFILE_KEY:string = 'c2s-user-profile-token';
+  private PROVIDER_COUNT_KEY:string = 'c2s-provider-count';
 
   constructor(private sessionStorageService: SessionStorageService) {
   }
@@ -18,7 +21,7 @@ export class TokenService {
     this.sessionStorageService.store(this.OAUTH_TOKEN_KEY, authorizationResponse);
   }
 
-  public deleteOauthToken(): void {
+  public deleteAccessToken(): void {
     this.sessionStorageService.clear(this.OAUTH_TOKEN_KEY);
   }
 
@@ -43,5 +46,37 @@ export class TokenService {
       return uaaToken.scope.includes(scope);
     }
     return false;
+  }
+
+  storeUserProfile(userProfile:any){
+    this.sessionStorageService.store(this.USER_PROFILE_KEY, userProfile);
+  }
+
+  createProfileObject(uaaProfile:any): Profile{
+    let profile = new Profile();
+    profile.email = uaaProfile.email;
+    profile.userName = uaaProfile.user_name;
+    profile.givenName = uaaProfile.given_name;
+    profile.familyName = uaaProfile.family_name;
+    profile.name = uaaProfile.name;
+    profile.userId = uaaProfile.user_id;
+
+    return profile;
+  }
+
+  storeProviderCount(count:Number){
+    this.sessionStorageService.store(this.PROVIDER_COUNT_KEY, count);
+  }
+
+  getProviderCount(){
+    return this.sessionStorageService.retrieve(this.PROVIDER_COUNT_KEY);
+  }
+
+  deleteProviderCount(){
+    this.sessionStorageService.clear(this.PROVIDER_COUNT_KEY);
+  }
+
+  getProfileToken(): Profile{
+    return this.sessionStorageService.retrieve(this.USER_PROFILE_KEY);
   }
 }

@@ -2,7 +2,14 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MaterialModule} from "@angular/material";
+import {Md2Module} from "md2";
+import {RouterModule} from "@angular/router";
+import {ReactiveFormsModule} from "@angular/forms";
+import {Ng2PaginationModule} from "ng2-pagination";
+
 import {UsPhoneNumberPipe} from "./us-phone-number.pipe";
+import {ProviderPipe} from "./provider.pipe";
+import {BrowserService} from "app/shared/browser.service";
 import {ControlValidationErrorMessageComponent} from "app/shared/control-validation-error-message/control-validation-error-message.component";
 import {ConfirmDialogComponent} from "./confirm-dialog/confirm-dialog.component";
 import {ShowHidePasswordComponent} from "./show-hide-password/show-hide-password.component";
@@ -12,17 +19,14 @@ import {ExceptionService} from "./exception.service";
 import {NotificationService} from "./notification.service";
 import {UtilityService} from "./utility.service";
 import {ValidationService} from "./validation.service";
-import {Md2Module} from "md2";
-import {RouterModule} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
-import {Ng2PaginationModule} from "ng2-pagination";
-import {ProviderPipe} from "./provider.pipe";
-import {BrowserService} from "app/shared/browser.service";
+import {TranslateModule} from "@ngx-translate/core";
+
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    TranslateModule
   ],
   declarations: [
     UsPhoneNumberPipe,
@@ -51,7 +55,8 @@ import {BrowserService} from "app/shared/browser.service";
     Ng2PaginationModule,
     ShowHidePasswordComponent,
     ProviderPipe,
-    UsPhoneNumberPipe
+    UsPhoneNumberPipe,
+    TranslateModule
   ]
 })
 export class SharedModule {

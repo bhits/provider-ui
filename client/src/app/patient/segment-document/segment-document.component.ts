@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UploadOutput, UploadInput, UploadFile, humanizeBytes} from 'ngx-uploader';
 
@@ -8,6 +8,10 @@ import {SharePurpose} from "app/consent/shared/share-purpose.model";
 import {UploadOutputType} from "../../consent/shared/upload-output-type.enum";
 import {SegmentationRequest} from "../shared/segmentation-request";
 import {ConsentService} from "../../consent/shared/consent.service";
+import {UtilityService} from "app/shared/utility.service";
+import {Patient} from "app/patient/shared/patient.model";
+import {ProviderService} from "../../provider/shared/provider.service";
+import {Provider} from "../../provider/shared/provider.model";
 
 
 @Component({
@@ -17,16 +21,24 @@ import {ConsentService} from "../../consent/shared/consent.service";
 })
 export class SegmentDocumentComponent implements OnInit {
 
+  @Input()
+  public patient: Patient;
+
   public segmentationFrom: FormGroup;
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
   public humanizeBytes: Function;
   public segmentedDocument : any;
+  public segmentedDocumentName : string;
   public purposeOfUses: SharePurpose[]=[] ;
+  public authorizeProvider: Provider;
+  public disclosureProvider: Provider;
 
   constructor( private formBuilder: FormBuilder,
                private consentService: ConsentService,
-               private tokenService: TokenService) {
+               private tokenService: TokenService,
+               private providerService: ProviderService,
+               private utilityService: UtilityService) {
     // local uploading files array
     this.files = [];
     // input events, we use this to emit data to ngx-uploader
@@ -74,24 +86,39 @@ export class SegmentDocumentComponent implements OnInit {
       this.files = this.files.filter((file: UploadFile) => file !== output.file);
     } else if (output.type === UploadOutputType.DONE.toString()) {
       // Handle download of filed
-      if(output && output.file && output.file.response){
-        this.segmentedDocument = output.file.response;
+      if(output && output.file && output.file.response && output.file.response.document){
+        this.segmentedDocumentName = output.file.name;
+        this.segmentedDocument = output.file.response.document;
         segmentDocumentDialog.open();
       }else{
-        // Handle segmentation error
+       console.log("Missing segmented document");
       }
-
     }
   }
 
   onBlurOnAuthorizeProvider(npi:any){
-    //get for provider from the backend
+    this.providerService.getProviderByNpi(npi).subscribe(
+      (authorizeProvider:Provider)=>{
+        this.authorizeProvider = authorizeProvider;
+      },
+      (error:any)=>{
+        this.authorizeProvider = null;
+      }
+    );
     console.log("Authorize:  " + npi);
   }
 
 
   onBlurOnDisclosureProvider(npi:any){
     //get for provider from the backend
+    this.providerService.getProviderByNpi(npi).subscribe(
+      (disclosureProvider:Provider)=>{
+        this.disclosureProvider = disclosureProvider;
+      },
+      (error:any)=>{
+        this.disclosureProvider = null;
+      }
+    );
   }
 
   segmentDocument(): void {
@@ -123,7 +150,9 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   downloadSegementedDocument(segmentDocumentDialog: any){
-    console.log(this.segmentedDocument );
+    let filename = "segmented-".concat(this.segmentedDocumentName);
+    let documentFormat = "text/xml";
+    this.utilityService.downloadFile(this.segmentedDocument,filename,documentFormat );
     segmentDocumentDialog.close();
   }
 

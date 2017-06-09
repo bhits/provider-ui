@@ -78,4 +78,11 @@ export class UtilityService {
       window.URL.revokeObjectURL(blobURL);
     }, 100);
   }
+  getSupportedLocaleCode(supportedLocales:any){
+    let localeCode:string [] = [];
+    supportedLocales.forEach(locale =>{
+      localeCode.push(locale.code);
+    });
+    return localeCode;
+  }
 }
