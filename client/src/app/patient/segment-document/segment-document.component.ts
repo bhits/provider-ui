@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UploadOutput, UploadInput, UploadFile, humanizeBytes} from 'ngx-uploader';
 
@@ -9,6 +9,9 @@ import {UploadOutputType} from "../../consent/shared/upload-output-type.enum";
 import {SegmentationRequest} from "../shared/segmentation-request";
 import {ConsentService} from "../../consent/shared/consent.service";
 import {UtilityService} from "app/shared/utility.service";
+import {Patient} from "app/patient/shared/patient.model";
+import {ProviderService} from "../../provider/shared/provider.service";
+import {Provider} from "../../provider/shared/provider.model";
 
 
 @Component({
@@ -18,6 +21,9 @@ import {UtilityService} from "app/shared/utility.service";
 })
 export class SegmentDocumentComponent implements OnInit {
 
+  @Input()
+  public patient: Patient;
+
   public segmentationFrom: FormGroup;
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
@@ -25,11 +31,14 @@ export class SegmentDocumentComponent implements OnInit {
   public segmentedDocument : any;
   public segmentedDocumentName : string;
   public purposeOfUses: SharePurpose[]=[] ;
+  public authorizeProvider: Provider;
+  public disclosureProvider: Provider;
 
   constructor( private formBuilder: FormBuilder,
                private consentService: ConsentService,
                private tokenService: TokenService,
-                private utilityService: UtilityService) {
+               private providerService: ProviderService,
+               private utilityService: UtilityService) {
     // local uploading files array
     this.files = [];
     // input events, we use this to emit data to ngx-uploader
@@ -88,13 +97,28 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   onBlurOnAuthorizeProvider(npi:any){
-    //get for provider from the backend
+    this.providerService.getProviderByNpi(npi).subscribe(
+      (authorizeProvider:Provider)=>{
+        this.authorizeProvider = authorizeProvider;
+      },
+      (error:any)=>{
+        this.authorizeProvider = null;
+      }
+    );
     console.log("Authorize:  " + npi);
   }
 
 
   onBlurOnDisclosureProvider(npi:any){
     //get for provider from the backend
+    this.providerService.getProviderByNpi(npi).subscribe(
+      (disclosureProvider:Provider)=>{
+        this.disclosureProvider = disclosureProvider;
+      },
+      (error:any)=>{
+        this.disclosureProvider = null;
+      }
+    );
   }
 
   segmentDocument(): void {

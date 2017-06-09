@@ -34,6 +34,13 @@ export class ProviderService {
       .catch(this.exceptionService.handleError);
   }
 
+  public getProviderByNpi(npi: string): Observable<Provider> {
+    const SEARCH_PROVIDERS_URL = this.apiUrlService.getPlsBaseUrl().concat("/providers/").concat(npi);
+    return this.http.get(SEARCH_PROVIDERS_URL)
+      .map((resp: Response) => <ProviderSearchResponse>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
   public loadNewSearchProvidersResult(page: number, providerResult: ProviderSearchResponse): Observable<ProviderSearchResponse> {
     if (providerResult != null) {
       let pageNumberParam: string = "&page=" + page;
