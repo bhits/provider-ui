@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {Consent} from "../shared/consent.model";
 import {CONSENT_STAGES} from "app/consent/shared/consent-stages.model";
 import {ConsentStageOption} from "../shared/consent-stage-option.model";
 import {ConsentStageOptionKey} from "../shared/consent-stage-option-key.enum";
@@ -7,6 +6,7 @@ import {BinaryFile} from "../../shared/binary-file.model";
 import {ConsentService} from "app/consent/shared/consent.service";
 import {NotificationService} from "app/shared/notification.service";
 import {Patient} from "app/patient/shared/patient.model";
+import {DetailedConsent} from "../shared/detailed-consent.model";
 
 @Component({
   selector: 'c2s-consent-card',
@@ -15,7 +15,7 @@ import {Patient} from "app/patient/shared/patient.model";
 })
 export class ConsentCardComponent implements OnInit {
   @Input()
-  public consent: Consent;
+  public consent: DetailedConsent;
   @Input()
   public patient: Patient;
   @Output()

@@ -3,9 +3,9 @@ import {Patient} from "../../patient/shared/patient.model";
 import {UtilityService} from "../../shared/utility.service";
 import {ApiUrlService} from "../../shared/api-url.service";
 import {Observable} from "rxjs/Observable";
-import {Consent} from "../shared/consent.model";
 import {PageableData} from "../../shared/pageable-data.model";
 import {ConsentService} from "../shared/consent.service";
+import {DetailedConsent} from "app/consent/shared/detailed-consent.model";
 
 @Component({
   selector: 'c2s-consent-card-list',
@@ -20,7 +20,7 @@ export class ConsentCardListComponent implements OnInit {
   public itemsPerPage: number = 10;
   public noConsent: boolean = false;
   public loading: boolean = false;
-  public asyncConsents: Observable<Consent[]>;
+  public asyncConsents: Observable<DetailedConsent[]>;
 
   constructor(private apiUrlService: ApiUrlService,
               private consentService: ConsentService,
@@ -34,7 +34,7 @@ export class ConsentCardListComponent implements OnInit {
   public getPage(page: number) {
     this.loading = true;
     this.asyncConsents = this.consentService.getConsents(this.patient.mrn, page - 1, this.itemsPerPage)
-      .do((patients: PageableData<Consent>) => {
+      .do((patients: PageableData<DetailedConsent>) => {
         this.noConsent = patients.totalElements === 0;
         this.totalItems = patients.totalElements;
         this.currentPage = patients.number + 1;

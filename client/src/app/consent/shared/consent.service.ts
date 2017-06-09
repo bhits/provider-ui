@@ -4,11 +4,12 @@ import {ApiUrlService} from "../../shared/api-url.service";
 import {Observable} from "rxjs/Observable";
 import {SharePurpose} from "./share-purpose.model";
 import {ExceptionService} from "app/shared/exception.service";
-import {Consent} from "app/consent/shared/consent.model";
 import {PageableData} from "app/shared/pageable-data.model";
 import {BinaryFile} from "app/shared/binary-file.model";
 import {NotificationService} from "app/shared/notification.service";
 import {UtilityService} from "app/shared/utility.service";
+import {DetailedConsent} from "app/consent/shared/detailed-consent.model";
+import {Consent} from "app/consent/shared/consent.model";
 
 @Injectable()
 export class ConsentService {
@@ -22,14 +23,22 @@ export class ConsentService {
               private utilityService: UtilityService) {
   }
 
-  public getConsents(patientMrn: string, page: number, size: number): Observable<PageableData<Consent>> {
+  public getConsents(patientMrn: string, page: number, size: number): Observable<PageableData<DetailedConsent>> {
     let params: URLSearchParams = new URLSearchParams();
     params.set('page', page.toString());
     params.set('size', size.toString());
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/");
     return this.http.get(resourceUrl, {search: params})
-      .map((resp: Response) => <PageableData<Consent>>(resp.json()))
+      .map((resp: Response) => <PageableData<DetailedConsent>>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+  public createConsent(patientMrn: string, consent: Consent): Observable<void> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/");
+    return this.http.post(resourceUrl, consent)
+      .map(() => null)
       .catch(this.exceptionService.handleError);
   }
 
