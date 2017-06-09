@@ -11,6 +11,7 @@ import {SharePurposePipe} from "./shared/share-purpose.pipe";
 import {ConsentStagePipe} from "./shared/consent-stage.pipe";
 import {ConsentCardComponent} from "./consent-card/consent-card.component";
 import {ConsentCardListComponent} from "./consent-card-list/consent-card-list.component";
+import {SelectProvidersComponent} from "./select-providers/select-providers.component";
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {ConsentCardListComponent} from "./consent-card-list/consent-card-list.co
     ConsentSearchComponent,
     SensitivityCategoryPipe,
     SharePurposePipe,
-    ConsentStagePipe
+    ConsentStagePipe,
+    SelectProvidersComponent
   ],
   exports: [ConsentCardListComponent],
   providers: [ConsentService]
