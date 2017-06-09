@@ -7,6 +7,7 @@ import {PatientResolveService} from "app/patient/shared/patient-resolve.service"
 import {CanDeactivateGuardService} from "../security/shared/can-deactivate-guard.service";
 import {PatientListComponent} from "./patient-list/patient-list.component";
 import {PatientCreationLookupResolveService} from "./shared/patient-creation-lookup-resolve.service";
+import {ProvidersResolveService} from "app/provider/shared/providers-resolve.service";
 
 const patientRoutes: Routes = [
   {
@@ -33,6 +34,7 @@ const patientRoutes: Routes = [
         canDeactivate: [CanDeactivateGuardService],
         resolve: {
           patient: PatientResolveService,
+          providers: ProvidersResolveService,
           patientCreationLookupInfo: PatientCreationLookupResolveService
         }
       }
