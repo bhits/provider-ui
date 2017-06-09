@@ -3,6 +3,7 @@ import {Provider} from "../shared/provider.model";
 import {NotificationService} from "../../shared/notification.service";
 import {ProviderService} from "../shared/provider.service";
 import {Patient} from "../../patient/shared/patient.model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'c2s-provider-card',
@@ -11,18 +12,19 @@ import {Patient} from "../../patient/shared/patient.model";
 })
 export class ProviderCardComponent implements OnInit {
   @Input()
-  public patient: Patient;
-  @Input()
   public provider: Provider;
   @Output()
   public deleteProvider = new EventEmitter<number>();
+  public selectedPatient: Patient;
   private selectedProvider: Provider;
 
   constructor(private notificationService: NotificationService,
-              private providerService: ProviderService) {
+              private providerService: ProviderService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.selectedPatient = this.route.snapshot.data['patient'];
   }
 
   public openConfirmDialog(dialog: any) {
@@ -33,7 +35,7 @@ export class ProviderCardComponent implements OnInit {
   public confirmDeleteProvider(dialog: any) {
     dialog.close();
     if (this.selectedProvider != null) {
-      this.providerService.deleteProvider(this.patient.mrn, this.selectedProvider.id)
+      this.providerService.deleteProvider(this.selectedPatient.mrn, this.selectedProvider.id)
         .subscribe(
           () => {
             this.deleteProvider.emit(this.provider.id);

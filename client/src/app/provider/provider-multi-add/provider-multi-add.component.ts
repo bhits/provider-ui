@@ -14,7 +14,7 @@ import {Patient} from "app/patient/shared/patient.model";
 export class ProviderMultiAddComponent implements OnInit {
   @Input() providers: FlattenedSmallProvider[];
   private currentProvider: FlattenedSmallProvider = null;
-  private patient: Patient;
+  private selectedPatient: Patient;
 
   constructor(private notificationService: NotificationService,
               private route: ActivatedRoute,
@@ -23,14 +23,14 @@ export class ProviderMultiAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.patient = this.route.snapshot.data['patient'];
+    this.selectedPatient = this.route.snapshot.data['patient'];
   }
 
   public confirmAddProviders(dialog: any, selectedProviders: FlattenedSmallProvider[]) {
     dialog.close();
     if (selectedProviders != null) {
-      const PROVIDER_LIST_URL: string = "/patients".concat("/" + this.patient.id);
-      this.providerService.addProviders(this.patient.mrn, selectedProviders)
+      const PROVIDER_LIST_URL: string = "/patients".concat("/" + this.selectedPatient.id);
+      this.providerService.addProviders(this.selectedPatient.mrn, selectedProviders)
         .subscribe(
           () => {
             this.utilityService.navigateTo(PROVIDER_LIST_URL);

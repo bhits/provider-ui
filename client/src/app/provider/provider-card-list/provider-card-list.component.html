@@ -50,7 +50,6 @@
             <c2s-provider-card
               *ngFor="let provider of providers | paginate: paginationConfig"
               [provider]="provider"
-              [patient]="patient"
               (deleteProvider)="onDeleteProvider($event)">
             </c2s-provider-card>
           </div>

@@ -1,3 +1,17 @@
-<div class="p-t-75 p-l-md p-r-md p-b">
-  <h1>Create Consents</h1>
-</div>
+<h1>Create Consents</h1>
+<md-grid-list cols="1">
+  <md-card class="left-align">
+    <h1>I, Patient Local, hereby authorize...</h1>
+  </md-card>
+  <c2s-select-providers></c2s-select-providers>
+  <md-card class="right-align">
+    <button md-raised-button (click)="cancel()">
+      Cancel
+    </button>
+    <button md-raised-button color="primary" type="submit">
+      Save
+    </button>
+  </md-card>
+</md-grid-list>
+<br>
+

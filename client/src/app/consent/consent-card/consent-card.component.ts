@@ -7,6 +7,7 @@ import {ConsentService} from "app/consent/shared/consent.service";
 import {NotificationService} from "app/shared/notification.service";
 import {Patient} from "app/patient/shared/patient.model";
 import {DetailedConsent} from "../shared/detailed-consent.model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'c2s-consent-card',
@@ -16,18 +17,19 @@ import {DetailedConsent} from "../shared/detailed-consent.model";
 export class ConsentCardComponent implements OnInit {
   @Input()
   public consent: DetailedConsent;
-  @Input()
-  public patient: Patient;
   @Output()
   public deleteConsent = new EventEmitter<number>();
+  private selectedPatient: Patient;
   private detailsVisible: boolean = false;
   private height: number = 0;
 
   constructor(private consentService: ConsentService,
+              private route: ActivatedRoute,
               private notificationService: NotificationService) {
   }
 
   ngOnInit() {
+    this.selectedPatient = this.route.snapshot.data['patient'];
   }
 
   public toggleDetailsVisible(el: any) {
@@ -62,20 +64,20 @@ export class ConsentCardComponent implements OnInit {
         deleteConfirmationDialog.open();
         break;
       case ConsentStageOptionKey.DOWNLOAD_SAVED_PDF:
-        this.consentService.getSavedConsentPdf(this.patient.mrn, this.consent.id)
+        this.consentService.getSavedConsentPdf(this.selectedPatient.mrn, this.consent.id)
           .subscribe((savedPdf: BinaryFile) => this.consentService
               .handleDownloadSuccess(savedPdf, this.consent.id, consentOptionsDialog, "Saved_Consent", "Success in downloading saved consent"),
             (err) => this.consentService.handleDownloadError("Failed to download the saved consent, please try again later...")
           );
         break;
       case ConsentStageOptionKey.DOWNLOAD_SIGNED_PDF:
-        this.consentService.getSignedConsentPdf(this.patient.mrn, this.consent.id)
+        this.consentService.getSignedConsentPdf(this.selectedPatient.mrn, this.consent.id)
           .subscribe((signedPdf: BinaryFile) => this.consentService.handleDownloadSuccess(signedPdf, this.consent.id, consentOptionsDialog, "Signed_Consent", "Success in downloading signed consent"),
             (err) => this.consentService.handleDownloadError("Failed to download the signed consent, please try again later...")
           );
         break;
       case ConsentStageOptionKey.DOWNLOAD_REVOKED_PDF:
-        this.consentService.getRevokedConsentPdf(this.patient.mrn, this.consent.id)
+        this.consentService.getRevokedConsentPdf(this.selectedPatient.mrn, this.consent.id)
           .subscribe(
             (revokedPdf: BinaryFile) => this.consentService
               .handleDownloadSuccess(revokedPdf, this.consent.id, consentOptionsDialog, "Revoked_Consent", "Success in downloading revoke consent"),
@@ -95,7 +97,7 @@ export class ConsentCardComponent implements OnInit {
 
   public confirmDeleteConsent(dialog: any) {
     dialog.close();
-    this.consentService.deleteConsent(this.patient.mrn, this.consent.id)
+    this.consentService.deleteConsent(this.selectedPatient.mrn, this.consent.id)
       .subscribe(
         () => {
           this.deleteConsent.emit(this.consent.id);

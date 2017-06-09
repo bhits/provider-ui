@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
+import {UtilityService} from "../../shared/utility.service";
+import {ApiUrlService} from "../../shared/api-url.service";
+import {Patient} from "../../patient/shared/patient.model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'c2s-consent-create-edit',
@@ -6,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./consent-create-edit.component.scss']
 })
 export class ConsentCreateEditComponent implements OnInit {
+  private selectedPatient: Patient;
+  private consentListUrl: string;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private apiUrlService: ApiUrlService,
+              private route: ActivatedRoute,
+              private utilityService: UtilityService) {
   }
 
+  ngOnInit() {
+    this.selectedPatient = this.route.snapshot.data['patient'];
+    this.consentListUrl = "/patients".concat("/" + this.selectedPatient.id);
+  }
+
+  public cancel(): void {
+    this.utilityService.navigateTo(this.consentListUrl);
+  }
 }

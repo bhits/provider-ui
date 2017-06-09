@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Patient} from "../../patient/shared/patient.model";
 import {ProviderService} from "app/provider/shared/provider.service";
 import {UtilityService} from "../../shared/utility.service";
@@ -6,6 +6,7 @@ import {Provider} from "app/provider/shared/provider.model";
 import {NotificationService} from "app/shared/notification.service";
 import {ApiUrlService} from "app/shared/api-url.service";
 import {PaginationInstance} from "ng2-pagination";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'c2s-provider-card-list',
@@ -13,8 +14,7 @@ import {PaginationInstance} from "ng2-pagination";
   styleUrls: ['./provider-card-list.component.scss']
 })
 export class ProviderCardListComponent implements OnInit {
-  @Input()
-  public patient: Patient;
+  public selectedPatient: Patient;
   public providers: Provider[];
   public noProvider: boolean = false;
   public paginationConfig: PaginationInstance = {
@@ -26,11 +26,14 @@ export class ProviderCardListComponent implements OnInit {
   constructor(private apiUrlService: ApiUrlService,
               private notificationService: NotificationService,
               private providerService: ProviderService,
+              private route: ActivatedRoute,
               private utilityService: UtilityService) {
   }
 
   ngOnInit() {
-    this.providerService.getProviders(this.patient.mrn)
+    //Todo: Refactor with redux
+    this.selectedPatient = this.route.snapshot.data['patient'];
+    this.providerService.getProviders(this.selectedPatient.mrn)
       .subscribe(
         (providers) => {
           this.providers = providers;
@@ -47,7 +50,7 @@ export class ProviderCardListComponent implements OnInit {
   }
 
   public redirectToPatientProvidersSearch(): void {
-    const searchPatientProvidersUrl: string = "/patients".concat("/" + this.patient.id).concat(this.apiUrlService.getPatientProvidersSearchUrl());
+    const searchPatientProvidersUrl: string = "/patients".concat("/" + this.selectedPatient.id).concat(this.apiUrlService.getPatientProvidersSearchUrl());
     this.utilityService.navigateTo(searchPatientProvidersUrl)
   }
 
