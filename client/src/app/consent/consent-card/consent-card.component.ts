@@ -5,7 +5,6 @@ import {ConsentStageOption} from "../shared/consent-stage-option.model";
 import {ConsentStageOptionKey} from "../shared/consent-stage-option-key.enum";
 import {BinaryFile} from "../../shared/binary-file.model";
 import {ConsentService} from "app/consent/shared/consent.service";
-import {UtilityService} from "app/shared/utility.service";
 import {NotificationService} from "app/shared/notification.service";
 import {Patient} from "app/patient/shared/patient.model";
 
@@ -25,8 +24,7 @@ export class ConsentCardComponent implements OnInit {
   private height: number = 0;
 
   constructor(private consentService: ConsentService,
-              private notificationService: NotificationService,
-              private utilityService: UtilityService) {
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -65,16 +63,23 @@ export class ConsentCardComponent implements OnInit {
         break;
       case ConsentStageOptionKey.DOWNLOAD_SAVED_PDF:
         this.consentService.getSavedConsentPdf(this.patient.mrn, this.consent.id)
+          .subscribe((savedPdf: BinaryFile) => this.consentService
+              .handleDownloadSuccess(savedPdf, this.consent.id, consentOptionsDialog, "Saved_Consent", "Success in downloading saved consent"),
+            (err) => this.consentService.handleDownloadError("Failed to download the saved consent, please try again later...")
+          );
+        break;
+      case ConsentStageOptionKey.DOWNLOAD_SIGNED_PDF:
+        this.consentService.getSignedConsentPdf(this.patient.mrn, this.consent.id)
+          .subscribe((signedPdf: BinaryFile) => this.consentService.handleDownloadSuccess(signedPdf, this.consent.id, consentOptionsDialog, "Signed_Consent", "Success in downloading signed consent"),
+            (err) => this.consentService.handleDownloadError("Failed to download the signed consent, please try again later...")
+          );
+        break;
+      case ConsentStageOptionKey.DOWNLOAD_REVOKED_PDF:
+        this.consentService.getRevokedConsentPdf(this.patient.mrn, this.consent.id)
           .subscribe(
-            (savedPdf: BinaryFile) => {
-              consentOptionsDialog.close();
-              this.utilityService.downloadFile(savedPdf.content, `${"Saved_Consent"}_${this.consent.id}.pdf`, savedPdf.contentType);
-              this.notificationService.show("Success in downloading consent.");
-            },
-            err => {
-              this.notificationService.show("Failed to add the provider, please try again later...");
-              console.log(err);
-            }
+            (revokedPdf: BinaryFile) => this.consentService
+              .handleDownloadSuccess(revokedPdf, this.consent.id, consentOptionsDialog, "Revoked_Consent", "Success in downloading revoke consent"),
+            (err) => this.consentService.handleDownloadError("Failed to download the revoke consent, please try again later...")
           );
         break;
     }

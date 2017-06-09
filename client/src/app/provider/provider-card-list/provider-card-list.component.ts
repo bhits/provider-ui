@@ -1,24 +1,24 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {PaginationInstance} from "ng2-pagination";
-import {NotificationService} from "../../shared/notification.service";
-import {ProviderService} from "../shared/provider.service";
 import {Patient} from "../../patient/shared/patient.model";
-import {Provider} from "app/provider/shared/provider.model";
+import {ProviderService} from "app/provider/shared/provider.service";
 import {UtilityService} from "../../shared/utility.service";
-import {ApiUrlService} from "../../shared/api-url.service";
+import {Provider} from "app/provider/shared/provider.model";
+import {NotificationService} from "app/shared/notification.service";
+import {ApiUrlService} from "app/shared/api-url.service";
+import {PaginationInstance} from "ng2-pagination";
 
 @Component({
-  selector: 'c2s-provider-list',
-  templateUrl: './provider-list.component.html',
-  styleUrls: ['./provider-list.component.scss']
+  selector: 'c2s-provider-card-list',
+  templateUrl: './provider-card-list.component.html',
+  styleUrls: ['./provider-card-list.component.scss']
 })
-export class ProviderListComponent implements OnInit {
+export class ProviderCardListComponent implements OnInit {
   @Input()
   public patient: Patient;
-  private selectedProvider: Provider;
   public providers: Provider[];
   public noProvider: boolean = false;
   public paginationConfig: PaginationInstance = {
+    id: "provider-list",
     itemsPerPage: 6,
     currentPage: 1
   };
@@ -46,29 +46,12 @@ export class ProviderListComponent implements OnInit {
     this.paginationConfig.currentPage = number;
   }
 
-  public openConfirmDialog(dialog: any, provider: Provider) {
-    dialog.open();
-    this.selectedProvider = provider;
-  }
-
-  public confirmDeleteProvider(dialog: any) {
-    dialog.close();
-    if (this.selectedProvider != null) {
-      this.providerService.deleteProvider(this.patient.mrn, this.selectedProvider.id)
-        .subscribe(
-          () => {
-            this.providers = this.providers.filter(p => p !== this.selectedProvider);
-            this.notificationService.show("Success in deleting provider.");
-          },
-          err => {
-            this.notificationService.show("Failed to delete the provider, please try again later...");
-            console.log(err);
-          });
-    }
-  }
-
   public redirectToPatientProvidersSearch(): void {
     const searchPatientProvidersUrl: string = "/patients".concat("/" + this.patient.id).concat(this.apiUrlService.getPatientProvidersSearchUrl());
     this.utilityService.navigateTo(searchPatientProvidersUrl)
+  }
+
+  public onDeleteProvider(providerId: number) {
+    this.providers = this.providers.filter(provider => provider['id'] !== providerId)
   }
 }

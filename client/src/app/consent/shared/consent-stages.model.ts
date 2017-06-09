@@ -32,12 +32,32 @@ export const CONSENT_STAGES: ConsentStage[] = [
     text: "SIGNED",
     icon: "check_circle",
     color: "primary",
-    options: []
+    options: [
+      {
+        key: ConsentStageOptionKey.DOWNLOAD_SIGNED_PDF,
+        icon: "file_download",
+        text: "View Signed Consent",
+        isMethod: true
+      }
+    ]
   },
   {
     consentStage: "REVOKED",
     text: "REVOKED",
     icon: "cancel",
     color: "warn",
-    options: []
+    options: [
+      {
+        key: ConsentStageOptionKey.DOWNLOAD_SIGNED_PDF,
+        icon: "file_download",
+        text: "View Signed Consent",
+        isMethod: true
+      },
+      {
+        key: ConsentStageOptionKey.DOWNLOAD_REVOKED_PDF,
+        icon: "file_download",
+        text: "View Signed Revocation",
+        isMethod: true
+      }
+    ]
   }];

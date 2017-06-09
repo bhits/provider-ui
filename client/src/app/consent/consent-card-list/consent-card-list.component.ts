@@ -16,9 +16,8 @@ export class ConsentCardListComponent implements OnInit {
   @Input()
   public patient: Patient;
   public totalItems: number = 0;
-  public totalPages: number = 0;
-  public itemsPerPage: number = 0;
   public currentPage: number = 1;
+  public itemsPerPage: number = 10;
   public noConsent: boolean = false;
   public loading: boolean = false;
   public asyncConsents: Observable<Consent[]>;
@@ -34,12 +33,10 @@ export class ConsentCardListComponent implements OnInit {
 
   public getPage(page: number) {
     this.loading = true;
-    this.asyncConsents = this.consentService.getConsents(this.patient.mrn, page - 1)
+    this.asyncConsents = this.consentService.getConsents(this.patient.mrn, page - 1, this.itemsPerPage)
       .do((patients: PageableData<Consent>) => {
         this.noConsent = patients.totalElements === 0;
         this.totalItems = patients.totalElements;
-        this.totalPages = patients.totalPages;
-        this.itemsPerPage = patients.size;
         this.currentPage = patients.number + 1;
         this.loading = false;
       })

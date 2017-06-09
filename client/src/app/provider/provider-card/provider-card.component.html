@@ -1,0 +1,41 @@
+<md-card class="provider-card">
+  <md-card-header>
+    <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
+      <div class="fa fa-2x fa-address-card"></div>
+      <div class="m-l-xs font-weight700">{{provider | provider: 'name'}}</div>
+    </div>
+  </md-card-header>
+
+  <md-card-content class="p-t-xs p-b p-l-md p-r-md">
+    <div>
+      <button md-fab [disabled]="!provider.deletable" (click)="openConfirmDialog(confirm)">
+        <span class="fa fa-trash fa-lg font-weight500" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="flexcontainer column" fxLayoutWrap="wrap">
+      <div fxFlex="1 1 auto">
+        <div class="font-size12 p-b-xxs">NPI</div>
+        <div class="font-size14 font-weight600 m-b-xs">{{provider | provider: 'npi'}}</div>
+        <div class="font-size12 p-b-xxs">Address</div>
+        <div class="font-size14 font-weight700 m-b-xs">{{provider | provider: 'address'}}</div>
+        <div class="font-size12 p-b-xxs">Contact Number</div>
+        <div class="font-size14 font-weight700 p-b-xs">{{provider | provider: 'phone' | usPhoneNumber}}
+        </div>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+<div>
+  <md2-dialog #confirm>
+    <md2-dialog-title>Delete provider</md2-dialog-title>
+    Are you sure you want to delete this provider?
+    <md2-dialog-footer>
+      <button md-raised-button color="primary" (click)="confirmDeleteProvider(confirm)">
+        OK
+      </button>
+      <button md-raised-button (click)="confirm.close()">
+        Cancel
+      </button>
+    </md2-dialog-footer>
+  </md2-dialog>
+</div>
