@@ -23,7 +23,7 @@ export class ProviderMultiAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedPatient = this.route.snapshot.data['patient'];
+    this.selectedPatient = this.route.snapshot.parent.data['patient'];
   }
 
   public confirmAddProviders(dialog: any, selectedProviders: FlattenedSmallProvider[]) {

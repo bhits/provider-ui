@@ -3,7 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {ConsentsComponent} from "app/consent/consents/consents.component";
 import {CanActivateAuthGuardService} from "app/security/shared/can-activate-auth-guard.service";
 import {ConsentCreateEditComponent} from "app/consent/consent-create-edit/consent-create-edit.component";
-import {ProviderPatientResolveService} from "../provider/shared/provider-patient-resolve.service";
+import {PatientResolveService} from "app/patient/shared/patient-resolve.service";
 
 const consentRoutes: Routes = [
   {
@@ -11,13 +11,13 @@ const consentRoutes: Routes = [
     component: ConsentsComponent,
     canActivate: [CanActivateAuthGuardService],
     canActivateChild: [CanActivateAuthGuardService],
+    resolve: {
+      patient: PatientResolveService
+    },
     children: [
       {
         path: 'create',
-        component: ConsentCreateEditComponent,
-        resolve: {
-          patient: ProviderPatientResolveService
-        }
+        component: ConsentCreateEditComponent
       }
     ]
   }

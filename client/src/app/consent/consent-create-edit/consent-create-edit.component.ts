@@ -19,7 +19,7 @@ export class ConsentCreateEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedPatient = this.route.snapshot.data['patient'];
+    this.selectedPatient = this.route.snapshot.parent.data['patient'];
     this.consentListUrl = "/patients".concat("/" + this.selectedPatient.id);
   }
 

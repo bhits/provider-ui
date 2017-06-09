@@ -6,8 +6,6 @@ import {Observable} from "rxjs/Observable";
 import {ProviderService} from "app/provider/shared/provider.service";
 import {UtilityService} from "../../shared/utility.service";
 import {Provider} from "app/provider/shared/provider.model";
-import {NotificationService} from "app/shared/notification.service";
-import {Patient} from "app/patient/shared/patient.model";
 
 @Component({
   selector: 'c2s-provider-search-result',
@@ -28,8 +26,7 @@ export class ProviderSearchResultComponent implements OnInit, OnChanges {
   private totalPages: number;
   loading: boolean;
 
-  constructor(private notificationService: NotificationService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private providerService: ProviderService,
               private utilityService: UtilityService) {
   }
@@ -43,16 +40,7 @@ export class ProviderSearchResultComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    let patient: Patient = this.route.snapshot.data['patient'];
-    this.providerService.getProviders(patient.mrn)
-      .subscribe(
-        (providers) => {
-          this.providerList = providers;
-        },
-        err => {
-          this.notificationService.show("Failed in getting providers.");
-        }
-      );
+    this.providerList = this.route.snapshot.data['providers'];
   }
 
   public getPage(page: number) {
