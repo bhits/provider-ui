@@ -1,7 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {Patient} from "../../patient/shared/patient.model";
+import {ProviderService} from "app/provider/shared/provider.service";
 import {UtilityService} from "../../shared/utility.service";
 import {Provider} from "app/provider/shared/provider.model";
+import {NotificationService} from "app/shared/notification.service";
 import {ApiUrlService} from "app/shared/api-url.service";
 import {PaginationInstance} from "ng2-pagination";
 import {ActivatedRoute} from "@angular/router";
@@ -22,6 +24,8 @@ export class ProviderCardListComponent implements OnInit {
   };
 
   constructor(private apiUrlService: ApiUrlService,
+              private notificationService: NotificationService,
+              private providerService: ProviderService,
               private route: ActivatedRoute,
               private utilityService: UtilityService) {
   }
@@ -29,8 +33,16 @@ export class ProviderCardListComponent implements OnInit {
   ngOnInit() {
     //Todo: Refactor with redux
     this.selectedPatient = this.route.snapshot.data['patient'];
-    this.providers = this.route.snapshot.data['providers'];
-    this.noProvider = this.providers.length === 0;
+    this.providerService.getProviders(this.selectedPatient.mrn)
+      .subscribe(
+        (providers) => {
+          this.providers = providers;
+          this.noProvider = providers.length === 0;
+        },
+        err => {
+          this.notificationService.show("Failed in getting providers.");
+        }
+      );
   }
 
   public onPageChange(number: number) {

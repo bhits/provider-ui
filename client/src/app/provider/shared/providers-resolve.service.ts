@@ -4,21 +4,15 @@ import {Observable} from "rxjs/Observable";
 import {ProviderService} from "./provider.service";
 import {Patient} from "../../patient/shared/patient.model";
 import {Provider} from "./provider.model";
-import {PatientService} from "app/patient/shared/patient.service";
-import {NotificationService} from "app/shared/notification.service";
 
 @Injectable()
 export class ProvidersResolveService implements Resolve<any> {
-  private patient: Patient;
 
-  constructor(private notificationService: NotificationService,
-              private patientService: PatientService,
-              private providerService: ProviderService) {
+  constructor(private providerService: ProviderService) {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Provider[]> {
-    this.getSelectedPatient(route);
-    let patient: Patient = this.patient;
+    let patient: Patient = this.getSelectedPatient(route);
     if (patient != null) {
       return this.providerService.getProviders(patient.mrn)
         .do((providers: Provider[]) => {
@@ -27,24 +21,11 @@ export class ProvidersResolveService implements Resolve<any> {
     }
   }
 
-  private getSelectedPatient(route: ActivatedRouteSnapshot): void {
-    this.patientService.getPatient(this.determinePatientId(route))
-      .subscribe(
-        (patient) => {
-          this.patient = patient;
-        },
-        err => {
-          this.notificationService.show("Failed in getting providers.");
-          console.log(err);
-        }
-      );
-  }
-
-  private determinePatientId(route: ActivatedRouteSnapshot): number {
-    if (route.params['patientId'] != null) {
-      return route.params['patientId'];
+  private getSelectedPatient(route: ActivatedRouteSnapshot): Patient {
+    if (route.parent.data['patient'] != null) {
+      return route.parent.data['patient'];
     } else {
-      return route.parent.params['patientId'];
+      return route.data['patient'];
     }
   }
 }
