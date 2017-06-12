@@ -10,13 +10,10 @@ export class Consent {
   endDate: Date;
 
   constructor() {
-    let defaultPurposeOfUse: Identifier;
-    defaultPurposeOfUse = {system: PURPOSE_OF_USE_SYSTEM, value: "TREAT"};
-
     this.fromProviders = [new Identifier(null, null)];
     this.toProviders = [new Identifier(null, null)];
     this.shareSensitivityCategories = [new Identifier(null, null)];
-    this.sharePurposes = [defaultPurposeOfUse];
+    this.sharePurposes = [new Identifier(PURPOSE_OF_USE_SYSTEM, "TREAT")];
     this.startDate = new Date;
     this.endDate = new Date;
   }
