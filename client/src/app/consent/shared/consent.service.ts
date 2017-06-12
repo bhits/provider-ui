@@ -10,17 +10,30 @@ import {NotificationService} from "app/shared/notification.service";
 import {UtilityService} from "app/shared/utility.service";
 import {DetailedConsent} from "app/consent/shared/detailed-consent.model";
 import {Consent} from "app/consent/shared/consent.model";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 @Injectable()
 export class ConsentService {
   private pcmPurposeOfUseUrl: string = this.apiUrlService.getPcmBaseUrl().concat("/purposes");
   private pepSegmentDocumentUrl: string = this.apiUrlService.getPepUrl().concat("/segmentDocument");
 
+  //TODO: Refactor with redux
+  private consentSubject: BehaviorSubject<Consent> = new BehaviorSubject<Consent>(null);
+  public consentEmitter: Observable<Consent> = this.consentSubject.asObservable();
+
   constructor(private http: Http,
               private apiUrlService: ApiUrlService,
               private exceptionService: ExceptionService,
               private notificationService: NotificationService,
               private utilityService: UtilityService) {
+  }
+
+  public getConsentEmitter(): Observable<Consent> {
+    return this.consentEmitter;
+  }
+
+  public setConsentEmitter(consent: Consent) {
+    this.consentSubject.next(consent);
   }
 
   public getConsents(patientMrn: string, page: number, size: number): Observable<PageableData<DetailedConsent>> {
@@ -31,6 +44,14 @@ export class ConsentService {
       .concat("/patients/" + patientMrn + "/consents/");
     return this.http.get(resourceUrl, {search: params})
       .map((resp: Response) => <PageableData<DetailedConsent>>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+  public getConsent(patientMrn: string, id: number): Observable<Consent> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + id);
+    return this.http.get(resourceUrl)
+      .map((resp: Response) => <Consent>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
 
