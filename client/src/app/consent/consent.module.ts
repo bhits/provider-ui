@@ -13,6 +13,7 @@ import {ConsentCardComponent} from "./consent-card/consent-card.component";
 import {ConsentCardListComponent} from "./consent-card-list/consent-card-list.component";
 import {SelectProvidersComponent} from "./select-providers/select-providers.component";
 import { SelectProviderComponent } from './select-provider/select-provider.component';
+import { ConsentTermsComponent } from './consent-terms/consent-terms.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { SelectProviderComponent } from './select-provider/select-provider.compo
     SharePurposePipe,
     ConsentStagePipe,
     SelectProvidersComponent,
-    SelectProviderComponent
+    SelectProviderComponent,
+    ConsentTermsComponent
   ],
   exports: [ConsentCardListComponent],
   providers: [ConsentService]
