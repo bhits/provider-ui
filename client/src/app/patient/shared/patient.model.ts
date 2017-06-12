@@ -20,4 +20,5 @@ export class Patient {
   disabled?: boolean;
   mrn?: string;
   identifiers:Identifier[];
+  registrationPurposeEmail?:string
 }

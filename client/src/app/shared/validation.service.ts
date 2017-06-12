@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {ValidationRules} from "app/shared/validation-rules.model";
+import {FormGroup} from "@angular/forms";
 
 @Injectable()
 export class ValidationService {
@@ -23,6 +24,8 @@ export class ValidationService {
         return customMessage;
       case ValidationRules.INVALID_PAST_DATE_KEY:
         return ValidationRules.INVALID_PAST_DATE_MESSAGE;
+      case ValidationRules.ONE_EMAIL_REQUIRED_KEY:
+        return ValidationRules.ONE_EMAIL_REQUIRED_MESSAGE;
     }
   }
 
@@ -32,6 +35,20 @@ export class ValidationService {
       return null;
     } else {
       return {'invalidPastDate': true};
+    }
+  }
+
+  static oneEmailRequired(homeEmailKey: string, registrationPurposeEmailKey: string) {
+    return (group: FormGroup): { [key: string]: any } => {
+      let homeEmail = group.controls[homeEmailKey];
+      let registrationPurposeEmail = group.controls[registrationPurposeEmailKey];
+
+      if (homeEmail.touched||registrationPurposeEmail.touched){
+      if (homeEmail.value == null && registrationPurposeEmail.value == null) {
+        return {
+          oneEmailRequired: true
+        }
+      }}
     }
   }
 }

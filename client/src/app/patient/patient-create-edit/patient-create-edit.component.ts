@@ -41,6 +41,7 @@ export class PatientCreateEditComponent implements OnInit {
   public title: string = "Create Patient";
   //Todo: Will remove when support multiple roles
   public disabledRoles: string[];
+  public oneEmailRequiredMessage: string = ValidationRules.ONE_EMAIL_REQUIRED_MESSAGE;
 
   constructor(private apiUrlService: ApiUrlService,
               private confirmDialogService: ConfirmDialogService,
@@ -107,10 +108,8 @@ export class PatientCreateEditComponent implements OnInit {
           Validators.required
         ]
       ],
-      homeEmail: [null, Validators.compose([
-        Validators.required,
-        Validators.email])
-      ],
+      homeEmail: [null],
+      registrationPurposeEmail: [null ],
       genderCode: [null, Validators.required],
       birthDate: [null, Validators.compose([
         Validators.required,
@@ -122,7 +121,8 @@ export class PatientCreateEditComponent implements OnInit {
       roles: [null, Validators.required],
       locale: [null, Validators.required],
       identifier: this.initIdentifierFormGroup()
-    });
+    },
+      {validator: ValidationService.oneEmailRequired('homeEmail', 'registrationPurposeEmail')})
   }
 
   private initAddressFormGroup() {
@@ -144,12 +144,14 @@ export class PatientCreateEditComponent implements OnInit {
   }
 
   private setValueOnEditPatientForm(patient: Patient) {
+    let patientIdentifiers = patient.identifiers.filter(identifier => identifier.system !=="https://bhits.github.io/consent2share" && identifier.system!=="http://hl7.org/fhir/sid/us-ssn");
     if (patient.homeAddress != null) {
       this.createEditPatientForm.setValue({
         firstName: patient.firstName,
         middleName: patient.middleName,
         lastName: patient.lastName,
         homeEmail: patient.homeEmail,
+        registrationPurposeEmail: patient.registrationPurposeEmail,
         genderCode: patient.genderCode,
         birthDate: new Date(patient.birthDate),
         socialSecurityNumber: patient.socialSecurityNumber,
@@ -165,8 +167,8 @@ export class PatientCreateEditComponent implements OnInit {
         roles: patient.roles,
         locale: patient.locale,
         identifier:{
-          system: patient.identifiers[0].system,
-          value: patient.identifiers[0].value
+          system: patientIdentifiers[0].system,
+          value: patientIdentifiers[0].value
       },
       })
     } else {
@@ -175,6 +177,7 @@ export class PatientCreateEditComponent implements OnInit {
         middleName: patient.middleName,
         lastName: patient.lastName,
         homeEmail: patient.homeEmail,
+        registrationPurposeEmail: patient.registrationPurposeEmail,
         genderCode: patient.genderCode,
         birthDate: new Date(patient.birthDate),
         socialSecurityNumber: patient.socialSecurityNumber,
@@ -190,8 +193,8 @@ export class PatientCreateEditComponent implements OnInit {
         roles: patient.roles,
         locale: patient.locale,
         identifier: {
-          system: patient.identifiers[0].system,
-          value: patient.identifiers[0].value
+          system: patientIdentifiers[0].system,
+          value: patientIdentifiers[0].value
         }
       })
     }
@@ -256,7 +259,8 @@ export class PatientCreateEditComponent implements OnInit {
       homeAddress: formModel.homeAddress,
       roles: formModel.roles,
       locale: formModel.locale,
-      identifiers: identifiers
+      identifiers: identifiers,
+      registrationPurposeEmail: formModel.registrationPurposeEmail
     };
   }
 }
