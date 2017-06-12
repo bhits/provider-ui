@@ -1,0 +1,17 @@
+
+
+md-list-item {
+  button.mat-menu-item {
+    background-color: white;
+    &:hover {
+      background-color: #3FA3BA;
+      color: white;
+    }
+  }
+}
+
+.search-field {
+  font-weight: bold;
+  width: 80%;
+  cursor: text;
+}

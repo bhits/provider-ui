@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UploadOutput, UploadInput, UploadFile, humanizeBytes} from 'ngx-uploader';
-
+import {Subject} from "rxjs/Subject";
 
 import {TokenService} from "../../security/shared/token.service";
 import {SharePurpose} from "app/consent/shared/share-purpose.model";
@@ -12,6 +12,7 @@ import {UtilityService} from "app/shared/utility.service";
 import {Patient} from "app/patient/shared/patient.model";
 import {ProviderService} from "../../provider/shared/provider.service";
 import {Provider} from "../../provider/shared/provider.model";
+import {NotificationService} from "../../shared/notification.service";
 
 
 @Component({
@@ -31,13 +32,22 @@ export class SegmentDocumentComponent implements OnInit {
   public segmentedDocument : any;
   public segmentedDocumentName : string;
   public purposeOfUses: SharePurpose[]=[] ;
-  public authorizeProvider: Provider;
-  public disclosureProvider: Provider;
+
+  public authorizeProviders: Provider [];
+  public disclosureProviders: Provider [];
+
+  public selectedAuthorizeProvider: Provider;
+  public selectedDisclosureProvider: Provider;
+
+  private searchResultAuthorizeProviders = new Subject<string>();
+  private searchResultDisclosureProviders = new Subject<string>();
+
 
   constructor( private formBuilder: FormBuilder,
                private consentService: ConsentService,
                private tokenService: TokenService,
                private providerService: ProviderService,
+               private notificationService: NotificationService,
                private utilityService: UtilityService) {
     // local uploading files array
     this.files = [];
@@ -51,7 +61,61 @@ export class SegmentDocumentComponent implements OnInit {
     this.consentService.getPurposeOfUses().subscribe(
       (purposeOfUses: SharePurpose[])=>this.purposeOfUses = purposeOfUses,
       this.handleSegmentationError);
+
+    this.searchResultAuthorizeProviders
+              .debounceTime(300)
+              .distinctUntilChanged()
+              .switchMap(npi => this.providerService.getProviderByNpi(npi))
+                        .subscribe(
+                          (providers) => {
+                            if (providers.length > 0) {
+                              this.authorizeProviders = providers;
+                            }else {
+                              this.setSelectedAuthorizeProvider(null);
+                              this.authorizeProviders = [];
+                            }
+                          },
+                          err => {
+                            this.notificationService.show("Failed to search provider, please try again later...");
+                          });
+
+    this.searchResultDisclosureProviders
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .switchMap(npi => this.providerService.getProviderByNpi(npi))
+                        .subscribe(
+                          (providers) => {
+                            if (providers.length > 0) {
+                              this.disclosureProviders = providers;
+                            }else {
+                              this.setSelectedDisclosureProvider(null);
+                              this.disclosureProviders = [];
+                            }
+                          },
+                          err => {
+                            this.notificationService.show("Failed to search provider, please try again later...");
+                          });
+
   }
+
+  public searchAuthorizeProviders(npi: string): void {
+    this.searchResultAuthorizeProviders.next(npi);
+  }
+
+  public searchDisclosureProviders(npi: string): void {
+    this.searchResultDisclosureProviders.next(npi);
+  }
+
+  setSelectedAuthorizeProvider(selectedProvider: Provider){
+    this.selectedAuthorizeProvider = selectedProvider;
+    this.authorizeProviders = [];
+  }
+
+  setSelectedDisclosureProvider(selectedProvider: Provider){
+    this.selectedDisclosureProvider = selectedProvider;
+    this.disclosureProviders = [];
+  }
+
 
   handleSegmentationError(error: any){
     console.log(error);
@@ -95,31 +159,31 @@ export class SegmentDocumentComponent implements OnInit {
       }
     }
   }
-
-  onBlurOnAuthorizeProvider(npi:any){
-    this.providerService.getProviderByNpi(npi).subscribe(
-      (authorizeProvider:Provider)=>{
-        this.authorizeProvider = authorizeProvider;
-      },
-      (error:any)=>{
-        this.authorizeProvider = null;
-      }
-    );
-    console.log("Authorize:  " + npi);
-  }
-
-
-  onBlurOnDisclosureProvider(npi:any){
-    //get for provider from the backend
-    this.providerService.getProviderByNpi(npi).subscribe(
-      (disclosureProvider:Provider)=>{
-        this.disclosureProvider = disclosureProvider;
-      },
-      (error:any)=>{
-        this.disclosureProvider = null;
-      }
-    );
-  }
+  //
+  // onBlurOnAuthorizeProvider(npi:any){
+  //   this.providerService.getProviderByNpi(npi).subscribe(
+  //     (authorizeProvider:Provider)=>{
+  //       this.authorizeProviders = authorizeProvider;
+  //     },
+  //     (error:any)=>{
+  //       this.authorizeProviders = null;
+  //     }
+  //   );
+  //   console.log("Authorize:  " + npi);
+  // }
+  //
+  //
+  // onBlurOnDisclosureProvider(npi:any){
+  //   //get for provider from the backend
+  //   this.providerService.getProviderByNpi(npi).subscribe(
+  //     (disclosureProvider:Provider)=>{
+  //       this.disclosureProviders = disclosureProvider;
+  //     },
+  //     (error:any)=>{
+  //       this.disclosureProviders = null;
+  //     }
+  //   );
+  // }
 
   segmentDocument(): void {
     const formModel = this.segmentationFrom.value;

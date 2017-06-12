@@ -24,12 +24,25 @@
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <md-input-container class="full-width font-size20">
-          <input mdInput placeholder="Authorize Provider NPI" #authorizeProvider (blur)="onBlurOnAuthorizeProvider($event.target.value)" formControlName="intermediaryNpi">
+        <md-input-container class="search-field  full-width font-size20">
+          <input mdInput type="search" placeholder="Authorize Provider NPI" #authorizeProvider (keyup)="searchAuthorizeProviders(authorizeProvider.value)" formControlName="intermediaryNpi">
         </md-input-container>
-        <span></span>
+        <div *ngIf="selectedAuthorizeProvider">
+          <label>Lookup Authorize provider: </label><span>{{ selectedAuthorizeProvider | provider:"name"}}</span>
+        </div>
+        <div *ngIf="authorizeProviders">
+          <md-list>
+            <md-list-item *ngFor="let authorizeProvider of authorizeProviders" (click)="setSelectedAuthorizeProvider(authorizeProvider)">
+              <button md-menu-item >
+                <span >{{ authorizeProvider | provider:"name"}}</span>
+              </button>
+            </md-list-item>
+          </md-list>
+        </div>
       </div>
     </div>
+
+
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <div><span><h2>To Disclose to:</h2></span></div>
@@ -37,9 +50,21 @@
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <md-input-container class="full-width font-size20">
-          <input mdInput placeholder="Disclosure Provider NPI"  #disclosureProvider (blur)="onBlurOnDisclosureProvider($event.target.value)" formControlName="recipientNpi">
+        <md-input-container class="search-field full-width font-size20">
+          <input mdInput placeholder="Disclosure Provider NPI"  #disclosureProvider (keyup)="searchDisclosureProviders(disclosureProvider.value)" formControlName="recipientNpi">
         </md-input-container>
+        <div *ngIf="selectedDisclosureProvider">
+          <label>Lookup Disclosure provider: </label><span>{{ selectedDisclosureProvider | provider:"name"}}</span>
+        </div>
+        <div *ngIf="disclosureProviders">
+          <md-list>
+            <md-list-item *ngFor="let disclosureProvider of disclosureProviders" (click)="setSelectedDisclosureProvider(disclosureProvider)">
+              <button md-menu-item >
+                <span >{{ disclosureProvider | provider:"name"}}</span>
+              </button>
+            </md-list-item>
+          </md-list>
+        </div>
       </div>
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
