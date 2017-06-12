@@ -5,6 +5,7 @@ import {CanActivateAuthGuardService} from "app/security/shared/can-activate-auth
 import {ConsentCreateEditComponent} from "app/consent/consent-create-edit/consent-create-edit.component";
 import {PatientResolveService} from "app/patient/shared/patient-resolve.service";
 import {ConsentResolveService} from "app/consent/shared/consent-resolve.service";
+import {ProvidersResolveService} from "app/provider/shared/providers-resolve.service";
 
 const consentRoutes: Routes = [
   {
@@ -18,13 +19,17 @@ const consentRoutes: Routes = [
     children: [
       {
         path: 'create',
-        component: ConsentCreateEditComponent
+        component: ConsentCreateEditComponent,
+        resolve: {
+          providers: ProvidersResolveService
+        },
       },
       {
         path: ':consentId',
         component: ConsentCreateEditComponent,
         resolve: {
-          consent: ConsentResolveService
+          consent: ConsentResolveService,
+          providers: ProvidersResolveService
         },
       }
     ]

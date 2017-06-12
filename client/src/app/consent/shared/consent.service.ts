@@ -11,6 +11,7 @@ import {UtilityService} from "app/shared/utility.service";
 import {DetailedConsent} from "app/consent/shared/detailed-consent.model";
 import {Consent} from "app/consent/shared/consent.model";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Provider} from "app/provider/shared/provider.model";
 
 @Injectable()
 export class ConsentService {
@@ -118,5 +119,14 @@ export class ConsentService {
     return this.http.get(this.pcmPurposeOfUseUrl)
       .map((resp: Response) => <SharePurpose[]>(resp.json()))
       .catch(this.exceptionService.handleError);
+  }
+
+  public getProviderByNPI(patientProviders: Provider[], selectedProviderNpi: string) {
+    for (let provider of patientProviders) {
+      if (provider.identifiers[0].value === selectedProviderNpi) {
+        return provider;
+      }
+    }
+    return null;
   }
 }

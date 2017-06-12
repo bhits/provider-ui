@@ -16,10 +16,12 @@ import {SelectProviderComponent} from "./select-provider/select-provider.compone
 import {ConsentTermsComponent} from "./consent-terms/consent-terms.component";
 import {MedicalInformationComponent} from "./medical-information/medical-information.component";
 import {PurposeOfUseComponent} from "./purpose-of-use/purpose-of-use.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     SharedModule,
     NgUploaderModule,
     ConsentRoutingModule
