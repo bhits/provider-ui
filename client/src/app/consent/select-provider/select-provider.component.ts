@@ -14,9 +14,9 @@ export class SelectProviderComponent implements OnInit {
   @Input() public dialogTitle: string;
   @Input() public isAuthorizedProviders: boolean;
   public patientProviders: Provider[];
-  public patientConsent: Consent;
   public consentProvider: Provider;
   public selectedProviderNpi: string;
+  private patientConsent: Consent;
 
   constructor(private consentService: ConsentService,
               private route: ActivatedRoute) {

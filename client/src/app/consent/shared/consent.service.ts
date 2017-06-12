@@ -129,4 +129,20 @@ export class ConsentService {
     }
     return null;
   }
+
+  public mapConsentSharePurposesToSharePurposes(consent: Consent, sharePurposes: SharePurpose[]): SharePurpose[] {
+    let purposeOfUses: SharePurpose[] = [];
+    consent.sharePurposes.forEach(
+      sharePurpose => {
+        sharePurposes.forEach(
+          purpose => {
+            if (sharePurpose.value === purpose.identifier.value) {
+              purposeOfUses.push(purpose);
+            }
+          }
+        )
+      }
+    );
+    return purposeOfUses;
+  }
 }

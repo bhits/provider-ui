@@ -6,6 +6,7 @@ import {ConsentCreateEditComponent} from "app/consent/consent-create-edit/consen
 import {PatientResolveService} from "app/patient/shared/patient-resolve.service";
 import {ConsentResolveService} from "app/consent/shared/consent-resolve.service";
 import {ProvidersResolveService} from "app/provider/shared/providers-resolve.service";
+import {PurposeOfUsesResolveService} from "./shared/purpose-of-uses-resolve.service";
 
 const consentRoutes: Routes = [
   {
@@ -14,7 +15,8 @@ const consentRoutes: Routes = [
     canActivate: [CanActivateAuthGuardService],
     canActivateChild: [CanActivateAuthGuardService],
     resolve: {
-      patient: PatientResolveService
+      patient: PatientResolveService,
+      purposeOfUses: PurposeOfUsesResolveService
     },
     children: [
       {
@@ -49,5 +51,6 @@ export const routedConsentComponents = [
 ];
 
 export const routedConsentResolveServices = [
-  ConsentResolveService
+  ConsentResolveService,
+  PurposeOfUsesResolveService
 ];
