@@ -7,6 +7,7 @@ import {PatientResolveService} from "app/patient/shared/patient-resolve.service"
 import {ConsentResolveService} from "app/consent/shared/consent-resolve.service";
 import {ProvidersResolveService} from "app/provider/shared/providers-resolve.service";
 import {PurposeOfUsesResolveService} from "./shared/purpose-of-uses-resolve.service";
+import {SensitivityCategoriesResolveService} from "app/consent/shared/sensitivity-categories-resolve.service";
 
 const consentRoutes: Routes = [
   {
@@ -16,7 +17,8 @@ const consentRoutes: Routes = [
     canActivateChild: [CanActivateAuthGuardService],
     resolve: {
       patient: PatientResolveService,
-      purposeOfUses: PurposeOfUsesResolveService
+      purposeOfUses: PurposeOfUsesResolveService,
+      sensitivityCategories: SensitivityCategoriesResolveService
     },
     children: [
       {
@@ -52,5 +54,6 @@ export const routedConsentComponents = [
 
 export const routedConsentResolveServices = [
   ConsentResolveService,
-  PurposeOfUsesResolveService
+  PurposeOfUsesResolveService,
+  SensitivityCategoriesResolveService
 ];

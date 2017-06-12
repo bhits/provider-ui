@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http, Response, URLSearchParams} from "@angular/http";
+import {Headers, Http, Response, URLSearchParams} from "@angular/http";
 import {ApiUrlService} from "../../shared/api-url.service";
 import {Observable} from "rxjs/Observable";
 import {SharePurpose} from "./share-purpose.model";
@@ -12,10 +12,12 @@ import {DetailedConsent} from "app/consent/shared/detailed-consent.model";
 import {Consent} from "app/consent/shared/consent.model";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Provider} from "app/provider/shared/provider.model";
+import {VssSensitivityCategory} from "app/consent/shared/vss-sensitivity-category.model";
 
 @Injectable()
 export class ConsentService {
   private pcmPurposeOfUseUrl: string = this.apiUrlService.getPcmBaseUrl().concat("/purposes");
+  private vssSensitivityCategoriesUrl: string = this.apiUrlService.getVssBaseUrl().concat("/valueSetCategories");
   private pepSegmentDocumentUrl: string = this.apiUrlService.getPepUrl().concat("/segmentDocument");
 
   //TODO: Refactor with redux
@@ -121,6 +123,14 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
+  public getSensitivityCategories(): Observable<VssSensitivityCategory[]> {
+    //Todo: Remove it once integrate with i18
+    const headers = new Headers({'Accept-Language': 'en'});
+    return this.http.get(this.vssSensitivityCategoriesUrl, {headers: headers})
+      .map((resp: Response) => <VssSensitivityCategory[]>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
   public getProviderByNPI(patientProviders: Provider[], selectedProviderNpi: string) {
     for (let provider of patientProviders) {
       if (provider.identifiers[0].value === selectedProviderNpi) {
@@ -128,21 +138,5 @@ export class ConsentService {
       }
     }
     return null;
-  }
-
-  public mapConsentSharePurposesToSharePurposes(consent: Consent, sharePurposes: SharePurpose[]): SharePurpose[] {
-    let purposeOfUses: SharePurpose[] = [];
-    consent.sharePurposes.forEach(
-      sharePurpose => {
-        sharePurposes.forEach(
-          purpose => {
-            if (sharePurpose.value === purpose.identifier.value) {
-              purposeOfUses.push(purpose);
-            }
-          }
-        )
-      }
-    );
-    return purposeOfUses;
   }
 }
