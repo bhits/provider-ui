@@ -1,19 +1,20 @@
 import {Identifier} from "../../shared/identifier.model";
+import {Identifiers} from "app/shared/identifiers.model";
 
 export class Consent {
   id: number;
-  fromProviders: Identifier[];
-  toProviders: Identifier[];
-  shareSensitivityCategories: Identifier[];
-  sharePurposes: Identifier[];
+  fromProviders: Identifiers;
+  toProviders: Identifiers;
+  shareSensitivityCategories: Identifiers;
+  sharePurposes: Identifiers;
   startDate: Date;
   endDate: Date;
 
   constructor() {
-    this.fromProviders = [new Identifier(null, null)];
-    this.toProviders = [new Identifier(null, null)];
-    this.shareSensitivityCategories = [new Identifier(null, null)];
-    this.sharePurposes = [new Identifier(PURPOSE_OF_USE_SYSTEM, "TREAT")];
+    this.fromProviders = new Identifiers([new Identifier(null, null)]);
+    this.toProviders = new Identifiers([new Identifier(null, null)]);
+    this.shareSensitivityCategories = new Identifiers([new Identifier(null, null)]);
+    this.sharePurposes = new Identifiers([new Identifier(PURPOSE_OF_USE_SYSTEM, "TREAT")]);
     this.startDate = new Date;
     this.endDate = new Date;
   }

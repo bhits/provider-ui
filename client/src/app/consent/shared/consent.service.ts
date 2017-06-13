@@ -141,24 +141,4 @@ export class ConsentService {
     }
     return null;
   }
-
-  public mapConsentToCreateEditConsent(consent: Consent): any {
-    return {
-      id: consent.id,
-      fromProviders: {
-        identifiers: consent.fromProviders
-      },
-      toProviders: {
-        identifiers: consent.toProviders
-      },
-      shareSensitivityCategories: {
-        identifiers: consent.shareSensitivityCategories
-      },
-      sharePurposes: {
-        identifiers: consent.sharePurposes
-      },
-      startDate: consent.startDate,
-      endDate: consent.endDate,
-    }
-  }
 }

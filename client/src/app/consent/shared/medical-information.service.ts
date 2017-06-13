@@ -24,7 +24,7 @@ export class MedicalInformationService {
     let selected: VssSensitivityCategory[] = [];
     this.setSensitivityPoliciesStatusToUnChecked(sensitivityCategories);
 
-    consent.shareSensitivityCategories.forEach(s1 => {
+    consent.shareSensitivityCategories.identifiers.forEach(s1 => {
       sensitivityCategories.forEach(s2 => {
         if (s1[this.VALUE] === s2.code) {
           s2[this.CHECK] = true;
