@@ -43,4 +43,8 @@ export class ConsentCreateEditComponent implements OnInit {
   public cancel(): void {
     this.utilityService.navigateTo(this.consentListUrl);
   }
+
+  public saveConsent() {
+    console.log(this.consent);
+  }
 }

@@ -8,19 +8,29 @@
       <tr>
         <td>
           <span>Start Date:
-            <md2-datepicker class="font-size12"
+            <md2-datepicker [(ngModel)]="startDate" (change)="onStartDateChanged()"
                             [openOnFocus]="isOpenOnFocus" [format]="FORMAT">
             </md2-datepicker>
           </span>
         </td>
         <td>
           <span>End Date:
-            <md2-datepicker [openOnFocus]="isOpenOnFocus" [format]="FORMAT">
+            <md2-datepicker [(ngModel)]="endDate" (change)="onEndDateChanged()"
+                            [openOnFocus]="isOpenOnFocus" [format]="FORMAT">
             </md2-datepicker>
           </span>
         </td>
       </tr>
       <tr>
+        <div *ngIf="isStartDatePastDate" class="has-error">
+          Start date should be in the present
+        </div>
+        <div *ngIf="isEndDatePastDate" class="has-error">
+          End date should be in the present.
+        </div>
+        <div *ngIf="isStartDateAfterEndDate" class="has-error">
+          Start date CAN NOT exceed End date.
+        </div>
       </tr>
     </table>
   </md-card-content>

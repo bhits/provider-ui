@@ -41,6 +41,15 @@ export class UtilityService {
     }
   }
 
+  public isPastDate(date: Date): boolean {
+    let today = new Date();
+    return date < today;
+  }
+
+  public isFirstDateBeforeSecondDate(firstDate: Date, secondDate: Date): boolean {
+    return firstDate < secondDate;
+  }
+
   private base64StringtoBlob(b64Data, contentType, sliceSize ?): Blob {
     contentType = contentType || '';
     sliceSize = sliceSize || 512;

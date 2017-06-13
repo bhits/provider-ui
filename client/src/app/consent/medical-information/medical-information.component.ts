@@ -89,8 +89,6 @@ export class MedicalInformationComponent implements OnInit {
   }
 
   private checkAllCategoriesSelected() {
-    console.log("before: " + this.isAllCategoriesSelected);
     this.isAllCategoriesSelected = this.medicalInformationService.isCheckedAll(this.sensitivityCategories);
-    console.log("after: " + this.isAllCategoriesSelected);
   }
 }
