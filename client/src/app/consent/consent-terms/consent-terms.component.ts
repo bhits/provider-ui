@@ -50,6 +50,7 @@ export class ConsentTermsComponent implements OnInit {
       this.patientConsent.endDate = this.endDate;
       this.consentService.setConsentEmitter(this.patientConsent);
     } else {
+      this.patientConsent.startDate = null;
       this.consentService.setConsentEmitter(this.patientConsent);
     }
   }
@@ -62,6 +63,7 @@ export class ConsentTermsComponent implements OnInit {
       this.patientConsent.endDate = this.endDate;
       this.consentService.setConsentEmitter(this.patientConsent);
     } else {
+      this.patientConsent.endDate = null;
       this.consentService.setConsentEmitter(this.patientConsent);
     }
   }

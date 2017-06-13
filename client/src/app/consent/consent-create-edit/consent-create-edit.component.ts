@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
 import {UtilityService} from "../../shared/utility.service";
-import {ApiUrlService} from "../../shared/api-url.service";
 import {Patient} from "../../patient/shared/patient.model";
 import {ActivatedRoute} from "@angular/router";
 import {Consent} from "../shared/consent.model";
 import {ConsentService} from "app/consent/shared/consent.service";
+import {NotificationService} from "app/shared/notification.service";
 
 @Component({
   selector: 'c2s-consent-create-edit',
@@ -16,9 +16,9 @@ export class ConsentCreateEditComponent implements OnInit {
   private selectedPatient: Patient;
   private consentListUrl: string;
 
-  constructor(private apiUrlService: ApiUrlService,
-              private consentService: ConsentService,
+  constructor(private consentService: ConsentService,
               private route: ActivatedRoute,
+              private notificationService: NotificationService,
               private utilityService: UtilityService) {
   }
 
@@ -44,7 +44,20 @@ export class ConsentCreateEditComponent implements OnInit {
     this.utilityService.navigateTo(this.consentListUrl);
   }
 
-  public saveConsent() {
-    console.log(this.consent);
+  public createEditConsent() {
+    if (this.consent.id != null) {
+      //Consent Edit Mode
+    } else {
+      // Consent Create Mode
+      this.consentService.createConsent(this.selectedPatient.mrn, this.consent)
+        .subscribe(
+          () => {
+            this.utilityService.navigateTo(this.consentListUrl);
+          },
+          err => {
+            this.notificationService.show("Error in creating consent.");
+          }
+        );
+    }
   }
 }
