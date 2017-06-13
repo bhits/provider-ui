@@ -55,4 +55,13 @@ export class MedicalInformationService {
     });
     return selected;
   }
+
+  public isCheckedAll(sensitivityCategories: VssSensitivityCategory[]): boolean {
+    for (let sp of sensitivityCategories) {
+      if (!sp[this.CHECK]) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
