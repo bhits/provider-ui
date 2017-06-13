@@ -35,7 +35,7 @@ export class ConsentCreateEditComponent implements OnInit {
       params => {
         if (params['consentId']) {
           //Consent Edit Mode
-          let consent: Consent = this.route.snapshot.data['consentId'];
+          let consent: Consent = this.route.snapshot.data['consent'];
           this.consentService.setConsentEmitter(consent);
         }
       });
@@ -50,7 +50,7 @@ export class ConsentCreateEditComponent implements OnInit {
       //Consent Edit Mode
     } else {
       // Consent Create Mode
-      this.consentService.createConsent(this.selectedPatient.mrn, this.consentService.mapConsentToCreateEditConsent(this.consent))
+      this.consentService.createConsent(this.selectedPatient.mrn, this.consent)
         .subscribe(
           () => {
             this.utilityService.navigateTo(this.consentListUrl);
@@ -63,10 +63,10 @@ export class ConsentCreateEditComponent implements OnInit {
   }
 
   public isConsentFromInValid(): boolean {
-    return this.checkConsentFieldInvalid(this.consent.fromProviders)
-      || this.checkConsentFieldInvalid(this.consent.toProviders)
-      || this.checkConsentFieldInvalid(this.consent.shareSensitivityCategories)
-      || this.checkConsentFieldInvalid(this.consent.sharePurposes)
+    return this.checkConsentFieldInvalid(this.consent.fromProviders.identifiers)
+      || this.checkConsentFieldInvalid(this.consent.toProviders.identifiers)
+      || this.checkConsentFieldInvalid(this.consent.shareSensitivityCategories.identifiers)
+      || this.checkConsentFieldInvalid(this.consent.sharePurposes.identifiers)
       || this.consent.startDate == null
       || this.consent.endDate == null
   }

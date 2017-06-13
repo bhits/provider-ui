@@ -42,7 +42,7 @@ export class PurposeOfUseComponent implements OnInit {
   public updateSelectedPurposesOfUse(dialog: any) {
     dialog.close();
     this.selectedPurposeOfUses = this.purposeOfUseService.getCheckedPurposeOfUse(this.purposeOfUses);
-    this.patientConsent.sharePurposes = this.purposeOfUseService.getSelectedPurposeOfUse(this.purposeOfUses);
+    this.patientConsent.sharePurposes.identifiers = this.purposeOfUseService.getSelectedPurposeOfUse(this.purposeOfUses);
     this.consentService.setConsentEmitter(this.patientConsent);
   }
 }

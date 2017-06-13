@@ -36,11 +36,11 @@ export class SelectProviderComponent implements OnInit {
     }
   }
 
-  public isSelectedProvider(npi: string) {
-    if ((this.isAuthorizedProviders) && this.patientConsent.toProviders[0]) {
-      return (this.patientConsent.toProviders[0].value === npi);
-    } else if ((!this.isAuthorizedProviders) && this.patientConsent.fromProviders[0]) {
-      return (this.patientConsent.fromProviders[0].value === npi);
+  public isSelectedProvider(npi: string): boolean {
+    if ((this.isAuthorizedProviders) && this.patientConsent.toProviders.identifiers[0]) {
+      return (this.patientConsent.toProviders.identifiers[0].value === npi);
+    } else if ((!this.isAuthorizedProviders) && this.patientConsent.fromProviders.identifiers[0]) {
+      return (this.patientConsent.fromProviders.identifiers[0].value === npi);
     }
     return false;
   }
@@ -49,19 +49,19 @@ export class SelectProviderComponent implements OnInit {
     dialog.close();
     this.consentProvider = this.consentService.getProviderByNPI(this.patientProviders, this.selectedProviderNpi);
     if (this.isAuthorizedProviders) {
-      this.patientConsent.fromProviders = this.consentProvider.identifiers;
+      this.patientConsent.fromProviders.identifiers = this.consentProvider.identifiers;
       this.consentService.setConsentEmitter(this.patientConsent);
     } else {
-      this.patientConsent.toProviders = this.consentProvider.identifiers;
+      this.patientConsent.toProviders.identifiers = this.consentProvider.identifiers;
       this.consentService.setConsentEmitter(this.patientConsent);
     }
   }
 
   private assignConsentProviders() {
     if (this.isAuthorizedProviders) {
-      this.consentProvider.identifiers = this.patientConsent.fromProviders;
+      this.consentProvider = this.consentService.getProviderByNPI(this.patientProviders, this.patientConsent.fromProviders.identifiers[0].value);
     } else {
-      this.consentProvider.identifiers = this.patientConsent.toProviders;
+      this.consentProvider = this.consentService.getProviderByNPI(this.patientProviders, this.patientConsent.toProviders.identifiers[0].value);
     }
   }
 }

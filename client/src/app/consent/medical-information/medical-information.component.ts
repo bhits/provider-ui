@@ -62,7 +62,7 @@ export class MedicalInformationComponent implements OnInit {
 
     this.isShareAll = value;
     dialog.open(this.dialogConfig);
-    this.patientConsent.shareSensitivityCategories = this.medicalInformationService.getSelectedSensitivityPolicyIdentifiers(this.sensitivityCategories);
+    this.patientConsent.shareSensitivityCategories.identifiers = this.medicalInformationService.getSelectedSensitivityPolicyIdentifiers(this.sensitivityCategories);
     this.consentService.setConsentEmitter(this.patientConsent);
   }
 
@@ -74,7 +74,7 @@ export class MedicalInformationComponent implements OnInit {
   public setSelectedMedicalInformation(dialog: any) {
     dialog.close();
     this.selectedSensitivityCategories = this.medicalInformationService.getSelectedSensitivityPolicies(this.sensitivityCategories);
-    this.patientConsent.shareSensitivityCategories = this.medicalInformationService.getSelectedSensitivityPolicyIdentifiers(this.sensitivityCategories);
+    this.patientConsent.shareSensitivityCategories.identifiers = this.medicalInformationService.getSelectedSensitivityPolicyIdentifiers(this.sensitivityCategories);
     this.consentService.setConsentEmitter(this.patientConsent);
   }
 

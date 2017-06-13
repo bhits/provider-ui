@@ -25,7 +25,7 @@ export class PurposeOfUseService {
     let selected: SharePurpose[] = [];
     this.setPurposeOfUseStatusToUnChecked(purposeOfUses);
 
-    consent.sharePurposes.forEach(p1 => {
+    consent.sharePurposes.identifiers.forEach(p1 => {
         purposeOfUses.forEach(p2 => {
           if (p1[this.VALUE] === p2.identifier[this.VALUE]) {
             p2[this.CHECK] = true;
