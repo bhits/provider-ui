@@ -17,6 +17,10 @@ export class PurposeOfUseService {
     purposeOfUses.forEach(p => p[this.CHECK] = true);
   }
 
+  public setPurposeOfUseStatusToUnChecked(purposeOfUses: SharePurpose[]) {
+    purposeOfUses.forEach(purposeOfUse => purposeOfUse[this.CHECK] = false);
+  }
+
   public mapConsentSharePurposesToSharePurposes(consent: Consent, purposeOfUses: SharePurpose[]): SharePurpose[] {
     let selected: SharePurpose[] = [];
     this.setPurposeOfUseStatusToUnChecked(purposeOfUses);
@@ -33,14 +37,10 @@ export class PurposeOfUseService {
     return selected;
   }
 
-  setPurposeOfUseStatusToUnChecked(purposeOfUses: SharePurpose[]) {
-    purposeOfUses.forEach(purposeOfUse => purposeOfUse[this.CHECK] = false);
-  }
-
   public getSelectedPurposeOfUse(purposeOfUSes: SharePurpose[]): Identifier[] {
     let selected: Identifier[] = [];
     purposeOfUSes.forEach(sharePurpose => {
-      if (sharePurpose['checked']) {
+      if (sharePurpose[this.CHECK]) {
         selected.push(new Identifier(sharePurpose.identifier.system, sharePurpose.identifier.value));
       }
     });
@@ -48,25 +48,14 @@ export class PurposeOfUseService {
     return selected;
   }
 
-  public getCheckedPurposeOfUse(purposeOfUse: SharePurpose[]): string[] {
+  public getCheckedPurposeOfUse(purposeOfUses: SharePurpose[]): string[] {
     let checkedPurposeOfUse: string[] = [];
-    purposeOfUse.forEach(p => {
+    purposeOfUses.forEach(p => {
       if (p[this.CHECK]) {
         checkedPurposeOfUse.push(p[this.DISPLAY])
       }
     });
 
     return checkedPurposeOfUse;
-  }
-
-  public updateSelectedPurposeOfUse(checkedPurposOfUse: string[], purposeOfUse: SharePurpose[]) {
-    checkedPurposOfUse.forEach(value => {
-        purposeOfUse.forEach(p2 => {
-          if (value === p2[this.VALUE]) {
-            p2[this.CHECK] = true;
-          }
-        })
-      }
-    );
   }
 }

@@ -18,6 +18,7 @@ import {MedicalInformationComponent} from "./medical-information/medical-informa
 import {PurposeOfUseComponent} from "./purpose-of-use/purpose-of-use.component";
 import {FormsModule} from "@angular/forms";
 import {PurposeOfUseService} from "app/consent/shared/purpose-of-use.service";
+import {MedicalInformationService} from "./shared/medical-information.service";
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import {PurposeOfUseService} from "app/consent/shared/purpose-of-use.service";
   providers: [
     ConsentService,
     PurposeOfUseService,
+    MedicalInformationService,
     routedConsentResolveServices]
 })
 export class ConsentModule {
