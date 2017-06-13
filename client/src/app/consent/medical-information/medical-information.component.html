@@ -21,12 +21,6 @@
                          (click)="onSelectDoNotShareAll(medicalInformationDialog, medInfoB.value)">
           <span
             [innerHTML]="'<strong>SHARE</strong> my medical record <strong>WITH EXCEPTION</strong> of specific medical information categories.'"></span>
-          <button type="button" class="lineHeight28" *ngIf="(isShareAll === 0)"
-                  md-raised-button
-                  color="primary"
-                  (click)="onSelectEditDoNotShareAll(medicalInformationDialog,medInfoB.value)">
-            Edit
-          </button>
         </md-radio-button>
       </div>
     </md-radio-group>

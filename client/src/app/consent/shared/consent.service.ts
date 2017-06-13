@@ -68,6 +68,14 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
+  public updateConsent(patientMrn: string, consent: Consent): Observable<void> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + consent.id);
+    return this.http.put(resourceUrl, consent)
+      .map(() => null)
+      .catch(this.exceptionService.handleError);
+  }
+
   public deleteConsent(patientMrn: string, id: number): Observable<void> {
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/" + id);
