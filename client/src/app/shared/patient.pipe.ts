@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {UtilityService} from "../../shared/utility.service";
-import {Patient} from "./patient.model";
+import {Patient} from "../patient/shared/patient.model";
+import {UtilityService} from "./utility.service";
 
 type ArgType =
   "id"

@@ -4,7 +4,8 @@ import {ProvidersComponent} from "./providers/providers.component";
 import {ProviderSearchComponent} from "./provider-search/provider-search.component";
 import {CanActivateAuthGuardService} from "../security/shared/can-activate-auth-guard.service";
 import {PatientCreationLookupResolveService} from "../patient/shared/patient-creation-lookup-resolve.service";
-import {ProviderPatientResolveService} from "app/provider/shared/provider-patient-resolve.service";
+import {ProvidersResolveService} from "app/provider/shared/providers-resolve.service";
+import {PatientResolveService} from "app/patient/shared/patient-resolve.service";
 
 const providerRoutes: Routes = [
   {
@@ -12,13 +13,16 @@ const providerRoutes: Routes = [
     component: ProvidersComponent,
     canActivate: [CanActivateAuthGuardService],
     canActivateChild: [CanActivateAuthGuardService],
+    resolve: {
+      patient: PatientResolveService,
+    },
     children: [
       {
         path: 'search',
         component: ProviderSearchComponent,
         resolve: {
           patientCreationLookupInfo: PatientCreationLookupResolveService,
-          patient: ProviderPatientResolveService
+          providers: ProvidersResolveService
         }
       }
     ]
@@ -38,5 +42,5 @@ export const routedProviderComponents = [
 ];
 
 export const routedProviderResolveServices = [
-  ProviderPatientResolveService
+  ProvidersResolveService
 ];

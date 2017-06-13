@@ -1,19 +1,28 @@
 import {Injectable} from "@angular/core";
-import {Http, Response, URLSearchParams} from "@angular/http";
+import {Headers, Http, Response, URLSearchParams} from "@angular/http";
 import {ApiUrlService} from "../../shared/api-url.service";
 import {Observable} from "rxjs/Observable";
 import {SharePurpose} from "./share-purpose.model";
 import {ExceptionService} from "app/shared/exception.service";
-import {Consent} from "app/consent/shared/consent.model";
 import {PageableData} from "app/shared/pageable-data.model";
 import {BinaryFile} from "app/shared/binary-file.model";
 import {NotificationService} from "app/shared/notification.service";
 import {UtilityService} from "app/shared/utility.service";
+import {DetailedConsent} from "app/consent/shared/detailed-consent.model";
+import {Consent} from "app/consent/shared/consent.model";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Provider} from "app/provider/shared/provider.model";
+import {VssSensitivityCategory} from "app/consent/shared/vss-sensitivity-category.model";
 
 @Injectable()
 export class ConsentService {
   private pcmPurposeOfUseUrl: string = this.apiUrlService.getPcmBaseUrl().concat("/purposes");
+  private vssSensitivityCategoriesUrl: string = this.apiUrlService.getVssBaseUrl().concat("/valueSetCategories");
   private pepSegmentDocumentUrl: string = this.apiUrlService.getPepUrl().concat("/segmentDocument");
+
+  //TODO: Refactor with redux
+  private consentSubject: BehaviorSubject<Consent> = new BehaviorSubject<Consent>(null);
+  public consentEmitter: Observable<Consent> = this.consentSubject.asObservable();
 
   constructor(private http: Http,
               private apiUrlService: ApiUrlService,
@@ -22,14 +31,40 @@ export class ConsentService {
               private utilityService: UtilityService) {
   }
 
-  public getConsents(patientMrn: string, page: number, size: number): Observable<PageableData<Consent>> {
+  public getConsentEmitter(): Observable<Consent> {
+    return this.consentEmitter;
+  }
+
+  public setConsentEmitter(consent: Consent) {
+    this.consentSubject.next(consent);
+  }
+
+  public getConsents(patientMrn: string, page: number, size: number): Observable<PageableData<DetailedConsent>> {
     let params: URLSearchParams = new URLSearchParams();
     params.set('page', page.toString());
     params.set('size', size.toString());
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/");
     return this.http.get(resourceUrl, {search: params})
-      .map((resp: Response) => <PageableData<Consent>>(resp.json()))
+      .map((resp: Response) => <PageableData<DetailedConsent>>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+  public getConsent(patientMrn: string, id: number): Observable<Consent> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + id);
+    return this.http.get(resourceUrl)
+      .map((resp: Response) => <Consent>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+  public createConsent(patientMrn: string, consent: Consent): Observable<void> {
+    //Todo: Remove it once integrate with i18
+    const headers = new Headers({'Accept-Language': 'en'});
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/");
+    return this.http.post(resourceUrl, consent, {headers: headers})
+      .map(() => null)
       .catch(this.exceptionService.handleError);
   }
 
@@ -88,5 +123,42 @@ export class ConsentService {
     return this.http.get(this.pcmPurposeOfUseUrl)
       .map((resp: Response) => <SharePurpose[]>(resp.json()))
       .catch(this.exceptionService.handleError);
+  }
+
+  public getSensitivityCategories(): Observable<VssSensitivityCategory[]> {
+    //Todo: Remove it once integrate with i18
+    const headers = new Headers({'Accept-Language': 'en'});
+    return this.http.get(this.vssSensitivityCategoriesUrl, {headers: headers})
+      .map((resp: Response) => <VssSensitivityCategory[]>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+  public getProviderByNPI(patientProviders: Provider[], selectedProviderNpi: string) {
+    for (let provider of patientProviders) {
+      if (provider.identifiers[0].value === selectedProviderNpi) {
+        return provider;
+      }
+    }
+    return null;
+  }
+
+  public mapConsentToCreateEditConsent(consent: Consent): any {
+    return {
+      id: consent.id,
+      fromProviders: {
+        identifiers: consent.fromProviders
+      },
+      toProviders: {
+        identifiers: consent.toProviders
+      },
+      shareSensitivityCategories: {
+        identifiers: consent.shareSensitivityCategories
+      },
+      sharePurposes: {
+        identifiers: consent.sharePurposes
+      },
+      startDate: consent.startDate,
+      endDate: consent.endDate,
+    }
   }
 }

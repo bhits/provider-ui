@@ -31,7 +31,6 @@
           <c2s-consent-card
             *ngFor="let consent of asyncConsents | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
             [consent]="consent"
-            [patient]="patient"
             (deleteConsent)="onDeleteConsent($event)">
           </c2s-consent-card>
           <div fxLayoutAlign="center">

@@ -3,6 +3,11 @@ import {RouterModule, Routes} from "@angular/router";
 import {ConsentsComponent} from "app/consent/consents/consents.component";
 import {CanActivateAuthGuardService} from "app/security/shared/can-activate-auth-guard.service";
 import {ConsentCreateEditComponent} from "app/consent/consent-create-edit/consent-create-edit.component";
+import {PatientResolveService} from "app/patient/shared/patient-resolve.service";
+import {ConsentResolveService} from "app/consent/shared/consent-resolve.service";
+import {ProvidersResolveService} from "app/provider/shared/providers-resolve.service";
+import {PurposeOfUsesResolveService} from "./shared/purpose-of-uses-resolve.service";
+import {SensitivityCategoriesResolveService} from "app/consent/shared/sensitivity-categories-resolve.service";
 
 const consentRoutes: Routes = [
   {
@@ -10,10 +15,26 @@ const consentRoutes: Routes = [
     component: ConsentsComponent,
     canActivate: [CanActivateAuthGuardService],
     canActivateChild: [CanActivateAuthGuardService],
+    resolve: {
+      patient: PatientResolveService,
+      purposeOfUses: PurposeOfUsesResolveService,
+      sensitivityCategories: SensitivityCategoriesResolveService
+    },
     children: [
       {
         path: 'create',
-        component: ConsentCreateEditComponent
+        component: ConsentCreateEditComponent,
+        resolve: {
+          providers: ProvidersResolveService
+        },
+      },
+      {
+        path: ':consentId',
+        component: ConsentCreateEditComponent,
+        resolve: {
+          consent: ConsentResolveService,
+          providers: ProvidersResolveService
+        },
       }
     ]
   }
@@ -29,4 +50,10 @@ export class ConsentRoutingModule {
 export const routedConsentComponents = [
   ConsentsComponent,
   ConsentCreateEditComponent
+];
+
+export const routedConsentResolveServices = [
+  ConsentResolveService,
+  PurposeOfUsesResolveService,
+  SensitivityCategoriesResolveService
 ];

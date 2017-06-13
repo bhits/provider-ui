@@ -1,0 +1,114 @@
+<md-card class="left-align p-none m-sm section-border-thin hover">
+  <md-card-title class="bg-forest-green p-sm white"><i class="material-icons md-36 bottom p-r-xs">content_paste</i>
+    Medical Information
+  </md-card-title>
+  <md-card-content class="p-15">
+    <p>Select how you would like to share your medical information.</p>
+    <md-radio-group [(ngModel)]="isShareAll">
+      <div>
+        <md-radio-button name="medicalInformation"
+                         #medInfoA
+                         [value]="1"
+                         (click)="onSelectShareAll(medicalInformationDialog, medInfoA.value)">
+          <span
+            [innerHTML]="'<strong>SHARE</strong> my medical record <strong>WITHOUT ANY EXCEPTION</strong> of medical information categories.'"></span>
+        </md-radio-button>
+      </div>
+      <div>
+        <md-radio-button name="medicalInformation"
+                         #medInfoB
+                         [value]="0"
+                         (click)="onSelectDoNotShareAll(medicalInformationDialog, medInfoB.value)">
+          <span
+            [innerHTML]="'<strong>SHARE</strong> my medical record <strong>WITH EXCEPTION</strong> of specific medical information categories.'"></span>
+          <button type="button" class="lineHeight28" *ngIf="(isShareAll === 0)"
+                  md-raised-button
+                  color="primary"
+                  (click)="onSelectEditDoNotShareAll(medicalInformationDialog,medInfoB.value)">
+            Edit
+          </button>
+        </md-radio-button>
+      </div>
+    </md-radio-group>
+    <br><br>
+    <md-chip-list>
+      <md-chip class="medInfo" *ngFor="let sensitivityCategory of selectedSensitivityCategories"
+               color="accent" selected="true">
+        <md-icon>lock</md-icon>
+        <span class="md-chip-icon-text">{{sensitivityCategory}}</span>
+      </md-chip>
+    </md-chip-list>
+  </md-card-content>
+</md-card>
+
+<md2-dialog #medicalInformationDialog>
+  <md2-dialog-title>Privacy Settings</md2-dialog-title>
+  <md-card class="left-align">
+    <md-card-title>Sensitive Information Categories</md-card-title>
+    <md-card-content class="p-l-sm p-r-sm p-b-md">
+      <h2>Select the medical information that you wish to share.</h2>
+      <h4 *ngIf="isAllCategoriesSelected">
+        Please select the "Share my medical record without any exceptions" option,if you want to share all of your
+        health information.
+      </h4>
+      <div>
+        <strong>
+          {{federalInfo.title}}
+          <md-icon tooltip="{{federalInfo.description}}"
+                   tooltip-positionh="below"
+                   tooltip-delay="100">info
+          </md-icon>
+        </strong>
+      </div>
+      <div *ngFor="let sensitivityCategory of sensitivityCategories; let i = index;">
+        <md-checkbox *ngIf="sensitivityCategory.federal"
+                     [(ngModel)]="sensitivityCategories[i].checked"
+                     [disabled]="(isShareAll === 1)"
+                     (change)="isCheckedAll()">
+          {{sensitivityCategory.displayName}}
+          <md-icon tooltip="{{sensitivityCategory.description}}"
+                   tooltip-positionh="below"
+                   tooltip-delay="100">info
+          </md-icon>
+        </md-checkbox>
+      </div>
+      <br>
+      <div>
+        <strong>
+          {{stateInfo.title}}
+          <md-icon tooltip="{{stateInfo.description}}"
+                   tooltip-positionh="below"
+                   tooltip-delay="100">info
+          </md-icon>
+        </strong>
+      </div>
+      <div *ngFor="let sensitivityCategory of sensitivityCategories; let i = index;">
+        <md-checkbox *ngIf="!sensitivityCategory.federal"
+                     [(ngModel)]="sensitivityCategories[i].checked"
+                     [disabled]="(isShareAll === 1)"
+                     (change)="isCheckedAll()">
+          {{sensitivityCategory.displayName}}
+          <md-icon tooltip="{{sensitivityCategory.description}}"
+                   tooltip-positionh="below"
+                   tooltip-delay="100">info
+          </md-icon>
+        </md-checkbox>
+      </div>
+    </md-card-content>
+  </md-card>
+  <md2-dialog-footer>
+    <button type="button" md-raised-button (click)="medicalInformationDialog.close()">
+      Cancel
+    </button>
+    <button type="button" md-raised-button color="primary"
+            *ngIf="(isShareAll === 0)"
+            [disabled]="isAllCategoriesSelected"
+            (click)="setSelectedMedicalInformation(medicalInformationDialog)">
+      Save changes
+    </button>
+    <button type="button" md-raised-button color="primary" *ngIf="(isShareAll === 1)"
+            (click)="confirmSelectAll(medicalInformationDialog)">
+      Confirm
+    </button>
+  </md2-dialog-footer>
+</md2-dialog>

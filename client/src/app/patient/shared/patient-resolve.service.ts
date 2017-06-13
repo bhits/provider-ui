@@ -17,5 +17,4 @@ export class PatientResolveService implements Resolve<any> {
         return patient
       });
   }
-
 }

@@ -1,3 +1,22 @@
-<div class="p-t-75 p-l-md p-r-md p-b">
-  <h1>Create Consents</h1>
+<div>
+  <md-grid-list cols="1">
+    <md-card class="left-align">
+      <h1>I, {{selectedPatient | patient:"fullName"}}, hereby authorize...</h1>
+    </md-card>
+    <c2s-select-providers></c2s-select-providers>
+    <c2s-medical-information></c2s-medical-information>
+    <c2s-purpose-of-use></c2s-purpose-of-use>
+    <c2s-consent-terms></c2s-consent-terms>
+    <md-card class="right-align">
+      <button md-raised-button (click)="cancel()">
+        Cancel
+      </button>
+      <button md-raised-button color="primary"
+              [disabled]="isConsentFromInValid()"
+              (click)="createEditConsent()">
+        Save
+      </button>
+    </md-card>
+  </md-grid-list>
+  <br>
 </div>
