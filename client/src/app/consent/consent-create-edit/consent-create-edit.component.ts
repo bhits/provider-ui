@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Consent} from "../shared/consent.model";
 import {ConsentService} from "app/consent/shared/consent.service";
 import {NotificationService} from "app/shared/notification.service";
+import {Identifier} from "../../shared/identifier.model";
 
 @Component({
   selector: 'c2s-consent-create-edit',
@@ -49,7 +50,7 @@ export class ConsentCreateEditComponent implements OnInit {
       //Consent Edit Mode
     } else {
       // Consent Create Mode
-      this.consentService.createConsent(this.selectedPatient.mrn, this.consent)
+      this.consentService.createConsent(this.selectedPatient.mrn, this.consentService.mapConsentToCreateEditConsent(this.consent))
         .subscribe(
           () => {
             this.utilityService.navigateTo(this.consentListUrl);
@@ -59,5 +60,23 @@ export class ConsentCreateEditComponent implements OnInit {
           }
         );
     }
+  }
+
+  public isConsentFromInValid(): boolean {
+    return this.checkConsentFieldInvalid(this.consent.fromProviders)
+      || this.checkConsentFieldInvalid(this.consent.toProviders)
+      || this.checkConsentFieldInvalid(this.consent.shareSensitivityCategories)
+      || this.checkConsentFieldInvalid(this.consent.sharePurposes)
+      || this.consent.startDate == null
+      || this.consent.endDate == null
+  }
+
+  private checkConsentFieldInvalid(identifiers: Identifier[]): boolean {
+    for (let identifier of identifiers) {
+      if (identifier.value === null) {
+        return true;
+      }
+    }
+    return false;
   }
 }

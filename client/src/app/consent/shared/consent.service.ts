@@ -59,9 +59,11 @@ export class ConsentService {
   }
 
   public createConsent(patientMrn: string, consent: Consent): Observable<void> {
+    //Todo: Remove it once integrate with i18
+    const headers = new Headers({'Accept-Language': 'en'});
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/");
-    return this.http.post(resourceUrl, consent)
+    return this.http.post(resourceUrl, consent, {headers: headers})
       .map(() => null)
       .catch(this.exceptionService.handleError);
   }
@@ -138,5 +140,25 @@ export class ConsentService {
       }
     }
     return null;
+  }
+
+  public mapConsentToCreateEditConsent(consent: Consent): any {
+    return {
+      id: consent.id,
+      fromProviders: {
+        identifiers: consent.fromProviders
+      },
+      toProviders: {
+        identifiers: consent.toProviders
+      },
+      shareSensitivityCategories: {
+        identifiers: consent.shareSensitivityCategories
+      },
+      sharePurposes: {
+        identifiers: consent.sharePurposes
+      },
+      startDate: consent.startDate,
+      endDate: consent.endDate,
+    }
   }
 }

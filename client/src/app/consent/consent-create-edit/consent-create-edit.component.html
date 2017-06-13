@@ -11,7 +11,9 @@
       <button md-raised-button (click)="cancel()">
         Cancel
       </button>
-      <button md-raised-button color="primary" (click)="createEditConsent()">
+      <button md-raised-button color="primary"
+              [disabled]="isConsentFromInValid()"
+              (click)="createEditConsent()">
         Save
       </button>
     </md-card>
