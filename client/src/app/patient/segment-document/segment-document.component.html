@@ -11,8 +11,8 @@
   <div fxLayout="row" fxLayoutGap="20px">
     <div fxFlex>
       <p><br>
-        <span >Patient Name: <strong>Barbara Baker </strong> </span>
-        <span >Patient DOB: <strong>05/01/1977</strong> </span>
+        <span >Patient Name: <strong>{{patient | patient:fullName}} </strong> </span>
+        <span >Patient DOB: <strong>{{patient | patient:birthDate}}</strong> </span>
       </p>
     </div>
   </div>
@@ -27,6 +27,7 @@
         <md-input-container class="full-width font-size20">
           <input mdInput placeholder="Authorize Provider NPI" #authorizeProvider (blur)="onBlurOnAuthorizeProvider($event.target.value)" formControlName="intermediaryNpi">
         </md-input-container>
+        <span></span>
       </div>
     </div>
     <div fxLayout="row" fxLayoutGap="20px">

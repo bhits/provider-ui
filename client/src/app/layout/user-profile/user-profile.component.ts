@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Profile} from "../../core/profile.model";
 import {AuthenticationService} from "../../security/shared/authentication.service";
+import {ProfileService} from "../../security/shared/profile.service";
 
 @Component({
   selector: 'c2s-user-profile',
@@ -9,20 +10,12 @@ import {AuthenticationService} from "../../security/shared/authentication.servic
 })
 export class UserProfileComponent implements OnInit {
 
-  public profile: Profile;
+  userName: String;
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private profileService: ProfileService) {
   }
 
   ngOnInit() {
-    this.authenticationService.getUserInfo()
-      .subscribe(
-        (res) => {
-          this.profile = new Profile(res.name);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    this.userName = this.profileService.getFullName();
   }
 }

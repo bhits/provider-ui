@@ -4,6 +4,8 @@ import {TranslateService} from "@ngx-translate/core";
 import {Http} from "@angular/http";
 import {ApiUrlService} from "../shared/api-url.service";
 import {ExceptionService} from "../shared/exception.service";
+import {ProfileService} from "../security/shared/profile.service";
+import {UmsProfile} from "../security/shared/ums-profile.model";
 
 
 @Injectable()
@@ -11,7 +13,7 @@ export class CustomTranslateService {
   private umsProfileUrl: string = this.apiUrlService.getUmsBaseUrl().concat("/users/locale");
 
   constructor( private translateService: TranslateService,
-               // private profileService: ProfileService,
+               private profileService: ProfileService,
                private http: Http,
                private apiUrlService: ApiUrlService,
                private exceptionService: ExceptionService,) {
@@ -30,29 +32,21 @@ export class CustomTranslateService {
     this.translateService.use(locale);
   }
 
-  updateDefaultLanguage(){
-    // Will dynamically set the selected locale in the headers
-    this.http.put(this.umsProfileUrl, {})
-      .map(() => null)
-      .subscribe(
-        (response) =>{
-        },
-        (error) => {
-          this.exceptionService.handleError
-        }
-      );
+  updateDefaultLanguage(locale:string){
+    this.translateService.use(locale);
+    // TODO Should update backend with selected locale
+    this.updateProfileLocale(locale);
   }
 
   private updateProfileLocale(locale:string){
-    // let profile: UmsProfile = this.profileService.getProfileFromSessionStorage();
-    // if(profile){
-    //   profile.userLocale = locale;
-    //   this.profileService.setProfileInSessionStorage(profile);
-    // }
+    let profile: UmsProfile = this.profileService.getProfileFromSessionStorage();
+    if(profile){
+      profile.userLocale = locale;
+      this.profileService.setProfileInSessionStorage(profile);
+    }
   }
 
   getSupportedLanguages(): any[]{
-    return null;
-    // return this.profileService.getProfileFromSessionStorage().supportedLocales;
+    return this.profileService.getProfileFromSessionStorage().supportedLocales;
   }
 }

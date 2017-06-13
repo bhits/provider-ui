@@ -6,8 +6,4 @@ export class Profile {
   email: string;
   name: string;
   birthDate?: Date;
-
-  constructor(userName: string) {
-    this.userName = userName;
-  }
 }

@@ -8,16 +8,21 @@ import {UserInfoResponse} from "./user-info-response.model";
 import {TokenService} from "./token.service";
 import {UtilityService} from "../../shared/utility.service";
 import {GlobalEventManagementService} from "../../core/global-event-management.service";
+import {Profile} from "../../core/profile.model";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthenticationService {
   //Todo: get from configuration
   private AUTHORIZATION_HEADER: string = 'cHJvdmlkZXItdWk6Y2hhbmdlaXQ=';
+  HOME:string ='home';
+  oauth2UserInfoUrl: string = "/uaa/userinfo";
 
   constructor(private apiUrlService: ApiUrlService,
               private exceptionService: ExceptionService,
               private globalEventManagementService: GlobalEventManagementService,
               private http: Http,
+              private router: Router,
               private tokenService: TokenService,
               private utilityService: UtilityService) {
   }
@@ -44,7 +49,7 @@ export class AuthenticationService {
   }
 
   public logout(): void {
-    this.tokenService.deleteOauthToken();
+    this.tokenService.deleteAccessToken();
     this.globalEventManagementService.setShowHeader(false);
     this.utilityService.navigateTo(this.apiUrlService.getLoginUrl());
   }
@@ -55,4 +60,16 @@ export class AuthenticationService {
       .map((resp: Response) => <UserInfoResponse>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
+  onGetUserProfileSuccess(profile:Profile){
+    this.globalEventManagementService.setShowHeader(true);
+    this.globalEventManagementService.setProfile(profile);
+    this.router.navigate([this.HOME]);
+  }
+
+  getUserProfile(){
+    return this.http.get(this.oauth2UserInfoUrl)
+      .map((resp: Response) => <any>(resp.json()));
+  }
+
+
 }

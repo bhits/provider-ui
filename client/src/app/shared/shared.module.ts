@@ -19,11 +19,14 @@ import {Ng2PaginationModule} from "ng2-pagination";
 import {ProviderPipe} from "./provider.pipe";
 import {BrowserService} from "app/shared/browser.service";
 import {PatientPipe} from "./patient.pipe";
+import {TranslateModule} from "@ngx-translate/core";
+
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    TranslateModule
   ],
   declarations: [
     UsPhoneNumberPipe,
@@ -54,6 +57,7 @@ import {PatientPipe} from "./patient.pipe";
     ShowHidePasswordComponent,
     ProviderPipe,
     PatientPipe,
+    TranslateModule,
     UsPhoneNumberPipe
   ]
 })
