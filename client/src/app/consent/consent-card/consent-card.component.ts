@@ -92,7 +92,7 @@ export class ConsentCardComponent implements OnInit {
   }
 
   public getRouterLink(consentOption: ConsentStageOption): any {
-    return consentOption.routerLink ? [consentOption.routerLink, this.consent.id] : '.'
+    return consentOption.routerLink ? ["/patients".concat("/" + this.selectedPatient.id).concat(consentOption.routerLink), this.consent.id] : '.'
   }
 
   public confirmDeleteConsent(dialog: any) {

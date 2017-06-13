@@ -12,7 +12,7 @@ export const CONSENT_STAGES: ConsentStage[] = [
         key: ConsentStageOptionKey.EDIT,
         icon: "edit",
         text: "Edit This Consent",
-        routerLink: '/consent-create-edit'
+        routerLink: '/consents'
       },
       {
         key: ConsentStageOptionKey.DOWNLOAD_SAVED_PDF,
