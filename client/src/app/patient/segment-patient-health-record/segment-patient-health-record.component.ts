@@ -12,6 +12,7 @@ export class SegmentPatientHealthRecordComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.patient);
   }
 
 }

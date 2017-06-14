@@ -1,34 +1,43 @@
 <div class="p-t-75 p-l-md p-r-md p-b">
-  <h1>Document Segmentation</h1>
+  <h1>
+    {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.COMPONENT_TITLE' | translate }}
+  </h1>
   <div fxLayoutAlign="left">
     <div style="padding-top: 20px">
       <div style="background-color: #DEBCC9;" class="p-md font-size18 font-weight center-sm-left" >
-        Set the options to segment this document according to the
-        consent selected.
+        {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.WARNING' | translate }}
       </div>
     </div>
   </div>
   <div fxLayout="row" fxLayoutGap="20px">
     <div fxFlex>
       <p><br>
-        <span >Patient Name: <strong>{{patient | patient:fullName}} </strong> </span>
-        <span >Patient DOB: <strong>{{patient | patient:birthDate}}</strong> </span>
+        <span >
+          {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.PATIENT_NAME' | translate }}: <strong> <strong>{{patient.firstName}} {{patient.middleName}} {{patient.lastName}} </strong> </strong>
+        </span>
+        <span >
+          {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.PATIENT_DOB' | translate }}:
+          <strong>{{patient.birthDate | date: 'MM/dd/yyyy'}} </strong>
+        </span>
       </p>
     </div>
   </div>
   <form [formGroup]="segmentationFrom" novalidate>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <div><span><h2>Authorizes:</h2></span></div>
+        <div><span><h2>
+          {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_LABEL' | translate }}:
+        </h2></span></div>
       </div>
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <md-input-container class="search-field  full-width font-size20">
-          <input mdInput type="search" placeholder="Authorize Provider NPI" #authorizeProvider (keyup)="searchAuthorizeProviders(authorizeProvider.value)" formControlName="intermediaryNpi">
+          <input mdInput type="search" placeholder=' {{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PLACEHOLDER" | translate }}' #authorizeProvider (keyup)="searchAuthorizeProviders(authorizeProvider.value)" formControlName="intermediaryNpi">
         </md-input-container>
         <div *ngIf="selectedAuthorizeProvider">
-          <label>Lookup Authorize provider: </label><span>{{ selectedAuthorizeProvider | provider:"name"}}</span>
+          <label>{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:: </label>
+          <span>{{ selectedAuthorizeProvider | provider:"name"}}</span>
         </div>
         <div *ngIf="authorizeProviders">
           <md-list>
@@ -45,20 +54,24 @@
 
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <div><span><h2>To Disclose to:</h2></span></div>
+        <div><span><h2>
+          {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_LABEL' | translate }}:
+        </h2></span></div>
       </div>
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <md-input-container class="search-field full-width font-size20">
-          <input mdInput placeholder="Disclosure Provider NPI"  #disclosureProvider (keyup)="searchDisclosureProviders(disclosureProvider.value)" formControlName="recipientNpi">
+          <input mdInput placeholder= '{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PLACEHOLDER" | translate}}' #disclosureProvider (keyup)="searchDiscloseProviders(disclosureProvider.value)" formControlName="recipientNpi">
         </md-input-container>
-        <div *ngIf="selectedDisclosureProvider">
-          <label>Lookup Disclosure provider: </label><span>{{ selectedDisclosureProvider | provider:"name"}}</span>
+        <div *ngIf="selectedDiscloseProvider">
+          <label>
+            {{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PROVIDER_NAME_LABEL" | translate}}:
+          </label><span>{{ selectedDiscloseProvider | provider:"name"}}</span>
         </div>
-        <div *ngIf="disclosureProviders">
+        <div *ngIf="discloseProviders">
           <md-list>
-            <md-list-item *ngFor="let disclosureProvider of disclosureProviders" (click)="setSelectedDisclosureProvider(disclosureProvider)">
+            <md-list-item *ngFor="let disclosureProvider of discloseProviders" (click)="setSelectedDiscloseProvider(disclosureProvider)">
               <button md-menu-item >
                 <span >{{ disclosureProvider | provider:"name"}}</span>
               </button>
@@ -69,12 +82,14 @@
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <div><span><h2>Purpose Of Use:</h2></span></div>
+        <div><span><h2>
+           {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.PURPOSE_OF_USE_LABEL' | translate }}:
+        </h2></span></div>
       </div>
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <md-select placeholder="Select One" formControlName="purposeOfUse">
+        <md-select placeholder='{{"PATIENT_EDIT.SEGMENT_DOCUMENT.PURPOSE_OF_USE_PLACEHOLDER" | translate }}' formControlName="purposeOfUse">
           <md-option *ngFor="let purposeOfUse of purposeOfUses" [value]="purposeOfUse.id" >
             {{ purposeOfUse.display }}
           </md-option>
@@ -86,7 +101,9 @@
       <div fxFlex>
         <label class="upload-button">
           <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)" formControlName="document" [uploadInput]="uploadInput">
-          <a md-raised-button >Choose File To Upload</a>
+          <a md-raised-button >
+            {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.CHOOSE_FILE_BTN' | translate }}
+          </a>
         </label>
       </div>
     </div>
@@ -94,8 +111,9 @@
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <div class="full-width font-size20">
-          <!--<input type="button" value="submit">-->
-          <a md-raised-button (click)="segmentDocument()">Segment Document</a>
+          <a md-raised-button (click)="segmentDocument()">
+            {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.SEGMENTATION_BTN' | translate }}
+          </a>
         </div>
       </div>
     </div>
@@ -103,14 +121,16 @@
 </div>
 
 <md2-dialog #segmentDocumentDialog (onClose)="navigateTo()">
-  <md2-dialog-title>Download Segmented Document</md2-dialog-title>
+  <md2-dialog-title>
+    {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.DOWNLOAD_DIALOG.TITLE' | translate }}
+  </md2-dialog-title>
   <md2-dialog-content>
     <div class="center">
       <button md-raised-button (click)="closeDialog(segmentDocumentDialog)">
-        Cancel
+        {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.DOWNLOAD_DIALOG.CANCEL_BTN' | translate }}
       </button>
       <button md-raised-button color="primary" (click)="downloadSegementedDocument(segmentDocumentDialog)">
-        Download document
+        {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.DOWNLOAD_DIALOG.DOWNLOAD_BTN' | translate }}
       </button>
     </div>
   </md2-dialog-content>

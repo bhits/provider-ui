@@ -34,13 +34,13 @@ export class SegmentDocumentComponent implements OnInit {
   public purposeOfUses: SharePurpose[]=[] ;
 
   public authorizeProviders: Provider [];
-  public disclosureProviders: Provider [];
+  public discloseProviders: Provider [];
 
   public selectedAuthorizeProvider: Provider;
-  public selectedDisclosureProvider: Provider;
+  public selectedDiscloseProvider: Provider;
 
   private searchResultAuthorizeProviders = new Subject<string>();
-  private searchResultDisclosureProviders = new Subject<string>();
+  private searchResultDiscloseProviders = new Subject<string>();
 
 
   constructor( private formBuilder: FormBuilder,
@@ -79,31 +79,31 @@ export class SegmentDocumentComponent implements OnInit {
                             this.notificationService.show("Failed to search provider, please try again later...");
                           });
 
-    this.searchResultDisclosureProviders
+    this.searchResultDiscloseProviders
             .debounceTime(300)
             .distinctUntilChanged()
             .switchMap(npi => this.providerService.getProviderByNpi(npi))
                         .subscribe(
                           (providers) => {
                             if (providers.length > 0) {
-                              this.disclosureProviders = providers;
+                              this.discloseProviders = providers;
                             }else {
-                              this.setSelectedDisclosureProvider(null);
-                              this.disclosureProviders = [];
+                              this.setSelectedDiscloseProvider(null);
+                              this.discloseProviders = [];
                             }
                           },
                           err => {
                             this.notificationService.show("Failed to search provider, please try again later...");
                           });
-
+    console.log(this.patient);
   }
 
   public searchAuthorizeProviders(npi: string): void {
     this.searchResultAuthorizeProviders.next(npi);
   }
 
-  public searchDisclosureProviders(npi: string): void {
-    this.searchResultDisclosureProviders.next(npi);
+  public searchDiscloseProviders(npi: string): void {
+    this.searchResultDiscloseProviders.next(npi);
   }
 
   setSelectedAuthorizeProvider(selectedProvider: Provider){
@@ -111,9 +111,9 @@ export class SegmentDocumentComponent implements OnInit {
     this.authorizeProviders = [];
   }
 
-  setSelectedDisclosureProvider(selectedProvider: Provider){
-    this.selectedDisclosureProvider = selectedProvider;
-    this.disclosureProviders = [];
+  setSelectedDiscloseProvider(selectedProvider: Provider){
+    this.selectedDiscloseProvider = selectedProvider;
+    this.discloseProviders = [];
   }
 
 
@@ -177,10 +177,10 @@ export class SegmentDocumentComponent implements OnInit {
   //   //get for provider from the backend
   //   this.providerService.getProviderByNpi(npi).subscribe(
   //     (disclosureProvider:Provider)=>{
-  //       this.disclosureProviders = disclosureProvider;
+  //       this.discloseProviders = disclosureProvider;
   //     },
   //     (error:any)=>{
-  //       this.disclosureProviders = null;
+  //       this.discloseProviders = null;
   //     }
   //   );
   // }
