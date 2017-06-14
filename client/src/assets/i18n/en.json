@@ -50,6 +50,15 @@
       "TITLE": "I, {{name}}, hereby authorize...",
       "CANCEL_BUTTON_LABEL": "Cancel",
       "SAVE_BUTTON_LABEL": "Save"
+    },
+    "TERMS": {
+      "TITLE": "Consent Terms",
+      "TEXT": "Enter a start and end date during with your medical records will be shared.",
+      "START_DATE": "Start Date:",
+      "END_DATE": "End Date:",
+      "ERROR_PAST_START_DATE": "Start date should be in the present.",
+      "ERROR_PAST_END_DATE": "End date should be in the present.",
+      "ERROR_END_DATE_BEFORE_START": "Start date CAN NOT exceed End date."
     }
   },
   "PROVIDER": {

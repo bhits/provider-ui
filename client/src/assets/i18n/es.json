@@ -50,6 +50,15 @@
       "TITLE": "I, {{name}}, por la presente autorizo ​​...",
       "CANCEL_BUTTON_LABEL": "Cancelar",
       "SAVE_BUTTON_LABEL": "Salvar"
+    },
+    "TERMS": {
+      "TITLE": "Términos de consentimiento",
+      "TEXT": "Ingrese una fecha de inicio y finalización durante la cual se compartirán sus registros médicos.",
+      "START_DATE": "Fecha de inicio:",
+      "END_DATE": "Fecha final:",
+      "ERROR_PAST_START_DATE": "La fecha de inicio debe estar en el presente.",
+      "ERROR_PAST_END_DATE": "La fecha de finalización debe estar en el presente.",
+      "ERROR_END_DATE_BEFORE_START": "La fecha de inicio debe continuar la fecha de finalización."
     }
   },
   "PROVIDER": {
