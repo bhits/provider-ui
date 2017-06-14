@@ -25,8 +25,10 @@
       "PAGINATION": {
         "PREVIOUS": "Previous",
         "NEXT": "Next"
-      },
-      "CARD": {
+      }
+    },
+    "CARD": {
+      "CONTENT": {
         "NPI": "NPI",
         "ADDRESS": "Address",
         "CONTACT": "Contact Number"
@@ -35,7 +37,7 @@
         "TITLE": "Delete provider",
         "DESCRIPTION": "Are you sure you want to delete this provider?",
         "BUTTON": {
-          "OK": "Ok",
+          "OK": "OK",
           "CANCEL": "Cancel"
         }
       }
@@ -49,17 +51,12 @@
         "STATE_AND_CITY": {
           "LABEL": "Enter State and City",
           "STATE_PLACEHOLDER": "Please Select State (Required)",
-          "CITY_PLACEHOLDER": "City (Required)",
-          "STATE_REQUIRED_ERROR_MSG": "State is required.",
-          "CITY_REQUIRED_ERROR_MSG": "City is required.",
-          "CITY_MIN_LENGTH_ERROR_MSG": "Must be at least 2 characters long."
+          "CITY_PLACEHOLDER": "City (Required)"
         },
         "OR": "OR",
         "ZIP_CODE": {
           "LABEL": "Enter Zip Code",
-          "ZIP_CODE_PLACEHOLDER": "Zip Code (Required)",
-          "ZIP_CODE_REQUIRED_MSG": "Zip code is required.",
-          "ZIP_CODE_FORMAT_ERROR_MSG": " Must be with formats: 12345 or 12345-6789."
+          "ZIP_CODE_PLACEHOLDER": "Zip Code (Required)"
         }
       },
       "STEP_2": {
@@ -68,21 +65,14 @@
         "PROVIDER_NAME_AND_OTHERS": {
           "LABEL": "Enter Provider Name and Other Criteria",
           "LAST_NAME_PLACEHOLDER": "Last Name (Required)",
-          "LAST_NAME_REQUIRED_MSG": "Last Name (Required)",
-          "LAST_NAME_MIN_LENGTH_MSG": "Must be at least 2 characters long.",
           "FIRST_NAME_PLACEHOLDER": "First Name (Optional)",
-          "FIRST_NAME_MIN_LENGTH_MSG": "Must be at least 2 characters long.",
           "TELEPHONE_PLACEHOLDER": "Telephone (Optional)",
-          "TELEPHONE_FORMAT_MSG": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
           "GENDER_PLACEHOLDER": "Gender (Optional)"
         },
         "OR": "OR",
         "FACILITY": {
           "LABEL": "Enter Facility Name",
           "NAME_PLACEHOLDER": "Facility Name (Required)",
-          "NAME_REQUIRED_MSG": " Facility Name is required.",
-          "NAME_MIN_LENGTH_MSG": "Must be at least 2 characters long.",
-          "TELEPHONE_FORMAT_MSG": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
           "TELEPHONE_PLACEHOLDER": "Telephone (Optional)"
         }
       },
