@@ -85,26 +85,17 @@
       }
     },
     "SELECT_PROVIDER": {
-      "TITLE": "Select Providers",
-      "AUTHORIZED_DESCRIPTION": "The following individual or organization",
-      "DISCLOSED_DESCRIPTION": "To disclose my information to",
-      "DIALOG": {
-        "AUTHORIZE_HEADER": "Authorize",
-        "AUTHORIZE_TITLE": "The following individual or organization",
-        "DISCLOSE_HEADER": "Disclosure",
-        "DISCLOSE_TITLE": "To disclose my information to",
-        "DESCRIPTION": "Please select one individual or organization authorized to share your information:",
-        "IND_PROVIDER_LABEL": "Individual:",
-        "ORG_PROVIDER_LABEL": "Organizational:",
-        "CANCEL_BTN": "Cancel",
-        "ADD_BTN": "Add Selected"
-      }
+      "DESCRIPTION": "Please select one individual or organization authorized to share your information:",
+      "IND_PROVIDER_LABEL": "Individual:",
+      "ORG_PROVIDER_LABEL": "Organizational:",
+      "CANCEL_BTN": "Cancel",
+      "ADD_BTN": "Add Selected"
     },
     "SELECT_PROVIDERS": {
       "TITLE": "Select Providers",
-      "AUTHORIZED_DESCRIPTION": "The following individual or organization",
+      "DIALOG_AUTHORIZE_TITLE": "The following individual or organization",
       "DIALOG_AUTHORIZE_HEADER": "Authorize",
-      "DISCLOSED_DESCRIPTION": "To disclose my information to",
+      "DIALOG_DISCLOSED_TITLE": "To disclose my information to",
       "DIALOG_DISCLOSE_HEADER": "Disclosure"
     },
     "TERMS": {

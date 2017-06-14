@@ -11,11 +11,13 @@
   <md2-dialog-title>{{dialogTitle}}</md2-dialog-title>
   <md-card class="left-align">
     <md-card-title>
-      Please select one individual or organization authorized to share your information:
+      {{ 'CONSENT.SELECT_PROVIDER.DESCRIPTION' | translate }}
     </md-card-title>
     <md-card-content class="p-l-sm p-r-sm p-b-md">
       <md-radio-group [(ngModel)]="selectedProviderNpi">
-        <h3>Individual:</h3>
+        <h3>
+          {{ 'CONSENT.SELECT_PROVIDER.IND_PROVIDER_LABEL' | translate }}
+        </h3>
         <div *ngFor="let provider of patientProviders">
           <md-radio-button *ngIf="provider.providerType === 'PRACTITIONER'"
                            [value]="provider?.identifiers[0]?.value"
@@ -23,7 +25,9 @@
             {{provider | provider : 'name'}}
           </md-radio-button>
         </div>
-        <h3>Organizational:</h3>
+        <h3>
+          {{ 'CONSENT.SELECT_PROVIDER.ORG_PROVIDER_LABEL' | translate }}
+        </h3>
         <div *ngFor="let provider of patientProviders">
           <md-radio-button *ngIf="provider.providerType === 'ORGANIZATION'"
                            [value]="provider?.identifiers[0]?.value"
@@ -36,10 +40,10 @@
   </md-card>
   <md2-dialog-footer>
     <button type="button" md-raised-button (click)="selectProviderDialog.close()">
-      Cancel
+      {{ 'CONSENT.SELECT_PROVIDER.CANCEL_BTN' | translate }}
     </button>
     <button type="button" md-raised-button color="primary" (click)="addSelectedProvider(selectProviderDialog)">
-      Add Selected
+      {{ 'CONSENT.SELECT_PROVIDER.ADD_BTN' | translate }}
     </button>
   </md2-dialog-footer>
 </md2-dialog>

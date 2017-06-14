@@ -85,26 +85,17 @@
       }
     },
     "SELECT_PROVIDER": {
-      "TITLE": "Seleccionar Proveedores",
-      "AUTHORIZED_DESCRIPTION": "La siguiente persona u organización",
-      "DISCLOSED_DESCRIPTION": "Para revelar mi información a",
-      "DIALOG": {
-        "AUTHORIZE_HEADER": "Autorizar",
-        "AUTHORIZE_TITLE": "La siguiente persona u organización",
-        "DISCLOSE_HEADER": "Revelar",
-        "DISCLOSE_TITLE": "Para revelar mi información a",
-        "DESCRIPTION": "Seleccione una persona u organización autorizada para compartir su información:",
-        "IND_PROVIDER_LABEL": "Individual:",
-        "ORG_PROVIDER_LABEL": "Organizativo:",
-        "CANCEL_BTN": "Cancelar",
-        "ADD_BTN": "Añadir seleccionados"
-      }
+      "DESCRIPTION": "Seleccione una persona u organización autorizada para compartir su información:",
+      "IND_PROVIDER_LABEL": "Individual:",
+      "ORG_PROVIDER_LABEL": "Organizativo:",
+      "CANCEL_BTN": "Cancelar",
+      "ADD_BTN": "Añadir seleccionados"
     },
     "SELECT_PROVIDERS": {
       "TITLE": "Seleccionar Proveedores",
-      "AUTHORIZED_DESCRIPTION": "La siguiente persona u organización",
+      "DIALOG_AUTHORIZE_TITLE": "La siguiente persona u organización",
       "DIALOG_AUTHORIZE_HEADER": "Autorizar",
-      "DISCLOSED_DESCRIPTION": "Para revelar mi información a",
+      "DIALOG_DISCLOSED_TITLE": "Para revelar mi información a",
       "DIALOG_DISCLOSE_HEADER": "Revelar"
     },
     "TERMS": {
