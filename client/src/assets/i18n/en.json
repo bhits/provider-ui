@@ -70,6 +70,20 @@
         "CONFIRM_BTN": "Confirm"
       }
     },
+    "PURPOSE_OF_USE": {
+      "TITLE": "Purpose Of Use",
+      "DESCRIPTION": "Choose for what purposes your medical information may be used.",
+      "SHARE_TEXT": "<strong>SHARE</strong> my medical record ONLY for the selected purposes of use.",
+      "EDIT_BTN": "Edit",
+      "DIALOG": {
+        "TITLE": "Share for selected purpose only",
+        "DESCRIPTION": "Share my information only for specified purposes of use.",
+        "SELECT_BTN": "Select All",
+        "DESELECT_BTN": "Deselect All",
+        "CANCEL_BTN": "Cancel",
+        "SAVE_BTN": "Save changes"
+      }
+    },
     "TERMS": {
       "TITLE": "Consent Terms",
       "TEXT": "Enter a start and end date during with your medical records will be shared.",

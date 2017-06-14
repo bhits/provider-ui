@@ -70,6 +70,20 @@
         "CONFIRM_BTN": "Confirm"
       }
     },
+    "PURPOSE_OF_USE": {
+      "TITLE": "Propósito de uso",
+      "DESCRIPTION": "Elija con qué fines puede utilizarse su información médica.",
+      "SHARE_TEXT": "<strong> COMPARTA </strong> mi historial médico SOLAMENTE para los fines de uso seleccionados.",
+      "EDIT_BTN": "Editar",
+      "DIALOG": {
+        "TITLE": "Compartir para el propósito seleccionado",
+        "DESCRIPTION": "Compartir mi información sólo con fines específicos de uso.",
+        "SELECT_BTN": "Seleccionar todo",
+        "DESELECT_BTN": "Deseleccionar todo",
+        "CANCEL_BTN": "Cancelar",
+        "SAVE_BTN": "Guardar cambios"
+      }
+    },
     "TERMS": {
       "TITLE": "Términos de consentimiento",
       "TEXT": "Ingrese una fecha de inicio y finalización durante la cual se compartirán sus registros médicos.",
