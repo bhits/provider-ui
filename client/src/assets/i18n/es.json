@@ -51,6 +51,25 @@
       "CANCEL_BUTTON_LABEL": "Cancelar",
       "SAVE_BUTTON_LABEL": "Salvar"
     },
+    "MEDICAL_INFORMATION": {
+      "TITLE": "Información médica",
+      "DESCRIPTION": "Seleccione cómo le gustaría compartir su información médica.",
+      "SHARE_ALL_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> SIN NINGUNA EXCEPCIÓN </ strong> de categorías de información médica.",
+      "SHARE_SOME_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> CON EXCEPCIÓN </ strong> de categorías específicas de información médica.",
+      "DIALOG": {
+        "TITLE": "La configuración de privacidad",
+        "HEADER1": "Categorías de información sensible",
+        "HEADER2": "Seleccione la información médica que desea compartir.",
+        "FED_TITLE": "Categorías federales",
+        "FED_DESCRIPTION": "{spanish}Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
+        "STATE_TITLE": "Categorías del estado",
+        "STATE_DESCRIPTION": "La mayoría de los estados tienen leyes que restringen a los profesionales de la salud de revelar información relacionada con el abuso de sustancias, el VIH / SIDA y la salud mental. '+' Algunos estados tienen restricciones con respecto a la información genética y las enfermedades transmisibles. Usted tiene el derecho de elegir la información que desea compartir o no compartir y con quién.",
+        "CONTENT": "Por favor, seleccione la opción \"Compartir mi historial médico sin excepciones\", si desea compartir toda la información de su salud.",
+        "CANCEL_BTN": "Cancelar",
+        "SAVE_BTN": "Guardar cambios",
+        "CONFIRM_BTN": "Confirm"
+      }
+    },
     "TERMS": {
       "TITLE": "Términos de consentimiento",
       "TEXT": "Ingrese una fecha de inicio y finalización durante la cual se compartirán sus registros médicos.",
