@@ -22,9 +22,6 @@ import {NotificationService} from "../../shared/notification.service";
 })
 export class SegmentDocumentComponent implements OnInit {
 
-  @Input()
-  public patient: Patient;
-
   public segmentationFrom: FormGroup;
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
@@ -95,7 +92,6 @@ export class SegmentDocumentComponent implements OnInit {
                           err => {
                             this.notificationService.show("Failed to search provider, please try again later...");
                           });
-    console.log(this.patient);
   }
 
   public searchAuthorizeProviders(npi: string): void {
@@ -159,31 +155,10 @@ export class SegmentDocumentComponent implements OnInit {
       }
     }
   }
-  //
-  // onBlurOnAuthorizeProvider(npi:any){
-  //   this.providerService.getProviderByNpi(npi).subscribe(
-  //     (authorizeProvider:Provider)=>{
-  //       this.authorizeProviders = authorizeProvider;
-  //     },
-  //     (error:any)=>{
-  //       this.authorizeProviders = null;
-  //     }
-  //   );
-  //   console.log("Authorize:  " + npi);
-  // }
-  //
-  //
-  // onBlurOnDisclosureProvider(npi:any){
-  //   //get for provider from the backend
-  //   this.providerService.getProviderByNpi(npi).subscribe(
-  //     (disclosureProvider:Provider)=>{
-  //       this.discloseProviders = disclosureProvider;
-  //     },
-  //     (error:any)=>{
-  //       this.discloseProviders = null;
-  //     }
-  //   );
-  // }
+
+  canSegment():boolean{
+    return true;
+  }
 
   segmentDocument(): void {
     const formModel = this.segmentationFrom.value;

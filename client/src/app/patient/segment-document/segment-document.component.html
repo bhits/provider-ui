@@ -9,19 +9,6 @@
       </div>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutGap="20px">
-    <div fxFlex>
-      <p><br>
-        <span >
-          {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.PATIENT_NAME' | translate }}: <strong> <strong>{{patient.firstName}} {{patient.middleName}} {{patient.lastName}} </strong> </strong>
-        </span>
-        <span >
-          {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.PATIENT_DOB' | translate }}:
-          <strong>{{patient.birthDate | date: 'MM/dd/yyyy'}} </strong>
-        </span>
-      </p>
-    </div>
-  </div>
   <form [formGroup]="segmentationFrom" novalidate>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
@@ -111,7 +98,7 @@
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <div class="full-width font-size20">
-          <a md-raised-button (click)="segmentDocument()">
+          <a md-raised-button (click)="segmentDocument()" disabled="canSegment()">
             {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.SEGMENTATION_BTN' | translate }}
           </a>
         </div>

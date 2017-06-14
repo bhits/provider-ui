@@ -7,12 +7,9 @@ import {Patient} from "../shared/patient.model";
   styleUrls: ['./segment-patient-health-record.component.scss']
 })
 export class SegmentPatientHealthRecordComponent implements OnInit {
-  @Input()
-  public patient: Patient;
   constructor() { }
 
   ngOnInit() {
-    console.log(this.patient);
   }
 
 }
