@@ -12,14 +12,18 @@ import {
 import {Observable} from "rxjs/Observable";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {TokenService} from "../security/shared/token.service";
+import {SessionStorageService} from "../security/shared/session-storage.service";
+import {UmsProfile} from "../security/shared/ums-profile.model";
 
 @Injectable()
 export class HttpInterceptorService extends Http {
   private UAA: string = "uaa";
+  private UMS_PROFILE_KEY: string = 'c2s-ums-profile';
 
   constructor(backend: ConnectionBackend, defaultOptions: RequestOptions,
               private slimLoadingBarService: SlimLoadingBarService,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private sessionStorageService: SessionStorageService) {
     super(backend, defaultOptions);
   }
 
@@ -72,10 +76,23 @@ export class HttpInterceptorService extends Http {
       options.headers.set('Authorization', 'Bearer ' + access_token);
       options.headers.set('Content-Type', 'application/json');
     }
+
+    if(this.sessionStorageService && this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY)){
+      if (!options.headers) {
+        options.headers = new Headers();
+      }
+      let profile:UmsProfile = this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY);
+      options.headers.set('Accept-Language',profile.userLocale);
+    }
+
     return options;
   }
 }
 
-export function httpInterceptorServiceFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions, slimLoadingBarService: SlimLoadingBarService, tokenService: TokenService) {
-  return new HttpInterceptorService(xhrBackend, requestOptions, slimLoadingBarService, tokenService);
+export function httpInterceptorServiceFactory(xhrBackend: XHRBackend,
+                                              requestOptions: RequestOptions,
+                                              slimLoadingBarService: SlimLoadingBarService,
+                                              tokenService: TokenService,
+                                              sessionStorageService: SessionStorageService) {
+  return new HttpInterceptorService(xhrBackend, requestOptions, slimLoadingBarService, tokenService, sessionStorageService);
 }

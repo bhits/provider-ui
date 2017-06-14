@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Patient} from "../shared/patient.model";
 
 @Component({
   selector: 'c2s-segment-patient-health-record',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./segment-patient-health-record.component.scss']
 })
 export class SegmentPatientHealthRecordComponent implements OnInit {
-
+  @Input()
+  public patient: Patient;
   constructor() { }
 
   ngOnInit() {

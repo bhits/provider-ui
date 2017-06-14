@@ -1,6 +1,3 @@
-
-
-
 import {Identifier} from "../../shared/identifier.model";
 
 export class SharePurpose {

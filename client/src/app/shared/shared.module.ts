@@ -16,21 +16,30 @@ import {Md2Module} from "md2";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {Ng2PaginationModule} from "ng2-pagination";
+import {ProviderPipe} from "./provider.pipe";
+import {BrowserService} from "app/shared/browser.service";
+import {PatientPipe} from "./patient.pipe";
+import {TranslateModule} from "@ngx-translate/core";
+
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    TranslateModule
   ],
   declarations: [
     UsPhoneNumberPipe,
     ControlValidationErrorMessageComponent,
     ConfirmDialogComponent,
-    ShowHidePasswordComponent
+    ShowHidePasswordComponent,
+    ProviderPipe,
+    PatientPipe
   ],
   entryComponents: [ConfirmDialogComponent],
   providers: [
     ApiUrlService,
+    BrowserService,
     ConfirmDialogService,
     ExceptionService,
     NotificationService,
@@ -46,6 +55,9 @@ import {Ng2PaginationModule} from "ng2-pagination";
     ReactiveFormsModule,
     Ng2PaginationModule,
     ShowHidePasswordComponent,
+    ProviderPipe,
+    PatientPipe,
+    TranslateModule,
     UsPhoneNumberPipe
   ]
 })

@@ -6,16 +6,37 @@
       </md-card-title>
     </md2-accordion-header>
     <div>
-      <div hidden>
-        <div style="background-color: #e6aaa6;" class="p-md font-size18 font-weight center-sm-left">There currently are
-          NO Consents on record.
+      <div fxLayout="column" [ngStyle]="{'padding-top': '20px'}">
+        <div fxLayoutAlign="center">
+          <a md-raised-button class="plus-button" fxFlex="0 1 370px" (click)="redirectToPatientConsentsCreate()">
+            <md-icon class="font-weight700">add</md-icon>
+            Add a new consent</a>
         </div>
-      </div>
-      <div fxLayoutAlign="center" [ngStyle]="{'padding-bottom': '20px'}">
-        <button md-raised-button color="primary" class="plus-button" (click)="redirectToPatientConsentsCreate()">
-          <md-icon class="font-weight700">add</md-icon>
-          <strong>Add a new consent</strong>
-        </button>
+        <div fxLayoutAlign="center">
+          <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
+               fxLayoutGap="10px">
+          </div>
+        </div>
+        <div style="padding-top: 20px;" *ngIf="noConsent; else hasConsent">
+          <div style="background-color: #DEBCC9" class="p-md font-size18 font-weight center-sm-left">
+            There are currently no Consents available. Please click the "Add a new consent" button to create a new
+            consent.
+          </div>
+        </div>
+        <ng-template #hasConsent>
+          <div fxLayoutAlign="center">
+            <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+            <md-spinner *ngIf="loading"></md-spinner>
+          </div>
+          <c2s-consent-card
+            *ngFor="let consent of asyncConsents | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
+            [consent]="consent"
+            (deleteConsent)="onDeleteConsent($event)">
+          </c2s-consent-card>
+          <div fxLayoutAlign="center">
+            <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+          </div>
+        </ng-template>
       </div>
     </div>
   </md2-accordion-tab>
