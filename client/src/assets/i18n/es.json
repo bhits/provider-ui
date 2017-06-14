@@ -17,11 +17,12 @@
     }
   },
   "PROVIDER": {
-    "LIST": {
-      "TITLE": "Mis Proveedores",
+    "CARD_LIST": {
+      "ACCORDION_HEADER": "{spanish} Patient's Providers",
       "WARNING": "¡DE ACUERDO! Debe agregar al menos dos contactos antes de compartir su información de salud.",
       "ADD_PROVIDER_BUTTON": "Agregar un proveedor de servicios de salud",
       "SORT_LIST_TITLE": "Mostrar lista por",
+      "NO_PROVIDERS_MSG": "{spanish} There are currently no Providers available. Please click the 'Add a Health Provider' button to create a new provider.",
       "PAGINATION": {
         "PREVIOUS": "Anterior",
         "NEXT": "Siguiente"
@@ -44,7 +45,7 @@
     },
     "SEARCH": {
       "TITLE": "Proveedores de búsqueda",
-      "ACCORDION_NAME": "Buscar",
+      "ACCORDION_HEADER": "Buscar",
       "STEP_1": {
         "TITLE": "Paso 1. Ingrese el proveedor Estado y Ciudad o Código Postal.",
         "LABEL": "Por favor elige uno.",

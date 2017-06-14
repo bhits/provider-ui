@@ -17,11 +17,12 @@
     }
   },
   "PROVIDER": {
-    "LIST": {
-      "TITLE": "My Providers",
+    "CARD_LIST": {
+      "ACCORDION_HEADER": "Patient's Providers",
       "WARNING": "OK! You must add at least two contacts before sharing your health information.",
       "ADD_PROVIDER_BUTTON": "Add a Health Provider",
       "SORT_LIST_TITLE": "Show List by",
+      "NO_PROVIDERS_MSG": "There are currently no Providers available. Please click the 'Add a Health Provider' button to create a new provider.",
       "PAGINATION": {
         "PREVIOUS": "Previous",
         "NEXT": "Next"
@@ -44,7 +45,7 @@
     },
     "SEARCH": {
       "TITLE": "Search Providers",
-      "ACCORDION_NAME": "Search",
+      "ACCORDION_HEADER": "Search",
       "STEP_1": {
         "TITLE": "Step 1. Please enter the provider State and City or Zip Code.",
         "LABEL": "PLEASE CHOOSE ONE.",
