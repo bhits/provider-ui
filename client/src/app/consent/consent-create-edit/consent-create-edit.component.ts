@@ -21,6 +21,11 @@ export class ConsentCreateEditComponent implements OnInit {
               private route: ActivatedRoute,
               private notificationService: NotificationService,
               private utilityService: UtilityService) {
+    this.consentService.getConsentEmitter().subscribe((consent) => {
+      if (consent) {
+        this.consent = consent;
+      }
+    });
   }
 
   ngOnInit() {
@@ -48,6 +53,15 @@ export class ConsentCreateEditComponent implements OnInit {
   public createEditConsent() {
     if (this.consent.id != null) {
       //Consent Edit Mode
+      this.consentService.updateConsent(this.selectedPatient.mrn, this.consent)
+        .subscribe(
+          () => {
+            this.utilityService.navigateTo(this.consentListUrl);
+          },
+          err => {
+            this.notificationService.show("Error in updating consent.");
+          }
+        );
     } else {
       // Consent Create Mode
       this.consentService.createConsent(this.selectedPatient.mrn, this.consent)

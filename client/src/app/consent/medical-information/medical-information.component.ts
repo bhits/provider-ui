@@ -66,11 +66,6 @@ export class MedicalInformationComponent implements OnInit {
     this.consentService.setConsentEmitter(this.patientConsent);
   }
 
-  public onSelectEditDoNotShareAll(dialog: any, value: number) {
-    this.isShareAll = value;
-    dialog.open(this.dialogConfig);
-  }
-
   public setSelectedMedicalInformation(dialog: any) {
     dialog.close();
     this.selectedSensitivityCategories = this.medicalInformationService.getSelectedSensitivityPolicies(this.sensitivityCategories);

@@ -1,3 +1,9 @@
+<md-toolbar color="primary" fxLayoutAlign="center">
+  <i class="material-icons">playlist_add</i>
+  <h3 class="m-l-sm">
+    {{ 'PROVIDER.MULTI_ADD.TITLE' | translate }}
+  </h3>
+</md-toolbar>
 <div fxLayout="column" fxLayoutAlign="center" [ngStyle]="{'padding-top': '20px'}">
   <div>
     <table [md2Data]="providers" [rowsPerPage]="10">
@@ -6,8 +12,12 @@
         <th style="width: 5%">
           <md-icon>mode_edit</md-icon>
         </th>
-        <th style="width: 25%" md2SortBy="npi">NPI</th>
-        <th style="width: 70%">Name/Facility</th>
+        <th style="width: 25%" md2SortBy="npi">
+          {{ 'PROVIDER.MULTI_ADD.TABLE.NPI' | translate }}
+        </th>
+        <th style="width: 70%">
+          {{ 'PROVIDER.MULTI_ADD.TABLE.NAME_FACILITY' | translate }}
+        </th>
       </tr>
       </thead>
       <tbody>
@@ -17,7 +27,7 @@
         </td>
         <td style="width: 70%">
           <p>
-            No Providers currently selected.
+            {{ 'PROVIDER.MULTI_ADD.TABLE.NO_PROVIDERS' | translate }}
           </p>
         </td>
         <td></td>
@@ -39,35 +49,35 @@
   <div fxLayoutAlign="left" [ngStyle]="{'padding-top': '20px'}">
     <md2-dialog #confirmAdd>
       <md2-dialog-title>
-        Add Selected Providers
+        {{ 'PROVIDER.MULTI_ADD.ADD_DIALOG.TITLE' | translate }}
       </md2-dialog-title>
-      Are you sure you want to add the selected providers?
+      {{ 'PROVIDER.MULTI_ADD.ADD_DIALOG.CONTENT' | translate }}
       <md2-dialog-footer>
         <button class="m-r" md-raised-button color="primary" (click)="confirmAddProviders(confirmAdd, providers)">
-          Cancel
+          {{ 'PROVIDER.MULTI_ADD.ADD_DIALOG.CANCEL_BUTTON' | translate }}
         </button>
         <button md-raised-button color="primary" (click)="confirmAddProviders(confirmAdd, providers)">
-          OK
+          {{ 'PROVIDER.MULTI_ADD.ADD_DIALOG.OK_BUTTON' | translate }}
         </button>
       </md2-dialog-footer>
     </md2-dialog>
     <button md-raised-button color="primary" [disabled]="(providers.length==0)" (click)="confirmAdd.open()">
-      Add to Provider List
+      {{ 'PROVIDER.MULTI_ADD.ADD_BUTTON' | translate }}
     </button>
   </div>
 </div>
 <div>
   <md2-dialog #confirmDelete>
     <md2-dialog-title>
-      Delete Provider
+      {{ 'PROVIDER.MULTI_ADD.DELETE_DIALOG.TITLE' | translate }}
     </md2-dialog-title>
-    Are you sure you want to delete this provider?
+    {{ 'PROVIDER.MULTI_ADD.DELETE_DIALOG.CONTENT' | translate }}
     <md2-dialog-footer>
       <button md-raised-button (click)="confirmDelete.close()">
-        Cancel
+        {{ 'PROVIDER.MULTI_ADD.DELETE_DIALOG.CANCEL_BUTTON' | translate }}
       </button>
       <button md-raised-button color="primary" (click)="confirmDeleteProvider(confirmDelete)">
-        OK
+        {{ 'PROVIDER.MULTI_ADD.DELETE_DIALOG.OK_BUTTON' | translate }}
       </button>
     </md2-dialog-footer>
   </md2-dialog>

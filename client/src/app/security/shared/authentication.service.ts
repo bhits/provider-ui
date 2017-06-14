@@ -4,25 +4,20 @@ import {Headers, Http, Response, URLSearchParams} from "@angular/http";
 import {ExceptionService} from "app/shared/exception.service";
 import {Observable} from "rxjs";
 import {AuthorizationResponse} from "app/security/shared/authorization-response.model";
-import {UserInfoResponse} from "./user-info-response.model";
 import {TokenService} from "./token.service";
 import {UtilityService} from "../../shared/utility.service";
 import {GlobalEventManagementService} from "../../core/global-event-management.service";
 import {Profile} from "../../core/profile.model";
-import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthenticationService {
   //Todo: get from configuration
   private AUTHORIZATION_HEADER: string = 'cHJvdmlkZXItdWk6Y2hhbmdlaXQ=';
-  HOME:string ='home';
-  oauth2UserInfoUrl: string = "/uaa/userinfo";
 
   constructor(private apiUrlService: ApiUrlService,
               private exceptionService: ExceptionService,
               private globalEventManagementService: GlobalEventManagementService,
               private http: Http,
-              private router: Router,
               private tokenService: TokenService,
               private utilityService: UtilityService) {
   }
@@ -43,7 +38,7 @@ export class AuthenticationService {
       .catch(this.exceptionService.handleError);
   }
 
-  public isLoggedIn(response: AuthorizationResponse): void {
+  public onLoggedIn(response: AuthorizationResponse): void {
     this.tokenService.setOauthToken(response);
     this.utilityService.navigateTo(this.apiUrlService.getHomeUrl());
   }
@@ -54,22 +49,12 @@ export class AuthenticationService {
     this.utilityService.navigateTo(this.apiUrlService.getLoginUrl());
   }
 
-  public getUserInfo(): Observable<UserInfoResponse> {
-    //Todo: Get from ums
-    return this.http.get(this.apiUrlService.getUaaUserInfoUrl())
-      .map((resp: Response) => <UserInfoResponse>(resp.json()))
-      .catch(this.exceptionService.handleError);
-  }
-  onGetUserProfileSuccess(profile:Profile){
-    this.globalEventManagementService.setShowHeader(true);
+  public onGetUserProfileSuccess(profile: Profile) {
     this.globalEventManagementService.setProfile(profile);
-    this.router.navigate([this.HOME]);
   }
 
-  getUserProfile(){
-    return this.http.get(this.oauth2UserInfoUrl)
+  public getUserProfile() {
+    return this.http.get(this.apiUrlService.getUaaUserInfoUrl())
       .map((resp: Response) => <any>(resp.json()));
   }
-
-
 }
