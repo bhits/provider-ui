@@ -14,6 +14,7 @@ import {Identifier} from "../../shared/identifier.model";
 })
 export class ConsentCreateEditComponent implements OnInit {
   public consent: Consent;
+  public selectedPatientName: any;
   private selectedPatient: Patient;
   private consentListUrl: string;
 
@@ -31,7 +32,8 @@ export class ConsentCreateEditComponent implements OnInit {
   ngOnInit() {
     this.selectedPatient = this.route.snapshot.parent.data['patient'];
     this.consentListUrl = "/patients".concat("/" + this.selectedPatient.id);
-
+    let fullName: string = this.utilityService.getFullName(this.selectedPatient);
+    this.selectedPatientName = {name: fullName};
     //Consent Create Mode
     this.consent = new Consent();
     this.consentService.setConsentEmitter(this.consent);

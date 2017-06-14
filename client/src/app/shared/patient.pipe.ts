@@ -26,7 +26,7 @@ export class PatientPipe implements PipeTransform {
         case "id":
           return value.id;
         case "fullName":
-          return PatientPipe.getName(value, 'firstName').concat(' ').concat(PatientPipe.getName(value, 'middleName')).concat(' ').concat(PatientPipe.getName(value, 'lastName'));
+          return this.utilityService.getFullName(value);
         case "birthDate":
           return value.birthDate;
         case "genderCode":
@@ -64,12 +64,5 @@ export class PatientPipe implements PipeTransform {
       }
     }
     return null;
-  }
-
-  private static getName(patient: Patient, key: string): string {
-    if (patient !== null && patient[key]) {
-      return patient[key];
-    }
-    return ''
   }
 }

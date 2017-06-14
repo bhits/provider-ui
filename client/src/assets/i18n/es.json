@@ -45,6 +45,11 @@
         "CANCEL_BTN": "Cancelar",
         "OK_BTN": "De acuerdo"
       }
+    },
+    "CREATE_EDIT": {
+      "TITLE": "I, {{name}}, por la presente autorizo ​​...",
+      "CANCEL_BUTTON_LABEL": "Cancelar",
+      "SAVE_BUTTON_LABEL": "Salvar"
     }
   },
   "PROVIDER": {
