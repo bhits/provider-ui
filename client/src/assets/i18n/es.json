@@ -17,12 +17,14 @@
     }
   },
   "CONSENT": {
-    "TITLE": "Mis Consentimientos",
-    "WARNING": "Actualmente no hay consentimientos disponibles. Haga clic en el botón Añadir un consentimiento para crear un nuevo consentimiento.",
-    "ADD_CONSENT_BUTTON": "Añadir un consentimiento",
-    "PAGINATION": {
-      "NEXT": "Siguiente",
-      "PREVIOUS": "Anterior"
+    "CARD_LIST": {
+      "ACCORDION_HEADER": "{spanish} Patient's Consents",
+      "ADD_CONSENT_BUTTON": "Añadir un consentimiento",
+      "NO_CONSENTS_MSG": "Actualmente no hay consentimientos disponibles. Haga clic en el botón Añadir un consentimiento para crear un nuevo consentimiento.",
+      "PAGINATION": {
+        "PREVIOUS": "Anterior",
+        "NEXT": "Siguiente"
+      }
     },
     "CARD": {
       "AUTHORIZED_TO_SHARE": "Autorizado para compartir:",
