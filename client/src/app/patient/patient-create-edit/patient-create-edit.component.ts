@@ -36,6 +36,7 @@ export class PatientCreateEditComponent implements OnInit {
   public identifierSystems: IdentifierSystem[];
   public isEditMode: boolean = false;
   public phoneErrorMessage: string = ValidationRules.PHONE_MESSAGE;
+  public emailErrorMessage: string = ValidationRules.EMAIL_MESSAGE;
   public ssnErrorMessage: string = ValidationRules.SSN_MESSAGE;
   public zipErrorMessage: string = ValidationRules.ZIP_MESSAGE;
   public title: string = "Create Patient";
@@ -88,40 +89,40 @@ export class PatientCreateEditComponent implements OnInit {
 
   private initCreateEditFormGroup() {
     return this.formBuilder.group({
-      firstName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-          Validators.required
-        ]
-      ],
-      middleName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
-        ]
-      ],
-      lastName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-          Validators.required
-        ]
-      ],
-      homeEmail: [null],
-      registrationPurposeEmail: [null ],
-      genderCode: [null, Validators.required],
-      birthDate: [null, Validators.compose([
-        Validators.required,
-        ValidationService.pastDateValidator])
-      ],
-      socialSecurityNumber: [null, Validators.pattern(ValidationRules.SSN_PATTERN)],
-      homePhone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)],
-      homeAddress: this.initAddressFormGroup(),
-      roles: [null, Validators.required],
-      locale: [null, Validators.required],
-      identifier: this.initIdentifierFormGroup()
-    },
+        firstName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+            Validators.required
+          ]
+        ],
+        middleName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
+          ]
+        ],
+        lastName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+            Validators.required
+          ]
+        ],
+        homeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
+        registrationPurposeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
+        genderCode: [null, Validators.required],
+        birthDate: [null, Validators.compose([
+          Validators.required,
+          ValidationService.pastDateValidator])
+        ],
+        socialSecurityNumber: [null, Validators.pattern(ValidationRules.SSN_PATTERN)],
+        homePhone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)],
+        homeAddress: this.initAddressFormGroup(),
+        roles: [null, Validators.required],
+        locale: [null, Validators.required],
+        identifier: this.initIdentifierFormGroup()
+      },
       {validator: ValidationService.oneEmailRequired('homeEmail', 'registrationPurposeEmail')})
   }
 
@@ -260,7 +261,11 @@ export class PatientCreateEditComponent implements OnInit {
       roles: formModel.roles,
       locale: formModel.locale,
       identifiers: identifiers,
-      registrationPurposeEmail: formModel.registrationPurposeEmail
+      registrationPurposeEmail: this.setNullValue(formModel.registrationPurposeEmail)
     };
+  }
+
+  private setNullValue(field: string) {
+    return field === '' ? null : field;
   }
 }

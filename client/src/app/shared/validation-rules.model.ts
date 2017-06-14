@@ -18,6 +18,7 @@ export class ValidationRules {
   public static PHONE_PATTERN = '^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$';
   public static ZIP_PATTERN = '^[0-9]{5}(?:-[0-9]{4})?$';
   public static SSN_PATTERN = '^[0-9]{3}\-?[0-9]{2}\-?[0-9]{4}$';
+  public static EMAIL_PATTERN ='^[a-z0-9!#$%&*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$';
   //Custom Error Message
   public static PHONE_MESSAGE: string = "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.";
   public static SSN_MESSAGE: string = "Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789";
