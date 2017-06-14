@@ -36,8 +36,23 @@
       "SHARE_PURPOSE_OF_USES": "Share the following purposes:",
       "CONSENT_STATE": "Consent State:",
       "MANAGE_CONSENT_BUTTON_TEXT": "Manage Consents",
-      "MANAGE_CONSENT_DIALOG": {
-        "TITLE": "Consent Options"
+      "MANAGE_CONSENT_DIALOG_TITLE": "Consent Options",
+      "CONSENT_STAGES": {
+        "SAVED_STAGE": {
+          "STAGE_TEXT": "IN PROGRESS",
+          "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
+          "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
+          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Delete This Consent"
+        },
+        "SIGNED_STAGE": {
+          "STAGE_TEXT": "SIGNED",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent"
+        },
+        "REVOKED_STAGE": {
+          "STAGE_TEXT": "REVOKED",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation"
+        }
       },
       "DELETE_CONSENT_DIALOG": {
         "TITLE": "Delete Consent",

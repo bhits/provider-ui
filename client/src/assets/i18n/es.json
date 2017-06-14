@@ -36,8 +36,23 @@
       "SHARE_PURPOSE_OF_USES": "Comparte los siguientes propósitos:",
       "CONSENT_STATE": "Estado de consentimiento:",
       "MANAGE_CONSENT_BUTTON_TEXT": "Administrar consentimientos",
-      "MANAGE_CONSENT_DIALOG": {
-        "TITLE": "Opciones de Consentimiento"
+      "MANAGE_CONSENT_DIALOG_TITLE": "Opciones de Consentimiento",
+      "CONSENT_STAGES": {
+        "SAVED_STAGE": {
+          "STAGE_TEXT": "EN CURSO",
+          "EDIT_THIS_CONSENT_OPTION_TEXT": "Editar este consentimiento",
+          "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Previsualizar este consentimiento",
+          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Eliminar este consentimiento"
+        },
+        "SIGNED_STAGE": {
+          "STAGE_TEXT": "FIRMADO",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado"
+        },
+        "REVOKED_STAGE": {
+          "STAGE_TEXT": "Rechazado",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "Ver la revocación firmada"
+        }
       },
       "DELETE_CONSENT_DIALOG": {
         "TITLE": "Eliminar consentimiento",
