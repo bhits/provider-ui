@@ -89,40 +89,40 @@
       "BUTTON": {
         "CLEAR_ALL": "Clear All",
         "SEARCH": "Search"
+      }
+    },
+    "SEARCH_RESULTS": {
+      "TITLE": "Please select to add.",
+      "NO_RESULT_MSG": "Sorry, There is no provider found!",
+      "PAGINATION": {
+        "NEXT": "Next",
+        "PREVIOUS": "Previous"
       },
-      "SEARCH_RESULTS": {
-        "TITLE": "Please choose one.",
-        "NO_RESULT_MSG": "Sorry, There is no provider found!",
-        "PAGINATION": {
-          "NEXT": "Next",
-          "PREVIOUS": "Previous"
+      "RESULT": {
+        "SELECT_PROVIDER_LABEL": "Select this provider.",
+        "PROVIDER_ALREADY_ADDED_LABEL": "This Provider has already in your provider list.",
+        "PROVIDER_CURRENT_ADDED_LABEL": "Provider currently added."
+      },
+      "MULTI_ADD": {
+        "TITLE": "Selections to add",
+        "TABLE": {
+          "NPI": "NPI",
+          "NAME_FACILITY": "Name/Facility",
+          "NO_PROVIDERS": " No Providers currently selected."
         },
-        "RESULT": {
-          "SELECT_PROVIDER_LABEL": "Select this provider.",
-          "PROVIDER_ALREADY_ADDED_LABEL": "This Provider has already in your provider list.",
-          "PROVIDER_CURRENT_ADDED_LABEL": "Provider currently added."
+        "DELETE_DIALOG": {
+          "TITLE": "Delete Provider",
+          "CONTENT": "Are you sure you want to delete this provider?",
+          "CANCEL_BUTTON": "Cancel",
+          "OK_BUTTON": "Ok"
         },
-        "MULTI_ADD": {
-          "TITLE": "Selections to add",
-          "TABLE": {
-            "NPI": "NPI",
-            "NAME_FACILITY": "Name/Facility",
-            "NO_PROVIDERS": " No Providers currently selected."
-          },
-          "DELETE_DIALOG": {
-            "TITLE": "Delete Provider",
-            "CONTENT": "Are you sure you want to delete this provider?",
-            "CANCEL_BUTTON": "Cancel",
-            "OK_BUTTON": "Ok"
-          },
-          "ADD_DIALOG": {
-            "TITLE": "Add Selected Providers",
-            "CONTENT": "Are you sure you want to add the selected providers?",
-            "CANCEL_BUTTON": "Cancel",
-            "OK_BUTTON": "Ok"
-          },
-          "ADD_BUTTON": "Add to Provider List"
-        }
+        "ADD_DIALOG": {
+          "TITLE": "Add Selected Providers",
+          "CONTENT": "Are you sure you want to add the selected providers?",
+          "CANCEL_BUTTON": "Cancel",
+          "OK_BUTTON": "Ok"
+        },
+        "ADD_BUTTON": "Add to Provider List"
       }
     }
   }
