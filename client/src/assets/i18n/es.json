@@ -99,31 +99,32 @@
         "PREVIOUS": "Anterior"
       },
       "RESULT": {
+        "NPI": "NPI",
         "SELECT_PROVIDER_LABEL": "Seleccione este proveedor.",
         "PROVIDER_ALREADY_ADDED_LABEL": "Este proveedor ya está en su lista de proveedores.",
         "PROVIDER_CURRENT_ADDED_LABEL": "Proveedor actualmente agregado."
-      },
-      "MULTI_ADD": {
-        "TITLE": "Selecciones a añadir",
-        "TABLE": {
-          "NPI": "NPI",
-          "NAME_FACILITY": "Nombre / instalación",
-          "NO_PROVIDERS": "No hay proveedores seleccionados actualmente."
-        },
-        "DELETE_DIALOG": {
-          "TITLE": "Eliminar proveedor",
-          "CONTENT": "¿Estás seguro de que deseas eliminar este proveedor?",
-          "OK_BUTTON": "De acuerdo",
-          "CANCEL_BUTTON": "Cancelar"
-        },
-        "ADD_DIALOG": {
-          "TITLE": "Agregar proveedores seleccionados",
-          "CONTENT": "¿Seguro que desea agregar los proveedores seleccionados?",
-          "CANCEL_BUTTON": "Cancelar",
-          "OK_BUTTON": "De acuerdo"
-        },
-        "ADD_BUTTON": "Agregar a la lista de proveedores"
       }
+    },
+    "MULTI_ADD": {
+      "TITLE": "Selecciones a añadir",
+      "TABLE": {
+        "NPI": "NPI",
+        "NAME_FACILITY": "Nombre / instalación",
+        "NO_PROVIDERS": "No hay proveedores seleccionados actualmente."
+      },
+      "DELETE_DIALOG": {
+        "TITLE": "Eliminar proveedor",
+        "CONTENT": "¿Estás seguro de que deseas eliminar este proveedor?",
+        "OK_BUTTON": "De acuerdo",
+        "CANCEL_BUTTON": "Cancelar"
+      },
+      "ADD_DIALOG": {
+        "TITLE": "Agregar proveedores seleccionados",
+        "CONTENT": "¿Seguro que desea agregar los proveedores seleccionados?",
+        "CANCEL_BUTTON": "Cancelar",
+        "OK_BUTTON": "De acuerdo"
+      },
+      "ADD_BUTTON": "Agregar a la lista de proveedores"
     }
   }
 }

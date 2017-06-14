@@ -99,31 +99,32 @@
         "PREVIOUS": "Previous"
       },
       "RESULT": {
+        "NPI": "NPI",
         "SELECT_PROVIDER_LABEL": "Select this provider.",
         "PROVIDER_ALREADY_ADDED_LABEL": "This Provider has already in your provider list.",
         "PROVIDER_CURRENT_ADDED_LABEL": "Provider currently added."
-      },
-      "MULTI_ADD": {
-        "TITLE": "Selections to add",
-        "TABLE": {
-          "NPI": "NPI",
-          "NAME_FACILITY": "Name/Facility",
-          "NO_PROVIDERS": " No Providers currently selected."
-        },
-        "DELETE_DIALOG": {
-          "TITLE": "Delete Provider",
-          "CONTENT": "Are you sure you want to delete this provider?",
-          "CANCEL_BUTTON": "Cancel",
-          "OK_BUTTON": "Ok"
-        },
-        "ADD_DIALOG": {
-          "TITLE": "Add Selected Providers",
-          "CONTENT": "Are you sure you want to add the selected providers?",
-          "CANCEL_BUTTON": "Cancel",
-          "OK_BUTTON": "Ok"
-        },
-        "ADD_BUTTON": "Add to Provider List"
       }
+    },
+    "MULTI_ADD": {
+      "TITLE": "Selections to add",
+      "TABLE": {
+        "NPI": "NPI",
+        "NAME_FACILITY": "Name/Facility",
+        "NO_PROVIDERS": " No Providers currently selected."
+      },
+      "DELETE_DIALOG": {
+        "TITLE": "Delete Provider",
+        "CONTENT": "Are you sure you want to delete this provider?",
+        "CANCEL_BUTTON": "Cancel",
+        "OK_BUTTON": "OK"
+      },
+      "ADD_DIALOG": {
+        "TITLE": "Add Selected Providers",
+        "CONTENT": "Are you sure you want to add the selected providers?",
+        "CANCEL_BUTTON": "Cancel",
+        "OK_BUTTON": "OK"
+      },
+      "ADD_BUTTON": "Add to Provider List"
     }
   }
 }
