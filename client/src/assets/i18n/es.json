@@ -16,6 +16,35 @@
       "LOGOUT": "Salir"
     }
   },
+  "CONSENT": {
+    "TITLE": "Mis Consentimientos",
+    "WARNING": "Actualmente no hay consentimientos disponibles. Haga clic en el botón Añadir un consentimiento para crear un nuevo consentimiento.",
+    "ADD_CONSENT_BUTTON": "Añadir un consentimiento",
+    "PAGINATION": {
+      "NEXT": "Siguiente",
+      "PREVIOUS": "Anterior"
+    },
+    "CARD": {
+      "AUTHORIZED_TO_SHARE": "Autorizado para compartir:",
+      "SHARING_WITH": "Compartir con:",
+      "EFFECTIVE_DATE": "Fechas de vigencia:",
+      "MEDICAL_INFORMATION_DISCLOSED": "Información médica divulgada:",
+      "SHARE_ALL": "Compartir toda la información médica:",
+      "SHARE_ALL_MEDICAL_INFORMATION": "Toda mi información médica puede ser compartida.",
+      "SHARE_PURPOSE_OF_USES": "Comparte los siguientes propósitos:",
+      "CONSENT_STATE": "Estado de consentimiento:",
+      "MANAGE_CONSENT_BUTTON_TEXT": "Administrar consentimientos",
+      "MANAGE_CONSENT_DIALOG": {
+        "TITLE": "Opciones de Consentimiento"
+      },
+      "DELETE_CONSENT_DIALOG": {
+        "TITLE": "Eliminar consentimiento",
+        "CONTENT": "¿Está seguro de que desea eliminar este consentimiento?",
+        "CANCEL_BTN": "Cancelar",
+        "OK_BTN": "De acuerdo"
+      }
+    }
+  },
   "PROVIDER": {
     "CARD_LIST": {
       "ACCORDION_HEADER": "{spanish} Patient's Providers",
