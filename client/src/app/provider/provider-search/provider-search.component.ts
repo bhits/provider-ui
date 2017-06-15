@@ -70,7 +70,7 @@ export class ProviderSearchComponent implements OnInit {
       city: [null,
         [
           Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NORMAL_MAX_LENGTH),
+          Validators.maxLength(ValidationRules.CITY_MAX_LENGTH),
           Validators.required
         ]
       ]
@@ -103,15 +103,15 @@ export class ProviderSearchComponent implements OnInit {
     return {
       lastName: [null,
         [
-          Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NORMAL_MAX_LENGTH),
+          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
           Validators.required
         ]
       ],
       firstName: ['',
         [
-          Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NORMAL_MAX_LENGTH)
+          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
         ]
       ],
       genderCode: '',

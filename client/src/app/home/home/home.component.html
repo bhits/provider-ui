@@ -1,11 +1,14 @@
 <div class="p-t-75 p-l-lg p-b-md p-r-lg">
   <div class="center-sm-left">
-    <h1 class="m-n p-t-sm">{{ 'HOME.WELCOME_TITLE' | translate }} </h1>
-    <h2 class="m-t-sm m-t-sm">{{ 'HOME.WELCOME_SUB_TITLE' | translate }}</h2>
+    <h1 class="m-n p-t-sm">
+      {{ 'HOME.WELCOME_TITLE' | translate }}
+    </h1>
+    <h2 class="m-t-sm m-t-sm">
+      {{ 'HOME.WELCOME_SUB_TITLE' | translate }}
+    </h2>
   </div>
 
   <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
-
     <md-card class="home-card contacts" (click)="navigateTo()">
       <md-card-header class="middle">
         <md-card-title>
@@ -17,7 +20,9 @@
           <md-icon class="md-24 font-weight500">add</md-icon>
         </button>
         <md-chip-list class="p-15">
-          <md-chip color="primary" selected="true" class="font-size16">{{ 'HOME.PATIENT_CARD.STEP' | translate }}</md-chip>
+          <md-chip color="primary" selected="true" class="font-size16">
+            {{ 'HOME.PATIENT_CARD.STEP' | translate }}
+          </md-chip>
         </md-chip-list>
         <h2 class="m-t-xs">
           {{ 'HOME.PATIENT_CARD.TEXT' | translate }}

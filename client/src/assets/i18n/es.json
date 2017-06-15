@@ -123,6 +123,86 @@
       "ERROR_END_DATE_BEFORE_START": "La fecha de inicio debe continuar la fecha de finalización."
     }
   },
+  "PATIENT": {
+    "LIST": {
+      "TITLE": "{spanish} My Patients",
+      "INFO": "{spanish} OK! You are now ready to manage your patients.",
+      "SEARCH_PATIENT_PLACEHOLDER": "{spanish} Search by first and last name",
+      "CREATE_PATIENT_BUTTON": "{spanish} Create a Patient Account",
+      "SORT_LIST_TITLE": "{spanish} Show List by",
+      "NO_PATIENTS_MSG": "{spanish} There are currently no Patients available. Please click the 'Create a Patient Account' button to create a new Patient.",
+      "CARD": {
+        "CONTENT": {
+          "CONTACT_NUMBER": "{spanish} Contact Number",
+          "DOB": "{spanish} Date of Birth",
+          "ADDRESS": "{spanish} Address"
+        }
+      },
+      "PAGINATION": {
+        "PREVIOUS": "{spanish} Previous",
+        "NEXT": "{spanish} Next"
+      }
+    },
+    "CREATE_EDIT": {
+      "CREATE_TITLE": "{spanish} Create Patient",
+      "EDIT_TITLE": "{spanish} Patient Record",
+      "ACCORDION_HEADER": "{spanish} Patient's Information",
+      "INFO": "{spanish} Please complete all required fields to create a Patient Account.",
+      "REQUIRED_INFORMATION": {
+        "LABEL": "{spanish} Required Information",
+        "ROLE_PLACEHOLDER": "{spanish} Role",
+        "LOCALE_PLACEHOLDER": "{spanish} Preferred Language",
+        "FIRST_NAME_PLACEHOLDER": "{spanish} First Name",
+        "MIDDLE_NAME_PLACEHOLDER": "{spanish} Middle Name (Optional)",
+        "LAST_NAME_PLACEHOLDER": "{spanish} Last Name",
+        "EMAIL_PLACEHOLDER": "{spanish} Email",
+        "GENDER_PLACEHOLDER": "{spanish} Gender",
+        "DOB_PLACEHOLDER": "{spanish} Date of Birth"
+      },
+      "ADDITIONAL_INFORMATION": {
+        "LABEL": "{spanish} Additional Information",
+        "STREET_LINE1_PLACEHOLDER": "{spanish} Street Line1",
+        "STREET_LINE2_PLACEHOLDER": "{spanish} Street Line2 (Optional)",
+        "CITY_PLACEHOLDER": "{spanish} City",
+        "POSTAL_CODE_PLACEHOLDER": "{spanish} Postal Code",
+        "STATE_PLACEHOLDER": "{spanish} State",
+        "COUNTRY_PLACEHOLDER": "{spanish} Country",
+        "SSN_PLACEHOLDER": "{spanish} Social Security Number",
+        "PHONE_PLACEHOLDER": "{spanish} Phone"
+      },
+      "CANCEL_BTN": "{spanish} Cancel",
+      "SAVE_BTN": "{spanish} Save",
+      "CONFIRM_DIALOG": {
+        "TITLE": "{spanish} Confirm Navigation",
+        "CONTENT": "{spanish} You will lose all unsaved work, Are you sure you want to leave this page?"
+      }
+    },
+    "VERIFICATION": {
+      "ACCORDION_HEADER": "{spanish} Account Activation/Verification Code",
+      "CARD": {
+        "TITLE": "{spanish} Account Activation / Verification Code",
+        "CONTENT": {
+          "LABEL": "{spanish} Activate Account for:",
+          "VERIFICATION_CODE_LABEL": "{spanish} Verification Code:",
+          "RESENT_VERIFICATION_CODE_MSG": "{spanish} <strong>An email has been sent and awaiting the patient to activate the account. Select the 'Send Email' button to re-send an account activation email.</strong>",
+          "SENT_VERIFICATION_CODE_MSG": "{spanish} <span><strong>Select the 'Send Email' button to generate the Verification Code.</strong></span>Sending an account activation email to the address listed above will generate a unique Verification Code."
+        },
+        "FOOTER": {
+          "LABEL": "{spanish} Activate Account for:",
+          "ACCOUNT_STATUS_LABEL": "{spanish} Account Status:",
+          "ENABLE_ACCOUNT_BTN": "{spanish} Enable Account",
+          "DISABLE_ACCOUNT_BTN": "{spanish} Disable Account",
+          "SEND_EMAIL_BTN": "{spanish} Send Email"
+        }
+      },
+      "ACCOUNT_STATUSES": {
+        "NOT_ACTIVATED_TEXT": "{spanish} Account Not Yet Activated",
+        "VERIFIED_TEXT": "{spanish} Activation Email Sent",
+        "ACTIVATED_TEXT": "{spanish} Account Activated",
+        "DISABLED_TEXT": "{spanish} Account Disabled"
+      }
+    }
+  },
   "PROVIDER": {
     "CARD_LIST": {
       "ACCORDION_HEADER": "{spanish} Patient's Providers",
@@ -235,6 +315,23 @@
         "OK_BUTTON": "De acuerdo"
       },
       "ADD_BUTTON": "Agregar a la lista de proveedores"
+    }
+  },
+  "SHARED": {
+    "VALIDATION_RULES": {
+      "PHONE_ERROR_MESSAGE": "{spanish} Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
+      "SSN_ERROR_MESSAGE": "{spanish} Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789",
+      "ZIP_ERROR_MESSAGE": "{spanish} Must be with formats: 12345 or 12345-6789.",
+      "EMAIL_ERROR_MESSAGE": "{spanish} This email does not perform email validation.",
+      "MIN_LENGTH_ERROR_MESSAGE": "{spanish} This field Minimum length is {{length}}",
+      "MAX_LENGTH_ERROR_MESSAGE": "{spanish} This field Maximum length is {{length}}",
+      "REQUIRED_ERROR_MESSAGE": "{spanish} This field is required.",
+      "REQUIRED_TRUE_ERROR_MESSAGE": "{spanish} This field value must be true.",
+      "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today"
+    },
+    "CONFIRM_DIALOG": {
+      "OK_BTN": "De acuerdo",
+      "CANCEL_BTN": "Cancelar"
     }
   }
 }
