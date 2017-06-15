@@ -224,5 +224,16 @@
       },
       "ADD_BUTTON": "Add to Provider List"
     }
+  },
+  "SHARED": {
+    "VALIDATION_RULES": {
+      "PHONE_ERROR_MESSAGE": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
+      "SSN_ERROR_MESSAGE": "Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789",
+      "ZIP_ERROR_MESSAGE": "Must be with formats: 12345 or 12345-6789.",
+      "EMAIL_ERROR_MESSAGE": "This email does not perform email validation.",
+      "REQUIRED_ERROR_MESSAGE": "This field is required.",
+      "REQUIRED_TRUE_ERROR_MESSAGE": "This field value must be true.",
+      "INVALID_PAST_DATE_ERROR_MESSAGE": "Selected date must be earlier than today"
+    }
   }
 }
