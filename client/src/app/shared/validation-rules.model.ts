@@ -11,7 +11,10 @@ export class ValidationRules {
   public static NORMAL_MIN_LENGTH: number = 2;
   public static NORMAL_MAX_LENGTH: number = 50;
   public static NAME_MIN_LENGTH: number = 2;
-  public static NAME_MAX_LENGTH: number = 30;
+  public static NAME_MAX_LENGTH: number = 100;
+  public static CITY_MAX_LENGTH: number = 30;
+  public static TELECOM_MIN_LENGTH: number = 2;
+  public static TELECOM_MAX_LENGTH: number = 150;
   public static PASSWORD_MIN_LENGHT: number = 8;
   public static PAASOWRD_MAX_LENGHT: number = 50;
   public static PHONE_PATTERN = '^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$';

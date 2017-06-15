@@ -105,6 +105,7 @@ export class PatientCreateEditComponent implements OnInit {
       ],
       homeEmail: [null, Validators.compose([
         Validators.required,
+        Validators.maxLength(ValidationRules.TELECOM_MAX_LENGTH),
         Validators.email])
       ],
       genderCode: [null, Validators.required],
@@ -122,9 +123,9 @@ export class PatientCreateEditComponent implements OnInit {
 
   private initAddressFormGroup() {
     return this.formBuilder.group({
-      line1: [null, Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH)],
-      line2: [null, Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH)],
-      city: [null, Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH)],
+      line1: [null, Validators.maxLength(ValidationRules.NORMAL_MAX_LENGTH)],
+      line2: [null, Validators.maxLength(ValidationRules.NORMAL_MAX_LENGTH)],
+      city: [null, Validators.maxLength(ValidationRules.CITY_MAX_LENGTH)],
       stateCode: null,
       postalCode: [null, Validators.pattern(ValidationRules.ZIP_PATTERN)],
       countryCode: null
