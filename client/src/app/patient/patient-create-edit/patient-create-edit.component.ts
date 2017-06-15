@@ -250,14 +250,14 @@ export class PatientCreateEditComponent implements OnInit {
     identifiers.push(formModel.identifier);
     return {
       firstName: formModel.firstName,
-      middleName: formModel.middleName,
+      middleName: this.setNullValue(formModel.middleName),
       lastName: formModel.lastName,
-      homeEmail: formModel.homeEmail,
+      homeEmail: this.setNullValue(formModel.homeEmail),
       birthDate: formModel.birthDate,
       genderCode: formModel.genderCode,
-      socialSecurityNumber: formModel.socialSecurityNumber,
-      homePhone: formModel.homePhone,
-      homeAddress: formModel.homeAddress,
+      socialSecurityNumber: this.setNullValue(formModel.socialSecurityNumber),
+      homePhone: this.setNullValue(formModel.homePhone),
+      homeAddress: this.setNullValueForAddress(formModel.homeAddress),
       roles: formModel.roles,
       locale: formModel.locale,
       identifiers: identifiers,
@@ -268,4 +268,15 @@ export class PatientCreateEditComponent implements OnInit {
   private setNullValue(field: string) {
     return field === '' ? null : field;
   }
+
+  private setNullValueForAddress(homeAddress:{line1:string,line2:string,city:string,stateCode:string,postalCode:string,countryCode, string}) {
+    homeAddress.line1=this.setNullValue(homeAddress.line1);
+    homeAddress.line2=this.setNullValue(homeAddress.line2);
+    homeAddress.city=this.setNullValue(homeAddress.city);
+    homeAddress.stateCode=this.setNullValue(homeAddress.stateCode);
+    homeAddress.postalCode=this.setNullValue(homeAddress.postalCode);
+    homeAddress.countryCode=this.setNullValue(homeAddress.countryCode);
+    return homeAddress;
+  }
+
 }
