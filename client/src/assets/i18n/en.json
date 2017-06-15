@@ -125,9 +125,19 @@
   },
   "PATIENT": {
     "LIST": {
-      "ACCORDION_HEADER": "Patient's Consents",
-      "ADD_CONSENT_BUTTON": "Add a new consent",
-      "NO_CONSENTS_MSG": " There are currently no Consents available. Please click the 'Add a new consent' button to create a new consent.",
+      "TITLE": "My Patients",
+      "INFO": "OK! You are now ready to manage your patients.",
+      "SEARCH_PATIENT_PLACEHOLDER": "Search by first and last name",
+      "CREATE_PATIENT_BUTTON": "Create a Patient Account",
+      "SORT_LIST_TITLE": "Show List by",
+      "NO_PATIENTS_MSG": "There are currently no Patients available. Please click the 'Create a Patient Account' button to create a new Patient.",
+      "CARD": {
+        "CONTENT": {
+          "CONTACT_NUMBER": "Contact Number",
+          "DOB": "Date of Birth",
+          "ADDRESS": "Address"
+        }
+      },
       "PAGINATION": {
         "PREVIOUS": "Previous",
         "NEXT": "Next"
