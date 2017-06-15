@@ -172,6 +172,31 @@
       },
       "CANCEL_BTN": "{spanish} Cancel",
       "SAVE_BTN": "{spanish} Save"
+    },
+    "VERIFICATION": {
+      "ACCORDION_HEADER": "{spanish} Account Activation/Verification Code",
+      "CARD": {
+        "TITLE": "{spanish} Account Activation / Verification Code",
+        "CONTENT": {
+          "LABEL": "{spanish} Activate Account for:",
+          "VERIFICATION_CODE_LABEL": "{spanish} Verification Code:",
+          "RESENT_VERIFICATION_CODE_MSG": "{spanish} <strong>An email has been sent and awaiting the patient to activate the account. Select the 'Send Email' button to re-send an account activation email.</strong>",
+          "SENT_VERIFICATION_CODE_MSG": "{spanish} <span><strong>Select the 'Send Email' button to generate the Verification Code.</strong></span>Sending an account activation email to the address listed above will generate a unique Verification Code."
+        },
+        "FOOTER": {
+          "LABEL": "{spanish} Activate Account for:",
+          "ACCOUNT_STATUS_LABEL": "{spanish} Account Status:",
+          "ENABLE_ACCOUNT_BTN": "{spanish} Enable Account",
+          "DISABLE_ACCOUNT_BTN": "{spanish} Disable Account",
+          "SEND_EMAIL_BTN": "{spanish} Send Email"
+        }
+      },
+      "ACCOUNT_STATUSES": {
+        "NOT_ACTIVATED_TEXT": "{spanish} Account Not Yet Activated",
+        "VERIFIED_TEXT": "{spanish} Activation Email Sent",
+        "ACTIVATED_TEXT": "{spanish} Account Activated",
+        "DISABLED_TEXT": "{spanish} Account Disabled"
+      }
     }
   },
   "PROVIDER": {
