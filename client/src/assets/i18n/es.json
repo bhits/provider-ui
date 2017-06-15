@@ -323,6 +323,8 @@
       "SSN_ERROR_MESSAGE": "{spanish} Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789",
       "ZIP_ERROR_MESSAGE": "{spanish} Must be with formats: 12345 or 12345-6789.",
       "EMAIL_ERROR_MESSAGE": "{spanish} This email does not perform email validation.",
+      "MIN_LENGTH_ERROR_MESSAGE": "{spanish} This field Minimum length is {{length}}",
+      "MAX_LENGTH_ERROR_MESSAGE": "{spanish} This field Maximum length is {{length}}",
       "REQUIRED_ERROR_MESSAGE": "{spanish} This field is required.",
       "REQUIRED_TRUE_ERROR_MESSAGE": "{spanish} This field value must be true.",
       "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today"
