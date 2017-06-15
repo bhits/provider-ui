@@ -30,9 +30,13 @@
           [customMessage]="numberErrorMessage"
           [control]="segmentationFrom.controls.intermediaryNpi">
         </c2s-control-validation-error-message>
-        <div *ngIf="authorizeProvider">
+        <div *ngIf="authorizeProvider && authorizeProvider.firstName && authorizeProvider.lastName">
           <label>{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
           <span>{{ authorizeProvider.firstName }} {{ authorizeProvider.lastName }}</span>
+        </div>
+        <div *ngIf="authorizeProvider && authorizeProvider.organizationName">
+          <label>{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
+          <span>{{ authorizeProvider.organizationName }}</span>
         </div>
       </div>
     </div>
@@ -57,11 +61,13 @@
             [customMessage]="numberErrorMessage"
             [control]="segmentationFrom.controls.recipientNpi">
           </c2s-control-validation-error-message>
-          <div *ngIf="discloseProvider">
-            <label>
-              {{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PROVIDER_NAME_LABEL" | translate}}:
-            </label>
+          <div *ngIf="discloseProvider && discloseProvider.firstName && discloseProvider.lastName">
+            <label>{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
             <span>{{ discloseProvider.firstName }} {{ discloseProvider.lastName }}</span>
+          </div>
+          <div *ngIf="discloseProvider && discloseProvider.organizationName">
+            <label>{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
+            <span>{{ discloseProvider.organizationName }}</span>
           </div>
         </div>
       </div>

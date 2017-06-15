@@ -71,15 +71,19 @@ export class SegmentDocumentComponent implements OnInit {
                         .subscribe((purposeOfUses: SharePurpose[])=>this.purposeOfUses = purposeOfUses, this.handleSegmentationError);
 
 
-    this.authorizeProviderEmitter .subscribe((provider) => {
+    this.authorizeProviderEmitter.subscribe((provider) => {
                                                               if (provider !== null) {
                                                                 this.authorizeProvider = provider;
+                                                              }else{
+                                                                this.authorizeProvider = null;
                                                               }
                                                             });
 
     this.discloseProviderEmitter.subscribe((provider) => {
                                                               if (provider !== null) {
                                                                 this.discloseProvider = provider;
+                                                              }else{
+                                                                this.discloseProvider = null;
                                                               }
                                                             });
   }
