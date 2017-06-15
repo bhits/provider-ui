@@ -59,11 +59,17 @@ export class ConsentService {
   }
 
   public createConsent(patientMrn: string, consent: Consent): Observable<void> {
-    //Todo: Remove it once integrate with i18
-    const headers = new Headers({'Accept-Language': 'en'});
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/");
-    return this.http.post(resourceUrl, consent, {headers: headers})
+    return this.http.post(resourceUrl, consent)
+      .map(() => null)
+      .catch(this.exceptionService.handleError);
+  }
+
+  public updateConsent(patientMrn: string, consent: Consent): Observable<void> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + consent.id);
+    return this.http.put(resourceUrl, consent)
       .map(() => null)
       .catch(this.exceptionService.handleError);
   }
@@ -126,9 +132,7 @@ export class ConsentService {
   }
 
   public getSensitivityCategories(): Observable<VssSensitivityCategory[]> {
-    //Todo: Remove it once integrate with i18
-    const headers = new Headers({'Accept-Language': 'en'});
-    return this.http.get(this.vssSensitivityCategoriesUrl, {headers: headers})
+    return this.http.get(this.vssSensitivityCategoriesUrl)
       .map((resp: Response) => <VssSensitivityCategory[]>(resp.json()))
       .catch(this.exceptionService.handleError);
   }

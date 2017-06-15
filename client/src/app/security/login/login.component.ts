@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (res) => {
           this.unauthorized = false;
-          this.authenticationService.isLoggedIn(res);
+          this.authenticationService.onLoggedIn(res);
           this.authenticationService.getUserProfile()
             .subscribe(
               (uaaProfile) => {

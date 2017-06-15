@@ -24,7 +24,7 @@ export class ProviderPipe implements PipeTransform {
             case "ORGANIZATION":
               return value.name;
             case "PRACTITIONER":
-              return this.getName(value, 'firstName').concat(' ').concat(this.getName(value, 'middleName')).concat(' ').concat(this.getName(value, 'lastName'));
+              return this.utilityService.getFullName(value);
             default:
               throw new TypeError("Invalid providerType");
           }
@@ -42,12 +42,5 @@ export class ProviderPipe implements PipeTransform {
       }
     }
     return null;
-  }
-
-  private getName(provider: Provider, key: string): string {
-    if (provider !== null && provider[key]) {
-      return provider[key];
-    }
-    return ''
   }
 }

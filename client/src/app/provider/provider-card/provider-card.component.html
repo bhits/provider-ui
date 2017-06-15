@@ -14,11 +14,17 @@
     </div>
     <div class="flexcontainer column" fxLayoutWrap="wrap">
       <div fxFlex="1 1 auto">
-        <div class="font-size12 p-b-xxs">NPI</div>
+        <div class="font-size12 p-b-xxs">
+          {{ 'PROVIDER.CARD.CONTENT.NPI' | translate }}
+        </div>
         <div class="font-size14 font-weight600 m-b-xs">{{provider | provider: 'npi'}}</div>
-        <div class="font-size12 p-b-xxs">Address</div>
+        <div class="font-size12 p-b-xxs">
+          {{ 'PROVIDER.CARD.CONTENT.ADDRESS' | translate }}
+        </div>
         <div class="font-size14 font-weight700 m-b-xs">{{provider | provider: 'address'}}</div>
-        <div class="font-size12 p-b-xxs">Contact Number</div>
+        <div class="font-size12 p-b-xxs">
+          {{ 'PROVIDER.CARD.CONTENT.CONTACT' | translate }}
+        </div>
         <div class="font-size14 font-weight700 p-b-xs">{{provider | provider: 'phone' | usPhoneNumber}}
         </div>
       </div>
@@ -27,14 +33,16 @@
 </md-card>
 <div>
   <md2-dialog #confirm>
-    <md2-dialog-title>Delete provider</md2-dialog-title>
-    Are you sure you want to delete this provider?
+    <md2-dialog-title>
+      {{ 'PROVIDER.CARD.DELETE_DIALOG.TITLE' | translate }}
+    </md2-dialog-title>
+    {{ 'PROVIDER.CARD.DELETE_DIALOG.DESCRIPTION' | translate }}
     <md2-dialog-footer>
       <button md-raised-button color="primary" (click)="confirmDeleteProvider(confirm)">
-        OK
+        {{ 'PROVIDER.CARD.DELETE_DIALOG.BUTTON.OK' | translate }}
       </button>
       <button md-raised-button (click)="confirm.close()">
-        Cancel
+        {{ 'PROVIDER.CARD.DELETE_DIALOG.BUTTON.CANCEL' | translate }}
       </button>
     </md2-dialog-footer>
   </md2-dialog>

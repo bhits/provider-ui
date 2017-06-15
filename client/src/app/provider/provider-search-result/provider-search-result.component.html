@@ -3,13 +3,13 @@
     <md-toolbar class="border-radius4" color="primary" fxLayoutAlign="center">
       <i class="material-icons">playlist_add_check</i>
       <h3 class="m-l-sm">
-        Please select to add.
+        {{ 'PROVIDER.SEARCH_RESULTS.TITLE' | translate }}
       </h3>
     </md-toolbar>
     <div class="center">
       <pagination-controls
-        previousLabel="Previous"
-        nextLabel="Next"
+        previousLabel="{{ 'PROVIDER.SEARCH_RESULTS.PAGINATION.PREVIOUS' | translate }}"
+        nextLabel="{{ 'PROVIDER.SEARCH_RESULTS.PAGINATION.NEXT' | translate }}"
         (pageChange)="getPage($event)">
       </pagination-controls>
     </div>
@@ -17,7 +17,9 @@
       <md-spinner></md-spinner>
     </div>
     <div *ngIf="providerResult?._embedded['providers'].length===0">
-      <md-toolbar fxLayoutAlign="center" color="warn">Sorry, There is no provider found!</md-toolbar>
+      <md-toolbar fxLayoutAlign="center" color="warn">
+        {{ 'PROVIDER.SEARCH_RESULTS.NO_RESULT_MSG' | translate }}
+      </md-toolbar>
     </div>
     <div class="section-border-thin m-b-md" fxLayout="column" fxLayoutAlign="center"
          *ngFor="let provider of asyncProviderResult | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems}">
@@ -27,17 +29,20 @@
         <div fxLayout="column" fxFlexOffset="15px">
           <div fxLayout="row" fxLayoutAlign="start">
             <p class="font-size14 font-weight500">
-              {{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider.npi}}]</span>
+              {{provider | flattenedSmallProvider: 'fullName'}}&nbsp;
+              <span>
+                [{{ 'PROVIDER.SEARCH_RESULTS.RESULT.NPI' | translate }}: {{provider.npi}}]
+              </span>
             </p>
           </div>
           <div>
             <div class="font-size14 m-t-n-sm" fxLayout="row" fxLayoutAlign="left center">
-              <!--<div>-->
               <button md-icon-button (click)="addProviders(provider)" fxFlex="0 0 auto">
                 <md-icon class="text-dark-green">add_box</md-icon>
               </button>
-              <span fxFlex="1 auto">Select this provider.</span>
-              <!--</div>-->
+              <span fxFlex="1 auto">
+                {{ 'PROVIDER.SEARCH_RESULTS.RESULT.SELECT_PROVIDER_LABEL' | translate }}
+              </span>
             </div>
           </div>
         </div>
@@ -48,16 +53,20 @@
         <div fxLayout="column" fxFlexOffset="15px">
           <div fxLayout="row" fxLayoutAlign="start">
             <p class="font-size14 font-weight500">
-              {{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider.npi}}]</span>
+              {{provider | flattenedSmallProvider: 'fullName'}}&nbsp;
+              <span>
+                [{{ 'PROVIDER.SEARCH_RESULTS.RESULT.NPI' | translate }}: {{provider.npi}}]
+              </span>
             </p>
           </div>
           <div>
             <div class="font-size14 m-t-n-sm" fxLayout="row" fxLayoutAlign="left center">
-              <!--<div>-->
               <button md-icon-button disabled fxFlex="0 0 auto">
                 <md-icon class="navy-blue">check_circle</md-icon>
               </button>
-              <span fxFlex="1 auto">This Provider has already in your provider list.</span>
+              <span fxFlex="1 auto">
+                {{ 'PROVIDER.SEARCH_RESULTS.RESULT.PROVIDER_ALREADY_ADDED_LABEL' | translate }}
+              </span>
             </div>
           </div>
         </div>
@@ -69,7 +78,10 @@
         <div fxLayout="column" fxFlexOffset="15px">
           <div fxLayout="row" fxLayoutAlign="start">
             <p class="font-size14 font-weight500">
-              {{provider | flattenedSmallProvider: 'fullName'}}&nbsp;<span>[NPI: {{provider.npi}}]</span>
+              {{provider | flattenedSmallProvider: 'fullName'}}&nbsp;
+              <span>
+                [{{ 'PROVIDER.SEARCH_RESULTS.RESULT.NPI' | translate }}: {{provider.npi}}]
+              </span>
             </p>
           </div>
           <div>
@@ -78,8 +90,8 @@
                 <md-icon class="ribbon-blue">add_box</md-icon>
               </button>
               <span class="font-weight700 ribbon-blue" fxFlex="1 auto">
-                  Provider currently added.
-                </span>
+                {{ 'PROVIDER.SEARCH_RESULTS.RESULT.PROVIDER_CURRENT_ADDED_LABEL' | translate }}
+              </span>
             </div>
           </div>
         </div>
@@ -94,17 +106,13 @@
     </div>
     <div class="center">
       <pagination-controls
-        previousLabel="Previous"
-        nextLabel="Next"
+        previousLabel="{{ 'PROVIDER.SEARCH_RESULTS.PAGINATION.PREVIOUS' | translate }}"
+        nextLabel="{{ 'PROVIDER.SEARCH_RESULTS.PAGINATION.NEXT' | translate }}"
         (pageChange)="getPage($event)">
       </pagination-controls>
     </div>
   </div>
   <div fxFlex class="section-border p-sm">
-    <md-toolbar color="primary" fxLayoutAlign="center">
-      <i class="material-icons">playlist_add</i>
-      <h3 class="m-l-sm">Selections to add</h3>
-    </md-toolbar>
     <c2s-provider-multi-add [providers]="selectedProviders"></c2s-provider-multi-add>
   </div>
 </div>

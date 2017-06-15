@@ -1,19 +1,228 @@
 {
-  "HOME":{
-    "WELCOME_TITLE":"Welcome to Consent2Share admin!",
-    "WELCOME_SUB_TITLE":"You are now ready to manage your patients.",
-    "PATIENT_CARD":{
-      "TITLE":"My <span class=\"font-weight700\">Patients</span>",
-      "STEP":"Step 1.",
-      "TEXT":"Begin by creating the patients.",
+  "HOME": {
+    "WELCOME_TITLE": "Welcome to Consent2Share admin!",
+    "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
+    "PATIENT_CARD": {
+      "TITLE": "My <span class=\"font-weight700\">Patients</span>",
+      "STEP": "Step 1.",
+      "TEXT": "Begin by creating the patients.",
       "SINGULAR": "Patient",
       "PLURAL": "Patients"
     },
-    "MENU":{
-      "TITLE":"Menu",
-      "HOME":"Home",
-      "PATIENTS":"Patients",
-      "LOGOUT":"Logout"
+    "MENU": {
+      "TITLE": "Menu",
+      "HOME": "Home",
+      "PATIENTS": "Patients",
+      "LOGOUT": "Logout"
+    }
+  },
+  "CONSENT": {
+    "CARD_LIST": {
+      "ACCORDION_HEADER": "Patient's Consents",
+      "ADD_CONSENT_BUTTON": "Add a new consent",
+      "NO_CONSENTS_MSG": " There are currently no Consents available. Please click the 'Add a new consent' button to create a new consent.",
+      "PAGINATION": {
+        "PREVIOUS": "Previous",
+        "NEXT": "Next"
+      }
+    },
+    "CARD": {
+      "AUTHORIZED_TO_SHARE": "Authorized to share:",
+      "SHARING_WITH": "Sharing with:",
+      "EFFECTIVE_DATE": "Effective Dates:",
+      "MEDICAL_INFORMATION_DISCLOSED": "Medical Information disclosed:",
+      "SHARE_ALL": "Sharing all medical information:",
+      "SHARE_ALL_MEDICAL_INFORMATION": "All my medical information can be shared.",
+      "SHARE_PURPOSE_OF_USES": "Share the following purposes:",
+      "CONSENT_STATE": "Consent State:",
+      "MANAGE_CONSENT_BUTTON_TEXT": "Manage Consents",
+      "MANAGE_CONSENT_DIALOG_TITLE": "Consent Options",
+      "CONSENT_STAGES": {
+        "SAVED_STAGE": {
+          "STAGE_TEXT": "IN PROGRESS",
+          "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
+          "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
+          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Delete This Consent"
+        },
+        "SIGNED_STAGE": {
+          "STAGE_TEXT": "SIGNED",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent"
+        },
+        "REVOKED_STAGE": {
+          "STAGE_TEXT": "REVOKED",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation"
+        }
+      },
+      "DELETE_CONSENT_DIALOG": {
+        "TITLE": "Delete Consent",
+        "CONTENT": "Are you sure you want to delete this consent?",
+        "CANCEL_BTN": "Cancel",
+        "OK_BTN": "OK"
+      }
+    },
+    "CREATE_EDIT": {
+      "TITLE": "I, {{name}}, hereby authorize...",
+      "CANCEL_BUTTON_LABEL": "Cancel",
+      "SAVE_BUTTON_LABEL": "Save"
+    },
+    "MEDICAL_INFORMATION": {
+      "TITLE": "Medical Information",
+      "DESCRIPTION": "Select how you would like to share your medical information.",
+      "SHARE_ALL_RADIO": "<strong>SHARE</strong> my medical record <strong>WITHOUT ANY EXCEPTION</strong> of medical information categories.",
+      "SHARE_SOME_RADIO": "<strong>SHARE</strong> my medical record <strong>WITH EXCEPTION</strong> of specific medical information categories.",
+      "DIALOG": {
+        "TITLE": "Privacy Settings",
+        "HEADER1": "Sensitive Information Categories",
+        "HEADER2": "Select the medical information that you wish to share.",
+        "FED_TITLE": "Federal Categories",
+        "FED_DESCRIPTION": "Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
+        "STATE_TITLE": "State Categories",
+        "STATE_DESCRIPTION": "Most states have laws restricting health professionals from disclosing information related to substance abuse, HIV/AIDS, and mental health. ' +'Some states have restrictions regarding genetic information and communicable diseases. You have the right to choose the information you wish to share or not share and with whom.",
+        "CONTENT": "Please select the \"Share my medical record without any exceptions\" option,if you want to share all of your health information.",
+        "CANCEL_BTN": "Cancel",
+        "SAVE_BTN": "Save changes",
+        "CONFIRM_BTN": "Confirm"
+      }
+    },
+    "PURPOSE_OF_USE": {
+      "TITLE": "Purpose Of Use",
+      "DESCRIPTION": "Choose for what purposes your medical information may be used.",
+      "SHARE_TEXT": "<strong>SHARE</strong> my medical record ONLY for the selected purposes of use.",
+      "EDIT_BTN": "Edit",
+      "DIALOG": {
+        "TITLE": "Share for selected purpose only",
+        "DESCRIPTION": "Share my information only for specified purposes of use.",
+        "SELECT_BTN": "Select All",
+        "DESELECT_BTN": "Deselect All",
+        "CANCEL_BTN": "Cancel",
+        "SAVE_BTN": "Save changes"
+      }
+    },
+    "SELECT_PROVIDER": {
+      "DESCRIPTION": "Please select one individual or organization authorized to share your information:",
+      "IND_PROVIDER_LABEL": "Individual:",
+      "ORG_PROVIDER_LABEL": "Organizational:",
+      "CANCEL_BTN": "Cancel",
+      "ADD_BTN": "Add Selected"
+    },
+    "SELECT_PROVIDERS": {
+      "TITLE": "Select Providers",
+      "DIALOG_AUTHORIZE_TITLE": "The following individual or organization",
+      "DIALOG_AUTHORIZE_HEADER": "Authorize",
+      "DIALOG_DISCLOSED_TITLE": "To disclose my information to",
+      "DIALOG_DISCLOSE_HEADER": "Disclosure"
+    },
+    "TERMS": {
+      "TITLE": "Consent Terms",
+      "TEXT": "Enter a start and end date during with your medical records will be shared.",
+      "START_DATE": "Start Date:",
+      "END_DATE": "End Date:",
+      "ERROR_PAST_START_DATE": "Start date should be in the present.",
+      "ERROR_PAST_END_DATE": "End date should be in the present.",
+      "ERROR_END_DATE_BEFORE_START": "Start date CAN NOT exceed End date."
+    }
+  },
+  "PROVIDER": {
+    "CARD_LIST": {
+      "ACCORDION_HEADER": "Patient's Providers",
+      "WARNING": "OK! You must add at least two contacts before sharing your health information.",
+      "ADD_PROVIDER_BUTTON": "Add a Health Provider",
+      "SORT_LIST_TITLE": "Show List by",
+      "NO_PROVIDERS_MSG": "There are currently no Providers available. Please click the 'Add a Health Provider' button to create a new provider.",
+      "PAGINATION": {
+        "PREVIOUS": "Previous",
+        "NEXT": "Next"
+      }
+    },
+    "CARD": {
+      "CONTENT": {
+        "NPI": "NPI",
+        "ADDRESS": "Address",
+        "CONTACT": "Contact Number"
+      },
+      "DELETE_DIALOG": {
+        "TITLE": "Delete provider",
+        "DESCRIPTION": "Are you sure you want to delete this provider?",
+        "BUTTON": {
+          "OK": "OK",
+          "CANCEL": "Cancel"
+        }
+      }
+    },
+    "SEARCH": {
+      "TITLE": "Search Providers",
+      "ACCORDION_HEADER": "Search",
+      "STEP_1": {
+        "TITLE": "Step 1. Please enter the provider State and City or Zip Code.",
+        "LABEL": "PLEASE CHOOSE ONE.",
+        "STATE_AND_CITY": {
+          "LABEL": "Enter State and City",
+          "STATE_PLACEHOLDER": "Please Select State (Required)",
+          "CITY_PLACEHOLDER": "City (Required)"
+        },
+        "OR": "OR",
+        "ZIP_CODE": {
+          "LABEL": "Enter Zip Code",
+          "ZIP_CODE_PLACEHOLDER": "Zip Code (Required)"
+        }
+      },
+      "STEP_2": {
+        "TITLE": "Step 2. Please enter the provider Facility Name OR Provider Name and Other Criteria.",
+        "LABEL": "PLEASE CHOOSE ONE.",
+        "PROVIDER_NAME_AND_OTHERS": {
+          "LABEL": "Enter Provider Name and Other Criteria",
+          "LAST_NAME_PLACEHOLDER": "Last Name (Required)",
+          "FIRST_NAME_PLACEHOLDER": "First Name (Optional)",
+          "TELEPHONE_PLACEHOLDER": "Telephone (Optional)",
+          "GENDER_PLACEHOLDER": "Gender (Optional)"
+        },
+        "OR": "OR",
+        "FACILITY": {
+          "LABEL": "Enter Facility Name",
+          "NAME_PLACEHOLDER": "Facility Name (Required)",
+          "TELEPHONE_PLACEHOLDER": "Telephone (Optional)"
+        }
+      },
+      "BUTTON": {
+        "CLEAR_ALL": "Clear All",
+        "SEARCH": "Search"
+      }
+    },
+    "SEARCH_RESULTS": {
+      "TITLE": "Please select to add.",
+      "NO_RESULT_MSG": "Sorry, There is no provider found!",
+      "PAGINATION": {
+        "NEXT": "Next",
+        "PREVIOUS": "Previous"
+      },
+      "RESULT": {
+        "NPI": "NPI",
+        "SELECT_PROVIDER_LABEL": "Select this provider.",
+        "PROVIDER_ALREADY_ADDED_LABEL": "This Provider has already in your provider list.",
+        "PROVIDER_CURRENT_ADDED_LABEL": "Provider currently added."
+      }
+    },
+    "MULTI_ADD": {
+      "TITLE": "Selections to add",
+      "TABLE": {
+        "NPI": "NPI",
+        "NAME_FACILITY": "Name/Facility",
+        "NO_PROVIDERS": " No Providers currently selected."
+      },
+      "DELETE_DIALOG": {
+        "TITLE": "Delete Provider",
+        "CONTENT": "Are you sure you want to delete this provider?",
+        "CANCEL_BUTTON": "Cancel",
+        "OK_BUTTON": "OK"
+      },
+      "ADD_DIALOG": {
+        "TITLE": "Add Selected Providers",
+        "CONTENT": "Are you sure you want to add the selected providers?",
+        "CANCEL_BUTTON": "Cancel",
+        "OK_BUTTON": "OK"
+      },
+      "ADD_BUTTON": "Add to Provider List"
     }
   }
 }

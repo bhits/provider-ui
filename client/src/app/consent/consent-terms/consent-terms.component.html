@@ -1,20 +1,24 @@
 <md-card class="left-align p-none m-sm section-border-thin hover">
-  <md-card-title class="bg-forest-green p-sm white"><i class="material-icons md-36 bottom p-r-xs">schedule</i>Consent
-    Terms
+  <md-card-title class="bg-forest-green p-sm white"><i class="material-icons md-36 bottom p-r-xs">schedule</i>
+    {{ 'CONSENT.TERMS.TITLE' | translate }}
   </md-card-title>
   <md-card-content class="p-15">
-    <p class="m-b-xs">Enter a start and end date during wich your medical records will be shared.</p>
+    <p class="m-b-xs">
+      {{ 'CONSENT.TERMS.TEXT' | translate }}
+    </p>
     <table>
       <tr>
         <td>
-          <span>Start Date:
+          <span>
+            {{ 'CONSENT.TERMS.START_DATE' | translate }}
             <md2-datepicker [(ngModel)]="startDate" (change)="onStartDateChanged()"
                             [openOnFocus]="isOpenOnFocus" [format]="FORMAT">
             </md2-datepicker>
           </span>
         </td>
         <td>
-          <span>End Date:
+          <span>
+            {{ 'CONSENT.TERMS.END_DATE' | translate }}
             <md2-datepicker [(ngModel)]="endDate" (change)="onEndDateChanged()"
                             [openOnFocus]="isOpenOnFocus" [format]="FORMAT">
             </md2-datepicker>
@@ -23,13 +27,13 @@
       </tr>
       <tr>
         <div *ngIf="isStartDatePastDate" class="has-error">
-          Start date should be in the present
+          {{ 'CONSENT.TERMS.ERROR_PAST_START_DATE' | translate }}
         </div>
         <div *ngIf="isEndDatePastDate" class="has-error">
-          End date should be in the present.
+          {{ 'CONSENT.TERMS.ERROR_PAST_END_DATE' | translate }}
         </div>
         <div *ngIf="isStartDateAfterEndDate" class="has-error">
-          Start date CAN NOT exceed End date.
+          {{ 'CONSENT.TERMS.ERROR_END_DATE_BEFORE_START' | translate }}
         </div>
       </tr>
     </table>
