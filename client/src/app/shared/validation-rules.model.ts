@@ -7,6 +7,7 @@ export class ValidationRules {
   public static MAX_LENGTH_KEY: string = "maxlength";
   public static PATTERN_KEY: string = "pattern";
   public static INVALID_PAST_DATE_KEY: string = "invalidPastDate";
+  public static INVALID_NUMBER_KEY: string = "invalidNumber";
   //Declare Validation Rule
   public static NORMAL_MIN_LENGTH: number = 2;
   public static NORMAL_MAX_LENGTH: number = 50;
@@ -25,4 +26,5 @@ export class ValidationRules {
   public static REQUIRED_MESSAGE: string = "This field is required.";
   public static REQUIRED_TRUE_MESSAGE: string = "This field value must be true.";
   public static INVALID_PAST_DATE_MESSAGE: string = "Selected date must be earlier than today";
+  public static NUMBER_MESSAGE: string = "Must be a number.";
 }

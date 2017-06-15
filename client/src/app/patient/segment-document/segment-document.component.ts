@@ -14,6 +14,8 @@ import {ProviderService} from "../../provider/shared/provider.service";
 import {Provider} from "../../provider/shared/provider.model";
 import {NotificationService} from "../../shared/notification.service";
 import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
+import {ValidationService} from "../../shared/validation.service";
+import {ValidationRules} from "../../shared/validation-rules.model";
 
 
 @Component({
@@ -37,12 +39,15 @@ export class SegmentDocumentComponent implements OnInit {
   private authorizeProviderSubject = new Subject<string>();
   private discloseProviderSubject = new Subject<string>();
 
+  public numberErrorMessage: string = ValidationRules.NUMBER_MESSAGE;
+
 
   constructor( private formBuilder: FormBuilder,
                private consentService: ConsentService,
                private tokenService: TokenService,
                private providerService: ProviderService,
                private notificationService: NotificationService,
+               private validationService: ValidationService,
                private utilityService: UtilityService) {
     // local uploading files array
     this.files = [];
@@ -101,19 +106,16 @@ export class SegmentDocumentComponent implements OnInit {
 
   private buildSegementationForm(): FormGroup{
     return this.formBuilder.group({
-      intermediaryNpi: [null,
-        [ Validators.required]
-      ],
-      recipientNpi: [null,
-        [ Validators.required]
-      ],
-      purposeOfUse: [null,
-        [ Validators.required]
-      ],
-      document: [null,
-        [ Validators.required]
-      ],
+      intermediaryNpi: [null, Validators.compose([Validators.required, ValidationService.isANumberValidator])],
+      recipientNpi: [null, Validators.compose([Validators.required, ValidationService.isANumberValidator])],
+      purposeOfUse: [null, [ Validators.required]],
+      document: [null,[ Validators.required]],
     });
+  }
+
+  public canSegmentDocument():boolean{
+    let result:boolean = this.validationService.isValidForm(this.segmentationFrom);
+    return result;
   }
 
   onUploadOutput(output: UploadOutput, segmentDocumentDialog: any): void {

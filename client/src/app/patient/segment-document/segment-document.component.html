@@ -10,86 +10,119 @@
     </div>
   </div>
   <form [formGroup]="segmentationFrom" novalidate>
-    <div fxLayout="row" fxLayoutGap="20px">
+    <div>
+      <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <div><span><h2>
           {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_LABEL' | translate }}:
         </h2></span></div>
       </div>
     </div>
-    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <md-input-container class="full-width font-size20">
-          <input mdInput placeholder=' {{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PLACEHOLDER" | translate }}' #authorizeProviderNpi
-                 (blur)="searchAuthorizeProviders(authorizeProviderNpi.value)" formControlName="intermediaryNpi">
+          <input mdInput placeholder='{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PLACEHOLDER" | translate }}'
+                 #authorizeProviderNpi
+                 (blur)="searchAuthorizeProviders(authorizeProviderNpi.value)"
+                 formControlName="intermediaryNpi">
         </md-input-container>
+        <c2s-control-validation-error-message
+          [customMessage]="numberErrorMessage"
+          [control]="segmentationFrom.controls.intermediaryNpi">
+        </c2s-control-validation-error-message>
         <div *ngIf="authorizeProvider">
           <label>{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
           <span>{{ authorizeProvider.firstName }} {{ authorizeProvider.lastName }}</span>
         </div>
       </div>
     </div>
-
-    <div fxLayout="row" fxLayoutGap="20px">
-      <div fxFlex>
-        <div><span><h2>
-          {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_LABEL' | translate }}:
-        </h2></span></div>
-      </div>
     </div>
-    <div fxLayout="row" fxLayoutGap="20px">
-      <div fxFlex>
-        <md-input-container class="full-width font-size20">
-          <input mdInput placeholder= '{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PLACEHOLDER" | translate}}' #disclosureProvider
-                 (blur)="searchDiscloseProviders(disclosureProvider.value)" formControlName="recipientNpi">
-        </md-input-container>
-        <div *ngIf="discloseProvider">
-          <label>
-            {{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PROVIDER_NAME_LABEL" | translate}}:
-          </label>
-          <span>{{ discloseProvider.firstName }} {{ discloseProvider.lastName }}</span>
+    <div>
+      <div fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex>
+          <div><span><h2>
+              {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_LABEL' | translate }}:
+            </h2></span></div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex>
+          <md-input-container class="full-width font-size20">
+            <input mdInput placeholder= '{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PLACEHOLDER" | translate}}'
+                   #disclosureProvider
+                   (blur)="searchDiscloseProviders(disclosureProvider.value)"
+                   formControlName="recipientNpi">
+          </md-input-container>
+          <c2s-control-validation-error-message
+            [customMessage]="numberErrorMessage"
+            [control]="segmentationFrom.controls.recipientNpi">
+          </c2s-control-validation-error-message>
+          <div *ngIf="discloseProvider">
+            <label>
+              {{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PROVIDER_NAME_LABEL" | translate}}:
+            </label>
+            <span>{{ discloseProvider.firstName }} {{ discloseProvider.lastName }}</span>
+          </div>
         </div>
       </div>
     </div>
-    <div fxLayout="row" fxLayoutGap="20px">
-      <div fxFlex>
-        <div><span><h2>
-           {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.PURPOSE_OF_USE_LABEL' | translate }}:
-        </h2></span></div>
+
+    <div>
+      <div fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex>
+          <div><span><h2>
+             {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.PURPOSE_OF_USE_LABEL' | translate }}:
+          </h2></span></div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex>
+          <md-select placeholder='{{"PATIENT_EDIT.SEGMENT_DOCUMENT.PURPOSE_OF_USE_PLACEHOLDER" | translate }}'
+                     formControlName="purposeOfUse" [required]="true">
+            <md-option *ngFor="let purposeOfUse of purposeOfUses" [value]="purposeOfUse.id" >
+              {{ purposeOfUse.display }}
+            </md-option>
+          </md-select>
+        </div>
+        <c2s-control-validation-error-message
+          [control]="segmentationFrom.controls.purposeOfUse">
+        </c2s-control-validation-error-message>
       </div>
     </div>
-    <div fxLayout="row" fxLayoutGap="20px">
-      <div fxFlex>
-        <md-select placeholder='{{"PATIENT_EDIT.SEGMENT_DOCUMENT.PURPOSE_OF_USE_PLACEHOLDER" | translate }}' formControlName="purposeOfUse">
-          <md-option *ngFor="let purposeOfUse of purposeOfUses" [value]="purposeOfUse.id" >
-            {{ purposeOfUse.display }}
-          </md-option>
-        </md-select>
-      </div>
-    </div>
-    <br>
-    <div fxLayout="row" fxLayoutGap="20px">
+    <div>
+      <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <label class="upload-button">
-          <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)" formControlName="document" [uploadInput]="uploadInput">
+          <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)"
+                 formControlName="document"
+                 [uploadInput]="uploadInput">
           <a md-raised-button >
             {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.CHOOSE_FILE_BTN' | translate }}
           </a>
         </label>
       </div>
     </div>
-    <br>
+       <c2s-control-validation-error-message
+      [control]="segmentationFrom.controls.document">
+    </c2s-control-validation-error-message>
+    </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <div class="full-width font-size20">
-          <a md-raised-button (click)="segmentDocument()" disabled="canSegment()">
+          <a md-raised-button (click)="segmentDocument()" [disabled]="segmentationFrom.invalid">
             {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.SEGMENTATION_BTN' | translate }}
           </a>
         </div>
       </div>
     </div>
+
   </form>
 </div>
+
+<!--<pre>intermediaryNpi: {{segmentationFrom.controls.intermediaryNpi?.errors | json}}</pre>-->
+<!--<pre>recipientNpi: {{segmentationFrom.controls.recipientNpi?.errors | json}}</pre>-->
+<!--<pre>purposeOfUse: {{segmentationFrom.controls.purposeOfUse?.errors | json}}</pre>-->
+<!--<pre>document: {{segmentationFrom.controls.document?.errors | json}}</pre>-->
 
 <md2-dialog #segmentDocumentDialog (onClose)="navigateTo()">
   <md2-dialog-title>

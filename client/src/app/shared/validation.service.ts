@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {ValidationRules} from "app/shared/validation-rules.model";
+import {FormGroup} from "@angular/forms";
 
 @Injectable()
 export class ValidationService {
@@ -23,15 +24,34 @@ export class ValidationService {
         return customMessage;
       case ValidationRules.INVALID_PAST_DATE_KEY:
         return ValidationRules.INVALID_PAST_DATE_MESSAGE;
+      case ValidationRules.INVALID_NUMBER_KEY:
+        return ValidationRules.NUMBER_MESSAGE;
     }
   }
 
-  static pastDateValidator(control) {
+  static pastDateValidator(control):any  {
     const today = new Date();
     if (control.value < today) {
       return null;
     } else {
       return {'invalidPastDate': true};
+    }
+  }
+
+  static isANumberValidator(control):any {
+    if (Number(control.value)) {
+      return null;
+    } else {
+      return {'invalidNumber': true};
+    }
+  }
+
+
+  isValidForm(formgroup: FormGroup) :boolean{
+    if (formgroup) {
+      return formgroup.valid;
+    } else {
+      return false;
     }
   }
 }
