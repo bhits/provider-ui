@@ -16,6 +16,8 @@ import {NotificationService} from "../../shared/notification.service";
 import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
 import {ValidationService} from "../../shared/validation.service";
 import {ValidationRules} from "../../shared/validation-rules.model";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Observable} from "rxjs/Observable";
 
 
 @Component({
@@ -36,10 +38,15 @@ export class SegmentDocumentComponent implements OnInit {
   public authorizeProvider: FlattenedSmallProvider;
   public discloseProvider: FlattenedSmallProvider;
 
-  private authorizeProviderSubject = new Subject<string>();
-  private discloseProviderSubject = new Subject<string>();
+  // private discloseProviderSubject = new Subject<string>();
 
   public numberErrorMessage: string = ValidationRules.NUMBER_MESSAGE;
+
+  public authorizeProviderSubject: BehaviorSubject<FlattenedSmallProvider> = new BehaviorSubject<FlattenedSmallProvider>(null);
+  public authorizeProviderEmitter: Observable<FlattenedSmallProvider> = this.authorizeProviderSubject.asObservable();
+
+  public discloseProviderSubject: BehaviorSubject<FlattenedSmallProvider> = new BehaviorSubject<FlattenedSmallProvider>(null);
+  public discloseProviderEmitter: Observable<FlattenedSmallProvider> = this.discloseProviderSubject.asObservable();
 
 
   constructor( private formBuilder: FormBuilder,
@@ -57,47 +64,57 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.segmentationFrom = this.buildSegementationForm();
+
     this.consentService.getPurposeOfUses()
-      .subscribe((purposeOfUses: SharePurpose[])=>this.purposeOfUses = purposeOfUses, this.handleSegmentationError);
+                        .subscribe((purposeOfUses: SharePurpose[])=>this.purposeOfUses = purposeOfUses, this.handleSegmentationError);
 
-    this.authorizeProviderSubject
-              .switchMap(npi => this.providerService.getProviderByNpi(npi))
-                        .subscribe(
-                          (provider) => {
-                            if (provider) {
-                              this.authorizeProvider = provider;
-                            }else {
-                              this.authorizeProvider = null;
-                            }
-                          },
-                          err => {
-                            this.authorizeProvider = null;
-                            this.notificationService.show("Failed to search provider, please try again later...");
-                          });
 
-    this.discloseProviderSubject
-            .switchMap(npi => this.providerService.getProviderByNpi(npi))
-                        .subscribe(
-                          (provider) => {
-                            if (provider) {
-                              this.discloseProvider = provider;
-                            }else {
-                              this.discloseProvider = null;
-                            }
-                          },
-                          err => {
-                            this.discloseProvider = null;
-                            this.notificationService.show("Failed to search provider, please try again later...");
-                          });
+    this.authorizeProviderEmitter .subscribe((provider) => {
+                                                              if (provider !== null) {
+                                                                this.authorizeProvider = provider;
+                                                              }
+                                                            });
+
+    this.discloseProviderEmitter.subscribe((provider) => {
+                                                              if (provider !== null) {
+                                                                this.discloseProvider = provider;
+                                                              }
+                                                            });
   }
 
   public searchAuthorizeProviders(npi: string): void {
-    this.authorizeProviderSubject.next(npi);
+            this.providerService.getProviderByNpi(npi)
+                                     .subscribe( (provider) => {
+                                                                    if (provider) {
+                                                                      this.authorizeProviderSubject.next(provider)
+                                                                    }else {
+                                                                      this.authorizeProviderSubject.next(null);
+                                                                    }
+                                                  },
+                                                  err => {
+                                                          this.authorizeProviderSubject.next(null);
+                                                          this.notificationService.show("Failed to search provider, please try again later...");
+                                                  }
+                                                );
+
   }
 
   public searchDiscloseProviders(npi: string): void {
-    this.discloseProviderSubject.next(npi);
+    this.providerService.getProviderByNpi(npi)
+                              .subscribe( (provider) => {
+                                                            if (provider) {
+                                                              this.discloseProviderSubject.next(provider);
+                                                              }else {
+                                                                 this.discloseProviderSubject.next(null);
+                                                              }
+                                                        },
+                                            err => {
+                                                          this.discloseProviderSubject.next(null);
+                                                          this.notificationService.show("Failed to search provider, please try again later...");
+                                                    }
+                                            );
   }
 
   handleSegmentationError(error: any){
@@ -109,7 +126,7 @@ export class SegmentDocumentComponent implements OnInit {
       intermediaryNpi: [null, Validators.compose([Validators.required, ValidationService.isANumberValidator])],
       recipientNpi: [null, Validators.compose([Validators.required, ValidationService.isANumberValidator])],
       purposeOfUse: [null, [ Validators.required]],
-      document: [null,[ Validators.required]],
+      document: [null],
     });
   }
 

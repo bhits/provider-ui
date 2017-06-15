@@ -26,6 +26,8 @@ export class ValidationService {
         return ValidationRules.INVALID_PAST_DATE_MESSAGE;
       case ValidationRules.INVALID_NUMBER_KEY:
         return ValidationRules.NUMBER_MESSAGE;
+      case ValidationRules.INVALID_NUMBER_KEY:
+        return ValidationRules.NUMBER_MESSAGE;
     }
   }
 
@@ -46,6 +48,13 @@ export class ValidationService {
     }
   }
 
+  static isNPIValidator(control):any {
+    if (Number(control.value)) {
+      return null;
+    } else {
+      return {'invalidNumber': true};
+    }
+  }
 
   isValidForm(formgroup: FormGroup) :boolean{
     if (formgroup) {

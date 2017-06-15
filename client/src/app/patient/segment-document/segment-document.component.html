@@ -102,9 +102,9 @@
         </label>
       </div>
     </div>
-       <c2s-control-validation-error-message
-      [control]="segmentationFrom.controls.document">
-    </c2s-control-validation-error-message>
+       <!--<c2s-control-validation-error-message-->
+      <!--[control]="segmentationFrom.controls.document">-->
+    <!--</c2s-control-validation-error-message>-->
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
@@ -119,12 +119,7 @@
   </form>
 </div>
 
-<!--<pre>intermediaryNpi: {{segmentationFrom.controls.intermediaryNpi?.errors | json}}</pre>-->
-<!--<pre>recipientNpi: {{segmentationFrom.controls.recipientNpi?.errors | json}}</pre>-->
-<!--<pre>purposeOfUse: {{segmentationFrom.controls.purposeOfUse?.errors | json}}</pre>-->
-<!--<pre>document: {{segmentationFrom.controls.document?.errors | json}}</pre>-->
-
-<md2-dialog #segmentDocumentDialog (onClose)="navigateTo()">
+<md2-dialog #segmentDocumentDialog >
   <md2-dialog-title>
     {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.DOWNLOAD_DIALOG.TITLE' | translate }}
   </md2-dialog-title>
