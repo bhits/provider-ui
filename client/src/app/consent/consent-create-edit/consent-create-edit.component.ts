@@ -58,10 +58,11 @@ export class ConsentCreateEditComponent implements OnInit {
       this.consentService.updateConsent(this.selectedPatient.mrn, this.consent)
         .subscribe(
           () => {
+            this.notificationService.show("Successfully updated the consent on behalf of the patient");
             this.utilityService.navigateTo(this.consentListUrl);
           },
           err => {
-            this.notificationService.show("Error in updating consent.");
+            this.notificationService.show("Error in updating consent on behalf of the patient");
           }
         );
     } else {
@@ -69,10 +70,11 @@ export class ConsentCreateEditComponent implements OnInit {
       this.consentService.createConsent(this.selectedPatient.mrn, this.consent)
         .subscribe(
           () => {
+            this.notificationService.show("Successfully created the consent on behalf of the patient");
             this.utilityService.navigateTo(this.consentListUrl);
           },
           err => {
-            this.notificationService.show("Error in creating consent.");
+            this.notificationService.show("Error in creating consent on behalf of the patient");
           }
         );
     }
