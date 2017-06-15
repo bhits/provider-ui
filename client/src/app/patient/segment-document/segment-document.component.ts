@@ -13,6 +13,7 @@ import {Patient} from "app/patient/shared/patient.model";
 import {ProviderService} from "../../provider/shared/provider.service";
 import {Provider} from "../../provider/shared/provider.model";
 import {NotificationService} from "../../shared/notification.service";
+import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
 
 
 @Component({
@@ -30,14 +31,11 @@ export class SegmentDocumentComponent implements OnInit {
   public segmentedDocumentName : string;
   public purposeOfUses: SharePurpose[]=[] ;
 
-  public authorizeProviders: Provider [];
-  public discloseProviders: Provider [];
+  public authorizeProvider: FlattenedSmallProvider;
+  public discloseProvider: FlattenedSmallProvider;
 
-  public selectedAuthorizeProvider: Provider;
-  public selectedDiscloseProvider: Provider;
-
-  private searchResultAuthorizeProviders = new Subject<string>();
-  private searchResultDiscloseProviders = new Subject<string>();
+  private authorizeProviderSubject = new Subject<string>();
+  private discloseProviderSubject = new Subject<string>();
 
 
   constructor( private formBuilder: FormBuilder,
@@ -55,63 +53,47 @@ export class SegmentDocumentComponent implements OnInit {
 
   ngOnInit() {
     this.segmentationFrom = this.buildSegementationForm();
-    this.consentService.getPurposeOfUses().subscribe(
-      (purposeOfUses: SharePurpose[])=>this.purposeOfUses = purposeOfUses,
-      this.handleSegmentationError);
+    this.consentService.getPurposeOfUses()
+      .subscribe((purposeOfUses: SharePurpose[])=>this.purposeOfUses = purposeOfUses, this.handleSegmentationError);
 
-    this.searchResultAuthorizeProviders
-              .debounceTime(300)
-              .distinctUntilChanged()
+    this.authorizeProviderSubject
               .switchMap(npi => this.providerService.getProviderByNpi(npi))
                         .subscribe(
-                          (providers) => {
-                            if (providers.length > 0) {
-                              this.authorizeProviders = providers;
+                          (provider) => {
+                            if (provider) {
+                              this.authorizeProvider = provider;
                             }else {
-                              this.setSelectedAuthorizeProvider(null);
-                              this.authorizeProviders = [];
+                              this.authorizeProvider = null;
                             }
                           },
                           err => {
+                            this.authorizeProvider = null;
                             this.notificationService.show("Failed to search provider, please try again later...");
                           });
 
-    this.searchResultDiscloseProviders
-            .debounceTime(300)
-            .distinctUntilChanged()
+    this.discloseProviderSubject
             .switchMap(npi => this.providerService.getProviderByNpi(npi))
                         .subscribe(
-                          (providers) => {
-                            if (providers.length > 0) {
-                              this.discloseProviders = providers;
+                          (provider) => {
+                            if (provider) {
+                              this.discloseProvider = provider;
                             }else {
-                              this.setSelectedDiscloseProvider(null);
-                              this.discloseProviders = [];
+                              this.discloseProvider = null;
                             }
                           },
                           err => {
+                            this.discloseProvider = null;
                             this.notificationService.show("Failed to search provider, please try again later...");
                           });
   }
 
   public searchAuthorizeProviders(npi: string): void {
-    this.searchResultAuthorizeProviders.next(npi);
+    this.authorizeProviderSubject.next(npi);
   }
 
   public searchDiscloseProviders(npi: string): void {
-    this.searchResultDiscloseProviders.next(npi);
+    this.discloseProviderSubject.next(npi);
   }
-
-  setSelectedAuthorizeProvider(selectedProvider: Provider){
-    this.selectedAuthorizeProvider = selectedProvider;
-    this.authorizeProviders = [];
-  }
-
-  setSelectedDiscloseProvider(selectedProvider: Provider){
-    this.selectedDiscloseProvider = selectedProvider;
-    this.discloseProviders = [];
-  }
-
 
   handleSegmentationError(error: any){
     console.log(error);
@@ -157,7 +139,7 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   canSegment():boolean{
-    return true;
+    return false;
   }
 
   segmentDocument(): void {

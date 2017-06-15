@@ -43,9 +43,9 @@ export class AuthenticationService {
       .catch(this.exceptionService.handleError);
   }
 
-  public isLoggedIn(response: AuthorizationResponse): void {
+  public storeTokenInSessionStorage(response: AuthorizationResponse): void {
     this.tokenService.setOauthToken(response);
-    this.utilityService.navigateTo(this.apiUrlService.getHomeUrl());
+    // this.utilityService.navigateTo(this.apiUrlService.getHomeUrl());
   }
 
   public logout(): void {

@@ -20,6 +20,7 @@ import {NotificationService} from "./notification.service";
 import {UtilityService} from "./utility.service";
 import {ValidationService} from "./validation.service";
 import {TranslateModule} from "@ngx-translate/core";
+import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {TranslateModule} from "@ngx-translate/core";
     ControlValidationErrorMessageComponent,
     ConfirmDialogComponent,
     ShowHidePasswordComponent,
-    ProviderPipe
+    ProviderPipe,
+    FlattenedSmallProviderPipe
   ],
   entryComponents: [ConfirmDialogComponent],
   providers: [
@@ -56,6 +58,7 @@ import {TranslateModule} from "@ngx-translate/core";
     ShowHidePasswordComponent,
     ProviderPipe,
     UsPhoneNumberPipe,
+    FlattenedSmallProviderPipe,
     TranslateModule
   ]
 })

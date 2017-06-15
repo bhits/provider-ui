@@ -7,6 +7,7 @@ import {Profile} from "../../core/profile.model";
 import {UtilityService} from "app/shared/utility.service";
 import {CustomTranslateService} from "../../core/custom-translate.service";
 import {TokenService} from "../shared/token.service";
+import {ApiUrlService} from "../../shared/api-url.service";
 
 @Component({
   selector: 'c2s-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
               private utilityService: UtilityService,
               private tokenService: TokenService,
               private customTranslateService: CustomTranslateService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private apiUrlService: ApiUrlService) {
   }
 
   ngOnInit() {
@@ -41,13 +43,14 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (res) => {
           this.unauthorized = false;
-          this.authenticationService.isLoggedIn(res);
+          this.authenticationService.storeTokenInSessionStorage(res);
           this.authenticationService.getUserProfile()
             .subscribe(
               (uaaProfile) => {
                 let profile = this.tokenService.createProfileObject(uaaProfile);
                 this.tokenService.storeUserProfile(profile);
                 this.getUMSProfileAndSetDefaultLanguage(profile);
+                this.utilityService.navigateTo(this.apiUrlService.getHomeUrl());
               }
               ,
               (error) => this.handleLoginError

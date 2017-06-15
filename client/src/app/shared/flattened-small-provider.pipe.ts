@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {UtilityService} from "../../shared/utility.service";
-import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
+import {UtilityService} from "./utility.service";
+import {FlattenedSmallProvider} from "./flattened-small-provider.model";
 
 type ArgType = "fullName" | "address";
 

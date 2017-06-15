@@ -19,25 +19,16 @@
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <md-input-container class="search-field  full-width font-size20">
-          <input mdInput type="search" placeholder=' {{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PLACEHOLDER" | translate }}' #authorizeProvider (keyup)="searchAuthorizeProviders(authorizeProvider.value)" formControlName="intermediaryNpi">
+        <md-input-container class="full-width font-size20">
+          <input mdInput placeholder=' {{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PLACEHOLDER" | translate }}' #authorizeProviderNpi
+                 (blur)="searchAuthorizeProviders(authorizeProviderNpi.value)" formControlName="intermediaryNpi">
         </md-input-container>
-        <div *ngIf="selectedAuthorizeProvider">
-          <label>{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:: </label>
-          <span>{{ selectedAuthorizeProvider | provider:"name"}}</span>
-        </div>
-        <div *ngIf="authorizeProviders">
-          <md-list>
-            <md-list-item *ngFor="let authorizeProvider of authorizeProviders" (click)="setSelectedAuthorizeProvider(authorizeProvider)">
-              <button md-menu-item >
-                <span >{{ authorizeProvider | provider:"name"}}</span>
-              </button>
-            </md-list-item>
-          </md-list>
+        <div *ngIf="authorizeProvider">
+          <label>{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
+          <span>{{ authorizeProvider.firstName }} {{ authorizeProvider.lastName }}</span>
         </div>
       </div>
     </div>
-
 
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
@@ -48,22 +39,15 @@
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
-        <md-input-container class="search-field full-width font-size20">
-          <input mdInput placeholder= '{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PLACEHOLDER" | translate}}' #disclosureProvider (keyup)="searchDiscloseProviders(disclosureProvider.value)" formControlName="recipientNpi">
+        <md-input-container class="full-width font-size20">
+          <input mdInput placeholder= '{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PLACEHOLDER" | translate}}' #disclosureProvider
+                 (blur)="searchDiscloseProviders(disclosureProvider.value)" formControlName="recipientNpi">
         </md-input-container>
-        <div *ngIf="selectedDiscloseProvider">
+        <div *ngIf="discloseProvider">
           <label>
             {{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PROVIDER_NAME_LABEL" | translate}}:
-          </label><span>{{ selectedDiscloseProvider | provider:"name"}}</span>
-        </div>
-        <div *ngIf="discloseProviders">
-          <md-list>
-            <md-list-item *ngFor="let disclosureProvider of discloseProviders" (click)="setSelectedDiscloseProvider(disclosureProvider)">
-              <button md-menu-item >
-                <span >{{ disclosureProvider | provider:"name"}}</span>
-              </button>
-            </md-list-item>
-          </md-list>
+          </label>
+          <span>{{ discloseProvider.firstName }} {{ discloseProvider.lastName }}</span>
         </div>
       </div>
     </div>

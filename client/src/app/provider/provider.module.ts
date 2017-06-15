@@ -10,7 +10,6 @@ import {ProviderListComponent} from "./provider-list/provider-list.component";
 import {SharedModule} from "app/shared/shared.module";
 import {ProviderService} from "./shared/provider.service";
 import {ProviderSearchResultComponent} from "./provider-search-result/provider-search-result.component";
-import {FlattenedSmallProviderPipe} from "./shared/flattened-small-provider.pipe";
 import {ProviderMultiAddComponent} from "./provider-multi-add/provider-multi-add.component";
 
 @NgModule({
@@ -23,8 +22,7 @@ import {ProviderMultiAddComponent} from "./provider-multi-add/provider-multi-add
     routedProviderComponents,
     ProviderListComponent,
     ProviderMultiAddComponent,
-    ProviderSearchResultComponent,
-    FlattenedSmallProviderPipe
+    ProviderSearchResultComponent
   ],
   providers: [
     routedProviderResolveServices,
