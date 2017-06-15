@@ -171,7 +171,11 @@
         "PHONE_PLACEHOLDER": "Phone"
       },
       "CANCEL_BTN": "Cancel",
-      "SAVE_BTN": "Save"
+      "SAVE_BTN": "Save",
+      "CONFIRM_DIALOG": {
+        "TITLE": "Confirm Navigation",
+        "CONTENT": "You will lose all unsaved work, Are you sure you want to leave this page?"
+      }
     },
     "VERIFICATION": {
       "ACCORDION_HEADER": "Account Activation/Verification Code",
@@ -309,6 +313,10 @@
       "REQUIRED_ERROR_MESSAGE": "This field is required.",
       "REQUIRED_TRUE_ERROR_MESSAGE": "This field value must be true.",
       "INVALID_PAST_DATE_ERROR_MESSAGE": "Selected date must be earlier than today"
+    },
+    "CONFIRM_DIALOG": {
+      "OK_BTN": "OK",
+      "CANCEL_BTN": "Cancel"
     }
   }
 }

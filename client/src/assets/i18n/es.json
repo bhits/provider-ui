@@ -171,7 +171,11 @@
         "PHONE_PLACEHOLDER": "{spanish} Phone"
       },
       "CANCEL_BTN": "{spanish} Cancel",
-      "SAVE_BTN": "{spanish} Save"
+      "SAVE_BTN": "{spanish} Save",
+      "CONFIRM_DIALOG": {
+        "TITLE": "{spanish} Confirm Navigation",
+        "CONTENT": "{spanish} You will lose all unsaved work, Are you sure you want to leave this page?"
+      }
     },
     "VERIFICATION": {
       "ACCORDION_HEADER": "{spanish} Account Activation/Verification Code",
@@ -322,6 +326,10 @@
       "REQUIRED_ERROR_MESSAGE": "{spanish} This field is required.",
       "REQUIRED_TRUE_ERROR_MESSAGE": "{spanish} This field value must be true.",
       "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today"
+    },
+    "CONFIRM_DIALOG": {
+      "OK_BTN": "De acuerdo",
+      "CANCEL_BTN": "Cancelar"
     }
   }
 }
