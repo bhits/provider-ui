@@ -16,31 +16,35 @@ export class ProfileService {
               private sessionStorageService: SessionStorageService) {
   }
 
-  getUMSProfile(): Observable<UmsProfile> {
+  public getUMSProfile(): Observable<UmsProfile> {
     return this.http.get(this.umsProfileUrl)
       .map((resp: Response) => <any>(resp.json()));
   }
 
-  setProfileInSessionStorage(profile: UmsProfile) {
+  public setProfileInSessionStorage(profile: UmsProfile) {
     this.sessionStorageService.store(this.UMS_PROFILE_KEY, profile);
   }
 
-  getProfileFromSessionStorage(): UmsProfile {
+  public getProfileFromSessionStorage(): UmsProfile {
     return this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY);
   }
 
-  getUserName(): String{
-    let umsProfile:UmsProfile = this.getProfileFromSessionStorage();
-    if(umsProfile){
+  public deleteProfileFromSessionStorage() {
+    this.sessionStorageService.clear(this.UMS_PROFILE_KEY);
+  }
+
+  getUserName(): String {
+    let umsProfile: UmsProfile = this.getProfileFromSessionStorage();
+    if (umsProfile) {
       return umsProfile.userName;
     } else {
       return "";
     }
   }
 
-  getFullName(): string{
-    let umsProfile:UmsProfile = this.getProfileFromSessionStorage();
-    if(umsProfile){
+  public getFullName(): string {
+    let umsProfile: UmsProfile = this.getProfileFromSessionStorage();
+    if (umsProfile) {
       return umsProfile.firstName + " " + umsProfile.lastName;
     } else {
       return "";
@@ -48,33 +52,28 @@ export class ProfileService {
   }
 
   //Todo: Change it when current user can manage multiple patients
-  getUserMrn(): string {
+  public getUserMrn(): string {
     let umsProfile: UmsProfile = this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY);
     if (umsProfile != null) {
       return umsProfile.mrn;
     }
   }
 
-  deleteProfileFromSessionStorage() {
-    this.sessionStorageService.clear(this.UMS_PROFILE_KEY);
-  }
-
-  getMRN(){
-    let umsProfile:UmsProfile = this.getProfileFromSessionStorage();
-    if(umsProfile){
+  public getMRN() {
+    let umsProfile: UmsProfile = this.getProfileFromSessionStorage();
+    if (umsProfile) {
       return umsProfile.mrn;
-    }else {
+    } else {
       return "";
     }
   }
 
-  getUserLocale(){
-    let umsProfile:UmsProfile = this.getProfileFromSessionStorage();
-    if(umsProfile){
+  public getUserLocale() {
+    let umsProfile: UmsProfile = this.getProfileFromSessionStorage();
+    if (umsProfile) {
       return umsProfile.userLocale;
-    }else {
+    } else {
       return "";
     }
   }
-
 }

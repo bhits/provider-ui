@@ -1,12 +1,14 @@
 <md-card class="left-align p-none m-sm section-border-thin hover">
   <md-card-title class="bg-forest-green p-sm white"><i class="material-icons md-36 bottom p-r-xs">settings</i>
-    Purpose Of Use
+    {{ 'CONSENT.PURPOSE_OF_USE.TITLE' | translate }}
   </md-card-title>
   <md-card-content class="p-15">
-    <p>Choose for what purposes your medical information may be used.</p>
-    <span [innerHTML]="'<strong>SHARE</strong> my medical record ONLY for the selected purposes of use.'"></span>
+    <p>
+      {{ 'CONSENT.PURPOSE_OF_USE.DESCRIPTION' | translate }}
+    </p>
+    <span [innerHTML]="'CONSENT.PURPOSE_OF_USE.SHARE_TEXT' | translate"></span>
     <button class="lineHeight28" md-raised-button color="primary" (click)="purposeOfUseDialog.open()">
-      Edit
+      {{ 'CONSENT.PURPOSE_OF_USE.EDIT_BTN' | translate }}
     </button>
     <br><br>
     <div>
@@ -23,18 +25,18 @@
 
 <md2-dialog #purposeOfUseDialog>
   <md2-dialog-title>
-    Share for selected purpose only
+    {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.TITLE' | translate }}
   </md2-dialog-title>
   <md-card class="left-align">
     <md-card-title>
-      Share my information only for specified purposes of use.
+      {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.DESCRIPTION' | translate }}
     </md-card-title>
     <md-card-content class="p-l-sm p-r-sm p-b-md">
       <button type="button" md-raised-button color="primary" (click)="selectAll()">
-        Select All
+        {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.SELECT_BTN' | translate }}
       </button>
       <button type="button" md-raised-button color="primary" (click)="deSelectAll()">
-        Deselect All
+        {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.DESELECT_BTN' | translate }}
       </button>
       <br><br>
       <div *ngFor="let purposeOfUse of purposeOfUses; let i = index;">
@@ -50,10 +52,10 @@
   </md-card>
   <md2-dialog-footer>
     <button type="button" md-raised-button (click)="purposeOfUseDialog.close()">
-      Cancel
+      {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.CANCEL_BTN' | translate }}
     </button>
     <button type="button" md-raised-button color="primary" (click)="updateSelectedPurposesOfUse(purposeOfUseDialog)">
-      Save changes
+      {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.SAVE_BTN' | translate }}
     </button>
   </md2-dialog-footer>
 </md2-dialog>

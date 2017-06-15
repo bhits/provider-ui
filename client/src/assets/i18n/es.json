@@ -36,8 +36,23 @@
       "SHARE_PURPOSE_OF_USES": "Comparte los siguientes propósitos:",
       "CONSENT_STATE": "Estado de consentimiento:",
       "MANAGE_CONSENT_BUTTON_TEXT": "Administrar consentimientos",
-      "MANAGE_CONSENT_DIALOG": {
-        "TITLE": "Opciones de Consentimiento"
+      "MANAGE_CONSENT_DIALOG_TITLE": "Opciones de Consentimiento",
+      "CONSENT_STAGES": {
+        "SAVED_STAGE": {
+          "STAGE_TEXT": "EN CURSO",
+          "EDIT_THIS_CONSENT_OPTION_TEXT": "Editar este consentimiento",
+          "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Previsualizar este consentimiento",
+          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Eliminar este consentimiento"
+        },
+        "SIGNED_STAGE": {
+          "STAGE_TEXT": "FIRMADO",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado"
+        },
+        "REVOKED_STAGE": {
+          "STAGE_TEXT": "Rechazado",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "Ver la revocación firmada"
+        }
       },
       "DELETE_CONSENT_DIALOG": {
         "TITLE": "Eliminar consentimiento",
@@ -50,6 +65,53 @@
       "TITLE": "I, {{name}}, por la presente autorizo ​​...",
       "CANCEL_BUTTON_LABEL": "Cancelar",
       "SAVE_BUTTON_LABEL": "Salvar"
+    },
+    "MEDICAL_INFORMATION": {
+      "TITLE": "Información médica",
+      "DESCRIPTION": "Seleccione cómo le gustaría compartir su información médica.",
+      "SHARE_ALL_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> SIN NINGUNA EXCEPCIÓN </ strong> de categorías de información médica.",
+      "SHARE_SOME_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> CON EXCEPCIÓN </ strong> de categorías específicas de información médica.",
+      "DIALOG": {
+        "TITLE": "La configuración de privacidad",
+        "HEADER1": "Categorías de información sensible",
+        "HEADER2": "Seleccione la información médica que desea compartir.",
+        "FED_TITLE": "Categorías federales",
+        "FED_DESCRIPTION": "{spanish}Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
+        "STATE_TITLE": "Categorías del estado",
+        "STATE_DESCRIPTION": "La mayoría de los estados tienen leyes que restringen a los profesionales de la salud de revelar información relacionada con el abuso de sustancias, el VIH / SIDA y la salud mental. '+' Algunos estados tienen restricciones con respecto a la información genética y las enfermedades transmisibles. Usted tiene el derecho de elegir la información que desea compartir o no compartir y con quién.",
+        "CONTENT": "Por favor, seleccione la opción \"Compartir mi historial médico sin excepciones\", si desea compartir toda la información de su salud.",
+        "CANCEL_BTN": "Cancelar",
+        "SAVE_BTN": "Guardar cambios",
+        "CONFIRM_BTN": "Confirm"
+      }
+    },
+    "PURPOSE_OF_USE": {
+      "TITLE": "Propósito de uso",
+      "DESCRIPTION": "Elija con qué fines puede utilizarse su información médica.",
+      "SHARE_TEXT": "<strong> COMPARTA </strong> mi historial médico SOLAMENTE para los fines de uso seleccionados.",
+      "EDIT_BTN": "Editar",
+      "DIALOG": {
+        "TITLE": "Compartir para el propósito seleccionado",
+        "DESCRIPTION": "Compartir mi información sólo con fines específicos de uso.",
+        "SELECT_BTN": "Seleccionar todo",
+        "DESELECT_BTN": "Deseleccionar todo",
+        "CANCEL_BTN": "Cancelar",
+        "SAVE_BTN": "Guardar cambios"
+      }
+    },
+    "SELECT_PROVIDER": {
+      "DESCRIPTION": "Seleccione una persona u organización autorizada para compartir su información:",
+      "IND_PROVIDER_LABEL": "Individual:",
+      "ORG_PROVIDER_LABEL": "Organizativo:",
+      "CANCEL_BTN": "Cancelar",
+      "ADD_BTN": "Añadir seleccionados"
+    },
+    "SELECT_PROVIDERS": {
+      "TITLE": "Seleccionar Proveedores",
+      "DIALOG_AUTHORIZE_TITLE": "La siguiente persona u organización",
+      "DIALOG_AUTHORIZE_HEADER": "Autorizar",
+      "DIALOG_DISCLOSED_TITLE": "Para revelar mi información a",
+      "DIALOG_DISCLOSE_HEADER": "Revelar"
     },
     "TERMS": {
       "TITLE": "Términos de consentimiento",

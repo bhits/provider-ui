@@ -36,8 +36,23 @@
       "SHARE_PURPOSE_OF_USES": "Share the following purposes:",
       "CONSENT_STATE": "Consent State:",
       "MANAGE_CONSENT_BUTTON_TEXT": "Manage Consents",
-      "MANAGE_CONSENT_DIALOG": {
-        "TITLE": "Consent Options"
+      "MANAGE_CONSENT_DIALOG_TITLE": "Consent Options",
+      "CONSENT_STAGES": {
+        "SAVED_STAGE": {
+          "STAGE_TEXT": "IN PROGRESS",
+          "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
+          "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
+          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Delete This Consent"
+        },
+        "SIGNED_STAGE": {
+          "STAGE_TEXT": "SIGNED",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent"
+        },
+        "REVOKED_STAGE": {
+          "STAGE_TEXT": "REVOKED",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation"
+        }
       },
       "DELETE_CONSENT_DIALOG": {
         "TITLE": "Delete Consent",
@@ -50,6 +65,53 @@
       "TITLE": "I, {{name}}, hereby authorize...",
       "CANCEL_BUTTON_LABEL": "Cancel",
       "SAVE_BUTTON_LABEL": "Save"
+    },
+    "MEDICAL_INFORMATION": {
+      "TITLE": "Medical Information",
+      "DESCRIPTION": "Select how you would like to share your medical information.",
+      "SHARE_ALL_RADIO": "<strong>SHARE</strong> my medical record <strong>WITHOUT ANY EXCEPTION</strong> of medical information categories.",
+      "SHARE_SOME_RADIO": "<strong>SHARE</strong> my medical record <strong>WITH EXCEPTION</strong> of specific medical information categories.",
+      "DIALOG": {
+        "TITLE": "Privacy Settings",
+        "HEADER1": "Sensitive Information Categories",
+        "HEADER2": "Select the medical information that you wish to share.",
+        "FED_TITLE": "Federal Categories",
+        "FED_DESCRIPTION": "Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
+        "STATE_TITLE": "State Categories",
+        "STATE_DESCRIPTION": "Most states have laws restricting health professionals from disclosing information related to substance abuse, HIV/AIDS, and mental health. ' +'Some states have restrictions regarding genetic information and communicable diseases. You have the right to choose the information you wish to share or not share and with whom.",
+        "CONTENT": "Please select the \"Share my medical record without any exceptions\" option,if you want to share all of your health information.",
+        "CANCEL_BTN": "Cancel",
+        "SAVE_BTN": "Save changes",
+        "CONFIRM_BTN": "Confirm"
+      }
+    },
+    "PURPOSE_OF_USE": {
+      "TITLE": "Purpose Of Use",
+      "DESCRIPTION": "Choose for what purposes your medical information may be used.",
+      "SHARE_TEXT": "<strong>SHARE</strong> my medical record ONLY for the selected purposes of use.",
+      "EDIT_BTN": "Edit",
+      "DIALOG": {
+        "TITLE": "Share for selected purpose only",
+        "DESCRIPTION": "Share my information only for specified purposes of use.",
+        "SELECT_BTN": "Select All",
+        "DESELECT_BTN": "Deselect All",
+        "CANCEL_BTN": "Cancel",
+        "SAVE_BTN": "Save changes"
+      }
+    },
+    "SELECT_PROVIDER": {
+      "DESCRIPTION": "Please select one individual or organization authorized to share your information:",
+      "IND_PROVIDER_LABEL": "Individual:",
+      "ORG_PROVIDER_LABEL": "Organizational:",
+      "CANCEL_BTN": "Cancel",
+      "ADD_BTN": "Add Selected"
+    },
+    "SELECT_PROVIDERS": {
+      "TITLE": "Select Providers",
+      "DIALOG_AUTHORIZE_TITLE": "The following individual or organization",
+      "DIALOG_AUTHORIZE_HEADER": "Authorize",
+      "DIALOG_DISCLOSED_TITLE": "To disclose my information to",
+      "DIALOG_DISCLOSE_HEADER": "Disclosure"
     },
     "TERMS": {
       "TITLE": "Consent Terms",

@@ -8,6 +8,7 @@ import {TokenService} from "./token.service";
 import {UtilityService} from "../../shared/utility.service";
 import {GlobalEventManagementService} from "../../core/global-event-management.service";
 import {Profile} from "../../core/profile.model";
+import {ProfileService} from "app/security/shared/profile.service";
 
 @Injectable()
 export class AuthenticationService {
@@ -18,6 +19,7 @@ export class AuthenticationService {
               private exceptionService: ExceptionService,
               private globalEventManagementService: GlobalEventManagementService,
               private http: Http,
+              private profileService: ProfileService,
               private tokenService: TokenService,
               private utilityService: UtilityService) {
   }
@@ -40,17 +42,19 @@ export class AuthenticationService {
 
   public onLoggedIn(response: AuthorizationResponse): void {
     this.tokenService.setOauthToken(response);
-    this.utilityService.navigateTo(this.apiUrlService.getHomeUrl());
   }
 
   public logout(): void {
     this.tokenService.deleteAccessToken();
+    this.tokenService.deleteUserProfile();
+    this.profileService.deleteProfileFromSessionStorage();
     this.globalEventManagementService.setShowHeader(false);
     this.utilityService.navigateTo(this.apiUrlService.getLoginUrl());
   }
 
   public onGetUserProfileSuccess(profile: Profile) {
     this.globalEventManagementService.setProfile(profile);
+    this.utilityService.navigateTo(this.apiUrlService.getHomeUrl());
   }
 
   public getUserProfile() {

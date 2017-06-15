@@ -18,15 +18,12 @@ export class MedicalInformationComponent implements OnInit {
   public isShareAll: number;
   public isAllCategoriesSelected: boolean = false;
   public federalInfo = {
-    title: "Federal Categories",
-    description: 'Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent ' +
-    '(called <a href="http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs" target="_blank"> 42 CFR Part 2 <i class="fa fa-external-link"></i></a> ).' +
-    'You have the right to choose the information you wish to share or not share and with whom.'
+    title: 'CONSENT.MEDICAL_INFORMATION.DIALOG.FED_TITLE',
+    description: 'CONSENT.MEDICAL_INFORMATION.DIALOG.FED_DESCRIPTION'
   };
   public stateInfo = {
-    title: "State Categories",
-    description: 'Most states have laws restricting health professionals from disclosing information related to substance abuse, HIV/AIDS, and mental health. ' +
-    'Some states have restrictions regarding genetic information and communicable diseases. You have the right to choose the information you wish to share or not share and with whom.'
+    title: 'CONSENT.MEDICAL_INFORMATION.DIALOG.STATE_TITLE',
+    description: 'CONSENT.MEDICAL_INFORMATION.DIALOG.STATE_DESCRIPTION'
   };
   private patientConsent: Consent;
   private dialogConfig: Md2DialogConfig = new Md2DialogConfig();
