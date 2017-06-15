@@ -43,12 +43,16 @@ export class ValidationService {
       let homeEmail = group.controls[homeEmailKey];
       let registrationPurposeEmail = group.controls[registrationPurposeEmailKey];
 
-      if (homeEmail.touched||registrationPurposeEmail.touched){
-      if (homeEmail.value == null && registrationPurposeEmail.value == null) {
-        return {
-          oneEmailRequired: true
+      if (homeEmail.value === '') homeEmail.setValue(null);
+      if (registrationPurposeEmail.value === '') registrationPurposeEmail.setValue(null);
+
+      if ((homeEmail.touched || homeEmail.dirty )&&(registrationPurposeEmail.dirty || registrationPurposeEmail.touched)) {
+        if (homeEmail.value == null && registrationPurposeEmail.value == null) {
+          return {
+            oneEmailRequired: true
+          }
         }
-      }}
+      }
     }
   }
 }

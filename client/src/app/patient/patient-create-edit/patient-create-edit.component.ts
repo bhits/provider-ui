@@ -38,6 +38,7 @@ export class PatientCreateEditComponent implements OnInit {
   public identifierSystems: IdentifierSystem[];
   public isEditMode: boolean = false;
   public phoneErrorMessage: string = ValidationRules.PHONE_MESSAGE;
+  public emailErrorMessage: string = ValidationRules.EMAIL_MESSAGE;
   public ssnErrorMessage: string = ValidationRules.SSN_MESSAGE;
   public zipErrorMessage: string = ValidationRules.ZIP_MESSAGE;
   public title: string = "Create Patient";
@@ -117,8 +118,8 @@ export class PatientCreateEditComponent implements OnInit {
             Validators.required
           ]
         ],
-        homeEmail: [null],
-        registrationPurposeEmail: [null],
+        homeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
+        registrationPurposeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
         genderCode: [null, Validators.required],
         birthDate: [null, Validators.compose([
           Validators.required,
@@ -286,18 +287,33 @@ export class PatientCreateEditComponent implements OnInit {
     identifiers.push(formModel.identifier);
     return {
       firstName: formModel.firstName,
-      middleName: formModel.middleName,
+      middleName: this.setNullValue(formModel.middleName),
       lastName: formModel.lastName,
-      homeEmail: formModel.homeEmail,
+      homeEmail: this.setNullValue(formModel.homeEmail),
       birthDate: formModel.birthDate,
       genderCode: formModel.genderCode,
-      socialSecurityNumber: formModel.socialSecurityNumber,
-      homePhone: formModel.homePhone,
-      homeAddress: formModel.homeAddress,
+      socialSecurityNumber: this.setNullValue(formModel.socialSecurityNumber),
+      homePhone: this.setNullValue(formModel.homePhone),
+      homeAddress: this.setNullValueForAddress(formModel.homeAddress),
       roles: formModel.roles,
       locale: formModel.locale,
       identifiers: identifiers,
-      registrationPurposeEmail: formModel.registrationPurposeEmail
+      registrationPurposeEmail: this.setNullValue(formModel.registrationPurposeEmail)
     };
   }
+
+  private setNullValue(field: string) {
+    return field === '' ? null : field;
+  }
+
+  private setNullValueForAddress(homeAddress:{line1:string,line2:string,city:string,stateCode:string,postalCode:string,countryCode, string}) {
+    homeAddress.line1=this.setNullValue(homeAddress.line1);
+    homeAddress.line2=this.setNullValue(homeAddress.line2);
+    homeAddress.city=this.setNullValue(homeAddress.city);
+    homeAddress.stateCode=this.setNullValue(homeAddress.stateCode);
+    homeAddress.postalCode=this.setNullValue(homeAddress.postalCode);
+    homeAddress.countryCode=this.setNullValue(homeAddress.countryCode);
+    return homeAddress;
+  }
+
 }

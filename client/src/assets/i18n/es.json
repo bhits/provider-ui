@@ -1,19 +1,130 @@
 {
-  "HOME":{
-    "WELCOME_TITLE":"(Spanish)Welcome to Consent2Share admin!",
-    "WELCOME_SUB_TITLE":"You are now ready to manage your patients.",
-    "PATIENT_CARD":{
-      "TITLE":"My <span class=\"font-weight700\">Patients</span>",
-      "STEP":"Step 1.",
-      "TEXT":"Begin by creating the patients.",
+  "HOME": {
+    "WELCOME_TITLE": "(Spanish)Welcome to Consent2Share admin!",
+    "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
+    "PATIENT_CARD": {
+      "TITLE": "My <span class=\"font-weight700\">Patients</span>",
+      "STEP": "Step 1.",
+      "TEXT": "Begin by creating the patients.",
       "SINGULAR": "Patient",
       "PLURAL": "Patients"
     },
-    "MENU":{
-      "TITLE":"Menú",
-      "HOME":"Casa",
-      "PATIENTS":"Los pacientes",
-      "LOGOUT":"Salir"
+    "MENU": {
+      "TITLE": "Menú",
+      "HOME": "Casa",
+      "PATIENTS": "Los pacientes",
+      "LOGOUT": "Salir"
+    }
+  },
+  "PROVIDER": {
+    "LIST": {
+      "TITLE": "Mis Proveedores",
+      "WARNING": "¡DE ACUERDO! Debe agregar al menos dos contactos antes de compartir su información de salud.",
+      "ADD_PROVIDER_BUTTON": "Agregar un proveedor de servicios de salud",
+      "SORT_LIST_TITLE": "Mostrar lista por",
+      "PAGINATION": {
+        "PREVIOUS": "Anterior",
+        "NEXT": "Siguiente"
+      },
+      "CARD": {
+        "NPI": "NPI",
+        "ADDRESS": "Dirección",
+        "CONTACT": "Número de contacto"
+      },
+      "DELETE_DIALOG": {
+        "TITLE": "Eliminar proveedor",
+        "DESCRIPTION": "¿Estás seguro de que deseas eliminar este proveedor?",
+        "BUTTON": {
+          "OK": "De acuerdo",
+          "CANCEL": "Cancelar"
+        }
+      }
+    },
+    "SEARCH": {
+      "TITLE": "Proveedores de búsqueda",
+      "ACCORDION_NAME": "Buscar",
+      "STEP_1": {
+        "TITLE": "Paso 1. Ingrese el proveedor Estado y Ciudad o Código Postal.",
+        "LABEL": "Por favor elige uno.",
+        "STATE_AND_CITY": {
+          "LABEL": "Introduzca el estado y la ciudad",
+          "STATE_PLACEHOLDER": "Seleccione Estado (Obligatorio)",
+          "CITY_PLACEHOLDER": "Ciudad (Obligatorio)",
+          "STATE_REQUIRED_ERROR_MSG": "El estado es requerido.",
+          "CITY_REQUIRED_ERROR_MSG": "Se requiere ciudad.",
+          "CITY_MIN_LENGTH_ERROR_MSG": "Debe tener al menos 2 caracteres."
+        },
+        "OR": "O",
+        "ZIP_CODE": {
+          "LABEL": "Introduzca código postal",
+          "ZIP_CODE_PLACEHOLDER": "Se requiere código postal.",
+          "ZIP_CODE_REQUIRED_MSG": "Se requiere código postal.",
+          "ZIP_CODE_FORMAT_ERROR_MSG": "Debe ser con formatos: 12345 o 12345-6789."
+        }
+      },
+      "STEP_2": {
+        "TITLE": "Paso 2. Ingrese el nombre del proveedor o el nombre del proveedor y otros criterios.",
+        "LABEL": "Por favor elige uno.",
+        "PROVIDER_NAME_AND_OTHERS": {
+          "LABEL": "Introduzca el nombre del proveedor y otros criterios",
+          "LAST_NAME_REQUIRED_MSG": "Se requiere apellido.",
+          "LAST_NAME_PLACEHOLDER": "Apellido (Obligatorio)",
+          "LAST_NAME_MIN_LENGTH_MSG": "Debe tener al menos 2 caracteres.",
+          "FIRST_NAME_PLACEHOLDER": "Nombre (opcional)",
+          "FIRST_NAME_MIN_LENGTH_MSG": "Debe tener al menos 2 caracteres.",
+          "TELEPHONE_PLACEHOLDER": "Teléfono (Opcional)",
+          "TELEPHONE_FORMAT_MSG": "Debe ser con formatos: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
+          "GENDER_PLACEHOLDER": "Género (Opcional)"
+        },
+        "OR": "O",
+        "FACILITY": {
+          "LABEL": "Introduzca el nombre de la instalación",
+          "NAME_PLACEHOLDER": "Nombre del establecimiento (obligatorio)",
+          "NAME_REQUIRED_MSG": " El nombre de la instalación es obligatorio.",
+          "NAME_MIN_LENGTH_MSG": "Debe tener al menos 2 caracteres.",
+          "TELEPHONE_FORMAT_MSG": "Debe ser con formatos: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
+          "TELEPHONE_PLACEHOLDER": "Teléfono (Opcional)"
+        }
+      },
+      "BUTTON": {
+        "CLEAR_ALL": "Limpiar todo",
+        "SEARCH": "Buscar"
+      }
+    },
+    "SEARCH_RESULTS": {
+      "TITLE": "Por favor elige uno.",
+      "NO_RESULT_MSG": "Lo sentimos, no se ha encontrado ningún proveedor!",
+      "PAGINATION": {
+        "NEXT": "Siguiente",
+        "PREVIOUS": "Anterior"
+      },
+      "RESULT": {
+        "NPI": "NPI",
+        "SELECT_PROVIDER_LABEL": "Seleccione este proveedor.",
+        "PROVIDER_ALREADY_ADDED_LABEL": "Este proveedor ya está en su lista de proveedores.",
+        "PROVIDER_CURRENT_ADDED_LABEL": "Proveedor actualmente agregado."
+      }
+    },
+    "MULTI_ADD": {
+      "TITLE": "Selecciones a añadir",
+      "TABLE": {
+        "NPI": "NPI",
+        "NAME_FACILITY": "Nombre / instalación",
+        "NO_PROVIDERS": "No hay proveedores seleccionados actualmente."
+      },
+      "DELETE_DIALOG": {
+        "TITLE": "Eliminar proveedor",
+        "CONTENT": "¿Estás seguro de que deseas eliminar este proveedor?",
+        "OK_BUTTON": "De acuerdo",
+        "CANCEL_BUTTON": "Cancelar"
+      },
+      "ADD_DIALOG": {
+        "TITLE": "Agregar proveedores seleccionados",
+        "CONTENT": "¿Seguro que desea agregar los proveedores seleccionados?",
+        "CANCEL_BUTTON": "Cancelar",
+        "OK_BUTTON": "De acuerdo"
+      },
+      "ADD_BUTTON": "Agregar a la lista de proveedores"
     }
   }
 }

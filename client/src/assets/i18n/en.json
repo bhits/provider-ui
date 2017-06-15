@@ -1,19 +1,130 @@
 {
-  "HOME":{
-    "WELCOME_TITLE":"Welcome to Consent2Share admin!",
-    "WELCOME_SUB_TITLE":"You are now ready to manage your patients.",
-    "PATIENT_CARD":{
-      "TITLE":"My <span class=\"font-weight700\">Patients</span>",
-      "STEP":"Step 1.",
-      "TEXT":"Begin by creating the patients.",
+  "HOME": {
+    "WELCOME_TITLE": "Welcome to Consent2Share admin!",
+    "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
+    "PATIENT_CARD": {
+      "TITLE": "My <span class=\"font-weight700\">Patients</span>",
+      "STEP": "Step 1.",
+      "TEXT": "Begin by creating the patients.",
       "SINGULAR": "Patient",
       "PLURAL": "Patients"
     },
-    "MENU":{
-      "TITLE":"Menu",
-      "HOME":"Home",
-      "PATIENTS":"Patients",
-      "LOGOUT":"Logout"
+    "MENU": {
+      "TITLE": "Menu",
+      "HOME": "Home",
+      "PATIENTS": "Patients",
+      "LOGOUT": "Logout"
+    }
+  },
+  "PROVIDER": {
+    "LIST": {
+      "TITLE": "My Providers",
+      "WARNING": "OK! You must add at least two contacts before sharing your health information.",
+      "ADD_PROVIDER_BUTTON": "Add a Health Provider",
+      "SORT_LIST_TITLE": "Show List by",
+      "PAGINATION": {
+        "PREVIOUS": "Previous",
+        "NEXT": "Next"
+      },
+      "CARD": {
+        "NPI": "NPI",
+        "ADDRESS": "Address",
+        "CONTACT": "Contact Number"
+      },
+      "DELETE_DIALOG": {
+        "TITLE": "Delete provider",
+        "DESCRIPTION": "Are you sure you want to delete this provider?",
+        "BUTTON": {
+          "OK": "Ok",
+          "CANCEL": "Cancel"
+        }
+      }
+    },
+    "SEARCH": {
+      "TITLE": "Search Providers",
+      "ACCORDION_NAME": "Search",
+      "STEP_1": {
+        "TITLE": "Step 1. Please enter the provider State and City or Zip Code.",
+        "LABEL": "PLEASE CHOOSE ONE.",
+        "STATE_AND_CITY": {
+          "LABEL": "Enter State and City",
+          "STATE_PLACEHOLDER": "Please Select State (Required)",
+          "CITY_PLACEHOLDER": "City (Required)",
+          "STATE_REQUIRED_ERROR_MSG": "State is required.",
+          "CITY_REQUIRED_ERROR_MSG": "City is required.",
+          "CITY_MIN_LENGTH_ERROR_MSG": "Must be at least 2 characters long."
+        },
+        "OR": "OR",
+        "ZIP_CODE": {
+          "LABEL": "Enter Zip Code",
+          "ZIP_CODE_PLACEHOLDER": "Zip Code (Required)",
+          "ZIP_CODE_REQUIRED_MSG": "Zip code is required.",
+          "ZIP_CODE_FORMAT_ERROR_MSG": " Must be with formats: 12345 or 12345-6789."
+        }
+      },
+      "STEP_2": {
+        "TITLE": "Step 2. Please enter the provider Facility Name OR Provider Name and Other Criteria.",
+        "LABEL": "PLEASE CHOOSE ONE.",
+        "PROVIDER_NAME_AND_OTHERS": {
+          "LABEL": "Enter Provider Name and Other Criteria",
+          "LAST_NAME_PLACEHOLDER": "Last Name (Required)",
+          "LAST_NAME_REQUIRED_MSG": "Last Name (Required)",
+          "LAST_NAME_MIN_LENGTH_MSG": "Must be at least 2 characters long.",
+          "FIRST_NAME_PLACEHOLDER": "First Name (Optional)",
+          "FIRST_NAME_MIN_LENGTH_MSG": "Must be at least 2 characters long.",
+          "TELEPHONE_PLACEHOLDER": "Telephone (Optional)",
+          "TELEPHONE_FORMAT_MSG": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
+          "GENDER_PLACEHOLDER": "Gender (Optional)"
+        },
+        "OR": "OR",
+        "FACILITY": {
+          "LABEL": "Enter Facility Name",
+          "NAME_PLACEHOLDER": "Facility Name (Required)",
+          "NAME_REQUIRED_MSG": " Facility Name is required.",
+          "NAME_MIN_LENGTH_MSG": "Must be at least 2 characters long.",
+          "TELEPHONE_FORMAT_MSG": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
+          "TELEPHONE_PLACEHOLDER": "Telephone (Optional)"
+        }
+      },
+      "BUTTON": {
+        "CLEAR_ALL": "Clear All",
+        "SEARCH": "Search"
+      }
+    },
+    "SEARCH_RESULTS": {
+      "TITLE": "Please select to add.",
+      "NO_RESULT_MSG": "Sorry, There is no provider found!",
+      "PAGINATION": {
+        "NEXT": "Next",
+        "PREVIOUS": "Previous"
+      },
+      "RESULT": {
+        "NPI": "NPI",
+        "SELECT_PROVIDER_LABEL": "Select this provider.",
+        "PROVIDER_ALREADY_ADDED_LABEL": "This Provider has already in your provider list.",
+        "PROVIDER_CURRENT_ADDED_LABEL": "Provider currently added."
+      }
+    },
+    "MULTI_ADD": {
+      "TITLE": "Selections to add",
+      "TABLE": {
+        "NPI": "NPI",
+        "NAME_FACILITY": "Name/Facility",
+        "NO_PROVIDERS": " No Providers currently selected."
+      },
+      "DELETE_DIALOG": {
+        "TITLE": "Delete Provider",
+        "CONTENT": "Are you sure you want to delete this provider?",
+        "CANCEL_BUTTON": "Cancel",
+        "OK_BUTTON": "OK"
+      },
+      "ADD_DIALOG": {
+        "TITLE": "Add Selected Providers",
+        "CONTENT": "Are you sure you want to add the selected providers?",
+        "CANCEL_BUTTON": "Cancel",
+        "OK_BUTTON": "OK"
+      },
+      "ADD_BUTTON": "Add to Provider List"
     }
   }
 }

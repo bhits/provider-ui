@@ -79,6 +79,7 @@
               <input mdInput placeholder="Email" formControlName="homeEmail">
             </md-input-container>
             <c2s-control-validation-error-message
+              [customMessage]="emailErrorMessage"
               [control]="createEditPatientForm.controls.homeEmail">
             </c2s-control-validation-error-message>
             <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
@@ -89,9 +90,11 @@
         <div fxLayout="row" fxLayoutGap="20px">
           <div fxFlex>
             <md-input-container class="full-width font-size20">
-              <input mdInput placeholder="Registration Purpose Email(Optional)" formControlName="registrationPurposeEmail">
+              <input mdInput placeholder="Registration Purpose Email(Optional)"
+                     formControlName="registrationPurposeEmail">
             </md-input-container>
             <c2s-control-validation-error-message
+              [customMessage]="emailErrorMessage"
               [control]="createEditPatientForm.controls.registrationPurposeEmail">
             </c2s-control-validation-error-message>
             <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
