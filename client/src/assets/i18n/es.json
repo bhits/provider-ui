@@ -123,6 +123,47 @@
       "ERROR_END_DATE_BEFORE_START": "La fecha de inicio debe continuar la fecha de finalización."
     }
   },
+  "PATIENT": {
+    "LIST": {
+      "ACCORDION_HEADER": "Patient's Consents",
+      "ADD_CONSENT_BUTTON": "Add a new consent",
+      "NO_CONSENTS_MSG": " There are currently no Consents available. Please click the 'Add a new consent' button to create a new consent.",
+      "PAGINATION": {
+        "PREVIOUS": "Previous",
+        "NEXT": "Next"
+      }
+    },
+    "CREATE_EDIT": {
+      "CREATE_TITLE": "{spanish} Create Patient",
+      "EDIT_TITLE": "{spanish} Patient Record",
+      "ACCORDION_HEADER": "{spanish} Patient's Information",
+      "INFO": "{spanish} Please complete all required fields to create a Patient Account.",
+      "REQUIRED_INFORMATION": {
+        "LABEL": "{spanish} Required Information",
+        "ROLE_PLACEHOLDER": "{spanish} Role",
+        "LOCALE_PLACEHOLDER": "{spanish} Preferred Language",
+        "FIRST_NAME_PLACEHOLDER": "{spanish} First Name",
+        "MIDDLE_NAME_PLACEHOLDER": "{spanish} Middle Name (Optional)",
+        "LAST_NAME_PLACEHOLDER": "{spanish} Last Name",
+        "EMAIL_PLACEHOLDER": "{spanish} Email",
+        "GENDER_PLACEHOLDER": "{spanish} Gender",
+        "DOB_PLACEHOLDER": "{spanish} Date of Birth"
+      },
+      "ADDITIONAL_INFORMATION": {
+        "LABEL": "{spanish} Additional Information",
+        "STREET_LINE1_PLACEHOLDER": "{spanish} Street Line1",
+        "STREET_LINE2_PLACEHOLDER": "{spanish} Street Line2 (Optional)",
+        "CITY_PLACEHOLDER": "{spanish} City",
+        "POSTAL_CODE_PLACEHOLDER": "{spanish} Postal Code",
+        "STATE_PLACEHOLDER": "{spanish} State",
+        "COUNTRY_PLACEHOLDER": "{spanish} Country",
+        "SSN_PLACEHOLDER": "{spanish} Social Security Number",
+        "PHONE_PLACEHOLDER": "{spanish} Phone"
+      },
+      "CANCEL_BTN": "{spanish} Cancel",
+      "SAVE_BTN": "{spanish} Save"
+    }
+  },
   "PROVIDER": {
     "CARD_LIST": {
       "ACCORDION_HEADER": "{spanish} Patient's Providers",

@@ -36,7 +36,7 @@ export class PatientCreateEditComponent implements OnInit {
   public phoneErrorMessage: string = ValidationRules.PHONE_MESSAGE;
   public ssnErrorMessage: string = ValidationRules.SSN_MESSAGE;
   public zipErrorMessage: string = ValidationRules.ZIP_MESSAGE;
-  public title: string = "Create Patient";
+  public title: string = "PATIENT.CREATE_EDIT.CREATE_TITLE";
   //Todo: Will remove when support multiple roles
   public disabledRoles: string[];
 
@@ -71,7 +71,7 @@ export class PatientCreateEditComponent implements OnInit {
         params => {
           if (params['patientId']) {
             // Edit mode
-            this.title = "Patient Record";
+            this.title = "PATIENT.CREATE_EDIT.EDIT_TITLE";
             let patient: Patient = this.route.snapshot.data['patient'];
             this.isEditMode = patient.id != null;
             this.patientId = patient.id;

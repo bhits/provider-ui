@@ -123,6 +123,47 @@
       "ERROR_END_DATE_BEFORE_START": "Start date CAN NOT exceed End date."
     }
   },
+  "PATIENT": {
+    "LIST": {
+      "ACCORDION_HEADER": "Patient's Consents",
+      "ADD_CONSENT_BUTTON": "Add a new consent",
+      "NO_CONSENTS_MSG": " There are currently no Consents available. Please click the 'Add a new consent' button to create a new consent.",
+      "PAGINATION": {
+        "PREVIOUS": "Previous",
+        "NEXT": "Next"
+      }
+    },
+    "CREATE_EDIT": {
+      "CREATE_TITLE": "Create Patient",
+      "EDIT_TITLE": "Patient Record",
+      "ACCORDION_HEADER": "Patient's Information",
+      "INFO": "Please complete all required fields to create a Patient Account.",
+      "REQUIRED_INFORMATION": {
+        "LABEL": "Required Information",
+        "ROLE_PLACEHOLDER": "Role",
+        "LOCALE_PLACEHOLDER": "Preferred Language",
+        "FIRST_NAME_PLACEHOLDER": "First Name",
+        "MIDDLE_NAME_PLACEHOLDER": "Middle Name (Optional)",
+        "LAST_NAME_PLACEHOLDER": "Last Name",
+        "EMAIL_PLACEHOLDER": "Email",
+        "GENDER_PLACEHOLDER": "Gender",
+        "DOB_PLACEHOLDER": "Date of Birth"
+      },
+      "ADDITIONAL_INFORMATION": {
+        "LABEL": "Additional Information",
+        "STREET_LINE1_PLACEHOLDER": "Street Line1",
+        "STREET_LINE2_PLACEHOLDER": "Street Line2 (Optional)",
+        "CITY_PLACEHOLDER": "City",
+        "POSTAL_CODE_PLACEHOLDER": "Postal Code",
+        "STATE_PLACEHOLDER": "State",
+        "COUNTRY_PLACEHOLDER": "Country",
+        "SSN_PLACEHOLDER": "Social Security Number",
+        "PHONE_PLACEHOLDER": "Phone"
+      },
+      "CANCEL_BTN": "Cancel",
+      "SAVE_BTN": "Save"
+    }
+  },
   "PROVIDER": {
     "CARD_LIST": {
       "ACCORDION_HEADER": "Patient's Providers",
