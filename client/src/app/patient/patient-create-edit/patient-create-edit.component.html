@@ -25,7 +25,7 @@
         <div fxLayout="row" fxLayoutGap="20px">
           <div fxFlex>
             <md-select multiple placeholder="Role" formControlName="roles"
-                       class="full-width font-size20">
+                       class="full-width font-size20" (change)="onRoleChange($event)">
               <md-option *ngFor="let role of roles; let i = index;" [value]="role.code"
                          [disabled]="role.code === disabledRoles[i-1]">
                 {{ role.name }}
@@ -126,8 +126,9 @@
           <div fxLayout="row" fxLayoutGap="20px">
             <div fxFlex>
               <md-select placeholder="Identifier System" formControlName="system"
-                         class="full-width font-size20" [disabled]="isEditMode">
-                <md-option *ngFor="let identifierSystem of identifierSystems" [value]="identifierSystem.system"  >
+                         class="full-width font-size20" [disabled]="isEditMode"
+                         (change)="onIdentifierSystemChange($event)">
+                <md-option *ngFor="let identifierSystem of identifierSystems" [value]="identifierSystem.system">
                   {{ identifierSystem.display }}
                 </md-option>
               </md-select>

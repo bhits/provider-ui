@@ -22,8 +22,10 @@ import {IdentifierSystem} from "../shared/IdentifierSystem.model";
 })
 export class PatientCreateEditComponent implements OnInit {
 
+  private readonly DEFAULT_ROLE: string = "patient";
   private patientId: number;
   private toSubmit: boolean = false;
+  private patientCreationLookupInfo: PatientCreationLookupInfo;
   public createEditPatientForm: FormGroup;
   public editingPatient: Patient;
   public isOpenOnFocus: boolean = true;
@@ -54,20 +56,27 @@ export class PatientCreateEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    let patientCreationLookupInfo: PatientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
-    this.roles = patientCreationLookupInfo.roles;
-    this.genders = patientCreationLookupInfo.genderCodes;
-    this.locales = patientCreationLookupInfo.locales;
-    this.states = patientCreationLookupInfo.stateCodes;
-    this.countries = patientCreationLookupInfo.countryCodes;
-    this.disabledRoles = patientCreationLookupInfo.roles
-      .filter(role => role.code != "patient")
+    this.patientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
+    this.roles = this.patientCreationLookupInfo.roles;
+    this.genders = this.patientCreationLookupInfo.genderCodes;
+    this.locales = this.patientCreationLookupInfo.locales;
+    this.states = this.patientCreationLookupInfo.stateCodes;
+    this.countries = this.patientCreationLookupInfo.countryCodes;
+    this.disabledRoles = this.patientCreationLookupInfo.roles
+      .filter(role => role.code != this.DEFAULT_ROLE)
       .map(role => role.code);
-    this.identifierSystems=patientCreationLookupInfo.identifierSystems
-      .filter(identifierSystem => identifierSystem.systemGenerated !="1" && identifierSystem.display!="United States Social Security Number");
+    this.identifierSystems = this.patientCreationLookupInfo.identifierSystems
+      .map(identifierSystem => {
+        identifierSystem.requiredIdentifierSystemsByRole = this.utilityService.convertJsonObjToStrMap(identifierSystem.requiredIdentifierSystemsByRole);
+        return identifierSystem;
+      })
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole)
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole.size > 0)
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole.has(this.DEFAULT_ROLE))
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole.get(this.DEFAULT_ROLE).filter(requiredIdentifierSystem => requiredIdentifierSystem.algorithm === "NONE").length > 0);
     this.createEditPatientForm = this.initCreateEditFormGroup();
     //Set patient as default role
-    this.createEditPatientForm.controls['roles'].setValue([this.roles.filter(role => role.code === "patient").pop().code]);
+    this.createEditPatientForm.controls['roles'].setValue([this.roles.filter(role => role.code === this.DEFAULT_ROLE).pop().code]);
     //Set English as default locale
     this.createEditPatientForm.controls['locale'].setValue(this.locales.filter(locale => locale.code === "en").pop().code);
 
@@ -88,40 +97,40 @@ export class PatientCreateEditComponent implements OnInit {
 
   private initCreateEditFormGroup() {
     return this.formBuilder.group({
-      firstName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-          Validators.required
-        ]
-      ],
-      middleName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
-        ]
-      ],
-      lastName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-          Validators.required
-        ]
-      ],
-      homeEmail: [null],
-      registrationPurposeEmail: [null ],
-      genderCode: [null, Validators.required],
-      birthDate: [null, Validators.compose([
-        Validators.required,
-        ValidationService.pastDateValidator])
-      ],
-      socialSecurityNumber: [null, Validators.pattern(ValidationRules.SSN_PATTERN)],
-      homePhone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)],
-      homeAddress: this.initAddressFormGroup(),
-      roles: [null, Validators.required],
-      locale: [null, Validators.required],
-      identifier: this.initIdentifierFormGroup()
-    },
+        firstName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+            Validators.required
+          ]
+        ],
+        middleName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
+          ]
+        ],
+        lastName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+            Validators.required
+          ]
+        ],
+        homeEmail: [null],
+        registrationPurposeEmail: [null],
+        genderCode: [null, Validators.required],
+        birthDate: [null, Validators.compose([
+          Validators.required,
+          ValidationService.pastDateValidator])
+        ],
+        socialSecurityNumber: [null, Validators.pattern(ValidationRules.SSN_PATTERN)],
+        homePhone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)],
+        homeAddress: this.initAddressFormGroup(),
+        roles: [null, Validators.required],
+        locale: [null, Validators.required],
+        identifier: this.initIdentifierFormGroup()
+      },
       {validator: ValidationService.oneEmailRequired('homeEmail', 'registrationPurposeEmail')})
   }
 
@@ -144,7 +153,7 @@ export class PatientCreateEditComponent implements OnInit {
   }
 
   private setValueOnEditPatientForm(patient: Patient) {
-    let patientIdentifiers = patient.identifiers.filter(identifier => identifier.system !=="https://bhits.github.io/consent2share" && identifier.system!=="http://hl7.org/fhir/sid/us-ssn");
+    let patientIdentifiers = patient.identifiers.filter(identifier => identifier.system !== "https://bhits.github.io/consent2share" && identifier.system !== "http://hl7.org/fhir/sid/us-ssn");
     if (patient.homeAddress != null) {
       this.createEditPatientForm.setValue({
         firstName: patient.firstName,
@@ -166,10 +175,10 @@ export class PatientCreateEditComponent implements OnInit {
         },
         roles: patient.roles,
         locale: patient.locale,
-        identifier:{
+        identifier: {
           system: patientIdentifiers[0].system,
           value: patientIdentifiers[0].value
-      },
+        },
       })
     } else {
       this.createEditPatientForm.setValue({
@@ -241,6 +250,34 @@ export class PatientCreateEditComponent implements OnInit {
           }
         );
     }
+  }
+
+  onRoleChange(event: any) {
+    this.createEditPatientForm.get("identifier.value").setValue(null);
+    this.createEditPatientForm.get("identifier.system").setValue(null);
+    const selectedRoles: string[] = event.value;
+
+    this.identifierSystems = this.patientCreationLookupInfo.identifierSystems
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole)
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole.size > 0)
+      .filter(identifierSystem => {
+          let ok: boolean = false;
+          selectedRoles.forEach(role => {
+            if (identifierSystem.requiredIdentifierSystemsByRole.has(role) &&
+              identifierSystem.requiredIdentifierSystemsByRole
+                .get(role)
+                .filter(requiredIdentifierSystem => requiredIdentifierSystem.algorithm === "NONE").length > 0
+            ) {
+              ok = true;
+            }
+          });
+          return ok;
+        }
+      );
+  }
+
+  onIdentifierSystemChange(event: any) {
+    this.createEditPatientForm.get("identifier.value").setValue(null);
   }
 
   private prepareCreateEditPatient(): Patient {
