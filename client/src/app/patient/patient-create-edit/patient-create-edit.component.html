@@ -149,7 +149,6 @@
                 placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.IDENTIFIER_SYSTEM_PLACEHOLDER' | translate }}"
                 formControlName="system"
                 class="full-width font-size20"
-                [disabled]="isEditMode"
                 (change)="onIdentifierSystemChange($event)">
                 <md-option *ngFor="let identifierSystem of identifierSystems" [value]="identifierSystem.system">
                   {{ identifierSystem.display }}
