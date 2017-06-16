@@ -13,6 +13,7 @@ import {Observable} from "rxjs/Observable";
 import {ValidationService} from "../../shared/validation.service";
 import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.model";
 import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.model";
+import {IdentifierSystem} from "../shared/IdentifierSystem.model";
 
 @Component({
   selector: 'c2s-patient-create-edit',
@@ -21,8 +22,10 @@ import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.
 })
 export class PatientCreateEditComponent implements OnInit {
 
+  private readonly DEFAULT_ROLE: string = "patient";
   private patientId: number;
   private toSubmit: boolean = false;
+  private patientCreationLookupInfo: PatientCreationLookupInfo;
   public createEditPatientForm: FormGroup;
   public editingPatient: Patient;
   public isOpenOnFocus: boolean = true;
@@ -32,13 +35,16 @@ export class PatientCreateEditComponent implements OnInit {
   public states: BasePatientCreationLookup[];
   public countries: BasePatientCreationLookup[];
   public roles: Role[];
+  public identifierSystems: IdentifierSystem[];
   public isEditMode: boolean = false;
   public phoneErrorMessage: string = ValidationRules.PHONE_MESSAGE;
+  public emailErrorMessage: string = ValidationRules.EMAIL_MESSAGE;
   public ssnErrorMessage: string = ValidationRules.SSN_MESSAGE;
   public zipErrorMessage: string = ValidationRules.ZIP_MESSAGE;
   public title: string = "PATIENT.CREATE_EDIT.CREATE_TITLE";
   //Todo: Will remove when support multiple roles
   public disabledRoles: string[];
+  public oneEmailRequiredMessage: string = ValidationRules.ONE_EMAIL_REQUIRED_MESSAGE;
 
   constructor(private apiUrlService: ApiUrlService,
               private confirmDialogService: ConfirmDialogService,
@@ -51,18 +57,27 @@ export class PatientCreateEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    let patientCreationLookupInfo: PatientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
-    this.roles = patientCreationLookupInfo.roles;
-    this.genders = patientCreationLookupInfo.genderCodes;
-    this.locales = patientCreationLookupInfo.locales;
-    this.states = patientCreationLookupInfo.stateCodes;
-    this.countries = patientCreationLookupInfo.countryCodes;
-    this.disabledRoles = patientCreationLookupInfo.roles
-      .filter(role => role.code != "patient")
+    this.patientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
+    this.roles = this.patientCreationLookupInfo.roles;
+    this.genders = this.patientCreationLookupInfo.genderCodes;
+    this.locales = this.patientCreationLookupInfo.locales;
+    this.states = this.patientCreationLookupInfo.stateCodes;
+    this.countries = this.patientCreationLookupInfo.countryCodes;
+    this.disabledRoles = this.patientCreationLookupInfo.roles
+      .filter(role => role.code != this.DEFAULT_ROLE)
       .map(role => role.code);
+    this.identifierSystems = this.patientCreationLookupInfo.identifierSystems
+      .map(identifierSystem => {
+        identifierSystem.requiredIdentifierSystemsByRole = this.utilityService.convertJsonObjToStrMap(identifierSystem.requiredIdentifierSystemsByRole);
+        return identifierSystem;
+      })
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole)
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole.size > 0)
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole.has(this.DEFAULT_ROLE))
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole.get(this.DEFAULT_ROLE).filter(requiredIdentifierSystem => requiredIdentifierSystem.algorithm === "NONE").length > 0);
     this.createEditPatientForm = this.initCreateEditFormGroup();
     //Set patient as default role
-    this.createEditPatientForm.controls['roles'].setValue([this.roles.filter(role => role.code === "patient").pop().code]);
+    this.createEditPatientForm.controls['roles'].setValue([this.roles.filter(role => role.code === this.DEFAULT_ROLE).pop().code]);
     //Set English as default locale
     this.createEditPatientForm.controls['locale'].setValue(this.locales.filter(locale => locale.code === "en").pop().code);
 
@@ -83,42 +98,41 @@ export class PatientCreateEditComponent implements OnInit {
 
   private initCreateEditFormGroup() {
     return this.formBuilder.group({
-      firstName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-          Validators.required
-        ]
-      ],
-      middleName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
-        ]
-      ],
-      lastName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-          Validators.required
-        ]
-      ],
-      homeEmail: [null, Validators.compose([
-        Validators.required,
-        Validators.maxLength(ValidationRules.TELECOM_MAX_LENGTH),
-        Validators.email])
-      ],
-      genderCode: [null, Validators.required],
-      birthDate: [null, Validators.compose([
-        Validators.required,
-        ValidationService.pastDateValidator])
-      ],
-      socialSecurityNumber: [null, Validators.pattern(ValidationRules.SSN_PATTERN)],
-      homePhone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)],
-      homeAddress: this.initAddressFormGroup(),
-      roles: [null, Validators.required],
-      locale: [null, Validators.required]
-    });
+        firstName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+            Validators.required
+          ]
+        ],
+        middleName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
+          ]
+        ],
+        lastName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+            Validators.required
+          ]
+        ],
+        homeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
+        registrationPurposeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
+        genderCode: [null, Validators.required],
+        birthDate: [null, Validators.compose([
+          Validators.required,
+          ValidationService.pastDateValidator])
+        ],
+        socialSecurityNumber: [null, Validators.pattern(ValidationRules.SSN_PATTERN)],
+        homePhone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)],
+        homeAddress: this.initAddressFormGroup(),
+        roles: [null, Validators.required],
+        locale: [null, Validators.required],
+        identifier: this.initIdentifierFormGroup()
+      },
+      {validator: ValidationService.oneEmailRequired('homeEmail', 'registrationPurposeEmail')})
   }
 
   private initAddressFormGroup() {
@@ -132,13 +146,22 @@ export class PatientCreateEditComponent implements OnInit {
     });
   }
 
+  private initIdentifierFormGroup() {
+    return this.formBuilder.group({
+      system: [null, Validators.required],
+      value: [null, Validators.required]
+    });
+  }
+
   private setValueOnEditPatientForm(patient: Patient) {
+    let patientIdentifiers = patient.identifiers.filter(identifier => identifier.system !== "https://bhits.github.io/consent2share" && identifier.system !== "http://hl7.org/fhir/sid/us-ssn");
     if (patient.homeAddress != null) {
       this.createEditPatientForm.setValue({
         firstName: patient.firstName,
         middleName: patient.middleName,
         lastName: patient.lastName,
         homeEmail: patient.homeEmail,
+        registrationPurposeEmail: patient.registrationPurposeEmail,
         genderCode: patient.genderCode,
         birthDate: new Date(patient.birthDate),
         socialSecurityNumber: patient.socialSecurityNumber,
@@ -152,7 +175,11 @@ export class PatientCreateEditComponent implements OnInit {
           countryCode: patient.homeAddress.countryCode
         },
         roles: patient.roles,
-        locale: patient.locale
+        locale: patient.locale,
+        identifier: {
+          system: patientIdentifiers[0].system,
+          value: patientIdentifiers[0].value
+        },
       })
     } else {
       this.createEditPatientForm.setValue({
@@ -160,6 +187,7 @@ export class PatientCreateEditComponent implements OnInit {
         middleName: patient.middleName,
         lastName: patient.lastName,
         homeEmail: patient.homeEmail,
+        registrationPurposeEmail: patient.registrationPurposeEmail,
         genderCode: patient.genderCode,
         birthDate: new Date(patient.birthDate),
         socialSecurityNumber: patient.socialSecurityNumber,
@@ -173,7 +201,11 @@ export class PatientCreateEditComponent implements OnInit {
           countryCode: null
         },
         roles: patient.roles,
-        locale: patient.locale
+        locale: patient.locale,
+        identifier: {
+          system: patientIdentifiers[0].system,
+          value: patientIdentifiers[0].value
+        }
       })
     }
   }
@@ -221,20 +253,67 @@ export class PatientCreateEditComponent implements OnInit {
     }
   }
 
+  onRoleChange(event: any) {
+    this.createEditPatientForm.get("identifier.value").setValue(null);
+    this.createEditPatientForm.get("identifier.system").setValue(null);
+    const selectedRoles: string[] = event.value;
+
+    this.identifierSystems = this.patientCreationLookupInfo.identifierSystems
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole)
+      .filter(identifierSystem => identifierSystem.requiredIdentifierSystemsByRole.size > 0)
+      .filter(identifierSystem => {
+          let ok: boolean = false;
+          selectedRoles.forEach(role => {
+            if (identifierSystem.requiredIdentifierSystemsByRole.has(role) &&
+              identifierSystem.requiredIdentifierSystemsByRole
+                .get(role)
+                .filter(requiredIdentifierSystem => requiredIdentifierSystem.algorithm === "NONE").length > 0
+            ) {
+              ok = true;
+            }
+          });
+          return ok;
+        }
+      );
+  }
+
+  onIdentifierSystemChange(event: any) {
+    this.createEditPatientForm.get("identifier.value").setValue(null);
+  }
+
   private prepareCreateEditPatient(): Patient {
     const formModel = this.createEditPatientForm.value;
+    let identifiers = [];
+    identifiers.push(formModel.identifier);
     return {
       firstName: formModel.firstName,
-      middleName: formModel.middleName,
+      middleName: this.filterEmptyStringValue(formModel.middleName),
       lastName: formModel.lastName,
-      homeEmail: formModel.homeEmail,
+      homeEmail: this.filterEmptyStringValue(formModel.homeEmail),
       birthDate: formModel.birthDate,
       genderCode: formModel.genderCode,
-      socialSecurityNumber: formModel.socialSecurityNumber,
-      homePhone: formModel.homePhone,
-      homeAddress: formModel.homeAddress,
+      socialSecurityNumber: this.filterEmptyStringValue(formModel.socialSecurityNumber),
+      homePhone: this.filterEmptyStringValue(formModel.homePhone),
+      homeAddress: this.filterEmptyStringValueForAddress(formModel.homeAddress),
       roles: formModel.roles,
-      locale: formModel.locale
+      locale: formModel.locale,
+      identifiers: identifiers,
+      registrationPurposeEmail: this.filterEmptyStringValue(formModel.registrationPurposeEmail)
     };
   }
+
+  private filterEmptyStringValue(field: string) {
+    return field === '' ? null : field;
+  }
+
+  private filterEmptyStringValueForAddress(homeAddress) {
+    homeAddress.line1 = this.filterEmptyStringValue(homeAddress.line1);
+    homeAddress.line2 = this.filterEmptyStringValue(homeAddress.line2);
+    homeAddress.city = this.filterEmptyStringValue(homeAddress.city);
+    homeAddress.stateCode = this.filterEmptyStringValue(homeAddress.stateCode);
+    homeAddress.postalCode = this.filterEmptyStringValue(homeAddress.postalCode);
+    homeAddress.countryCode = this.filterEmptyStringValue(homeAddress.countryCode);
+    return homeAddress;
+  }
+
 }

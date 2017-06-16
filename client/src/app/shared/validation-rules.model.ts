@@ -7,6 +7,7 @@ export class ValidationRules {
   public static MAX_LENGTH_KEY: string = "maxlength";
   public static PATTERN_KEY: string = "pattern";
   public static INVALID_PAST_DATE_KEY: string = "invalidPastDate";
+  public static ONE_EMAIL_REQUIRED_KEY: string = "oneEmailRequired";
   //Declare Validation Rule
   public static NORMAL_MIN_LENGTH: number = 2;
   public static NORMAL_MAX_LENGTH: number = 50;
@@ -20,6 +21,7 @@ export class ValidationRules {
   public static PHONE_PATTERN = '^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$';
   public static ZIP_PATTERN = '^[0-9]{5}(?:-[0-9]{4})?$';
   public static SSN_PATTERN = '^[0-9]{3}\-?[0-9]{2}\-?[0-9]{4}$';
+  public static EMAIL_PATTERN = '^[a-z0-9!#$%&*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$';
   //Custom Error Message
   public static PHONE_MESSAGE: string = "SHARED.VALIDATION_RULES.PHONE_ERROR_MESSAGE";
   public static SSN_MESSAGE: string = "SHARED.VALIDATION_RULES.SSN_ERROR_MESSAGE";
@@ -28,4 +30,5 @@ export class ValidationRules {
   public static REQUIRED_MESSAGE: string = "SHARED.VALIDATION_RULES.REQUIRED_ERROR_MESSAGE";
   public static REQUIRED_TRUE_MESSAGE: string = "SHARED.VALIDATION_RULES.REQUIRED_TRUE_ERROR_MESSAGE";
   public static INVALID_PAST_DATE_MESSAGE: string = "SHARED.VALIDATION_RULES.INVALID_PAST_DATE_ERROR_MESSAGE";
+  public static ONE_EMAIL_REQUIRED_MESSAGE: string = "SHARED.VALIDATION_RULES.ONE_EMAIL_REQUIRED_MESSAGE";
 }
