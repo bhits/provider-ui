@@ -7,6 +7,7 @@ import {Profile} from "../../core/profile.model";
 import {UtilityService} from "app/shared/utility.service";
 import {CustomTranslateService} from "../../core/custom-translate.service";
 import {TokenService} from "../shared/token.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'c2s-login',
@@ -23,7 +24,11 @@ export class LoginComponent implements OnInit {
               private utilityService: UtilityService,
               private tokenService: TokenService,
               private customTranslateService: CustomTranslateService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private translate: TranslateService) {
+    // Set default language for login page
+    const DEFAULT_LANGUAGE = "en";
+    translate.setDefaultLang(DEFAULT_LANGUAGE);
   }
 
   ngOnInit() {
