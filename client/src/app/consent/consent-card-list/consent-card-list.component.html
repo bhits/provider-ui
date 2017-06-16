@@ -2,7 +2,7 @@
   <md2-accordion-tab>
     <md2-accordion-header class="">
       <md-card-title align="start"><i class="fa fa-user-plus"></i>
-        Patient's Consents
+        {{ 'CONSENT.CARD_LIST.ACCORDION_HEADER' | translate }}
       </md-card-title>
     </md2-accordion-header>
     <div>
@@ -10,7 +10,8 @@
         <div fxLayoutAlign="center">
           <a md-raised-button class="plus-button" fxFlex="0 1 370px" (click)="redirectToPatientConsentsCreate()">
             <md-icon class="font-weight700">add</md-icon>
-            Add a new consent</a>
+            {{ 'CONSENT.CARD_LIST.ADD_CONSENT_BUTTON' | translate }}
+          </a>
         </div>
         <div fxLayoutAlign="center">
           <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
@@ -19,13 +20,16 @@
         </div>
         <div style="padding-top: 20px;" *ngIf="noConsent; else hasConsent">
           <div style="background-color: #DEBCC9" class="p-md font-size18 font-weight center-sm-left">
-            There are currently no Consents available. Please click the "Add a new consent" button to create a new
-            consent.
+            {{ 'CONSENT.CARD_LIST.NO_CONSENTS_MSG' | translate }}
           </div>
         </div>
         <ng-template #hasConsent>
           <div fxLayoutAlign="center">
-            <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+            <pagination-controls
+              previousLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.PREVIOUS' | translate }}"
+              nextLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.NEXT' | translate }}"
+              (pageChange)="getPage($event)">
+            </pagination-controls>
             <md-spinner *ngIf="loading"></md-spinner>
           </div>
           <c2s-consent-card
@@ -34,7 +38,11 @@
             (deleteConsent)="onDeleteConsent($event)">
           </c2s-consent-card>
           <div fxLayoutAlign="center">
-            <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+            <pagination-controls
+              previousLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.PREVIOUS' | translate }}"
+              nextLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.NEXT' | translate }}"
+              (pageChange)="getPage($event)">
+            </pagination-controls>
           </div>
         </ng-template>
       </div>

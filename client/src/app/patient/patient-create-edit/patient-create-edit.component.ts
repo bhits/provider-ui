@@ -41,7 +41,7 @@ export class PatientCreateEditComponent implements OnInit {
   public emailErrorMessage: string = ValidationRules.EMAIL_MESSAGE;
   public ssnErrorMessage: string = ValidationRules.SSN_MESSAGE;
   public zipErrorMessage: string = ValidationRules.ZIP_MESSAGE;
-  public title: string = "Create Patient";
+  public title: string = "PATIENT.CREATE_EDIT.CREATE_TITLE";
   //Todo: Will remove when support multiple roles
   public disabledRoles: string[];
   public oneEmailRequiredMessage: string = ValidationRules.ONE_EMAIL_REQUIRED_MESSAGE;
@@ -86,7 +86,7 @@ export class PatientCreateEditComponent implements OnInit {
         params => {
           if (params['patientId']) {
             // Edit mode
-            this.title = "Patient Record";
+            this.title = "PATIENT.CREATE_EDIT.EDIT_TITLE";
             let patient: Patient = this.route.snapshot.data['patient'];
             this.isEditMode = patient.id != null;
             this.patientId = patient.id;
@@ -118,7 +118,10 @@ export class PatientCreateEditComponent implements OnInit {
             Validators.required
           ]
         ],
-        homeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
+        homeEmail: [null, Validators.compose([
+          Validators.pattern(ValidationRules.EMAIL_PATTERN),
+          Validators.maxLength(ValidationRules.TELECOM_MAX_LENGTH)])
+        ],
         registrationPurposeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
         genderCode: [null, Validators.required],
         birthDate: [null, Validators.compose([
@@ -137,9 +140,9 @@ export class PatientCreateEditComponent implements OnInit {
 
   private initAddressFormGroup() {
     return this.formBuilder.group({
-      line1: [null, Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH)],
-      line2: [null, Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH)],
-      city: [null, Validators.minLength(ValidationRules.NORMAL_MIN_LENGTH)],
+      line1: [null, Validators.maxLength(ValidationRules.NORMAL_MAX_LENGTH)],
+      line2: [null, Validators.maxLength(ValidationRules.NORMAL_MAX_LENGTH)],
+      city: [null, Validators.maxLength(ValidationRules.CITY_MAX_LENGTH)],
       stateCode: null,
       postalCode: [null, Validators.pattern(ValidationRules.ZIP_PATTERN)],
       countryCode: null
@@ -218,8 +221,8 @@ export class PatientCreateEditComponent implements OnInit {
     if (this.toSubmit) {
       return true;
     } else if (this.createEditPatientForm.dirty) {
-      const confirmTitle: string = "Confirm Navigation";
-      const confirmMessage: string = "You will lose all unsaved work, Are you sure you want to leave this page?";
+      const confirmTitle: string = "PATIENT.CREATE_EDIT.CONFIRM_DIALOG.TITLE";
+      const confirmMessage: string = "PATIENT.CREATE_EDIT.CONFIRM_DIALOG.CONTENT";
       return this.confirmDialogService.confirm(confirmTitle, confirmMessage, this.viewContainerRef);
     } else {
       return true;

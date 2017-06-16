@@ -20,7 +20,8 @@ export class HttpInterceptorService extends Http {
   private UAA: string = "uaa";
   private UMS_PROFILE_KEY: string = 'c2s-ums-profile';
 
-  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions,
+  constructor(backend: ConnectionBackend,
+              defaultOptions: RequestOptions,
               private slimLoadingBarService: SlimLoadingBarService,
               private tokenService: TokenService,
               private sessionStorageService: SessionStorageService) {
@@ -77,12 +78,12 @@ export class HttpInterceptorService extends Http {
       options.headers.set('Content-Type', 'application/json');
     }
 
-    if(this.sessionStorageService && this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY)){
+    if (this.sessionStorageService && this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY)) {
       if (!options.headers) {
         options.headers = new Headers();
       }
-      let profile:UmsProfile = this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY);
-      options.headers.set('Accept-Language',profile.userLocale);
+      let profile: UmsProfile = this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY);
+      options.headers.set('Accept-Language', profile.userLocale);
     }
 
     return options;

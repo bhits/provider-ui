@@ -1,12 +1,14 @@
 <div style="background-color: #BCDEDB;" class="p-xxs font-size10 center-sm-left">
-  <h2>{{ title }}</h2>
+  <h2>{{ title | translate}}</h2>
 </div>
-<h2>{{ message }}</h2>
+<h2>{{ message | translate}}</h2>
 <div align="right">
   <button type="button" md-raised-button color="primary"
-          (click)="dialogRef.close(true)">OK
+          (click)="dialogRef.close(true)">
+    {{ 'SHARED.CONFIRM_DIALOG.OK_BTN' | translate}}
   </button>
   <button type="button" md-raised-button
-          (click)="dialogRef.close()">Cancel
+          (click)="dialogRef.close()">
+    {{ 'SHARED.CONFIRM_DIALOG.CANCEL_BTN' | translate}}
   </button>
 </div>

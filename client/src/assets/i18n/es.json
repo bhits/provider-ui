@@ -16,17 +16,207 @@
       "LOGOUT": "Salir"
     }
   },
-  "PROVIDER": {
-    "LIST": {
-      "TITLE": "Mis Proveedores",
-      "WARNING": "¡DE ACUERDO! Debe agregar al menos dos contactos antes de compartir su información de salud.",
-      "ADD_PROVIDER_BUTTON": "Agregar un proveedor de servicios de salud",
-      "SORT_LIST_TITLE": "Mostrar lista por",
+  "CONSENT": {
+    "CARD_LIST": {
+      "ACCORDION_HEADER": "{spanish} Patient's Consents",
+      "ADD_CONSENT_BUTTON": "Añadir un consentimiento",
+      "NO_CONSENTS_MSG": "Actualmente no hay consentimientos disponibles. Haga clic en el botón Añadir un consentimiento para crear un nuevo consentimiento.",
       "PAGINATION": {
         "PREVIOUS": "Anterior",
         "NEXT": "Siguiente"
+      }
+    },
+    "CARD": {
+      "AUTHORIZED_TO_SHARE": "Autorizado para compartir:",
+      "SHARING_WITH": "Compartir con:",
+      "EFFECTIVE_DATE": "Fechas de vigencia:",
+      "MEDICAL_INFORMATION_DISCLOSED": "Información médica divulgada:",
+      "SHARE_ALL": "Compartir toda la información médica:",
+      "SHARE_ALL_MEDICAL_INFORMATION": "Toda mi información médica puede ser compartida.",
+      "SHARE_PURPOSE_OF_USES": "Comparte los siguientes propósitos:",
+      "CONSENT_STATE": "Estado de consentimiento:",
+      "MANAGE_CONSENT_BUTTON_TEXT": "Administrar consentimientos",
+      "MANAGE_CONSENT_DIALOG_TITLE": "Opciones de Consentimiento",
+      "CONSENT_STAGES": {
+        "SAVED_STAGE": {
+          "STAGE_TEXT": "EN CURSO",
+          "EDIT_THIS_CONSENT_OPTION_TEXT": "Editar este consentimiento",
+          "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Previsualizar este consentimiento",
+          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Eliminar este consentimiento"
+        },
+        "SIGNED_STAGE": {
+          "STAGE_TEXT": "FIRMADO",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado"
+        },
+        "REVOKED_STAGE": {
+          "STAGE_TEXT": "Rechazado",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "Ver la revocación firmada"
+        }
       },
+      "DELETE_CONSENT_DIALOG": {
+        "TITLE": "Eliminar consentimiento",
+        "CONTENT": "¿Está seguro de que desea eliminar este consentimiento?",
+        "CANCEL_BTN": "Cancelar",
+        "OK_BTN": "De acuerdo"
+      }
+    },
+    "CREATE_EDIT": {
+      "TITLE": "I, {{name}}, por la presente autorizo ​​...",
+      "CANCEL_BUTTON_LABEL": "Cancelar",
+      "SAVE_BUTTON_LABEL": "Salvar"
+    },
+    "MEDICAL_INFORMATION": {
+      "TITLE": "Información médica",
+      "DESCRIPTION": "Seleccione cómo le gustaría compartir su información médica.",
+      "SHARE_ALL_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> SIN NINGUNA EXCEPCIÓN </ strong> de categorías de información médica.",
+      "SHARE_SOME_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> CON EXCEPCIÓN </ strong> de categorías específicas de información médica.",
+      "DIALOG": {
+        "TITLE": "La configuración de privacidad",
+        "HEADER1": "Categorías de información sensible",
+        "HEADER2": "Seleccione la información médica que desea compartir.",
+        "FED_TITLE": "Categorías federales",
+        "FED_DESCRIPTION": "{spanish}Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
+        "STATE_TITLE": "Categorías del estado",
+        "STATE_DESCRIPTION": "La mayoría de los estados tienen leyes que restringen a los profesionales de la salud de revelar información relacionada con el abuso de sustancias, el VIH / SIDA y la salud mental. '+' Algunos estados tienen restricciones con respecto a la información genética y las enfermedades transmisibles. Usted tiene el derecho de elegir la información que desea compartir o no compartir y con quién.",
+        "CONTENT": "Por favor, seleccione la opción \"Compartir mi historial médico sin excepciones\", si desea compartir toda la información de su salud.",
+        "CANCEL_BTN": "Cancelar",
+        "SAVE_BTN": "Guardar cambios",
+        "CONFIRM_BTN": "Confirm"
+      }
+    },
+    "PURPOSE_OF_USE": {
+      "TITLE": "Propósito de uso",
+      "DESCRIPTION": "Elija con qué fines puede utilizarse su información médica.",
+      "SHARE_TEXT": "<strong> COMPARTA </strong> mi historial médico SOLAMENTE para los fines de uso seleccionados.",
+      "EDIT_BTN": "Editar",
+      "DIALOG": {
+        "TITLE": "Compartir para el propósito seleccionado",
+        "DESCRIPTION": "Compartir mi información sólo con fines específicos de uso.",
+        "SELECT_BTN": "Seleccionar todo",
+        "DESELECT_BTN": "Deseleccionar todo",
+        "CANCEL_BTN": "Cancelar",
+        "SAVE_BTN": "Guardar cambios"
+      }
+    },
+    "SELECT_PROVIDER": {
+      "DESCRIPTION": "Seleccione una persona u organización autorizada para compartir su información:",
+      "IND_PROVIDER_LABEL": "Individual:",
+      "ORG_PROVIDER_LABEL": "Organizativo:",
+      "CANCEL_BTN": "Cancelar",
+      "ADD_BTN": "Añadir seleccionados"
+    },
+    "SELECT_PROVIDERS": {
+      "TITLE": "Seleccionar Proveedores",
+      "DIALOG_AUTHORIZE_TITLE": "La siguiente persona u organización",
+      "DIALOG_AUTHORIZE_HEADER": "Autorizar",
+      "DIALOG_DISCLOSED_TITLE": "Para revelar mi información a",
+      "DIALOG_DISCLOSE_HEADER": "Revelar"
+    },
+    "TERMS": {
+      "TITLE": "Términos de consentimiento",
+      "TEXT": "Ingrese una fecha de inicio y finalización durante la cual se compartirán sus registros médicos.",
+      "START_DATE": "Fecha de inicio:",
+      "END_DATE": "Fecha final:",
+      "ERROR_PAST_START_DATE": "La fecha de inicio debe estar en el presente.",
+      "ERROR_PAST_END_DATE": "La fecha de finalización debe estar en el presente.",
+      "ERROR_END_DATE_BEFORE_START": "La fecha de inicio debe continuar la fecha de finalización."
+    }
+  },
+  "PATIENT": {
+    "LIST": {
+      "TITLE": "{spanish} My Patients",
+      "INFO": "{spanish} OK! You are now ready to manage your patients.",
+      "SEARCH_PATIENT_PLACEHOLDER": "{spanish} Search by first and last name",
+      "CREATE_PATIENT_BUTTON": "{spanish} Create a Patient Account",
+      "SORT_LIST_TITLE": "{spanish} Show List by",
+      "NO_PATIENTS_MSG": "{spanish} There are currently no Patients available. Please click the 'Create a Patient Account' button to create a new Patient.",
       "CARD": {
+        "CONTENT": {
+          "CONTACT_NUMBER": "{spanish} Contact Number",
+          "DOB": "{spanish} Date of Birth",
+          "ADDRESS": "{spanish} Address"
+        }
+      },
+      "PAGINATION": {
+        "PREVIOUS": "{spanish} Previous",
+        "NEXT": "{spanish} Next"
+      }
+    },
+    "CREATE_EDIT": {
+      "CREATE_TITLE": "{spanish} Create Patient",
+      "EDIT_TITLE": "{spanish} Patient Record",
+      "ACCORDION_HEADER": "{spanish} Patient's Information",
+      "INFO": "{spanish} Please complete all required fields to create a Patient Account.",
+      "REQUIRED_INFORMATION": {
+        "LABEL": "{spanish} Required Information",
+        "ROLE_PLACEHOLDER": "{spanish} Role",
+        "LOCALE_PLACEHOLDER": "{spanish} Preferred Language",
+        "FIRST_NAME_PLACEHOLDER": "{spanish} First Name",
+        "MIDDLE_NAME_PLACEHOLDER": "{spanish} Middle Name (Optional)",
+        "LAST_NAME_PLACEHOLDER": "{spanish} Last Name",
+        "EMAIL_PLACEHOLDER": "{spanish} Email",
+        "GENDER_PLACEHOLDER": "{spanish} Gender",
+        "DOB_PLACEHOLDER": "{spanish} Date of Birth"
+      },
+      "ADDITIONAL_INFORMATION": {
+        "LABEL": "{spanish} Additional Information",
+        "STREET_LINE1_PLACEHOLDER": "{spanish} Street Line1",
+        "STREET_LINE2_PLACEHOLDER": "{spanish} Street Line2 (Optional)",
+        "CITY_PLACEHOLDER": "{spanish} City",
+        "POSTAL_CODE_PLACEHOLDER": "{spanish} Postal Code",
+        "STATE_PLACEHOLDER": "{spanish} State",
+        "COUNTRY_PLACEHOLDER": "{spanish} Country",
+        "SSN_PLACEHOLDER": "{spanish} Social Security Number",
+        "PHONE_PLACEHOLDER": "{spanish} Phone"
+      },
+      "CANCEL_BTN": "{spanish} Cancel",
+      "SAVE_BTN": "{spanish} Save",
+      "CONFIRM_DIALOG": {
+        "TITLE": "{spanish} Confirm Navigation",
+        "CONTENT": "{spanish} You will lose all unsaved work, Are you sure you want to leave this page?"
+      }
+    },
+    "VERIFICATION": {
+      "ACCORDION_HEADER": "{spanish} Account Activation/Verification Code",
+      "CARD": {
+        "TITLE": "{spanish} Account Activation / Verification Code",
+        "CONTENT": {
+          "LABEL": "{spanish} Activate Account for:",
+          "VERIFICATION_CODE_LABEL": "{spanish} Verification Code:",
+          "RESENT_VERIFICATION_CODE_MSG": "{spanish} <strong>An email has been sent and awaiting the patient to activate the account. Select the 'Send Email' button to re-send an account activation email.</strong>",
+          "SENT_VERIFICATION_CODE_MSG": "{spanish} <span><strong>Select the 'Send Email' button to generate the Verification Code.</strong></span>Sending an account activation email to the address listed above will generate a unique Verification Code."
+        },
+        "FOOTER": {
+          "LABEL": "{spanish} Activate Account for:",
+          "ACCOUNT_STATUS_LABEL": "{spanish} Account Status:",
+          "ENABLE_ACCOUNT_BTN": "{spanish} Enable Account",
+          "DISABLE_ACCOUNT_BTN": "{spanish} Disable Account",
+          "SEND_EMAIL_BTN": "{spanish} Send Email"
+        }
+      },
+      "ACCOUNT_STATUSES": {
+        "NOT_ACTIVATED_TEXT": "{spanish} Account Not Yet Activated",
+        "VERIFIED_TEXT": "{spanish} Activation Email Sent",
+        "ACTIVATED_TEXT": "{spanish} Account Activated",
+        "DISABLED_TEXT": "{spanish} Account Disabled"
+      }
+    }
+  },
+  "PROVIDER": {
+    "CARD_LIST": {
+      "ACCORDION_HEADER": "{spanish} Patient's Providers",
+      "WARNING": "¡DE ACUERDO! Debe agregar al menos dos contactos antes de compartir su información de salud.",
+      "ADD_PROVIDER_BUTTON": "Agregar un proveedor de servicios de salud",
+      "SORT_LIST_TITLE": "Mostrar lista por",
+      "NO_PROVIDERS_MSG": "{spanish} There are currently no Providers available. Please click the 'Add a Health Provider' button to create a new provider.",
+      "PAGINATION": {
+        "PREVIOUS": "Anterior",
+        "NEXT": "Siguiente"
+      }
+    },
+    "CARD": {
+      "CONTENT": {
         "NPI": "NPI",
         "ADDRESS": "Dirección",
         "CONTACT": "Número de contacto"
@@ -42,7 +232,7 @@
     },
     "SEARCH": {
       "TITLE": "Proveedores de búsqueda",
-      "ACCORDION_NAME": "Buscar",
+      "ACCORDION_HEADER": "Buscar",
       "STEP_1": {
         "TITLE": "Paso 1. Ingrese el proveedor Estado y Ciudad o Código Postal.",
         "LABEL": "Por favor elige uno.",
@@ -125,6 +315,23 @@
         "OK_BUTTON": "De acuerdo"
       },
       "ADD_BUTTON": "Agregar a la lista de proveedores"
+    }
+  },
+  "SHARED": {
+    "VALIDATION_RULES": {
+      "PHONE_ERROR_MESSAGE": "{spanish} Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
+      "SSN_ERROR_MESSAGE": "{spanish} Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789",
+      "ZIP_ERROR_MESSAGE": "{spanish} Must be with formats: 12345 or 12345-6789.",
+      "EMAIL_ERROR_MESSAGE": "{spanish} This email does not perform email validation.",
+      "MIN_LENGTH_ERROR_MESSAGE": "{spanish} This field Minimum length is {{length}}",
+      "MAX_LENGTH_ERROR_MESSAGE": "{spanish} This field Maximum length is {{length}}",
+      "REQUIRED_ERROR_MESSAGE": "{spanish} This field is required.",
+      "REQUIRED_TRUE_ERROR_MESSAGE": "{spanish} This field value must be true.",
+      "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today"
+    },
+    "CONFIRM_DIALOG": {
+      "OK_BTN": "De acuerdo",
+      "CANCEL_BTN": "Cancelar"
     }
   }
 }

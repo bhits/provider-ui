@@ -16,17 +16,206 @@
       "LOGOUT": "Logout"
     }
   },
-  "PROVIDER": {
-    "LIST": {
-      "TITLE": "My Providers",
-      "WARNING": "OK! You must add at least two contacts before sharing your health information.",
-      "ADD_PROVIDER_BUTTON": "Add a Health Provider",
-      "SORT_LIST_TITLE": "Show List by",
+  "CONSENT": {
+    "CARD_LIST": {
+      "ACCORDION_HEADER": "Patient's Consents",
+      "ADD_CONSENT_BUTTON": "Add a new consent",
+      "NO_CONSENTS_MSG": " There are currently no Consents available. Please click the 'Add a new consent' button to create a new consent.",
       "PAGINATION": {
         "PREVIOUS": "Previous",
         "NEXT": "Next"
+      }
+    },
+    "CARD": {
+      "AUTHORIZED_TO_SHARE": "Authorized to share:",
+      "SHARING_WITH": "Sharing with:",
+      "EFFECTIVE_DATE": "Effective Dates:",
+      "MEDICAL_INFORMATION_DISCLOSED": "Medical Information disclosed:",
+      "SHARE_ALL": "Sharing all medical information:",
+      "SHARE_ALL_MEDICAL_INFORMATION": "All my medical information can be shared.",
+      "SHARE_PURPOSE_OF_USES": "Share the following purposes:",
+      "CONSENT_STATE": "Consent State:",
+      "MANAGE_CONSENT_BUTTON_TEXT": "Manage Consents",
+      "MANAGE_CONSENT_DIALOG_TITLE": "Consent Options",
+      "CONSENT_STAGES": {
+        "SAVED_STAGE": {
+          "STAGE_TEXT": "IN PROGRESS",
+          "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
+          "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
+          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Delete This Consent"
+        },
+        "SIGNED_STAGE": {
+          "STAGE_TEXT": "SIGNED",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent"
+        },
+        "REVOKED_STAGE": {
+          "STAGE_TEXT": "REVOKED",
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation"
+        }
       },
+      "DELETE_CONSENT_DIALOG": {
+        "TITLE": "Delete Consent",
+        "CONTENT": "Are you sure you want to delete this consent?",
+        "CANCEL_BTN": "Cancel",
+        "OK_BTN": "OK"
+      }
+    },
+    "CREATE_EDIT": {
+      "TITLE": "I, {{name}}, hereby authorize...",
+      "CANCEL_BUTTON_LABEL": "Cancel",
+      "SAVE_BUTTON_LABEL": "Save"
+    },
+    "MEDICAL_INFORMATION": {
+      "TITLE": "Medical Information",
+      "DESCRIPTION": "Select how you would like to share your medical information.",
+      "SHARE_ALL_RADIO": "<strong>SHARE</strong> my medical record <strong>WITHOUT ANY EXCEPTION</strong> of medical information categories.",
+      "SHARE_SOME_RADIO": "<strong>SHARE</strong> my medical record <strong>WITH EXCEPTION</strong> of specific medical information categories.",
+      "DIALOG": {
+        "TITLE": "Privacy Settings",
+        "HEADER1": "Sensitive Information Categories",
+        "HEADER2": "Select the medical information that you wish to share.",
+        "FED_TITLE": "Federal Categories",
+        "FED_DESCRIPTION": "Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
+        "STATE_TITLE": "State Categories",
+        "STATE_DESCRIPTION": "Most states have laws restricting health professionals from disclosing information related to substance abuse, HIV/AIDS, and mental health. ' +'Some states have restrictions regarding genetic information and communicable diseases. You have the right to choose the information you wish to share or not share and with whom.",
+        "CONTENT": "Please select the \"Share my medical record without any exceptions\" option,if you want to share all of your health information.",
+        "CANCEL_BTN": "Cancel",
+        "SAVE_BTN": "Save changes",
+        "CONFIRM_BTN": "Confirm"
+      }
+    },
+    "PURPOSE_OF_USE": {
+      "TITLE": "Purpose Of Use",
+      "DESCRIPTION": "Choose for what purposes your medical information may be used.",
+      "SHARE_TEXT": "<strong>SHARE</strong> my medical record ONLY for the selected purposes of use.",
+      "EDIT_BTN": "Edit",
+      "DIALOG": {
+        "TITLE": "Share for selected purpose only",
+        "DESCRIPTION": "Share my information only for specified purposes of use.",
+        "SELECT_BTN": "Select All",
+        "DESELECT_BTN": "Deselect All",
+        "CANCEL_BTN": "Cancel",
+        "SAVE_BTN": "Save changes"
+      }
+    },
+    "SELECT_PROVIDER": {
+      "DESCRIPTION": "Please select one individual or organization authorized to share your information:",
+      "IND_PROVIDER_LABEL": "Individual:",
+      "ORG_PROVIDER_LABEL": "Organizational:",
+      "CANCEL_BTN": "Cancel",
+      "ADD_BTN": "Add Selected"
+    },
+    "SELECT_PROVIDERS": {
+      "TITLE": "Select Providers",
+      "DIALOG_AUTHORIZE_TITLE": "The following individual or organization",
+      "DIALOG_AUTHORIZE_HEADER": "Authorize",
+      "DIALOG_DISCLOSED_TITLE": "To disclose my information to",
+      "DIALOG_DISCLOSE_HEADER": "Disclosure"
+    },
+    "TERMS": {
+      "TITLE": "Consent Terms",
+      "TEXT": "Enter a start and end date during with your medical records will be shared.",
+      "START_DATE": "Start Date:",
+      "END_DATE": "End Date:",
+      "ERROR_PAST_START_DATE": "Start date should be in the present.",
+      "ERROR_PAST_END_DATE": "End date should be in the present.",
+      "ERROR_END_DATE_BEFORE_START": "Start date CAN NOT exceed End date."
+    }
+  },
+  "PATIENT": {
+    "LIST": {
+      "TITLE": "My Patients",
+      "INFO": "OK! You are now ready to manage your patients.",
+      "SEARCH_PATIENT_PLACEHOLDER": "Search by first and last name",
+      "CREATE_PATIENT_BUTTON": "Create a Patient Account",
+      "SORT_LIST_TITLE": "Show List by",
+      "NO_PATIENTS_MSG": "There are currently no Patients available. Please click the 'Create a Patient Account' button to create a new Patient.",
       "CARD": {
+        "CONTENT": {
+          "CONTACT_NUMBER": "Contact Number",
+          "DOB": "Date of Birth",
+          "ADDRESS": "Address"
+        }
+      },
+      "PAGINATION": {
+        "PREVIOUS": "Previous",
+        "NEXT": "Next"
+      }
+    },
+    "CREATE_EDIT": {
+      "CREATE_TITLE": "Create Patient",
+      "EDIT_TITLE": "Patient Record",
+      "ACCORDION_HEADER": "Patient's Information",
+      "INFO": "Please complete all required fields to create a Patient Account.",
+      "REQUIRED_INFORMATION": {
+        "LABEL": "Required Information",
+        "ROLE_PLACEHOLDER": "Role",
+        "LOCALE_PLACEHOLDER": "Preferred Language",
+        "FIRST_NAME_PLACEHOLDER": "First Name",
+        "MIDDLE_NAME_PLACEHOLDER": "Middle Name (Optional)",
+        "LAST_NAME_PLACEHOLDER": "Last Name",
+        "EMAIL_PLACEHOLDER": "Email",
+        "GENDER_PLACEHOLDER": "Gender",
+        "DOB_PLACEHOLDER": "Date of Birth"
+      },
+      "ADDITIONAL_INFORMATION": {
+        "LABEL": "Additional Information",
+        "STREET_LINE1_PLACEHOLDER": "Street Line1",
+        "STREET_LINE2_PLACEHOLDER": "Street Line2 (Optional)",
+        "CITY_PLACEHOLDER": "City",
+        "POSTAL_CODE_PLACEHOLDER": "Postal Code",
+        "STATE_PLACEHOLDER": "State",
+        "COUNTRY_PLACEHOLDER": "Country",
+        "SSN_PLACEHOLDER": "Social Security Number",
+        "PHONE_PLACEHOLDER": "Phone"
+      },
+      "CANCEL_BTN": "Cancel",
+      "SAVE_BTN": "Save",
+      "CONFIRM_DIALOG": {
+        "TITLE": "Confirm Navigation",
+        "CONTENT": "You will lose all unsaved work, Are you sure you want to leave this page?"
+      }
+    },
+    "VERIFICATION": {
+      "ACCORDION_HEADER": "Account Activation/Verification Code",
+      "CARD": {
+        "TITLE": "Account Activation / Verification Code",
+        "CONTENT": {
+          "LABEL": "Activate Account for:",
+          "VERIFICATION_CODE_LABEL": "Verification Code:",
+          "RESENT_VERIFICATION_CODE_MSG": "<strong>An email has been sent and awaiting the patient to activate the account. Select the 'Send Email' button to re-send an account activation email.</strong>",
+          "SENT_VERIFICATION_CODE_MSG": "<span><strong>Select the 'Send Email' button to generate the Verification Code.</strong></span>Sending an account activation email to the address listed above will generate a unique Verification Code."
+        },
+        "FOOTER": {
+          "ACCOUNT_STATUS_LABEL": "Account Status:",
+          "ENABLE_ACCOUNT_BTN": "Enable Account",
+          "DISABLE_ACCOUNT_BTN": "Disable Account",
+          "SEND_EMAIL_BTN": "Send Email"
+        }
+      },
+      "ACCOUNT_STATUSES": {
+        "NOT_ACTIVATED_TEXT": "Account Not Yet Activated",
+        "VERIFIED_TEXT": "Activation Email Sent",
+        "ACTIVATED_TEXT": "Account Activated",
+        "DISABLED_TEXT": "Account Disabled"
+      }
+    }
+  },
+  "PROVIDER": {
+    "CARD_LIST": {
+      "ACCORDION_HEADER": "Patient's Providers",
+      "WARNING": "OK! You must add at least two contacts before sharing your health information.",
+      "ADD_PROVIDER_BUTTON": "Add a Health Provider",
+      "SORT_LIST_TITLE": "Show List by",
+      "NO_PROVIDERS_MSG": "There are currently no Providers available. Please click the 'Add a Health Provider' button to create a new provider.",
+      "PAGINATION": {
+        "PREVIOUS": "Previous",
+        "NEXT": "Next"
+      }
+    },
+    "CARD": {
+      "CONTENT": {
         "NPI": "NPI",
         "ADDRESS": "Address",
         "CONTACT": "Contact Number"
@@ -35,31 +224,26 @@
         "TITLE": "Delete provider",
         "DESCRIPTION": "Are you sure you want to delete this provider?",
         "BUTTON": {
-          "OK": "Ok",
+          "OK": "OK",
           "CANCEL": "Cancel"
         }
       }
     },
     "SEARCH": {
       "TITLE": "Search Providers",
-      "ACCORDION_NAME": "Search",
+      "ACCORDION_HEADER": "Search",
       "STEP_1": {
         "TITLE": "Step 1. Please enter the provider State and City or Zip Code.",
         "LABEL": "PLEASE CHOOSE ONE.",
         "STATE_AND_CITY": {
           "LABEL": "Enter State and City",
           "STATE_PLACEHOLDER": "Please Select State (Required)",
-          "CITY_PLACEHOLDER": "City (Required)",
-          "STATE_REQUIRED_ERROR_MSG": "State is required.",
-          "CITY_REQUIRED_ERROR_MSG": "City is required.",
-          "CITY_MIN_LENGTH_ERROR_MSG": "Must be at least 2 characters long."
+          "CITY_PLACEHOLDER": "City (Required)"
         },
         "OR": "OR",
         "ZIP_CODE": {
           "LABEL": "Enter Zip Code",
-          "ZIP_CODE_PLACEHOLDER": "Zip Code (Required)",
-          "ZIP_CODE_REQUIRED_MSG": "Zip code is required.",
-          "ZIP_CODE_FORMAT_ERROR_MSG": " Must be with formats: 12345 or 12345-6789."
+          "ZIP_CODE_PLACEHOLDER": "Zip Code (Required)"
         }
       },
       "STEP_2": {
@@ -68,21 +252,14 @@
         "PROVIDER_NAME_AND_OTHERS": {
           "LABEL": "Enter Provider Name and Other Criteria",
           "LAST_NAME_PLACEHOLDER": "Last Name (Required)",
-          "LAST_NAME_REQUIRED_MSG": "Last Name (Required)",
-          "LAST_NAME_MIN_LENGTH_MSG": "Must be at least 2 characters long.",
           "FIRST_NAME_PLACEHOLDER": "First Name (Optional)",
-          "FIRST_NAME_MIN_LENGTH_MSG": "Must be at least 2 characters long.",
           "TELEPHONE_PLACEHOLDER": "Telephone (Optional)",
-          "TELEPHONE_FORMAT_MSG": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
           "GENDER_PLACEHOLDER": "Gender (Optional)"
         },
         "OR": "OR",
         "FACILITY": {
           "LABEL": "Enter Facility Name",
           "NAME_PLACEHOLDER": "Facility Name (Required)",
-          "NAME_REQUIRED_MSG": " Facility Name is required.",
-          "NAME_MIN_LENGTH_MSG": "Must be at least 2 characters long.",
-          "TELEPHONE_FORMAT_MSG": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
           "TELEPHONE_PLACEHOLDER": "Telephone (Optional)"
         }
       },
@@ -125,6 +302,23 @@
         "OK_BUTTON": "OK"
       },
       "ADD_BUTTON": "Add to Provider List"
+    }
+  },
+  "SHARED": {
+    "VALIDATION_RULES": {
+      "PHONE_ERROR_MESSAGE": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
+      "SSN_ERROR_MESSAGE": "Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789",
+      "ZIP_ERROR_MESSAGE": "Must be with formats: 12345 or 12345-6789.",
+      "EMAIL_ERROR_MESSAGE": "This email does not perform email validation.",
+      "MIN_LENGTH_ERROR_MESSAGE": "This field Minimum length is {{length}}",
+      "MAX_LENGTH_ERROR_MESSAGE": "This field Maximum length is {{length}}",
+      "REQUIRED_ERROR_MESSAGE": "This field is required.",
+      "REQUIRED_TRUE_ERROR_MESSAGE": "This field value must be true.",
+      "INVALID_PAST_DATE_ERROR_MESSAGE": "Selected date must be earlier than today"
+    },
+    "CONFIRM_DIALOG": {
+      "OK_BTN": "OK",
+      "CANCEL_BTN": "Cancel"
     }
   }
 }

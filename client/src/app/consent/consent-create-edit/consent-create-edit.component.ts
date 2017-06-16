@@ -14,6 +14,7 @@ import {Identifier} from "../../shared/identifier.model";
 })
 export class ConsentCreateEditComponent implements OnInit {
   public consent: Consent;
+  public selectedPatientName: any;
   private selectedPatient: Patient;
   private consentListUrl: string;
 
@@ -31,7 +32,8 @@ export class ConsentCreateEditComponent implements OnInit {
   ngOnInit() {
     this.selectedPatient = this.route.snapshot.parent.data['patient'];
     this.consentListUrl = "/patients".concat("/" + this.selectedPatient.id);
-
+    let fullName: string = this.utilityService.getFullName(this.selectedPatient);
+    this.selectedPatientName = {name: fullName};
     //Consent Create Mode
     this.consent = new Consent();
     this.consentService.setConsentEmitter(this.consent);
@@ -56,10 +58,11 @@ export class ConsentCreateEditComponent implements OnInit {
       this.consentService.updateConsent(this.selectedPatient.mrn, this.consent)
         .subscribe(
           () => {
+            this.notificationService.show("Successfully updated the consent on behalf of the patient");
             this.utilityService.navigateTo(this.consentListUrl);
           },
           err => {
-            this.notificationService.show("Error in updating consent.");
+            this.notificationService.show("Error in updating consent on behalf of the patient");
           }
         );
     } else {
@@ -67,10 +70,11 @@ export class ConsentCreateEditComponent implements OnInit {
       this.consentService.createConsent(this.selectedPatient.mrn, this.consent)
         .subscribe(
           () => {
+            this.notificationService.show("Successfully created the consent on behalf of the patient");
             this.utilityService.navigateTo(this.consentListUrl);
           },
           err => {
-            this.notificationService.show("Error in creating consent.");
+            this.notificationService.show("Error in creating consent on behalf of the patient");
           }
         );
     }
