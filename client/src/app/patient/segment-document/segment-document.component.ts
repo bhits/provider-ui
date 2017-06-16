@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UploadOutput, UploadInput, UploadFile, humanizeBytes} from 'ngx-uploader';
-import {Subject} from "rxjs/Subject";
 
 import {TokenService} from "../../security/shared/token.service";
 import {SharePurpose} from "app/consent/shared/share-purpose.model";
@@ -9,15 +8,14 @@ import {UploadOutputType} from "../../consent/shared/upload-output-type.enum";
 import {SegmentationRequest} from "../shared/segmentation-request";
 import {ConsentService} from "../../consent/shared/consent.service";
 import {UtilityService} from "app/shared/utility.service";
-import {Patient} from "app/patient/shared/patient.model";
 import {ProviderService} from "../../provider/shared/provider.service";
-import {Provider} from "../../provider/shared/provider.model";
 import {NotificationService} from "../../shared/notification.service";
 import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
 import {ValidationService} from "../../shared/validation.service";
 import {ValidationRules} from "../../shared/validation-rules.model";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Observable} from "rxjs/Observable";
+import {NpiValidation} from "../../shared/npi-validation";
 
 
 @Component({
@@ -37,8 +35,6 @@ export class SegmentDocumentComponent implements OnInit {
 
   public authorizeProvider: FlattenedSmallProvider;
   public discloseProvider: FlattenedSmallProvider;
-
-  // private discloseProviderSubject = new Subject<string>();
 
   public numberErrorMessage: string = ValidationRules.NUMBER_MESSAGE;
 
@@ -126,12 +122,15 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   private buildSegementationForm(): FormGroup{
-    return this.formBuilder.group({
-      intermediaryNpi: [null, Validators.compose([Validators.required, ValidationService.isANumberValidator])],
-      recipientNpi: [null, Validators.compose([Validators.required, ValidationService.isANumberValidator])],
-      purposeOfUse: [null, [ Validators.required]],
-      document: [null],
-    });
+    return this.formBuilder.group(
+            {
+                intermediaryNpi: [null, Validators.compose([Validators.required, ValidationService.isANumberValidator])],
+                recipientNpi: [null, Validators.compose([Validators.required, ValidationService.isANumberValidator])],
+                purposeOfUse: [null, [ Validators.required]],
+                document: [null]
+              },
+              {validator: NpiValidation.compareNpis }
+    );
   }
 
   public canSegmentDocument():boolean{

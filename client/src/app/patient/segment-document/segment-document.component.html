@@ -53,14 +53,15 @@
         <div fxFlex>
           <md-input-container class="full-width font-size20">
             <input mdInput placeholder= '{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.DISCLOSE_PLACEHOLDER" | translate}}'
-                   #disclosureProvider
-                   (blur)="searchDiscloseProviders(disclosureProvider.value)"
+                   #disclosureProviderNpi
+                   (blur)="searchDiscloseProviders(disclosureProviderNpi.value)"
                    formControlName="recipientNpi">
           </md-input-container>
           <c2s-control-validation-error-message
             [customMessage]="numberErrorMessage"
             [control]="segmentationFrom.controls.recipientNpi">
           </c2s-control-validation-error-message>
+
           <div *ngIf="discloseProvider && discloseProvider.firstName && discloseProvider.lastName">
             <label>{{ "PATIENT_EDIT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
             <span>{{ discloseProvider.firstName }} {{ discloseProvider.lastName }}</span>

@@ -32,6 +32,8 @@ export class ValidationService {
         return ValidationRules.NUMBER_MESSAGE;
       case ValidationRules.INVALID_NUMBER_KEY:
         return ValidationRules.NUMBER_MESSAGE;
+      case ValidationRules.NPIS_MATCH_KEY:
+        return ValidationRules.NPIS_MATCH_MESSAGE;
     }
   }
 
@@ -55,14 +57,6 @@ export class ValidationService {
 
 
   static isANumberValidator(control):any {
-    if (Number(control.value)) {
-      return null;
-    } else {
-      return {'invalidNumber': true};
-    }
-  }
-
-  static isNPIValidator(control):any {
     if (Number(control.value)) {
       return null;
     } else {
