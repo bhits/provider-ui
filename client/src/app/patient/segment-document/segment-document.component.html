@@ -102,6 +102,7 @@
         <label class="upload-button">
           <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)"
                  formControlName="document"
+                  (change)="validateFile($event)"
                  [uploadInput]="uploadInput">
           <a md-raised-button >
             {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.CHOOSE_FILE_BTN' | translate }}
@@ -109,14 +110,14 @@
         </label>
       </div>
     </div>
-       <!--<c2s-control-validation-error-message-->
-      <!--[control]="segmentationFrom.controls.document">-->
-    <!--</c2s-control-validation-error-message>-->
+      <div align="left" class="font-size14 has-error" *ngIf="invalidFile">
+        <span> Invalid file type</span>
+      </div>
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <div class="full-width font-size20">
-          <a md-raised-button (click)="segmentDocument()" [disabled]="segmentationFrom.invalid">
+          <a md-raised-button (click)="segmentDocument()" [disabled]="segmentationFrom.invalid || invalidFile">
             {{ 'PATIENT_EDIT.SEGMENT_DOCUMENT.SEGMENTATION_BTN' | translate }}
           </a>
         </div>

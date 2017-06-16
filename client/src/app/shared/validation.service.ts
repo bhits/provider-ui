@@ -6,6 +6,7 @@ import {FormGroup} from "@angular/forms";
 @Injectable()
 export class ValidationService {
   private minLengthMessage: string;
+  private static XML_FILE_TYPE:string = "text/xml";
 
   constructor(private translateService: TranslateService) {
   }
@@ -84,11 +85,15 @@ export class ValidationService {
     }
   }
 
-  isValidForm(formgroup: FormGroup) :boolean{
-    if (formgroup) {
-      return formgroup.valid;
-    } else {
-      return false;
+
+  static isXmlFile(file:any):boolean{
+    let fileName = file.name;
+    let fileType = file.type;
+
+    if(fileName && fileType && fileType === this.XML_FILE_TYPE ){
+      return true;
     }
+    return false;
   }
+
 }

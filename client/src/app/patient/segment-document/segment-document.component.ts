@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UploadOutput, UploadInput, UploadFile, humanizeBytes} from 'ngx-uploader';
 
@@ -37,6 +37,7 @@ export class SegmentDocumentComponent implements OnInit {
   public discloseProvider: FlattenedSmallProvider;
 
   public numberErrorMessage: string = ValidationRules.NUMBER_MESSAGE;
+  public invalidFile:boolean = false;
 
   public authorizeProviderSubject: BehaviorSubject<FlattenedSmallProvider> = new BehaviorSubject<FlattenedSmallProvider>(null);
   public authorizeProviderEmitter: Observable<FlattenedSmallProvider> = this.authorizeProviderSubject.asObservable();
@@ -133,6 +134,13 @@ export class SegmentDocumentComponent implements OnInit {
     );
   }
 
+  validateFile(event:any){
+    let files:any = event.srcElement.files;
+    if(files && files[0]){
+      this.invalidFile = !ValidationService.isXmlFile(files[0]);
+    }
+  }
+
   public canSegmentDocument():boolean{
     let result:boolean = this.validationService.isValidForm(this.segmentationFrom);
     return result;
@@ -160,20 +168,16 @@ export class SegmentDocumentComponent implements OnInit {
     }
   }
 
-  canSegment():boolean{
-    return false;
-  }
-
   segmentDocument(): void {
     const formModel = this.segmentationFrom.value;
     this.uploadInput.emit(this.prepareUploadInputObject(formModel));
   }
 
-  private prepareSegmentationRequestObject(formContro: any):any{
+  private prepareSegmentationRequestObject(formControl: any):any{
     let segmentationRequest: SegmentationRequest = new SegmentationRequest();
-    segmentationRequest.recipientNpi = formContro.recipientNpi;
-    segmentationRequest.intermediaryNpi = formContro.intermediaryNpi;
-    segmentationRequest.purposeOfUse = formContro.purposeOfUse;
+    segmentationRequest.recipientNpi = formControl.recipientNpi;
+    segmentationRequest.intermediaryNpi = formControl.intermediaryNpi;
+    segmentationRequest.purposeOfUse = formControl.purposeOfUse;
     segmentationRequest.patientIdRoot = "";
     segmentationRequest.patientIdExtension = "";
     return segmentationRequest;
