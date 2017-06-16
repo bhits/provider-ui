@@ -45,16 +45,11 @@
         <div *ngIf="verificationCode; else sentVerificationCode">
           <div *ngIf="verified; else resentEmailTemplate"></div>
           <ng-template #resentEmailTemplate>
-            <p class="font-size16">
-              {{ 'PATIENT.VERIFICATION.CARD.CONTENT.RESENT_VERIFICATION_CODE_MSG' | translate }}
-            </p>
+            <p class="font-size16" [innerHTML]="'PATIENT.VERIFICATION.CARD.CONTENT.RESENT_VERIFICATION_CODE_MSG' | translate"></p>
           </ng-template>
         </div>
         <ng-template #sentVerificationCode>
-          <p class="font-size16">
-            {{ 'PATIENT.VERIFICATION.CARD.CONTENT.SENT_VERIFICATION_CODE_MSG' | translate }}
-          </p>
-          <p>
+          <p class="font-size16" [innerHTML]="'PATIENT.VERIFICATION.CARD.CONTENT.SENT_VERIFICATION_CODE_MSG' | translate"></p>
         </ng-template>
         <hr>
       </md-card-content>
