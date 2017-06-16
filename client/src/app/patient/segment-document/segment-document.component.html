@@ -86,7 +86,7 @@
         <div fxFlex>
           <md-select placeholder='{{"PATIENT_EDIT.SEGMENT_DOCUMENT.PURPOSE_OF_USE_PLACEHOLDER" | translate }}'
                      formControlName="purposeOfUse" [required]="true">
-            <md-option *ngFor="let purposeOfUse of purposeOfUses" [value]="purposeOfUse.id" >
+            <md-option *ngFor="let purposeOfUse of purposeOfUses" [value]="purposeOfUse.identifier.value" >
               {{ purposeOfUse.display }}
             </md-option>
           </md-select>
