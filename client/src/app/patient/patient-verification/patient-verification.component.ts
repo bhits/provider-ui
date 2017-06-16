@@ -46,12 +46,12 @@ export class PatientVerificationComponent implements OnInit {
     this.patientService.initiatePatientActivation(this.patient.id)
       .subscribe(
         (patientActivationResponse) => {
-          this.notificationService.show("Email sent successfully");
+          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.SUCCESS_SENT_EMAIL");
           this.verificationCode = patientActivationResponse.verificationCode;
           this.accountStatusText = ACCOUNT_STATUSES.get(AccountStatus.Verified)
         },
         err => {
-          this.notificationService.show("Failed to send email, please try again later...");
+          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_SENT_EMAIL");
         }
       );
   }
@@ -62,10 +62,10 @@ export class PatientVerificationComponent implements OnInit {
         () => {
           this.isAccountDisabled = true;
           this.accountStatusText = ACCOUNT_STATUSES.get(AccountStatus.Disabled);
-          this.notificationService.show("Disable user account successfully");
+          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.SUCCESS_DISABLE_ACCOUNT");
         },
         err => {
-          this.notificationService.show("Error in disable user account, please try again later...");
+          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_DISABLE_ACCOUNT");
         }
       );
   }
@@ -76,10 +76,10 @@ export class PatientVerificationComponent implements OnInit {
         () => {
           this.isAccountDisabled = false;
           this.accountStatusText = ACCOUNT_STATUSES.get(AccountStatus.Activated);
-          this.notificationService.show("User account is back to work.");
+          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.SUCCESS_ENABLE_ACCOUNT");
         },
         err => {
-          this.notificationService.show("Error in enable user account, please try again later...");
+          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_ENABLE_ACCOUNT");
         }
       );
   }

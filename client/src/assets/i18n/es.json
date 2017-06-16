@@ -242,6 +242,17 @@
         "DOWNLOAD_BTN": "{spanish} Download document"
       },
       "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI..."
+    },
+    "NOTIFICATION_MSG": {
+      "SUCCESS_SENT_EMAIL": "{spanish} Successfully sent the email.",
+      "FAILED_SENT_EMAIL": "{spanish} Failed to send email, please try again later...",
+      "SUCCESS_ENABLE_ACCOUNT": "{spanish} User account is back to work.",
+      "FAILED_ENABLE_ACCOUNT": "{spanish} Failed to enable user account, please try again later...",
+      "SUCCESS_DISABLE_ACCOUNT": "{spanish} Successfully disable the account.",
+      "FAILED_DISABLE_ACCOUNT": "{spanish} Failed to disable account, please try again later...",
+      "FAILED_SEARCH_PATIENT": "{spanish} Failed to search patient, please try again later...",
+      "FAILED_CREATE_PATIENT": "{spanish} Failed to create patient, please try again later...",
+      "FAILED_UPDATE_PATIENT": "{spanish} Failed to update patient, please try again later..."
     }
   },
   "PROVIDER": {

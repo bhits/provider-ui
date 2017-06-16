@@ -241,6 +241,17 @@
         "DOWNLOAD_BTN": "Download document"
       },
       "GET_PROVIDER_NOTIFICATION_MSG": "Failed to get provider by NPI..."
+    },
+    "NOTIFICATION_MSG": {
+      "SUCCESS_SENT_EMAIL": "Successfully sent the email.",
+      "FAILED_SENT_EMAIL": "Failed to send email, please try again later...",
+      "SUCCESS_ENABLE_ACCOUNT": "User account is back to work.",
+      "FAILED_ENABLE_ACCOUNT": "Failed to enable user account, please try again later...",
+      "SUCCESS_DISABLE_ACCOUNT": "Successfully disable the account.",
+      "FAILED_DISABLE_ACCOUNT": "Failed to disable account, please try again later...",
+      "FAILED_SEARCH_PATIENT": "Failed to search patient, please try again later...",
+      "FAILED_CREATE_PATIENT": "Failed to create patient, please try again later...",
+      "FAILED_UPDATE_PATIENT": "Failed to update patient, please try again later..."
     }
   },
   "PROVIDER": {
