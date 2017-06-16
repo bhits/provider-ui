@@ -16,7 +16,7 @@ export class FlattenedSmallProviderPipe implements PipeTransform {
     if (value) {
       switch (args) {
         case "fullName":
-          return FlattenedSmallProviderPipe.getName(value);
+          return this.getName(value);
         case "address":
           const address = [];
           if (value.firstLinePracticeLocationAddress ||
@@ -38,23 +38,16 @@ export class FlattenedSmallProviderPipe implements PipeTransform {
     }
   }
 
-  private static getName(provider: FlattenedSmallProvider) {
+  private getName(provider: FlattenedSmallProvider) {
     let providerName: string;
     switch (provider.entityTypeDisplayName) {
       case "Individual":
-        providerName = FlattenedSmallProviderPipe.getFullName(provider, 'firstName').concat(' ').concat(FlattenedSmallProviderPipe.getFullName(provider, 'middleName')).concat(' ').concat(FlattenedSmallProviderPipe.getFullName(provider, 'lastName'));
+        providerName = this.utilityService.getFullName(provider);
         break;
       case "Organization":
         providerName = provider.organizationName;
         break;
     }
     return providerName;
-  }
-
-  private static getFullName(provider: FlattenedSmallProvider, key: string) {
-    if (provider !== null && provider[key]) {
-      return provider[key];
-    }
-    return '';
   }
 }

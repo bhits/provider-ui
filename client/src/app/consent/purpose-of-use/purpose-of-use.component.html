@@ -1,0 +1,61 @@
+<md-card class="left-align p-none m-sm section-border-thin hover">
+  <md-card-title class="bg-forest-green p-sm white"><i class="material-icons md-36 bottom p-r-xs">settings</i>
+    {{ 'CONSENT.PURPOSE_OF_USE.TITLE' | translate }}
+  </md-card-title>
+  <md-card-content class="p-15">
+    <p>
+      {{ 'CONSENT.PURPOSE_OF_USE.DESCRIPTION' | translate }}
+    </p>
+    <span [innerHTML]="'CONSENT.PURPOSE_OF_USE.SHARE_TEXT' | translate"></span>
+    <button class="lineHeight28" md-raised-button color="primary" (click)="purposeOfUseDialog.open()">
+      {{ 'CONSENT.PURPOSE_OF_USE.EDIT_BTN' | translate }}
+    </button>
+    <br><br>
+    <div>
+      <md-chip-list>
+        <md-chip class="consents" *ngFor="let purposeOfUse of selectedPurposeOfUses"
+                 color="accent" selected="true">
+          <md-icon>check_circle</md-icon>
+          <span class="md-chip-icon-text">{{purposeOfUse}}</span>
+        </md-chip>
+      </md-chip-list>
+    </div>
+  </md-card-content>
+</md-card>
+
+<md2-dialog #purposeOfUseDialog>
+  <md2-dialog-title>
+    {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.TITLE' | translate }}
+  </md2-dialog-title>
+  <md-card class="left-align">
+    <md-card-title>
+      {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.DESCRIPTION' | translate }}
+    </md-card-title>
+    <md-card-content class="p-l-sm p-r-sm p-b-md">
+      <button type="button" md-raised-button color="primary" (click)="selectAll()">
+        {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.SELECT_BTN' | translate }}
+      </button>
+      <button type="button" md-raised-button color="primary" (click)="deSelectAll()">
+        {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.DESELECT_BTN' | translate }}
+      </button>
+      <br><br>
+      <div *ngFor="let purposeOfUse of purposeOfUses; let i = index;">
+        <md-checkbox [(ngModel)]="purposeOfUses[i].checked">
+          {{purposeOfUse.display}}
+          <md-icon tooltip="{{purposeOfUse.description}}"
+                   tooltip-positionh="below"
+                   tooltip-delay="100">info
+          </md-icon>
+        </md-checkbox>
+      </div>
+    </md-card-content>
+  </md-card>
+  <md2-dialog-footer>
+    <button type="button" md-raised-button (click)="purposeOfUseDialog.close()">
+      {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.CANCEL_BTN' | translate }}
+    </button>
+    <button type="button" md-raised-button color="primary" (click)="updateSelectedPurposesOfUse(purposeOfUseDialog)">
+      {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.SAVE_BTN' | translate }}
+    </button>
+  </md2-dialog-footer>
+</md2-dialog>

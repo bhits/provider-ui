@@ -1,0 +1,113 @@
+<md-card class="left-align p-none m-sm section-border-thin hover">
+  <md-card-title class="bg-forest-green p-sm white"><i class="material-icons md-36 bottom p-r-xs">content_paste</i>
+    {{ 'CONSENT.MEDICAL_INFORMATION.TITLE' | translate }}
+  </md-card-title>
+  <md-card-content class="p-15">
+    <p>
+      {{ 'CONSENT.MEDICAL_INFORMATION.DESCRIPTION' | translate }}
+    </p>
+    <md-radio-group [(ngModel)]="isShareAll">
+      <div>
+        <md-radio-button name="medicalInformation"
+                         #medInfoA
+                         [value]="1"
+                         (click)="onSelectShareAll(medicalInformationDialog, medInfoA.value)">
+          <span [innerHTML]="'CONSENT.MEDICAL_INFORMATION.SHARE_ALL_RADIO' | translate"></span>
+        </md-radio-button>
+      </div>
+      <div>
+        <md-radio-button name="medicalInformation"
+                         #medInfoB
+                         [value]="0"
+                         (click)="onSelectDoNotShareAll(medicalInformationDialog, medInfoB.value)">
+          <span [innerHTML]="'CONSENT.MEDICAL_INFORMATION.SHARE_SOME_RADIO' | translate"></span>
+        </md-radio-button>
+      </div>
+    </md-radio-group>
+    <br><br>
+    <md-chip-list>
+      <md-chip class="medInfo" *ngFor="let sensitivityCategory of selectedSensitivityCategories"
+               color="accent" selected="true">
+        <md-icon>lock</md-icon>
+        <span class="md-chip-icon-text">{{sensitivityCategory}}</span>
+      </md-chip>
+    </md-chip-list>
+  </md-card-content>
+</md-card>
+
+<md2-dialog #medicalInformationDialog>
+  <md2-dialog-title>
+    {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.TITLE' | translate }}
+  </md2-dialog-title>
+  <md-card class="left-align">
+    <md-card-title>
+      {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.HEADER1' | translate }}
+    </md-card-title>
+    <md-card-content class="p-l-sm p-r-sm p-b-md">
+      <h2>
+        {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.HEADER2' | translate }}
+      </h2>
+      <h4 *ngIf="isAllCategoriesSelected">
+        {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.CONTENT' | translate }}
+      </h4>
+      <div>
+        <strong>
+          {{federalInfo.title | translate}}
+          <md-icon tooltip="{{federalInfo.description | translate}}"
+                   tooltip-positionh="below"
+                   tooltip-delay="100">info
+          </md-icon>
+        </strong>
+      </div>
+      <div *ngFor="let sensitivityCategory of sensitivityCategories; let i = index;">
+        <md-checkbox *ngIf="sensitivityCategory.federal"
+                     [(ngModel)]="sensitivityCategories[i].checked"
+                     [disabled]="(isShareAll === 1)"
+                     (change)="isCheckedAll()">
+          {{sensitivityCategory.displayName}}
+          <md-icon tooltip="{{sensitivityCategory.description}}"
+                   tooltip-positionh="below"
+                   tooltip-delay="100">info
+          </md-icon>
+        </md-checkbox>
+      </div>
+      <br>
+      <div>
+        <strong>
+          {{stateInfo.title | translate}}
+          <md-icon tooltip="{{stateInfo.description | translate}}"
+                   tooltip-positionh="below"
+                   tooltip-delay="100">info
+          </md-icon>
+        </strong>
+      </div>
+      <div *ngFor="let sensitivityCategory of sensitivityCategories; let i = index;">
+        <md-checkbox *ngIf="!sensitivityCategory.federal"
+                     [(ngModel)]="sensitivityCategories[i].checked"
+                     [disabled]="(isShareAll === 1)"
+                     (change)="isCheckedAll()">
+          {{sensitivityCategory.displayName}}
+          <md-icon tooltip="{{sensitivityCategory.description}}"
+                   tooltip-positionh="below"
+                   tooltip-delay="100">info
+          </md-icon>
+        </md-checkbox>
+      </div>
+    </md-card-content>
+  </md-card>
+  <md2-dialog-footer>
+    <button type="button" md-raised-button (click)="medicalInformationDialog.close()">
+      {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.CANCEL_BTN' | translate }}
+    </button>
+    <button type="button" md-raised-button color="primary"
+            *ngIf="(isShareAll === 0)"
+            [disabled]="isAllCategoriesSelected"
+            (click)="setSelectedMedicalInformation(medicalInformationDialog)">
+      {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.SAVE_BTN' | translate }}
+    </button>
+    <button type="button" md-raised-button color="primary" *ngIf="(isShareAll === 1)"
+            (click)="confirmSelectAll(medicalInformationDialog)">
+      {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.CONFIRM_BTN' | translate }}
+    </button>
+  </md2-dialog-footer>
+</md2-dialog>

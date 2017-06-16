@@ -12,19 +12,22 @@ export class ValidationRules {
   public static NORMAL_MIN_LENGTH: number = 2;
   public static NORMAL_MAX_LENGTH: number = 50;
   public static NAME_MIN_LENGTH: number = 2;
-  public static NAME_MAX_LENGTH: number = 30;
+  public static NAME_MAX_LENGTH: number = 100;
+  public static CITY_MAX_LENGTH: number = 30;
+  public static TELECOM_MIN_LENGTH: number = 2;
+  public static TELECOM_MAX_LENGTH: number = 150;
   public static PASSWORD_MIN_LENGHT: number = 8;
   public static PAASOWRD_MAX_LENGHT: number = 50;
   public static PHONE_PATTERN = '^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$';
   public static ZIP_PATTERN = '^[0-9]{5}(?:-[0-9]{4})?$';
   public static SSN_PATTERN = '^[0-9]{3}\-?[0-9]{2}\-?[0-9]{4}$';
   //Custom Error Message
-  public static PHONE_MESSAGE: string = "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.";
-  public static SSN_MESSAGE: string = "Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789";
-  public static ZIP_MESSAGE: string = "Must be with formats: 12345 or 12345-6789.";
-  public static EMAIL_MESSAGE: string = "This email does not perform email validation.";
-  public static REQUIRED_MESSAGE: string = "This field is required.";
-  public static REQUIRED_TRUE_MESSAGE: string = "This field value must be true.";
-  public static INVALID_PAST_DATE_MESSAGE: string = "Selected date must be earlier than today";
+  public static PHONE_MESSAGE: string = "SHARED.VALIDATION_RULES.PHONE_ERROR_MESSAGE";
+  public static SSN_MESSAGE: string = "SHARED.VALIDATION_RULES.SSN_ERROR_MESSAGE";
+  public static ZIP_MESSAGE: string = "SHARED.VALIDATION_RULES.ZIP_ERROR_MESSAGE";
+  public static EMAIL_MESSAGE: string = "SHARED.VALIDATION_RULES.EMAIL_ERROR_MESSAGE";
+  public static REQUIRED_MESSAGE: string = "SHARED.VALIDATION_RULES.REQUIRED_ERROR_MESSAGE";
+  public static REQUIRED_TRUE_MESSAGE: string = "SHARED.VALIDATION_RULES.REQUIRED_TRUE_ERROR_MESSAGE";
+  public static INVALID_PAST_DATE_MESSAGE: string = "SHARED.VALIDATION_RULES.INVALID_PAST_DATE_ERROR_MESSAGE";
   public static NUMBER_MESSAGE: string = "Must be a number.";
 }

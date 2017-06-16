@@ -1,0 +1,23 @@
+<md-card class="left-align p-none m-sm section-border-thin hover">
+  <md-card-title class="bg-forest-green p-sm white"><i class="material-icons md-36 bottom p-r-xs">account_box</i>
+    {{ 'CONSENT.SELECT_PROVIDERS.TITLE' | translate }}
+  </md-card-title>
+  <md-card-content class="p-15">
+    <md-grid-list cols="2" rowHeight="130px">
+      <md-grid-tile>
+        <c2s-select-provider
+          [title]="'CONSENT.SELECT_PROVIDERS.DIALOG_AUTHORIZE_TITLE' | translate"
+          [dialogTitle]="'CONSENT.SELECT_PROVIDERS.DIALOG_AUTHORIZE_HEADER' | translate"
+          [isAuthorizedProviders]="true">
+        </c2s-select-provider>
+      </md-grid-tile>
+      <md-grid-tile>
+        <c2s-select-provider
+          [title]="'CONSENT.SELECT_PROVIDERS.DIALOG_DISCLOSED_TITLE' | translate"
+          [dialogTitle]="'CONSENT.SELECT_PROVIDERS.DIALOG_DISCLOSE_HEADER' | translate"
+          [isAuthorizedProviders]="false">
+        </c2s-select-provider>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-card-content>
+</md-card>

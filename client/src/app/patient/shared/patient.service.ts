@@ -61,11 +61,9 @@ export class PatientService {
       .catch(this.exceptionService.handleError);
   }
 
-  public getCurrentPatientCreationInfo(patientId: number): Observable<PatientActivationResponse> {
-    const PATIENT_ACTIVATION_URL = `${this.umsPatientUrl}/${patientId}/activation`;
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('patientId', patientId.toString());
-    return this.http.get(PATIENT_ACTIVATION_URL, {search: params})
+  public getCurrentPatientCreationInfo(userId: number): Observable<PatientActivationResponse> {
+    const PATIENT_ACTIVATION_URL = `${this.umsPatientUrl}/${userId}/activation`;
+    return this.http.get(PATIENT_ACTIVATION_URL)
       .map((resp: Response) => <PatientActivationResponse>(resp.json()))
       .catch(this.exceptionService.handleError);
   }

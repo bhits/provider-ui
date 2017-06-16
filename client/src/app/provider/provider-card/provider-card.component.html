@@ -1,0 +1,49 @@
+<md-card class="provider-card">
+  <md-card-header>
+    <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
+      <div class="fa fa-2x fa-address-card"></div>
+      <div class="m-l-xs font-weight700">{{provider | provider: 'name'}}</div>
+    </div>
+  </md-card-header>
+
+  <md-card-content class="p-t-xs p-b p-l-md p-r-md">
+    <div>
+      <button md-fab [disabled]="!provider.deletable" (click)="openConfirmDialog(confirm)">
+        <span class="fa fa-trash fa-lg font-weight500" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="flexcontainer column" fxLayoutWrap="wrap">
+      <div fxFlex="1 1 auto">
+        <div class="font-size12 p-b-xxs">
+          {{ 'PROVIDER.CARD.CONTENT.NPI' | translate }}
+        </div>
+        <div class="font-size14 font-weight600 m-b-xs">{{provider | provider: 'npi'}}</div>
+        <div class="font-size12 p-b-xxs">
+          {{ 'PROVIDER.CARD.CONTENT.ADDRESS' | translate }}
+        </div>
+        <div class="font-size14 font-weight700 m-b-xs">{{provider | provider: 'address'}}</div>
+        <div class="font-size12 p-b-xxs">
+          {{ 'PROVIDER.CARD.CONTENT.CONTACT' | translate }}
+        </div>
+        <div class="font-size14 font-weight700 p-b-xs">{{provider | provider: 'phone' | usPhoneNumber}}
+        </div>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+<div>
+  <md2-dialog #confirm>
+    <md2-dialog-title>
+      {{ 'PROVIDER.CARD.DELETE_DIALOG.TITLE' | translate }}
+    </md2-dialog-title>
+    {{ 'PROVIDER.CARD.DELETE_DIALOG.DESCRIPTION' | translate }}
+    <md2-dialog-footer>
+      <button md-raised-button color="primary" (click)="confirmDeleteProvider(confirm)">
+        {{ 'PROVIDER.CARD.DELETE_DIALOG.BUTTON.OK' | translate }}
+      </button>
+      <button md-raised-button (click)="confirm.close()">
+        {{ 'PROVIDER.CARD.DELETE_DIALOG.BUTTON.CANCEL' | translate }}
+      </button>
+    </md2-dialog-footer>
+  </md2-dialog>
+</div>

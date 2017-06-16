@@ -14,10 +14,9 @@ import {PageableData} from "../../shared/pageable-data.model";
 })
 export class PatientListComponent implements OnInit {
   private searchTerms = new Subject<string>();
-  private totalPages: number = 0;
   public totalItems: number = 0;
-  public itemsPerPage: number = 0;
   public currentPage: number = 1;
+  public itemsPerPage: number = 10;
   public noResult: boolean = false;
   public loading: boolean = false;
   public asyncPatients: Observable<Patient[]>;
@@ -54,8 +53,6 @@ export class PatientListComponent implements OnInit {
       .do((patients: PageableData<Patient>) => {
         this.noResult = patients.totalElements === 0;
         this.totalItems = patients.totalElements;
-        this.totalPages = patients.totalPages;
-        this.itemsPerPage = patients.size;
         this.currentPage = patients.number + 1;
         this.loading = false;
       })

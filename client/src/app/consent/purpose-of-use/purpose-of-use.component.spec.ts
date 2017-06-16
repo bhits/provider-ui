@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProviderListComponent } from './provider-list.component';
+import { PurposeOfUseComponent } from './purpose-of-use.component';
 
-describe('ProviderListComponent', () => {
-  let component: ProviderListComponent;
-  let fixture: ComponentFixture<ProviderListComponent>;
+describe('PurposeOfUseComponent', () => {
+  let component: PurposeOfUseComponent;
+  let fixture: ComponentFixture<PurposeOfUseComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProviderListComponent ]
+      declarations: [ PurposeOfUseComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProviderListComponent);
+    fixture = TestBed.createComponent(PurposeOfUseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -41,6 +41,19 @@ export class UtilityService {
     }
   }
 
+  public isPastDate(date: Date): boolean {
+    let today = new Date();
+    return date < today;
+  }
+
+  public isFirstDateBeforeSecondDate(firstDate: Date, secondDate: Date): boolean {
+    return firstDate < secondDate;
+  }
+
+  public getFullName(person: any): string {
+    return UtilityService.filterNullValueInName(person, 'firstName').concat(' ').concat(UtilityService.filterNullValueInName(person, 'middleName')).concat(' ').concat(UtilityService.filterNullValueInName(person, 'lastName'));
+  }
+
   private base64StringtoBlob(b64Data, contentType, sliceSize ?): Blob {
     contentType = contentType || '';
     sliceSize = sliceSize || 512;
@@ -78,11 +91,19 @@ export class UtilityService {
       window.URL.revokeObjectURL(blobURL);
     }, 100);
   }
-  getSupportedLocaleCode(supportedLocales:any){
-    let localeCode:string [] = [];
-    supportedLocales.forEach(locale =>{
+
+  getSupportedLocaleCode(supportedLocales: any) {
+    let localeCode: string [] = [];
+    supportedLocales.forEach(locale => {
       localeCode.push(locale.code);
     });
     return localeCode;
+  }
+
+  private static filterNullValueInName(person: any, key: string): string {
+    if (person !== null && person[key]) {
+      return person[key];
+    }
+    return ''
   }
 }
