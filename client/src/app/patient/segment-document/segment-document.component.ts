@@ -129,7 +129,7 @@ export class SegmentDocumentComponent implements OnInit {
                 purposeOfUse: [null, [ Validators.required]],
                 document: [null]
               },
-              {validator: NpiValidation.compareNpis }
+              {validator: Validators.compose([NpiValidation.compareNpis]) }
     );
   }
 
