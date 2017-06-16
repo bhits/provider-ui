@@ -34,6 +34,6 @@ export class ValidationRules {
   public static REQUIRED_TRUE_MESSAGE: string = "SHARED.VALIDATION_RULES.REQUIRED_TRUE_ERROR_MESSAGE";
   public static INVALID_PAST_DATE_MESSAGE: string = "SHARED.VALIDATION_RULES.INVALID_PAST_DATE_ERROR_MESSAGE";
   public static ONE_EMAIL_REQUIRED_MESSAGE: string = "SHARED.VALIDATION_RULES.ONE_EMAIL_REQUIRED_MESSAGE";
-  public static NUMBER_MESSAGE: string = "Must be a number.";
-  public static NPIS_MATCH_MESSAGE: string = "Authorize and disclose NPIs must be different.";
+  public static NUMBER_MESSAGE: string = "SHARED.VALIDATION_RULES.NPI_NUMBER_MESSAGE";
+  public static NPIS_MATCH_MESSAGE: string = "SHARED.VALIDATION_RULES.NPIS_MATCH_MESSAGE";
 }

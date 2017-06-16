@@ -96,7 +96,7 @@ export class SegmentDocumentComponent implements OnInit {
                                                   },
                                                   err => {
                                                           this.authorizeProviderSubject.next(null);
-                                                          this.notificationService.show("Failed to search provider, please try again later...");
+                                                          this.notificationService.i18nShow("PATIENT_EDIT.SEGMENT_DOCUMENT.GET_PROVIDER_NOTIFICATION_MSG");
                                                   }
                                                 );
 
@@ -113,7 +113,7 @@ export class SegmentDocumentComponent implements OnInit {
                                                         },
                                             err => {
                                                           this.discloseProviderSubject.next(null);
-                                                          this.notificationService.show("Failed to search provider, please try again later...");
+                                                          this.notificationService.i18nShow("PATIENT_EDIT.SEGMENT_DOCUMENT.GET_PROVIDER_NOTIFICATION_MSG");
                                                     }
                                             );
   }

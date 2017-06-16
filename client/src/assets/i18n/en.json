@@ -318,7 +318,10 @@
       "REQUIRED_ERROR_MESSAGE": "This field is required.",
       "REQUIRED_TRUE_ERROR_MESSAGE": "This field value must be true.",
       "INVALID_PAST_DATE_ERROR_MESSAGE": "Selected date must be earlier than today",
-      "ONE_EMAIL_REQUIRED_MESSAGE": "At least one email address needed"
+      "ONE_EMAIL_REQUIRED_MESSAGE": "At least one email address needed",
+      "NPI_NUMBER_MESSAGE": "Must be a number.",
+      "NPIS_MATCH_MESSAGE": "Authorize and disclose NPIs must be different.",
+      "INVALID_FILE_TYPE_MESSAGE": "Invalid file type."
     },
     "CONFIRM_DIALOG": {
       "OK_BTN": "OK",
@@ -347,7 +350,8 @@
         "TITLE":"Download Segmented Document",
         "CANCEL_BTN":"Cancel",
         "DOWNLOAD_BTN":"Download document"
-      }
+      },
+      "GET_PROVIDER_NOTIFICATION_MSG":"Failed to get provider by NPI..."
     }
   }
 }
