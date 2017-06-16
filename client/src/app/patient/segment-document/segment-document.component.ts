@@ -141,11 +141,6 @@ export class SegmentDocumentComponent implements OnInit {
     }
   }
 
-  public canSegmentDocument():boolean{
-    let result:boolean = this.validationService.isValidForm(this.segmentationFrom);
-    return result;
-  }
-
   onUploadOutput(output: UploadOutput, segmentDocumentDialog: any): void {
     if (output.type === UploadOutputType.ADDED_TO_QUEUE.toString()) {
       this.files.push(output.file); // add file to array when added
