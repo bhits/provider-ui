@@ -39,10 +39,10 @@ export class ProviderCardComponent implements OnInit {
         .subscribe(
           () => {
             this.deleteProvider.emit(this.provider.id);
-            this.notificationService.show("Success in deleting provider.");
+            this.notificationService.i18nShow("PROVIDER.NOTIFICATION_MSG.SUCCESS_DELETE_PROVIDER");
           },
           err => {
-            this.notificationService.show("Failed to delete the provider, please try again later...");
+            this.notificationService.i18nShow("PROVIDER.NOTIFICATION_MSG.FAILED_DELETE_PROVIDER");
             console.log(err);
           });
     }

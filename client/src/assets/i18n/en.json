@@ -354,6 +354,12 @@
         "OK_BUTTON": "OK"
       },
       "ADD_BUTTON": "Add to Provider List"
+    },
+    "NOTIFICATION_MSG": {
+      "FAILED_GET_PROVIDERS": "Failed to get providers., please try again later...",
+      "FAILED_ADD_PROVIDER": "Failed to add the provider, please try again later...",
+      "SUCCESS_DELETE_PROVIDER": "Successfully delete the provider.",
+      "FAILED_DELETE_PROVIDER": "Failed to delete the provider, please try again later..."
     }
   },
   "SHARED": {

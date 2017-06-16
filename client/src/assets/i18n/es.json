@@ -367,6 +367,12 @@
         "OK_BUTTON": "De acuerdo"
       },
       "ADD_BUTTON": "Agregar a la lista de proveedores"
+    },
+    "NOTIFICATION_MSG": {
+      "FAILED_GET_PROVIDERS": "{spanish} Failed to get providers., please try again later...",
+      "FAILED_ADD_PROVIDER": "{spanish} Failed to add the provider, please try again later...",
+      "SUCCESS_DELETE_PROVIDER": "{spanish} Successfully delete the provider.",
+      "FAILED_DELETE_PROVIDER": "{spanish} Failed to delete the provider, please try again later..."
     }
   },
   "SHARED": {

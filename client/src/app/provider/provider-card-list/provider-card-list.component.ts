@@ -40,7 +40,7 @@ export class ProviderCardListComponent implements OnInit {
           this.noProvider = providers.length === 0;
         },
         err => {
-          this.notificationService.show("Failed in getting providers.");
+          this.notificationService.i18nShow("PROVIDER.NOTIFICATION_MSG.FAILED_GET_PROVIDERS");
         }
       );
   }
