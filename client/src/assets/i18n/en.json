@@ -121,6 +121,20 @@
       "ERROR_PAST_START_DATE": "Start date should be in the present.",
       "ERROR_PAST_END_DATE": "End date should be in the present.",
       "ERROR_END_DATE_BEFORE_START": "Start date CAN NOT exceed End date."
+    },
+    "NOTIFICATION_MSG": {
+      "SUCCESS_CREATING_CONSENT": "Successfully created the consent on behalf of the patient.",
+      "FAILED_CREATING_CONSENT": "Error in creating consent on behalf of the patient.",
+      "SUCCESS_UPDATING_CONSENT": "Successfully updated the consent on behalf of the patient.",
+      "FAILED_UPDATING_CONSENT": "Error in updating consent on behalf of the patient.",
+      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "Success in downloading saved consent.",
+      "FAILED_DOWNLOAD_SAVED_CONSENT": "Failed to download the saved consent, please try again later...",
+      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "Success in downloading signed consent.",
+      "FAILED_DOWNLOAD_SIGNED_CONSENT": "Failed to download the signed consent, please try again later...",
+      "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "Success in downloading revoked consent.",
+      "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent, please try again later...",
+      "SUCCESS_DELETE_CONSENT": "Success in deleting consent.",
+      "FAILED_DELETE_CONSENT": "Failed to delete the consent, please try again later..."
     }
   },
   "PATIENT": {
@@ -227,6 +241,17 @@
         "DOWNLOAD_BTN": "Download document"
       },
       "GET_PROVIDER_NOTIFICATION_MSG": "Failed to get provider by NPI..."
+    },
+    "NOTIFICATION_MSG": {
+      "SUCCESS_SENT_EMAIL": "Successfully sent the email.",
+      "FAILED_SENT_EMAIL": "Failed to send email, please try again later...",
+      "SUCCESS_ENABLE_ACCOUNT": "User account is back to work.",
+      "FAILED_ENABLE_ACCOUNT": "Failed to enable user account, please try again later...",
+      "SUCCESS_DISABLE_ACCOUNT": "Successfully disable the account.",
+      "FAILED_DISABLE_ACCOUNT": "Failed to disable account, please try again later...",
+      "FAILED_SEARCH_PATIENT": "Failed to search patient, please try again later...",
+      "FAILED_CREATE_PATIENT": "Failed to create patient, please try again later...",
+      "FAILED_UPDATE_PATIENT": "Failed to update patient, please try again later..."
     }
   },
   "PROVIDER": {
@@ -329,6 +354,12 @@
         "OK_BUTTON": "OK"
       },
       "ADD_BUTTON": "Add to Provider List"
+    },
+    "NOTIFICATION_MSG": {
+      "FAILED_GET_PROVIDERS": "Failed to get providers., please try again later...",
+      "FAILED_ADD_PROVIDER": "Failed to add the provider, please try again later...",
+      "SUCCESS_DELETE_PROVIDER": "Successfully delete the provider.",
+      "FAILED_DELETE_PROVIDER": "Failed to delete the provider, please try again later..."
     }
   },
   "SHARED": {

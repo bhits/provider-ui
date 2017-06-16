@@ -114,11 +114,11 @@ export class ConsentService {
   public handleDownloadSuccess(pdf: BinaryFile, consentId: number, consentOptionsDialog: any, namePrefix: string, message: string) {
     consentOptionsDialog.close();
     this.utilityService.downloadFile(pdf.content, `${namePrefix}_${consentId}.pdf`, pdf.contentType);
-    this.notificationService.show(message);
+    this.notificationService.i18nShow(message);
   }
 
   public handleDownloadError(err: string) {
-    this.notificationService.show(err);
+    this.notificationService.i18nShow(err);
   }
 
   public getPepSegmentationDocumentUrl(): string {
