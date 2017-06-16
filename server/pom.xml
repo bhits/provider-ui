@@ -29,6 +29,7 @@
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+        <docker.maven.version>0.4.3</docker.maven.version>
     </properties>
 
     <dependencies>
@@ -179,6 +180,28 @@
                 <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <packagingExcludes>WEB-INF/classes/static/karma.conf.js</packagingExcludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker.maven.version}</version>
+                <configuration>
+                    <imageName>bhits/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                    </imageTags>
+                    <buildArgs>
+                        <finalName>${project.build.finalName}.jar</finalName>
+                    </buildArgs>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
                 </configuration>
             </plugin>
         </plugins>

@@ -9,7 +9,7 @@
   </div>
 
   <md2-accordion multiple="false">
-    <md2-accordion-tab>
+    <md2-accordion-tab [active]="!isEditMode">
       <md2-accordion-header class="">
         <md-card-title align="start"><i class="fa fa-user-plus"></i>
           {{ 'PATIENT.CREATE_EDIT.ACCORDION_HEADER' | translate }}
@@ -29,6 +29,7 @@
             <md-select multiple
                        placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.ROLE_PLACEHOLDER' | translate }}"
                        formControlName="roles"
+                       (change)="onRoleChange($event)"
                        class="full-width font-size20">
               <md-option *ngFor="let role of roles; let i = index;" [value]="role.code"
                          [disabled]="role.code === disabledRoles[i-1]">
@@ -92,8 +93,28 @@
                      formControlName="homeEmail">
             </md-input-container>
             <c2s-control-validation-error-message
+              [customMessage]="emailErrorMessage"
               [control]="createEditPatientForm.controls.homeEmail">
             </c2s-control-validation-error-message>
+            <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
+              {{oneEmailRequiredMessage | translate}}
+            </md-hint>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <div fxFlex>
+            <md-input-container class="full-width font-size20">
+              <input mdInput
+                     placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.REG_PURPOSE_EMAIL_PLACEHOLDER' | translate }}"
+                     formControlName="registrationPurposeEmail">
+            </md-input-container>
+            <c2s-control-validation-error-message
+              [customMessage]="emailErrorMessage"
+              [control]="createEditPatientForm.controls.registrationPurposeEmail">
+            </c2s-control-validation-error-message>
+            <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
+              {{oneEmailRequiredMessage | translate}}
+            </md-hint>
           </div>
         </div>
         <div fxLayout="row" fxLayoutGap="20px">
@@ -118,6 +139,35 @@
             <c2s-control-validation-error-message
               [control]="createEditPatientForm.controls.birthDate">
             </c2s-control-validation-error-message>
+          </div>
+        </div>
+
+        <div formGroupName="identifier">
+          <div fxLayout="row" fxLayoutGap="20px">
+            <div fxFlex>
+              <md-select
+                placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.IDENTIFIER_SYSTEM_PLACEHOLDER' | translate }}"
+                formControlName="system"
+                class="full-width font-size20"
+                (change)="onIdentifierSystemChange($event)">
+                <md-option *ngFor="let identifierSystem of identifierSystems" [value]="identifierSystem.system">
+                  {{ identifierSystem.display }}
+                </md-option>
+              </md-select>
+              <c2s-control-validation-error-message
+                [control]="createEditPatientForm.get('identifier.system')">
+              </c2s-control-validation-error-message>
+            </div>
+            <div fxFlex>
+              <md-input-container class="full-width font-size20">
+                <input mdInput
+                       placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.IDENTIFIER_VALUE_PLACEHOLDER' | translate }}"
+                       formControlName="value">
+              </md-input-container>
+              <c2s-control-validation-error-message
+                [control]="createEditPatientForm.get('identifier.value')">
+              </c2s-control-validation-error-message>
+            </div>
           </div>
         </div>
 

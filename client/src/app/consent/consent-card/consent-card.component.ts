@@ -19,6 +19,7 @@ export class ConsentCardComponent implements OnInit {
   public consent: DetailedConsent;
   @Output()
   public deleteConsent = new EventEmitter<number>();
+  public consentOptions: ConsentStageOption[];
   private selectedPatient: Patient;
   private detailsVisible: boolean = false;
   private height: number = 0;
@@ -30,6 +31,10 @@ export class ConsentCardComponent implements OnInit {
 
   ngOnInit() {
     this.selectedPatient = this.route.snapshot.data['patient'];
+    this.consentOptions = CONSENT_STAGES
+      .filter(consentStage => consentStage.consentStage === this.consent.consentStage)
+      .map(consentStage => consentStage.options)
+      .pop();
   }
 
   public toggleDetailsVisible(el: any) {
@@ -49,13 +54,6 @@ export class ConsentCardComponent implements OnInit {
     if (this.consent != null && this.consent.shareSensitivityCategories != null) {
       return this.consent.shareSensitivityCategories.length > 0;
     }
-  }
-
-  public getConsentStageOptions(): ConsentStageOption[] {
-    return CONSENT_STAGES
-      .filter(consentStage => consentStage.consentStage === this.consent.consentStage)
-      .map(consentStage => consentStage.options)
-      .pop();
   }
 
   public invokeAction(consentOption: ConsentStageOption, consentOptionsDialog: any, deleteConfirmationDialog: any) {
