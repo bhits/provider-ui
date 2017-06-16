@@ -59,16 +59,6 @@
         "CONTENT": "¿Está seguro de que desea eliminar este consentimiento?",
         "CANCEL_BTN": "Cancelar",
         "OK_BTN": "De acuerdo"
-      },
-      "NOTIFICATION_MSG": {
-        "SUCCESS_DOWNLOAD_SAVED_CONSENT": "{spanish} Success in downloading saved consent.",
-        "FAILED_DOWNLOAD_SAVED_CONSENT": "{spanish} Failed to download the saved consent, please try again later...",
-        "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "{spanish} Success in downloading signed consent.",
-        "FAILED_DOWNLOAD_SIGNED_CONSENT": "{spanish} Failed to download the signed consent, please try again later...",
-        "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "{spanish} Success in downloading revoked consent.",
-        "FAILED_DOWNLOAD_REVOKED_CONSENT": "{spanish} Failed to download the revoked consent, please try again later...",
-        "SUCCESS_DELETE_CONSENT": "{spanish} Success in deleting consent.",
-        "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent, please try again later..."
       }
     },
     "CREATE_EDIT": {
@@ -131,6 +121,20 @@
       "ERROR_PAST_START_DATE": "La fecha de inicio debe estar en el presente.",
       "ERROR_PAST_END_DATE": "La fecha de finalización debe estar en el presente.",
       "ERROR_END_DATE_BEFORE_START": "La fecha de inicio debe continuar la fecha de finalización."
+    },
+    "NOTIFICATION_MSG": {
+      "SUCCESS_CREATING_CONSENT": "{spanish} Successfully created the consent on behalf of the patient.",
+      "FAILED_CREATING_CONSENT": "{spanish} Error in creating consent on behalf of the patient.",
+      "SUCCESS_UPDATING_CONSENT": "{spanish} Successfully updated the consent on behalf of the patient.",
+      "FAILED_UPDATING_CONSENT": "{spanish} Error in updating consent on behalf of the patient.",
+      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "{spanish} Success in downloading saved consent.",
+      "FAILED_DOWNLOAD_SAVED_CONSENT": "{spanish} Failed to download the saved consent, please try again later...",
+      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "{spanish} Success in downloading signed consent.",
+      "FAILED_DOWNLOAD_SIGNED_CONSENT": "{spanish} Failed to download the signed consent, please try again later...",
+      "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "{spanish} Success in downloading revoked consent.",
+      "FAILED_DOWNLOAD_REVOKED_CONSENT": "{spanish} Failed to download the revoked consent, please try again later...",
+      "SUCCESS_DELETE_CONSENT": "{spanish} Success in deleting consent.",
+      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent, please try again later..."
     }
   },
   "PATIENT": {
