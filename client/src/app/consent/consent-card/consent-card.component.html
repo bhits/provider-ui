@@ -111,7 +111,7 @@
       {{ 'CONSENT.CARD.MANAGE_CONSENT_DIALOG_TITLE' | translate }}
     </md2-dialog-title>
     <md-list>
-      <md-list-item *ngFor="let consentOption of getConsentStageOptions(consent)">
+      <md-list-item *ngFor="let consentOption of consentOptions">
         <div class="margin-20" fxFill>
           <a fxLayoutAlign="space-between" md-raised-button
              (click)="invokeAction(consentOption, consentOptionsDialog, deleteConfirmationDialog)"
