@@ -1,11 +1,12 @@
 import {Injectable} from "@angular/core";
 import {ValidationRules} from "app/shared/validation-rules.model";
-import {FormGroup} from "@angular/forms";
 import {TranslateService} from "@ngx-translate/core";
+import {FormGroup} from "@angular/forms";
 
 @Injectable()
 export class ValidationService {
   private minLengthMessage: string;
+  private static XML_FILE_TYPE:string = "text/xml";
 
   constructor(private translateService: TranslateService) {
   }
@@ -30,10 +31,16 @@ export class ValidationService {
         return ValidationRules.INVALID_PAST_DATE_MESSAGE;
       case ValidationRules.ONE_EMAIL_REQUIRED_KEY:
         return ValidationRules.ONE_EMAIL_REQUIRED_MESSAGE;
+      case ValidationRules.INVALID_NUMBER_KEY:
+        return ValidationRules.NUMBER_MESSAGE;
+      case ValidationRules.INVALID_NUMBER_KEY:
+        return ValidationRules.NUMBER_MESSAGE;
+      case ValidationRules.NPIS_MATCH_KEY:
+        return ValidationRules.NPIS_MATCH_MESSAGE;
     }
   }
 
-  static pastDateValidator(control) {
+  static pastDateValidator(control):any  {
     const today = new Date();
     if (control.value < today) {
       return null;
@@ -68,4 +75,25 @@ export class ValidationService {
       }
     }
   }
+
+
+  static isANumberValidator(control):any {
+    if (Number(control.value)) {
+      return null;
+    } else {
+      return {'invalidNumber': true};
+    }
+  }
+
+
+  static isXmlFile(file:any):boolean{
+    let fileName = file.name;
+    let fileType = file.type;
+
+    if(fileName && fileType && fileType === this.XML_FILE_TYPE ){
+      return true;
+    }
+    return false;
+  }
+
 }

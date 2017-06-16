@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {AbstractControl} from "@angular/forms";
 import {ValidationService} from "app/shared/validation.service";
+import {FlattenedSmallProvider} from "../flattened-small-provider.model";
 
 @Component({
   selector: 'c2s-control-validation-error-message',

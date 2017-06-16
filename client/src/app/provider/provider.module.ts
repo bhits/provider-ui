@@ -9,7 +9,6 @@ import {
 import {SharedModule} from "app/shared/shared.module";
 import {ProviderService} from "./shared/provider.service";
 import {ProviderSearchResultComponent} from "./provider-search-result/provider-search-result.component";
-import {FlattenedSmallProviderPipe} from "./shared/flattened-small-provider.pipe";
 import {ProviderMultiAddComponent} from "./provider-multi-add/provider-multi-add.component";
 import {ProviderCardListComponent} from "./provider-card-list/provider-card-list.component";
 import {ProviderCardComponent} from "./provider-card/provider-card.component";
@@ -25,8 +24,7 @@ import {ProviderCardComponent} from "./provider-card/provider-card.component";
     ProviderCardComponent,
     ProviderCardListComponent,
     ProviderMultiAddComponent,
-    ProviderSearchResultComponent,
-    FlattenedSmallProviderPipe
+    ProviderSearchResultComponent
   ],
   providers: [
     routedProviderResolveServices,

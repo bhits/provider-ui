@@ -44,6 +44,10 @@ export class AuthenticationService {
     this.tokenService.setOauthToken(response);
   }
 
+  public storeTokenInSessionStorage(response: AuthorizationResponse): void {
+    this.tokenService.setOauthToken(response);
+  }
+
   public logout(): void {
     this.tokenService.deleteAccessToken();
     this.tokenService.deleteUserProfile();

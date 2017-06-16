@@ -204,6 +204,30 @@
         "ACTIVATED_TEXT": "{spanish} Account Activated",
         "DISABLED_TEXT": "{spanish} Account Disabled"
       }
+    },
+    "SEGMENT_DOCUMENT": {
+      "SECTION_TITLE": "(spanish) Segmentation Patient's Health Record",
+      "COMPONENT_TITLE": "{spanish} Document Segmentation",
+      "WARNING": "{spanish} Set the options to segment this document according to the consent selected.",
+      "PATIENT_NAME": "{spanish} Patient Name",
+      "PATIENT_DOB": "{spanish} Patient DOB",
+      "AUTHORIZE_LABEL": "{spanish} Authorizes",
+      "AUTHORIZE_PLACEHOLDER": "{spanish} Authorize Provider NPI",
+      "AUTHORIZE_PROVIDER_NAME_LABEL": "{spanish} Authorize Provider",
+      "DISCLOSE_LABEL": "{spanish} To Disclose To",
+      "SELECTED_DISCLOSE_PROVIDER_LABEL": "{spanish} To Disclose To",
+      "DISCLOSE_PLACEHOLDER": "{spanish} Disclose Provider NPI",
+      "DISCLOSE_PROVIDER_NAME_LABEL": "{spanish} Disclose Provider",
+      "PURPOSE_OF_USE_LABEL": "{spanish} Purpose Of Use",
+      "PURPOSE_OF_USE_PLACEHOLDER": "{spanish} Select One",
+      "CHOOSE_FILE_BTN": "{spanish} Choose File To Upload",
+      "SEGMENTATION_BTN": "{spanish} Segment Document",
+      "DOWNLOAD_DIALOG": {
+        "TITLE": "{spanish} Download Segmented Document",
+        "CANCEL_BTN": "{spanish} Cancel",
+        "DOWNLOAD_BTN": "{spanish} Download document"
+      },
+      "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI..."
     }
   },
   "PROVIDER": {
@@ -331,7 +355,10 @@
       "REQUIRED_ERROR_MESSAGE": "{spanish} This field is required.",
       "REQUIRED_TRUE_ERROR_MESSAGE": "{spanish} This field value must be true.",
       "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today",
-      "ONE_EMAIL_REQUIRED_MESSAGE": "{spanish} At least one email address needed"
+      "ONE_EMAIL_REQUIRED_MESSAGE": "{spanish} At least one email address needed",
+      "NPI_NUMBER_MESSAGE": "Must be a number.",
+      "NPIS_MATCH_MESSAGE": "Authorize and disclose NPIs must be different.",
+      "INVALID_FILE_TYPE_MESSAGE": "Invalid file type."
     },
     "CONFIRM_DIALOG": {
       "OK_BTN": "De acuerdo",

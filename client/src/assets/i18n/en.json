@@ -203,6 +203,30 @@
         "ACTIVATED_TEXT": "Account Activated",
         "DISABLED_TEXT": "Account Disabled"
       }
+    },
+    "SEGMENT_DOCUMENT": {
+      "SECTION_TITLE": "Segmentation Patient's Health Record",
+      "COMPONENT_TITLE": "Document Segmentation",
+      "WARNING": "Set the options to segment this document according to the consent selected.",
+      "PATIENT_NAME": "Patient Name",
+      "PATIENT_DOB": "Patient DOB",
+      "AUTHORIZE_LABEL": "Authorizes",
+      "AUTHORIZE_PLACEHOLDER": "Authorize Provider NPI",
+      "AUTHORIZE_PROVIDER_NAME_LABEL": "Authorize Provider",
+      "DISCLOSE_LABEL": "To Disclose To",
+      "SELECTED_DISCLOSE_PROVIDER_LABEL": "To Disclose To",
+      "DISCLOSE_PLACEHOLDER": "Disclose Provider NPI",
+      "DISCLOSE_PROVIDER_NAME_LABEL": "Disclose Provider",
+      "PURPOSE_OF_USE_LABEL": "Purpose Of Use",
+      "PURPOSE_OF_USE_PLACEHOLDER": "Select One",
+      "CHOOSE_FILE_BTN": "Choose File To Upload",
+      "SEGMENTATION_BTN": "Segment Document",
+      "DOWNLOAD_DIALOG": {
+        "TITLE": "Download Segmented Document",
+        "CANCEL_BTN": "Cancel",
+        "DOWNLOAD_BTN": "Download document"
+      },
+      "GET_PROVIDER_NOTIFICATION_MSG": "Failed to get provider by NPI..."
     }
   },
   "PROVIDER": {
@@ -318,7 +342,10 @@
       "REQUIRED_ERROR_MESSAGE": "This field is required.",
       "REQUIRED_TRUE_ERROR_MESSAGE": "This field value must be true.",
       "INVALID_PAST_DATE_ERROR_MESSAGE": "Selected date must be earlier than today",
-      "ONE_EMAIL_REQUIRED_MESSAGE": "At least one email address needed"
+      "ONE_EMAIL_REQUIRED_MESSAGE": "At least one email address needed",
+      "NPI_NUMBER_MESSAGE": "Must be a number.",
+      "NPIS_MATCH_MESSAGE": "Authorize and disclose NPIs must be different.",
+      "INVALID_FILE_TYPE_MESSAGE": "Invalid file type."
     },
     "CONFIRM_DIALOG": {
       "OK_BTN": "OK",

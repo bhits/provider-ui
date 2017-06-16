@@ -20,6 +20,7 @@ import {ProviderPipe} from "./provider.pipe";
 import {BrowserService} from "app/shared/browser.service";
 import {PatientPipe} from "./patient.pipe";
 import {TranslateModule} from "@ngx-translate/core";
+import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {TranslateModule} from "@ngx-translate/core";
     ConfirmDialogComponent,
     ShowHidePasswordComponent,
     ProviderPipe,
-    PatientPipe
+    PatientPipe,
+    FlattenedSmallProviderPipe
   ],
   entryComponents: [ConfirmDialogComponent],
   providers: [
@@ -58,6 +60,7 @@ import {TranslateModule} from "@ngx-translate/core";
     ProviderPipe,
     PatientPipe,
     TranslateModule,
+    FlattenedSmallProviderPipe,
     UsPhoneNumberPipe
   ]
 })

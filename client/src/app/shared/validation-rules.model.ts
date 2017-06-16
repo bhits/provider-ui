@@ -8,6 +8,9 @@ export class ValidationRules {
   public static PATTERN_KEY: string = "pattern";
   public static INVALID_PAST_DATE_KEY: string = "invalidPastDate";
   public static ONE_EMAIL_REQUIRED_KEY: string = "oneEmailRequired";
+  public static INVALID_NUMBER_KEY: string = "invalidNumber";
+  public static NPIS_MATCH_KEY: string = "npisMatch";
+
   //Declare Validation Rule
   public static NORMAL_MIN_LENGTH: number = 2;
   public static NORMAL_MAX_LENGTH: number = 50;
@@ -31,4 +34,6 @@ export class ValidationRules {
   public static REQUIRED_TRUE_MESSAGE: string = "SHARED.VALIDATION_RULES.REQUIRED_TRUE_ERROR_MESSAGE";
   public static INVALID_PAST_DATE_MESSAGE: string = "SHARED.VALIDATION_RULES.INVALID_PAST_DATE_ERROR_MESSAGE";
   public static ONE_EMAIL_REQUIRED_MESSAGE: string = "SHARED.VALIDATION_RULES.ONE_EMAIL_REQUIRED_MESSAGE";
+  public static NUMBER_MESSAGE: string = "SHARED.VALIDATION_RULES.NPI_NUMBER_MESSAGE";
+  public static NPIS_MATCH_MESSAGE: string = "SHARED.VALIDATION_RULES.NPIS_MATCH_MESSAGE";
 }

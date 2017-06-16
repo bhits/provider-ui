@@ -18,7 +18,7 @@ import {VssSensitivityCategory} from "app/consent/shared/vss-sensitivity-categor
 export class ConsentService {
   private pcmPurposeOfUseUrl: string = this.apiUrlService.getPcmBaseUrl().concat("/purposes");
   private vssSensitivityCategoriesUrl: string = this.apiUrlService.getVssBaseUrl().concat("/valueSetCategories");
-  private pepSegmentDocumentUrl: string = this.apiUrlService.getPepUrl().concat("/segmentDocument");
+  private pepSegmentDocumentUrl: string = this.apiUrlService.getPepUrl().concat("/access");
 
   //TODO: Refactor with redux
   private consentSubject: BehaviorSubject<Consent> = new BehaviorSubject<Consent>(null);
