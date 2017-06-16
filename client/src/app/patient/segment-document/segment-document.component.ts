@@ -155,7 +155,7 @@ export class SegmentDocumentComponent implements OnInit {
       // Handle download of filed
       if (output && output.file && output.file.response && output.file.response.document) {
         this.segmentedDocumentName = output.file.name;
-        this.segmentedDocument = output.file.response.document;
+        this.segmentedDocument = output.file.response.segmentedDocument;
         segmentDocumentDialog.open();
       } else {
         console.log("Missing segmented document");
