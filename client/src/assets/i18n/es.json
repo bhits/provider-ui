@@ -204,6 +204,30 @@
         "ACTIVATED_TEXT": "{spanish} Account Activated",
         "DISABLED_TEXT": "{spanish} Account Disabled"
       }
+    },
+    "SEGMENT_DOCUMENT": {
+      "SECTION_TITLE": "(spanish) Segmentation Patient's Health Record",
+      "COMPONENT_TITLE": "{spanish} Document Segmentation",
+      "WARNING": "{spanish} Set the options to segment this document according to the consent selected.",
+      "PATIENT_NAME": "{spanish} Patient Name",
+      "PATIENT_DOB": "{spanish} Patient DOB",
+      "AUTHORIZE_LABEL": "{spanish} Authorizes",
+      "AUTHORIZE_PLACEHOLDER": "{spanish} Authorize Provider NPI",
+      "AUTHORIZE_PROVIDER_NAME_LABEL": "{spanish} Authorize Provider",
+      "DISCLOSE_LABEL": "{spanish} To Disclose To",
+      "SELECTED_DISCLOSE_PROVIDER_LABEL": "{spanish} To Disclose To",
+      "DISCLOSE_PLACEHOLDER": "{spanish} Disclose Provider NPI",
+      "DISCLOSE_PROVIDER_NAME_LABEL": "{spanish} Disclose Provider",
+      "PURPOSE_OF_USE_LABEL": "{spanish} Purpose Of Use",
+      "PURPOSE_OF_USE_PLACEHOLDER": "{spanish} Select One",
+      "CHOOSE_FILE_BTN": "{spanish} Choose File To Upload",
+      "SEGMENTATION_BTN": "{spanish} Segment Document",
+      "DOWNLOAD_DIALOG": {
+        "TITLE": "{spanish} Download Segmented Document",
+        "CANCEL_BTN": "{spanish} Cancel",
+        "DOWNLOAD_BTN": "{spanish} Download document"
+      },
+      "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI..."
     }
   },
   "PROVIDER": {
@@ -339,32 +363,6 @@
     "CONFIRM_DIALOG": {
       "OK_BTN": "De acuerdo",
       "CANCEL_BTN": "Cancelar"
-    }
-  },
-  "PATIENT_EDIT": {
-    "SEGMENT_DOCUMENT":{
-      "SECTION_TITLE": "(SPANISH)Segmentation Patient's Health Record",
-      "COMPONENT_TITLE": "Document Segmentation",
-      "WARNING": "Set the options to segment this document according to the consent selected.",
-      "PATIENT_NAME": "Patient Name",
-      "PATIENT_DOB": "Patient DOB",
-      "AUTHORIZE_LABEL": "Authorizes",
-      "AUTHORIZE_PLACEHOLDER": "Authorize Provider NPI",
-      "AUTHORIZE_PROVIDER_NAME_LABEL": "Authorize Provider",
-      "DISCLOSE_LABEL": "To Disclose To",
-      "SELECTED_DISCLOSE_PROVIDER_LABEL": "To Disclose To",
-      "DISCLOSE_PLACEHOLDER": "Disclose Provider NPI",
-      "DISCLOSE_PROVIDER_NAME_LABEL": "Disclose Provider",
-      "PURPOSE_OF_USE_LABEL": "Purpose Of Use",
-      "PURPOSE_OF_USE_PLACEHOLDER": "Select One",
-      "CHOOSE_FILE_BTN": "Choose File To Upload",
-      "SEGMENTATION_BTN": "Segment Document",
-      "DOWNLOAD_DIALOG":{
-        "TITLE":"Download Segmented Document",
-        "CANCEL_BTN":"Cancel",
-        "DOWNLOAD_BTN":"Download document"
-      },
-      "GET_PROVIDER_NOTIFICATION_MSG":"Failed to get provider by NPI..."
     }
   }
 }
