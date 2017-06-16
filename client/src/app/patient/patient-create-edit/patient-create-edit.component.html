@@ -97,14 +97,15 @@
               [control]="createEditPatientForm.controls.homeEmail">
             </c2s-control-validation-error-message>
             <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
-              {{oneEmailRequiredMessage}}
+              {{oneEmailRequiredMessage | translate}}
             </md-hint>
           </div>
         </div>
         <div fxLayout="row" fxLayoutGap="20px">
           <div fxFlex>
             <md-input-container class="full-width font-size20">
-              <input mdInput placeholder="Registration Purpose Email(Optional)"
+              <input mdInput
+                     placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.REG_PURPOSE_EMAIL_PLACEHOLDER' | translate }}"
                      formControlName="registrationPurposeEmail">
             </md-input-container>
             <c2s-control-validation-error-message
@@ -112,7 +113,7 @@
               [control]="createEditPatientForm.controls.registrationPurposeEmail">
             </c2s-control-validation-error-message>
             <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
-              {{oneEmailRequiredMessage}}
+              {{oneEmailRequiredMessage | translate}}
             </md-hint>
           </div>
         </div>
@@ -144,9 +145,12 @@
         <div formGroupName="identifier">
           <div fxLayout="row" fxLayoutGap="20px">
             <div fxFlex>
-              <md-select placeholder="Identifier System" formControlName="system"
-                         class="full-width font-size20" [disabled]="isEditMode"
-                         (change)="onIdentifierSystemChange($event)">
+              <md-select
+                placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.IDENTIFIER_SYSTEM_PLACEHOLDER' | translate }}"
+                formControlName="system"
+                class="full-width font-size20"
+                [disabled]="isEditMode"
+                (change)="onIdentifierSystemChange($event)">
                 <md-option *ngFor="let identifierSystem of identifierSystems" [value]="identifierSystem.system">
                   {{ identifierSystem.display }}
                 </md-option>
@@ -157,7 +161,9 @@
             </div>
             <div fxFlex>
               <md-input-container class="full-width font-size20">
-                <input mdInput placeholder="Identifier Value" formControlName="value">
+                <input mdInput
+                       placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.IDENTIFIER_VALUE_PLACEHOLDER' | translate }}"
+                       formControlName="value">
               </md-input-container>
               <c2s-control-validation-error-message
                 [control]="createEditPatientForm.get('identifier.value')">

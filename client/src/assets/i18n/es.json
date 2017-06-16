@@ -156,8 +156,11 @@
         "MIDDLE_NAME_PLACEHOLDER": "{spanish} Middle Name (Optional)",
         "LAST_NAME_PLACEHOLDER": "{spanish} Last Name",
         "EMAIL_PLACEHOLDER": "{spanish} Email",
+        "REG_PURPOSE_EMAIL_PLACEHOLDER": "{spanish} Registration Purpose Email(Optional)",
         "GENDER_PLACEHOLDER": "{spanish} Gender",
-        "DOB_PLACEHOLDER": "{spanish} Date of Birth"
+        "DOB_PLACEHOLDER": "{spanish} Date of Birth",
+        "IDENTIFIER_SYSTEM_PLACEHOLDER": "{spanish} Identifier System",
+        "IDENTIFIER_VALUE_PLACEHOLDER": "{spanish} Identifier Value"
       },
       "ADDITIONAL_INFORMATION": {
         "LABEL": "{spanish} Additional Information",
@@ -327,7 +330,8 @@
       "MAX_LENGTH_ERROR_MESSAGE": "{spanish} This field Maximum length is {{length}}",
       "REQUIRED_ERROR_MESSAGE": "{spanish} This field is required.",
       "REQUIRED_TRUE_ERROR_MESSAGE": "{spanish} This field value must be true.",
-      "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today"
+      "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today",
+      "ONE_EMAIL_REQUIRED_MESSAGE": "{spanish} At least one email address needed"
     },
     "CONFIRM_DIALOG": {
       "OK_BTN": "De acuerdo",

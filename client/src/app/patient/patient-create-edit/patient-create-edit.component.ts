@@ -118,10 +118,7 @@ export class PatientCreateEditComponent implements OnInit {
             Validators.required
           ]
         ],
-        homeEmail: [null, Validators.compose([
-          Validators.pattern(ValidationRules.EMAIL_PATTERN),
-          Validators.maxLength(ValidationRules.TELECOM_MAX_LENGTH)])
-        ],
+        homeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
         registrationPurposeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
         genderCode: [null, Validators.required],
         birthDate: [null, Validators.compose([
@@ -290,32 +287,32 @@ export class PatientCreateEditComponent implements OnInit {
     identifiers.push(formModel.identifier);
     return {
       firstName: formModel.firstName,
-      middleName: this.setNullValue(formModel.middleName),
+      middleName: this.filterEmptyStringValue(formModel.middleName),
       lastName: formModel.lastName,
-      homeEmail: this.setNullValue(formModel.homeEmail),
+      homeEmail: this.filterEmptyStringValue(formModel.homeEmail),
       birthDate: formModel.birthDate,
       genderCode: formModel.genderCode,
-      socialSecurityNumber: this.setNullValue(formModel.socialSecurityNumber),
-      homePhone: this.setNullValue(formModel.homePhone),
-      homeAddress: this.setNullValueForAddress(formModel.homeAddress),
+      socialSecurityNumber: this.filterEmptyStringValue(formModel.socialSecurityNumber),
+      homePhone: this.filterEmptyStringValue(formModel.homePhone),
+      homeAddress: this.filterEmptyStringValueForAddress(formModel.homeAddress),
       roles: formModel.roles,
       locale: formModel.locale,
       identifiers: identifiers,
-      registrationPurposeEmail: this.setNullValue(formModel.registrationPurposeEmail)
+      registrationPurposeEmail: this.filterEmptyStringValue(formModel.registrationPurposeEmail)
     };
   }
 
-  private setNullValue(field: string) {
+  private filterEmptyStringValue(field: string) {
     return field === '' ? null : field;
   }
 
-  private setNullValueForAddress(homeAddress:{line1:string,line2:string,city:string,stateCode:string,postalCode:string,countryCode, string}) {
-    homeAddress.line1=this.setNullValue(homeAddress.line1);
-    homeAddress.line2=this.setNullValue(homeAddress.line2);
-    homeAddress.city=this.setNullValue(homeAddress.city);
-    homeAddress.stateCode=this.setNullValue(homeAddress.stateCode);
-    homeAddress.postalCode=this.setNullValue(homeAddress.postalCode);
-    homeAddress.countryCode=this.setNullValue(homeAddress.countryCode);
+  private filterEmptyStringValueForAddress(homeAddress) {
+    homeAddress.line1 = this.filterEmptyStringValue(homeAddress.line1);
+    homeAddress.line2 = this.filterEmptyStringValue(homeAddress.line2);
+    homeAddress.city = this.filterEmptyStringValue(homeAddress.city);
+    homeAddress.stateCode = this.filterEmptyStringValue(homeAddress.stateCode);
+    homeAddress.postalCode = this.filterEmptyStringValue(homeAddress.postalCode);
+    homeAddress.countryCode = this.filterEmptyStringValue(homeAddress.countryCode);
     return homeAddress;
   }
 
