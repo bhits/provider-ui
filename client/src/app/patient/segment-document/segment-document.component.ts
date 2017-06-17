@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {humanizeBytes, UploadFile, UploadInput, UploadOutput} from "ngx-uploader";
 
@@ -16,6 +16,8 @@ import {ValidationRules} from "../../shared/validation-rules.model";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Observable} from "rxjs/Observable";
 import {NpiValidation} from "../../shared/npi-validation";
+import {Patient} from "../shared/patient.model";
+import {PatientService} from "../shared/patient.service";
 
 
 @Component({
@@ -25,6 +27,7 @@ import {NpiValidation} from "../../shared/npi-validation";
 })
 export class SegmentDocumentComponent implements OnInit {
 
+  @Input() patient:Patient;
   public segmentationFrom: FormGroup;
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
@@ -52,6 +55,7 @@ export class SegmentDocumentComponent implements OnInit {
               private providerService: ProviderService,
               private notificationService: NotificationService,
               private validationService: ValidationService,
+              private patientService: PatientService,
               private utilityService: UtilityService) {
     // local uploading files array
     this.files = [];
@@ -169,13 +173,33 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   private prepareSegmentationRequestObject(formControl: any): any {
+
+    let patientIds = this.getPatientIds();
     let segmentationRequest: SegmentationRequest = new SegmentationRequest();
     segmentationRequest.recipientNpi = formControl.recipientNpi;
     segmentationRequest.intermediaryNpi = formControl.intermediaryNpi;
     segmentationRequest.purposeOfUse = formControl.purposeOfUse;
-    segmentationRequest.patientIdRoot = "";
-    segmentationRequest.patientIdExtension = "";
+    segmentationRequest.patientIdRoot = patientIds.root;
+    segmentationRequest.patientIdExtension = patientIds.extension;
     return segmentationRequest;
+  }
+
+  private getPatientIds(){
+    let patientIdRoot = null;
+    let patientIdExtension = null;
+    let result = {
+      root: "",
+      extension:""
+    };
+
+    this.patient.identifiers.forEach(id =>{
+      if(id.system === this.patientService.getDefaultPatientIdentifierSystem()){
+        result.root = id.system;
+        result.extension = id.value;
+
+      }
+    });
+    return result;
   }
 
   private prepareUploadInputObject(formModel: any): UploadInput {
