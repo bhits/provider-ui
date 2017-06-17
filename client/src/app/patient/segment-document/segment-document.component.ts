@@ -18,6 +18,7 @@ import {Observable} from "rxjs/Observable";
 import {NpiValidation} from "../../shared/npi-validation";
 import {Patient} from "../shared/patient.model";
 import {PatientService} from "../shared/patient.service";
+import {SegmentedDocumentReponse} from "../shared/segmented-document-response";
 
 
 @Component({
@@ -32,7 +33,7 @@ export class SegmentDocumentComponent implements OnInit {
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
   public humanizeBytes: Function;
-  public segmentedDocument: any;
+  public segmentedDocument: SegmentedDocumentReponse;
   public segmentedDocumentName: string;
   public purposeOfUses: SharePurpose[] = [];
 
@@ -157,7 +158,7 @@ export class SegmentDocumentComponent implements OnInit {
       this.files = this.files.filter((file: UploadFile) => file !== output.file);
     } else if (output.type === UploadOutputType.DONE.toString()) {
       // Handle download of filed
-      if (output && output.file && output.file.response && output.file.response.document) {
+      if (output && output.file && output.file.response && output.file.response.segmentedDocument) {
         this.segmentedDocumentName = output.file.name;
         this.segmentedDocument = output.file.response.segmentedDocument;
         segmentDocumentDialog.open();
