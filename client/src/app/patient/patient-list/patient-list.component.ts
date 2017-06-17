@@ -39,7 +39,7 @@ export class PatientListComponent implements OnInit {
           this.searchPatients = patients;
         },
         err => {
-          this.notificationService.show("Failed to search patient, please try again later...");
+          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_SEARCH_PATIENT");
         });
   }
 

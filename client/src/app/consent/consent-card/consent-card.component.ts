@@ -64,22 +64,22 @@ export class ConsentCardComponent implements OnInit {
       case ConsentStageOptionKey.DOWNLOAD_SAVED_PDF:
         this.consentService.getSavedConsentPdf(this.selectedPatient.mrn, this.consent.id)
           .subscribe((savedPdf: BinaryFile) => this.consentService
-              .handleDownloadSuccess(savedPdf, this.consent.id, consentOptionsDialog, "Saved_Consent", "Success in downloading saved consent"),
-            (err) => this.consentService.handleDownloadError("Failed to download the saved consent, please try again later...")
+              .handleDownloadSuccess(savedPdf, this.consent.id, consentOptionsDialog, "Saved_Consent", "CONSENT.NOTIFICATION_MSG.SUCCESS_DOWNLOAD_SAVED_CONSENT"),
+            (err) => this.consentService.handleDownloadError("CONSENT.NOTIFICATION_MSG.FAILED_DOWNLOAD_SAVED_CONSENT")
           );
         break;
       case ConsentStageOptionKey.DOWNLOAD_SIGNED_PDF:
         this.consentService.getSignedConsentPdf(this.selectedPatient.mrn, this.consent.id)
-          .subscribe((signedPdf: BinaryFile) => this.consentService.handleDownloadSuccess(signedPdf, this.consent.id, consentOptionsDialog, "Signed_Consent", "Success in downloading signed consent"),
-            (err) => this.consentService.handleDownloadError("Failed to download the signed consent, please try again later...")
+          .subscribe((signedPdf: BinaryFile) => this.consentService.handleDownloadSuccess(signedPdf, this.consent.id, consentOptionsDialog, "Signed_Consent", "CONSENT.NOTIFICATION_MSG.SUCCESS_DOWNLOAD_SIGNED_CONSENT"),
+            (err) => this.consentService.handleDownloadError("CONSENT.NOTIFICATION_MSG.FAILED_DOWNLOAD_SIGNED_CONSENT")
           );
         break;
       case ConsentStageOptionKey.DOWNLOAD_REVOKED_PDF:
         this.consentService.getRevokedConsentPdf(this.selectedPatient.mrn, this.consent.id)
           .subscribe(
             (revokedPdf: BinaryFile) => this.consentService
-              .handleDownloadSuccess(revokedPdf, this.consent.id, consentOptionsDialog, "Revoked_Consent", "Success in downloading revoke consent"),
-            (err) => this.consentService.handleDownloadError("Failed to download the revoke consent, please try again later...")
+              .handleDownloadSuccess(revokedPdf, this.consent.id, consentOptionsDialog, "Revoked_Consent", "CONSENT.NOTIFICATION_MSG.SUCCESS_DOWNLOAD_REVOKED_CONSENT"),
+            (err) => this.consentService.handleDownloadError("CONSENT.NOTIFICATION_MSG.FAILED_DOWNLOAD_REVOKED_CONSENT")
           );
         break;
     }
@@ -99,10 +99,10 @@ export class ConsentCardComponent implements OnInit {
       .subscribe(
         () => {
           this.deleteConsent.emit(this.consent.id);
-          this.notificationService.show("Success in deleting consent.");
+          this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.SUCCESS_DELETE_CONSENT");
         },
         err => {
-          this.notificationService.show("Failed to delete the consent, please try again later...");
+          this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.FAILED_DELETE_CONSENT");
           console.log(err);
         });
   }

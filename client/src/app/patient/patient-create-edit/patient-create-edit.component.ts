@@ -237,7 +237,7 @@ export class PatientCreateEditComponent implements OnInit {
             this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl())
           },
           err => {
-            this.notificationService.show("Error in updating patient.");
+            this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_UPDATE_PATIENT");
             console.log(err);
           }
         );
@@ -248,7 +248,7 @@ export class PatientCreateEditComponent implements OnInit {
             this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl())
           },
           err => {
-            this.notificationService.show("Error in creating patient.");
+            this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_CREATE_PATIENT");
             console.log(err);
           }
         );

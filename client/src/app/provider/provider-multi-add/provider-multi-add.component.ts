@@ -36,7 +36,7 @@ export class ProviderMultiAddComponent implements OnInit {
             this.utilityService.navigateTo(PROVIDER_LIST_URL);
           },
           err => {
-            this.notificationService.show("Failed to add the provider, please try again later...");
+            this.notificationService.i18nShow("PROVIDER.NOTIFICATION_MSG.FAILED_ADD_PROVIDER");
             console.log(err);
           }
         );
