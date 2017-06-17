@@ -11,11 +11,16 @@ import {PageableData} from "../../shared/pageable-data.model";
 export class PatientService {
   private umsPatientUrl: string = this.apiUrlService.getUmsBaseUrl().concat("/users");
 
+  private defaultPatientIdentifierSystem: string = "https://bhits.github.io/consent2share";
+
   constructor(private apiUrlService: ApiUrlService,
               private exceptionService: ExceptionService,
               private http: Http) {
   }
 
+  getDefaultPatientIdentifierSystem(){
+    return this.defaultPatientIdentifierSystem;
+  }
   public getPatients(page: number): Observable<PageableData<Patient>> {
     let params: URLSearchParams = new URLSearchParams();
     params.set('page', page.toString());

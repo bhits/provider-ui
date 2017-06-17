@@ -104,7 +104,7 @@
                  formControlName="document"
                   (change)="validateFile($event)"
                  [uploadInput]="uploadInput">
-          <a md-raised-button >
+          <a md-raised-button color="primary">
             {{ 'PATIENT.SEGMENT_DOCUMENT.CHOOSE_FILE_BTN' | translate }}
           </a>
         </label>
@@ -117,7 +117,7 @@
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <div class="full-width font-size20">
-          <a md-raised-button (click)="segmentDocument()" [disabled]="segmentationFrom.invalid || invalidFile">
+          <a md-raised-button color="primary" (click)="segmentDocument()" [disabled]="segmentationFrom.invalid || invalidFile">
             {{ 'PATIENT.SEGMENT_DOCUMENT.SEGMENTATION_BTN' | translate }}
           </a>
         </div>
