@@ -286,7 +286,7 @@ export class PatientCreateEditComponent implements OnInit {
   private prepareCreateEditPatient(): Patient {
     const formModel = this.createEditPatientForm.value;
     let identifiers = [];
-    identifiers.push(formModel.identifier);
+    identifiers.push(this.createEditPatientForm.getRawValue().identifier);
     return {
       firstName: formModel.firstName,
       middleName: this.filterEmptyStringValue(formModel.middleName),
