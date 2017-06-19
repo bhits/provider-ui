@@ -42,8 +42,11 @@ export class UtilityService {
   }
 
   public isPastDate(date: Date): boolean {
-    let today = new Date();
-    return date < today;
+    if (date != null) {
+      let today = new Date();
+      today.setHours(0, 0, 0, 0); // Reset Time
+      return date < today;
+    }
   }
 
   public isFirstDateBeforeSecondDate(firstDate: Date, secondDate: Date): boolean {
