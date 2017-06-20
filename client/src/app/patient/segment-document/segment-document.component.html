@@ -96,28 +96,27 @@
         </c2s-control-validation-error-message>
       </div>
     </div>
+    <br>
     <div>
-      <div fxLayout="row" fxLayoutGap="20px">
-      <div fxFlex>
-        <label class="upload-button">
-          <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)"
-                 formControlName="document"
-                  (change)="validateFile($event)"
-                 [uploadInput]="uploadInput">
-          <a md-raised-button >
-            {{ 'PATIENT.SEGMENT_DOCUMENT.CHOOSE_FILE_BTN' | translate }}
-          </a>
-        </label>
-      </div>
-    </div>
       <div align="left" class="font-size14 has-error" *ngIf="invalidFile">
         <span>  {{ 'SHARED.VALIDATION_RULES.INVALID_FILE_TYPE_MESSAGE' | translate }}</span>
       </div>
+      <div fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex>
+          <label class="upload-button">
+            <input type="file"  ngFileSelect (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)"
+                   formControlName="document"
+                    (change)="validateFile($event)"
+                   [uploadInput]="uploadInput">
+          </label>
+        </div>
+      </div>
     </div>
+    <br>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
         <div class="full-width font-size20">
-          <a md-raised-button (click)="segmentDocument()" [disabled]="segmentationFrom.invalid || invalidFile">
+          <a md-raised-button color="primary" (click)="segmentDocument()" [disabled]="segmentationFrom.invalid || invalidFile">
             {{ 'PATIENT.SEGMENT_DOCUMENT.SEGMENTATION_BTN' | translate }}
           </a>
         </div>

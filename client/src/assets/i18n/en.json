@@ -233,7 +233,6 @@
       "DISCLOSE_PROVIDER_NAME_LABEL": "Disclose Provider",
       "PURPOSE_OF_USE_LABEL": "Purpose Of Use",
       "PURPOSE_OF_USE_PLACEHOLDER": "Select One",
-      "CHOOSE_FILE_BTN": "Choose File To Upload",
       "SEGMENTATION_BTN": "Segment Document",
       "DOWNLOAD_DIALOG": {
         "TITLE": "Download Segmented Document",

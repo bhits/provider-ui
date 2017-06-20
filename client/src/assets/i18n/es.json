@@ -235,7 +235,6 @@
       "PURPOSE_OF_USE_LABEL": "{spanish} Purpose Of Use",
       "PURPOSE_OF_USE_PLACEHOLDER": "{spanish} Select One",
       "CHOOSE_FILE_BTN": "{spanish} Choose File To Upload",
-      "SEGMENTATION_BTN": "{spanish} Segment Document",
       "DOWNLOAD_DIALOG": {
         "TITLE": "{spanish} Download Segmented Document",
         "CANCEL_BTN": "{spanish} Cancel",
