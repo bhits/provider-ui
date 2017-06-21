@@ -15,7 +15,7 @@ For more information about this image, the source code, and its history, please 
 
 The Provider User Interface (provider-ui) is a provider user interface component of Consent2Share used to create and manage patient accounts. Provider can use this to log in, visit their home page, create patient accounts, and manage patient consents.
 
-For more information and related downloads for Consent2Share, please visit [Consent2Share](https://bhits.github.io/consent2share/).
+For more information and related downloads for Consent2Share, please visit [Consent2Share](https://bhits-dev.github.io/consent2share/).
 
 # How to use this image
 
