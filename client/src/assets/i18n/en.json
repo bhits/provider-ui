@@ -42,11 +42,13 @@
           "STAGE_TEXT": "IN PROGRESS",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
+          "PROVIDE_ESIGNATURE_OPTION_TEXT": "Provide eSignature",
           "DELETE_THIS_PROVIDER_OPTION_TEXT": "Delete This Consent"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "SIGNED",
-          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent"
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "REVOCATION_OPTION_TEXT": "Revocation"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "REVOKED",

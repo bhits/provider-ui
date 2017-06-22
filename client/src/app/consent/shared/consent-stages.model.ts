@@ -23,6 +23,13 @@ export const CONSENT_STAGES: ConsentStage[] = [
         isEnabled: true
       },
       {
+        key: ConsentStageOptionKey.SIGN,
+        icon: "assignment_turned_in",
+        text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.PROVIDE_ESIGNATURE_OPTION_TEXT",
+        routerLink: '/consent-sign',
+        isEnabled: true
+      },
+      {
         key: ConsentStageOptionKey.DELETE,
         icon: "delete_forever",
         text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.DELETE_THIS_PROVIDER_OPTION_TEXT",
@@ -41,6 +48,13 @@ export const CONSENT_STAGES: ConsentStage[] = [
         icon: "file_download",
         text: "CONSENT.CARD.CONSENT_STAGES.SIGNED_STAGE.VIEW_SIGNED_CONSENT_OPTION_TEXT",
         isMethod: true,
+        isEnabled: true
+      },
+      {
+        key: ConsentStageOptionKey.REVOKE,
+        icon: "cancel",
+        text: "CONSENT.CARD.CONSENT_STAGES.SIGNED_STAGE.REVOCATION_OPTION_TEXT",
+        routerLink: '/consent-revoke',
         isEnabled: true
       }
     ]
