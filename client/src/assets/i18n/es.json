@@ -43,7 +43,7 @@
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Editar este consentimiento",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Previsualizar este consentimiento",
           "PROVIDE_ESIGNATURE_OPTION_TEXT": "Proporcionar eSignature",
-          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Eliminar este consentimiento"
+          "DELETE_THIS_CONSENT_OPTION_TEXT": "Eliminar este consentimiento"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "FIRMADO",

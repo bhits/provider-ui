@@ -32,7 +32,7 @@ export const CONSENT_STAGES: ConsentStage[] = [
       {
         key: ConsentStageOptionKey.DELETE,
         icon: "delete_forever",
-        text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.DELETE_THIS_PROVIDER_OPTION_TEXT",
+        text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.DELETE_THIS_CONSENT_OPTION_TEXT",
         isMethod: true,
         isEnabled: true
       }]
