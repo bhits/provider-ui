@@ -35,6 +35,8 @@ export class ConsentCardComponent implements OnInit {
       .filter(consentStage => consentStage.consentStage === this.consent.consentStage)
       .map(consentStage => consentStage.options)
       .pop();
+
+    console.log("CONSOLE OPTIONS="+ JSON.stringify(this.consentOptions));
   }
 
   public toggleDetailsVisible(el: any) {
@@ -87,6 +89,10 @@ export class ConsentCardComponent implements OnInit {
 
   public selectConsentMethodOption(consentOption: ConsentStageOption): boolean {
     return consentOption.isMethod;
+  }
+
+  public displayOnProviderUI(consentOption: ConsentStageOption): boolean {
+    return consentOption.isEnabled;
   }
 
   public getRouterLink(consentOption: ConsentStageOption): any {
