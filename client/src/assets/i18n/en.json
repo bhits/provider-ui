@@ -126,17 +126,21 @@
     },
     "NOTIFICATION_MSG": {
       "SUCCESS_CREATING_CONSENT": "Successfully created the consent on behalf of the patient.",
-      "FAILED_CREATING_CONSENT": "Error in creating consent on behalf of the patient.",
+      "FAILED_CREATING_CONSENT": "Error in creating the consent on behalf of the patient.",
       "SUCCESS_UPDATING_CONSENT": "Successfully updated the consent on behalf of the patient.",
-      "FAILED_UPDATING_CONSENT": "Error in updating consent on behalf of the patient.",
-      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "Success in downloading saved consent.",
-      "FAILED_DOWNLOAD_SAVED_CONSENT": "Failed to download the saved consent, please try again later...",
-      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "Success in downloading signed consent.",
-      "FAILED_DOWNLOAD_SIGNED_CONSENT": "Failed to download the signed consent, please try again later...",
+      "FAILED_UPDATING_CONSENT": "Error in updating the consent on behalf of the patient.",
+      "SUCCESS_SIGN_CONSENT": "Successfully attested the consent on behalf of the patient.",
+      "FAILED_SIGN_CONSENT": "Error in attesting the consent on behalf of the patient.",
+      "SUCCESS_REVOKE_CONSENT": "Successfully revoked the consent on behalf of the patient.",
+      "FAILED_REVOKE_CONSENT": "Error in revoking consent on behalf of the patient.",
+      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "Success in downloading the saved consent.",
+      "FAILED_DOWNLOAD_SAVED_CONSENT": "Failed to download the saved consent. Please try again later.",
+      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "Success in downloading the signed consent.",
+      "FAILED_DOWNLOAD_SIGNED_CONSENT": "Failed to download the signed consent. Please try again later.",
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "Success in downloading revoked consent.",
-      "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent, please try again later...",
-      "SUCCESS_DELETE_CONSENT": "Success in deleting consent.",
-      "FAILED_DELETE_CONSENT": "Failed to delete the consent, please try again later..."
+      "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent. Please try again later.",
+      "SUCCESS_DELETE_CONSENT": "Successfully deleted the consent.",
+      "FAILED_DELETE_CONSENT": "Failed to delete the consent. Please try again later."
     }
   },
   "PATIENT": {
