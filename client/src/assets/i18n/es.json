@@ -1,13 +1,13 @@
 {
   "HOME": {
-    "WELCOME_TITLE": "(Spanish)Welcome to Consent2Share admin!",
-    "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
+    "WELCOME_TITLE": "{Spanish} Welcome to Consent2Share admin!",
+    "WELCOME_SUB_TITLE": "{Spanish} You are now ready to manage your patients.",
     "PATIENT_CARD": {
-      "TITLE": "My <span class=\"font-weight700\">Patients</span>",
-      "STEP": "Step 1.",
-      "TEXT": "Begin by creating the patients.",
-      "SINGULAR": "Patient",
-      "PLURAL": "Patients"
+      "TITLE": "{Spanish} My <span class=\"font-weight700\">Patients</span>",
+      "STEP": "{Spanish} Step 1.",
+      "TEXT": "{Spanish} Begin by creating the patients.",
+      "SINGULAR": "{Spanish} Patient",
+      "PLURAL": "{Spanish} Patients"
     },
     "MENU": {
       "TITLE": "Menú",
