@@ -35,8 +35,6 @@ export class ConsentCardComponent implements OnInit {
       .filter(consentStage => consentStage.consentStage === this.consent.consentStage)
       .map(consentStage => consentStage.options)
       .pop();
-
-    console.log("CONSOLE OPTIONS="+ JSON.stringify(this.consentOptions));
   }
 
   public toggleDetailsVisible(el: any) {
