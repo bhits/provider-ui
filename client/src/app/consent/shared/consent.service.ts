@@ -51,6 +51,16 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
+  public attestConsent(patientMrn: string, consentId: number): Observable<void> {
+    const acceptTerms: boolean = true;
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + consentId + "/attestation");
+
+    return this.http.put(resourceUrl, JSON.stringify({acceptTerms: acceptTerms}))
+      .map(() => null)
+      .catch(this.exceptionService.handleError);
+  }
+
   public getConsent(patientMrn: string, id: number): Observable<Consent> {
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/" + id);

@@ -41,7 +41,7 @@ const consentRoutes: Routes = [
         },
       },
       {
-        path: 'consent-sign/:consentId',
+        path: ':consentId/consent-sign',
         component: ConsentSignComponent,
         resolve: {
           consent: ConsentResolveService,
@@ -49,7 +49,7 @@ const consentRoutes: Routes = [
         }
       },
       {
-        path: 'consent-revoke/:consentId',
+        path: ':consentId/consent-revoke',
         component: ConsentRevokeComponent,
         resolve: {
           consent: ConsentResolveService,
@@ -74,6 +74,8 @@ export const routedConsentComponents = [
 
 export const routedConsentResolveServices = [
   ConsentResolveService,
+  ConsentTermsResolveService,
+  ConsentRevocationTermsResolveService,
   PurposeOfUsesResolveService,
   SensitivityCategoriesResolveService
 ];
