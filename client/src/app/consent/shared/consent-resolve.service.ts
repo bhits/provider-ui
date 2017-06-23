@@ -1,21 +1,21 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve} from "@angular/router";
 import {Observable} from "rxjs/Observable";
-import {Consent} from "app/consent/shared/consent.model";
 import {ConsentService} from "app/consent/shared/consent.service";
 import {Patient} from "app/patient/shared/patient.model";
+import {DetailedConsent} from "./detailed-consent.model";
 
 @Injectable()
 export class ConsentResolveService implements Resolve<any> {
   constructor(private consentService: ConsentService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<Consent> {
+  resolve(route: ActivatedRouteSnapshot): Observable<DetailedConsent> {
     let patient: Patient = this.getSelectedPatient(route);
     let consentId: number = route.params['consentId'];
     if (patient != null) {
-      return this.consentService.getConsent(patient.mrn, consentId)
-        .do((consent: Consent) => {
+      return this.consentService.getDetailedConsent(patient.mrn, consentId)
+        .do((consent: DetailedConsent) => {
           return consent
         });
     }

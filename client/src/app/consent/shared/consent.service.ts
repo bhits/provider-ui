@@ -69,6 +69,18 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
+  getDetailedConsent(patientMrn: string, id: number): Observable<DetailedConsent> {
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + id);
+    const jsonFormat: string = "detailedConsent";
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('format', jsonFormat);
+    return this.http.get(resourceUrl, {search: params})
+      .map((resp: Response) => <DetailedConsent>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+
   public createConsent(patientMrn: string, consent: Consent): Observable<void> {
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/");

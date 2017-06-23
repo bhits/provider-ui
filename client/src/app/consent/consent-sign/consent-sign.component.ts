@@ -12,6 +12,7 @@ import {TokenService} from "../../security/shared/token.service";
 import {Patient} from "../../patient/shared/patient.model";
 import {BinaryFile} from "../../shared/binary-file.model";
 import {ConsentTerms} from "../shared/consent-terms.model";
+import {DetailedConsent} from "../shared/detailed-consent.model";
 
 @Component({
   selector: 'c2s-consent-sign',
@@ -20,7 +21,7 @@ import {ConsentTerms} from "../shared/consent-terms.model";
 })
 export class ConsentSignComponent implements OnInit {
   public title: string = "eSignature";
-  public consent: Consent;
+  public consent: DetailedConsent;
   public profile: Profile;
   public termsWithUserName: string;
   public checked: boolean = false;
@@ -28,7 +29,6 @@ export class ConsentSignComponent implements OnInit {
   public password: string;
   public inValid: boolean;
   username: any;
-  birthDate: Date;
   public selectedPatientName: any;
   private selectedPatient: Patient;
   private consentListUrl: string;
@@ -56,8 +56,7 @@ export class ConsentSignComponent implements OnInit {
     });
     this.profile = this.tokenService.getProfileToken();
     this.username = {name: this.profile.name};
-    this.termsWithUserName = this.getConsentAttestationTerm(this.route.snapshot.data['consentTerms']);
-    //this.birthDate = this.profileService.getUserBirthDate();
+    this.termsWithUserName = this.getConsentAttestationTermWithPatientName(this.route.snapshot.data['consentTerms']);
   }
 
   clearCheckbox() {
@@ -113,10 +112,10 @@ export class ConsentSignComponent implements OnInit {
   }
 
   private
-  getConsentAttestationTerm(consentTerms: ConsentTerms): string {
+  getConsentAttestationTermWithPatientName(consentTerms: ConsentTerms): string {
     const terms: string = consentTerms.text;
     const userNameKey: string = "${ATTESTER_FULL_NAME}";
-    return terms.replace(userNameKey, this.profile.name);
+    return terms.replace(userNameKey, this.selectedPatientName.name);
   }
 
 }
