@@ -117,7 +117,7 @@
     },
     "TERMS": {
       "TITLE": "Consent Terms",
-      "TEXT": "Enter a start and end date during with your medical records will be shared.",
+      "TEXT": "Enter a start and end date during which your medical records will be shared.",
       "START_DATE": "Start Date:",
       "END_DATE": "End Date:",
       "ERROR_PAST_START_DATE": "Start date should be in the present.",
