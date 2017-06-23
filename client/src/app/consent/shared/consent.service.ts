@@ -13,6 +13,7 @@ import {Consent} from "app/consent/shared/consent.model";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Provider} from "app/provider/shared/provider.model";
 import {VssSensitivityCategory} from "app/consent/shared/vss-sensitivity-category.model";
+import {ConsentTerms} from "./consent-terms.model";
 
 @Injectable()
 export class ConsentService {
@@ -71,6 +72,20 @@ export class ConsentService {
       .concat("/patients/" + patientMrn + "/consents/" + consent.id);
     return this.http.put(resourceUrl, consent)
       .map(() => null)
+      .catch(this.exceptionService.handleError);
+  }
+
+  getConsentAttestationTerm(): Observable<ConsentTerms> {
+    const url = this.apiUrlService.getPcmBaseUrl().concat("/consentAttestationTerm");
+    return this.http.get(url)
+      .map((resp: Response) => <ConsentTerms>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+  getConsentRevocationTerms() {
+    const url = this.apiUrlService.getPcmBaseUrl().concat("/consentRevocationTerm");
+    return this.http.get(url)
+      .map((resp: Response) => <SharePurpose[]>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
 

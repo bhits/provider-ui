@@ -8,6 +8,10 @@ import {ConsentResolveService} from "app/consent/shared/consent-resolve.service"
 import {ProvidersResolveService} from "app/provider/shared/providers-resolve.service";
 import {PurposeOfUsesResolveService} from "./shared/purpose-of-uses-resolve.service";
 import {SensitivityCategoriesResolveService} from "app/consent/shared/sensitivity-categories-resolve.service";
+import {ConsentSignComponent} from "./consent-sign/consent-sign.component";
+import {ConsentRevokeComponent} from "./consent-revoke/consent-revoke.component";
+import {ConsentTermsResolveService} from "./shared/consent-terms-resolve.service";
+import {ConsentRevocationTermsResolveService} from "./shared/consent-revocation-terms-resolve.service";
 
 const consentRoutes: Routes = [
   {
@@ -35,6 +39,22 @@ const consentRoutes: Routes = [
           consent: ConsentResolveService,
           providers: ProvidersResolveService
         },
+      },
+      {
+        path: 'consent-sign/:consentId',
+        component: ConsentSignComponent,
+        resolve: {
+          consent: ConsentResolveService,
+          consentTerms: ConsentTermsResolveService
+        }
+      },
+      {
+        path: 'consent-revoke/:consentId',
+        component: ConsentRevokeComponent,
+        resolve: {
+          consent: ConsentResolveService,
+          consentRevocationTerms: ConsentRevocationTermsResolveService
+        }
       }
     ]
   }
