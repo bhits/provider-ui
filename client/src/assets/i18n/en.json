@@ -124,6 +124,69 @@
       "ERROR_PAST_END_DATE": "End date should be in the present.",
       "ERROR_END_DATE_BEFORE_START": "Start date CAN NOT exceed End date."
     },
+    "CONSENT_SIGN": {
+      "TITLE": "Consent to Share My Medical Information",
+      "REFERENCE_NUMBER": "Consent Reference Number",
+      "PATIENT_NAME": "Patient Name",
+      "PATIENT_DOB": "Patient DOB",
+      "AUTHORIZATION_SECTION": {
+        "TITLE": "AUTHORIZATION TO DISCLOSE",
+        "AUTHORIZE_LABEL": "Authorizes",
+        "DISCLOSE_LABEL": "To disclose to",
+        "PROVIDER": {
+          "NAME": "Provider Name",
+          "NPI": "NPI Number",
+          "PHONE": "Phone",
+          "ADDRESS": "Address"
+          }
+      },
+      "HEALTH_INFORMATION_SECTION": {
+        "TITLE": "HEALTH INFORMATION TO BE DISCLOSED",
+        "SHARE_MEDICAL_INFO": "To SHARE the following medical information",
+        "SHARE_PURPOSES": "To SHARE for the following purpose(s)"
+      },
+      "CONSENT_TERMS_SECTION": {
+        "TITLE": "CONSENT TERMS",
+        "START_DATE": "Effective Date",
+        "END_DATE": "Expiration Date",
+        "TERMS": "I, {{name}}, hereby accept, and understand the terms of this consent."
+      },
+      "CONFIRM_DIALOG": {
+        "TITLE": "Please Authenticate",
+        "CONTENT": "Please provide your account password to authenticate, and complete e-signature",
+        "AUTHENTICATE_MSG": "Failed to authenticate. Please try again.",
+        "CANCEL_BTN": "Cancel",
+        "CONTINUE_BTN": "Continue"
+      },
+      "COMPLETE_DIALOG": {
+        "TITLE": "Successfully Signed the Consent pn behalf of the patient.",
+        "DOWNLOAD_BTN": "Download the Signed Consent",
+        "CONTINUE_BTN": "Continue"
+      },
+      "CANCEL_BTN": "Cancel",
+      "COMPLETE_BTN": "Complete"
+    },
+    "CONSENT_REVOKE": {
+      "TITLE": "Revocation of Consent to Share My Health Information",
+      "REFERENCE_NUMBER": "Consent Reference Number",
+      "PATIENT_NAME": "Patient Name",
+      "PATIENT_DOB": "Patient DOB",
+      "CONFIRM_DIALOG": {
+        "TITLE": "Please Authenticate",
+        "CONTENT": "Please provide your account password to authenticate, and complete e-signature",
+        "AUTHENTICATE_MSG": "Failed to authenticate. Please try again.",
+        "CANCEL_BTN": "Cancel",
+        "CONTINUE_BTN": "Continue"
+      },
+      "COMPLETE_DIALOG": {
+        "TITLE": "Successfully Revoked the Consent",
+        "DOWNLOAD_BTN": "Download the Signed Consent Revocation",
+        "CONTINUE_BTN": "Continue"
+      },
+      "TERMS": "I, {{name}}, hereby accept, and understand the terms of this consent.",
+      "CANCEL_BTN": "Cancel",
+      "COMPLETE_BTN": "Complete"
+    },
     "NOTIFICATION_MSG": {
       "SUCCESS_CREATING_CONSENT": "Successfully created the consent on behalf of the patient.",
       "FAILED_CREATING_CONSENT": "Error in creating the consent on behalf of the patient.",
