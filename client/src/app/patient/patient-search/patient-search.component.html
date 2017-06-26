@@ -2,7 +2,7 @@
 
   <br><br>
   <div fxLayoutAlign="center">
-    <a md-raised-button fxFlex="0 1 500px" routerLink="/patients/create" color="primary">
+    <a md-raised-button fxFlex="0 1 500px" routerLink="/patients/create" color="primary" [disabled]="!hasSearchResult">
       <md-icon class="font-weight700">add</md-icon>
       {{ 'PATIENT.LIST.CREATE_PATIENT_BUTTON' | translate }}
     </a>
