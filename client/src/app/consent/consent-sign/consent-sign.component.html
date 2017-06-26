@@ -133,7 +133,7 @@
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
-    <button md-raised-button color="primary" routerLink="/consent-list">
+    <button md-raised-button color="primary" (click)="cancel()">
       <strong>{{ 'CONSENT.CONSENT_SIGN.CANCEL_BTN' | translate }}</strong>
     </button>
     <md2-dialog #completeAttestation (onClose)="navigateTo()">

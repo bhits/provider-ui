@@ -59,6 +59,10 @@ export class ConsentSignComponent implements OnInit {
     this.termsWithUserName = this.getConsentAttestationTermWithPatientName(this.route.snapshot.data['consentTerms']);
   }
 
+  public cancel(): void {
+    this.utilityService.navigateTo(this.consentListUrl);
+  }
+
   clearCheckbox() {
     if (this.isAuthenticated != true) {
       this.checked = false;
