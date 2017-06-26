@@ -62,6 +62,9 @@ export class ConsentSignComponent implements OnInit {
   public cancel(): void {
     this.utilityService.navigateTo(this.consentListUrl);
   }
+  navigateTo() {
+    this.utilityService.navigateTo(this.consentListUrl);
+  }
 
   clearCheckbox() {
     if (this.isAuthenticated != true) {
@@ -109,10 +112,6 @@ export class ConsentSignComponent implements OnInit {
           console.log(err);
         }
       );
-  }
-
-  navigateTo() {
-    this.utilityService.navigateTo(this.consentListUrl);
   }
 
   private

@@ -150,7 +150,7 @@
             <button md-raised-button color="primary" (click)="getSignedConsentPdf()">
               {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.DOWNLOAD_BTN' | translate }}
             </button>
-            <button md-raised-button color="primary" routerLink="/consent-list">
+            <button md-raised-button color="primary" (click)="cancel()">
               {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.CONTINUE_BTN' | translate }}
             </button>
           </md2-dialog-footer>
