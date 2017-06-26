@@ -14,6 +14,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Provider} from "app/provider/shared/provider.model";
 import {VssSensitivityCategory} from "app/consent/shared/vss-sensitivity-category.model";
 import {ConsentTerms} from "./consent-terms.model";
+import {ConsentRevocation} from "./consent-revocation.model";
 
 @Injectable()
 export class ConsentService {
@@ -51,16 +52,6 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
-  public attestConsent(patientMrn: string, consentId: number): Observable<void> {
-    const acceptTerms: boolean = true;
-    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
-      .concat("/patients/" + patientMrn + "/consents/" + consentId + "/attestation");
-
-    return this.http.put(resourceUrl, JSON.stringify({acceptTerms: acceptTerms}))
-      .map(() => null)
-      .catch(this.exceptionService.handleError);
-  }
-
   public getConsent(patientMrn: string, id: number): Observable<Consent> {
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/" + id);
@@ -80,7 +71,6 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
-
   public createConsent(patientMrn: string, consent: Consent): Observable<void> {
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/");
@@ -93,6 +83,26 @@ export class ConsentService {
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/" + consent.id);
     return this.http.put(resourceUrl, consent)
+      .map(() => null)
+      .catch(this.exceptionService.handleError);
+  }
+
+
+  public attestConsent(patientMrn: string, consentId: number): Observable<void> {
+    const acceptTerms: boolean = true;
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + consentId + "/attestation");
+
+    return this.http.put(resourceUrl, JSON.stringify({acceptTerms: acceptTerms}))
+      .map(() => null)
+      .catch(this.exceptionService.handleError);
+  }
+
+  revokeConsent(consentRevocation: ConsentRevocation, patientMrn: string, consentId: number): Observable<void> {
+    let resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consents/" + consentId + "/revocation");
+
+    return this.http.put(resourceUrl, consentRevocation)
       .map(() => null)
       .catch(this.exceptionService.handleError);
   }

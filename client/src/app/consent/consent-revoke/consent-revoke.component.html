@@ -1,3 +1,72 @@
-<p>
-  consent-revoke works!
-</p>
+<md-card>
+  <h2 fxLayoutAlign="start">{{ 'CONSENT.CONSENT_REVOKE.TITLE' | translate }}</h2>
+  <div fxLayout="column">
+    <div fxLayoutAlign="start">{{ 'CONSENT.CONSENT_REVOKE.REFERENCE_NUMBER' | translate }}:</div>
+    <div fxLayoutAlign="start">
+      <strong>{{consent.consentReferenceId}}</strong>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex fxLayoutAlign="start">
+      <span>{{ 'CONSENT.CONSENT_REVOKE.PATIENT_NAME' | translate }}:</span>
+      <span><strong>{{selectedPatientName.name}}</strong></span>
+    </div>
+    <div fxFlex>
+      <span>{{ 'CONSENT.CONSENT_REVOKE.PATIENT_DOB' | translate }}:</span>
+      <span><strong>{{selectedPatient.birthDate | date}}</strong></span>
+    </div>
+  </div>
+  <div fxLayout="column">
+    <p fxLayout="row">{{consentRevocationTerms}}</p>
+    <div>
+      <md-checkbox fxLayoutAlign="start" (click)="confirmRevokeConsentTerms.open()" [(ngModel)]="checked">
+        {{ 'CONSENT.CONSENT_REVOKE.TERMS' | translate:selectedPatientName }}
+      </md-checkbox>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+    <button md-raised-button color="primary" (click)="cancel()">
+      <strong>{{ 'CONSENT.CONSENT_REVOKE.CANCEL_BTN' | translate }}</strong>
+    </button>
+    <button md-raised-button color="primary" [disabled]="!isAuthenticated" (click)="revokeConsent(completeRevokeAttestation)">
+      <strong>
+        {{ 'CONSENT.CONSENT_REVOKE.COMPLETE_BTN' | translate }}
+      </strong>
+    </button>
+  </div>
+</md-card>
+
+<md2-dialog #confirmRevokeConsentTerms (onClose)="clearCheckbox()">
+  <md2-dialog-title> {{ 'CONSENT.CONSENT_REVOKE.CONFIRM_DIALOG.TITLE' | translate }}</md2-dialog-title>
+  <div fxLayout="column">
+    <p class="dialog-text">
+      {{ 'CONSENT.CONSENT_REVOKE.CONFIRM_DIALOG.CONTENT' | translate }}
+    </p>
+    <md-input-container>
+      <input mdInput type="password" placeholder="Password" [(ngModel)]="password">
+    </md-input-container>
+    <div *ngIf="inValid" class="authenticate-invalid">
+      {{ 'CONSENT.CONSENT_REVOKE.CONFIRM_DIALOG.AUTHENTICATE_MSG' | translate }}
+    </div>
+  </div>
+  <md2-dialog-footer>
+    <button md-raised-button (click)="confirmRevokeConsentTerms.close()">
+      {{ 'CONSENT.CONSENT_REVOKE.CONFIRM_DIALOG.CANCEL_BTN' | translate }}
+    </button>
+    <button md-raised-button color="primary" (click)="toAuthenticate(confirmRevokeConsentTerms)">
+      {{ 'CONSENT.CONSENT_REVOKE.CONFIRM_DIALOG.CONTINUE_BTN' | translate }}
+    </button>
+  </md2-dialog-footer>
+</md2-dialog>
+
+<md2-dialog #completeRevokeAttestation (onClose)="navigateTo()">
+  <md2-dialog-title>{{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.TITLE' | translate }}</md2-dialog-title>
+  <md2-dialog-footer>
+    <button md-raised-button color="primary" (click)="downloadRevokedConsent()">
+      {{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.DOWNLOAD_BTN' | translate }}
+    </button>
+    <button md-raised-button color="primary" routerLink="/consent-list">
+      {{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.CONTINUE_BTN' | translate }}
+    </button>
+  </md2-dialog-footer>
+</md2-dialog>
