@@ -68,7 +68,8 @@ export class PatientSearchComponent implements OnInit {
       ],
       genderCode: [null],
       birthDate: [null, ValidationService.pastDateValidator],
-    })
+    },
+      {validator: ValidationService.atLeastOneFieldValidator})
   }
 
   public searchPatient(): void {
