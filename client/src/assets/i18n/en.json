@@ -202,7 +202,7 @@
       "FAILED_DOWNLOAD_SIGNED_CONSENT": "Failed to download the signed consent. Please try again later.",
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "Success in downloading revoked consent.",
       "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent. Please try again later.",
-      "SUCCESS_DELETE_CONSENT": "Successfully deleted the consent.",
+      "SUCCESS_DELETE_CONSENT": "Successfully deleted the consent on behalf of the patient.",
       "FAILED_DELETE_CONSENT": "Failed to delete the consent. Please try again later."
     }
   },
