@@ -19,6 +19,6 @@ export class Patient {
   locale: string;
   disabled?: boolean;
   mrn?: string;
-  identifiers:Identifier[];
+  identifiers?:Identifier[];
   registrationPurposeEmail?:string
 }

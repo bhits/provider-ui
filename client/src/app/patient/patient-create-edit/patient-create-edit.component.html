@@ -142,7 +142,7 @@
           </div>
         </div>
 
-        <div formGroupName="identifier">
+        <div formGroupName="identifier" *ngIf="isIdentifiersEnabled()">
           <div fxLayout="row" fxLayoutGap="20px">
             <div fxFlex>
               <md-select
