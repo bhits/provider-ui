@@ -157,6 +157,17 @@
         "NEXT": "Next"
       }
     },
+    "SEARCH": {
+      "CRITERIA": {
+        "LABEL": "Patient Search Criteria",
+        "FIRST_NAME_PLACEHOLDER": "First Name",
+        "LAST_NAME_PLACEHOLDER": "Last Name",
+        "GENDER_PLACEHOLDER": "Gender",
+        "DOB_PLACEHOLDER": "Date of Birth",
+        "CANCEL_BTN": "Cancel",
+        "SEARCH_BTN": "Search"
+      }
+    },
     "CREATE_EDIT": {
       "CREATE_TITLE": "Create Patient",
       "EDIT_TITLE": "Patient Record",

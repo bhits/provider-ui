@@ -157,6 +157,15 @@
         "NEXT": "{spanish} Next"
       }
     },
+    "SEARCH": {
+      "CRITERIA": {
+        "LABEL": "{spanish}Patient Search Criteria",
+        "FIRST_NAME_PLACEHOLDER": "{spanish}First Name",
+        "LAST_NAME_PLACEHOLDER": "{spanish}Last Name",
+        "GENDER_PLACEHOLDER": "{spanish}Gender",
+        "DOB_PLACEHOLDER": "{spanish}Date of Birth"
+      }
+    },
     "CREATE_EDIT": {
       "CREATE_TITLE": "{spanish} Create Patient",
       "EDIT_TITLE": "{spanish} Patient Record",

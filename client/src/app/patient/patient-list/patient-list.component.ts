@@ -17,6 +17,7 @@ export class PatientListComponent implements OnInit {
   public totalItems: number = 0;
   public currentPage: number = 1;
   public itemsPerPage: number = 10;
+  public searchByDemographics : boolean = true;
   public noResult: boolean = false;
   public loading: boolean = false;
   public asyncPatients: Observable<Patient[]>;
