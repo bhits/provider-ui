@@ -94,6 +94,11 @@ export class ConsentCardComponent implements OnInit {
   }
 
   public getRouterLink(consentOption: ConsentStageOption): any {
+    if (consentOption.key === ConsentStageOptionKey.SIGN ||
+      consentOption.key === ConsentStageOptionKey.REVOKE) {
+      return consentOption.routerLink ? ["/patients".concat("/" + this.selectedPatient.id).concat("/consents/" + this.consent.id).concat(consentOption.routerLink)] : '.'
+    }
+
     return consentOption.routerLink ? ["/patients".concat("/" + this.selectedPatient.id).concat(consentOption.routerLink), this.consent.id] : '.'
   }
 
