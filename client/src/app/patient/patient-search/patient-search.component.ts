@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {Subject} from "rxjs/Subject";
@@ -14,6 +14,7 @@ import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.
 import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.model";
 import {PatientSearchQuery} from "../shared/patient-search-query.model";
 import {PatientSearchResponse} from "../shared/patient-search-response.model";
+import {ApiUrlService} from "app/shared/api-url.service";
 
 @Component({
   selector: 'c2s-patient-search',
@@ -36,9 +37,10 @@ export class PatientSearchComponent implements OnInit {
   public requestParams: PatientSearchQuery;
   public FORMAT: string = "MM/dd/y";
   public isOpenOnFocus: boolean = true;
-  public DATE_FORMAT:string = "y-MM-dd";
+  public DATE_FORMAT: string = "y-MM-dd";
 
-  constructor(private notificationService: NotificationService,
+  constructor(private apiUrlService: ApiUrlService,
+              private notificationService: NotificationService,
               private patientService: PatientService,
               private utilityService: UtilityService,
               private formBuilder: FormBuilder,
@@ -47,28 +49,28 @@ export class PatientSearchComponent implements OnInit {
 
   ngOnInit() {
     this.patientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
-    this.searchPatientForm=this.initSearchPatientFormGroup();
+    this.searchPatientForm = this.initSearchPatientFormGroup();
     this.genders = this.patientCreationLookupInfo.genderCodes;
 
   }
 
   private initSearchPatientFormGroup() {
     return this.formBuilder.group({
-      firstName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
-        ]
-      ],
-      lastName: [null,
-        [
-          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-        ]
-      ],
-      genderCode: [null],
-      birthDate: [null, ValidationService.pastDateValidator],
-    },
+        firstName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
+          ]
+        ],
+        lastName: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+          ]
+        ],
+        genderCode: [null],
+        birthDate: [null, ValidationService.pastDateValidator],
+      },
       {validator: ValidationService.atLeastOneFieldValidator})
   }
 
@@ -93,16 +95,16 @@ export class PatientSearchComponent implements OnInit {
 
   public getPage(page: number) {
     this.loading = true;
-      this.requestParams.page= page-1 ;
-      this.asyncPatients = this.patientService.searchPatientsByDemographics(this.requestParams)
-        .do((patients: PageableData<Patient>) => {
-          this.hasSearchResult= true;
-          this.noResult = patients.totalElements === 0;
-          this.totalItems = patients.totalElements;
-          this.currentPage = patients.number + 1;
-          this.loading = false;
-        })
-        .map(pageablePatient => pageablePatient.content);
+    this.requestParams.page = page - 1;
+    this.asyncPatients = this.patientService.searchPatientsByDemographics(this.requestParams)
+      .do((patients: PageableData<Patient>) => {
+        this.hasSearchResult = true;
+        this.noResult = patients.totalElements === 0;
+        this.totalItems = patients.totalElements;
+        this.currentPage = patients.number + 1;
+        this.loading = false;
+      })
+      .map(pageablePatient => pageablePatient.content);
   }
 
   public redirectToPatientEdit(patient: Patient) {
@@ -110,4 +112,13 @@ export class PatientSearchComponent implements OnInit {
     this.utilityService.navigateTo(editPatientUrl)
   }
 
+  public clear(): void {
+    /*this.searchPatientForm.reset();
+    this.hasSearchResult = false;*/
+    window.location.reload();
+  }
+
+  public cancel(): void {
+    this.utilityService.navigateTo(this.apiUrlService.getHomeUrl())
+  }
 }
