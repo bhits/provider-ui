@@ -1,7 +1,7 @@
 export class PatientSearchQuery {
   firstName?: string;
   lastName?: string;
-  birthDate?: Date;
+  birthDate?: string;
   genderCode?: string;
   page?: number;
   size?: number;

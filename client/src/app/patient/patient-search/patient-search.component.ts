@@ -81,7 +81,7 @@ export class PatientSearchComponent implements OnInit {
     return {
       firstName: this.filterEmptyStringValue(formModel.firstName),
       lastName: this.filterEmptyStringValue(formModel.lastName),
-      birthDate: formModel.birthDate,
+      birthDate: this.utilityService.formatDate(formModel.birthDate, this.DATE_FORMAT),
       genderCode: this.filterEmptyStringValue(formModel.genderCode)
     };
   }

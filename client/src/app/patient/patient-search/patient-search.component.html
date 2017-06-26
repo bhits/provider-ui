@@ -74,73 +74,80 @@
       </button>
     </div>
   </form>
-
-  <div fxLayoutAlign="center">
-    <div style="padding-top: 20px">
-      <div style="background-color: #DEBCC9;" class="p-md font-size18 font-weight center-sm-left" *ngIf="noResult">
-        {{ 'PATIENT.LIST.NO_PATIENTS_MSG' | translate }}
-      </div>
+  <div *ngIf="hasSearchResult">
+    <div class="m-t-lg p-b-sm border-bottom-purple" fxFlex="1 0 auto" fxLayoutAlign="flex-start center">
     </div>
-    <pagination-controls
-      previousLabel="{{ 'PATIENT.LIST.PAGINATION.PREVIOUS' | translate }}"
-      nextLabel="{{ 'PATIENT.LIST.PAGINATION.NEXT' | translate }}"
-      (pageChange)="getPage($event)" *ngIf="!noResult && hasSearchResult">
-    </pagination-controls>
-    <md-spinner *ngIf="loading"></md-spinner>
+    <h2>
+      {{ 'PATIENT.SEARCH.SEARCH_RESULT_MSG' | translate }}
+    </h2>
   </div>
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
-    <md-card class="patient-card"
-             *ngFor="let patient of asyncPatients | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
-      <md-card-header>
-        <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
-          <div class="fa fa-2x fa-address-book"></div>
-          <div class="m-l-xs font-weight700">{{patient | patient: 'fullName'}}</div>
-        </div>
-      </md-card-header>
 
-      <md-card-content class="p-t p-b p-l-md p-r-md">
-        <div>
-          <button md-fab (click)="redirectToPatientEdit(patient)">
-            <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
-          </button>
+    <div fxLayoutAlign="center">
+      <div style="padding-top: 20px">
+        <div style="background-color: #DEBCC9;" class="p-md font-size18 font-weight center-sm-left" *ngIf="noResult">
+          {{ 'PATIENT.SEARCH.NO_PATIENTS_MSG' | translate }}
         </div>
-        <div class="flexcontainer row" fxLayoutWrap="wrap">
-          <div fxFlex="0 1 120px">
-            <div class="m-t-xs flexcontainer column">
-              <div>
-                <div class="font-size12 p-b-xxs">
-                  {{ 'PATIENT.LIST.CARD.CONTENT.CONTACT_NUMBER' | translate }}
+      </div>
+      <pagination-controls
+        previousLabel="{{ 'PATIENT.LIST.PAGINATION.PREVIOUS' | translate }}"
+        nextLabel="{{ 'PATIENT.LIST.PAGINATION.NEXT' | translate }}"
+        (pageChange)="getPage($event)" *ngIf="!noResult && hasSearchResult">
+      </pagination-controls>
+      <md-spinner *ngIf="loading"></md-spinner>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
+      <md-card class="patient-card"
+               *ngFor="let patient of asyncPatients | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
+        <md-card-header>
+          <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
+            <div class="fa fa-2x fa-address-book"></div>
+            <div class="m-l-xs font-weight700">{{patient | patient: 'fullName'}}</div>
+          </div>
+        </md-card-header>
+
+        <md-card-content class="p-t p-b p-l-md p-r-md">
+          <div>
+            <button md-fab (click)="redirectToPatientEdit(patient)">
+              <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="flexcontainer row" fxLayoutWrap="wrap">
+            <div fxFlex="0 1 120px">
+              <div class="m-t-xs flexcontainer column">
+                <div>
+                  <div class="font-size12 p-b-xxs">
+                    {{ 'PATIENT.LIST.CARD.CONTENT.CONTACT_NUMBER' | translate }}
+                  </div>
+                  <div class="font-size14 font-weight500 p-b-sm">{{patient | patient: 'homePhone'| usPhoneNumber}}
+                  </div>
+                  <div class="font-size12 p-b-xxs">
+                    {{ 'PATIENT.LIST.CARD.CONTENT.DOB' | translate }}
+                  </div>
+                  <div class="font-size14 font-weight600">{{patient | patient: 'birthDate' | date}}</div>
                 </div>
-                <div class="font-size14 font-weight500 p-b-sm">{{patient | patient: 'homePhone'| usPhoneNumber}}
+              </div>
+            </div>
+            <div fxFlex="1 0 120px">
+              <div class="m-t-xs flexcontainer column">
+                <div fxLayout="column">
+                  <div class="font-size12 p-b-xxs">
+                    {{ 'PATIENT.LIST.CARD.CONTENT.ADDRESS' | translate }}
+                  </div>
+                  <div class="font-size14 font-weight700">{{patient | patient: 'homeAddress'}}</div>
                 </div>
-                <div class="font-size12 p-b-xxs">
-                  {{ 'PATIENT.LIST.CARD.CONTENT.DOB' | translate }}
-                </div>
-                <div class="font-size14 font-weight600">{{patient | patient: 'birthDate' | date}}</div>
               </div>
             </div>
           </div>
-          <div fxFlex="1 0 120px">
-            <div class="m-t-xs flexcontainer column">
-              <div fxLayout="column">
-                <div class="font-size12 p-b-xxs">
-                  {{ 'PATIENT.LIST.CARD.CONTENT.ADDRESS' | translate }}
-                </div>
-                <div class="font-size14 font-weight700">{{patient | patient: 'homeAddress'}}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </md-card-content>
-    </md-card>
-  </div>
-  <div fxLayoutAlign="center">
-    <pagination-controls
-      previousLabel="{{ 'PATIENT.LIST.PAGINATION.PREVIOUS' | translate }}"
-      nextLabel="{{ 'PATIENT.LIST.PAGINATION.NEXT' | translate }}"
-      (pageChange)="getPage($event)" *ngIf="!noResult && hasSearchResult">
-    </pagination-controls>
-  </div>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div fxLayoutAlign="center">
+      <pagination-controls
+        previousLabel="{{ 'PATIENT.LIST.PAGINATION.PREVIOUS' | translate }}"
+        nextLabel="{{ 'PATIENT.LIST.PAGINATION.NEXT' | translate }}"
+        (pageChange)="getPage($event)" *ngIf="!noResult && hasSearchResult">
+      </pagination-controls>
+    </div>
 
 </div>
 

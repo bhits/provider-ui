@@ -166,7 +166,9 @@
         "DOB_PLACEHOLDER": "Date of Birth",
         "CANCEL_BTN": "Cancel",
         "SEARCH_BTN": "Search"
-      }
+      },
+      "SEARCH_RESULT_MSG": "Patient Search Results",
+      "NO_PATIENTS_MSG": "No results found. Please try again, or create a new patient."
     },
     "CREATE_EDIT": {
       "CREATE_TITLE": "Create Patient",

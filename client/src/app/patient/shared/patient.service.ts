@@ -45,7 +45,7 @@ export class PatientService {
     params.set('firstName', this.addLikePatternInQueryParameter(requestParams.firstName));
     params.set('lastName', this.addLikePatternInQueryParameter(requestParams.lastName));
     params.set('genderCode', requestParams.genderCode);
-    //params.set('birthDate', requestParams.birthDate.getFullYear()+"-"+requestParams.birthDate.getMonth()+"-"+requestParams.birthDate.getDay());
+    params.set('birthDate',requestParams.birthDate);
 
     return params;
   }

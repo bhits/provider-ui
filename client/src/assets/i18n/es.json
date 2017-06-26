@@ -164,7 +164,9 @@
         "LAST_NAME_PLACEHOLDER": "{spanish}Last Name",
         "GENDER_PLACEHOLDER": "{spanish}Gender",
         "DOB_PLACEHOLDER": "{spanish}Date of Birth"
-      }
+      },
+      "SEARCH_RESULT_MSG": "{spanish}Patient Search Results",
+      "NO_PATIENTS_MSG": "{spanish}No results found. Please try again, or create a new patient."
     },
     "CREATE_EDIT": {
       "CREATE_TITLE": "{spanish} Create Patient",
