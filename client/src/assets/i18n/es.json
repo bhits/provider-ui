@@ -1,7 +1,7 @@
 {
   "HOME": {
-    "WELCOME_TITLE": "(Spanish)Welcome to Consent2Share admin!",
-    "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
+    "WELCOME_TITLE": "{spanish} Welcome to Consent2Share admin!",
+    "WELCOME_SUB_TITLE": "{spanish} You are now ready to manage your patients.",
     "PATIENT_CARD": {
       "TITLE": "My <span class=\"font-weight700\">Patients</span>",
       "STEP": "Step 1.",
@@ -167,25 +167,25 @@
       "COMPLETE_BTN": "Completar"
     },
     "CONSENT_REVOKE": {
-      "TITLE": "Revocation of Consent to Share My Health Information",
+      "TITLE": "{spanish} Revocation of Consent to Share My Health Information",
       "REFERENCE_NUMBER": "Consent Reference Number",
       "PATIENT_NAME": "Patient Name",
       "PATIENT_DOB": "Patient DOB",
       "CONFIRM_DIALOG": {
-        "TITLE": "Please Authenticate",
-        "CONTENT": "Please provide your account password to authenticate, and complete e-signature",
-        "AUTHENTICATE_MSG": "Failed to authenticate, please try again...",
-        "CANCEL_BTN": "Cancel",
+        "TITLE": "{spanish} Please Authenticate",
+        "CONTENT": "{spanish} Please provide your account password to authenticate, and complete e-signature",
+        "AUTHENTICATE_MSG": "{spanish} Failed to authenticate. Please try again.",
+        "CANCEL_BTN": "Cancelar",
         "CONTINUE_BTN": "Continue"
       },
       "COMPLETE_DIALOG": {
-        "TITLE": "Successfully Revoked Consent",
-        "DOWNLOAD_BTN": "Download Signed Consent Revocation",
+        "TITLE": "{spanish} Successfully Revoked Consent",
+        "DOWNLOAD_BTN": "{spanish} Download Signed Consent Revocation",
         "CONTINUE_BTN": "Continue"
       },
       "TERMS": "I, {{name}}, hereby accept, and understand the terms of this consent.",
-      "CANCEL_BTN": "Cancel",
-      "COMPLETE_BTN": "Complete"
+      "CANCEL_BTN": "Cancelar",
+      "COMPLETE_BTN": "Completar"
     },
     "NOTIFICATION_MSG": {
       "SUCCESS_CREATING_CONSENT": "{spanish} Successfully created the consent on behalf of the patient.",
@@ -256,8 +256,8 @@
         "SSN_PLACEHOLDER": "{spanish} Social Security Number",
         "PHONE_PLACEHOLDER": "{spanish} Phone"
       },
-      "CANCEL_BTN": "{spanish} Cancel",
-      "SAVE_BTN": "{spanish} Save",
+      "CANCEL_BTN": "Cancelar",
+      "SAVE_BTN": "Guardar cambios",
       "CONFIRM_DIALOG": {
         "TITLE": "{spanish} Confirm Navigation",
         "CONTENT": "{spanish} You will lose all unsaved work, Are you sure you want to leave this page?"
