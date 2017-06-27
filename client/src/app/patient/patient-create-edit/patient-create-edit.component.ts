@@ -45,6 +45,9 @@ export class PatientCreateEditComponent implements OnInit {
   //Todo: Will remove when support multiple roles
   public disabledRoles: string[];
   public oneEmailRequiredMessage: string = ValidationRules.ONE_EMAIL_REQUIRED_MESSAGE;
+  //turn off display activation and segmentation
+  public displayActivation: boolean = false;
+  public displaySegmentation: boolean = false;
 
   constructor(private apiUrlService: ApiUrlService,
               private confirmDialogService: ConfirmDialogService,
@@ -97,41 +100,44 @@ export class PatientCreateEditComponent implements OnInit {
   }
 
   private initCreateEditFormGroup() {
-    return this.formBuilder.group({
-        firstName: [null,
-          [
-            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-            Validators.required
-          ]
-        ],
-        middleName: [null,
-          [
-            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
-          ]
-        ],
-        lastName: [null,
-          [
-            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-            Validators.required
-          ]
-        ],
-        homeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
-        registrationPurposeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
-        genderCode: [null, Validators.required],
-        birthDate: [null, Validators.compose([
-          Validators.required,
-          ValidationService.pastDateValidator])
-        ],
-        socialSecurityNumber: [null, Validators.pattern(ValidationRules.SSN_PATTERN)],
-        homePhone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)],
-        homeAddress: this.initAddressFormGroup(),
-        roles: [null, Validators.required],
-        locale: [null, Validators.required],
-        identifier: this.initIdentifierFormGroup()
-      },
+    const controlsConfig: any = {
+      firstName: [null,
+        [
+          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+          Validators.required
+        ]
+      ],
+      middleName: [null,
+        [
+          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
+        ]
+      ],
+      lastName: [null,
+        [
+          Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+          Validators.required
+        ]
+      ],
+      homeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
+      registrationPurposeEmail: [null, Validators.pattern(ValidationRules.EMAIL_PATTERN)],
+      genderCode: [null, Validators.required],
+      birthDate: [null, Validators.compose([
+        Validators.required,
+        ValidationService.pastDateValidator])
+      ],
+      socialSecurityNumber: [null, Validators.pattern(ValidationRules.SSN_PATTERN)],
+      homePhone: [null, Validators.pattern(ValidationRules.PHONE_PATTERN)],
+      homeAddress: this.initAddressFormGroup(),
+      roles: [null, Validators.required],
+      locale: [null, Validators.required]
+    };
+    if (this.isIdentifiersEnabled()) {
+      controlsConfig.identifier = this.initIdentifierFormGroup();
+    }
+    return this.formBuilder.group(controlsConfig,
       {validator: ValidationService.oneEmailRequired('homeEmail', 'registrationPurposeEmail')})
   }
 
@@ -156,7 +162,7 @@ export class PatientCreateEditComponent implements OnInit {
   private setValueOnEditPatientForm(patient: Patient) {
     let patientIdentifiers = patient.identifiers.filter(identifier => identifier.system !== "https://bhits.github.io/consent2share" && identifier.system !== "http://hl7.org/fhir/sid/us-ssn");
     if (patient.homeAddress != null) {
-      this.createEditPatientForm.setValue({
+      const value: any = {
         firstName: patient.firstName,
         middleName: patient.middleName,
         lastName: patient.lastName,
@@ -175,14 +181,17 @@ export class PatientCreateEditComponent implements OnInit {
           countryCode: patient.homeAddress.countryCode
         },
         roles: patient.roles,
-        locale: patient.locale,
-        identifier: {
+        locale: patient.locale
+      };
+      if (this.isIdentifiersEnabled()) {
+        value.identifier = {
           system: patientIdentifiers[0].system,
           value: patientIdentifiers[0].value
-        },
-      })
+        };
+      }
+      this.createEditPatientForm.setValue(value);
     } else {
-      this.createEditPatientForm.setValue({
+      let value: any = {
         firstName: patient.firstName,
         middleName: patient.middleName,
         lastName: patient.lastName,
@@ -201,12 +210,15 @@ export class PatientCreateEditComponent implements OnInit {
           countryCode: null
         },
         roles: patient.roles,
-        locale: patient.locale,
-        identifier: {
+        locale: patient.locale
+      };
+      if (this.isIdentifiersEnabled()) {
+        value.identifier = {
           system: patientIdentifiers[0].system,
           value: patientIdentifiers[0].value
         }
-      })
+      }
+      this.createEditPatientForm.setValue(value);
     }
     //Disable identifier system when in Patient Edit Mode
     this.createEditPatientForm.get("identifier.system").disable();
@@ -285,9 +297,7 @@ export class PatientCreateEditComponent implements OnInit {
 
   private prepareCreateEditPatient(): Patient {
     const formModel = this.createEditPatientForm.value;
-    let identifiers = [];
-    identifiers.push(this.createEditPatientForm.getRawValue().identifier);
-    return {
+    const patient: Patient = {
       firstName: formModel.firstName,
       middleName: this.filterEmptyStringValue(formModel.middleName),
       lastName: formModel.lastName,
@@ -299,9 +309,14 @@ export class PatientCreateEditComponent implements OnInit {
       homeAddress: this.filterEmptyStringValueForAddress(formModel.homeAddress),
       roles: formModel.roles,
       locale: formModel.locale,
-      identifiers: identifiers,
       registrationPurposeEmail: this.filterEmptyStringValue(formModel.registrationPurposeEmail)
-    };
+    }
+    if (this.isIdentifiersEnabled()) {
+      let identifiers = [];
+      identifiers.push(this.createEditPatientForm.getRawValue().identifier);
+      patient.identifiers = identifiers;
+    }
+    return patient;
   }
 
   private filterEmptyStringValue(field: string) {
@@ -318,4 +333,7 @@ export class PatientCreateEditComponent implements OnInit {
     return homeAddress;
   }
 
+  public isIdentifiersEnabled(): boolean {
+    return this.identifierSystems.length > 0;
+  }
 }

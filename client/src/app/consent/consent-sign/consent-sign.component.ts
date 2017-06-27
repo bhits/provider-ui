@@ -30,7 +30,7 @@ export class ConsentSignComponent implements OnInit {
   public inValid: boolean;
   username: any;
   public selectedPatientName: any;
-  private selectedPatient: Patient;
+  public selectedPatient: Patient;
   private consentListUrl: string;
 
   constructor(private authenticationService: AuthenticationService,

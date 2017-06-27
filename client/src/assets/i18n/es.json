@@ -226,6 +226,17 @@
         "NEXT": "{spanish} Next"
       }
     },
+    "SEARCH": {
+      "CRITERIA": {
+        "LABEL": "{spanish}Patient Search Criteria",
+        "FIRST_NAME_PLACEHOLDER": "{spanish}First Name",
+        "LAST_NAME_PLACEHOLDER": "{spanish}Last Name",
+        "GENDER_PLACEHOLDER": "{spanish}Gender",
+        "DOB_PLACEHOLDER": "{spanish}Date of Birth"
+      },
+      "SEARCH_RESULT_MSG": "{spanish}Patient Search Results",
+      "NO_PATIENTS_MSG": "{spanish}No results found. Please try again, or create a new patient."
+    },
     "CREATE_EDIT": {
       "CREATE_TITLE": "{spanish} Create Patient",
       "EDIT_TITLE": "{spanish} Patient Record",
