@@ -245,6 +245,7 @@
       "EDIT_TITLE": "Patient Record",
       "ACCORDION_HEADER": "Patient's Information",
       "INFO": "Please complete all required fields to create a Patient Account.",
+      "MRN_LABEL": "Medical Record Number:",
       "REQUIRED_INFORMATION": {
         "LABEL": "Required Information",
         "ROLE_PLACEHOLDER": "Role",

@@ -24,6 +24,7 @@ export class PatientCreateEditComponent implements OnInit {
 
   private readonly DEFAULT_ROLE: string = "patient";
   private patientId: number;
+  private patient: Patient;
   private toSubmit: boolean = false;
   private patientCreationLookupInfo: PatientCreationLookupInfo;
   public createEditPatientForm: FormGroup;
@@ -90,11 +91,11 @@ export class PatientCreateEditComponent implements OnInit {
           if (params['patientId']) {
             // Edit mode
             this.title = "PATIENT.CREATE_EDIT.EDIT_TITLE";
-            let patient: Patient = this.route.snapshot.data['patient'];
-            this.isEditMode = patient.id != null;
-            this.patientId = patient.id;
-            this.editingPatient = patient;
-            this.setValueOnEditPatientForm(patient);
+            this.patient = this.route.snapshot.data['patient'];
+            this.isEditMode = this.patient.id != null;
+            this.patientId = this.patient.id;
+            this.editingPatient = this.patient;
+            this.setValueOnEditPatientForm(this.patient);
           }
         });
   }

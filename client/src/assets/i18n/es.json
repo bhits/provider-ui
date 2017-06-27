@@ -243,6 +243,7 @@
       "EDIT_TITLE": "{spanish} Patient Record",
       "ACCORDION_HEADER": "{spanish} Patient's Information",
       "INFO": "{spanish} Please complete all required fields to create a Patient Account.",
+      "MRN_LABEL": "{spanish} Medical Record Number:",
       "REQUIRED_INFORMATION": {
         "LABEL": "{spanish} Required Information",
         "ROLE_PLACEHOLDER": "{spanish} Role",
