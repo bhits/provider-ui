@@ -19,7 +19,7 @@
         </div>
       </div>
       <div fxLayout="column">
-        <p fxLayout="row">{{consentRevocationTerms}}</p>
+        <p fxLayout="row" style="white-space: pre">{{consentRevocationTerms}}</p>
         <div>
           <md-checkbox fxLayoutAlign="start" (click)="confirmRevokeConsentTerms.open()" [(ngModel)]="checked">
             {{ 'CONSENT.CONSENT_REVOKE.TERMS' | translate:username }}
