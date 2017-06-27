@@ -29,7 +29,7 @@ export class PatientListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPage(this.currentPage);
+    /*this.getPage(this.currentPage);
     // Avoid to send too many API calls
     this.searchTerms
       .debounceTime(300)
@@ -41,7 +41,7 @@ export class PatientListComponent implements OnInit {
         },
         err => {
           this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_SEARCH_PATIENT");
-        });
+        });*/
   }
 
   public search(term: string): void {
