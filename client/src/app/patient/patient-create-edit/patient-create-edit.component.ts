@@ -45,6 +45,9 @@ export class PatientCreateEditComponent implements OnInit {
   //Todo: Will remove when support multiple roles
   public disabledRoles: string[];
   public oneEmailRequiredMessage: string = ValidationRules.ONE_EMAIL_REQUIRED_MESSAGE;
+  //turn off display activation and segmentation
+  public displayActivation: boolean = false;
+  public displaySegmentation: boolean = false;
 
   constructor(private apiUrlService: ApiUrlService,
               private confirmDialogService: ConfirmDialogService,
