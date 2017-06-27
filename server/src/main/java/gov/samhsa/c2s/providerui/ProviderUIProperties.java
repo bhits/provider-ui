@@ -1,7 +1,6 @@
 package gov.samhsa.c2s.providerui;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,11 +14,9 @@ public class ProviderUIProperties {
     private ProviderPermissions providerPermissions;
 
     @Data
-    private static class ProviderPermissions {
-        @NotBlank
-        private boolean isConsentSignEnabled;
+    public static class ProviderPermissions {
+        private boolean isConsentSignEnabled=false;
 
-        @NotBlank
-        private boolean isConsentRevokeEnabled;
+        private boolean isConsentRevokeEnabled=false;
     }
 }
