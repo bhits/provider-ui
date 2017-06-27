@@ -53,7 +53,7 @@ const consentRoutes: Routes = [
         path: ':consentId/consent-revoke',
         component: ConsentRevokeComponent,
         resolve: {
-          consent: DetailedConsentResolveService,
+          consent: ConsentResolveService,
           consentRevocationTerms: ConsentRevocationTermsResolveService
         }
       }
