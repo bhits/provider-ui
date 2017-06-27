@@ -42,11 +42,13 @@
           "STAGE_TEXT": "IN PROGRESS",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
-          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Delete This Consent"
+          "PROVIDE_ESIGNATURE_OPTION_TEXT": "Provide eSignature",
+          "DELETE_THIS_CONSENT_OPTION_TEXT": "Delete This Consent"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "SIGNED",
-          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent"
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "REVOCATION_OPTION_TEXT": "Revocation"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "REVOKED",
@@ -116,26 +118,93 @@
     },
     "TERMS": {
       "TITLE": "Consent Terms",
-      "TEXT": "Enter a start and end date during with your medical records will be shared.",
+      "TEXT": "Enter a start and end date during which your medical records will be shared.",
       "START_DATE": "Start Date:",
       "END_DATE": "End Date:",
       "ERROR_PAST_START_DATE": "Start date should be in the present.",
       "ERROR_PAST_END_DATE": "End date should be in the present.",
       "ERROR_END_DATE_BEFORE_START": "Start date CAN NOT exceed End date."
     },
+    "CONSENT_SIGN": {
+      "TITLE": "Consent to Share My Medical Information",
+      "REFERENCE_NUMBER": "Consent Reference Number",
+      "PATIENT_NAME": "Patient Name",
+      "PATIENT_DOB": "Patient DOB",
+      "AUTHORIZATION_SECTION": {
+        "TITLE": "AUTHORIZATION TO DISCLOSE",
+        "AUTHORIZE_LABEL": "Authorizes",
+        "DISCLOSE_LABEL": "To disclose to",
+        "PROVIDER": {
+          "NAME": "Provider Name",
+          "NPI": "NPI Number",
+          "PHONE": "Phone",
+          "ADDRESS": "Address"
+          }
+      },
+      "HEALTH_INFORMATION_SECTION": {
+        "TITLE": "HEALTH INFORMATION TO BE DISCLOSED",
+        "SHARE_MEDICAL_INFO": "To SHARE the following medical information",
+        "SHARE_PURPOSES": "To SHARE for the following purpose(s)"
+      },
+      "CONSENT_TERMS_SECTION": {
+        "TITLE": "CONSENT TERMS",
+        "START_DATE": "Effective Date",
+        "END_DATE": "Expiration Date",
+        "TERMS": "I, {{name}}, hereby accept, and understand the terms of this consent."
+      },
+      "CONFIRM_DIALOG": {
+        "TITLE": "Please Authenticate",
+        "CONTENT": "Please provide your account password to authenticate, and complete e-signature",
+        "AUTHENTICATE_MSG": "Failed to authenticate. Please try again.",
+        "CANCEL_BTN": "Cancel",
+        "CONTINUE_BTN": "Continue"
+      },
+      "COMPLETE_DIALOG": {
+        "TITLE": "Successfully Signed the Consent on behalf of the patient.",
+        "DOWNLOAD_BTN": "Download the Signed Consent",
+        "CONTINUE_BTN": "Continue"
+      },
+      "CANCEL_BTN": "Cancel",
+      "COMPLETE_BTN": "Complete"
+    },
+    "CONSENT_REVOKE": {
+      "TITLE": "Revocation of Consent to Share My Health Information",
+      "REFERENCE_NUMBER": "Consent Reference Number",
+      "PATIENT_NAME": "Patient Name",
+      "PATIENT_DOB": "Patient DOB",
+      "CONFIRM_DIALOG": {
+        "TITLE": "Please Authenticate",
+        "CONTENT": "Please provide your account password to authenticate, and complete e-signature",
+        "AUTHENTICATE_MSG": "Failed to authenticate. Please try again.",
+        "CANCEL_BTN": "Cancel",
+        "CONTINUE_BTN": "Continue"
+      },
+      "COMPLETE_DIALOG": {
+        "TITLE": "Successfully Revoked the Consent",
+        "DOWNLOAD_BTN": "Download the Signed Consent Revocation",
+        "CONTINUE_BTN": "Continue"
+      },
+      "TERMS": "I, {{name}}, hereby accept, and understand the terms of this consent.",
+      "CANCEL_BTN": "Cancel",
+      "COMPLETE_BTN": "Complete"
+    },
     "NOTIFICATION_MSG": {
       "SUCCESS_CREATING_CONSENT": "Successfully created the consent on behalf of the patient.",
-      "FAILED_CREATING_CONSENT": "Error in creating consent on behalf of the patient.",
+      "FAILED_CREATING_CONSENT": "Error in creating the consent on behalf of the patient.",
       "SUCCESS_UPDATING_CONSENT": "Successfully updated the consent on behalf of the patient.",
-      "FAILED_UPDATING_CONSENT": "Error in updating consent on behalf of the patient.",
-      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "Success in downloading saved consent.",
-      "FAILED_DOWNLOAD_SAVED_CONSENT": "Failed to download the saved consent, please try again later...",
-      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "Success in downloading signed consent.",
-      "FAILED_DOWNLOAD_SIGNED_CONSENT": "Failed to download the signed consent, please try again later...",
+      "FAILED_UPDATING_CONSENT": "Error in updating the consent on behalf of the patient.",
+      "SUCCESS_SIGN_CONSENT": "Successfully attested the consent on behalf of the patient.",
+      "FAILED_SIGN_CONSENT": "Error in attesting the consent on behalf of the patient.",
+      "SUCCESS_REVOKE_CONSENT": "Successfully revoked the consent on behalf of the patient.",
+      "FAILED_REVOKE_CONSENT": "Error in revoking consent on behalf of the patient.",
+      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "Success in downloading the saved consent.",
+      "FAILED_DOWNLOAD_SAVED_CONSENT": "Failed to download the saved consent. Please try again later.",
+      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "Success in downloading the signed consent.",
+      "FAILED_DOWNLOAD_SIGNED_CONSENT": "Failed to download the signed consent. Please try again later.",
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "Success in downloading revoked consent.",
-      "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent, please try again later...",
-      "SUCCESS_DELETE_CONSENT": "Success in deleting consent.",
-      "FAILED_DELETE_CONSENT": "Failed to delete the consent, please try again later..."
+      "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent. Please try again later.",
+      "SUCCESS_DELETE_CONSENT": "Successfully deleted the consent on behalf of the patient.",
+      "FAILED_DELETE_CONSENT": "Failed to delete the consent. Please try again later."
     }
   },
   "PATIENT": {

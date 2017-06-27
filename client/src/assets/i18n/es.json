@@ -1,7 +1,7 @@
 {
   "HOME": {
-    "WELCOME_TITLE": "(Spanish)Welcome to Consent2Share admin!",
-    "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
+    "WELCOME_TITLE": "{spanish} Welcome to Consent2Share admin!",
+    "WELCOME_SUB_TITLE": "{spanish} You are now ready to manage your patients.",
     "PATIENT_CARD": {
       "TITLE": "My <span class=\"font-weight700\">Patients</span>",
       "STEP": "Step 1.",
@@ -42,11 +42,13 @@
           "STAGE_TEXT": "EN CURSO",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Editar este consentimiento",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Previsualizar este consentimiento",
-          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Eliminar este consentimiento"
+          "PROVIDE_ESIGNATURE_OPTION_TEXT": "Proporcionar eSignature",
+          "DELETE_THIS_CONSENT_OPTION_TEXT": "Eliminar este consentimiento"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "FIRMADO",
-          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado"
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
+          "REVOCATION_OPTION_TEXT": "Revocación"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "Rechazado",
@@ -123,19 +125,86 @@
       "ERROR_PAST_END_DATE": "La fecha de finalización debe estar en el presente.",
       "ERROR_END_DATE_BEFORE_START": "La fecha de inicio debe continuar la fecha de finalización."
     },
+    "CONSENT_SIGN": {
+      "TITLE": "Consentimiento para compartir mi información médica",
+      "REFERENCE_NUMBER": "Número de referencia del consentimiento",
+      "PATIENT_NAME": "Nombre del paciente",
+      "PATIENT_DOB": "Fecha de nacimiento del paciente",
+      "AUTHORIZATION_SECTION": {
+        "TITLE": "AUTORIZACIÓN PARA DIVULGAR",
+        "AUTHORIZE_LABEL": "Authorizes",
+        "DISCLOSE_LABEL": "Revelar a",
+        "PROVIDER": {
+          "NAME": "Nombre del proveedor",
+          "NPI": "Número NPI",
+          "PHONE": "Teléfono",
+          "ADDRESS": "Dirección"
+        }
+      },
+      "HEALTH_INFORMATION_SECTION": {
+        "TITLE": "INFORMACIÓN SANITARIA A REVELAR",
+        "SHARE_MEDICAL_INFO": "Para COMPARTIR la siguiente información médica",
+        "SHARE_PURPOSES": "Para COMPARTIR para el siguiente propósito (s)"
+      },
+      "CONSENT_TERMS_SECTION": {
+        "TITLE": "TÉRMINOS DE CONSENTIMIENTO",
+        "START_DATE": "Fecha de vigencia",
+        "END_DATE": "Fecha de caducidad",
+        "TERMS": "Yo, {{name}}, por la presente acepto, y entiendo los términos de este consentimiento."
+      },
+      "CONFIRM_DIALOG": {
+        "TITLE": "Por favor, autentifique",
+        "CONTENT": "Proporcione su contraseña de cuenta para autenticar y complete la firma electrónica",
+        "AUTHENTICATE_MSG": "No se pudo autenticar, inténtalo de nuevo ...",
+        "CANCEL_BTN": "Cancelar",
+        "CONTINUE_BTN": "Continuar"
+      },
+      "COMPLETE_DIALOG": {
+        "TITLE": "El éxito en el consentimiento firmado creado",
+        "DOWNLOAD_BTN": "Descargar el consentimiento firmado",
+        "CONTINUE_BTN": "Continuar"
+      },
+      "CANCEL_BTN": "Cancelar",
+      "COMPLETE_BTN": "Completar"
+    },
+    "CONSENT_REVOKE": {
+      "TITLE": "{spanish} Revocation of Consent to Share My Health Information",
+      "REFERENCE_NUMBER": "Consent Reference Number",
+      "PATIENT_NAME": "Patient Name",
+      "PATIENT_DOB": "Patient DOB",
+      "CONFIRM_DIALOG": {
+        "TITLE": "{spanish} Please Authenticate",
+        "CONTENT": "{spanish} Please provide your account password to authenticate, and complete e-signature",
+        "AUTHENTICATE_MSG": "{spanish} Failed to authenticate. Please try again.",
+        "CANCEL_BTN": "Cancelar",
+        "CONTINUE_BTN": "Continue"
+      },
+      "COMPLETE_DIALOG": {
+        "TITLE": "{spanish} Successfully Revoked Consent",
+        "DOWNLOAD_BTN": "{spanish} Download Signed Consent Revocation",
+        "CONTINUE_BTN": "Continue"
+      },
+      "TERMS": "I, {{name}}, hereby accept, and understand the terms of this consent.",
+      "CANCEL_BTN": "Cancelar",
+      "COMPLETE_BTN": "Completar"
+    },
     "NOTIFICATION_MSG": {
       "SUCCESS_CREATING_CONSENT": "{spanish} Successfully created the consent on behalf of the patient.",
-      "FAILED_CREATING_CONSENT": "{spanish} Error in creating consent on behalf of the patient.",
+      "FAILED_CREATING_CONSENT": "{spanish} Error in creating the consent on behalf of the patient.",
       "SUCCESS_UPDATING_CONSENT": "{spanish} Successfully updated the consent on behalf of the patient.",
-      "FAILED_UPDATING_CONSENT": "{spanish} Error in updating consent on behalf of the patient.",
-      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "{spanish} Success in downloading saved consent.",
-      "FAILED_DOWNLOAD_SAVED_CONSENT": "{spanish} Failed to download the saved consent, please try again later...",
-      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "{spanish} Success in downloading signed consent.",
-      "FAILED_DOWNLOAD_SIGNED_CONSENT": "{spanish} Failed to download the signed consent, please try again later...",
+      "FAILED_UPDATING_CONSENT": "{spanish} Error in updating the consent on behalf of the patient.",
+      "SUCCESS_SIGN_CONSENT": "{spanish} Successfully attested the consent on behalf of the patient.",
+      "FAILED_SIGN_CONSENT": "{spanish} Error in attesting the consent on behalf of the patient.",
+      "SUCCESS_REVOKE_CONSENT": "{spanish} Successfully revoked the consent on behalf of the patient.",
+      "FAILED_REVOKE_CONSENT": "{spanish} Error in revoking consent on behalf of the patient.",
+      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "{spanish} Success in downloading the saved consent.",
+      "FAILED_DOWNLOAD_SAVED_CONSENT": "{spanish} Failed to download the saved consent. Please try again later.",
+      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "{spanish} Success in downloading the signed consent.",
+      "FAILED_DOWNLOAD_SIGNED_CONSENT": "{spanish} Failed to download the signed consent. Please try again later.",
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "{spanish} Success in downloading revoked consent.",
-      "FAILED_DOWNLOAD_REVOKED_CONSENT": "{spanish} Failed to download the revoked consent, please try again later...",
-      "SUCCESS_DELETE_CONSENT": "{spanish} Success in deleting consent.",
-      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent, please try again later..."
+      "FAILED_DOWNLOAD_REVOKED_CONSENT": "{spanish} Failed to download the revoked consent. Please try again later.",
+      "SUCCESS_DELETE_CONSENT": "{spanish} Successfully deleted the consent.",
+      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent. Please try again later."
     }
   },
   "PATIENT": {
@@ -199,8 +268,8 @@
         "SSN_PLACEHOLDER": "{spanish} Social Security Number",
         "PHONE_PLACEHOLDER": "{spanish} Phone"
       },
-      "CANCEL_BTN": "{spanish} Cancel",
-      "SAVE_BTN": "{spanish} Save",
+      "CANCEL_BTN": "Cancelar",
+      "SAVE_BTN": "Guardar cambios",
       "CONFIRM_DIALOG": {
         "TITLE": "{spanish} Confirm Navigation",
         "CONTENT": "{spanish} You will lose all unsaved work, Are you sure you want to leave this page?"

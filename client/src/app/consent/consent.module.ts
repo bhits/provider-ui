@@ -19,6 +19,9 @@ import {PurposeOfUseComponent} from "./purpose-of-use/purpose-of-use.component";
 import {FormsModule} from "@angular/forms";
 import {PurposeOfUseService} from "app/consent/shared/purpose-of-use.service";
 import {MedicalInformationService} from "./shared/medical-information.service";
+import { ConsentRevokeComponent } from './consent-revoke/consent-revoke.component';
+import { ConsentSignComponent } from './consent-sign/consent-sign.component';
+import { ConsentProviderPipe } from './shared/consent-provider.pipe';
 
 @NgModule({
   imports: [
@@ -40,7 +43,10 @@ import {MedicalInformationService} from "./shared/medical-information.service";
     SelectProviderComponent,
     ConsentTermsComponent,
     MedicalInformationComponent,
-    PurposeOfUseComponent
+    PurposeOfUseComponent,
+    ConsentRevokeComponent,
+    ConsentSignComponent,
+    ConsentProviderPipe
   ],
   exports: [ConsentCardListComponent],
   providers: [

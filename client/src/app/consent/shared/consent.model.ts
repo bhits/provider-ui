@@ -3,6 +3,7 @@ import {Identifiers} from "app/shared/identifiers.model";
 
 export class Consent {
   id: number;
+  consentReferenceId: string;
   fromProviders: Identifiers;
   toProviders: Identifiers;
   shareSensitivityCategories: Identifiers;

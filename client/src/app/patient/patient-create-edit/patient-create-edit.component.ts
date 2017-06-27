@@ -333,7 +333,7 @@ export class PatientCreateEditComponent implements OnInit {
     return homeAddress;
   }
 
-  private isIdentifiersEnabled(): boolean {
+  public isIdentifiersEnabled(): boolean {
     return this.identifierSystems.length > 0;
   }
 }
