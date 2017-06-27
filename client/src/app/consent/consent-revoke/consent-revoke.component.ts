@@ -30,7 +30,7 @@ export class ConsentRevokeComponent implements OnInit {
   consentId: string;
   username:any;
   public selectedPatientName: any;
-  private selectedPatient: Patient;
+  public selectedPatient: Patient;
   private consentListUrl: string;
 
   constructor(private authenticationService: AuthenticationService,
