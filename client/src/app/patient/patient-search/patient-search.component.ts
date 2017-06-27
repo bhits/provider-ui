@@ -95,7 +95,7 @@ export class PatientSearchComponent implements OnInit {
 
   public getPage(page: number) {
     this.loading = true;
-    this.requestParams.page = page - 1;
+    this.requestParams.page = (page-1).toString();
     this.asyncPatients = this.patientService.searchPatientsByDemographics(this.requestParams)
       .do((patients: PageableData<Patient>) => {
         this.hasSearchResult = true;

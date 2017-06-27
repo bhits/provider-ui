@@ -3,6 +3,6 @@ export class PatientSearchQuery {
   lastName?: string;
   birthDate?: string;
   genderCode?: string;
-  page?: number;
-  size?: number;
+  page?: string;
+  size?: string;
 }
