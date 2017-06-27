@@ -1,0 +1,168 @@
+<div class="p-t-75">
+  <md-grid-list cols="1">
+    <md-card>
+      <h2 fxLayoutAlign="start">{{ 'CONSENT.CONSENT_SIGN.TITLE' | translate }}</h2>
+      <div fxLayout="column">
+        <div fxLayoutAlign="start">{{ 'CONSENT.CONSENT_SIGN.REFERENCE_NUMBER' | translate }}:</div>
+        <div fxLayoutAlign="start">
+          <strong>{{consent.consentReferenceId}}</strong>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex fxLayoutAlign="start">
+          <span>{{ 'CONSENT.CONSENT_SIGN.PATIENT_NAME' | translate }}: </span>
+          <span><strong>{{selectedPatientName.name}}</strong></span>
+        </div>
+        <div fxFlex>
+          <span>{{ 'CONSENT.CONSENT_SIGN.PATIENT_DOB' | translate }}: </span>
+          <span><strong>{{selectedPatient.birthDate | date }}</strong></span>
+        </div>
+      </div>
+      <md-toolbar color="primary">
+        {{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.TITLE' | translate }}
+      </md-toolbar>
+      <div fxLayout="column">
+        <div fxLayoutAlign="start"><strong>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.AUTHORIZE_LABEL' | translate
+          }}: </strong></div>
+        <div fxLayoutAlign="start">
+          <table [md2Data]="consent.fromProviders" [rowsPerPage]="10">
+            <thead>
+            <tr>
+              <th style="width: 30%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NAME' | translate }}</th>
+              <th style="width: 10%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NPI' | translate }}</th>
+              <th style="width: 13%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.PHONE' | translate }}</th>
+              <th style="width: 47%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.ADDRESS' | translate }}
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let provider of consent.fromProviders">
+              <td>{{provider | consentProvider: 'name'}}</td>
+              <td>{{provider | consentProvider: 'npi'}}</td>
+              <td>{{provider | consentProvider: 'phone'}}</td>
+              <td>{{provider | consentProvider: 'address' | usPhoneNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <strong>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.DISCLOSE_LABEL' | translate }}: </strong></div>
+        <div fxLayoutAlign="start">
+          <table [md2Data]="consent.toProviders" [rowsPerPage]="10">
+            <thead>
+            <tr>
+              <th style="width: 30%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NAME' | translate }}</th>
+              <th style="width: 10%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NPI' | translate }}</th>
+              <th style="width: 13%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.PHONE' | translate }}</th>
+              <th style="width: 47%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.ADDRESS' | translate }}
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let provider of consent.toProviders">
+              <td>{{provider | consentProvider: 'name'}}</td>
+              <td>{{provider | consentProvider: 'npi'}}</td>
+              <td>{{provider | consentProvider: 'phone'}}</td>
+              <td>{{provider | consentProvider: 'address' | usPhoneNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <md-toolbar color="primary">
+        {{ 'CONSENT.CONSENT_SIGN.HEALTH_INFORMATION_SECTION.TITLE' | translate }}
+      </md-toolbar>
+      <div fxLayout="row">
+        <div fxFlex fxLayout="column">
+          <div fxLayoutAlign="start">
+            <strong>
+              {{ 'CONSENT.CONSENT_SIGN.HEALTH_INFORMATION_SECTION.SHARE_MEDICAL_INFO' | translate }}:
+            </strong>
+          </div>
+          <div fxLayoutAlign="start" fxLayout="column">
+            <md-list *ngFor="let shareSensitivityCategory of consent.shareSensitivityCategories">
+              <md-list-item>{{shareSensitivityCategory | sensitivityCategory: 'display'}}</md-list-item>
+            </md-list>
+          </div>
+        </div>
+        <div fxFlex fxLayout="column">
+          <div fxLayoutAlign="start"><strong>
+            {{ 'CONSENT.CONSENT_SIGN.HEALTH_INFORMATION_SECTION.SHARE_PURPOSES' | translate }}:
+          </strong></div>
+          <div fxLayoutAlign="start" fxLayout="column">
+            <md-list *ngFor="let sharePurpose of consent.sharePurposes">
+              <md-list-item>{{sharePurpose | sharePurpose: 'display'}}</md-list-item>
+            </md-list>
+          </div>
+        </div>
+      </div>
+      <md-toolbar color="primary">
+        {{ 'CONSENT.CONSENT_SIGN.CONSENT_TERMS_SECTION.TITLE' | translate }}
+      </md-toolbar>
+      <div fxLayout="column">
+        <p fxLayout="row">{{termsWithUserName}}
+        </p>
+        <div fxLayoutAlign="start" fxLayout="row">
+          <div fxFlex fxLayoutAlign="start">
+            <strong>{{ 'CONSENT.CONSENT_SIGN.CONSENT_TERMS_SECTION.START_DATE' | translate }}: {{consent.startDate |
+              date}}
+            </strong>
+          </div>
+          <div fxFlex fxLayoutAlign="start">
+            <strong>
+              {{ 'CONSENT.CONSENT_SIGN.CONSENT_TERMS_SECTION.END_DATE' | translate }}: {{consent.endDate | date}}
+            </strong>
+          </div>
+        </div>
+        <div>
+          <md2-dialog #confirmConsentTerms (onClose)="clearCheckbox()">
+            <md2-dialog-title>
+              {{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.TITLE' | translate }}
+            </md2-dialog-title>
+            <div fxLayout="column">
+              <p class="dialog-text">{{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.CONTENT' | translate }}</p>
+              <md-input-container>
+                <input mdInput type="password" placeholder="Password" [(ngModel)]="password">
+              </md-input-container>
+              <div *ngIf="inValid" class="authenticate-invalid">{{ 'CONSENT_SIGN.CONFIRM_DIALOG.AUTHENTICATE_MSG' |
+                translate }}
+              </div>
+            </div>
+            <md2-dialog-footer>
+              <button md-raised-button (click)="confirmConsentTerms.close()">
+                {{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.CANCEL_BTN' | translate }}
+              </button>
+              <button md-raised-button color="primary" (click)="toAuthenticate(confirmConsentTerms)">
+                {{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.CONTINUE_BTN' | translate }}
+              </button>
+            </md2-dialog-footer>
+          </md2-dialog>
+          <md-checkbox fxLayoutAlign="start" (click)="confirmConsentTerms.open()" [(ngModel)]="checked">
+            {{ 'CONSENT.CONSENT_SIGN.CONSENT_TERMS_SECTION.TERMS' | translate:username}}
+          </md-checkbox>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+        <button md-raised-button color="primary" (click)="cancel()">
+          <strong>{{ 'CONSENT.CONSENT_SIGN.CANCEL_BTN' | translate }}</strong>
+        </button>
+        <md2-dialog #completeAttestation (onClose)="navigateTo()">
+          <md2-dialog-title>{{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.TITLE' | translate }}</md2-dialog-title>
+          <md2-dialog-footer>
+            <button md-raised-button color="primary" (click)="getSignedConsentPdf()">
+              {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.DOWNLOAD_BTN' | translate }}
+            </button>
+            <button md-raised-button color="primary" (click)="cancel()">
+              {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.CONTINUE_BTN' | translate }}
+            </button>
+          </md2-dialog-footer>
+        </md2-dialog>
+        <button md-raised-button color="primary" [disabled]="!isAuthenticated"
+                (click)="attestConsent(completeAttestation)">
+          <strong>
+            {{ 'CONSENT.CONSENT_SIGN.COMPLETE_BTN' | translate }}
+          </strong>
+        </button>
+      </div>
+    </md-card>
+  </md-grid-list>
+  <br>
+</div>

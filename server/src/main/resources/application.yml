@@ -4,3 +4,10 @@ logging:
   file: /java/C2S_LOGS/provider-ui/provider-ui.log
 info:
   component: Provider UI
+
+# The configuration used for UI
+c2s:
+  provider-ui:
+    provider-permissions:
+      isConsentSignEnabled: false
+      isConsentRevokeEnabled: false

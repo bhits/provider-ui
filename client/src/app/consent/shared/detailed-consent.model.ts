@@ -4,6 +4,7 @@ import {SharePurpose} from "./share-purpose.model";
 
 export class DetailedConsent {
   id: number;
+  consentReferenceId: string;
   consentStage: string;
   fromProviders: Provider[];
   toProviders: Provider[];
