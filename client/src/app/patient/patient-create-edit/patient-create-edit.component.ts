@@ -220,8 +220,10 @@ export class PatientCreateEditComponent implements OnInit {
       }
       this.createEditPatientForm.setValue(value);
     }
-    //Disable identifier system when in Patient Edit Mode
-    this.createEditPatientForm.get("identifier.system").disable();
+    if(this.isIdentifiersEnabled()){
+      //Disable identifier system when in Patient Edit Mode
+      this.createEditPatientForm.get("identifier.system").disable();
+    }
   }
 
   cancel(): void {
