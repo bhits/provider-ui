@@ -55,7 +55,8 @@ export class ConsentSignComponent implements OnInit {
       }
     });
     this.profile = this.tokenService.getProfileToken();
-    this.username = {name: this.profile.name};
+    let userNameFromProfile = this.utilityService.toTitleCase(this.profile.name);
+    this.username = {name: userNameFromProfile};
     this.termsWithUserName = this.getConsentAttestationTermWithPatientName(this.route.snapshot.data['consentTerms']);
   }
 

@@ -115,4 +115,10 @@ export class UtilityService {
     }
     return ''
   }
+
+  public toTitleCase(fullName: string): string {
+    return fullName.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
 }

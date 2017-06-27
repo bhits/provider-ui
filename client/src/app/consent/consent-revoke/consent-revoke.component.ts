@@ -63,9 +63,8 @@ export class ConsentRevokeComponent implements OnInit {
 
     this.consentRevocationTerms = this.route.snapshot.data['consentRevocationTerms'].text;
     let profile = this.tokenService.getProfileToken();
-    this.userName = profile.userName;
-    this.fullName = profile.name;
-    this.username = {name: profile.name};
+    let userNameFromProfile = this.utilityService.toTitleCase(profile.name);
+    this.username = {name: userNameFromProfile};
   }
 
   clearCheckbox() {
