@@ -113,9 +113,9 @@ export class PatientSearchComponent implements OnInit {
   }
 
   public clear(): void {
-    /*this.searchPatientForm.reset();
-    this.hasSearchResult = false;*/
-    window.location.reload();
+    this.searchPatientForm.reset();
+    this.hasSearchResult = false;
+    this.asyncPatients=null;
   }
 
   public cancel(): void {
