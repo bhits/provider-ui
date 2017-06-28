@@ -21,6 +21,10 @@
         </div>
       </div>
       <form [formGroup]="createEditPatientForm" class="create-edit-patient-form" novalidate>
+        <h2 fxLayout="row" fxLayoutGap="20px" *ngIf="isEditMode">
+          <label for="patient-mrn"><strong>{{ 'PATIENT.CREATE_EDIT.MRN_LABEL' | translate }}</strong></label>
+          <span id="patient-mrn">{{patient?.mrn}}</span>
+        </h2>
         <h2>
           {{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.LABEL' | translate }}
         </h2>

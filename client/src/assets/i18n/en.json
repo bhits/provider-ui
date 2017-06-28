@@ -73,6 +73,7 @@
       "DESCRIPTION": "Select how you would like to share your medical information.",
       "SHARE_ALL_RADIO": "<strong>SHARE</strong> my medical record <strong>WITHOUT ANY EXCEPTION</strong> of medical information categories.",
       "SHARE_SOME_RADIO": "<strong>SHARE</strong> my medical record <strong>WITH EXCEPTION</strong> of specific medical information categories.",
+      "SELECTED_SENSITIVITY_CATEGORIES_LABEL": "Sharing the following:",
       "DIALOG": {
         "TITLE": "Privacy Settings",
         "HEADER1": "Sensitive Information Categories",
@@ -244,6 +245,7 @@
       "EDIT_TITLE": "Patient Record",
       "ACCORDION_HEADER": "Patient's Information",
       "INFO": "Please complete all required fields to create a Patient Account.",
+      "MRN_LABEL": "Medical Record Number:",
       "REQUIRED_INFORMATION": {
         "LABEL": "Required Information",
         "ROLE_PLACEHOLDER": "Role",

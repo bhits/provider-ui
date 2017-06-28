@@ -73,6 +73,7 @@
       "DESCRIPTION": "Seleccione cómo le gustaría compartir su información médica.",
       "SHARE_ALL_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> SIN NINGUNA EXCEPCIÓN </ strong> de categorías de información médica.",
       "SHARE_SOME_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> CON EXCEPCIÓN </ strong> de categorías específicas de información médica.",
+      "SELECTED_SENSITIVITY_CATEGORIES_LABEL": "{spanish}Sharing the following:",
       "DIALOG": {
         "TITLE": "La configuración de privacidad",
         "HEADER1": "Categorías de información sensible",
@@ -242,6 +243,7 @@
       "EDIT_TITLE": "{spanish} Patient Record",
       "ACCORDION_HEADER": "{spanish} Patient's Information",
       "INFO": "{spanish} Please complete all required fields to create a Patient Account.",
+      "MRN_LABEL": "{spanish} Medical Record Number:",
       "REQUIRED_INFORMATION": {
         "LABEL": "{spanish} Required Information",
         "ROLE_PLACEHOLDER": "{spanish} Role",
