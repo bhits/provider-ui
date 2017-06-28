@@ -1,22 +1,15 @@
 import { Injectable } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 
-import {Http} from "@angular/http";
-import {ApiUrlService} from "../shared/api-url.service";
-import {ExceptionService} from "../shared/exception.service";
 import {ProfileService} from "../security/shared/profile.service";
 import {UmsProfile} from "../security/shared/ums-profile.model";
 
 
 @Injectable()
 export class CustomTranslateService {
-  private umsProfileUrl: string = this.apiUrlService.getUmsBaseUrl().concat("/users/locale");
 
   constructor( private translateService: TranslateService,
-               private profileService: ProfileService,
-               private http: Http,
-               private apiUrlService: ApiUrlService,
-               private exceptionService: ExceptionService,) {
+               private profileService: ProfileService) {
   }
 
   getCurrentLanguage():string{
