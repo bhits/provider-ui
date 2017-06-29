@@ -6,4 +6,5 @@ export class ConsentStageOption {
   text: string;
   routerLink?: string;
   isMethod?: boolean;
+  isEnabled: boolean;
 }

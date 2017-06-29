@@ -46,7 +46,7 @@
             <md-chip class="consents"
                      *ngFor="let shareSensitivityCategory of consent.shareSensitivityCategories"
                      color="accent" selected="true">
-              <md-icon>lock</md-icon>
+              <md-icon>check_circle</md-icon>
               <span class="md-chip-icon-text">{{shareSensitivityCategory | sensitivityCategory: 'display'}}</span>
             </md-chip>
           </md-chip-list>
@@ -115,17 +115,16 @@
         <div class="margin-20" fxFill>
           <a fxLayoutAlign="space-between" md-raised-button
              (click)="invokeAction(consentOption, consentOptionsDialog, deleteConfirmationDialog)"
-             *ngIf="selectConsentMethodOption(consentOption); else isNotMethodOption">
+             *ngIf="selectConsentMethodOption(consentOption) && displayOnProviderUI(consentOption)">
             <md-icon>{{consentOption.icon}}</md-icon>
             <span class="margin-20">{{consentOption.text | translate}}</span>
           </a>
-          <ng-template #isNotMethodOption>
-            <a fxLayoutAlign="space-between" md-raised-button
-               [routerLink]="getRouterLink(consentOption)">
-              <md-icon>{{consentOption.icon}}</md-icon>
-              <span class="margin-20">{{consentOption.text | translate}}</span>
-            </a>
-          </ng-template>
+           <a fxLayoutAlign="space-between" md-raised-button
+              *ngIf="!selectConsentMethodOption(consentOption) && displayOnProviderUI(consentOption)"
+             [routerLink]="getRouterLink(consentOption)">
+             <md-icon>{{consentOption.icon}}</md-icon>
+             <span class="margin-20">{{consentOption.text | translate}}</span>
+           </a>
         </div>
       </md-list-item>
     </md-list>

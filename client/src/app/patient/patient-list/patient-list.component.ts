@@ -17,6 +17,7 @@ export class PatientListComponent implements OnInit {
   public totalItems: number = 0;
   public currentPage: number = 1;
   public itemsPerPage: number = 10;
+  public searchByDemographics : boolean = true;
   public noResult: boolean = false;
   public loading: boolean = false;
   public asyncPatients: Observable<Patient[]>;
@@ -28,19 +29,21 @@ export class PatientListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPage(this.currentPage);
-    // Avoid to send too many API calls
-    this.searchTerms
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => this.patientService.searchPatients(term))
-      .subscribe(
-        (patients) => {
-          this.searchPatients = patients;
-        },
-        err => {
-          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_SEARCH_PATIENT");
-        });
+    if(this.searchByDemographics==false) {
+      this.getPage(this.currentPage);
+      //Avoid to send too many API calls
+      this.searchTerms
+        .debounceTime(300)
+        .distinctUntilChanged()
+        .switchMap(term => this.patientService.searchPatients(term))
+        .subscribe(
+          (patients) => {
+            this.searchPatients = patients;
+          },
+          err => {
+            this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_SEARCH_PATIENT");
+          });
+    }
   }
 
   public search(term: string): void {

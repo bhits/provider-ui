@@ -1,0 +1,166 @@
+<div fxLayoutAlign="center" fxLayout="column">
+
+  <br><br>
+  <div fxLayoutAlign="center">
+    <a md-raised-button fxFlex="0 1 500px" *ngIf="hasSearchResult" routerLink="/patients/create" color="primary" [disabled]="!hasSearchResult">
+      <md-icon class="font-weight700">add</md-icon>
+      {{ 'PATIENT.LIST.CREATE_PATIENT_BUTTON' | translate }}
+    </a>
+    <a md-raised-button fxFlex="0 1 500px" *ngIf="!hasSearchResult"  color="primary" [disabled]="!hasSearchResult">
+      <md-icon class="font-weight700">add</md-icon>
+      {{ 'PATIENT.LIST.CREATE_PATIENT_BUTTON' | translate }}
+    </a>
+  </div>
+
+
+  <form [formGroup]="searchPatientForm" class="search-patient-form" novalidate>
+    <h2>
+      {{ 'PATIENT.SEARCH.CRITERIA.LABEL' | translate }}
+    </h2>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <md-input-container class="full-width font-size20">
+          <input mdInput
+                 placeholder="{{ 'PATIENT.SEARCH.CRITERIA.FIRST_NAME_PLACEHOLDER' | translate }}"
+                 formControlName="firstName">
+        </md-input-container>
+        <c2s-control-validation-error-message
+          [control]="searchPatientForm.controls.firstName">
+        </c2s-control-validation-error-message>
+      </div>
+      <div fxFlex>
+        <md-input-container class="full-width font-size20">
+          <input mdInput
+                 placeholder="{{ 'PATIENT.SEARCH.CRITERIA.LAST_NAME_PLACEHOLDER' | translate }}"
+                 formControlName="lastName">
+        </md-input-container>
+        <c2s-control-validation-error-message
+          [control]="searchPatientForm.controls.lastName">
+        </c2s-control-validation-error-message>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex>
+        <md-select placeholder="{{ 'PATIENT.SEARCH.CRITERIA.GENDER_PLACEHOLDER' | translate }}"
+                   formControlName="genderCode"
+                   class="full-width font-size20">
+          <md-option *ngFor="let gender of genders" [value]="gender.code">
+            {{ gender.displayName }}
+          </md-option>
+        </md-select>
+        <c2s-control-validation-error-message
+          [control]="searchPatientForm.controls.genderCode">
+        </c2s-control-validation-error-message>
+      </div>
+      <div fxFlex>
+        <md2-datepicker class="full-width font-size20"
+                        placeholder="{{ 'PATIENT.SEARCH.CRITERIA.DOB_PLACEHOLDER' | translate }}"
+                        [openOnFocus]="isOpenOnFocus" [format]="FORMAT"
+                        formControlName="birthDate">
+        </md2-datepicker>
+        <c2s-control-validation-error-message
+          [control]="searchPatientForm.controls.birthDate">
+        </c2s-control-validation-error-message>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+      <div *ngIf="hasSearchResult; else clearSearchButton">
+        <button md-raised-button color="primary" (click)="clear()">
+          <strong>
+            Clear
+          </strong>
+        </button>
+      </div>
+      <ng-template #clearSearchButton>
+        <button md-raised-button color="primary" (click)="cancel()">
+          <strong>
+            {{ 'PATIENT.SEARCH.CRITERIA.CANCEL_BTN' | translate }}
+          </strong>
+        </button>
+      </ng-template>
+      <button md-raised-button color="primary" (click)="searchPatient()"
+              [disabled]="searchPatientForm.invalid">
+        <strong>
+          {{ 'PATIENT.SEARCH.CRITERIA.SEARCH_BTN' | translate }}
+        </strong>
+      </button>
+    </div>
+  </form>
+  <div *ngIf="hasSearchResult">
+    <div class="m-t-lg p-b-sm border-bottom-purple" fxFlex="1 0 auto" fxLayoutAlign="flex-start center">
+    </div>
+    <h2>
+      {{ 'PATIENT.SEARCH.SEARCH_RESULT_MSG' | translate }}
+    </h2>
+  </div>
+
+  <div fxLayoutAlign="center">
+    <div style="padding-top: 20px">
+      <div style="background-color: #DEBCC9;" class="p-md font-size18 font-weight center-sm-left" *ngIf="noResult">
+        {{ 'PATIENT.SEARCH.NO_PATIENTS_MSG' | translate }}
+      </div>
+    </div>
+    <pagination-controls
+      previousLabel="{{ 'PATIENT.LIST.PAGINATION.PREVIOUS' | translate }}"
+      nextLabel="{{ 'PATIENT.LIST.PAGINATION.NEXT' | translate }}"
+      (pageChange)="getPage($event)" *ngIf="!noResult && hasSearchResult">
+    </pagination-controls>
+    <md-spinner *ngIf="loading"></md-spinner>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
+    <md-card class="patient-card"
+             *ngFor="let patient of asyncPatients | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
+      <md-card-header>
+        <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
+          <div class="fa fa-2x fa-address-book"></div>
+          <div class="m-l-xs font-weight700">{{patient | patient: 'fullName'}}</div>
+        </div>
+      </md-card-header>
+
+      <md-card-content class="p-t p-b p-l-md p-r-md">
+        <div>
+          <button md-fab (click)="redirectToPatientEdit(patient)">
+            <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="flexcontainer row" fxLayoutWrap="wrap">
+          <div fxFlex="0 1 120px">
+            <div class="m-t-xs flexcontainer column">
+              <div>
+                <div class="font-size12 p-b-xxs">
+                  {{ 'PATIENT.LIST.CARD.CONTENT.CONTACT_NUMBER' | translate }}
+                </div>
+                <div class="font-size14 font-weight500 p-b-sm">{{patient | patient: 'homePhone'| usPhoneNumber}}
+                </div>
+                <div class="font-size12 p-b-xxs">
+                  {{ 'PATIENT.LIST.CARD.CONTENT.DOB' | translate }}
+                </div>
+                <div class="font-size14 font-weight600">{{patient | patient: 'birthDate' | date}}</div>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="1 0 120px">
+            <div class="m-t-xs flexcontainer column">
+              <div fxLayout="column">
+                <div class="font-size12 p-b-xxs">
+                  {{ 'PATIENT.LIST.CARD.CONTENT.ADDRESS' | translate }}
+                </div>
+                <div class="font-size14 font-weight700">{{patient | patient: 'homeAddress'}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div fxLayoutAlign="center">
+    <pagination-controls
+      previousLabel="{{ 'PATIENT.LIST.PAGINATION.PREVIOUS' | translate }}"
+      nextLabel="{{ 'PATIENT.LIST.PAGINATION.NEXT' | translate }}"
+      (pageChange)="getPage($event)" *ngIf="!noResult && hasSearchResult">
+    </pagination-controls>
+  </div>
+
+</div>
+
