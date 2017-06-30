@@ -9,19 +9,29 @@ import {UtilityService} from "../../shared/utility.service";
 import {GlobalEventManagementService} from "../../core/global-event-management.service";
 import {Profile} from "../../core/profile.model";
 import {ProfileService} from "app/security/shared/profile.service";
+import {ConfigService} from "../../core/config.service";
+import {ConfigResponse} from "app/core/config-response.model";
 
 @Injectable()
 export class AuthenticationService {
-  //Todo: get from configuration
-  private AUTHORIZATION_HEADER: string = 'cHJvdmlkZXItdWk6Y2hhbmdlaXQ=';
+  private configResponse: ConfigResponse;
 
   constructor(private apiUrlService: ApiUrlService,
+              private configService: ConfigService,
               private exceptionService: ExceptionService,
               private globalEventManagementService: GlobalEventManagementService,
               private http: Http,
               private profileService: ProfileService,
               private tokenService: TokenService,
               private utilityService: UtilityService) {
+    this.configService.getBasicAuthorizationHeader()
+      .subscribe(
+        (configResponse) => {
+          this.configResponse = configResponse;
+        }
+        ,
+        (error) => console.log(error)
+      );
   }
 
   public login(username: string, password: string): Observable<AuthorizationResponse> {
@@ -30,10 +40,10 @@ export class AuthenticationService {
     params.set('password', password);
     params.set('grant_type', 'password');
     params.set('response_type', 'token');
-
+    const basicAuthorizationHeader: string = this.configResponse.oauth2.client.basicAuthorizationHeader;
     const headers: Headers = new Headers();
     headers.set('Content-Type', 'application/x-www-form-urlencoded');
-    headers.set('Authorization', 'Basic '.concat(this.AUTHORIZATION_HEADER));
+    headers.set('Authorization', 'Basic '.concat(basicAuthorizationHeader));
 
     return this.http.post(this.apiUrlService.getUaaTokenUrl(), params, {headers: headers})
       .map((resp: Response) => <AuthorizationResponse>(resp.json()))
@@ -41,10 +51,6 @@ export class AuthenticationService {
   }
 
   public onLoggedIn(response: AuthorizationResponse): void {
-    this.tokenService.setOauthToken(response);
-  }
-
-  public storeTokenInSessionStorage(response: AuthorizationResponse): void {
     this.tokenService.setOauthToken(response);
   }
 
