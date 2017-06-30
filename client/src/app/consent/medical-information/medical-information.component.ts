@@ -92,6 +92,11 @@ export class MedicalInformationComponent implements OnInit {
     this.isSelectOneSensitivityCategory = this.medicalInformationService.isCheckedOne(this.sensitivityCategories);
   }
 
+  public cancel(dialog: any): void {
+    dialog.close();
+    this.isShareAll = null;
+  }
+
   public isAbleToSave(): boolean {
     return !this.isSelectOneSensitivityCategory || this.isInvalidNotShareAll;
   }
