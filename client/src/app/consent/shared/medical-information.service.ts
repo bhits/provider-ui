@@ -12,12 +12,17 @@ export class MedicalInformationService {
   constructor() {
   }
 
-  public setSensitivityPoliciesStatusToUnChecked(sensitivityCategories: VssSensitivityCategory[]) {
+  public setSensitivityPoliciesStatusToUnChecked(sensitivityCategories: VssSensitivityCategory[]): void {
     sensitivityCategories.forEach(s => s[this.CHECK] = false);
   }
 
-  public setSensitivityPoliciesStatusToChecked(sensitivityCategories: VssSensitivityCategory[]) {
+  public setSensitivityPoliciesStatusToChecked(sensitivityCategories: VssSensitivityCategory[]): void {
     sensitivityCategories.forEach(s => s[this.CHECK] = true);
+  }
+
+  public setSelectedSensitivityPoliciesStatusToChecked(consent: Consent, sensitivityCategories: VssSensitivityCategory[]): void {
+    this.setSensitivityPoliciesStatusToChecked(
+      this.mapConsentSensitivityCategoriesToSensitivityCategories(consent, sensitivityCategories));
   }
 
   public mapConsentSensitivityCategoriesToSensitivityCategories(consent: Consent, sensitivityCategories: VssSensitivityCategory[]): VssSensitivityCategory[] {

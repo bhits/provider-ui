@@ -50,8 +50,10 @@
     </md-card-title>
     <md-card-content class="p-l-sm p-r-sm p-b-md">
       <h4 *ngIf="isInvalidNotShareAll">
-        {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.CONTENT' | translate }}
+        {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.WARNING_ONE' | translate }}
       </h4>
+      <p *ngIf="!isSelectOneSensitivityCategory && (isShareAll === notShareAllValue)"
+         [innerHTML]="'CONSENT.MEDICAL_INFORMATION.DIALOG.WARNING_TWO' | translate"></p>
       <div>
         <strong>
           {{federalInfo.title | translate}}

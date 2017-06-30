@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Headers, Http, Response, URLSearchParams} from "@angular/http";
+import {Http, Response, URLSearchParams} from "@angular/http";
 import {ApiUrlService} from "../../shared/api-url.service";
 import {Observable} from "rxjs/Observable";
 import {SharePurpose} from "./share-purpose.model";

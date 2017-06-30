@@ -12,13 +12,13 @@ import {Md2DialogConfig} from "md2";
   styleUrls: ['./medical-information.component.scss']
 })
 export class MedicalInformationComponent implements OnInit {
-  private isSelectOneSensitivityCategory: boolean = false;
   public readonly shareAllValue: number = 1;
   public readonly notShareAllValue: number = 0;
   public sensitivityCategories: VssSensitivityCategory[];
   public selectedSensitivityCategories: string[];
   public sensitivityCategoryCodes: string[] = [];
   public isShareAll: number;
+  public isSelectOneSensitivityCategory: boolean;
   public isInvalidNotShareAll: boolean = false;
   public federalInfo = {
     title: 'CONSENT.MEDICAL_INFORMATION.DIALOG.FED_TITLE',
@@ -46,6 +46,7 @@ export class MedicalInformationComponent implements OnInit {
     this.sensitivityCategories = this.route.snapshot.parent.data['sensitivityCategories'];
     let consentSensitivityCategories: VssSensitivityCategory[] = this.medicalInformationService.mapConsentSensitivityCategoriesToSensitivityCategories(this.patientConsent, this.sensitivityCategories);
     this.selectedSensitivityCategories = this.medicalInformationService.getSelectedSensitivityPolicies(consentSensitivityCategories);
+    this.isSelectOneSensitivityCategory = this.medicalInformationService.isCheckedOne(this.sensitivityCategories);
   }
 
   public onSelectShareAll(dialog: any, value: number) {
@@ -53,14 +54,19 @@ export class MedicalInformationComponent implements OnInit {
     this.isShareAll = value;
     this.selectedSensitivityCategories = [];
     this.sensitivityCategoryCodes = [];
-    //Checked all checked boxes
+    //Set all categories checked
     this.medicalInformationService.setSensitivityPoliciesStatusToChecked(this.sensitivityCategories);
     dialog.open(this.dialogConfig);
   }
 
   public onSelectDoNotShareAll(dialog: any, value: number) {
-    //Unchecked all checked boxes
+    //Set all categories Unchecked
     this.medicalInformationService.setSensitivityPoliciesStatusToUnChecked(this.sensitivityCategories);
+    if (this.patientConsent.id != null) {
+      //In Consent Edit Mode to set all selected categories checked
+      this.medicalInformationService
+        .setSelectedSensitivityPoliciesStatusToChecked(this.patientConsent, this.sensitivityCategories);
+    }
     this.isShareAll = value;
     dialog.open(this.dialogConfig);
     this.checkAllCategoriesSelected();
