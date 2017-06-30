@@ -52,16 +52,17 @@ export class MedicalInformationComponent implements OnInit {
     this.isShareAll = value;
     this.selectedSensitivityCategories = [];
     this.sensitivityCategoryCodes = [];
-    //Unchecked all checked boxes
+    //Checked all checked boxes
     this.medicalInformationService.setSensitivityPoliciesStatusToChecked(this.sensitivityCategories);
     dialog.open(this.dialogConfig);
   }
 
   public onSelectDoNotShareAll(dialog: any, value: number) {
-    this.checkAllCategoriesSelected();
-
+    //Unchecked all checked boxes
+    this.medicalInformationService.setSensitivityPoliciesStatusToUnChecked(this.sensitivityCategories);
     this.isShareAll = value;
     dialog.open(this.dialogConfig);
+    this.checkAllCategoriesSelected();
     this.patientConsent.shareSensitivityCategories.identifiers = this.medicalInformationService.getSelectedSensitivityPolicyIdentifiers(this.sensitivityCategories);
     this.consentService.setConsentEmitter(this.patientConsent);
   }
