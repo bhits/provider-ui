@@ -10,7 +10,6 @@ import {GlobalEventManagementService} from "../../core/global-event-management.s
 import {Profile} from "../../core/profile.model";
 import {ProfileService} from "app/security/shared/profile.service";
 import {ConfigService} from "../../core/config.service";
-import {ConfigResponse} from "app/core/config-response.model";
 import {NotificationService} from "../../shared/notification.service";
 
 @Injectable()
@@ -28,8 +27,8 @@ export class AuthenticationService {
               private utilityService: UtilityService) {
     this.configService.getBasicAuthorizationHeader()
       .subscribe(
-        (configResponse: ConfigResponse) => {
-          this.basicAuthorizationHeader = configResponse.oauth2.client.basicAuthorizationHeader;
+        (basicAuthorizationHeader: string) => {
+          this.basicAuthorizationHeader = basicAuthorizationHeader;
         },
         (error) => {
           this.notificationService.show("Could not load configuration from the server. Please to the Login Page and try again.");

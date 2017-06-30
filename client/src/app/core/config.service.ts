@@ -13,10 +13,11 @@ export class ConfigService {
               private http: Http) {
   }
 
-  public getBasicAuthorizationHeader(): Observable<ConfigResponse> {
+  public getBasicAuthorizationHeader(): Observable<string> {
     const resourceUrl = this.apiUrlService.getConfigBaseUrl().concat("/basicAuthorizationHeader");
     return this.http.get(resourceUrl)
       .map((resp: Response) => <ConfigResponse>(resp.json()))
+      .map(configResponse => configResponse.oauth2.client.basicAuthorizationHeader)
       .catch(this.exceptionService.handleError);
   }
 }
