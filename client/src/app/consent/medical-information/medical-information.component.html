@@ -65,7 +65,7 @@
         <md-checkbox *ngIf="sensitivityCategory.federal"
                      [(ngModel)]="sensitivityCategories[i].checked"
                      [disabled]="(isShareAll === shareAllValue)"
-                     (change)="isCheckedAll()">
+                     (change)="checkCategoriesSelectedStatus()">
           {{sensitivityCategory.displayName}}
           <md-icon tooltip="{{sensitivityCategory.description}}"
                    tooltip-positionh="below"
@@ -87,7 +87,7 @@
         <md-checkbox *ngIf="!sensitivityCategory.federal"
                      [(ngModel)]="sensitivityCategories[i].checked"
                      [disabled]="(isShareAll === shareAllValue)"
-                     (change)="isCheckedAll()">
+                     (change)="checkCategoriesSelectedStatus()">
           {{sensitivityCategory.displayName}}
           <md-icon tooltip="{{sensitivityCategory.description}}"
                    tooltip-positionh="below"
@@ -103,7 +103,7 @@
     </button>
     <button type="button" md-raised-button color="primary"
             *ngIf="(isShareAll === notShareAllValue)"
-            [disabled]="isInvalidNotShareAll"
+            [disabled]="isAbleToSave()"
             (click)="setSelectedMedicalInformation(medicalInformationDialog)">
       {{ 'CONSENT.MEDICAL_INFORMATION.DIALOG.SAVE_BTN' | translate }}
     </button>

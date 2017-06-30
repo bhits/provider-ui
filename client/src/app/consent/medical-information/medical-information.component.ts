@@ -12,6 +12,7 @@ import {Md2DialogConfig} from "md2";
   styleUrls: ['./medical-information.component.scss']
 })
 export class MedicalInformationComponent implements OnInit {
+  private isSelectOneSensitivityCategory: boolean = false;
   public readonly shareAllValue: number = 1;
   public readonly notShareAllValue: number = 0;
   public sensitivityCategories: VssSensitivityCategory[];
@@ -78,10 +79,15 @@ export class MedicalInformationComponent implements OnInit {
     this.setSelectedMedicalInformation(dialog);
   }
 
-  public isCheckedAll(): void {
+  public checkCategoriesSelectedStatus(): void {
     if (this.isShareAll === 0) {
       this.checkAllCategoriesSelected();
     }
+    this.isSelectOneSensitivityCategory = this.medicalInformationService.isCheckedOne(this.sensitivityCategories);
+  }
+
+  public isAbleToSave(): boolean {
+    return !this.isSelectOneSensitivityCategory || this.isInvalidNotShareAll;
   }
 
   private checkAllCategoriesSelected(): void {

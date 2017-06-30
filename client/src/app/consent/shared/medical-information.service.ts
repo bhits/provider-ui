@@ -64,4 +64,13 @@ export class MedicalInformationService {
     }
     return true;
   }
+
+  public isCheckedOne(sensitivityCategories: VssSensitivityCategory[]): boolean {
+    for (let sp of sensitivityCategories) {
+      if (sp[this.CHECK]) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
