@@ -11,26 +11,29 @@ import {Profile} from "../../core/profile.model";
 import {ProfileService} from "app/security/shared/profile.service";
 import {ConfigService} from "../../core/config.service";
 import {ConfigResponse} from "app/core/config-response.model";
+import {NotificationService} from "../../shared/notification.service";
 
 @Injectable()
 export class AuthenticationService {
-  private configResponse: ConfigResponse;
+  private basicAuthorizationHeader: string;
 
   constructor(private apiUrlService: ApiUrlService,
               private configService: ConfigService,
               private exceptionService: ExceptionService,
               private globalEventManagementService: GlobalEventManagementService,
               private http: Http,
+              private notificationService: NotificationService,
               private profileService: ProfileService,
               private tokenService: TokenService,
               private utilityService: UtilityService) {
     this.configService.getBasicAuthorizationHeader()
       .subscribe(
-        (configResponse) => {
-          this.configResponse = configResponse;
+        (configResponse: ConfigResponse) => {
+          this.basicAuthorizationHeader = configResponse.oauth2.client.basicAuthorizationHeader;
+        },
+        (error) => {
+          this.notificationService.show("Could not load configuration from the server. Please to the Login Page and try again.");
         }
-        ,
-        (error) => console.log(error)
       );
   }
 
@@ -40,10 +43,9 @@ export class AuthenticationService {
     params.set('password', password);
     params.set('grant_type', 'password');
     params.set('response_type', 'token');
-    const basicAuthorizationHeader: string = this.configResponse.oauth2.client.basicAuthorizationHeader;
     const headers: Headers = new Headers();
     headers.set('Content-Type', 'application/x-www-form-urlencoded');
-    headers.set('Authorization', 'Basic '.concat(basicAuthorizationHeader));
+    headers.set('Authorization', 'Basic '.concat(this.basicAuthorizationHeader));
 
     return this.http.post(this.apiUrlService.getUaaTokenUrl(), params, {headers: headers})
       .map((resp: Response) => <AuthorizationResponse>(resp.json()))
