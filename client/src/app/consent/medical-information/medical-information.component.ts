@@ -12,11 +12,13 @@ import {Md2DialogConfig} from "md2";
   styleUrls: ['./medical-information.component.scss']
 })
 export class MedicalInformationComponent implements OnInit {
+  public readonly shareAllValue: number = 1;
+  public readonly notShareAllValue: number = 0;
   public sensitivityCategories: VssSensitivityCategory[];
   public selectedSensitivityCategories: string[];
   public sensitivityCategoryCodes: string[] = [];
   public isShareAll: number;
-  public isAllCategoriesSelected: boolean = false;
+  public isInvalidNotShareAll: boolean = false;
   public federalInfo = {
     title: 'CONSENT.MEDICAL_INFORMATION.DIALOG.FED_TITLE',
     description: 'CONSENT.MEDICAL_INFORMATION.DIALOG.FED_DESCRIPTION'
@@ -46,6 +48,7 @@ export class MedicalInformationComponent implements OnInit {
   }
 
   public onSelectShareAll(dialog: any, value: number) {
+    this.isInvalidNotShareAll = false;
     this.isShareAll = value;
     this.selectedSensitivityCategories = [];
     this.sensitivityCategoryCodes = [];
@@ -70,17 +73,17 @@ export class MedicalInformationComponent implements OnInit {
     this.consentService.setConsentEmitter(this.patientConsent);
   }
 
-  public confirmSelectAll(dialog: any) {
+  public confirmSelectAll(dialog: any): void {
     this.setSelectedMedicalInformation(dialog);
   }
 
-  public isCheckedAll() {
+  public isCheckedAll(): void {
     if (this.isShareAll === 0) {
       this.checkAllCategoriesSelected();
     }
   }
 
-  private checkAllCategoriesSelected() {
-    this.isAllCategoriesSelected = this.medicalInformationService.isCheckedAll(this.sensitivityCategories);
+  private checkAllCategoriesSelected(): void {
+    this.isInvalidNotShareAll = this.medicalInformationService.isCheckedAll(this.sensitivityCategories);
   }
 }

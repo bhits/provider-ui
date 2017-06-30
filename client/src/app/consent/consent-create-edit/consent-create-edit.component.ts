@@ -74,7 +74,7 @@ export class ConsentCreateEditComponent implements OnInit {
             this.utilityService.navigateTo(this.consentListUrl);
           },
           err => {
-            this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.SUCCESS_CREATING_CONSENT");
+            this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.FAILED_CREATING_CONSENT");
           }
         );
     }

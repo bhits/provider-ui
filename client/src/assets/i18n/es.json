@@ -73,8 +73,9 @@
       "SHARE_SOME_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> CON EXCEPCIÓN </ strong> de categorías específicas de información médica.",
       "DIALOG": {
         "TITLE": "La configuración de privacidad",
+        "SHARE_ALL_PARAGRAPH": "{spanish} You have chosen to <strong>share all</strong> of your medical record <strong>without any exception.</strong>",
+        "NOT_SHARE_ALL_PARAGRAPH": "{spanish} Please select the medical information that you <strong>want</strong> to share.",
         "HEADER1": "Categorías de información sensible",
-        "HEADER2": "Seleccione la información médica que desea compartir.",
         "FED_TITLE": "Categorías federales",
         "FED_DESCRIPTION": "{spanish}Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
         "STATE_TITLE": "Categorías del estado",
