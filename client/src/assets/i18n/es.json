@@ -76,13 +76,15 @@
       "SELECTED_SENSITIVITY_CATEGORIES_LABEL": "{spanish}Sharing the following:",
       "DIALOG": {
         "TITLE": "La configuración de privacidad",
+        "SHARE_ALL_PARAGRAPH": "{spanish} You have chosen to <strong>share all</strong> of your medical record <strong>without any exception.</strong>",
+        "NOT_SHARE_ALL_PARAGRAPH": "{spanish} Please select the medical information that you <strong>want</strong> to share.",
         "HEADER1": "Categorías de información sensible",
-        "HEADER2": "Seleccione la información médica que desea compartir.",
         "FED_TITLE": "Categorías federales",
-        "FED_DESCRIPTION": "{spanish}Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
+        "FED_DESCRIPTION": "{spanish} Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
         "STATE_TITLE": "Categorías del estado",
         "STATE_DESCRIPTION": "La mayoría de los estados tienen leyes que restringen a los profesionales de la salud de revelar información relacionada con el abuso de sustancias, el VIH / SIDA y la salud mental. '+' Algunos estados tienen restricciones con respecto a la información genética y las enfermedades transmisibles. Usted tiene el derecho de elegir la información que desea compartir o no compartir y con quién.",
-        "CONTENT": "Por favor, seleccione la opción \"Compartir mi historial médico sin excepciones\", si desea compartir toda la información de su salud.",
+        "WARNING_ONE": "{spanish} Please select the \"Share my medical record without any exceptions\" option,if you want to share all of your health information.",
+        "WARNING_TWO": "{spanish} Please select <strong>AT LEAST ONE</strong> category that you want to share.",
         "CANCEL_BTN": "Cancelar",
         "SAVE_BTN": "Guardar cambios",
         "CONFIRM_BTN": "Confirm"

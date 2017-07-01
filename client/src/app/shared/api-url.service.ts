@@ -12,6 +12,7 @@ export class ApiUrlService {
       ["patientConsentsCreateUrl", "/consents/create"],
 
       // External api Url maps
+      ["ConfigBaseUrl", "/provider-ui-api/config"],
       ["PlsBaseUrl", "/provider-ui-api/pls"],
       ["PcmBaseUrl", "/provider-ui-api/pcm"],
       ["UmsBaseUrl", "/provider-ui-api/ums"],
@@ -43,6 +44,10 @@ export class ApiUrlService {
 
   getPatientConsentsCreateUrl(): string {
     return this.urls.get('patientConsentsCreateUrl');
+  }
+
+  getConfigBaseUrl(): string {
+    return this.urls.get("ConfigBaseUrl");
   }
 
   getPcmBaseUrl(): string {
