@@ -42,16 +42,19 @@
           "STAGE_TEXT": "IN PROGRESS",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing",
           "DELETE_THIS_PROVIDER_OPTION_TEXT": "Delete This Consent"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "SIGNED",
-          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent"
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "REVOKED",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
-          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation"
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing"
         }
       },
       "DELETE_CONSENT_DIALOG": {
