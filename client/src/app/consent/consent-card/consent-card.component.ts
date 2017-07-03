@@ -8,6 +8,7 @@ import {NotificationService} from "app/shared/notification.service";
 import {Patient} from "app/patient/shared/patient.model";
 import {DetailedConsent} from "../shared/detailed-consent.model";
 import {ActivatedRoute} from "@angular/router";
+import {ProviderPermissions} from "../../core/provider-permissions.model";
 
 @Component({
   selector: 'c2s-consent-card',
@@ -23,6 +24,7 @@ export class ConsentCardComponent implements OnInit {
   private selectedPatient: Patient;
   private detailsVisible: boolean = false;
   private height: number = 0;
+  private providerPermissions: ProviderPermissions;
 
   constructor(private consentService: ConsentService,
               private route: ActivatedRoute,
@@ -30,6 +32,7 @@ export class ConsentCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.providerPermissions = this.route.snapshot.data['providerPermissions'];
     this.selectedPatient = this.route.snapshot.data['patient'];
     this.consentOptions = CONSENT_STAGES
       .filter(consentStage => consentStage.consentStage === this.consent.consentStage)
@@ -90,7 +93,22 @@ export class ConsentCardComponent implements OnInit {
   }
 
   public displayOnProviderUI(consentOption: ConsentStageOption): boolean {
-    return consentOption.isEnabled;
+
+    let result: boolean;
+
+    switch (consentOption.key) {
+      case ConsentStageOptionKey.SIGN:
+        result = this.providerPermissions.consentSignEnabled;
+        break;
+
+      case ConsentStageOptionKey.REVOKE:
+        result = this.providerPermissions.consentRevokeEnabled;
+        break;
+
+      default:
+        result = true;
+    }
+    return result;
   }
 
   public getRouterLink(consentOption: ConsentStageOption): any {
