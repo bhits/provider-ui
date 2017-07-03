@@ -12,29 +12,25 @@ export const CONSENT_STAGES: ConsentStage[] = [
         key: ConsentStageOptionKey.EDIT,
         icon: "edit",
         text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.EDIT_THIS_CONSENT_OPTION_TEXT",
-        routerLink: '/consents',
-        isEnabled: true
+        routerLink: '/consents'
       },
       {
         key: ConsentStageOptionKey.DOWNLOAD_SAVED_PDF,
         icon: "search",
         text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.PREVIEW_THIS_CONSENT_OPTION_TEXT",
-        isMethod: true,
-        isEnabled: true
+        isMethod: true
       },
       {
         key: ConsentStageOptionKey.SIGN,
         icon: "assignment_turned_in",
         text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.PROVIDE_ESIGNATURE_OPTION_TEXT",
-        routerLink: '/consent-sign',
-        isEnabled: true
+        routerLink: '/consent-sign'
       },
       {
         key: ConsentStageOptionKey.DELETE,
         icon: "delete_forever",
         text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.DELETE_THIS_CONSENT_OPTION_TEXT",
-        isMethod: true,
-        isEnabled: true
+        isMethod: true
       }]
   },
   {
@@ -47,15 +43,13 @@ export const CONSENT_STAGES: ConsentStage[] = [
         key: ConsentStageOptionKey.DOWNLOAD_SIGNED_PDF,
         icon: "file_download",
         text: "CONSENT.CARD.CONSENT_STAGES.SIGNED_STAGE.VIEW_SIGNED_CONSENT_OPTION_TEXT",
-        isMethod: true,
-        isEnabled: true
+        isMethod: true
       },
       {
         key: ConsentStageOptionKey.REVOKE,
         icon: "cancel",
         text: "CONSENT.CARD.CONSENT_STAGES.SIGNED_STAGE.REVOCATION_OPTION_TEXT",
-        routerLink: '/consent-revoke',
-        isEnabled: true
+        routerLink: '/consent-revoke'
       }
     ]
   },
@@ -69,15 +63,13 @@ export const CONSENT_STAGES: ConsentStage[] = [
         key: ConsentStageOptionKey.DOWNLOAD_SIGNED_PDF,
         icon: "file_download",
         text: "CONSENT.CARD.CONSENT_STAGES.REVOKED_STAGE.VIEW_SIGNED_CONSENT_OPTION_TEXT",
-        isMethod: true,
-        isEnabled: true
+        isMethod: true
       },
       {
         key: ConsentStageOptionKey.DOWNLOAD_REVOKED_PDF,
         icon: "file_download",
         text: "CONSENT.CARD.CONSENT_STAGES.REVOKED_STAGE.VIEW_SIGNED_REVOCATION_OPTION_TEXT",
-        isMethod: true,
-        isEnabled: true
+        isMethod: true
       }
     ]
   }];
