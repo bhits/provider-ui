@@ -1,4 +1,4 @@
-export class Oauth2 {
+export class Oauth2Client {
   client: Client;
 }
 
