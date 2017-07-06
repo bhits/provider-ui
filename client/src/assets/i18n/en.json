@@ -1,4 +1,16 @@
 {
+  "SECURITY": {
+    "LOG_IN": {
+      "TITLE": "Log in with your Admin Credentials.",
+      "SUB_TITLE": "Take control of your health and well-being with Consent2Share.",
+      "NO_PERMISSION_MSG": "Sorry, you do not have permission to access this site.",
+      "LOG_IN_BTN": "Login"
+    },
+    "PAGE_NOT_FOUND": {
+      "TITLE": "Inconceivable!",
+      "DESCRIPTION": "I do not think this page is where you think it is."
+    }
+  },
   "HOME": {
     "WELCOME_TITLE": "Welcome to Consent2Share admin!",
     "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
@@ -205,6 +217,7 @@
           "SENT_VERIFICATION_CODE_MSG": "<span><strong>Select the 'Send Email' button to generate the Verification Code.</strong></span>Sending an account activation email to the address listed above will generate a unique Verification Code."
         },
         "FOOTER": {
+          "LABEL": "Activate Account for:",
           "ACCOUNT_STATUS_LABEL": "Account Status:",
           "ENABLE_ACCOUNT_BTN": "Enable Account",
           "DISABLE_ACCOUNT_BTN": "Disable Account",
@@ -285,6 +298,7 @@
       "ACCORDION_HEADER": "Search",
       "STEP_1": {
         "TITLE": "Step 1. Please enter the provider State and City or Zip Code.",
+        "NUMBER": "1",
         "LABEL": "PLEASE CHOOSE ONE.",
         "STATE_AND_CITY": {
           "LABEL": "Enter State and City",
@@ -299,6 +313,7 @@
       },
       "STEP_2": {
         "TITLE": "Step 2. Please enter the provider Facility Name OR Provider Name and Other Criteria.",
+        "NUMBER": "2",
         "LABEL": "PLEASE CHOOSE ONE.",
         "PROVIDER_NAME_AND_OTHERS": {
           "LABEL": "Enter Provider Name and Other Criteria",
@@ -343,8 +358,8 @@
       "DELETE_DIALOG": {
         "TITLE": "Delete Provider",
         "CONTENT": "Are you sure you want to delete this provider?",
-        "CANCEL_BUTTON": "Cancel",
-        "OK_BUTTON": "OK"
+        "OK_BUTTON": "OK",
+        "CANCEL_BUTTON": "Cancel"
       },
       "ADD_DIALOG": {
         "TITLE": "Add Selected Providers",

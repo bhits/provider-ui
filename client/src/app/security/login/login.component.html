@@ -5,12 +5,12 @@
     </div>
   </div>
   <div class="p-t-md p-b-md p-l-lg p-r-lg">
-    <div class="font-size20 font-weight500 center" style="color: #266357;">Take control of your health and well-being
-      with Consent2Share.
+    <div class="font-size20 font-weight500 center" style="color: #266357;">
+      {{ 'SECURITY.LOG_IN.SUB_TITLE' | translate }}
     </div>
   </div>
   <form [formGroup]="loginFrom" class="login-form" novalidate>
-    <h2 class="m-t-none">Log in with your Admin Credentials.</h2>
+    <h2 class="m-t-none">{{ 'SECURITY.LOG_IN.TITLE' | translate }}</h2>
     <md-input-container class="full-width">
       <input class="font-size15" mdInput placeholder="Username" formControlName="username">
     </md-input-container>
@@ -23,7 +23,7 @@
         <c2s-show-hide-password (setInputType)="getInputType($event)"></c2s-show-hide-password>
       </div>
       <md-hint class="has-error" *ngIf="unauthorized">
-        Sorry, you do not have permission to access this site.
+        {{ 'SECURITY.LOG_IN.NO_PERMISSION_MSG' | translate }}
       </md-hint>
     </md-input-container>
     <c2s-control-validation-error-message
@@ -33,7 +33,7 @@
     <div class="flexcontainer row">
       <button class="flex10auto" md-raised-button color="primary"
               [disabled]="loginFrom.invalid"
-              (click)="login()">Login
+              (click)="login()">{{ 'SECURITY.LOG_IN.LOG_IN_BTN' | translate }}
       </button>
     </div>
   </form>

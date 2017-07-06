@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 
-import {Http} from "@angular/http";
-import {ApiUrlService} from "../shared/api-url.service";
-import {ExceptionService} from "../shared/exception.service";
 import {ProfileService} from "../security/shared/profile.service";
 import {UmsProfile} from "../security/shared/ums-profile.model";
+import {Http} from "@angular/http";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 
 @Injectable()
 export class CustomTranslateService {
-  private umsProfileUrl: string = this.apiUrlService.getUmsBaseUrl().concat("/users/locale");
 
   constructor( private translateService: TranslateService,
-               private profileService: ProfileService,
-               private http: Http,
-               private apiUrlService: ApiUrlService,
-               private exceptionService: ExceptionService,) {
+               private profileService: ProfileService) {
   }
 
   getCurrentLanguage():string{
@@ -49,4 +44,8 @@ export class CustomTranslateService {
   getSupportedLanguages(): any[]{
     return this.profileService.getProfileFromSessionStorage().supportedLocales;
   }
+}
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

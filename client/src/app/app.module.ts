@@ -1,7 +1,6 @@
 import "hammerjs";
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {Http} from "@angular/http";
 import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 
@@ -14,14 +13,7 @@ import {PatientModule} from "app/patient/patient.module";
 import {AppRoutingModule} from "app/app-routing.module";
 import {ConsentModule} from "app/consent/consent.module";
 import {ProviderModule} from "./provider/provider.module";
-import {CustomTranslateService} from "./core/custom-translate.service";
-
-
-export function createTranslateLoader(http: Http) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
-
+import {createTranslateLoader, CustomTranslateService} from "./core/custom-translate.service";
 
 @NgModule({
   declarations: [
