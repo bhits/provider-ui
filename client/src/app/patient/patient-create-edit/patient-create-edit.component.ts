@@ -264,17 +264,49 @@ export class PatientCreateEditComponent implements OnInit {
           }
         );
     } else {
-      this.patientService.createPatient(this.prepareCreateEditPatient())
-        .subscribe(
-          () => {
-            this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl())
-          },
-          err => {
-            this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_CREATE_PATIENT");
-            console.log(err);
+      // check backend if the patient already exists
+      const patient: Patient = this.createEditPatientForm.value;
+      this.patientService.searchPatientsByDemographics({
+        firstName: patient.firstName,
+        lastName: patient.lastName,
+        genderCode: patient.genderCode,
+        birthDate: this.utilityService.formatDate(patient.birthDate, 'yyyy-MM-dd'),
+        strictMatch: true
+      })
+        .subscribe(resp => {
+          // if there is at least one patient matching the criteria
+          if(resp.totalElements > 0){
+            // prompt a message in modal
+            this.confirmDialogService.confirm("PATIENT.CREATE_EDIT.DUPLICATE_CHECK_CONFIRM_DIALOG.TITLE", "PATIENT.CREATE_EDIT.DUPLICATE_CHECK_CONFIRM_DIALOG.CONTENT", this.viewContainerRef)
+              .subscribe(confirmationResponse => {
+                if(confirmationResponse){
+                  // if the user confirms, create the patient
+                  this.createPatient();
+                } else {
+                  // else, go back to patient search page
+                  this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
+                }
+              }
+              );
+          } else {
+            // if there is no patient found matching the criteria, create the patient without prompting the user
+            this.createPatient();
           }
-        );
+        });
     }
+  }
+
+  createPatient(){
+    this.patientService.createPatient(this.prepareCreateEditPatient())
+      .subscribe(
+        () => {
+          this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl())
+        },
+        err => {
+          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_CREATE_PATIENT");
+          console.log(err);
+        }
+      );
   }
 
   onRoleChange(event: any) {
