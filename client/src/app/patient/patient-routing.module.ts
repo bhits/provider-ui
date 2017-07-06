@@ -18,7 +18,10 @@ const patientRoutes: Routes = [
     children: [
       {
         path: '',
-        component: PatientListComponent
+        component: PatientListComponent,
+        resolve: {
+          patientCreationLookupInfo: PatientCreationLookupResolveService
+        }
       },
       {
         path: 'create',
