@@ -1,4 +1,16 @@
 {
+  "SECURITY": {
+    "LOG_IN": {
+      "TITLE": "{Spanish} Log in with your Admin Credentials.",
+      "SUB_TITLE": "{Spanish} Take control of your health and well-being with Consent2Share.",
+      "NO_PERMISSION_MSG": "{Spanish} Sorry, you do not have permission to access this site.",
+      "LOG_IN_BTN": "{Spanish} Login"
+    },
+    "PAGE_NOT_FOUND": {
+      "TITLE": "{Spanish} Inconceivable!",
+      "DESCRIPTION": "{Spanish} I do not think this page is where you think it is."
+    }
+  },
   "HOME": {
     "WELCOME_TITLE": "{Spanish} Welcome to Consent2Share admin!",
     "WELCOME_SUB_TITLE": "{Spanish} You are now ready to manage your patients.",
@@ -10,10 +22,10 @@
       "PLURAL": "{Spanish} Patients"
     },
     "MENU": {
-      "TITLE": "Menú",
-      "HOME": "Casa",
-      "PATIENTS": "Los pacientes",
-      "LOGOUT": "Salir"
+      "TITLE": "{Spanish} Menu",
+      "HOME": "{Spanish} Home",
+      "PATIENTS": "{Spanish} Patients",
+      "LOGOUT": "{Spanish} Logout"
     }
   },
   "CONSENT": {
@@ -76,13 +88,13 @@
         "HEADER1": "Categorías de información sensible",
         "HEADER2": "Seleccione la información médica que desea compartir.",
         "FED_TITLE": "Categorías federales",
-        "FED_DESCRIPTION": "{spanish}Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
+        "FED_DESCRIPTION": "{spanish} Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
         "STATE_TITLE": "Categorías del estado",
         "STATE_DESCRIPTION": "La mayoría de los estados tienen leyes que restringen a los profesionales de la salud de revelar información relacionada con el abuso de sustancias, el VIH / SIDA y la salud mental. '+' Algunos estados tienen restricciones con respecto a la información genética y las enfermedades transmisibles. Usted tiene el derecho de elegir la información que desea compartir o no compartir y con quién.",
         "CONTENT": "Por favor, seleccione la opción \"Compartir mi historial médico sin excepciones\", si desea compartir toda la información de su salud.",
         "CANCEL_BTN": "Cancelar",
         "SAVE_BTN": "Guardar cambios",
-        "CONFIRM_BTN": "Confirm"
+        "CONFIRM_BTN": "{spanish} Confirm"
       }
     },
     "PURPOSE_OF_USE": {
@@ -101,7 +113,7 @@
     },
     "SELECT_PROVIDER": {
       "DESCRIPTION": "Seleccione una persona u organización autorizada para compartir su información:",
-      "IND_PROVIDER_LABEL": "Individual:",
+      "IND_PROVIDER_LABEL": "{spanish} Individual:",
       "ORG_PROVIDER_LABEL": "Organizativo:",
       "CANCEL_BTN": "Cancelar",
       "ADD_BTN": "Añadir seleccionados"
@@ -234,7 +246,7 @@
       "DISCLOSE_PROVIDER_NAME_LABEL": "{spanish} Disclose Provider",
       "PURPOSE_OF_USE_LABEL": "{spanish} Purpose Of Use",
       "PURPOSE_OF_USE_PLACEHOLDER": "{spanish} Select One",
-      "CHOOSE_FILE_BTN": "{spanish} Choose File To Upload",
+      "SEGMENTATION_BTN": "{spanish} Choose File To Upload",
       "DOWNLOAD_DIALOG": {
         "TITLE": "{spanish} Download Segmented Document",
         "CANCEL_BTN": "{spanish} Cancel",
@@ -290,17 +302,12 @@
         "STATE_AND_CITY": {
           "LABEL": "Introduzca el estado y la ciudad",
           "STATE_PLACEHOLDER": "Seleccione Estado (Obligatorio)",
-          "CITY_PLACEHOLDER": "Ciudad (Obligatorio)",
-          "STATE_REQUIRED_ERROR_MSG": "El estado es requerido.",
-          "CITY_REQUIRED_ERROR_MSG": "Se requiere ciudad.",
-          "CITY_MIN_LENGTH_ERROR_MSG": "Debe tener al menos 2 caracteres."
+          "CITY_PLACEHOLDER": "Ciudad (Obligatorio)"
         },
         "OR": "O",
         "ZIP_CODE": {
           "LABEL": "Introduzca código postal",
-          "ZIP_CODE_PLACEHOLDER": "Se requiere código postal.",
-          "ZIP_CODE_REQUIRED_MSG": "Se requiere código postal.",
-          "ZIP_CODE_FORMAT_ERROR_MSG": "Debe ser con formatos: 12345 o 12345-6789."
+          "ZIP_CODE_PLACEHOLDER": "Se requiere código postal."
         }
       },
       "STEP_2": {
@@ -308,22 +315,15 @@
         "LABEL": "Por favor elige uno.",
         "PROVIDER_NAME_AND_OTHERS": {
           "LABEL": "Introduzca el nombre del proveedor y otros criterios",
-          "LAST_NAME_REQUIRED_MSG": "Se requiere apellido.",
           "LAST_NAME_PLACEHOLDER": "Apellido (Obligatorio)",
-          "LAST_NAME_MIN_LENGTH_MSG": "Debe tener al menos 2 caracteres.",
           "FIRST_NAME_PLACEHOLDER": "Nombre (opcional)",
-          "FIRST_NAME_MIN_LENGTH_MSG": "Debe tener al menos 2 caracteres.",
           "TELEPHONE_PLACEHOLDER": "Teléfono (Opcional)",
-          "TELEPHONE_FORMAT_MSG": "Debe ser con formatos: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
           "GENDER_PLACEHOLDER": "Género (Opcional)"
         },
-        "OR": "O",
+        "OR": "{spanish} OR",
         "FACILITY": {
           "LABEL": "Introduzca el nombre de la instalación",
           "NAME_PLACEHOLDER": "Nombre del establecimiento (obligatorio)",
-          "NAME_REQUIRED_MSG": " El nombre de la instalación es obligatorio.",
-          "NAME_MIN_LENGTH_MSG": "Debe tener al menos 2 caracteres.",
-          "TELEPHONE_FORMAT_MSG": "Debe ser con formatos: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
           "TELEPHONE_PLACEHOLDER": "Teléfono (Opcional)"
         }
       },
@@ -386,9 +386,9 @@
       "REQUIRED_TRUE_ERROR_MESSAGE": "{spanish} This field value must be true.",
       "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today",
       "ONE_EMAIL_REQUIRED_MESSAGE": "{spanish} At least one email address needed",
-      "NPI_NUMBER_MESSAGE": "Must be a number.",
-      "NPIS_MATCH_MESSAGE": "Authorize and disclose NPIs must be different.",
-      "INVALID_FILE_TYPE_MESSAGE": "Invalid file type."
+      "NPI_NUMBER_MESSAGE": "{spanish} Must be a number.",
+      "NPIS_MATCH_MESSAGE": "{spanish} Authorize and disclose NPIs must be different.",
+      "INVALID_FILE_TYPE_MESSAGE": "{spanish} Invalid file type."
     },
     "CONFIRM_DIALOG": {
       "OK_BTN": "De acuerdo",
