@@ -57,6 +57,15 @@
           "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing"
         }
       },
+      "APPLY_TRY_POLICY_DIALOG": {
+        "TITLE": "Apply Patient Record",
+        "CONTENT": {
+          "DOCUMENT_PLACEHOLDER": "Document",
+          "PURPOSE_PLACEHOLDER": "Purpose Of Use"
+        },
+        "BACK_BTN": "Back to Consent Options",
+        "APPLY_BTN": "Apply"
+      },
       "DELETE_CONSENT_DIALOG": {
         "TITLE": "Delete Consent",
         "CONTENT": "Are you sure you want to delete this consent?",
@@ -139,7 +148,8 @@
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "Success in downloading revoked consent.",
       "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent, please try again later...",
       "SUCCESS_DELETE_CONSENT": "Success in deleting consent.",
-      "FAILED_DELETE_CONSENT": "Failed to delete the consent, please try again later..."
+      "FAILED_DELETE_CONSENT": "Failed to delete the consent, please try again later...",
+      "FAILED_APPLY_TRY_POLICY": "Failed to try this consent settings against patient medical record, please try again later..."
     }
   },
   "PATIENT": {
@@ -360,7 +370,7 @@
       "ADD_BUTTON": "Add to Provider List"
     },
     "NOTIFICATION_MSG": {
-      "FAILED_GET_PROVIDERS": "Failed to get providers., please try again later...",
+      "FAILED_GET_PROVIDERS": "Failed to get providers, please try again later...",
       "FAILED_ADD_PROVIDER": "Failed to add the provider, please try again later...",
       "SUCCESS_DELETE_PROVIDER": "Successfully delete the provider.",
       "FAILED_DELETE_PROVIDER": "Failed to delete the provider, please try again later..."
