@@ -1,25 +1,24 @@
 <div class="p-t-75">
   <md-grid-list cols="1">
-    <md-card>
+    <md-card class="m-l-sm m-r-sm">
+      <div class="p-l-lg p-r-lg m-r-lg">
       <h2 fxLayoutAlign="start">{{ 'CONSENT.CONSENT_REVOKE.TITLE' | translate }}</h2>
-      <div fxLayout="column">
-        <div fxLayoutAlign="start">{{ 'CONSENT.CONSENT_REVOKE.REFERENCE_NUMBER' | translate }}:</div>
-        <div fxLayoutAlign="start">
+      <div fxLayout="row" class="font-size16 p-b-sm">
+        <div>{{ 'CONSENT.CONSENT_REVOKE.REFERENCE_NUMBER' | translate }}:</div>
+        <div class="m-l-sm">
           <strong>{{consent.consentReferenceId}}</strong>
         </div>
       </div>
-      <div fxLayout="row">
-        <div fxFlex fxLayoutAlign="start">
-          <span>{{ 'CONSENT.CONSENT_REVOKE.PATIENT_NAME' | translate }}:</span>
-          <span><strong>{{selectedPatientName.name}}</strong></span>
-        </div>
-        <div fxFlex>
-          <span>{{ 'CONSENT.CONSENT_REVOKE.PATIENT_DOB' | translate }}:</span>
-          <span><strong>{{selectedPatient.birthDate | date}}</strong></span>
-        </div>
+      <div fxLayout="row" class="font-size16 p-b-sm">
+          <div>{{ 'CONSENT.CONSENT_REVOKE.PATIENT_NAME' | translate }}:</div>
+          <div class="m-l-sm"><strong>{{selectedPatientName.name}}</strong></div>
       </div>
-      <div fxLayout="column">
-        <p fxLayout="row" style="white-space: pre">{{consentRevocationTerms}}</p>
+      <div fxLayout="row" class="font-size16">
+          <div>{{ 'CONSENT.CONSENT_REVOKE.PATIENT_DOB' | translate }}:</div>
+          <div class="m-l-sm"><strong>{{selectedPatient.birthDate | date}}</strong></div>
+      </div>
+      <div fxLayout="column" class="font-size14">
+        <p fxLayout="row" style="white-space: pre-line;">{{consentRevocationTerms}}</p>
         <div>
           <md-checkbox fxLayoutAlign="start" (click)="confirmRevokeConsentTerms.open()" [(ngModel)]="checked">
             {{ 'CONSENT.CONSENT_REVOKE.TERMS' | translate:username }}
@@ -36,6 +35,7 @@
             {{ 'CONSENT.CONSENT_REVOKE.COMPLETE_BTN' | translate }}
           </strong>
         </button>
+      </div>
       </div>
     </md-card>
 
