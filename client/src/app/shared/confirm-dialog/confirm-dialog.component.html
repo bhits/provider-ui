@@ -1,7 +1,7 @@
 <div style="background-color: #BCDEDB;" class="p-xxs font-size10 center-sm-left">
   <h2>{{ title | translate}}</h2>
 </div>
-<h2>{{ message | translate}}</h2>
+<h2><span [innerHTML]="message | translate"></span></h2>
 <div align="right">
   <button type="button" md-raised-button color="primary"
           (click)="dialogRef.close(true)">
