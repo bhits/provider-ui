@@ -13,8 +13,6 @@ import {Consent} from "app/consent/shared/consent.model";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Provider} from "app/provider/shared/provider.model";
 import {VssSensitivityCategory} from "app/consent/shared/vss-sensitivity-category.model";
-import {SampleDocumentInfo} from "./sample-document-info.model";
-import {TryPolicyResponse} from "app/consent/shared/try-policy-response.model";
 
 @Injectable()
 export class ConsentService {
@@ -103,25 +101,6 @@ export class ConsentService {
       .concat("/patients/" + patientMrn + "/consents/" + id + "/revocation");
     const format: string = "pdf";
     return this.getConsentAsBinaryFile(resourceUrl, format);
-  }
-
-  public getSampleDocuments(): Observable<SampleDocumentInfo[]> {
-    const resourceUrl = this.apiUrlService.getTryPolicyBaseUrl().concat("/sampleDocuments");
-    return this.http.get(resourceUrl)
-      .map((resp: Response) => <SampleDocumentInfo[]>(resp.json()))
-      .catch(this.exceptionService.handleError);
-  }
-
-  public applyTryPolicyUseSampleDoc(patientMrn: string, consent: Consent, purposeOfUseCode: string, indexOfDocuments: number): Observable<TryPolicyResponse> {
-    const resourceUrl = this.apiUrlService.getTryPolicyBaseUrl()
-      .concat("/tryPolicySampleXHTML/" + patientMrn + "/" + consent.id);
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('purposeOfUseCode', purposeOfUseCode);
-    params.set('indexOfDocuments', indexOfDocuments.toString());
-
-    return this.http.get(resourceUrl, {search: params})
-      .map((resp: Response) => <TryPolicyResponse>(resp.json()))
-      .catch(this.exceptionService.handleError);
   }
 
   private getConsentAsBinaryFile(url: string, format: string): Observable<BinaryFile> {
