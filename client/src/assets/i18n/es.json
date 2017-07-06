@@ -49,7 +49,7 @@
         "SIGNED_STAGE": {
           "STAGE_TEXT": "FIRMADO",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
-          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing"
+          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing",
           "REVOCATION_OPTION_TEXT": "Revocación"
         },
         "REVOKED_STAGE": {
@@ -218,7 +218,7 @@
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "{spanish} Success in downloading revoked consent.",
       "FAILED_DOWNLOAD_REVOKED_CONSENT": "{spanish} Failed to download the revoked consent. Please try again later.",
       "SUCCESS_DELETE_CONSENT": "{spanish} Successfully deleted the consent.",
-      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent. Please try again later."
+      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent. Please try again later.",
       "FAILED_APPLY_TRY_POLICY": "{spanish} Failed to try this consent settings against patient medical record, please try again later..."
     }
   },

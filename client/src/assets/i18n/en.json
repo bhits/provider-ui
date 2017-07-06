@@ -42,15 +42,15 @@
           "STAGE_TEXT": "IN PROGRESS",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing",
           "PROVIDE_ESIGNATURE_OPTION_TEXT": "Provide eSignature",
           "DELETE_THIS_CONSENT_OPTION_TEXT": "Delete This Consent"
-          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing",
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "SIGNED",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing",
           "REVOCATION_OPTION_TEXT": "Revocation"
-          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "REVOKED",
@@ -153,7 +153,7 @@
           "NPI": "NPI Number",
           "PHONE": "Phone",
           "ADDRESS": "Address"
-          }
+        }
       },
       "HEALTH_INFORMATION_SECTION": {
         "TITLE": "HEALTH INFORMATION TO BE DISCLOSED",

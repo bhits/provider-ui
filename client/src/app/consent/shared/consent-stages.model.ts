@@ -33,7 +33,8 @@ export const CONSENT_STAGES: ConsentStage[] = [
         key: ConsentStageOptionKey.APPLY_TRY_POLICY,
         icon: "settings",
         text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.APPLY_TRY_POLICY_OPTION_TEXT",
-        isMethod: true
+        isMethod: true,
+        isEnabled: true
       },
       {
         key: ConsentStageOptionKey.DELETE,
@@ -67,7 +68,8 @@ export const CONSENT_STAGES: ConsentStage[] = [
         key: ConsentStageOptionKey.APPLY_TRY_POLICY,
         icon: "settings",
         text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.APPLY_TRY_POLICY_OPTION_TEXT",
-        isMethod: true
+        isMethod: true,
+        isEnabled: true
       }
     ]
   },
@@ -95,7 +97,8 @@ export const CONSENT_STAGES: ConsentStage[] = [
         key: ConsentStageOptionKey.APPLY_TRY_POLICY,
         icon: "settings",
         text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.APPLY_TRY_POLICY_OPTION_TEXT",
-        isMethod: true
+        isMethod: true,
+        isEnabled: true
       }
     ]
   }];
