@@ -281,7 +281,9 @@
       },
       "DUPLICATE_CHECK_CONFIRM_DIALOG" : {
         "TITLE": "Confirm Account Creation",
-        "CONTENT": "<strong>ATTENTION</strong> – an account with similar information already exists. Please confirm the accuracy of the account information entered and select to either \"Continue and Create\" or go \"Back to Search\" screen and try again."
+        "CONTENT": "<strong>ATTENTION</strong> – an account with similar information already exists. Please confirm the accuracy of the account information entered and select to either \"Continue and Create\" or go \"Back to Search\" screen and try again.",
+        "OK_BTN": "Continue and Create",
+        "CANCEL_BTN": "Back to Search"
       }
     },
     "VERIFICATION": {

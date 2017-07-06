@@ -279,7 +279,9 @@
       },
       "DUPLICATE_CHECK_CONFIRM_DIALOG" : {
         "TITLE": "{spanish} Confirm Account Creation",
-        "CONTENT": "{spanish} <strong>ATTENTION</strong> – an account with similar information already exists. Please confirm the accuracy of the account information entered and select to either \"Continue and Create\" or go \"Back to Search\" screen and try again."
+        "CONTENT": "{spanish} <strong>ATTENTION</strong> – an account with similar information already exists. Please confirm the accuracy of the account information entered and select to either \"Continue and Create\" or go \"Back to Search\" screen and try again.",
+        "OK_BTN": "{spanish} Continue and Create",
+        "CANCEL_BTN": "{spanish} Back to Search"
       }
     },
     "VERIFICATION": {

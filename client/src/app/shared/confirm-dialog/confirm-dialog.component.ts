@@ -9,6 +9,8 @@ import {MdDialogRef} from "@angular/material";
 export class ConfirmDialogComponent implements OnInit {
   public title: string;
   public message: string;
+  public okLabel: string = "SHARED.CONFIRM_DIALOG.OK_BTN";
+  public cancelLabel: string = "SHARED.CONFIRM_DIALOG.CANCEL_BTN";
 
   constructor(public dialogRef: MdDialogRef<ConfirmDialogComponent>) {
   }

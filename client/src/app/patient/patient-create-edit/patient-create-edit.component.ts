@@ -275,18 +275,25 @@ export class PatientCreateEditComponent implements OnInit {
       })
         .subscribe(resp => {
           // if there is at least one patient matching the criteria
-          if(resp.totalElements > 0){
+          if (resp.totalElements > 0) {
             // prompt a message in modal
-            this.confirmDialogService.confirm("PATIENT.CREATE_EDIT.DUPLICATE_CHECK_CONFIRM_DIALOG.TITLE", "PATIENT.CREATE_EDIT.DUPLICATE_CHECK_CONFIRM_DIALOG.CONTENT", this.viewContainerRef)
-              .subscribe(confirmationResponse => {
-                if(confirmationResponse){
-                  // if the user confirms, create the patient
-                  this.createPatient();
-                } else {
-                  // else, go back to patient search page
-                  this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
-                }
+            this.confirmDialogService.confirm("PATIENT.CREATE_EDIT.DUPLICATE_CHECK_CONFIRM_DIALOG.TITLE",
+              "PATIENT.CREATE_EDIT.DUPLICATE_CHECK_CONFIRM_DIALOG.CONTENT",
+              this.viewContainerRef,
+              {
+                okLabel: "PATIENT.CREATE_EDIT.DUPLICATE_CHECK_CONFIRM_DIALOG.OK_BTN",
+                cancelLabel: "PATIENT.CREATE_EDIT.DUPLICATE_CHECK_CONFIRM_DIALOG.CANCEL_BTN"
               }
+            )
+              .subscribe(confirmationResponse => {
+                  if (confirmationResponse) {
+                    // if the user confirms, create the patient
+                    this.createPatient();
+                  } else {
+                    // else, go back to patient search page
+                    this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
+                  }
+                }
               );
           } else {
             // if there is no patient found matching the criteria, create the patient without prompting the user
@@ -296,7 +303,7 @@ export class PatientCreateEditComponent implements OnInit {
     }
   }
 
-  createPatient(){
+  createPatient() {
     this.patientService.createPatient(this.prepareCreateEditPatient())
       .subscribe(
         () => {
