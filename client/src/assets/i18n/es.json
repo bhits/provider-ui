@@ -42,19 +42,31 @@
           "STAGE_TEXT": "EN CURSO",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Editar este consentimiento",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Previsualizar este consentimiento",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing",
           "PROVIDE_ESIGNATURE_OPTION_TEXT": "Proporcionar eSignature",
           "DELETE_THIS_CONSENT_OPTION_TEXT": "Eliminar este consentimiento"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "FIRMADO",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing",
           "REVOCATION_OPTION_TEXT": "Revocación"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "Rechazado",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
-          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "Ver la revocación firmada"
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "Ver la revocación firmada",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing"
         }
+      },
+      "APPLY_TRY_POLICY_DIALOG": {
+        "TITLE": "{spanish} Apply Patient Record",
+        "CONTENT": {
+          "DOCUMENT_PLACEHOLDER": "{spanish} Document",
+          "PURPOSE_PLACEHOLDER": "{spanish} Purpose Of Use"
+        },
+        "BACK_BTN": "{spanish} Back to Consent Options",
+        "APPLY_BTN": "{spanish} Apply"
       },
       "DELETE_CONSENT_DIALOG": {
         "TITLE": "Eliminar consentimiento",
@@ -206,7 +218,8 @@
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "{spanish} Success in downloading revoked consent.",
       "FAILED_DOWNLOAD_REVOKED_CONSENT": "{spanish} Failed to download the revoked consent. Please try again later.",
       "SUCCESS_DELETE_CONSENT": "{spanish} Successfully deleted the consent.",
-      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent. Please try again later."
+      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent. Please try again later.",
+      "FAILED_APPLY_TRY_POLICY": "{spanish} Failed to try this consent settings against patient medical record, please try again later..."
     }
   },
   "PATIENT": {
@@ -452,7 +465,7 @@
       "ADD_BUTTON": "Agregar a la lista de proveedores"
     },
     "NOTIFICATION_MSG": {
-      "FAILED_GET_PROVIDERS": "{spanish} Failed to get providers., please try again later...",
+      "FAILED_GET_PROVIDERS": "{spanish} Failed to get providers, please try again later...",
       "FAILED_ADD_PROVIDER": "{spanish} Failed to add the provider, please try again later...",
       "SUCCESS_DELETE_PROVIDER": "{spanish} Successfully delete the provider.",
       "FAILED_DELETE_PROVIDER": "{spanish} Failed to delete the provider, please try again later..."
