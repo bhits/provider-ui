@@ -59,17 +59,24 @@ export class PatientSearchComponent implements OnInit {
         firstName: [null,
           [
             Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)
+            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+            Validators.required
           ]
         ],
         lastName: [null,
           [
             Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
             Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
+            Validators.required
           ]
         ],
         genderCode: [null],
-        birthDate: [null, ValidationService.pastDateValidator],
+        birthDate: [null,
+          [
+            ValidationService.pastDateValidator,
+            Validators.required
+          ]
+        ],
         mrn: [null,
           [
             Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
