@@ -15,11 +15,12 @@ export class ApiUrlService {
       ["ConfigBaseUrl", "/provider-ui-api/config"],
       ["PlsBaseUrl", "/provider-ui-api/pls"],
       ["PcmBaseUrl", "/provider-ui-api/pcm"],
+      ["pepBaseUrl", "/provider-ui-api/pep"],
+      ["tryPolicyBaseUrl", "/provider-ui-api/try-policy"],
       ["UmsBaseUrl", "/provider-ui-api/ums"],
       ["VssBaseUrl", "/provider-ui-api/vss"],
       ["uaaTokenUrl", "/uaa/oauth/token"],
-      ["uaaUserInfoUrl", "/uaa/userinfo"],
-      ["pepBaseUrl", "/provider-ui-api/pep"]
+      ["uaaUserInfoUrl", "/uaa/userinfo"]
     ]
   );
 
@@ -54,8 +55,16 @@ export class ApiUrlService {
     return this.urls.get("PcmBaseUrl");
   }
 
+  getPepUrl(): string {
+    return this.urls.get('pepBaseUrl');
+  }
+
   getPlsBaseUrl(): string {
     return this.urls.get("PlsBaseUrl");
+  }
+
+  getTryPolicyBaseUrl(): string {
+    return this.urls.get("tryPolicyBaseUrl");
   }
 
   getUmsBaseUrl(): string {
@@ -72,9 +81,5 @@ export class ApiUrlService {
 
   getUaaUserInfoUrl(): string {
     return this.urls.get('uaaUserInfoUrl');
-  }
-
-  getPepUrl(): string {
-    return this.urls.get('pepBaseUrl');
   }
 }

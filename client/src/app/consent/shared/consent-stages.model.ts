@@ -27,6 +27,13 @@ export const CONSENT_STAGES: ConsentStage[] = [
         routerLink: '/consent-sign'
       },
       {
+        key: ConsentStageOptionKey.APPLY_TRY_POLICY,
+        icon: "settings",
+        text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.APPLY_TRY_POLICY_OPTION_TEXT",
+        isMethod: true,
+        isEnabled: true
+      },
+      {
         key: ConsentStageOptionKey.DELETE,
         icon: "delete_forever",
         text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.DELETE_THIS_CONSENT_OPTION_TEXT",
@@ -49,6 +56,15 @@ export const CONSENT_STAGES: ConsentStage[] = [
         key: ConsentStageOptionKey.REVOKE,
         icon: "cancel",
         text: "CONSENT.CARD.CONSENT_STAGES.SIGNED_STAGE.REVOCATION_OPTION_TEXT",
+        routerLink: '/consent-revoke',
+        isEnabled: true
+      },
+      {
+        key: ConsentStageOptionKey.APPLY_TRY_POLICY,
+        icon: "settings",
+        text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.APPLY_TRY_POLICY_OPTION_TEXT",
+        isMethod: true,
+        isEnabled: true
         routerLink: '/consent-revoke'
       }
     ]
@@ -69,6 +85,15 @@ export const CONSENT_STAGES: ConsentStage[] = [
         key: ConsentStageOptionKey.DOWNLOAD_REVOKED_PDF,
         icon: "file_download",
         text: "CONSENT.CARD.CONSENT_STAGES.REVOKED_STAGE.VIEW_SIGNED_REVOCATION_OPTION_TEXT",
+        isMethod: true,
+        isEnabled: true
+      },
+      {
+        key: ConsentStageOptionKey.APPLY_TRY_POLICY,
+        icon: "settings",
+        text: "CONSENT.CARD.CONSENT_STAGES.SAVED_STAGE.APPLY_TRY_POLICY_OPTION_TEXT",
+        isMethod: true,
+        isEnabled: true
         isMethod: true
       }
     ]

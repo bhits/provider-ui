@@ -5,6 +5,8 @@ import {ExceptionService} from "../shared/exception.service";
 import {Observable} from "rxjs/Observable";
 import {ProviderPermissions} from "./provider-permissions.model";
 import {Oauth2Client} from "app/core/oauth2-client.model";
+import {ConfigResponse} from "./config-response.model";
+import {RegistrationConfig} from "./registration-config.model";
 
 @Injectable()
 export class ConfigService {
@@ -26,6 +28,13 @@ export class ConfigService {
     const resourceUrl = this.apiUrlService.getConfigBaseUrl().concat("/providerPermissions");
     return this.http.get(resourceUrl)
       .map((resp: Response) => <ProviderPermissions>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+  public getRegistrationConfig(): Observable<RegistrationConfig>{
+    const resourceUrl = this.apiUrlService.getConfigBaseUrl().concat("/registration");
+    return this.http.get(resourceUrl)
+      .map((resp: Response) => <RegistrationConfig>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
 }
