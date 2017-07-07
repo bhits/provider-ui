@@ -105,7 +105,7 @@
   </md-card-actions>
 </md-card>
 <div>
-  <!--consentOptionsDialog Start-->
+  <!--consentOptions dialog Start-->
   <md2-dialog #consentOptionsDialog>
     <md2-dialog-title fxLayoutAlign="center">
       {{ 'CONSENT.CARD.MANAGE_CONSENT_DIALOG_TITLE' | translate }}
@@ -114,7 +114,7 @@
       <md-list-item *ngFor="let consentOption of consentOptions">
         <div class="margin-20" fxFill>
           <a fxLayoutAlign="space-between" md-raised-button
-             (click)="invokeAction(consentOption, consentOptionsDialog, deleteConfirmationDialog)"
+             (click)="invokeAction(consentOption, consentOptionsDialog, deleteConfirmationDialog, applyTryPolicyDialog)"
              *ngIf="selectConsentMethodOption(consentOption); else isNotMethodOption">
             <md-icon>{{consentOption.icon}}</md-icon>
             <span class="margin-20">{{consentOption.text | translate}}</span>
@@ -130,9 +130,53 @@
       </md-list-item>
     </md-list>
   </md2-dialog>
-  <!--consentOptionsDialog End-->
-
-  <!--deleteConfirmationDialog Start-->
+  <!--consentOptions dialog End-->
+  <!--apply tryPolicy dialog Start-->
+  <md2-dialog #applyTryPolicyDialog (onOpen)="consentOptionsDialog.close()">
+    <md2-dialog-title fxLayoutAlign="center">
+      {{ 'CONSENT.CARD.APPLY_TRY_POLICY_DIALOG.TITLE' | translate }}
+    </md2-dialog-title>
+    <form [formGroup]="applyTryPolicyForm" novalidate>
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start">
+          <md-select formControlName="sampleDocument" class="medium-width font-size20"
+                     placeholder="{{ 'CONSENT.CARD.APPLY_TRY_POLICY_DIALOG.CONTENT.DOCUMENT_PLACEHOLDER' | translate }}">
+            <md-option *ngFor="let sampleDocument of sampleDocuments"
+                       [value]="sampleDocuments.indexOf(sampleDocument)">
+              {{ sampleDocument.documentName }}
+            </md-option>
+          </md-select>
+        </div>
+        <c2s-control-validation-error-message fxLayoutAlign="start"
+                                              [control]="applyTryPolicyForm.get('sampleDocument')">
+        </c2s-control-validation-error-message>
+      </div>
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start">
+          <md-select formControlName="purposeOfUse" class="medium-width font-size20"
+                     placeholder="{{ 'CONSENT.CARD.APPLY_TRY_POLICY_DIALOG.CONTENT.PURPOSE_PLACEHOLDER' | translate }}">
+            <md-option *ngFor="let purpose of consent.sharePurposes" [value]="purpose.display">
+              {{ purpose.display }}
+            </md-option>
+          </md-select>
+        </div>
+        <c2s-control-validation-error-message fxLayoutAlign="start"
+                                              [control]="applyTryPolicyForm.get('purposeOfUse')">
+        </c2s-control-validation-error-message>
+      </div>
+    </form>
+    <md2-dialog-footer>
+      <button md-raised-button color="primary" (click)="backToOptions(applyTryPolicyDialog, consentOptionsDialog)">
+        {{ 'CONSENT.CARD.APPLY_TRY_POLICY_DIALOG.BACK_BTN' | translate }}
+      </button>
+      <button md-raised-button color="primary" (click)="applyTryPolicy(applyTryPolicyDialog)"
+              [disabled]="applyTryPolicyForm.invalid">
+        {{ 'CONSENT.CARD.APPLY_TRY_POLICY_DIALOG.APPLY_BTN' | translate }}
+      </button>
+    </md2-dialog-footer>
+  </md2-dialog>
+  <!--apply tryPolicy dialog End-->
+  <!--deleteConfirmation dialog Start-->
   <md2-dialog #deleteConfirmationDialog (onOpen)="consentOptionsDialog.close()">
     <md2-dialog-title>
       {{ 'CONSENT.CARD.DELETE_CONSENT_DIALOG.TITLE' | translate }}
@@ -147,5 +191,5 @@
       </button>
     </md2-dialog-footer>
   </md2-dialog>
-  <!--deleteConfirmationDialog End-->
+  <!--deleteConfirmation dialog End-->
 </div>

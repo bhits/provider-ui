@@ -7,6 +7,7 @@ import {TokenService} from "../security/shared/token.service";
 import {GlobalEventManagementService} from "./global-event-management.service";
 import {CustomTranslateService} from "./custom-translate.service";
 import {SessionStorageService} from "../security/shared/session-storage.service";
+import {ConfigService} from "./config.service";
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import {SessionStorageService} from "../security/shared/session-storage.service"
   ],
   declarations: [],
   providers: [
+    ConfigService,
     GlobalEventManagementService,
     CustomTranslateService,
     {

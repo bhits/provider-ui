@@ -27,6 +27,7 @@ export class PatientCreateEditComponent implements OnInit {
   private toSubmit: boolean = false;
   private patientCreationLookupInfo: PatientCreationLookupInfo;
   public createEditPatientForm: FormGroup;
+  public formChanged: boolean = false;
   public editingPatient: Patient;
   public isOpenOnFocus: boolean = true;
   public FORMAT: string = "MM/dd/y";
@@ -94,6 +95,12 @@ export class PatientCreateEditComponent implements OnInit {
             this.setValueOnEditPatientForm(patient);
           }
         });
+    // To detect if form has changed
+    this.createEditPatientForm.valueChanges.subscribe(data => {
+      if (data != null) {
+        this.formChanged = true;
+      }
+    });
   }
 
   private initCreateEditFormGroup() {
@@ -219,7 +226,7 @@ export class PatientCreateEditComponent implements OnInit {
   canDeactivate(): Observable<boolean> | boolean {
     if (this.toSubmit) {
       return true;
-    } else if (this.createEditPatientForm.dirty) {
+    } else if (this.formChanged) {
       const confirmTitle: string = "PATIENT.CREATE_EDIT.CONFIRM_DIALOG.TITLE";
       const confirmMessage: string = "PATIENT.CREATE_EDIT.CONFIRM_DIALOG.CONTENT";
       return this.confirmDialogService.confirm(confirmTitle, confirmMessage, this.viewContainerRef);

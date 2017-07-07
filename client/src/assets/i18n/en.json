@@ -54,17 +54,29 @@
           "STAGE_TEXT": "IN PROGRESS",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing",
           "DELETE_THIS_PROVIDER_OPTION_TEXT": "Delete This Consent"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "SIGNED",
-          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent"
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "REVOKED",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
-          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation"
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing"
         }
+      },
+      "APPLY_TRY_POLICY_DIALOG": {
+        "TITLE": "Apply Patient Record",
+        "CONTENT": {
+          "DOCUMENT_PLACEHOLDER": "Document",
+          "PURPOSE_PLACEHOLDER": "Purpose Of Use"
+        },
+        "BACK_BTN": "Back to Consent Options",
+        "APPLY_BTN": "Apply"
       },
       "DELETE_CONSENT_DIALOG": {
         "TITLE": "Delete Consent",
@@ -85,13 +97,15 @@
       "SHARE_SOME_RADIO": "<strong>SHARE</strong> my medical record <strong>WITH EXCEPTION</strong> of specific medical information categories.",
       "DIALOG": {
         "TITLE": "Privacy Settings",
+        "SHARE_ALL_PARAGRAPH": "You have chosen to <strong>share all</strong> of your medical record <strong>without any exception.</strong>",
+        "NOT_SHARE_ALL_PARAGRAPH": "Please select the medical information that you <strong>want</strong> to share.",
         "HEADER1": "Sensitive Information Categories",
-        "HEADER2": "Select the medical information that you wish to share.",
         "FED_TITLE": "Federal Categories",
         "FED_DESCRIPTION": "Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
         "STATE_TITLE": "State Categories",
         "STATE_DESCRIPTION": "Most states have laws restricting health professionals from disclosing information related to substance abuse, HIV/AIDS, and mental health. ' +'Some states have restrictions regarding genetic information and communicable diseases. You have the right to choose the information you wish to share or not share and with whom.",
-        "CONTENT": "Please select the \"Share my medical record without any exceptions\" option,if you want to share all of your health information.",
+        "WARNING_ONE": "Please select the \"Share my medical record without any exceptions\" option,if you want to share all of your health information.",
+        "WARNING_TWO": "Please select <strong>AT LEAST ONE</strong> category that you want to share.",
         "CANCEL_BTN": "Cancel",
         "SAVE_BTN": "Save changes",
         "CONFIRM_BTN": "Confirm"
@@ -146,7 +160,8 @@
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "Success in downloading revoked consent.",
       "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent, please try again later...",
       "SUCCESS_DELETE_CONSENT": "Success in deleting consent.",
-      "FAILED_DELETE_CONSENT": "Failed to delete the consent, please try again later..."
+      "FAILED_DELETE_CONSENT": "Failed to delete the consent, please try again later...",
+      "FAILED_APPLY_TRY_POLICY": "Failed to try this consent settings against patient medical record, please try again later..."
     }
   },
   "PATIENT": {
@@ -370,7 +385,7 @@
       "ADD_BUTTON": "Add to Provider List"
     },
     "NOTIFICATION_MSG": {
-      "FAILED_GET_PROVIDERS": "Failed to get providers., please try again later...",
+      "FAILED_GET_PROVIDERS": "Failed to get providers, please try again later...",
       "FAILED_ADD_PROVIDER": "Failed to add the provider, please try again later...",
       "SUCCESS_DELETE_PROVIDER": "Successfully delete the provider.",
       "FAILED_DELETE_PROVIDER": "Failed to delete the provider, please try again later..."

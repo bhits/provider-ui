@@ -54,17 +54,29 @@
           "STAGE_TEXT": "EN CURSO",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Editar este consentimiento",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Previsualizar este consentimiento",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing",
           "DELETE_THIS_PROVIDER_OPTION_TEXT": "Eliminar este consentimiento"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "FIRMADO",
-          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado"
+          "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "Rechazado",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
-          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "Ver la revocación firmada"
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "Ver la revocación firmada",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing"
         }
+      },
+      "APPLY_TRY_POLICY_DIALOG": {
+        "TITLE": "{spanish} Apply Patient Record",
+        "CONTENT": {
+          "DOCUMENT_PLACEHOLDER": "{spanish} Document",
+          "PURPOSE_PLACEHOLDER": "{spanish} Purpose Of Use"
+        },
+        "BACK_BTN": "{spanish} Back to Consent Options",
+        "APPLY_BTN": "{spanish} Apply"
       },
       "DELETE_CONSENT_DIALOG": {
         "TITLE": "Eliminar consentimiento",
@@ -85,13 +97,15 @@
       "SHARE_SOME_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> CON EXCEPCIÓN </ strong> de categorías específicas de información médica.",
       "DIALOG": {
         "TITLE": "La configuración de privacidad",
+        "SHARE_ALL_PARAGRAPH": "{spanish} You have chosen to <strong>share all</strong> of your medical record <strong>without any exception.</strong>",
+        "NOT_SHARE_ALL_PARAGRAPH": "{spanish} Please select the medical information that you <strong>want</strong> to share.",
         "HEADER1": "Categorías de información sensible",
-        "HEADER2": "Seleccione la información médica que desea compartir.",
         "FED_TITLE": "Categorías federales",
         "FED_DESCRIPTION": "{spanish} Federal requirements strictly restrict health professionals from disclosing substance abuse treatment information without signed patient consent (called <a href='http://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs' target='_blank'> 42 CFR Part 2 <i class='fa fa-external-link'></i></a> ). You have the right to choose the information you wish to share or not share and with whom.",
         "STATE_TITLE": "Categorías del estado",
         "STATE_DESCRIPTION": "La mayoría de los estados tienen leyes que restringen a los profesionales de la salud de revelar información relacionada con el abuso de sustancias, el VIH / SIDA y la salud mental. '+' Algunos estados tienen restricciones con respecto a la información genética y las enfermedades transmisibles. Usted tiene el derecho de elegir la información que desea compartir o no compartir y con quién.",
-        "CONTENT": "Por favor, seleccione la opción \"Compartir mi historial médico sin excepciones\", si desea compartir toda la información de su salud.",
+        "WARNING_ONE": "{spanish} Please select the \"Share my medical record without any exceptions\" option,if you want to share all of your health information.",
+        "WARNING_TWO": "{spanish} Please select <strong>AT LEAST ONE</strong> category that you want to share.",
         "CANCEL_BTN": "Cancelar",
         "SAVE_BTN": "Guardar cambios",
         "CONFIRM_BTN": "{spanish} Confirm"
@@ -146,7 +160,8 @@
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "{spanish} Success in downloading revoked consent.",
       "FAILED_DOWNLOAD_REVOKED_CONSENT": "{spanish} Failed to download the revoked consent, please try again later...",
       "SUCCESS_DELETE_CONSENT": "{spanish} Success in deleting consent.",
-      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent, please try again later..."
+      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent, please try again later...",
+      "FAILED_APPLY_TRY_POLICY": "{spanish} Failed to try this consent settings against patient medical record, please try again later..."
     }
   },
   "PATIENT": {
@@ -368,7 +383,7 @@
       "ADD_BUTTON": "Agregar a la lista de proveedores"
     },
     "NOTIFICATION_MSG": {
-      "FAILED_GET_PROVIDERS": "{spanish} Failed to get providers., please try again later...",
+      "FAILED_GET_PROVIDERS": "{spanish} Failed to get providers, please try again later...",
       "FAILED_ADD_PROVIDER": "{spanish} Failed to add the provider, please try again later...",
       "SUCCESS_DELETE_PROVIDER": "{spanish} Successfully delete the provider.",
       "FAILED_DELETE_PROVIDER": "{spanish} Failed to delete the provider, please try again later..."
