@@ -1,31 +1,31 @@
 <div class="p-t-75">
   <md-grid-list cols="1">
-    <md-card class="m-l-sm m-r-sm">
-      <div class="p-l-lg p-r-lg m-r-lg">
-      <h2 fxLayoutAlign="start">{{ 'CONSENT.CONSENT_REVOKE.TITLE' | translate }}</h2>
-      <div fxLayout="row" class="font-size16 p-b-sm">
-        <div>{{ 'CONSENT.CONSENT_REVOKE.REFERENCE_NUMBER' | translate }}:</div>
-        <div class="m-l-sm">
+    <md-card id="revocation" class="m-t-sm m-l m-r">
+      <div class="buffer">
+      <h2 class="font-weight600" fxLayoutAlign="start">{{ 'CONSENT.CONSENT_REVOKE.TITLE' | translate }}</h2>
+      <div fxLayout="column" fxLayout.gt-xs="row"  class="font-size16 p-b-sm">
+        <div class="m-r-sm">{{ 'CONSENT.CONSENT_REVOKE.REFERENCE_NUMBER' | translate }}:</div>
+        <div>
           <strong>{{consent.consentReferenceId}}</strong>
         </div>
       </div>
-      <div fxLayout="row" class="font-size16 p-b-sm">
-          <div>{{ 'CONSENT.CONSENT_REVOKE.PATIENT_NAME' | translate }}:</div>
-          <div class="m-l-sm"><strong>{{selectedPatientName.name}}</strong></div>
+      <div fxLayout="column" fxLayout.gt-xs="row"  class="font-size16 p-b-sm">
+          <div class="m-r-sm">{{ 'CONSENT.CONSENT_REVOKE.PATIENT_NAME' | translate }}:</div>
+          <div><strong>{{selectedPatientName.name}}</strong></div>
       </div>
-      <div fxLayout="row" class="font-size16">
-          <div>{{ 'CONSENT.CONSENT_REVOKE.PATIENT_DOB' | translate }}:</div>
-          <div class="m-l-sm"><strong>{{selectedPatient.birthDate | date}}</strong></div>
+      <div fxLayout="column" fxLayout.gt-xs="row"  class="font-size16">
+          <div class="m-r-sm">{{ 'CONSENT.CONSENT_REVOKE.PATIENT_DOB' | translate }}:</div>
+          <div><strong>{{selectedPatient.birthDate | date}}</strong></div>
       </div>
-      <div fxLayout="column" class="font-size14">
+      <div fxLayout="column" class="font-size15">
         <p fxLayout="row" style="white-space: pre-line;">{{consentRevocationTerms}}</p>
-        <div>
-          <md-checkbox fxLayoutAlign="start" (click)="confirmRevokeConsentTerms.open()" [(ngModel)]="checked">
-            {{ 'CONSENT.CONSENT_REVOKE.TERMS' | translate:username }}
+        <div class="m-t">
+          <md-checkbox fxLayoutAlign="start center" (click)="confirmRevokeConsentTerms.open()" [(ngModel)]="checked">
+           {{ 'CONSENT.CONSENT_REVOKE.TERMS' | translate:username }}
           </md-checkbox>
         </div>
       </div>
-      <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+      <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px" class="m-t-lg">
         <button md-raised-button color="primary" (click)="cancel()">
           <strong>{{ 'CONSENT.CONSENT_REVOKE.CANCEL_BTN' | translate }}</strong>
         </button>
@@ -41,7 +41,7 @@
 
     <md2-dialog #confirmRevokeConsentTerms (onClose)="clearCheckbox()">
       <md2-dialog-title> {{ 'CONSENT.CONSENT_REVOKE.CONFIRM_DIALOG.TITLE' | translate }}</md2-dialog-title>
-      <div fxLayout="column">
+      <div fxLayout="column" class="modalContent-centered">
         <p class="dialog-text">
           {{ 'CONSENT.CONSENT_REVOKE.CONFIRM_DIALOG.CONTENT' | translate }}
         </p>
@@ -52,7 +52,7 @@
           {{ 'CONSENT.CONSENT_REVOKE.CONFIRM_DIALOG.AUTHENTICATE_MSG' | translate }}
         </div>
       </div>
-      <md2-dialog-footer>
+      <md2-dialog-footer class="bg-xlite-teal">
         <button md-raised-button (click)="confirmRevokeConsentTerms.close()">
           {{ 'CONSENT.CONSENT_REVOKE.CONFIRM_DIALOG.CANCEL_BTN' | translate }}
         </button>
@@ -64,10 +64,15 @@
 
     <md2-dialog #completeRevokeAttestation (onClose)="navigateTo()">
       <md2-dialog-title>{{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.TITLE' | translate }}</md2-dialog-title>
-      <md2-dialog-footer>
-        <button md-raised-button color="primary" (click)="downloadRevokedConsent()">
+      <div fxLayout="column" class="modalContent-centered">
+        <div class="p-b-sm">Click to download the Signed Consent Revocation.</div>
+        <button md-raised-button color="accent" (click)="downloadRevokedConsent()">
           {{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.DOWNLOAD_BTN' | translate }}
         </button>
+      </div>
+
+      <md2-dialog-footer class="bg-xlite-teal">
+
         <button md-raised-button color="primary" (click)="cancel()">
           {{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.CONTINUE_BTN' | translate }}
         </button>
