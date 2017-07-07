@@ -41,6 +41,16 @@
     </div>
     <div fxLayout="row" fxLayoutGap="20px">
       <div fxFlex>
+        <md2-datepicker class="full-width font-size20"
+                        placeholder="{{ 'PATIENT.SEARCH.CRITERIA.DOB_PLACEHOLDER' | translate }}"
+                        [openOnFocus]="isOpenOnFocus" [format]="FORMAT"
+                        formControlName="birthDate">
+        </md2-datepicker>
+        <c2s-control-validation-error-message
+          [control]="searchPatientForm.controls.birthDate">
+        </c2s-control-validation-error-message>
+      </div>
+      <div fxFlex>
         <md-select placeholder="{{ 'PATIENT.SEARCH.CRITERIA.GENDER_PLACEHOLDER' | translate }}"
                    formControlName="genderCode"
                    class="full-width font-size20">
@@ -50,16 +60,6 @@
         </md-select>
         <c2s-control-validation-error-message
           [control]="searchPatientForm.controls.genderCode">
-        </c2s-control-validation-error-message>
-      </div>
-      <div fxFlex>
-        <md2-datepicker class="full-width font-size20"
-                        placeholder="{{ 'PATIENT.SEARCH.CRITERIA.DOB_PLACEHOLDER' | translate }}"
-                        [openOnFocus]="isOpenOnFocus" [format]="FORMAT"
-                        formControlName="birthDate">
-        </md2-datepicker>
-        <c2s-control-validation-error-message
-          [control]="searchPatientForm.controls.birthDate">
         </c2s-control-validation-error-message>
       </div>
     </div>
