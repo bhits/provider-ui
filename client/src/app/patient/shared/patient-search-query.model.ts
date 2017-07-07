@@ -5,4 +5,5 @@ export class PatientSearchQuery {
   genderCode?: string;
   page?: string;
   size?: string;
+  strictMatch?: boolean;
 }
