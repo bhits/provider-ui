@@ -61,6 +61,21 @@ body {
 #myPatient .dob-modify {
   margin-right: -9px;
 }
+.patientInfo-accordion {
+  border: thin solid #94b9af;
+  div.md2-accordion-header {
+    padding: 15px;
+    background-color: #b0d6cf;
+    border: none !important;
+    box-shadow: 0 1px 0 #94b9af !important;
+    md-card-title {margin-bottom: 0 !important;}
+    .md2-accordion-header-icon {
+      top: 28px !important;
+      right: 25px !important;
+      border-width: 0 4px 4px 0 !important;
+    }
+  }
+}
 
 
 // ------------------------------------------------------------- create consent styling -------------//
@@ -876,6 +891,13 @@ body {
   .border-bottom-white {
     border-bottom: 2px solid white;
   }
+.border-bottom-thinBlack {
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+.border-top-thinBlack {
+  border-top: 1px solid rgba(0, 0, 0, .12);
+}
 
   .border-top-purple {
     border-top: 2px solid #644f63;

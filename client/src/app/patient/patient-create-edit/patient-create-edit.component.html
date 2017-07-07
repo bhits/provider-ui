@@ -1,20 +1,21 @@
-<div class="p-t-75 p-l-md p-r-md p-b">
+<div class="p-t-75 p-l-lg p-r-lg p-b">
   <h1 class="">{{title | translate}}</h1>
-  <div class="flexcontainer row" fxLayoutAlign="start" *ngIf="isEditMode">
-    <div class="fa fa-4x fa-address-book"></div>
+  <div class="flexcontainer row border-top-thinBlack" fxLayoutAlign="start center" *ngIf="isEditMode">
+    <div class="fa fa-3x fa-address-book m-r"></div>
     <h2>{{editingPatient | patient: 'fullName'}}</h2>
   </div>
   <div style="padding-bottom: 20px" *ngIf="isEditMode">
     <c2s-patient-verification [patient]="editingPatient" *ngIf="displaySegmentation"></c2s-patient-verification>
   </div>
 
-  <md2-accordion multiple="false">
+  <md2-accordion class="patientInfo-accordion m-b-sm" multiple="false">
     <md2-accordion-tab [active]="!isEditMode">
-      <md2-accordion-header class="">
-        <md-card-title align="start"><i class="fa fa-user-plus"></i>
+      <md2-accordion-header>
+        <md-card-title align="start" class="m-b-n">
           {{ 'PATIENT.CREATE_EDIT.ACCORDION_HEADER' | translate }}
         </md-card-title>
       </md2-accordion-header>
+      <div class="p-l p-r">
       <div>
         <div style="background-color: #BCDEDB;" class="p-md font-size18 font-weight center-sm-left">
           {{ 'PATIENT.CREATE_EDIT.INFO' | translate }}
@@ -284,6 +285,8 @@
           </button>
         </div>
       </form>
+    </div>
+
     </md2-accordion-tab>
   </md2-accordion>
 
