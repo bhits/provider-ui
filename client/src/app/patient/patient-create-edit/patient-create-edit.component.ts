@@ -14,6 +14,7 @@ import {ValidationService} from "../../shared/validation.service";
 import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.model";
 import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.model";
 import {IdentifierSystem} from "../shared/IdentifierSystem.model";
+import {ConfigService} from "../../core/config.service";
 
 @Component({
   selector: 'c2s-patient-create-edit',
@@ -50,6 +51,7 @@ export class PatientCreateEditComponent implements OnInit {
   //turn off display activation and segmentation
   public displayActivation: boolean = false;
   public displaySegmentation: boolean = false;
+  public duplicateCheckEnabled: boolean = false;
 
   constructor(private apiUrlService: ApiUrlService,
               private confirmDialogService: ConfirmDialogService,
@@ -58,11 +60,14 @@ export class PatientCreateEditComponent implements OnInit {
               private route: ActivatedRoute,
               private patientService: PatientService,
               private viewContainerRef: ViewContainerRef,
-              private utilityService: UtilityService) {
+              private utilityService: UtilityService,
+              private configService: ConfigService) {
   }
 
   ngOnInit() {
     this.patientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
+    this.configService.getRegistrationConfig()
+      .subscribe(registrationConfig => this.duplicateCheckEnabled = registrationConfig.duplicateCheckEnabled);
     this.roles = this.patientCreationLookupInfo.roles;
     this.genders = this.patientCreationLookupInfo.genderCodes;
     this.locales = this.patientCreationLookupInfo.locales;
@@ -252,6 +257,7 @@ export class PatientCreateEditComponent implements OnInit {
 
   createEditPatient(): void {
     this.toSubmit = true;
+    // editMode = true
     if (this.isEditMode) {
       this.patientService.updatePatient(this.patientId, this.prepareCreateEditPatient())
         .subscribe(
@@ -263,7 +269,9 @@ export class PatientCreateEditComponent implements OnInit {
             console.log(err);
           }
         );
-    } else {
+    }
+    // editMode = false && duplicateCheckEnabled = true
+    else if (this.duplicateCheckEnabled) {
       // check backend if the patient already exists
       const patient: Patient = this.createEditPatientForm.value;
       this.patientService.searchPatientsByDemographics({
@@ -300,6 +308,10 @@ export class PatientCreateEditComponent implements OnInit {
             this.createPatient();
           }
         });
+    }
+    // editMode = false && duplicateCheckEnabled = false
+    else {
+      this.createPatient();
     }
   }
 
