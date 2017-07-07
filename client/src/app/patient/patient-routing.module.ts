@@ -39,7 +39,6 @@ const patientRoutes: Routes = [
         resolve: {
           patient: PatientResolveService,
           providerPermissions: ConfigResolveService,
-          patientCreationLookupInfo: PatientCreationLookupResolveService
           patientCreationLookupInfo: PatientCreationLookupResolveService,
           sampleDocuments: SampleDocumentResolveService
         }
@@ -64,7 +63,6 @@ export const routedComponents = [
 export const routedResolveServices = [
   PatientResolveService,
   PatientCreationLookupResolveService,
-  ConfigResolveService
-  PatientCreationLookupResolveService,
+  ConfigResolveService,
   SampleDocumentResolveService
 ];

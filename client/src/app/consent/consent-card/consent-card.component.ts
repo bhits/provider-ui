@@ -11,7 +11,6 @@ import {Patient} from "app/patient/shared/patient.model";
 import {DetailedConsent} from "../shared/detailed-consent.model";
 import {SampleDocumentInfo} from "../shared/sample-document-info.model";
 import {TryPolicyService} from "app/consent/shared/try-policy.service";
-import {ActivatedRoute} from "@angular/router";
 import {ProviderPermissions} from "../../core/provider-permissions.model";
 
 @Component({
