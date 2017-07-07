@@ -236,6 +236,7 @@
         "LAST_NAME_PLACEHOLDER": "Last Name",
         "GENDER_PLACEHOLDER": "Gender",
         "DOB_PLACEHOLDER": "Date of Birth",
+        "MRN_PLACEHOLDER": "MRN/Patient ID Number",
         "CANCEL_BTN": "Cancel",
         "SEARCH_BTN": "Search"
       },

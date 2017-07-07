@@ -70,6 +70,11 @@ export class PatientSearchComponent implements OnInit {
         ],
         genderCode: [null],
         birthDate: [null, ValidationService.pastDateValidator],
+        mrn: [null,
+          [
+            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
+          ]
+        ],
       },
       {validator: ValidationService.atLeastOneFieldValidator})
   }
@@ -85,7 +90,8 @@ export class PatientSearchComponent implements OnInit {
       firstName: this.filterEmptyStringValue(formModel.firstName),
       lastName: this.filterEmptyStringValue(formModel.lastName),
       birthDate: this.utilityService.formatDate(formModel.birthDate, this.DATE_FORMAT),
-      genderCode: this.filterEmptyStringValue(formModel.genderCode)
+      genderCode: this.filterEmptyStringValue(formModel.genderCode),
+      mrn: this.filterEmptyStringValue(formModel.mrn)
     };
   }
 
