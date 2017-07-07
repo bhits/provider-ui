@@ -1,4 +1,4 @@
-<div fxLayoutAlign="center" fxLayout="column">
+<div id="myPatient" fxLayoutAlign="center" fxLayout="column">
 
   <br><br>
   <div fxLayoutAlign="center">
@@ -12,14 +12,14 @@
     </a>
   </div>
 
-
-  <form [formGroup]="searchPatientForm" class="search-patient-form" novalidate>
+<div class="p-md">
+  <form [formGroup]="searchPatientForm" search-patient-form novalidate>
     <h2>
       {{ 'PATIENT.SEARCH.CRITERIA.LABEL' | translate }}
     </h2>
-    <div fxLayout="row" fxLayoutGap="20px">
-      <div fxFlex>
-        <md-input-container class="full-width font-size20">
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between">
+      <div fxFlex="48%">
+        <md-input-container class="full-width font-size18">
           <input mdInput
                  placeholder="{{ 'PATIENT.SEARCH.CRITERIA.FIRST_NAME_PLACEHOLDER' | translate }}"
                  formControlName="firstName">
@@ -28,8 +28,8 @@
           [control]="searchPatientForm.controls.firstName">
         </c2s-control-validation-error-message>
       </div>
-      <div fxFlex>
-        <md-input-container class="full-width font-size20">
+      <div fxFlex="48%">
+        <md-input-container class="full-width font-size18">
           <input mdInput
                  placeholder="{{ 'PATIENT.SEARCH.CRITERIA.LAST_NAME_PLACEHOLDER' | translate }}"
                  formControlName="lastName">
@@ -39,11 +39,11 @@
         </c2s-control-validation-error-message>
       </div>
     </div>
-    <div fxLayout="row" fxLayoutGap="20px">
-      <div fxFlex>
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between">
+      <div fxFlex="48%" class="m-t m-b-sm">
         <md-select placeholder="{{ 'PATIENT.SEARCH.CRITERIA.GENDER_PLACEHOLDER' | translate }}"
                    formControlName="genderCode"
-                   class="full-width font-size20">
+                   class="full-width font-size18">
           <md-option *ngFor="let gender of genders" [value]="gender.code">
             {{ gender.displayName }}
           </md-option>
@@ -52,8 +52,8 @@
           [control]="searchPatientForm.controls.genderCode">
         </c2s-control-validation-error-message>
       </div>
-      <div fxFlex>
-        <md2-datepicker class="full-width font-size20"
+      <div fxFlex="48%" class="dob-modify">
+        <md2-datepicker class="full-width font-size18"
                         placeholder="{{ 'PATIENT.SEARCH.CRITERIA.DOB_PLACEHOLDER' | translate }}"
                         [openOnFocus]="isOpenOnFocus" [format]="FORMAT"
                         formControlName="birthDate">
@@ -64,7 +64,7 @@
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+    <div class="m-t-lg" fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
       <div *ngIf="hasSearchResult; else clearSearchButton">
         <button md-raised-button color="primary" (click)="clear()">
           <strong>
@@ -108,7 +108,7 @@
     </pagination-controls>
     <md-spinner *ngIf="loading"></md-spinner>
   </div>
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutAlign="center">
     <md-card class="patient-card"
              *ngFor="let patient of asyncPatients | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
       <md-card-header>
@@ -161,6 +161,7 @@
       (pageChange)="getPage($event)" *ngIf="!noResult && hasSearchResult">
     </pagination-controls>
   </div>
+</div>
 
 </div>
 
