@@ -29,13 +29,13 @@
         <h2>
           {{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.LABEL' | translate }}
         </h2>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <div fxFlex>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between">
+          <div fxFlex="48%">
             <md-select multiple
                        placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.ROLE_PLACEHOLDER' | translate }}"
                        formControlName="roles"
                        (change)="onRoleChange($event)"
-                       class="full-width font-size20">
+                       class="full-width font-size18">
               <md-option *ngFor="let role of roles; let i = index;" [value]="role.code"
                          [disabled]="role.code === disabledRoles[i-1]">
                 {{ role.name }}
@@ -45,10 +45,10 @@
               [control]="createEditPatientForm.controls.roles">
             </c2s-control-validation-error-message>
           </div>
-          <div fxFlex>
+          <div fxFlex="48%">
             <md-select placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.LOCALE_PLACEHOLDER' | translate }}"
                        formControlName="locale"
-                       class="full-width font-size20">
+                       class="full-width font-size18">
               <md-option *ngFor="let locale of locales" [value]="locale.code">
                 {{ locale.displayName }}
               </md-option>
@@ -58,9 +58,9 @@
             </c2s-control-validation-error-message>
           </div>
         </div>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <div fxFlex>
-            <md-input-container class="full-width font-size20">
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between">
+          <div fxFlex="48%">
+            <md-input-container class="full-width font-size18">
               <input mdInput
                      placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.FIRST_NAME_PLACEHOLDER' | translate }}"
                      formControlName="firstName">
@@ -69,8 +69,8 @@
               [control]="createEditPatientForm.controls.firstName">
             </c2s-control-validation-error-message>
           </div>
-          <div fxFlex>
-            <md-input-container class="full-width font-size20">
+          <div fxFlex="48%">
+            <md-input-container class="full-width font-size18">
               <input mdInput
                      placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.MIDDLE_NAME_PLACEHOLDER' | translate }}"
                      formControlName="middleName">
