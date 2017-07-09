@@ -1,14 +1,14 @@
 <div class="p-t-75 p-l-lg p-r-lg p-b">
   <h1 class="">{{title | translate}}</h1>
   <div class="flexcontainer row border-top-thinBlack" fxLayoutAlign="start center" *ngIf="isEditMode">
-    <div class="fa fa-3x fa-address-book m-r"></div>
+    <div class="fa fa-3x fa-address-book m-r"></div><i class="material-icons maroon">assignment_turned_in</i><i class="material-icons md-36 ribbon-blue">perm_contact_calendar</i>
     <h2>{{editingPatient | patient: 'fullName'}}</h2>
   </div>
   <div style="padding-bottom: 20px" *ngIf="isEditMode">
     <c2s-patient-verification [patient]="editingPatient" *ngIf="displaySegmentation"></c2s-patient-verification>
   </div>
 
-  <md2-accordion class="patientInfo-accordion m-b-sm" multiple="false">
+  <md2-accordion class="patientRecord-accordion m-b-sm" multiple="false">
     <md2-accordion-tab [active]="!isEditMode">
       <md2-accordion-header>
         <md-card-title align="start" class="m-b-n">
