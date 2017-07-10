@@ -248,7 +248,10 @@
         "FIRST_NAME_PLACEHOLDER": "{spanish}First Name",
         "LAST_NAME_PLACEHOLDER": "{spanish}Last Name",
         "GENDER_PLACEHOLDER": "{spanish}Gender",
-        "DOB_PLACEHOLDER": "{spanish}Date of Birth"
+        "MRN_PLACEHOLDER": "{spanish}MRN/Patient ID Number",
+        "DOB_PLACEHOLDER": "{spanish}Date of Birth",
+        "CANCEL_BTN": "{spanish}Cancel",
+        "SEARCH_BTN": "{spanish}Search"
       },
       "SEARCH_RESULT_MSG": "{spanish}Patient Search Results",
       "NO_PATIENTS_MSG": "{spanish}No results found. Please try again, or create a new patient."

@@ -48,6 +48,7 @@ export class PatientService {
     params.set('lastName', lastName);
     params.set('genderCode', requestParams.genderCode);
     params.set('birthDate',requestParams.birthDate);
+    params.set('mrn',requestParams.mrn);
     params.set('page',requestParams.page);
     params.set('size',requestParams.size);
 
