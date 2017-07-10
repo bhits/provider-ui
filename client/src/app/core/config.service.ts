@@ -29,11 +29,4 @@ export class ConfigService {
       .map((resp: Response) => <ProviderPermissions>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
-
-  public getRegistrationConfig(): Observable<RegistrationConfig>{
-    const resourceUrl = this.apiUrlService.getConfigBaseUrl().concat("/registration");
-    return this.http.get(resourceUrl)
-      .map((resp: Response) => <RegistrationConfig>(resp.json()))
-      .catch(this.exceptionService.handleError);
-  }
 }
