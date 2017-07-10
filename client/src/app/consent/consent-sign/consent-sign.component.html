@@ -1,15 +1,15 @@
 <div class="p-t-75">
   <md-grid-list cols="1">
-    <md-card>
-      <h2 fxLayoutAlign="start">{{ 'CONSENT.CONSENT_SIGN.TITLE' | translate }}</h2>
-      <div fxLayout="column">
-        <div fxLayoutAlign="start">{{ 'CONSENT.CONSENT_SIGN.REFERENCE_NUMBER' | translate }}:</div>
-        <div fxLayoutAlign="start">
+    <md-card id="consent-sign" class="m-t-sm m-l m-r">
+      <h1 class="font-weight600 dark-bluegrey" fxLayoutAlign="start">{{ 'CONSENT.CONSENT_SIGN.TITLE' | translate }}</h1>
+      <div fxLayout="column" fxLayout.gt-xs="row" class="font-size18 p-b-sm">
+        <div class="m-r-sm">{{ 'CONSENT.CONSENT_SIGN.REFERENCE_NUMBER' | translate }}:</div>
+        <div>
           <strong>{{consent.consentReferenceId}}</strong>
         </div>
       </div>
-      <div fxLayout="row">
-        <div fxFlex fxLayoutAlign="start">
+      <div fxLayout="column" fxLayout.gt-xs="row" class="font-size18 p-b-xs">
+        <div fxFlex>
           <span>{{ 'CONSENT.CONSENT_SIGN.PATIENT_NAME' | translate }}: </span>
           <span><strong>{{selectedPatientName.name}}</strong></span>
         </div>
@@ -18,9 +18,9 @@
           <span><strong>{{selectedPatient.birthDate | date }}</strong></span>
         </div>
       </div>
-      <md-toolbar color="primary">
+      <h2 class="bg-dark-bluegrey white p-sm p-l-md">
         {{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.TITLE' | translate }}
-      </md-toolbar>
+      </h2>
       <div fxLayout="column">
         <div fxLayoutAlign="start"><strong>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.AUTHORIZE_LABEL' | translate
           }}: </strong></div>
@@ -67,9 +67,9 @@
           </table>
         </div>
       </div>
-      <md-toolbar color="primary">
+      <h2 class="bg-dark-bluegrey white p-sm p-l-md">
         {{ 'CONSENT.CONSENT_SIGN.HEALTH_INFORMATION_SECTION.TITLE' | translate }}
-      </md-toolbar>
+      </h2>
       <div fxLayout="row">
         <div fxFlex fxLayout="column">
           <div fxLayoutAlign="start">
@@ -94,11 +94,11 @@
           </div>
         </div>
       </div>
-      <md-toolbar color="primary">
+      <h2 class="bg-dark-bluegrey white p-sm p-l-md">
         {{ 'CONSENT.CONSENT_SIGN.CONSENT_TERMS_SECTION.TITLE' | translate }}
-      </md-toolbar>
+      </h2>
       <div fxLayout="column">
-        <p fxLayout="row">{{termsWithUserName}}
+        <p class="font-size16" fxLayout="row">{{termsWithUserName}}
         </p>
         <div fxLayoutAlign="start" fxLayout="row">
           <div fxFlex fxLayoutAlign="start">
@@ -126,7 +126,7 @@
                 translate }}
               </div>
             </div>
-            <md2-dialog-footer>
+            <md2-dialog-footer class="bg-lite-gray-f5">
               <button md-raised-button (click)="confirmConsentTerms.close()">
                 {{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.CANCEL_BTN' | translate }}
               </button>
@@ -146,7 +146,7 @@
         </button>
         <md2-dialog #completeAttestation (onClose)="navigateTo()">
           <md2-dialog-title>{{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.TITLE' | translate }}</md2-dialog-title>
-          <md2-dialog-footer>
+          <md2-dialog-footer class="bg-lite-gray-f5">
             <button md-raised-button color="primary" (click)="getSignedConsentPdf()">
               {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.DOWNLOAD_BTN' | translate }}
             </button>
