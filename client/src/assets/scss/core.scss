@@ -88,6 +88,10 @@ body {
   }
 }
 
+.consent-create-page {
+
+}
+
 // ------------------------------------------------------------- create consent styling -------------//
 
   .lineHeight28 {
@@ -338,7 +342,7 @@ body {
     border: 1px solid #bdcdd4;
     border-radius: 2px;
     &.hover:hover {
-      border: 2px solid #efbf78;
+      border: 1px solid #efbf78;
     }
   }
 
@@ -411,6 +415,10 @@ body {
 
   .p-xs {
     padding: 5px;
+  }
+
+  .p-8 {
+    padding: 8px !important;
   }
 
   .p-sm {
@@ -766,7 +774,7 @@ body {
 
   //margin-bottom
   .m-b-none {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
   }
 
   .m-b-xxs {

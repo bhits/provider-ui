@@ -1,4 +1,4 @@
-<md-card class="c2s-consent m-b">
+<md-card class="c2s-consent p-8 m-b">
   <md-card-content>
     <div fxLayout="column">
       <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px"
@@ -86,7 +86,7 @@
     </div>
   </md-card-content>
   <md-card-actions>
-    <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center"
+    <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center stretch" fxLayoutAlign.gt-xs="space-between center"
          class="p-sm bg-xlite-teal">
       <div fxFlex="1 auto">
         <div class="font-size14">
@@ -98,7 +98,7 @@
           </md-chip>
         </div>
       </div>
-      <button fxFlex="1 0 auto" md-raised-button color="primary" (click)="consentOptionsDialog.open()">
+      <button class="m-t-none" class.xs="m-t-sm" fxFlex="1 0 auto" md-raised-button color="primary" (click)="consentOptionsDialog.open()">
         {{ 'CONSENT.CARD.MANAGE_CONSENT_BUTTON_TEXT' | translate }}
       </button>
     </div>
