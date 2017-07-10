@@ -18,53 +18,66 @@
           <span><strong>{{selectedPatient.birthDate | date }}</strong></span>
         </div>
       </div>
-      <h2 class="bg-dark-bluegrey white p-sm p-l-md">
+      <h2 class="bg-dark-blue white p-sm p-l-md">
         {{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.TITLE' | translate }}
       </h2>
-      <div fxLayout="column">
-        <div fxLayoutAlign="start"><strong>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.AUTHORIZE_LABEL' | translate
-          }}: </strong></div>
-        <div fxLayoutAlign="start">
-          <table [md2Data]="consent.fromProviders" [rowsPerPage]="10">
-            <thead>
-            <tr>
-              <th style="width: 30%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NAME' | translate }}</th>
-              <th style="width: 10%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NPI' | translate }}</th>
-              <th style="width: 13%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.PHONE' | translate }}</th>
-              <th style="width: 47%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.ADDRESS' | translate }}
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let provider of consent.fromProviders">
-              <td>{{provider | consentProvider: 'name'}}</td>
-              <td>{{provider | consentProvider: 'npi'}}</td>
-              <td>{{provider | consentProvider: 'phone'}}</td>
-              <td>{{provider | consentProvider: 'address' | usPhoneNumber}}</td>
-            </tr>
-            </tbody>
-          </table>
-          <strong>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.DISCLOSE_LABEL' | translate }}: </strong></div>
-        <div fxLayoutAlign="start">
-          <table [md2Data]="consent.toProviders" [rowsPerPage]="10">
-            <thead>
-            <tr>
-              <th style="width: 30%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NAME' | translate }}</th>
-              <th style="width: 10%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NPI' | translate }}</th>
-              <th style="width: 13%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.PHONE' | translate }}</th>
-              <th style="width: 47%">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.ADDRESS' | translate }}
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let provider of consent.toProviders">
-              <td>{{provider | consentProvider: 'name'}}</td>
-              <td>{{provider | consentProvider: 'npi'}}</td>
-              <td>{{provider | consentProvider: 'phone'}}</td>
-              <td>{{provider | consentProvider: 'address' | usPhoneNumber}}</td>
-            </tr>
-            </tbody>
-          </table>
+
+      <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-between" class="font-size14 p-b-xs">
+        <div fxFlex="48%">
+          <div class="current-blue"><strong>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.AUTHORIZE_LABEL' | translate}}: </strong></div>
+          <div fxLayoutAlign="start">
+
+            <div *ngFor="let provider of consent.fromProviders">
+              <div fxLayout="row" fxLayoutAlign="start">
+                <div class="m-r">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NAME' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'name'}}</strong></div>
+              </div>
+
+              <div fxLayout="column" fxLayout.gt-xs="row">
+                <div >{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NPI' | translate }}</div>
+                <div ><strong>{{provider | consentProvider: 'npi'}}</strong></div>
+              </div>
+
+              <div>
+                <div>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.PHONE' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'phone'}}</strong></div>
+              </div>
+
+              <div>
+                <div>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.ADDRESS' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'address' | usPhoneNumber}}</strong></div>
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <!--<div>{{provider | consentProvider: 'name'}}</div>-->
+                <!--<div>{{provider | consentProvider: 'npi'}}</div>-->
+                <!--<div>{{provider | consentProvider: 'phone'}}</div>-->
+                <!--<div>{{provider | consentProvider: 'address' | usPhoneNumber}}</div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div fxFlex="48%">
+          <div><strong>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.DISCLOSE_LABEL' | translate }}: </strong></div>
+          <div fxLayoutAlign="start">
+            <div>
+              <div>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NAME' | translate }}</div>
+              <div>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NPI' | translate }}</div>
+              <div>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.PHONE' | translate }}</div>
+              <div>{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.ADDRESS' | translate }}
+              </div>
+            </div>
+
+            <div *ngFor="let provider of consent.toProviders">
+              <div>{{provider | consentProvider: 'name'}}</div>
+              <div>{{provider | consentProvider: 'npi'}}</div>
+              <div>{{provider | consentProvider: 'phone'}}</div>
+              <div>{{provider | consentProvider: 'address' | usPhoneNumber}}</div>
+            </div>
+          </div>
         </div>
       </div>
       <h2 class="bg-dark-bluegrey white p-sm p-l-md">
@@ -122,7 +135,8 @@
               <md-input-container>
                 <input mdInput type="password" placeholder="Password" [(ngModel)]="password">
               </md-input-container>
-              <div *ngIf="inValid" class="authenticate-invalid">{{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.AUTHENTICATE_MSG' |
+              <div *ngIf="inValid" class="authenticate-invalid">{{
+                'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.AUTHENTICATE_MSG' |
                 translate }}
               </div>
             </div>
