@@ -7,6 +7,7 @@ import {NotificationService} from "app/shared/notification.service";
 import {ApiUrlService} from "app/shared/api-url.service";
 import {PaginationInstance} from "ng2-pagination";
 import {ActivatedRoute} from "@angular/router";
+import {TokenService} from "../../security/shared/token.service";
 
 @Component({
   selector: 'c2s-provider-card-list',
@@ -27,6 +28,7 @@ export class ProviderCardListComponent implements OnInit {
               private notificationService: NotificationService,
               private providerService: ProviderService,
               private route: ActivatedRoute,
+              private tokenService: TokenService,
               private utilityService: UtilityService) {
   }
 
@@ -38,6 +40,7 @@ export class ProviderCardListComponent implements OnInit {
         (providers) => {
           this.providers = providers;
           this.noProvider = providers.length === 0;
+          this.tokenService.storeProviderCount(providers.length);
         },
         err => {
           this.notificationService.i18nShow("PROVIDER.NOTIFICATION_MSG.FAILED_GET_PROVIDERS");
