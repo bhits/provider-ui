@@ -3,7 +3,8 @@ import {Http, Response} from "@angular/http";
 import {ApiUrlService} from "../shared/api-url.service";
 import {ExceptionService} from "../shared/exception.service";
 import {Observable} from "rxjs/Observable";
-import {ConfigResponse} from "./config-response.model";
+import {ProviderPermissions} from "./provider-permissions.model";
+import {Oauth2Client} from "app/core/oauth2-client.model";
 import {RegistrationConfig} from "./registration-config.model";
 
 @Injectable()
@@ -17,8 +18,15 @@ export class ConfigService {
   public getBasicAuthorizationHeader(): Observable<string> {
     const resourceUrl = this.apiUrlService.getConfigBaseUrl().concat("/basicAuthorizationHeader");
     return this.http.get(resourceUrl)
-      .map((resp: Response) => <ConfigResponse>(resp.json()))
-      .map(configResponse => configResponse.oauth2.client.basicAuthorizationHeader)
+      .map((resp: Response) => <Oauth2Client>(resp.json()))
+      .map(oauth2Client => oauth2Client.client.basicAuthorizationHeader)
+      .catch(this.exceptionService.handleError);
+  }
+
+  public getProviderPermissions(): Observable<ProviderPermissions> {
+    const resourceUrl = this.apiUrlService.getConfigBaseUrl().concat("/providerPermissions");
+    return this.http.get(resourceUrl)
+      .map((resp: Response) => <ProviderPermissions>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
 

@@ -467,6 +467,7 @@
     }
   },
   "SHARED": {
+    "CONFIGURATION_SERVICE_ERROR": "Could not load configurations from the server. Please go to the Login Page and try again.",
     "VALIDATION_RULES": {
       "PHONE_ERROR_MESSAGE": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
       "SSN_ERROR_MESSAGE": "Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789",

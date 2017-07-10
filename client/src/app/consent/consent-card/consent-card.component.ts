@@ -11,6 +11,7 @@ import {Patient} from "app/patient/shared/patient.model";
 import {DetailedConsent} from "../shared/detailed-consent.model";
 import {SampleDocumentInfo} from "../shared/sample-document-info.model";
 import {TryPolicyService} from "app/consent/shared/try-policy.service";
+import {ProviderPermissions} from "../../core/provider-permissions.model";
 
 @Component({
   selector: 'c2s-consent-card',
@@ -28,6 +29,7 @@ export class ConsentCardComponent implements OnInit {
   private height: number = 0;
   public applyTryPolicyForm: FormGroup;
   public sampleDocuments: SampleDocumentInfo[];
+  private providerPermissions: ProviderPermissions;
 
   constructor(private tryPolicyService: TryPolicyService,
               private consentService: ConsentService,
@@ -37,6 +39,7 @@ export class ConsentCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.providerPermissions = this.route.snapshot.data['providerPermissions'];
     this.selectedPatient = this.route.snapshot.data['patient'];
     this.sampleDocuments = this.route.snapshot.data['sampleDocuments'];
     this.consentOptions = CONSENT_STAGES
@@ -109,7 +112,22 @@ export class ConsentCardComponent implements OnInit {
   }
 
   public displayOnProviderUI(consentOption: ConsentStageOption): boolean {
-    return consentOption.isEnabled;
+
+    let result: boolean;
+
+    switch (consentOption.key) {
+      case ConsentStageOptionKey.SIGN:
+        result = this.providerPermissions.consentSignEnabled;
+        break;
+
+      case ConsentStageOptionKey.REVOKE:
+        result = this.providerPermissions.consentRevokeEnabled;
+        break;
+
+      default:
+        result = true;
+    }
+    return result;
   }
 
   public getRouterLink(consentOption: ConsentStageOption): any {
