@@ -7,7 +7,7 @@ import {Profile} from "../../core/profile.model";
 export class TokenService {
   private OAUTH_TOKEN_KEY: string = 'c2s-oauth-token';
   private USER_PROFILE_KEY: string = 'c2s-user-profile-token';
-  private PROVIDER_COUNT_KEY: string = 'c2s-provider-count';
+  private PROVIDER_COUNT_KEY: string = 'c2s-patient-provider-count';
 
   constructor(private sessionStorageService: SessionStorageService) {
   }

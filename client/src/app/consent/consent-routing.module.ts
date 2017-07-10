@@ -14,7 +14,6 @@ const consentRoutes: Routes = [
     path: 'patients/:patientId/consents',
     component: ConsentsComponent,
     canActivate: [CanActivateAuthGuardService],
-    canActivateChild: [CanActivateAuthGuardService],
     resolve: {
       patient: PatientResolveService,
       purposeOfUses: PurposeOfUsesResolveService,

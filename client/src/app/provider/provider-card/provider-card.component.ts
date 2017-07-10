@@ -4,6 +4,7 @@ import {NotificationService} from "../../shared/notification.service";
 import {ProviderService} from "../shared/provider.service";
 import {Patient} from "../../patient/shared/patient.model";
 import {ActivatedRoute} from "@angular/router";
+import {TokenService} from "../../security/shared/token.service";
 
 @Component({
   selector: 'c2s-provider-card',
@@ -20,6 +21,7 @@ export class ProviderCardComponent implements OnInit {
 
   constructor(private notificationService: NotificationService,
               private providerService: ProviderService,
+              private tokenService: TokenService,
               private route: ActivatedRoute) {
   }
 
@@ -39,6 +41,7 @@ export class ProviderCardComponent implements OnInit {
         .subscribe(
           () => {
             this.deleteProvider.emit(this.provider.id);
+            this.tokenService.storeProviderCount(this.tokenService.getProviderCount() - 1);
             this.notificationService.i18nShow("PROVIDER.NOTIFICATION_MSG.SUCCESS_DELETE_PROVIDER");
           },
           err => {

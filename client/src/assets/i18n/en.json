@@ -9,6 +9,9 @@
     "PAGE_NOT_FOUND": {
       "TITLE": "Inconceivable!",
       "DESCRIPTION": "I do not think this page is where you think it is."
+    },
+    "NOTIFICATION_MSG": {
+      "NO_ENOUGH_PROVIDERS": "Patient don't have enough providers to create consent. Please add providers for this patient."
     }
   },
   "HOME": {

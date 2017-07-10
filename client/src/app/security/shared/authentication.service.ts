@@ -58,6 +58,7 @@ export class AuthenticationService {
   public logout(): void {
     this.tokenService.deleteAccessToken();
     this.tokenService.deleteUserProfile();
+    this.tokenService.deleteProviderCount();
     this.profileService.deleteProfileFromSessionStorage();
     this.globalEventManagementService.setShowHeader(false);
     this.utilityService.navigateTo(this.apiUrlService.getLoginUrl());
