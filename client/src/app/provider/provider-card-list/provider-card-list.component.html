@@ -5,7 +5,7 @@
         {{ 'PROVIDER.CARD_LIST.ACCORDION_HEADER' | translate }}
       </md-card-title>
     </md2-accordion-header>
-    <div class="p-l p-r">
+    <div class="p-l p-r" class.gt-sm="p-l-lg p-r-lg">
       <div class="p-md white font-size20 font-weight500 bg-dark-blue border-radius4 center-sm-left">
         {{ 'PROVIDER.CARD_LIST.WARNING' | translate }}
       </div>
@@ -19,18 +19,19 @@
         <div fxLayoutAlign="center">
           <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
                fxLayoutGap="10px">
-            <div fxFlex="0 1 100px" class="font-size18 font-weight500 right">
-              {{ 'PROVIDER.CARD_LIST.SORT_LIST_TITLE' | translate }}
-            </div>
-            <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
-              <span class="fa fa-user-md fa-4x"></span>
-            </md-card>
-            <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
-              <span class="fa fa-hospital-o fa-4x"></span>
-            </md-card>
-            <md-card class="filter-card center disabled" md-raised-button fxFlex="0 0 60px">
-              <span class="fa fa-user fa-4x"></span>
-            </md-card>
+            <div class="font-size20 font-weight300">Current Provider List</div>
+            <!--<div fxFlex="0 1 100px" class="font-size18 font-weight500 right">-->
+              <!--{{ 'PROVIDER.CARD_LIST.SORT_LIST_TITLE' | translate }}-->
+            <!--</div>-->
+            <!--<md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">-->
+              <!--<span class="fa fa-user-md fa-4x"></span>-->
+            <!--</md-card>-->
+            <!--<md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">-->
+              <!--<span class="fa fa-hospital-o fa-4x"></span>-->
+            <!--</md-card>-->
+            <!--<md-card class="filter-card center disabled" md-raised-button fxFlex="0 0 60px">-->
+              <!--<span class="fa fa-user fa-4x"></span>-->
+            <!--</md-card>-->
           </div>
         </div>
 
@@ -47,10 +48,9 @@
                                  (pageChange)="onPageChange($event)">
             </pagination-controls>
           </div>
-          <div class="section-border">
-            <div class="bg-xlite-teal p-t-md p-b-md" fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap"
-                 fxLayoutGap="15px" fxLayoutAlign="center">
-              <c2s-provider-card
+          <div>
+            <div class="p-t-md p-b-md" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center">
+              <c2s-provider-card fxFlex="0 1 400px"
                 *ngFor="let provider of providers | paginate: paginationConfig"
                 [provider]="provider"
                 (deleteProvider)="onDeleteProvider($event)">

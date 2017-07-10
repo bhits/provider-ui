@@ -1,15 +1,27 @@
-.consent-card-header {
-  margin: 5px;
-  padding: 10px;
-  background-color: #bcdedb;
-}
+.c2s-consent {
+  padding: 8px !important;
 
-.consent-card-header:hover {
-  background-color: rgba(63, 81, 181, 0.2);
-}
+    .consent-card-header {
+      margin: 0;
+      padding: 10px;
+      background-color: #bcdedb;
+    }
 
-.mat-card-actions {
-  margin: 10px !important;
+    .consent-card-header:hover {
+      background-color: rgba(63, 81, 181, 0.2);
+    }
+
+    //.mat-card-actions {
+    //  margin: 10px !important;
+    //}
+    md-card-content {
+      margin: 0 !important;
+    }
+    md-card-actions {
+      margin: 0;
+      padding: 0;
+    }
+
 }
 
 .transition {
@@ -21,3 +33,4 @@
 .margin-20 {
   margin: 20px;
 }
+

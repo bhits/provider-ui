@@ -12,7 +12,7 @@
     </a>
   </div>
 
-<div class="form-boundary">
+<div class="form-boundary m-t">
   <form [formGroup]="searchPatientForm" search-patient-form novalidate>
     <h2>
       {{ 'PATIENT.SEARCH.CRITERIA.LABEL' | translate }}
@@ -88,7 +88,7 @@
     </div>
   </form>
   <div *ngIf="hasSearchResult">
-    <div class="m-t-lg p-b-sm border-bottom-purple" fxFlex="1 0 auto" fxLayoutAlign="flex-start center">
+    <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center">
     </div>
     <h2>
       {{ 'PATIENT.SEARCH.SEARCH_RESULT_MSG' | translate }}
@@ -113,7 +113,7 @@
              *ngFor="let patient of asyncPatients | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
       <md-card-header>
         <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
-          <div class="fa fa-2x fa-address-book"></div>
+          <div class="fa fa-2x fa-address-card-o"></div>
           <div class="m-l-xs font-weight700">{{patient | patient: 'fullName'}}</div>
         </div>
       </md-card-header>

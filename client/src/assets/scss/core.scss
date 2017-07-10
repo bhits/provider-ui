@@ -63,12 +63,13 @@ body {
 }
 .patientRecord-accordion {
   border: thin solid #94b9af;
-  &:hover {border: 2px solid coral;}
+  &:hover {border: 1px solid #448866;}
   div.md2-accordion-header {
     padding: 15px;
     background-color: #b0d6cf;
     border: none !important;
-    box-shadow: 0 1px 0 #94b9af !important;
+    //box-shadow: 0 1px 0 #cecece !important;
+    box-shadow: none !important;
     &:hover {background-color: #71cbb5;}
     md-card-title {margin-bottom: 0 !important;}
     .md2-accordion-header-icon {
