@@ -29,7 +29,8 @@ const patientRoutes: Routes = [
         component: PatientCreateEditComponent,
         canDeactivate: [CanDeactivateGuardService],
         resolve: {
-          patientCreationLookupInfo: PatientCreationLookupResolveService
+          patientCreationLookupInfo: PatientCreationLookupResolveService,
+          providerPermissions: ConfigResolveService
         }
       },
       {
