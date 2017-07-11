@@ -3,6 +3,8 @@ export class PatientSearchQuery {
   lastName?: string;
   birthDate?: string;
   genderCode?: string;
+  mrn?: string;
   page?: string;
   size?: string;
+  strictMatch?: boolean;
 }

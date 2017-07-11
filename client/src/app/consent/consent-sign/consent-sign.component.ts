@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Consent} from "../shared/consent.model";
+import {Component, OnInit} from "@angular/core";
 import {Profile} from "../../core/profile.model";
 import {AuthenticationService} from "../../security/shared/authentication.service";
 import {ConsentService} from "../shared/consent.service";
@@ -23,7 +22,7 @@ export class ConsentSignComponent implements OnInit {
   public title: string = "eSignature";
   public consent: DetailedConsent;
   public profile: Profile;
-  public termsWithUserName: string;
+  public attestationTermsWithNames: string;
   public checked: boolean = false;
   public isAuthenticated: boolean = false;
   public password: string;
@@ -57,7 +56,7 @@ export class ConsentSignComponent implements OnInit {
     this.profile = this.tokenService.getProfileToken();
     let userNameFromProfile = this.utilityService.toTitleCase(this.profile.name);
     this.username = {name: userNameFromProfile};
-    this.termsWithUserName = this.getConsentAttestationTermWithPatientName(this.route.snapshot.data['consentTerms']);
+    this.attestationTermsWithNames = this.replaceConsentAttestationTermsWithNames(this.route.snapshot.data['consentTerms']);
   }
 
   public cancel(): void {
@@ -115,11 +114,17 @@ export class ConsentSignComponent implements OnInit {
       );
   }
 
-  private
-  getConsentAttestationTermWithPatientName(consentTerms: ConsentTerms): string {
+  private replaceConsentAttestationTermsWithNames(consentTerms: ConsentTerms): string {
+    let termsWithProviderAndPatientNames: string;
     const terms: string = consentTerms.text;
-    const userNameKey: string = "${ATTESTER_FULL_NAME}";
-    return terms.replace(userNameKey, this.selectedPatientName.name);
+    const patientNameKey: string = "${ATTESTER_FULL_NAME}";
+    const providerNameKey: string = "${PROVIDER_FULL_NAME}";
+    termsWithProviderAndPatientNames = terms.replace(patientNameKey, this.selectedPatientName.name);
+
+    if(termsWithProviderAndPatientNames.includes(providerNameKey)){
+      termsWithProviderAndPatientNames = termsWithProviderAndPatientNames.replace(providerNameKey, this.username.name);
+    }
+    return termsWithProviderAndPatientNames;
   }
 
 }

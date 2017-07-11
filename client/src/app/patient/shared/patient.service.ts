@@ -42,10 +42,13 @@ export class PatientService {
   private buildRequestParams(requestParams: PatientSearchQuery): URLSearchParams {
 
     let params: URLSearchParams = new URLSearchParams();
-    params.set('firstName', this.addLikePatternInQueryParameter(requestParams.firstName));
-    params.set('lastName', this.addLikePatternInQueryParameter(requestParams.lastName));
+    const firstName: string = requestParams.strictMatch ? requestParams.firstName : this.addLikePatternInQueryParameter(requestParams.firstName);
+    const lastName: string = requestParams.strictMatch ? requestParams.lastName : this.addLikePatternInQueryParameter(requestParams.lastName);
+    params.set('firstName', firstName);
+    params.set('lastName', lastName);
     params.set('genderCode', requestParams.genderCode);
     params.set('birthDate',requestParams.birthDate);
+    params.set('mrn',requestParams.mrn);
     params.set('page',requestParams.page);
     params.set('size',requestParams.size);
 

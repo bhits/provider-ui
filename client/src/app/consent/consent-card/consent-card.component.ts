@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CONSENT_STAGES} from "app/consent/shared/consent-stages.model";
 import {ConsentStageOption} from "../shared/consent-stage-option.model";
 import {ConsentStageOptionKey} from "../shared/consent-stage-option-key.enum";
@@ -7,7 +9,9 @@ import {ConsentService} from "app/consent/shared/consent.service";
 import {NotificationService} from "app/shared/notification.service";
 import {Patient} from "app/patient/shared/patient.model";
 import {DetailedConsent} from "../shared/detailed-consent.model";
-import {ActivatedRoute} from "@angular/router";
+import {SampleDocumentInfo} from "../shared/sample-document-info.model";
+import {TryPolicyService} from "app/consent/shared/try-policy.service";
+import {ProviderPermissions} from "../../core/provider-permissions.model";
 
 @Component({
   selector: 'c2s-consent-card',
@@ -23,18 +27,33 @@ export class ConsentCardComponent implements OnInit {
   private selectedPatient: Patient;
   private detailsVisible: boolean = false;
   private height: number = 0;
+  public applyTryPolicyForm: FormGroup;
+  public sampleDocuments: SampleDocumentInfo[];
+  private providerPermissions: ProviderPermissions;
 
-  constructor(private consentService: ConsentService,
+  constructor(private tryPolicyService: TryPolicyService,
+              private consentService: ConsentService,
+              private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private notificationService: NotificationService) {
   }
 
   ngOnInit() {
+    this.providerPermissions = this.route.snapshot.data['providerPermissions'];
     this.selectedPatient = this.route.snapshot.data['patient'];
+    this.sampleDocuments = this.route.snapshot.data['sampleDocuments'];
     this.consentOptions = CONSENT_STAGES
       .filter(consentStage => consentStage.consentStage === this.consent.consentStage)
       .map(consentStage => consentStage.options)
       .pop();
+    this.applyTryPolicyForm = this.initApplyTryPolicyFormGroup();
+  }
+
+  private initApplyTryPolicyFormGroup() {
+    return this.formBuilder.group({
+      sampleDocument: [null, Validators.required],
+      purposeOfUse: [null, Validators.required],
+    });
   }
 
   public toggleDetailsVisible(el: any) {
@@ -56,8 +75,11 @@ export class ConsentCardComponent implements OnInit {
     }
   }
 
-  public invokeAction(consentOption: ConsentStageOption, consentOptionsDialog: any, deleteConfirmationDialog: any) {
+  public invokeAction(consentOption: ConsentStageOption, consentOptionsDialog: any, deleteConfirmationDialog: any, applyTryPolicyDialog: any) {
     switch (consentOption.key) {
+      case ConsentStageOptionKey.APPLY_TRY_POLICY:
+        applyTryPolicyDialog.open();
+        break;
       case ConsentStageOptionKey.DELETE:
         deleteConfirmationDialog.open();
         break;
@@ -90,7 +112,22 @@ export class ConsentCardComponent implements OnInit {
   }
 
   public displayOnProviderUI(consentOption: ConsentStageOption): boolean {
-    return consentOption.isEnabled;
+
+    let result: boolean;
+
+    switch (consentOption.key) {
+      case ConsentStageOptionKey.SIGN:
+        result = this.providerPermissions.consentSignEnabled;
+        break;
+
+      case ConsentStageOptionKey.REVOKE:
+        result = this.providerPermissions.consentRevokeEnabled;
+        break;
+
+      default:
+        result = true;
+    }
+    return result;
   }
 
   public getRouterLink(consentOption: ConsentStageOption): any {
@@ -102,7 +139,7 @@ export class ConsentCardComponent implements OnInit {
     return consentOption.routerLink ? ["/patients".concat("/" + this.selectedPatient.id).concat(consentOption.routerLink), this.consent.id] : '.'
   }
 
-  public confirmDeleteConsent(dialog: any) {
+  public confirmDeleteConsent(dialog: any): void {
     dialog.close();
     this.consentService.deleteConsent(this.selectedPatient.mrn, this.consent.id)
       .subscribe(
@@ -112,7 +149,24 @@ export class ConsentCardComponent implements OnInit {
         },
         err => {
           this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.FAILED_DELETE_CONSENT");
-          console.log(err);
         });
+  }
+
+  public applyTryPolicy(applyTryPolicyDialog: any): void {
+    applyTryPolicyDialog.close();
+    const formModel = this.applyTryPolicyForm.value;
+    this.tryPolicyService.applyTryPolicyUseSampleDoc(this.selectedPatient.mrn, this.consent.id, formModel.purposeOfUse, formModel.sampleDocument)
+      .subscribe(
+        (tryPolicyResponse) => {
+          this.tryPolicyService.handleApplyTryPolicySuccess(tryPolicyResponse);
+        },
+        err => {
+          this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.FAILED_APPLY_TRY_POLICY");
+        });
+  }
+
+  public backToOptions(applyTryPolicyDialog: any, consentOptionsDialog: any): void {
+    applyTryPolicyDialog.close();
+    consentOptionsDialog.open();
   }
 }

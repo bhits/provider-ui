@@ -42,19 +42,31 @@
           "STAGE_TEXT": "IN PROGRESS",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Edit This Consent",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Preview This Consent",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing",
           "PROVIDE_ESIGNATURE_OPTION_TEXT": "Provide eSignature",
           "DELETE_THIS_CONSENT_OPTION_TEXT": "Delete This Consent"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "SIGNED",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing",
           "REVOCATION_OPTION_TEXT": "Revocation"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "REVOKED",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "View Signed Consent",
-          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation"
+          "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "View Signed Revocation",
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Try This Consent Settings against Patient Medical Record before Sharing"
         }
+      },
+      "APPLY_TRY_POLICY_DIALOG": {
+        "TITLE": "Apply Patient Record",
+        "CONTENT": {
+          "DOCUMENT_PLACEHOLDER": "Document",
+          "PURPOSE_PLACEHOLDER": "Purpose Of Use"
+        },
+        "BACK_BTN": "Back to Consent Options",
+        "APPLY_BTN": "Apply"
       },
       "DELETE_CONSENT_DIALOG": {
         "TITLE": "Delete Consent",
@@ -141,7 +153,7 @@
           "NPI": "NPI Number",
           "PHONE": "Phone",
           "ADDRESS": "Address"
-          }
+        }
       },
       "HEALTH_INFORMATION_SECTION": {
         "TITLE": "HEALTH INFORMATION TO BE DISCLOSED",
@@ -206,7 +218,8 @@
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "Success in downloading revoked consent.",
       "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent. Please try again later.",
       "SUCCESS_DELETE_CONSENT": "Successfully deleted the consent on behalf of the patient.",
-      "FAILED_DELETE_CONSENT": "Failed to delete the consent. Please try again later."
+      "FAILED_DELETE_CONSENT": "Failed to delete the consent, please try again later...",
+      "FAILED_APPLY_TRY_POLICY": "Failed to try this consent settings against patient medical record, please try again later..."
     }
   },
   "PATIENT": {
@@ -236,6 +249,7 @@
         "LAST_NAME_PLACEHOLDER": "Last Name",
         "GENDER_PLACEHOLDER": "Gender",
         "DOB_PLACEHOLDER": "Date of Birth",
+        "MRN_PLACEHOLDER": "MRN/Patient ID Number",
         "CANCEL_BTN": "Cancel",
         "SEARCH_BTN": "Search"
       },
@@ -278,6 +292,12 @@
       "CONFIRM_DIALOG": {
         "TITLE": "Confirm Navigation",
         "CONTENT": "You will lose all unsaved work, Are you sure you want to leave this page?"
+      },
+      "DUPLICATE_CHECK_CONFIRM_DIALOG" : {
+        "TITLE": "Confirm Account Creation",
+        "CONTENT": "<strong>ATTENTION</strong> – an account with similar information already exists. Please confirm the accuracy of the account information entered and select to either \"Continue and Create\" or go \"Back to Search\" screen and try again.",
+        "OK_BTN": "Continue and Create",
+        "CANCEL_BTN": "Back to Search"
       }
     },
     "VERIFICATION": {
@@ -441,13 +461,14 @@
       "ADD_BUTTON": "Add to Provider List"
     },
     "NOTIFICATION_MSG": {
-      "FAILED_GET_PROVIDERS": "Failed to get providers., please try again later...",
+      "FAILED_GET_PROVIDERS": "Failed to get providers, please try again later...",
       "FAILED_ADD_PROVIDER": "Failed to add the provider, please try again later...",
       "SUCCESS_DELETE_PROVIDER": "Successfully delete the provider.",
       "FAILED_DELETE_PROVIDER": "Failed to delete the provider, please try again later..."
     }
   },
   "SHARED": {
+    "CONFIGURATION_SERVICE_ERROR": "Could not load configurations from the server. Please go to the Login Page and try again.",
     "VALIDATION_RULES": {
       "PHONE_ERROR_MESSAGE": "Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
       "SSN_ERROR_MESSAGE": "Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789",

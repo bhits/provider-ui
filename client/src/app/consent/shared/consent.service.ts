@@ -136,21 +136,21 @@ export class ConsentService {
     return this.getConsentAsBinaryFile(resourceUrl, format);
   }
 
-  getSignedConsentPdf(patientMrn: string, id: number): Observable<BinaryFile> {
+  public getSignedConsentPdf(patientMrn: string, id: number): Observable<BinaryFile> {
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/" + id + "/attestation");
     const format: string = "pdf";
     return this.getConsentAsBinaryFile(resourceUrl, format);
   }
 
-  getRevokedConsentPdf(patientMrn: string, id: number): Observable<BinaryFile> {
+  public getRevokedConsentPdf(patientMrn: string, id: number): Observable<BinaryFile> {
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
       .concat("/patients/" + patientMrn + "/consents/" + id + "/revocation");
     const format: string = "pdf";
     return this.getConsentAsBinaryFile(resourceUrl, format);
   }
 
-  public getConsentAsBinaryFile(url: string, format: string): Observable<BinaryFile> {
+  private getConsentAsBinaryFile(url: string, format: string): Observable<BinaryFile> {
     const params: URLSearchParams = new URLSearchParams();
     params.set('format', format);
     return this.http.get(url, {search: params})
