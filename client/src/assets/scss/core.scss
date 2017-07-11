@@ -93,6 +93,10 @@ body {
 
 // ------------------------------------------------------------- create consent styling -------------//
 
+  .lineHeight20 {
+    line-height: 20px !important;
+  }
+
   .lineHeight28 {
     line-height: 28px !important;
   }
@@ -374,6 +378,12 @@ body {
     -moz-border-radius: 2px;
     border-radius: 2px;
   }
+
+.border-radius3 {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
 
   .border-radius4 {
     -webkit-border-radius: 4px;
