@@ -21,8 +21,20 @@
       margin: 0;
       padding: 0;
     }
+    md-chip {
+      margin: 5px !important;
+      &:last-of-type {margin-bottom: 10px !important;}
+    }
+
+
+    .mat-chip.mat-chip-selected:not(.mat-basic-chip).mat-warn {
+      background-color: #9C061C !important;
+      //background-color: #f44336;
+      color: white;
+    }
 
 }
+
 
 .transition {
   overflow: hidden;
