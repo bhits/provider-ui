@@ -1,11 +1,11 @@
-<md2-accordion multiple="false">
+<md2-accordion class="patientRecord-accordion m-b-sm" multiple="false">
   <md2-accordion-tab>
     <md2-accordion-header class="">
-      <md-card-title align="start"><i class="fa fa-user-plus"></i>
+      <md-card-title align="start">
         {{ 'CONSENT.CARD_LIST.ACCORDION_HEADER' | translate }}
       </md-card-title>
     </md2-accordion-header>
-    <div>
+    <div class="p-l p-r" class.gt-sm="p-l-lg p-r-lg">
       <div fxLayout="column" [ngStyle]="{'padding-top': '20px'}">
         <div fxLayoutAlign="center">
           <a md-raised-button class="plus-button" fxFlex="0 1 370px" (click)="redirectToPatientConsentsCreate()">
@@ -16,6 +16,7 @@
         <div fxLayoutAlign="center">
           <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
                fxLayoutGap="10px">
+            <div class="font-size20 font-weight300">Current Consent List</div>
           </div>
         </div>
         <div style="padding-top: 20px;" *ngIf="noConsent; else hasConsent">
