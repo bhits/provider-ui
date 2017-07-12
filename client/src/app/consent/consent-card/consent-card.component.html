@@ -111,16 +111,16 @@
       {{ 'CONSENT.CARD.MANAGE_CONSENT_DIALOG_TITLE' | translate }}
     </md2-dialog-title>
     <md-list>
-      <md-list-item *ngFor="let consentOption of consentOptions">
+      <md-list-item *ngFor="let consentOption of getEnabledConsentOptions()">
         <div class="margin-20" fxFill>
           <a fxLayoutAlign="space-between" md-raised-button
              (click)="invokeAction(consentOption, consentOptionsDialog, deleteConfirmationDialog, applyTryPolicyDialog)"
-             *ngIf="selectConsentMethodOption(consentOption) && displayOnProviderUI(consentOption)">
+             *ngIf="selectConsentMethodOption(consentOption)">
             <md-icon>{{consentOption.icon}}</md-icon>
             <span class="margin-20">{{consentOption.text | translate}}</span>
           </a>
            <a fxLayoutAlign="space-between" md-raised-button
-              *ngIf="!selectConsentMethodOption(consentOption) && displayOnProviderUI(consentOption)"
+              *ngIf="!selectConsentMethodOption(consentOption)"
              [routerLink]="getRouterLink(consentOption)">
              <md-icon>{{consentOption.icon}}</md-icon>
              <span class="margin-20">{{consentOption.text | translate}}</span>

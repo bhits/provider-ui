@@ -23,7 +23,7 @@ export class ConsentCardComponent implements OnInit {
   public consent: DetailedConsent;
   @Output()
   public deleteConsent = new EventEmitter<number>();
-  public consentOptions: ConsentStageOption[];
+  private consentOptions: ConsentStageOption[];
   private selectedPatient: Patient;
   private detailsVisible: boolean = false;
   private height: number = 0;
@@ -111,7 +111,7 @@ export class ConsentCardComponent implements OnInit {
     return consentOption.isMethod;
   }
 
-  public displayOnProviderUI(consentOption: ConsentStageOption): boolean {
+  private displayOnProviderUI(consentOption: ConsentStageOption): boolean {
 
     let result: boolean;
 
@@ -168,5 +168,9 @@ export class ConsentCardComponent implements OnInit {
   public backToOptions(applyTryPolicyDialog: any, consentOptionsDialog: any): void {
     applyTryPolicyDialog.close();
     consentOptionsDialog.open();
+  }
+
+  public getEnabledConsentOptions(): ConsentStageOption[]{
+    return this.consentOptions.filter(consentOption => this.displayOnProviderUI(consentOption));
   }
 }
