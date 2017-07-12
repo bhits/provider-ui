@@ -87,9 +87,19 @@ body {
   }
 }
 
-.consent-create-page {
 
-}
+  .mat-select-trigger {font-size: 18px !important;}
+
+//#myPatient {
+  div.md2-datepicker-input {
+    //margin-right: 10px;
+    width: auto;
+    padding-right: 0;
+    input.md2-datepicker-value {
+      font-size: 18px !important;
+    }
+  }
+//}
 
 // ------------------------------------------------------------- create consent styling -------------//
 
