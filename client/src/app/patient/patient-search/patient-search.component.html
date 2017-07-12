@@ -40,7 +40,7 @@
       </div>
     </div>
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between">
-      <div fxFlex="48%" class="m-t m-b-sm dob-modify">
+      <div fxFlex="48%" class="m-b-sm dob-modify">
         <md2-datepicker class="full-width font-size18"
                         placeholder="{{ 'PATIENT.SEARCH.CRITERIA.DOB_PLACEHOLDER' | translate }}"
                         [openOnFocus]="isOpenOnFocus" [format]="FORMAT"
@@ -53,7 +53,7 @@
       <div fxFlex="48%">
         <md-select placeholder="{{ 'PATIENT.SEARCH.CRITERIA.GENDER_PLACEHOLDER' | translate }}"
                    formControlName="genderCode"
-                   class="full-width font-size18">
+                   class="full-width font-size18 p-t-md">
           <md-option *ngFor="let gender of genders" [value]="gender.code">
             {{ gender.displayName }}
           </md-option>
@@ -63,9 +63,9 @@
         </c2s-control-validation-error-message>
       </div>
     </div>
-    <div fxLayout="row" fxLayoutGap="20px">
-      <div fxFlex>
-        <md-input-container class="full-width font-size20">
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div fxFlex="48%">
+        <md-input-container class="full-width font-size18">
           <input mdInput
                  placeholder="{{ 'PATIENT.SEARCH.CRITERIA.MRN_PLACEHOLDER' | translate }}"
                  formControlName="mrn">
