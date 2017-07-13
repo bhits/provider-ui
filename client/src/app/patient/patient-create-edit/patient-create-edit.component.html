@@ -1,11 +1,11 @@
 <div class="p-t-75 p-l-lg p-r-lg p-b">
   <h1 class="">{{title | translate}}</h1>
-  <div class="flexcontainer row border-top-thinBlack" fxLayoutAlign="start center" *ngIf="isEditMode">
+  <div class="flexcontainer row border-top-thinBlack m-b" fxLayoutAlign="start center" *ngIf="isEditMode">
     <i class="material-icons md-36 ribbon-blue">perm_contact_calendar</i>
     <h2>{{editingPatient | patient: 'fullName'}}</h2>
   </div>
-  <div style="padding-bottom: 15px" *ngIf="isEditMode">
-    <c2s-patient-verification [patient]="editingPatient" *ngIf="displaySegmentation"></c2s-patient-verification>
+  <div *ngIf="isEditMode">
+    <c2s-patient-verification [patient]="editingPatient" *ngIf="displayActivation"></c2s-patient-verification>
   </div>
 
   <md2-accordion class="patientRecord-accordion m-b-sm" multiple="false">
