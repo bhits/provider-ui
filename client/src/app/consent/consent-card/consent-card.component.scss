@@ -1,16 +1,40 @@
-.consent-card-header {
-  margin: 5px;
-  padding: 10px;
-  background-color: #bcdedb;
+.c2s-consent {
+  //padding: 8px !important;
+
+    .consent-card-header {
+      margin: 0;
+      padding: 10px;
+      background-color: #bcdedb;
+    }
+
+    .consent-card-header:hover {
+      background-color: rgba(63, 81, 181, 0.2);
+    }
+
+    //.mat-card-actions {
+    //  margin: 10px !important;
+    //}
+    md-card-content {
+      margin: 0 !important;
+    }
+    md-card-actions {
+      margin: 0;
+      padding: 0;
+    }
+    md-chip {
+      margin: 5px !important;
+      &:last-of-type {margin-bottom: 10px !important;}
+    }
+
+
+    .mat-chip.mat-chip-selected:not(.mat-basic-chip).mat-warn {
+      background-color: #9C061C !important;
+      //background-color: #f44336;
+      color: white;
+    }
+
 }
 
-.consent-card-header:hover {
-  background-color: rgba(63, 81, 181, 0.2);
-}
-
-.mat-card-actions {
-  margin: 10px !important;
-}
 
 .transition {
   overflow: hidden;
@@ -25,3 +49,4 @@
 .medium-width {
   width: 80%;
 }
+

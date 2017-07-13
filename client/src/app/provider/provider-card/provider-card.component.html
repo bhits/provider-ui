@@ -1,12 +1,12 @@
 <md-card class="provider-card">
   <md-card-header>
-    <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
-      <div class="fa fa-2x fa-address-card"></div>
-      <div class="m-l-xs font-weight700">{{provider | provider: 'name'}}</div>
+    <div class="md-card-title flexcontainer row" fxLayoutAlign="start center">
+      <!--<div class="fa fa-2x fa-address-card-o"></div>-->
+      <div class="font-weight700">{{provider | provider: 'name'}}</div>
     </div>
   </md-card-header>
 
-  <md-card-content class="p-t-xs p-b p-l-md p-r-md">
+  <md-card-content class="p-t-sm p-b p-l-md p-r-md">
     <div>
       <button md-fab [disabled]="!provider.deletable" (click)="openConfirmDialog(confirm)">
         <span class="fa fa-trash fa-lg font-weight500" aria-hidden="true"></span>

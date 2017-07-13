@@ -1,0 +1,186 @@
+<div class="p-t-75">
+  <md-grid-list cols="1">
+    <md-card id="consent-sign" class="m-t-sm m-l m-r">
+      <h1 class="font-weight600 dark-bluegrey" fxLayoutAlign="start">{{ 'CONSENT.CONSENT_SIGN.TITLE' | translate }}</h1>
+      <div fxLayout="column" fxLayout.gt-xs="row" class="font-size18 p-b-xs">
+        <div class="m-r-sm">{{ 'CONSENT.CONSENT_SIGN.REFERENCE_NUMBER' | translate }}:</div>
+        <div>
+          <strong>{{consent.consentReferenceId}}</strong>
+        </div>
+      </div>
+      <div fxLayout="column" fxLayout.gt-xs="row" class="font-size18 p-b-xs">
+        <div fxFlex>
+          <span>{{ 'CONSENT.CONSENT_SIGN.PATIENT_NAME' | translate }}: </span>
+          <span><strong>{{selectedPatientName.name}}</strong></span>
+        </div>
+        <div fxFlex>
+          <span>{{ 'CONSENT.CONSENT_SIGN.PATIENT_DOB' | translate }}: </span>
+          <span><strong>{{selectedPatient.birthDate | date }}</strong></span>
+        </div>
+      </div>
+      <h2 class="font-size20 font-weight600 bg-dark-bluegrey white p-sm p-l-md border-radius2">
+        {{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.TITLE' | translate }}
+      </h2>
+
+      <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-between" class="p-b-xs p-l p-r">
+        <div fxFlex="48%">
+          <div class="font-size17 m-b-xs current-blue"><strong>{{
+            'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.AUTHORIZE_LABEL' | translate}}: </strong></div>
+          <div class="font-size14" fxLayoutAlign="start">
+            <div *ngFor="let provider of consent.fromProviders">
+              <div fxLayout="row" class="m-b-xs">
+                <div fxFlex="0 0 115px">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NAME' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'name'}}</strong></div>
+              </div>
+              <div fxLayout="row" class="m-b-xs">
+                <div fxFlex="0 0 115px">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NPI' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'npi'}}</strong></div>
+              </div>
+              <div fxLayout="row" class="m-b-xs">
+                <div fxFlex="0 0 115px">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.PHONE' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'phone'}}</strong></div>
+              </div>
+              <div fxLayout="row" class="m-b-xs">
+                <div fxFlex="0 0 115px">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.ADDRESS' | translate}}</div>
+                <div><strong>{{provider | consentProvider: 'address' | usPhoneNumber}}</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div fxFlex="48%">
+          <div class="font-size17 m-b-xs current-blue"><strong>{{
+            'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.DISCLOSE_LABEL' | translate }}: </strong></div>
+          <div class="font-size14" fxLayoutAlign="start">
+            <div *ngFor="let provider of consent.toProviders">
+              <div fxLayout="row" class="m-b-xs">
+                <div fxFlex="0 0 115px">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NAME' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'name'}}</strong></div>
+              </div>
+              <div fxLayout="row" class="m-b-xs">
+                <div fxFlex="0 0 115px">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.NPI' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'npi'}}</strong></div>
+              </div>
+              <div fxLayout="row" class="m-b-xs">
+                <div fxFlex="0 0 115px">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.PHONE' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'phone'}}</strong></div>
+              </div>
+              <div fxLayout="row" class="m-b-xs">
+                <div fxFlex="0 0 115px">{{ 'CONSENT.CONSENT_SIGN.AUTHORIZATION_SECTION.PROVIDER.ADDRESS' | translate }}</div>
+                <div><strong>{{provider | consentProvider: 'address' | usPhoneNumber}}</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="font-size20 font-weight600 bg-dark-bluegrey white p-sm p-l-md border-radius2">
+        {{ 'CONSENT.CONSENT_SIGN.HEALTH_INFORMATION_SECTION.TITLE' | translate }}
+      </h2>
+      <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-between" class="p-l p-r m-b-lg">
+        <div fxFlex="48%" class="m-b-md">
+          <div class="font-size17 m-b-xs current-blue m-b-n-sm">
+            <strong>
+              {{ 'CONSENT.CONSENT_SIGN.HEALTH_INFORMATION_SECTION.SHARE_MEDICAL_INFO' | translate }}:
+            </strong>
+          </div>
+          <div fxLayout="column">
+            <md-list *ngFor="let shareSensitivityCategory of consent.shareSensitivityCategories">
+              <md-list-item>
+              <div><strong>{{shareSensitivityCategory | sensitivityCategory: 'display'}}</strong></div>
+              </md-list-item>
+            </md-list>
+          </div>
+        </div>
+        <div fxFlex="48%">
+          <div class="font-size17 m-b-xs current-blue m-b-n-sm">
+            <strong>
+              {{ 'CONSENT.CONSENT_SIGN.HEALTH_INFORMATION_SECTION.SHARE_PURPOSES' | translate }}:
+            </strong>
+          </div>
+          <div fxLayout="column">
+            <md-list *ngFor="let sharePurpose of consent.sharePurposes">
+              <md-list-item>
+                <div><strong>{{sharePurpose | sharePurpose: 'display'}}</strong></div>
+              </md-list-item>
+            </md-list>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="font-size20 font-weight600 bg-dark-bluegrey white p-sm p-l-md border-radius2">
+        {{ 'CONSENT.CONSENT_SIGN.CONSENT_TERMS_SECTION.TITLE' | translate }}
+      </h2>
+      <div fxLayout="column" class="p-l p-r m-b">
+        <p class="font-size16" fxLayout="row">{{attestationTermsWithNames}}
+        </p>
+        <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start" class="font-size16 p-b-xs p-l p-r m-b">
+          <div fxFlex class="m-b-xs">
+            <strong>{{ 'CONSENT.CONSENT_SIGN.CONSENT_TERMS_SECTION.START_DATE' | translate }}: {{consent.startDate |
+              date}}
+            </strong>
+          </div>
+          <div fxFlex>
+            <strong>
+              {{ 'CONSENT.CONSENT_SIGN.CONSENT_TERMS_SECTION.END_DATE' | translate }}: {{consent.endDate | date}}
+            </strong>
+          </div>
+        </div>
+
+        <div>
+          <md2-dialog #confirmConsentTerms (onClose)="clearCheckbox()">
+            <md2-dialog-title>
+              {{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.TITLE' | translate }}
+            </md2-dialog-title>
+            <div fxLayout="column" class="modalContent-centered">
+              <p class="dialog-text">{{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.CONTENT' | translate }}</p>
+              <md-input-container>
+                <input mdInput type="password" placeholder="Password" [(ngModel)]="password">
+              </md-input-container>
+              <div *ngIf="inValid" class="authenticate-invalid">{{
+                'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.AUTHENTICATE_MSG' |
+                translate }}
+              </div>
+            </div>
+            <md2-dialog-footer class="bg-lite-gray-f5">
+              <button md-raised-button (click)="confirmConsentTerms.close()">
+                {{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.CANCEL_BTN' | translate }}
+              </button>
+              <button md-raised-button color="primary" (click)="toAuthenticate(confirmConsentTerms)">
+                {{ 'CONSENT.CONSENT_SIGN.CONFIRM_DIALOG.CONTINUE_BTN' | translate }}
+              </button>
+            </md2-dialog-footer>
+          </md2-dialog>
+
+          <md-checkbox class="font-size16 lineHeight20 m-b" fxLayoutAlign="start center" (click)="confirmConsentTerms.open()" [(ngModel)]="checked">
+            {{ 'CONSENT.CONSENT_SIGN.CONSENT_TERMS_SECTION.TERMS' | translate:username}}
+          </md-checkbox>
+        </div>
+
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+        <button md-raised-button color="primary" (click)="cancel()">
+          <strong>{{ 'CONSENT.CONSENT_SIGN.CANCEL_BTN' | translate }}</strong>
+        </button>
+        <md2-dialog #completeAttestation (onClose)="navigateTo()">
+          <md2-dialog-title>{{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.TITLE' | translate }}</md2-dialog-title>
+          <md2-dialog-footer class="bg-lite-gray-f5">
+            <button md-raised-button color="primary" (click)="getSignedConsentPdf()">
+              {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.DOWNLOAD_BTN' | translate }}
+            </button>
+            <button md-raised-button color="primary" (click)="cancel()">
+              {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.CONTINUE_BTN' | translate }}
+            </button>
+          </md2-dialog-footer>
+        </md2-dialog>
+        <button md-raised-button color="primary" [disabled]="!isAuthenticated"
+                (click)="attestConsent(completeAttestation)">
+          <strong>
+            {{ 'CONSENT.CONSENT_SIGN.COMPLETE_BTN' | translate }}
+          </strong>
+        </button>
+      </div>
+    </md-card>
+  </md-grid-list>
+  <br>
+</div>

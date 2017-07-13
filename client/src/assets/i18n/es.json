@@ -15,8 +15,8 @@
     }
   },
   "HOME": {
-    "WELCOME_TITLE": "{Spanish} Welcome to Consent2Share admin!",
-    "WELCOME_SUB_TITLE": "{Spanish} You are now ready to manage your patients.",
+    "WELCOME_TITLE": "{spanish} Welcome to Consent2Share!",
+    "WELCOME_SUB_TITLE": "{spanish} You are now ready to manage your patients.",
     "PATIENT_CARD": {
       "TITLE": "{Spanish} My <span class=\"font-weight700\">Patients</span>",
       "STEP": "{Spanish} Step 1.",
@@ -57,19 +57,21 @@
           "STAGE_TEXT": "EN CURSO",
           "EDIT_THIS_CONSENT_OPTION_TEXT": "Editar este consentimiento",
           "PREVIEW_THIS_CONSENT_OPTION_TEXT": "Previsualizar este consentimiento",
-          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing",
-          "DELETE_THIS_PROVIDER_OPTION_TEXT": "Eliminar este consentimiento"
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Probar las Selecciones de Mi Consentimiento en Mi Registro Médico antes de Compartir",
+          "PROVIDE_ESIGNATURE_OPTION_TEXT": "Proporcionar eSignature",
+          "DELETE_THIS_CONSENT_OPTION_TEXT": "Eliminar este consentimiento"
         },
         "SIGNED_STAGE": {
           "STAGE_TEXT": "FIRMADO",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
-          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing"
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Probar las Selecciones de Mi Consentimiento en Mi Registro Médico antes de Compartir",
+          "REVOCATION_OPTION_TEXT": "Revocación"
         },
         "REVOKED_STAGE": {
           "STAGE_TEXT": "Rechazado",
           "VIEW_SIGNED_CONSENT_OPTION_TEXT": "Ver el consentimiento firmado",
           "VIEW_SIGNED_REVOCATION_OPTION_TEXT": "Ver la revocación firmada",
-          "APPLY_TRY_POLICY_OPTION_TEXT": "{spanish} Try This Consent Settings against Patient Medical Record before Sharing"
+          "APPLY_TRY_POLICY_OPTION_TEXT": "Probar las Selecciones de Mi Consentimiento en Mi Registro Médico antes de Compartir"
         }
       },
       "APPLY_TRY_POLICY_DIALOG": {
@@ -98,6 +100,7 @@
       "DESCRIPTION": "Seleccione cómo le gustaría compartir su información médica.",
       "SHARE_ALL_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> SIN NINGUNA EXCEPCIÓN </ strong> de categorías de información médica.",
       "SHARE_SOME_RADIO": "<strong> COMPARTE </ strong> mi expediente médico <strong> CON EXCEPCIÓN </ strong> de categorías específicas de información médica.",
+      "SELECTED_SENSITIVITY_CATEGORIES_LABEL": "{spanish}Sharing the following:",
       "DIALOG": {
         "TITLE": "La configuración de privacidad",
         "SHARE_ALL_PARAGRAPH": "{spanish} You have chosen to <strong>share all</strong> of your medical record <strong>without any exception.</strong>",
@@ -151,20 +154,87 @@
       "ERROR_PAST_END_DATE": "La fecha de finalización debe estar en el presente.",
       "ERROR_END_DATE_BEFORE_START": "La fecha de inicio debe continuar la fecha de finalización."
     },
+    "CONSENT_SIGN": {
+      "TITLE": "Consentimiento para compartir mi información médica",
+      "REFERENCE_NUMBER": "Número de referencia del consentimiento",
+      "PATIENT_NAME": "Nombre del paciente",
+      "PATIENT_DOB": "Fecha de nacimiento del paciente",
+      "AUTHORIZATION_SECTION": {
+        "TITLE": "AUTORIZACIÓN PARA DIVULGAR",
+        "AUTHORIZE_LABEL": "Authorizes",
+        "DISCLOSE_LABEL": "Revelar a",
+        "PROVIDER": {
+          "NAME": "Nombre del proveedor",
+          "NPI": "Número NPI",
+          "PHONE": "Teléfono",
+          "ADDRESS": "Dirección"
+        }
+      },
+      "HEALTH_INFORMATION_SECTION": {
+        "TITLE": "INFORMACIÓN SANITARIA A REVELAR",
+        "SHARE_MEDICAL_INFO": "Para COMPARTIR la siguiente información médica",
+        "SHARE_PURPOSES": "Para COMPARTIR para el siguiente propósito (s)"
+      },
+      "CONSENT_TERMS_SECTION": {
+        "TITLE": "TÉRMINOS DE CONSENTIMIENTO",
+        "START_DATE": "Fecha de vigencia",
+        "END_DATE": "Fecha de caducidad",
+        "TERMS": "Yo, {{name}}, por la presente acepto, y entiendo los términos de este consentimiento."
+      },
+      "CONFIRM_DIALOG": {
+        "TITLE": "Por favor, autentifique",
+        "CONTENT": "Proporcione su contraseña de cuenta para autenticar y complete la firma electrónica",
+        "AUTHENTICATE_MSG": "No se pudo autenticar, inténtalo de nuevo.",
+        "CANCEL_BTN": "Cancelar",
+        "CONTINUE_BTN": "Continuar"
+      },
+      "COMPLETE_DIALOG": {
+        "TITLE": "El éxito en el consentimiento firmado creado",
+        "DOWNLOAD_BTN": "Descargar el consentimiento firmado",
+        "CONTINUE_BTN": "Continuar"
+      },
+      "CANCEL_BTN": "Cancelar",
+      "COMPLETE_BTN": "Completar"
+    },
+    "CONSENT_REVOKE": {
+      "TITLE": "{spanish} Revocation of Consent to Share My Health Information",
+      "REFERENCE_NUMBER": "Consent Reference Number",
+      "PATIENT_NAME": "Patient Name",
+      "PATIENT_DOB": "Patient DOB",
+      "CONFIRM_DIALOG": {
+        "TITLE": "Por favor, autentifique",
+        "CONTENT": "Proporcione su contraseña de cuenta para autenticar y complete la firma electrónica",
+        "AUTHENTICATE_MSG": "No se pudo autenticar, inténtalo de nuevo.",
+        "CANCEL_BTN": "Cancelar",
+        "CONTINUE_BTN": "Continue"
+      },
+      "COMPLETE_DIALOG": {
+        "TITLE": "{spanish} Successfully Revoked Consent",
+        "DOWNLOAD_BTN": "{spanish} Download Signed Consent Revocation",
+        "CONTINUE_BTN": "Continue"
+      },
+      "TERMS": "I, {{name}}, hereby accept and understand the terms of this consent.",
+      "CANCEL_BTN": "Cancelar",
+      "COMPLETE_BTN": "Completar"
+    },
     "NOTIFICATION_MSG": {
       "SUCCESS_CREATING_CONSENT": "{spanish} Successfully created the consent on behalf of the patient.",
-      "FAILED_CREATING_CONSENT": "{spanish} Error in creating consent on behalf of the patient.",
+      "FAILED_CREATING_CONSENT": "{spanish} Error in creating the consent on behalf of the patient.",
       "SUCCESS_UPDATING_CONSENT": "{spanish} Successfully updated the consent on behalf of the patient.",
-      "FAILED_UPDATING_CONSENT": "{spanish} Error in updating consent on behalf of the patient.",
-      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "{spanish} Success in downloading saved consent.",
-      "FAILED_DOWNLOAD_SAVED_CONSENT": "{spanish} Failed to download the saved consent, please try again later...",
-      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "{spanish} Success in downloading signed consent.",
-      "FAILED_DOWNLOAD_SIGNED_CONSENT": "{spanish} Failed to download the signed consent, please try again later...",
+      "FAILED_UPDATING_CONSENT": "{spanish} Error in updating the consent on behalf of the patient.",
+      "SUCCESS_SIGN_CONSENT": "{spanish} Successfully attested the consent on behalf of the patient.",
+      "FAILED_SIGN_CONSENT": "{spanish} Error in attesting the consent on behalf of the patient.",
+      "SUCCESS_REVOKE_CONSENT": "{spanish} Successfully revoked the consent on behalf of the patient.",
+      "FAILED_REVOKE_CONSENT": "{spanish} Error in revoking consent on behalf of the patient.",
+      "SUCCESS_DOWNLOAD_SAVED_CONSENT": "{spanish} Success in downloading the saved consent.",
+      "FAILED_DOWNLOAD_SAVED_CONSENT": "{spanish} Failed to download the saved consent. Please try again later.",
+      "SUCCESS_DOWNLOAD_SIGNED_CONSENT": "{spanish} Success in downloading the signed consent.",
+      "FAILED_DOWNLOAD_SIGNED_CONSENT": "{spanish} Failed to download the signed consent. Please try again later.",
       "SUCCESS_DOWNLOAD_REVOKED_CONSENT": "{spanish} Success in downloading revoked consent.",
-      "FAILED_DOWNLOAD_REVOKED_CONSENT": "{spanish} Failed to download the revoked consent, please try again later...",
-      "SUCCESS_DELETE_CONSENT": "{spanish} Success in deleting consent.",
-      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent, please try again later...",
-      "FAILED_APPLY_TRY_POLICY": "{spanish} Failed to try this consent settings against patient medical record, please try again later..."
+      "FAILED_DOWNLOAD_REVOKED_CONSENT": "{spanish} Failed to download the revoked consent. Please try again later.",
+      "SUCCESS_DELETE_CONSENT": "{spanish} Successfully deleted the consent.",
+      "FAILED_DELETE_CONSENT": "{spanish} Failed to delete the consent. Please try again later.",
+      "FAILED_APPLY_TRY_POLICY": "{spanish} Failed to try this consent setting against the patient medical record. Please try again later."
     }
   },
   "PATIENT": {
@@ -174,7 +244,7 @@
       "SEARCH_PATIENT_PLACEHOLDER": "{spanish} Search by first and last name",
       "CREATE_PATIENT_BUTTON": "{spanish} Create a Patient Account",
       "SORT_LIST_TITLE": "{spanish} Show List by",
-      "NO_PATIENTS_MSG": "{spanish} There are currently no Patients available. Please click the 'Create a Patient Account' button to create a new Patient.",
+      "NO_PATIENTS_MSG": "{spanish} There are currently no patients available. Please click the 'Create a Patient Account' button to create a new patient.",
       "CARD": {
         "CONTENT": {
           "CONTACT_NUMBER": "{spanish} Contact Number",
@@ -187,11 +257,26 @@
         "NEXT": "{spanish} Next"
       }
     },
+    "SEARCH": {
+      "CRITERIA": {
+        "LABEL": "{spanish}Patient Search Criteria",
+        "FIRST_NAME_PLACEHOLDER": "{spanish}First Name",
+        "LAST_NAME_PLACEHOLDER": "{spanish}Last Name",
+        "GENDER_PLACEHOLDER": "{spanish}Gender",
+        "MRN_PLACEHOLDER": "{spanish}MRN/Patient ID Number",
+        "DOB_PLACEHOLDER": "{spanish}Date of Birth",
+        "CANCEL_BTN": "{spanish}Cancel",
+        "SEARCH_BTN": "{spanish}Search"
+      },
+      "SEARCH_RESULT_MSG": "{spanish}Patient Search Results",
+      "NO_PATIENTS_MSG": "{spanish}No results found. Please try again, or create a new patient."
+    },
     "CREATE_EDIT": {
       "CREATE_TITLE": "{spanish} Create Patient",
       "EDIT_TITLE": "{spanish} Patient Record",
       "ACCORDION_HEADER": "{spanish} Patient's Information",
-      "INFO": "{spanish} Please complete all required fields to create a Patient Account.",
+      "INFO": "{spanish} Please complete all required fields to create a patient account.",
+      "MRN_LABEL": "{spanish} Medical Record Number:",
       "REQUIRED_INFORMATION": {
         "LABEL": "{spanish} Required Information",
         "ROLE_PLACEHOLDER": "{spanish} Role",
@@ -217,11 +302,17 @@
         "SSN_PLACEHOLDER": "{spanish} Social Security Number",
         "PHONE_PLACEHOLDER": "{spanish} Phone"
       },
-      "CANCEL_BTN": "{spanish} Cancel",
-      "SAVE_BTN": "{spanish} Save",
+      "CANCEL_BTN": "Cancelar",
+      "SAVE_BTN": "Guardar cambios",
       "CONFIRM_DIALOG": {
         "TITLE": "{spanish} Confirm Navigation",
-        "CONTENT": "{spanish} You will lose all unsaved work, Are you sure you want to leave this page?"
+        "CONTENT": "{spanish} You will lose all unsaved work. Are you sure you want to leave this page?"
+      },
+      "DUPLICATE_CHECK_CONFIRM_DIALOG" : {
+        "TITLE": "{spanish} Confirm Account Creation",
+        "CONTENT": "{spanish} <strong>ATTENTION</strong> – An account with similar information already exists. Please confirm the accuracy of the account information entered and select to either \"Continue and Create\" or go \"Back to Search\" screen and try again.",
+        "OK_BTN": "{spanish} Continue and Create",
+        "CANCEL_BTN": "{spanish} Back to Search"
       }
     },
     "VERIFICATION": {
@@ -250,7 +341,7 @@
       }
     },
     "SEGMENT_DOCUMENT": {
-      "SECTION_TITLE": "(spanish) Segmentation Patient's Health Record",
+      "SECTION_TITLE": "(spanish) Segment Patient's Health Record",
       "COMPONENT_TITLE": "{spanish} Document Segmentation",
       "WARNING": "{spanish} Set the options to segment this document according to the consent selected.",
       "PATIENT_NAME": "{spanish} Patient Name",
@@ -273,15 +364,15 @@
       "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI..."
     },
     "NOTIFICATION_MSG": {
-      "SUCCESS_SENT_EMAIL": "{spanish} Successfully sent the email.",
-      "FAILED_SENT_EMAIL": "{spanish} Failed to send email, please try again later...",
-      "SUCCESS_ENABLE_ACCOUNT": "{spanish} User account is back to work.",
-      "FAILED_ENABLE_ACCOUNT": "{spanish} Failed to enable user account, please try again later...",
-      "SUCCESS_DISABLE_ACCOUNT": "{spanish} Successfully disable the account.",
-      "FAILED_DISABLE_ACCOUNT": "{spanish} Failed to disable account, please try again later...",
-      "FAILED_SEARCH_PATIENT": "{spanish} Failed to search patient, please try again later...",
-      "FAILED_CREATE_PATIENT": "{spanish} Failed to create patient, please try again later...",
-      "FAILED_UPDATE_PATIENT": "{spanish} Failed to update patient, please try again later..."
+      "SUCCESS_SENT_EMAIL": "{spanish}Successfully sent the email.",
+      "FAILED_SENT_EMAIL": "{spanish}Failed to send email. Please try again later.",
+      "SUCCESS_ENABLE_ACCOUNT": "{spanish}User account is enabled.",
+      "FAILED_ENABLE_ACCOUNT": "{spanish}Failed to enable user account. Please try again later.",
+      "SUCCESS_DISABLE_ACCOUNT": "{spanish}Successfully disable the account.",
+      "FAILED_DISABLE_ACCOUNT": "{spanish}Failed to disable account. Please try again later.",
+      "FAILED_SEARCH_PATIENT": "{spanish}Failed to search patient. Please try again later.",
+      "FAILED_CREATE_PATIENT": "{spanish}Failed to create patient. Please try again later.",
+      "FAILED_UPDATE_PATIENT": "{spanish}Failed to update patient. Please try again later."
     }
   },
   "PROVIDER": {
@@ -290,7 +381,7 @@
       "WARNING": "¡DE ACUERDO! Debe agregar al menos dos contactos antes de compartir su información de salud.",
       "ADD_PROVIDER_BUTTON": "Agregar un proveedor de servicios de salud",
       "SORT_LIST_TITLE": "Mostrar lista por",
-      "NO_PROVIDERS_MSG": "{spanish} There are currently no Providers available. Please click the 'Add a Health Provider' button to create a new provider.",
+      "NO_PROVIDERS_MSG": "{spanish} There are currently no providers available. Please click the 'Add a Health Provider' button to create a new provider.",
       "PAGINATION": {
         "PREVIOUS": "Anterior",
         "NEXT": "Siguiente"
@@ -386,13 +477,14 @@
       "ADD_BUTTON": "Agregar a la lista de proveedores"
     },
     "NOTIFICATION_MSG": {
-      "FAILED_GET_PROVIDERS": "{spanish} Failed to get providers, please try again later...",
-      "FAILED_ADD_PROVIDER": "{spanish} Failed to add the provider, please try again later...",
-      "SUCCESS_DELETE_PROVIDER": "{spanish} Successfully delete the provider.",
-      "FAILED_DELETE_PROVIDER": "{spanish} Failed to delete the provider, please try again later..."
+      "FAILED_GET_PROVIDERS": "{spanish}Failed to get providers. Please try again later.",
+      "FAILED_ADD_PROVIDER": "{spanish}Failed to add the provider. Please try again later.",
+      "SUCCESS_DELETE_PROVIDER": "{spanish}Successfully delete the provider.",
+      "FAILED_DELETE_PROVIDER": "{spanish}Failed to delete the provider. Please try again later."
     }
   },
   "SHARED": {
+    "CONFIGURATION_SERVICE_ERROR": "{Spanish} Could not load configurations from the server. Please go to the Login Page and try again.",
     "VALIDATION_RULES": {
       "PHONE_ERROR_MESSAGE": "{spanish} Must be with formats: 123-456-7890 (123)456-7890 1234567890 123.456.7890.",
       "SSN_ERROR_MESSAGE": "{spanish} Must be with formats:  123-45-6789, 123456789; 123-456789; 12345-6789",
@@ -402,8 +494,8 @@
       "MAX_LENGTH_ERROR_MESSAGE": "{spanish} This field Maximum length is {{length}}",
       "REQUIRED_ERROR_MESSAGE": "{spanish} This field is required.",
       "REQUIRED_TRUE_ERROR_MESSAGE": "{spanish} This field value must be true.",
-      "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today",
-      "ONE_EMAIL_REQUIRED_MESSAGE": "{spanish} At least one email address needed",
+      "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today.",
+      "ONE_EMAIL_REQUIRED_MESSAGE": "{spanish} At least one email address needed.",
       "NPI_NUMBER_MESSAGE": "{spanish} Must be a number.",
       "NPIS_MATCH_MESSAGE": "{spanish} Authorize and disclose NPIs must be different.",
       "INVALID_FILE_TYPE_MESSAGE": "{spanish} Invalid file type."

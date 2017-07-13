@@ -31,7 +31,7 @@ export class AuthenticationService {
           this.basicAuthorizationHeader = basicAuthorizationHeader;
         },
         (error) => {
-          this.notificationService.show("Could not load configuration from the server. Please to the Login Page and try again.");
+          this.notificationService.i18nShow("SHARED.CONFIGURATION_SERVICE_ERROR");
         }
       );
   }

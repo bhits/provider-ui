@@ -1,11 +1,13 @@
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
+import {DatePipe} from "@angular/common";
 import {BrowserService} from "./browser.service";
 
 @Injectable()
 export class UtilityService {
 
   constructor(private browserService: BrowserService,
+              private datePipe: DatePipe,
               private router: Router) {
   }
 
@@ -18,6 +20,10 @@ export class UtilityService {
       zipCode = zipCode.slice(0, 5) + "-" + zipCode.slice(5);
     }
     return zipCode;
+  }
+
+  public formatDate(aDate: Date, dateFormat: string) {
+    return this.datePipe.transform(aDate, dateFormat);
   }
 
   public convertJsonObjToStrMap(jsonStr) {
@@ -108,5 +114,11 @@ export class UtilityService {
       return person[key];
     }
     return ''
+  }
+
+  public toTitleCase(fullName: string): string {
+    return fullName.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
   }
 }

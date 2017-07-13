@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve} from "@angular/router";
 import {Observable} from "rxjs/Observable";
-import {Consent} from "app/consent/shared/consent.model";
 import {ConsentService} from "app/consent/shared/consent.service";
 import {Patient} from "app/patient/shared/patient.model";
+import {Consent} from "./consent.model";
 
 @Injectable()
 export class ConsentResolveService implements Resolve<any> {

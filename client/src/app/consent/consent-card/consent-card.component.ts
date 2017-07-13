@@ -11,6 +11,7 @@ import {Patient} from "app/patient/shared/patient.model";
 import {DetailedConsent} from "../shared/detailed-consent.model";
 import {SampleDocumentInfo} from "../shared/sample-document-info.model";
 import {TryPolicyService} from "app/consent/shared/try-policy.service";
+import {ProviderPermissions} from "../../core/provider-permissions.model";
 
 @Component({
   selector: 'c2s-consent-card',
@@ -22,12 +23,13 @@ export class ConsentCardComponent implements OnInit {
   public consent: DetailedConsent;
   @Output()
   public deleteConsent = new EventEmitter<number>();
-  public consentOptions: ConsentStageOption[];
+  private consentOptions: ConsentStageOption[];
   private selectedPatient: Patient;
   private detailsVisible: boolean = false;
   private height: number = 0;
   public applyTryPolicyForm: FormGroup;
   public sampleDocuments: SampleDocumentInfo[];
+  private providerPermissions: ProviderPermissions;
 
   constructor(private tryPolicyService: TryPolicyService,
               private consentService: ConsentService,
@@ -37,6 +39,7 @@ export class ConsentCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.providerPermissions = this.route.snapshot.data['providerPermissions'];
     this.selectedPatient = this.route.snapshot.data['patient'];
     this.sampleDocuments = this.route.snapshot.data['sampleDocuments'];
     this.consentOptions = CONSENT_STAGES
@@ -108,7 +111,31 @@ export class ConsentCardComponent implements OnInit {
     return consentOption.isMethod;
   }
 
+  private displayOnProviderUI(consentOption: ConsentStageOption): boolean {
+
+    let result: boolean;
+
+    switch (consentOption.key) {
+      case ConsentStageOptionKey.SIGN:
+        result = this.providerPermissions.consentSignEnabled;
+        break;
+
+      case ConsentStageOptionKey.REVOKE:
+        result = this.providerPermissions.consentRevokeEnabled;
+        break;
+
+      default:
+        result = true;
+    }
+    return result;
+  }
+
   public getRouterLink(consentOption: ConsentStageOption): any {
+    if (consentOption.key === ConsentStageOptionKey.SIGN ||
+      consentOption.key === ConsentStageOptionKey.REVOKE) {
+      return consentOption.routerLink ? ["/patients".concat("/" + this.selectedPatient.id).concat("/consents/" + this.consent.id).concat(consentOption.routerLink)] : '.'
+    }
+
     return consentOption.routerLink ? ["/patients".concat("/" + this.selectedPatient.id).concat(consentOption.routerLink), this.consent.id] : '.'
   }
 
@@ -141,5 +168,9 @@ export class ConsentCardComponent implements OnInit {
   public backToOptions(applyTryPolicyDialog: any, consentOptionsDialog: any): void {
     applyTryPolicyDialog.close();
     consentOptionsDialog.open();
+  }
+
+  public getEnabledConsentOptions(): ConsentStageOption[]{
+    return this.consentOptions.filter(consentOption => this.displayOnProviderUI(consentOption));
   }
 }
