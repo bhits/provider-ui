@@ -6,6 +6,8 @@ import {Observable} from "rxjs/Observable";
 import {ApiUrlService} from "app/shared/api-url.service";
 import {PatientActivationResponse} from "app/patient/shared/patient-activation-response.model";
 import {PageableData} from "../../shared/pageable-data.model";
+import {PatientSearchQuery} from "./patient-search-query.model";
+import {PatientSearchResponse} from "./patient-search-response.model";
 
 @Injectable()
 export class PatientService {
@@ -17,7 +19,6 @@ export class PatientService {
               private exceptionService: ExceptionService,
               private http: Http) {
   }
-
   getDefaultPatientIdentifierSystem(){
     return this.defaultPatientIdentifierSystem;
   }
@@ -35,6 +36,37 @@ export class PatientService {
     const SEARCH_PATIENT_URL = this.umsPatientUrl.concat("/search");
     return this.http.get(SEARCH_PATIENT_URL, {search: params})
       .map((resp: Response) => <Patient[]>(resp.json()))
+      .catch(this.exceptionService.handleError);
+  }
+
+  private buildRequestParams(requestParams: PatientSearchQuery): URLSearchParams {
+
+    let params: URLSearchParams = new URLSearchParams();
+    const firstName: string = requestParams.strictMatch ? requestParams.firstName : this.addLikePatternInQueryParameter(requestParams.firstName);
+    const lastName: string = requestParams.strictMatch ? requestParams.lastName : this.addLikePatternInQueryParameter(requestParams.lastName);
+    params.set('firstName', firstName);
+    params.set('lastName', lastName);
+    params.set('genderCode', requestParams.genderCode);
+    params.set('birthDate',requestParams.birthDate);
+    params.set('mrn',requestParams.mrn);
+    params.set('page',requestParams.page);
+    params.set('size',requestParams.size);
+
+    return params;
+  }
+
+  private addLikePatternInQueryParameter(requestParam: string): string {
+    const LIKE_PATTERN = "%";
+    if (requestParam != null && requestParam.length > 0) {
+      return LIKE_PATTERN.concat(requestParam, LIKE_PATTERN);
+    }
+  }
+
+  public searchPatientsByDemographics(requestParams: PatientSearchQuery): Observable<PageableData<Patient>> {
+    const SEARCH_PATIENT_BY_DEMOGRAPHICS_URL = this.umsPatientUrl.concat("/search/patientDemographic");
+    let params: URLSearchParams = this.buildRequestParams(requestParams);
+    return this.http.get(SEARCH_PATIENT_BY_DEMOGRAPHICS_URL, {search: params})
+      .map((resp: Response) => <PageableData<Patient>>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
 

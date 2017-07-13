@@ -1,5 +1,5 @@
 import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
+import {CommonModule, DatePipe} from "@angular/common";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MaterialModule} from "@angular/material";
 import {UsPhoneNumberPipe} from "./us-phone-number.pipe";
@@ -21,7 +21,6 @@ import {BrowserService} from "app/shared/browser.service";
 import {PatientPipe} from "./patient.pipe";
 import {TranslateModule} from "@ngx-translate/core";
 import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
-
 
 @NgModule({
   imports: [
@@ -46,7 +45,8 @@ import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
     ExceptionService,
     NotificationService,
     UtilityService,
-    ValidationService
+    ValidationService,
+    DatePipe
   ],
   exports: [
     ControlValidationErrorMessageComponent,

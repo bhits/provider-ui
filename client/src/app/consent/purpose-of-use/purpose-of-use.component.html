@@ -1,12 +1,12 @@
-<md-card class="left-align p-none m-sm section-border-thin hover">
-  <md-card-title class="bg-forest-green p-sm white"><i class="material-icons md-36 bottom p-r-xs">settings</i>
+<md-card class="left-align p-8 m-b section-border-thin hover">
+  <md-card-title class="bg-forest-green p-sm white m-b-none">
     {{ 'CONSENT.PURPOSE_OF_USE.TITLE' | translate }}
   </md-card-title>
-  <md-card-content class="p-15">
-    <p>
+  <md-card-content class="bg-xlite-teal p-15">
+    <p class="font-size12">
       {{ 'CONSENT.PURPOSE_OF_USE.DESCRIPTION' | translate }}
     </p>
-    <span [innerHTML]="'CONSENT.PURPOSE_OF_USE.SHARE_TEXT' | translate"></span>
+    <span class="m-r" [innerHTML]="'CONSENT.PURPOSE_OF_USE.SHARE_TEXT' | translate"></span>
     <button class="lineHeight28" md-raised-button color="primary" (click)="purposeOfUseDialog.open()">
       {{ 'CONSENT.PURPOSE_OF_USE.EDIT_BTN' | translate }}
     </button>

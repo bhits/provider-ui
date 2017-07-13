@@ -1,9 +1,9 @@
-<md-card class="left-align p-none m-sm section-border-thin hover">
-  <md-card-title class="bg-forest-green p-sm white"><i class="material-icons md-36 bottom p-r-xs">content_paste</i>
+<md-card class="left-align p-8 m-b section-border-thin hover">
+  <md-card-title class="bg-forest-green p-sm white m-b-none">
     {{ 'CONSENT.MEDICAL_INFORMATION.TITLE' | translate }}
   </md-card-title>
-  <md-card-content class="p-15">
-    <p>
+  <md-card-content class="bg-xlite-teal p-15">
+    <p class="font-size12">
       {{ 'CONSENT.MEDICAL_INFORMATION.DESCRIPTION' | translate }}
     </p>
     <md-radio-group [(ngModel)]="isShareAll">
@@ -24,11 +24,14 @@
         </md-radio-button>
       </div>
     </md-radio-group>
-    <br><br>
-    <md-chip-list>
-      <md-chip class="medInfo" *ngFor="let sensitivityCategory of selectedSensitivityCategories"
+
+    <label for="sensitivity-category-list" *ngIf="hasSelectedSensitivityCategories()">
+      <p><strong>{{ 'CONSENT.MEDICAL_INFORMATION.SELECTED_SENSITIVITY_CATEGORIES_LABEL' | translate }}</strong></p>
+    </label>
+    <md-chip-list id="sensitivity-category-list">
+      <md-chip *ngFor="let sensitivityCategory of selectedSensitivityCategories"
                color="accent" selected="true">
-        <md-icon>lock</md-icon>
+        <md-icon>check_circle</md-icon>
         <span class="md-chip-icon-text">{{sensitivityCategory}}</span>
       </md-chip>
     </md-chip-list>

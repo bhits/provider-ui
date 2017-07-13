@@ -1,5 +1,5 @@
-<md-card class="p-none">
-  <md-card-content class="m-b-n border-bottom-purple-thin">
+<md-card class="c2s-consent p-8 m-b">
+  <md-card-content>
     <div fxLayout="column">
       <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px"
            class="consent-card-header" (click)="toggleDetailsVisible(el)">
@@ -33,27 +33,27 @@
         </div>
       </div>
 
-      <div class="transition p-l p-r" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+      <div class="transition" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
            (window:resize)="onResize($event, el)"
            [style.height]="getHeightPx()" #el>
         <div fxFlex *ngIf="hasDoNotShareSensitivityPolicyCodes(); else doShareSensitivityPolicy">
-          <h3>
+          <h3 class="m-b-xs">
             <strong>
               {{ 'CONSENT.CARD.MEDICAL_INFORMATION_DISCLOSED' | translate }}
             </strong>
           </h3>
           <md-chip-list>
-            <md-chip class="consents"
+            <md-chip class="consents" style="margin: 5px !important;"
                      *ngFor="let shareSensitivityCategory of consent.shareSensitivityCategories"
                      color="accent" selected="true">
-              <md-icon>lock</md-icon>
+              <md-icon>check_circle</md-icon>
               <span class="md-chip-icon-text">{{shareSensitivityCategory | sensitivityCategory: 'display'}}</span>
             </md-chip>
           </md-chip-list>
         </div>
         <ng-template #doShareSensitivityPolicy>
           <div fxFlex>
-            <h3>
+            <h3 class="m-b-xs">
               <strong>
                 {{ 'CONSENT.CARD.SHARE_ALL' | translate }}
               </strong>
@@ -69,7 +69,7 @@
           </div>
         </ng-template>
         <div fxFlex>
-          <h3>
+          <h3 class="m-b-xs">
             <strong>
               {{ 'CONSENT.CARD.SHARE_PURPOSE_OF_USES' | translate }}
             </strong>
@@ -86,8 +86,8 @@
     </div>
   </md-card-content>
   <md-card-actions>
-    <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center"
-         class="p-l p-r p-b">
+    <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center stretch" fxLayoutAlign.gt-xs="space-between center"
+         class="p-sm bg-xlite-teal">
       <div fxFlex="1 auto">
         <div class="font-size14">
           {{ 'CONSENT.CARD.CONSENT_STATE' | translate }}
@@ -98,7 +98,7 @@
           </md-chip>
         </div>
       </div>
-      <button md-raised-button color="primary" (click)="consentOptionsDialog.open()">
+      <button class="m-t-none" class.xs="m-t-sm" fxFlex="1 0 auto" md-raised-button color="primary" (click)="consentOptionsDialog.open()">
         {{ 'CONSENT.CARD.MANAGE_CONSENT_BUTTON_TEXT' | translate }}
       </button>
     </div>
@@ -111,21 +111,20 @@
       {{ 'CONSENT.CARD.MANAGE_CONSENT_DIALOG_TITLE' | translate }}
     </md2-dialog-title>
     <md-list>
-      <md-list-item *ngFor="let consentOption of consentOptions">
+      <md-list-item *ngFor="let consentOption of getEnabledConsentOptions()">
         <div class="margin-20" fxFill>
           <a fxLayoutAlign="space-between" md-raised-button
              (click)="invokeAction(consentOption, consentOptionsDialog, deleteConfirmationDialog, applyTryPolicyDialog)"
-             *ngIf="selectConsentMethodOption(consentOption); else isNotMethodOption">
+             *ngIf="selectConsentMethodOption(consentOption)">
             <md-icon>{{consentOption.icon}}</md-icon>
             <span class="margin-20">{{consentOption.text | translate}}</span>
           </a>
-          <ng-template #isNotMethodOption>
-            <a fxLayoutAlign="space-between" md-raised-button
-               [routerLink]="getRouterLink(consentOption)">
-              <md-icon>{{consentOption.icon}}</md-icon>
-              <span class="margin-20">{{consentOption.text | translate}}</span>
-            </a>
-          </ng-template>
+           <a fxLayoutAlign="space-between" md-raised-button
+              *ngIf="!selectConsentMethodOption(consentOption)"
+             [routerLink]="getRouterLink(consentOption)">
+             <md-icon>{{consentOption.icon}}</md-icon>
+             <span class="margin-20">{{consentOption.text | translate}}</span>
+           </a>
         </div>
       </md-list-item>
     </md-list>
