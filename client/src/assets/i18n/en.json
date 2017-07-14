@@ -27,7 +27,8 @@
     "MENU": {
       "TITLE": "Menu",
       "HOME": "Home",
-      "PATIENTS": "Patients",
+      "PATIENT_LIST": "Patient List",
+      "PATIENT_SEARCH": "Patient Search",
       "LOGOUT": "Logout"
     }
   },

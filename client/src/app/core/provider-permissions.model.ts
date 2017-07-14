@@ -4,5 +4,6 @@ export class ProviderPermissions {
   consentRevokeEnabled: boolean;
   userActivationEnabled: boolean;
   segmentationEnabled: boolean;
+  patientListCardEnabled: boolean;
   registration: RegistrationConfig;
 }

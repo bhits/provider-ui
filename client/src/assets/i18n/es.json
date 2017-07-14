@@ -27,7 +27,8 @@
     "MENU": {
       "TITLE": "{Spanish} Menu",
       "HOME": "{Spanish} Home",
-      "PATIENTS": "{Spanish} Patients",
+      "PATIENT_LIST": "{Spanish} Patient List",
+      "PATIENT_SEARCH": "{Spanish} Patient Search",
       "LOGOUT": "{Spanish} Logout"
     }
   },
