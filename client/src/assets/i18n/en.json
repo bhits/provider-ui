@@ -189,7 +189,8 @@
         "CONTINUE_BTN": "Continue"
       },
       "COMPLETE_DIALOG": {
-        "TITLE": "Successfully Signed the Consent on behalf of the patient",
+        "TITLE": "Successfully Signed the Consent on behalf of the Patient",
+        "CLICK_TO_DOWNLOAD_MSG": "Click to download the signed consent",
         "DOWNLOAD_BTN": "Download the Signed Consent",
         "CONTINUE_BTN": "Continue"
       },
@@ -209,7 +210,8 @@
         "CONTINUE_BTN": "Continue"
       },
       "COMPLETE_DIALOG": {
-        "TITLE": "Successfully Revoked the Consent",
+        "TITLE": "Successfully Revoked the Consent on behalf of the Patient",
+        "CLICK_TO_DOWNLOAD_MSG": "Click to download the signed consent revocation",
         "DOWNLOAD_BTN": "Download the Signed Consent Revocation",
         "CONTINUE_BTN": "Continue"
       },
