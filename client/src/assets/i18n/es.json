@@ -258,8 +258,11 @@
       }
     },
     "SEARCH": {
+      "TITLE": "{spanish} Search Patient",
+      "INFO": "{spanish} OK! You are now ready to manage your patients.",
+      "CREATE_PATIENT_BUTTON": "{spanish} Create a Patient Account",
       "CRITERIA": {
-        "LABEL": "{spanish}Patient Search Criteria",
+        "LABEL": "{spanish} Patient Search Criteria",
         "FIRST_NAME_PLACEHOLDER": "{spanish}First Name",
         "LAST_NAME_PLACEHOLDER": "{spanish}Last Name",
         "GENDER_PLACEHOLDER": "{spanish}Gender",
@@ -308,7 +311,7 @@
         "TITLE": "{spanish} Confirm Navigation",
         "CONTENT": "{spanish} You will lose all unsaved work. Are you sure you want to leave this page?"
       },
-      "DUPLICATE_CHECK_CONFIRM_DIALOG" : {
+      "DUPLICATE_CHECK_CONFIRM_DIALOG": {
         "TITLE": "{spanish} Confirm Account Creation",
         "CONTENT": "{spanish} <strong>ATTENTION</strong> – An account with similar information already exists. Please confirm the accuracy of the account information entered and select to either \"Continue and Create\" or go \"Back to Search\" screen and try again.",
         "OK_BTN": "{spanish} Continue and Create",

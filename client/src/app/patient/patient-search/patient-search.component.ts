@@ -1,10 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators, FormGroup} from "@angular/forms";
+import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 import {Patient} from "../shared/patient.model";
-import {NotificationService} from "../../shared/notification.service";
 import {UtilityService} from "../../shared/utility.service";
 import {PatientService} from "../shared/patient.service";
 import {PageableData} from "../../shared/pageable-data.model";
@@ -13,7 +11,6 @@ import {ValidationService} from "../../shared/validation.service";
 import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.model";
 import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.model";
 import {PatientSearchQuery} from "../shared/patient-search-query.model";
-import {PatientSearchResponse} from "../shared/patient-search-response.model";
 import {ApiUrlService} from "app/shared/api-url.service";
 
 @Component({
@@ -28,19 +25,16 @@ export class PatientSearchComponent implements OnInit {
   public searchPatientForm: FormGroup;
   public genders: BasePatientCreationLookup[];
   public hasSearchResult: boolean = false;
-  public searchResponse: PageableData<Patient>;
   public totalItems: number = 0;
   public currentPage: number = 1;
   public itemsPerPage: number = 10;
   public asyncPatients: Observable<Patient[]>;
-  public searchPatients: Patient[];
   public requestParams: PatientSearchQuery;
   public FORMAT: string = "MM/dd/y";
   public isOpenOnFocus: boolean = true;
   public DATE_FORMAT: string = "y-MM-dd";
 
   constructor(private apiUrlService: ApiUrlService,
-              private notificationService: NotificationService,
               private patientService: PatientService,
               private utilityService: UtilityService,
               private formBuilder: FormBuilder,
@@ -108,7 +102,7 @@ export class PatientSearchComponent implements OnInit {
 
   public getPage(page: number) {
     this.loading = true;
-    this.requestParams.page = (page-1).toString();
+    this.requestParams.page = (page - 1).toString();
     this.asyncPatients = this.patientService.searchPatientsByDemographics(this.requestParams)
       .do((patients: PageableData<Patient>) => {
         this.hasSearchResult = true;
@@ -128,8 +122,8 @@ export class PatientSearchComponent implements OnInit {
   public clear(): void {
     this.searchPatientForm.reset();
     this.hasSearchResult = false;
-    this.asyncPatients=null;
-    this.noResult=false;
+    this.asyncPatients = null;
+    this.noResult = false;
   }
 
   public cancel(): void {

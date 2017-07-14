@@ -258,6 +258,9 @@
       }
     },
     "SEARCH": {
+      "TITLE": "Search Patient",
+      "INFO": "OK! You are now ready to manage your patients.",
+      "CREATE_PATIENT_BUTTON": "Create a Patient Account",
       "CRITERIA": {
         "LABEL": "Patient Search Criteria",
         "FIRST_NAME_PLACEHOLDER": "First Name",
