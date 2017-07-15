@@ -10,6 +10,6 @@
 
   <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
     <c2s-patient-search-card></c2s-patient-search-card>
-    <c2s-patient-list-card></c2s-patient-list-card>
+    <c2s-patient-list-card *ngIf="isProviderListCardEnabled"></c2s-patient-list-card>
   </div>
 </div>

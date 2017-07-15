@@ -14,7 +14,6 @@ import {ValidationService} from "../../shared/validation.service";
 import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.model";
 import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.model";
 import {IdentifierSystem} from "../shared/IdentifierSystem.model";
-import {ConfigService} from "../../core/config.service";
 import {ProviderPermissions} from "../../core/provider-permissions.model";
 
 @Component({
@@ -61,8 +60,7 @@ export class PatientCreateEditComponent implements OnInit {
               private route: ActivatedRoute,
               private patientService: PatientService,
               private viewContainerRef: ViewContainerRef,
-              private utilityService: UtilityService,
-              private configService: ConfigService) {
+              private utilityService: UtilityService) {
   }
 
   ngOnInit() {
