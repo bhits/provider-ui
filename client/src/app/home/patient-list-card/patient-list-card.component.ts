@@ -1,16 +1,20 @@
 import {Component, OnInit} from "@angular/core";
-import {ApiUrlService} from "../../shared/api-url.service";
 import {UtilityService} from "../../shared/utility.service";
+import {ApiUrlService} from "../../shared/api-url.service";
 import {PatientService} from "../../patient/shared/patient.service";
 
 @Component({
-  selector: 'c2s-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'c2s-patient-list-card',
+  templateUrl: './patient-list-card.component.html',
+  styleUrls: ['./patient-list-card.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class PatientListCardComponent implements OnInit {
   public numberOfPatients: number = 0;
-  public patientsMapping: any;
+  public patientsMapping = {
+    '=0': 'HOME.PATIENT_LIST_CARD.SINGULAR',
+    '=1': 'HOME.PATIENT_LIST_CARD.SINGULAR',
+    'other': 'HOME.PATIENT_LIST_CARD.PLURAL'
+  };
 
   constructor(private apiUrlService: ApiUrlService,
               private patientService: PatientService,
@@ -28,15 +32,9 @@ export class HomeComponent implements OnInit {
           console.log(err);
         }
       );
-
-    this.patientsMapping = {
-      '=0': 'HOME.PATIENT_LIST_CARD.SINGULAR',
-      '=1': 'HOME.PATIENT_LIST_CARD.SINGULAR',
-      'other': 'HOME.PATIENT_LIST_CARD.PLURAL'
-    };
   }
 
-  public navigateToPatientSearch(): void {
-    this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl());
+  public navigateTo(): void {
+    this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
   }
 }

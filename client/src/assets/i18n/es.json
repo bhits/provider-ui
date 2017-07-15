@@ -17,10 +17,21 @@
   "HOME": {
     "WELCOME_TITLE": "{spanish} Welcome to Consent2Share!",
     "WELCOME_SUB_TITLE": "{spanish} You are now ready to manage your patients.",
-    "PATIENT_CARD": {
-      "TITLE": "{Spanish} My <span class=\"font-weight700\">Patients</span>",
-      "STEP": "{Spanish} Step 1.",
-      "TEXT": "{Spanish} Begin by creating the patients.",
+    "PATIENT_SEARCH_CARD": {
+      "TITLE": "{Spanish} Search <span class=\"font-weight700\">Patients</span>",
+      "STEP_1": {
+        "TITLE": "{Spanish} Step 1.",
+        "DESCRIPTION": "{Spanish} Begin by creating the patients."
+      },
+      "SINGULAR": "{Spanish} Patient",
+      "PLURAL": "{Spanish} Patients"
+    },
+    "PATIENT_LIST_CARD": {
+      "TITLE": "{Spanish} List <span class=\"font-weight700\">Patients</span>",
+      "STEP_2": {
+        "TITLE": "{Spanish} Step 2.",
+        "DESCRIPTION": "{Spanish} To view all creating patients."
+      },
       "SINGULAR": "{Spanish} Patient",
       "PLURAL": "{Spanish} Patients"
     },

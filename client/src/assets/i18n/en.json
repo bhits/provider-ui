@@ -17,10 +17,21 @@
   "HOME": {
     "WELCOME_TITLE": "Welcome to Consent2Share!",
     "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
-    "PATIENT_CARD": {
-      "TITLE": "My <span class=\"font-weight700\">Patients</span>",
-      "STEP": "Step 1.",
-      "TEXT": "Begin by creating the patients.",
+    "PATIENT_SEARCH_CARD": {
+      "TITLE": "Search <span class=\"font-weight700\">Patients</span>",
+      "STEP_1": {
+        "TITLE": "Step 1.",
+        "DESCRIPTION": "Begin by creating the patients."
+      },
+      "SINGULAR": "Patient",
+      "PLURAL": "Patients"
+    },
+    "PATIENT_LIST_CARD": {
+      "TITLE": "List <span class=\"font-weight700\">Patients</span>",
+      "STEP_2": {
+        "TITLE": "Step 2.",
+        "DESCRIPTION": "To view all creating patients."
+      },
       "SINGULAR": "Patient",
       "PLURAL": "Patients"
     },
@@ -312,7 +323,7 @@
         "TITLE": "Confirm Navigation",
         "CONTENT": "You will lose all unsaved work. Are you sure you want to leave this page?"
       },
-      "DUPLICATE_CHECK_CONFIRM_DIALOG" : {
+      "DUPLICATE_CHECK_CONFIRM_DIALOG": {
         "TITLE": "Confirm Account Creation",
         "CONTENT": "<strong>ATTENTION</strong> – An account with similar information already exists. Please confirm the accuracy of the account information entered and select to either \"Continue and Create\" or go \"Back to Search\" screen and try again.",
         "OK_BTN": "Continue and Create",

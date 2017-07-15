@@ -1,9 +1,12 @@
-.home-card {
+.patient-list-card {
   flex: 1 1 300px;
   padding: 0;
   max-width: 350px;
   text-align: left;
-  &:hover{cursor: pointer;}
+  margin: 10px;
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 599px) {
     flex: 1 1 0;
   }
@@ -12,7 +15,7 @@
     margin: 0;
   }
   md-card-header {
-    background-color: #9e9e9e;
+    background-color: #243852;
     border-radius: 3px 3px 0 0;
     color: white;
     padding: 15px;
@@ -31,11 +34,11 @@
     font-weight: 500;
     font-size: 16px !important;
   }
-  button {
+  button.plus {
     position: absolute;
     top: -25px;
     right: 25px;
-    background-color: #FF7BAC;
+    background-color: #24a69a;
     color: white;
     md-icon {
       font-weight: 700;
@@ -43,10 +46,13 @@
       padding: 16px 12px 0 0;
     }
   }
-  &.patient-search {
+  &.contacts {
     md-card-header {
       background-color: #644F63;
       color: white;
     }
+  }
+  &.disabled {
+    opacity: .38;
   }
 }

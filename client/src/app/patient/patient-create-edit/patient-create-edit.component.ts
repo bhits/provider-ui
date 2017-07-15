@@ -243,7 +243,7 @@ export class PatientCreateEditComponent implements OnInit {
   }
 
   cancel(): void {
-    this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
+    this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl());
   }
 
   canDeactivate(): Observable<boolean> | boolean {
@@ -265,7 +265,7 @@ export class PatientCreateEditComponent implements OnInit {
       this.patientService.updatePatient(this.patientId, this.prepareCreateEditPatient())
         .subscribe(
           () => {
-            this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl())
+            this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl())
           },
           err => {
             this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_UPDATE_PATIENT");
@@ -302,7 +302,7 @@ export class PatientCreateEditComponent implements OnInit {
                     this.createPatient();
                   } else {
                     // else, go back to patient search page
-                    this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
+                    this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl());
                   }
                 }
               );
@@ -322,7 +322,7 @@ export class PatientCreateEditComponent implements OnInit {
     this.patientService.createPatient(this.prepareCreateEditPatient())
       .subscribe(
         () => {
-          this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl())
+          this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl())
         },
         err => {
           this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_CREATE_PATIENT");
