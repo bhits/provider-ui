@@ -4,6 +4,7 @@ import {HomeComponent} from "./home/home.component";
 import {SharedModule} from "../shared/shared.module";
 import {HomeRoutingModule} from "./home-routing.module";
 import {PatientListCardComponent} from "./patient-list-card/patient-list-card.component";
+import { PatientSearchCardComponent } from './patient-search-card/patient-search-card.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {PatientListCardComponent} from "./patient-list-card/patient-list-card.co
   ],
   declarations: [
     HomeComponent,
-    PatientListCardComponent
+    PatientListCardComponent,
+    PatientSearchCardComponent
   ]
 })
 export class HomeModule {

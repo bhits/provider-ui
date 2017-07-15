@@ -1,0 +1,20 @@
+<md-card class="patient-search-card" (click)="navigateTo()">
+  <md-card-header class="middle">
+    <md-card-title>
+      <div class="m-n" [innerHTML]="'HOME.PATIENT_SEARCH_CARD.TITLE' | translate "></div>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content class="p-md">
+    <md-chip-list class="p-15">
+      <md-chip color="primary" selected="true">
+        {{ 'HOME.PATIENT_SEARCH_CARD.STEP_1.TITLE' | translate }}
+      </md-chip>
+    </md-chip-list>
+    <h2 class="m-t-xs">
+      {{ 'HOME.PATIENT_SEARCH_CARD.STEP_1.DESCRIPTION' | translate }}
+    </h2>
+    <div class="center middle">
+      <img md-card-image src="assets/img/contacts.svg" [ngStyle]="{'width': '75%'}">
+    </div>
+  </md-card-content>
+</md-card>
