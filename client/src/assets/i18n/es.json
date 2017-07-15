@@ -252,11 +252,10 @@
   "PATIENT": {
     "LIST": {
       "TITLE": "{spanish} My Patients",
-      "INFO": "{spanish} OK! You are now ready to manage your patients.",
+      "INFO": "{spanish} Search tool helps you quickly find the patient you're looking for.",
       "SEARCH_PATIENT_PLACEHOLDER": "{spanish} Search by first and last name",
-      "CREATE_PATIENT_BUTTON": "{spanish} Create a Patient Account",
       "SORT_LIST_TITLE": "{spanish} Show List by",
-      "NO_PATIENTS_MSG": "{spanish} There are currently no patients available. Please click the 'Create a Patient Account' button to create a new patient.",
+      "NO_PATIENTS_MSG": "{spanish} There are currently no patients available. Please create a new patient.",
       "CARD": {
         "CONTENT": {
           "CONTACT_NUMBER": "{spanish} Contact Number",

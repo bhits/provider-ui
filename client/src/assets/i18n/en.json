@@ -252,11 +252,10 @@
   "PATIENT": {
     "LIST": {
       "TITLE": "My Patients",
-      "INFO": "OK! You are now ready to manage your patients.",
+      "INFO": "Search tool helps you quickly find the patient you're looking for.",
       "SEARCH_PATIENT_PLACEHOLDER": "Search by first and last name",
-      "CREATE_PATIENT_BUTTON": "Create a Patient Account",
       "SORT_LIST_TITLE": "Show List by",
-      "NO_PATIENTS_MSG": "There are currently no patients available. Please click the 'Create a Patient Account' button to create a new patient.",
+      "NO_PATIENTS_MSG": "There are currently no patients available. Please create a new patient.",
       "CARD": {
         "CONTENT": {
           "CONTACT_NUMBER": "Contact Number",
