@@ -4,7 +4,6 @@ import {MENU_ITEMS} from "../shared/menu-items.model";
 import {AuthenticationService} from "../../security/shared/authentication.service";
 import {UtilityService} from "../../shared/utility.service";
 import {ConfigService} from "app/core/config.service";
-import {ProviderPermissions} from "app/core/provider-permissions.model";
 
 @Component({
   selector: 'c2s-menu',
@@ -17,14 +16,10 @@ export class MenuComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService,
               private configService: ConfigService,
               private utilityService: UtilityService) {
-    this.configService.getProviderPermissions().subscribe(
-      (providerPermissions: ProviderPermissions) => {
-        this.isProviderListCardEnabled = providerPermissions.patientListCardEnabled;
-      }
-    );
   }
 
   ngOnInit() {
+    this.isProviderListCardEnabled = this.configService.getConfigInSessionStorage().providerPermissions.patientListCardEnabled;
   }
 
   public getEnabledMenuItems(): MenuItem[] {

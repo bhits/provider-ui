@@ -11,6 +11,7 @@ import {Profile} from "../../core/profile.model";
 import {ProfileService} from "app/security/shared/profile.service";
 import {ConfigService} from "../../core/config.service";
 import {NotificationService} from "../../shared/notification.service";
+import {Config} from "../../core/config.model";
 
 @Injectable()
 export class AuthenticationService {
@@ -53,6 +54,16 @@ export class AuthenticationService {
 
   public onLoggedIn(response: AuthorizationResponse): void {
     this.tokenService.setOauthToken(response);
+
+    // Get config data once login
+    this.configService.getConfig().subscribe(
+      (config: Config) => {
+        this.configService.setConfigInSessionStorage(config);
+      },
+      (err) => {
+        this.notificationService.i18nShow("SHARED.CONFIGURATION_SERVICE_ERROR");
+      }
+    );
   }
 
   public logout(): void {
@@ -60,6 +71,7 @@ export class AuthenticationService {
     this.tokenService.deleteUserProfile();
     this.tokenService.deleteProviderCount();
     this.profileService.deleteProfileFromSessionStorage();
+    this.configService.deleteConfigInSessionStorage();
     this.globalEventManagementService.setShowHeader(false);
     this.utilityService.navigateTo(this.apiUrlService.getLoginUrl());
   }
