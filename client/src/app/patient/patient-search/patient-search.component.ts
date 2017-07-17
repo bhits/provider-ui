@@ -12,6 +12,7 @@ import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.
 import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.model";
 import {PatientSearchQuery} from "../shared/patient-search-query.model";
 import {ApiUrlService} from "app/shared/api-url.service";
+import {PatientSearchConfig} from "../shared/patient-search-config.model";
 
 @Component({
   selector: 'c2s-patient-search',
@@ -20,6 +21,7 @@ import {ApiUrlService} from "app/shared/api-url.service";
 })
 export class PatientSearchComponent implements OnInit {
   private patientCreationLookupInfo: PatientCreationLookupInfo;
+  private patientSearchConfig: PatientSearchConfig;
   public noResult: boolean = false;
   public loading: boolean = false;
   public searchPatientForm: FormGroup;
@@ -43,6 +45,7 @@ export class PatientSearchComponent implements OnInit {
 
   ngOnInit() {
     this.patientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
+    this.patientSearchConfig = this.route.snapshot.data['patientSearchConfig'];
     this.searchPatientForm = this.initSearchPatientFormGroup();
     this.genders = this.patientCreationLookupInfo.genderCodes;
 
