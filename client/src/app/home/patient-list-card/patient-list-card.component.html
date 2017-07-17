@@ -11,8 +11,10 @@
     <div class="center middle">
       <img md-card-image src="assets/img/contacts.svg" [ngStyle]="{'width': '75%'}">
     </div>
+  </md-card-content>
+  <md-card-footer class="p-md">
     <div class="p-t-xs font-size12"><span class="font-weight700 font-size16">{{numberOfPatients}}</span>
       {{ numberOfPatients | i18nPlural: patientsMapping | translate :{count: numberOfPatients} }}
     </div>
-  </md-card-content>
+  </md-card-footer>
 </md-card>

@@ -3,22 +3,16 @@
     {{ 'PATIENT.LIST.TITLE' | translate }}
   </h1>
   <div fxLayout="column">
-    <div class="m-t-lg p-b-sm border-bottom-purple" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"></div>
 
-    <div fxLayoutAlign="center">
+    <div fxLayoutAlign="start">
       <div style="padding-top: 20px">
         <div style="background-color: #DEBCC9;" class="p-md font-size18 font-weight center-sm-left" *ngIf="noResult">
           {{ 'PATIENT.LIST.NO_PATIENTS_MSG' | translate }}
         </div>
       </div>
-      <pagination-controls
-        previousLabel="{{ 'PATIENT.LIST.PAGINATION.PREVIOUS' | translate }}"
-        nextLabel="{{ 'PATIENT.LIST.PAGINATION.NEXT' | translate }}"
-        (pageChange)="getPage($event)" *ngIf="!noResult">
-      </pagination-controls>
       <md-spinner *ngIf="loading"></md-spinner>
     </div>
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="start">
       <md-card class="patient-card"
                *ngFor="let patient of asyncPatients | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
         <md-card-header>
@@ -64,7 +58,7 @@
         </md-card-content>
       </md-card>
     </div>
-    <div fxLayoutAlign="center">
+    <div fxLayoutAlign="start" style="padding-top: 30px">
       <pagination-controls
         previousLabel="{{ 'PATIENT.LIST.PAGINATION.PREVIOUS' | translate }}"
         nextLabel="{{ 'PATIENT.LIST.PAGINATION.NEXT' | translate }}"
