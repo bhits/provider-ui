@@ -19,19 +19,11 @@
     "WELCOME_SUB_TITLE": "{spanish} You are now ready to manage your patients.",
     "PATIENT_SEARCH_CARD": {
       "TITLE": "{Spanish} Search <span class=\"font-weight700\">Patients</span>",
-      "STEP_1": {
-        "TITLE": "{Spanish} Step 1.",
-        "DESCRIPTION": "{Spanish} Begin by creating the patients."
-      },
-      "SINGULAR": "{Spanish} Patient",
-      "PLURAL": "{Spanish} Patients"
+      "DESCRIPTION": "{Spanish} Begin by creating the patients."
     },
     "PATIENT_LIST_CARD": {
       "TITLE": "{Spanish} List <span class=\"font-weight700\">Patients</span>",
-      "STEP_2": {
-        "TITLE": "{Spanish} Step 2.",
-        "DESCRIPTION": "{Spanish} To view all creating patients."
-      },
+      "DESCRIPTION": "{Spanish} To view all creating patients.",
       "SINGULAR": "{Spanish} Patient",
       "PLURAL": "{Spanish} Patients"
     },
@@ -252,9 +244,6 @@
   "PATIENT": {
     "LIST": {
       "TITLE": "{spanish} My Patients",
-      "INFO": "{spanish} Search tool helps you quickly find the patient you're looking for.",
-      "SEARCH_PATIENT_PLACEHOLDER": "{spanish} Search by first and last name",
-      "SORT_LIST_TITLE": "{spanish} Show List by",
       "NO_PATIENTS_MSG": "{spanish} There are currently no patients available. Please create a new patient.",
       "CARD": {
         "CONTENT": {

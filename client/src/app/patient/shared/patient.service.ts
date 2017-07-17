@@ -7,7 +7,6 @@ import {ApiUrlService} from "app/shared/api-url.service";
 import {PatientActivationResponse} from "app/patient/shared/patient-activation-response.model";
 import {PageableData} from "../../shared/pageable-data.model";
 import {PatientSearchQuery} from "./patient-search-query.model";
-import {PatientSearchResponse} from "./patient-search-response.model";
 
 @Injectable()
 export class PatientService {
@@ -19,23 +18,16 @@ export class PatientService {
               private exceptionService: ExceptionService,
               private http: Http) {
   }
-  getDefaultPatientIdentifierSystem(){
+
+  public getDefaultPatientIdentifierSystem() {
     return this.defaultPatientIdentifierSystem;
   }
+
   public getPatients(page: number): Observable<PageableData<Patient>> {
     let params: URLSearchParams = new URLSearchParams();
     params.set('page', page.toString());
     return this.http.get(this.umsPatientUrl, {search: params})
       .map((resp: Response) => <PageableData<Patient>>(resp.json()))
-      .catch(this.exceptionService.handleError);
-  }
-
-  public searchPatients(terms: string): Observable<Patient[]> {
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('term', terms);
-    const SEARCH_PATIENT_URL = this.umsPatientUrl.concat("/search");
-    return this.http.get(SEARCH_PATIENT_URL, {search: params})
-      .map((resp: Response) => <Patient[]>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
 
@@ -47,10 +39,10 @@ export class PatientService {
     params.set('firstName', firstName);
     params.set('lastName', lastName);
     params.set('genderCode', requestParams.genderCode);
-    params.set('birthDate',requestParams.birthDate);
-    params.set('mrn',requestParams.mrn);
-    params.set('page',requestParams.page);
-    params.set('size',requestParams.size);
+    params.set('birthDate', requestParams.birthDate);
+    params.set('mrn', requestParams.mrn);
+    params.set('page', requestParams.page);
+    params.set('size', requestParams.size);
 
     return params;
   }

@@ -2,45 +2,8 @@
   <h1 class="">
     {{ 'PATIENT.LIST.TITLE' | translate }}
   </h1>
-  <div>
-    <div style="background-color: #BCDEDB;" class="p-md font-size18 font-weight center-sm-left">
-      {{ 'PATIENT.LIST.INFO' | translate }}
-    </div>
-  </div>
-
-  <div fxLayout="column" [ngStyle]="{'padding-top': '20px'}">
-    <div fxLayoutAlign="center" fxLayout="column">
-      <md-input-container class="search-field font-size20">
-        <input mdInput type="search"
-               placeholder="{{ 'PATIENT.LIST.SEARCH_PATIENT_PLACEHOLDER' | translate }}"
-               #searchField (keyup)="search(searchField.value)"/>
-      </md-input-container>
-      <div *ngIf="searchPatients">
-        <md-list>
-          <md-list-item *ngFor="let patient of searchPatients">
-            <button md-menu-item (click)="redirectToPatientEdit(patient)">
-              <span>{{patient.firstName}}</span>
-              <span>{{patient.lastName}}</span>
-            </button>
-          </md-list-item>
-        </md-list>
-      </div>
-    </div>
-    <br><br>
-    <div fxLayoutAlign="center">
-      <div class="m-t-lg p-b-sm border-bottom-purple" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
-           fxLayoutGap="10px">
-        <div fxFlex="0 1 100px" class="font-size18 font-weight500 right">
-          {{ 'PATIENT.LIST.SORT_LIST_TITLE' | translate }}
-        </div>
-        <md-card class="filter-card center disabled" md-raised-button fxFlex="0 0 60px">
-          <span class="fa fa-user-md fa-4x"></span>
-        </md-card>
-        <md-card class="filter-card center" md-raised-button fxFlex="0 0 60px">
-          <span class="fa fa-user fa-4x"></span>
-        </md-card>
-      </div>
-    </div>
+  <div fxLayout="column">
+    <div class="m-t-lg p-b-sm border-bottom-purple" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"></div>
 
     <div fxLayoutAlign="center">
       <div style="padding-top: 20px">

@@ -19,19 +19,11 @@
     "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
     "PATIENT_SEARCH_CARD": {
       "TITLE": "Search <span class=\"font-weight700\">Patients</span>",
-      "STEP_1": {
-        "TITLE": "Step 1.",
-        "DESCRIPTION": "Begin by creating the patients."
-      },
-      "SINGULAR": "Patient",
-      "PLURAL": "Patients"
+      "DESCRIPTION": "Begin by creating the patients."
     },
     "PATIENT_LIST_CARD": {
       "TITLE": "List <span class=\"font-weight700\">Patients</span>",
-      "STEP_2": {
-        "TITLE": "Step 2.",
-        "DESCRIPTION": "To view all creating patients."
-      },
+      "DESCRIPTION": "To view all creating patients.",
       "SINGULAR": "Patient",
       "PLURAL": "Patients"
     },
@@ -252,9 +244,6 @@
   "PATIENT": {
     "LIST": {
       "TITLE": "My Patients",
-      "INFO": "Search tool helps you quickly find the patient you're looking for.",
-      "SEARCH_PATIENT_PLACEHOLDER": "Search by first and last name",
-      "SORT_LIST_TITLE": "Show List by",
       "NO_PATIENTS_MSG": "There are currently no patients available. Please create a new patient.",
       "CARD": {
         "CONTENT": {
