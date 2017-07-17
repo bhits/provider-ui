@@ -7,6 +7,7 @@ import {ProviderSearchResponse} from "app/provider/shared/provider-search-respon
 import {ActivatedRoute} from "@angular/router";
 import {BasePatientCreationLookup} from "../../patient/shared/base-patient-creation-lookup.model";
 import {PatientCreationLookupInfo} from "../../patient/shared/patient-creation-lookup-info.model";
+import {ProviderSearchStateCodes} from "../shared/provider-search-state-codes.model";
 
 @Component({
   selector: 'c2s-provider-search',
@@ -17,6 +18,7 @@ export class ProviderSearchComponent implements OnInit {
   public searchProviderFrom: FormGroup;
   public accordionTab: boolean = true;
   public searchResponse: ProviderSearchResponse;
+  public searchStateCodes: ProviderSearchStateCodes;
   public hasSearchResult: boolean = false;
   public genders: BasePatientCreationLookup[];
   public states: BasePatientCreationLookup[];
@@ -41,7 +43,11 @@ export class ProviderSearchComponent implements OnInit {
   ngOnInit() {
     let patientCreationLookupInfo: PatientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
     this.genders = patientCreationLookupInfo.genderCodes;
-    this.states = patientCreationLookupInfo.stateCodes;
+    this.providerService.getProviderStateCodes().subscribe(
+      res => {
+        this.states=res._embedded['stateCodes'];
+      });
+
     // build search form parent group
     this.searchProviderFrom = this.formBuilder.group({
       locatingType: this.initLocatingTypeFormGroup(),
