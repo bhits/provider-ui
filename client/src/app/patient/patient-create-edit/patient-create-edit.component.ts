@@ -15,6 +15,7 @@ import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.
 import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.model";
 import {IdentifierSystem} from "../shared/IdentifierSystem.model";
 import {ProviderPermissions} from "../../core/provider-permissions.model";
+import {ConfigService} from "../../core/config.service";
 
 @Component({
   selector: 'c2s-patient-create-edit',
@@ -55,6 +56,7 @@ export class PatientCreateEditComponent implements OnInit {
 
   constructor(private apiUrlService: ApiUrlService,
               private confirmDialogService: ConfirmDialogService,
+              private configService: ConfigService,
               private formBuilder: FormBuilder,
               private notificationService: NotificationService,
               private route: ActivatedRoute,
@@ -65,7 +67,7 @@ export class PatientCreateEditComponent implements OnInit {
 
   ngOnInit() {
     this.patientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
-    const providerPermissions: ProviderPermissions = this.route.snapshot.data['providerPermissions'];
+    const providerPermissions: ProviderPermissions = this.configService.getConfigInSessionStorage().providerPermissions;
     this.displayActivation = providerPermissions.userActivationEnabled;
     this.displaySegmentation = providerPermissions.segmentationEnabled;
     this.duplicateCheckEnabled = providerPermissions.registration.duplicateCheckEnabled;

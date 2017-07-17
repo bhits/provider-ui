@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
-import {ProviderPermissions} from "app/core/provider-permissions.model";
+import {ConfigService} from "../../core/config.service";
 
 @Component({
   selector: 'c2s-home',
@@ -8,14 +7,12 @@ import {ProviderPermissions} from "app/core/provider-permissions.model";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private providerPermissions: ProviderPermissions;
   private isProviderListCardEnabled: boolean;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private configService: ConfigService) {
   }
 
   ngOnInit() {
-    this.providerPermissions = this.route.snapshot.data['providerPermissions'];
-    this.isProviderListCardEnabled = this.providerPermissions.patientListCardEnabled;
+    this.isProviderListCardEnabled = this.configService.getConfigInSessionStorage().providerPermissions.patientListCardEnabled;
   }
 }
