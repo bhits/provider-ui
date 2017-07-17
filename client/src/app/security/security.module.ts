@@ -10,6 +10,7 @@ import {AuthorizationService} from "app/security/shared/authorization.service";
 import {CanDeactivateGuardService} from "./shared/can-deactivate-guard.service";
 import {ProfileService} from "./shared/profile.service";
 import {TranslateModule} from "@ngx-translate/core";
+import {CanActivatePatientListService} from "app/security/shared/can-activate-patient-list.service";
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import {TranslateModule} from "@ngx-translate/core";
     AuthenticationService,
     AuthorizationService,
     CanActivateAuthGuardService,
+    CanActivatePatientListService,
     CanDeactivateGuardService,
     SessionStorageService,
     ProfileService,

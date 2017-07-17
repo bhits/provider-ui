@@ -10,6 +10,7 @@ import {PatientCreationLookupResolveService} from "./shared/patient-creation-loo
 import {ConfigResolveService} from "../consent/shared/config-resolve.service";
 import {SampleDocumentResolveService} from "app/consent/shared/sample-document-resolve.service";
 import {PatientSearchComponent} from "app/patient/patient-search/patient-search.component";
+import {CanActivatePatientListService} from "app/security/shared/can-activate-patient-list.service";
 
 const patientRoutes: Routes = [
   {
@@ -20,7 +21,8 @@ const patientRoutes: Routes = [
     children: [
       {
         path: '',
-        component: PatientListComponent
+        component: PatientListComponent,
+        canActivate: [CanActivatePatientListService],
       },
       {
         path: 'search',
