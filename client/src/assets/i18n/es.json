@@ -363,6 +363,17 @@
       },
       "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI..."
     },
+    "ACTIVITY_HISTORY": {
+      "SECTION_TITLE": "Historia de Actividades",
+      "COMPONENT_TITLE": "{spanish}(Consent) Historia de Actividades",
+      "TABLE": {
+        "DATE": "Día",
+        "ACTION": "Acción",
+        "CONSENT_REFERENCE_ID": "{spanish}Consent Reference ID",
+        "CHANGED_BY": "Cambiado por",
+        "ROLE": "{spanish}Role"
+      }
+    },
     "NOTIFICATION_MSG": {
       "SUCCESS_SENT_EMAIL": "{spanish}Successfully sent the email.",
       "FAILED_SENT_EMAIL": "{spanish}Failed to send email. Please try again later.",
