@@ -11,6 +11,7 @@ import {ConsentModule} from "app/consent/consent.module";
 import {SegmentPatientHealthRecordComponent} from "./segment-patient-health-record/segment-patient-health-record.component";
 import {SegmentDocumentComponent} from "./segment-document/segment-document.component";
 import { PatientSearchComponent } from './patient-search/patient-search.component';
+import {ActivityHistoryComponent} from "../history/activity-history/activity-history.component";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { PatientSearchComponent } from './patient-search/patient-search.componen
     SegmentPatientHealthRecordComponent,
     SegmentDocumentComponent,
     PatientSearchComponent,
+    ActivityHistoryComponent,
   ],
   providers: [
     routedResolveServices,
