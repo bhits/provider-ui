@@ -2,21 +2,8 @@
   <h1 class="">
     {{ 'PATIENT.SEARCH.TITLE' | translate }}
   </h1>
-  <!--<div>-->
-    <!--<div style="background-color: #BCDEDB;" class="p-md font-size18 font-weight center-sm-left">-->
-      <!--{{ 'PATIENT.SEARCH.INFO' | translate }}-->
-    <!--</div>-->
-  <!--</div>-->
   <div id="myPatient" fxLayoutAlign="center" fxLayout="column">
-    <br><br>
-    <!--<div fxLayoutAlign="center">-->
-
-      <!--<a md-raised-button fxFlex="0 1 400px" *ngIf="!hasSearchResult" color="primary" [disabled]="!hasSearchResult">-->
-        <!--<md-icon class="font-weight700">add</md-icon>-->
-        <!--{{ 'PATIENT.SEARCH.CREATE_PATIENT_BUTTON' | translate }}-->
-      <!--</a>-->
-    <!--</div>-->
-
+    <br>
     <div class="form-boundary m-t">
       <form [formGroup]="searchPatientForm" search-patient-form novalidate>
         <h2>
@@ -26,7 +13,7 @@
           <div fxFlex="48%">
             <md-input-container class="full-width font-size18">
               <input mdInput
-                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.FIRST_NAME_PLACEHOLDER' | translate }}"
+                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.FIRST_NAME_PLACEHOLDER' | translate }}{{getRequiredAsterix('firstNameSearchEnabled')}} "
                      formControlName="firstName">
             </md-input-container>
             <c2s-control-validation-error-message
@@ -36,7 +23,7 @@
           <div fxFlex="48%">
             <md-input-container class="full-width font-size18">
               <input mdInput
-                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.LAST_NAME_PLACEHOLDER' | translate }}"
+                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.LAST_NAME_PLACEHOLDER' | translate }}{{getRequiredAsterix('lastNameSearchEnabled')}}"
                      formControlName="lastName">
             </md-input-container>
             <c2s-control-validation-error-message
@@ -47,7 +34,7 @@
         <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between">
           <div fxFlex="48%" class="m-b-sm dob-modify">
             <md2-datepicker class="full-width font-size18"
-                            placeholder="{{ 'PATIENT.SEARCH.CRITERIA.DOB_PLACEHOLDER' | translate }}"
+                            placeholder="{{ 'PATIENT.SEARCH.CRITERIA.DOB_PLACEHOLDER' | translate }}{{getRequiredAsterix('dateOfBirthSearchEnabled')}}"
                             [openOnFocus]="isOpenOnFocus" [format]="FORMAT"
                             formControlName="birthDate">
             </md2-datepicker>
@@ -56,7 +43,7 @@
             </c2s-control-validation-error-message>
           </div>
           <div fxFlex="48%">
-            <md-select placeholder="{{ 'PATIENT.SEARCH.CRITERIA.GENDER_PLACEHOLDER' | translate }}"
+            <md-select placeholder="{{ 'PATIENT.SEARCH.CRITERIA.GENDER_PLACEHOLDER' | translate }}{{getRequiredAsterix('genderSearchEnabled')}}"
                        formControlName="genderCode"
                        class="full-width font-size18 p-t-md">
               <md-option *ngFor="let gender of genders" [value]="gender.code">
@@ -72,7 +59,7 @@
           <div fxFlex="48%">
             <md-input-container class="full-width font-size18">
               <input mdInput
-                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.MRN_PLACEHOLDER' | translate }}"
+                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.MRN_PLACEHOLDER' | translate }}{{getRequiredAsterix('patientIdSearchEnabled')}}"
                      formControlName="mrn">
             </md-input-container>
             <c2s-control-validation-error-message
@@ -97,11 +84,11 @@
             </button>
           </ng-template>
 
-          <!--<a md-raised-button fxFlex="0 1 400px" *ngIf="hasSearchResult" routerLink="/patients/create" color="primary"-->
-             <!--[disabled]="!hasSearchResult">-->
-            <!--<md-icon class="font-weight700">add</md-icon>-->
-            <!--{{ 'PATIENT.SEARCH.CREATE_PATIENT_BUTTON' | translate }}-->
-          <!--</a>-->
+          <a md-raised-button fxFlex="0 1 400px" *ngIf="hasSearchResult" routerLink="/patients/create" color="primary"
+             [disabled]="!hasSearchResult">
+            <md-icon class="font-weight700">add</md-icon>
+            {{ 'PATIENT.SEARCH.CREATE_PATIENT_BUTTON' | translate }}
+          </a>
           <a md-raised-button fxFlex="0 1 400px" *ngIf="!hasSearchResult" color="primary" [disabled]="!hasSearchResult">
             <md-icon class="font-weight700">add</md-icon>
             {{ 'PATIENT.SEARCH.CREATE_PATIENT_BUTTON' | translate }}

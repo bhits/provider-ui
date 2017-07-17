@@ -51,36 +51,50 @@ export class PatientSearchComponent implements OnInit {
 
   }
 
+  getRequiredAsterix(key:string):string{
+    return this.patientSearchConfig[key]? "*":"";
+  }
+
   private initSearchPatientFormGroup() {
+    let formBuilderConfig:any = {};
+
     return this.formBuilder.group({
-        firstName: [null,
-          [
-            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-            Validators.required
-          ]
-        ],
-        lastName: [null,
-          [
-            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-            Validators.maxLength(ValidationRules.NAME_MAX_LENGTH),
-            Validators.required
-          ]
-        ],
-        genderCode: [null],
-        birthDate: [null,
-          [
-            ValidationService.pastDateValidator,
-            Validators.required
-          ]
-        ],
-        mrn: [null,
-          [
-            Validators.minLength(ValidationRules.NAME_MIN_LENGTH),
-          ]
-        ],
-      },
-      {validator: ValidationService.atLeastOneFieldValidator})
+                    firstName: [null,this.createFirstNameValidators()],
+                    lastName: [null, this.createLastNameValidators()],
+                    genderCode: [null],
+                    birthDate: [null,this.createDateOfBirthValidators()],
+                    mrn: [null,this. createMRNValidators()],
+                  },
+                  {validator: ValidationService.atLeastOneFieldValidator}
+          );
+  }
+
+  createFirstNameValidators():any{
+    return this.patientSearchConfig.firstNameSearchEnabled ?
+      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH), Validators.required]:
+      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)];
+  }
+
+  createLastNameValidators():any{
+    return this.patientSearchConfig.lastNameSearchEnabled ?
+      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH), Validators.required]:
+      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)];
+  }
+
+  createDateOfBirthValidators():any{
+    return  this.patientSearchConfig.dateOfBirthSearchEnabled ?
+      [  ValidationService.pastDateValidator,  Validators.required]:
+      [ ValidationService.pastDateValidator];
+  }
+
+  createGenderValidators():any{
+    return  this.patientSearchConfig.genderSearchEnabled ?[Validators.required]:[];
+  }
+
+  createMRNValidators():any{
+    return  this.patientSearchConfig.patientIdSearchEnabled ?
+      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH),  Validators.required]:
+      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH)];
   }
 
   public searchPatient(): void {
