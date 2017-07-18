@@ -190,6 +190,7 @@
       },
       "COMPLETE_DIALOG": {
         "TITLE": "El éxito en el consentimiento firmado creado",
+        "CLICK_TO_DOWNLOAD_MSG": "{spanish} Click to download the signed consent",
         "DOWNLOAD_BTN": "Descargar el consentimiento firmado",
         "CONTINUE_BTN": "Continuar"
       },
@@ -198,9 +199,9 @@
     },
     "CONSENT_REVOKE": {
       "TITLE": "{spanish} Revocation of Consent to Share My Health Information",
-      "REFERENCE_NUMBER": "Consent Reference Number",
-      "PATIENT_NAME": "Patient Name",
-      "PATIENT_DOB": "Patient DOB",
+      "REFERENCE_NUMBER": "{spanish} Consent Reference Number",
+      "PATIENT_NAME": "{spanish} Patient Name",
+      "PATIENT_DOB": "{spanish} Patient DOB",
       "CONFIRM_DIALOG": {
         "TITLE": "Por favor, autentifique",
         "CONTENT": "Proporcione su contraseña de cuenta para autenticar y complete la firma electrónica",
@@ -210,6 +211,7 @@
       },
       "COMPLETE_DIALOG": {
         "TITLE": "{spanish} Successfully Revoked Consent",
+        "CLICK_TO_DOWNLOAD_MSG": "{spanish} Click to download the signed consent revocation",
         "DOWNLOAD_BTN": "{spanish} Download Signed Consent Revocation",
         "CONTINUE_BTN": "Continue"
       },

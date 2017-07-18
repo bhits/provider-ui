@@ -162,17 +162,22 @@
         <button md-raised-button color="primary" (click)="cancel()">
           <strong>{{ 'CONSENT.CONSENT_SIGN.CANCEL_BTN' | translate }}</strong>
         </button>
+
         <md2-dialog #completeAttestation (onClose)="navigateTo()">
           <md2-dialog-title>{{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.TITLE' | translate }}</md2-dialog-title>
-          <md2-dialog-footer class="bg-lite-gray-f5">
-            <button md-raised-button color="primary" (click)="getSignedConsentPdf()">
+          <div fxLayout="column" class="modalContent-centered">
+            <div class="p-b-sm">{{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.CLICK_TO_DOWNLOAD_MSG' | translate }}</div>
+            <button md-raised-button color="accent" (click)="downloadRevokedConsent()">
               {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.DOWNLOAD_BTN' | translate }}
             </button>
+          </div>
+          <md2-dialog-footer class="bg-lite-gray-f5">
             <button md-raised-button color="primary" (click)="cancel()">
               {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.CONTINUE_BTN' | translate }}
             </button>
           </md2-dialog-footer>
         </md2-dialog>
+
         <button md-raised-button color="primary" [disabled]="!isAuthenticated"
                 (click)="attestConsent(completeAttestation)">
           <strong>
