@@ -1,0 +1,38 @@
+.patient-search-card {
+  flex: 1 1 300px;
+  padding: 0;
+  max-width: 350px;
+  min-height: 450px;
+  text-align: left;
+  margin: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+  @media (max-width: 599px) {
+    flex: 1 1 0;
+  }
+
+  img {
+    margin: 0;
+  }
+  md-card-header {
+    background-color: #644F63;
+    border-radius: 3px 3px 0 0;
+    color: white;
+    padding: 15px;
+    margin: 0;
+    line-height: 4em;
+    md-card-title {
+      font-size: 2.6em;
+      margin: 0;
+    }
+  }
+  md-card-content {
+    font-size: 1em;
+    position: relative;
+  }
+  md-chip {
+    font-weight: 500;
+    font-size: 16px !important;
+  }
+}

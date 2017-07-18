@@ -3,37 +3,10 @@
     <h1 class="m-n p-t-sm">
       {{ 'HOME.WELCOME_TITLE' | translate }}
     </h1>
-    <h2 class="m-t-sm m-t-sm">
-      {{ 'HOME.WELCOME_SUB_TITLE' | translate }}
-    </h2>
   </div>
 
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
-    <md-card class="home-card contacts" (click)="navigateToPatientSearch()">
-      <md-card-header class="middle">
-        <md-card-title>
-          <div class="m-n" [innerHTML]="'HOME.PATIENT_CARD.TITLE' | translate "></div>
-        </md-card-title>
-      </md-card-header>
-      <md-card-content class="p-md">
-        <button md-fab>
-          <md-icon class="md-24 font-weight500">add</md-icon>
-        </button>
-        <md-chip-list class="p-15">
-          <md-chip color="primary" selected="true" class="font-size16">
-            {{ 'HOME.PATIENT_CARD.STEP' | translate }}
-          </md-chip>
-        </md-chip-list>
-        <h2 class="m-t-xs">
-          {{ 'HOME.PATIENT_CARD.TEXT' | translate }}
-        </h2>
-        <div class="center middle">
-          <img md-card-image src="assets/img/contacts.svg" [ngStyle]="{'width': '75%'}">
-        </div>
-        <div class="p-t-xs font-size12"><span class="font-weight700 font-size16">{{numberOfPatients}}</span>
-          {{ numberOfPatients | i18nPlural: patientsMapping | translate :{count: numberOfPatients} }}
-        </div>
-      </md-card-content>
-    </md-card>
+  <div style="padding-top: 30px" fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
+    <c2s-patient-search-card></c2s-patient-search-card>
+    <c2s-patient-list-card *ngIf="isProviderListCardEnabled"></c2s-patient-list-card>
   </div>
 </div>

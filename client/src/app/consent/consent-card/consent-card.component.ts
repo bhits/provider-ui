@@ -12,6 +12,7 @@ import {DetailedConsent} from "../shared/detailed-consent.model";
 import {SampleDocumentInfo} from "../shared/sample-document-info.model";
 import {TryPolicyService} from "app/consent/shared/try-policy.service";
 import {ProviderPermissions} from "../../core/provider-permissions.model";
+import {ConfigService} from "../../core/config.service";
 
 @Component({
   selector: 'c2s-consent-card',
@@ -33,13 +34,14 @@ export class ConsentCardComponent implements OnInit {
 
   constructor(private tryPolicyService: TryPolicyService,
               private consentService: ConsentService,
+              private configService: ConfigService,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private notificationService: NotificationService) {
   }
 
   ngOnInit() {
-    this.providerPermissions = this.route.snapshot.data['providerPermissions'];
+    this.providerPermissions = this.configService.getConfigInSessionStorage().providerPermissions;
     this.selectedPatient = this.route.snapshot.data['patient'];
     this.sampleDocuments = this.route.snapshot.data['sampleDocuments'];
     this.consentOptions = CONSENT_STAGES
@@ -170,7 +172,7 @@ export class ConsentCardComponent implements OnInit {
     consentOptionsDialog.open();
   }
 
-  public getEnabledConsentOptions(): ConsentStageOption[]{
+  public getEnabledConsentOptions(): ConsentStageOption[] {
     return this.consentOptions.filter(consentOption => this.displayOnProviderUI(consentOption));
   }
 }

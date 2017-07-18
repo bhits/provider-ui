@@ -13,6 +13,7 @@ import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.
 import {PatientSearchQuery} from "../shared/patient-search-query.model";
 import {ApiUrlService} from "app/shared/api-url.service";
 import {PatientSearchConfig} from "../shared/patient-search-config.model";
+import {ConfigService} from "app/core/config.service";
 
 @Component({
   selector: 'c2s-patient-search',
@@ -37,6 +38,7 @@ export class PatientSearchComponent implements OnInit {
   public DATE_FORMAT: string = "y-MM-dd";
 
   constructor(private apiUrlService: ApiUrlService,
+              private configService: ConfigService,
               private patientService: PatientService,
               private utilityService: UtilityService,
               private formBuilder: FormBuilder,
@@ -45,56 +47,54 @@ export class PatientSearchComponent implements OnInit {
 
   ngOnInit() {
     this.patientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
-    this.patientSearchConfig = this.route.snapshot.data['patientSearchConfig'];
+    this.patientSearchConfig = this.configService.getConfigInSessionStorage().providerPermissions.patientSearch;
     this.searchPatientForm = this.initSearchPatientFormGroup();
     this.genders = this.patientCreationLookupInfo.genderCodes;
 
   }
 
-  getRequiredAsterix(key:string):string{
-    return this.patientSearchConfig[key]? "*":"";
+  getRequiredAsterix(key: string): string {
+    return this.patientSearchConfig[key] ? "*" : "";
   }
 
   private initSearchPatientFormGroup() {
-    let formBuilderConfig:any = {};
-
     return this.formBuilder.group({
-                    firstName: [null,this.createFirstNameValidators()],
-                    lastName: [null, this.createLastNameValidators()],
-                    genderCode: [null],
-                    birthDate: [null,this.createDateOfBirthValidators()],
-                    mrn: [null,this. createMRNValidators()],
-                  },
-                  {validator: ValidationService.atLeastOneFieldValidator}
-          );
+        firstName: [null, this.createFirstNameValidators()],
+        lastName: [null, this.createLastNameValidators()],
+        genderCode: [null],
+        birthDate: [null, this.createDateOfBirthValidators()],
+        mrn: [null, this.createMRNValidators()],
+      },
+      {validator: ValidationService.atLeastOneFieldValidator}
+    );
   }
 
-  createFirstNameValidators():any{
+  createFirstNameValidators(): any {
     return this.patientSearchConfig.firstNameSearchEnabled ?
-      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH), Validators.required]:
-      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)];
+      [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH), Validators.required] :
+      [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)];
   }
 
-  createLastNameValidators():any{
+  createLastNameValidators(): any {
     return this.patientSearchConfig.lastNameSearchEnabled ?
-      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH), Validators.required]:
-      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)];
+      [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH), Validators.required] :
+      [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)];
   }
 
-  createDateOfBirthValidators():any{
-    return  this.patientSearchConfig.dateOfBirthSearchEnabled ?
-      [  ValidationService.pastDateValidator,  Validators.required]:
-      [ ValidationService.pastDateValidator];
+  createDateOfBirthValidators(): any {
+    return this.patientSearchConfig.dateOfBirthSearchEnabled ?
+      [ValidationService.pastDateValidator, Validators.required] :
+      [ValidationService.pastDateValidator];
   }
 
-  createGenderValidators():any{
-    return  this.patientSearchConfig.genderSearchEnabled ?[Validators.required]:[];
+  createGenderValidators(): any {
+    return this.patientSearchConfig.genderSearchEnabled ? [Validators.required] : [];
   }
 
-  createMRNValidators():any{
-    return  this.patientSearchConfig.patientIdSearchEnabled ?
-      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH),  Validators.required]:
-      [ Validators.minLength(ValidationRules.NAME_MIN_LENGTH)];
+  createMRNValidators(): any {
+    return this.patientSearchConfig.patientIdSearchEnabled ?
+      [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.required] :
+      [Validators.minLength(ValidationRules.NAME_MIN_LENGTH)];
   }
 
   public searchPatient(): void {

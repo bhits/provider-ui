@@ -3,6 +3,7 @@ import {MenuItem} from "../shared/menu-item.model";
 import {MENU_ITEMS} from "../shared/menu-items.model";
 import {AuthenticationService} from "../../security/shared/authentication.service";
 import {UtilityService} from "../../shared/utility.service";
+import {ConfigService} from "app/core/config.service";
 
 @Component({
   selector: 'c2s-menu',
@@ -10,19 +11,32 @@ import {UtilityService} from "../../shared/utility.service";
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
-  public menuItems: MenuItem[];
+  private isProviderListCardEnabled: boolean;
 
   constructor(private authenticationService: AuthenticationService,
+              private configService: ConfigService,
               private utilityService: UtilityService) {
   }
 
   ngOnInit() {
-    this.menuItems = MENU_ITEMS;
+    this.isProviderListCardEnabled = this.configService.getConfigInSessionStorage().providerPermissions.patientListCardEnabled;
   }
 
-  navigateTo(text: string, routerLink: string) {
-    switch (text) {
+  public getEnabledMenuItems(): MenuItem[] {
+    return MENU_ITEMS.filter(menuItem => this.isShowInMenu(menuItem));
+  }
+
+  private isShowInMenu(menuItem: MenuItem): boolean {
+    switch (menuItem.key) {
+      case "Patient-List":
+        return this.isProviderListCardEnabled;
+      default:
+        return true;
+    }
+  }
+
+  public navigateTo(key: string, routerLink: string) {
+    switch (key) {
       case 'Logout':
         this.authenticationService.logout();
         break;
