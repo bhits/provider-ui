@@ -185,7 +185,7 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
-  public static getProviderByNPI(patientProviders: Provider[], selectedProviderNpi: string) {
+  public getProviderByNPI(patientProviders: Provider[], selectedProviderNpi: string) {
     for (let provider of patientProviders) {
       if (provider.identifiers[0].value === selectedProviderNpi) {
         return provider;
