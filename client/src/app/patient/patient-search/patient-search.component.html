@@ -68,28 +68,28 @@
           </div>
         </div>
 
-        <div class="m-t-lg" fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+        <div class="m-t-lg" fxLayout="row" fxLayoutAlign="end" fxLayoutGap="10px">
           <div *ngIf="hasSearchResult; else clearSearchButton">
-            <button md-raised-button color="primary" (click)="clear()">
+            <button md-primary md-button (click)="clear()">
               <strong>
                 Clear
               </strong>
             </button>
           </div>
           <ng-template #clearSearchButton>
-            <button md-raised-button color="primary" (click)="cancel()">
+            <button md-button (click)="cancel()">
               <strong>
                 {{ 'PATIENT.SEARCH.CRITERIA.CANCEL_BTN' | translate }}
               </strong>
             </button>
           </ng-template>
 
-          <a md-raised-button fxFlex="0 1 400px" *ngIf="hasSearchResult" routerLink="/patients/create" color="primary"
+          <a md-raised-button fxFlex="0 1 190px" *ngIf="hasSearchResult" routerLink="/patients/create" color="primary"
              [disabled]="!hasSearchResult">
             <md-icon class="font-weight700">add</md-icon>
             {{ 'PATIENT.SEARCH.CREATE_PATIENT_BUTTON' | translate }}
           </a>
-          <a md-raised-button fxFlex="0 1 400px" *ngIf="!hasSearchResult" color="primary" [disabled]="!hasSearchResult">
+          <a md-raised-button fxFlex="0 1 190px" *ngIf="!hasSearchResult" color="primary" [disabled]="!hasSearchResult">
             <md-icon class="font-weight700">add</md-icon>
             {{ 'PATIENT.SEARCH.CREATE_PATIENT_BUTTON' | translate }}
           </a>
