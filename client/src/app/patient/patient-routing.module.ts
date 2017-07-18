@@ -9,6 +9,9 @@ import {PatientListComponent} from "./patient-list/patient-list.component";
 import {PatientCreationLookupResolveService} from "./shared/patient-creation-lookup-resolve.service";
 import {ConfigResolveService} from "../consent/shared/config-resolve.service";
 import {SampleDocumentResolveService} from "app/consent/shared/sample-document-resolve.service";
+import {PatientSearchComponent} from "app/patient/patient-search/patient-search.component";
+import {PatientSearchConfigResolveService} from "./shared/patient-search-config-resolve.service";
+import {PatientSearchConfigService} from "./shared/patient-search-config.service";
 
 const patientRoutes: Routes = [
   {
@@ -19,9 +22,16 @@ const patientRoutes: Routes = [
     children: [
       {
         path: '',
-        component: PatientListComponent,
+        component: PatientListComponent
+      },
+      {
+        path: 'search',
+        component: PatientSearchComponent,
+        canDeactivate: [CanDeactivateGuardService],
         resolve: {
-          patientCreationLookupInfo: PatientCreationLookupResolveService
+          patientCreationLookupInfo: PatientCreationLookupResolveService,
+          patientSearchConfig: PatientSearchConfigResolveService,
+          providerPermissions: ConfigResolveService
         }
       },
       {
@@ -57,13 +67,16 @@ export class PatientRoutingModule {
 
 export const routedComponents = [
   PatientsComponent,
+  PatientCreateEditComponent,
   PatientListComponent,
-  PatientCreateEditComponent
+  PatientSearchComponent
 ];
 
 export const routedResolveServices = [
   PatientResolveService,
   PatientCreationLookupResolveService,
   ConfigResolveService,
-  SampleDocumentResolveService
+  SampleDocumentResolveService,
+  PatientSearchConfigService,
+  PatientSearchConfigResolveService
 ];

@@ -8,6 +8,7 @@ export class ApiUrlService {
       ["loginUrl", "/login"],
       ["homeUrl", "/home"],
       ["patientListUrl", "/patients"],
+      ["patientSearchUrl", "/patients/search"],
       ["patientProvidersSearchUrl", "/providers/search"],
       ["patientConsentsCreateUrl", "/consents/create"],
 
@@ -37,6 +38,10 @@ export class ApiUrlService {
 
   getPatientListUrl(): string {
     return this.urls.get('patientListUrl');
+  }
+
+  getPatientSearchUrl(): string {
+    return this.urls.get('patientSearchUrl');
   }
 
   getPatientProvidersSearchUrl(): string {

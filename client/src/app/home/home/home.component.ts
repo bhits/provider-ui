@@ -10,7 +10,7 @@ import {PatientService} from "../../patient/shared/patient.service";
 })
 export class HomeComponent implements OnInit {
   public numberOfPatients: number = 0;
-  public patientsMapping:any;
+  public patientsMapping: any;
 
   constructor(private apiUrlService: ApiUrlService,
               private patientService: PatientService,
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     };
   }
 
-  navigateTo() {
-    this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
+  public navigateToPatientSearch(): void {
+    this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl());
   }
 }
