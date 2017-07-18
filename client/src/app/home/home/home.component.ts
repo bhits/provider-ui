@@ -7,7 +7,7 @@ import {ConfigService} from "../../core/config.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private isProviderListCardEnabled: boolean;
+  public isProviderListCardEnabled: boolean;
 
   constructor(private configService: ConfigService) {
   }
