@@ -10,8 +10,6 @@ import {PatientCreationLookupResolveService} from "./shared/patient-creation-loo
 import {SampleDocumentResolveService} from "app/consent/shared/sample-document-resolve.service";
 import {PatientSearchComponent} from "app/patient/patient-search/patient-search.component";
 import {CanActivatePatientListService} from "app/security/shared/can-activate-patient-list.service";
-import {PatientSearchConfigResolveService} from "./shared/patient-search-config-resolve.service";
-import {PatientSearchConfigService} from "./shared/patient-search-config.service";
 
 const patientRoutes: Routes = [
   {
@@ -30,8 +28,7 @@ const patientRoutes: Routes = [
         component: PatientSearchComponent,
         canDeactivate: [CanDeactivateGuardService],
         resolve: {
-          patientCreationLookupInfo: PatientCreationLookupResolveService,
-          patientSearchConfig: PatientSearchConfigResolveService
+          patientCreationLookupInfo: PatientCreationLookupResolveService
         }
       },
       {
@@ -73,7 +70,5 @@ export const routedComponents = [
 export const routedResolveServices = [
   PatientResolveService,
   PatientCreationLookupResolveService,
-  SampleDocumentResolveService,
-  PatientSearchConfigService,
-  PatientSearchConfigResolveService
+  SampleDocumentResolveService
 ];

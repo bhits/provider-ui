@@ -3,10 +3,8 @@ import {Profile} from "../../core/profile.model";
 import {AuthenticationService} from "../../security/shared/authentication.service";
 import {ConsentService} from "../shared/consent.service";
 import {NotificationService} from "../../shared/notification.service";
-import {ProfileService} from "../../security/shared/profile.service";
 import {ActivatedRoute} from "@angular/router";
 import {UtilityService} from "../../shared/utility.service";
-import {TranslateService} from "@ngx-translate/core";
 import {TokenService} from "../../security/shared/token.service";
 import {Patient} from "../../patient/shared/patient.model";
 import {BinaryFile} from "../../shared/binary-file.model";
@@ -36,10 +34,8 @@ export class ConsentSignComponent implements OnInit {
               private consentService: ConsentService,
               private notificationService: NotificationService,
               private tokenService: TokenService,
-              private profileService: ProfileService,
               private route: ActivatedRoute,
-              private utilityService: UtilityService,
-              private translate: TranslateService) {
+              private utilityService: UtilityService) {
   }
 
   ngOnInit() {
@@ -62,6 +58,7 @@ export class ConsentSignComponent implements OnInit {
   public cancel(): void {
     this.utilityService.navigateTo(this.consentListUrl);
   }
+
   navigateTo() {
     this.utilityService.navigateTo(this.consentListUrl);
   }
@@ -121,10 +118,9 @@ export class ConsentSignComponent implements OnInit {
     const providerNameKey: string = "${PROVIDER_FULL_NAME}";
     termsWithProviderAndPatientNames = terms.replace(patientNameKey, this.selectedPatientName.name);
 
-    if(termsWithProviderAndPatientNames.includes(providerNameKey)){
+    if (termsWithProviderAndPatientNames.includes(providerNameKey)) {
       termsWithProviderAndPatientNames = termsWithProviderAndPatientNames.replace(providerNameKey, this.username.name);
     }
     return termsWithProviderAndPatientNames;
   }
-
 }

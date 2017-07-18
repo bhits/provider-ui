@@ -1,4 +1,6 @@
 import {RegistrationConfig} from "./registration-config.model";
+import {PatientSearchConfig} from "app/patient/shared/patient-search-config.model";
+
 export class ProviderPermissions {
   consentSignEnabled: boolean;
   consentRevokeEnabled: boolean;
@@ -6,4 +8,5 @@ export class ProviderPermissions {
   segmentationEnabled: boolean;
   patientListCardEnabled: boolean;
   registration: RegistrationConfig;
+  patientSearch: PatientSearchConfig;
 }
