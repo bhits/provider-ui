@@ -15,7 +15,7 @@
     }
   },
   "HOME": {
-    "WELCOME_TITLE": "Welcome to Consent2Share!",
+    "WELCOME_TITLE": "Welcome back",
     "PATIENT_SEARCH_CARD": {
       "TITLE": "<span class=\"font-weight700\">Search</span> a Patient",
       "DESCRIPTION": "Search a patient in my organization."

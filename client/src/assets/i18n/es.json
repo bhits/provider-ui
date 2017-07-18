@@ -15,7 +15,7 @@
     }
   },
   "HOME": {
-    "WELCOME_TITLE": "{spanish} Welcome to Consent2Share!",
+    "WELCOME_TITLE": "{spanish} Welcome back",
     "PATIENT_SEARCH_CARD": {
       "TITLE": "{Spanish} <span class=\"font-weight700\">Search</span> a Patient",
       "DESCRIPTION": "{Spanish} Search a patient in my organization."
