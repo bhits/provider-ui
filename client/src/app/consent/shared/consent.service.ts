@@ -15,6 +15,7 @@ import {Provider} from "app/provider/shared/provider.model";
 import {VssSensitivityCategory} from "app/consent/shared/vss-sensitivity-category.model";
 import {ConsentTerms} from "./consent-terms.model";
 import {ConsentRevocation} from "./consent-revocation.model";
+import {ActivityHistory} from "./activity-history.model";
 
 @Injectable()
 export class ConsentService {
@@ -184,12 +185,23 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
-  public getProviderByNPI(patientProviders: Provider[], selectedProviderNpi: string) {
+  public static getProviderByNPI(patientProviders: Provider[], selectedProviderNpi: string) {
     for (let provider of patientProviders) {
       if (provider.identifiers[0].value === selectedProviderNpi) {
         return provider;
       }
     }
     return null;
+  }
+
+  public getActivityHistory(patientMrn: string, page: number, size: number): Observable<PageableData<ActivityHistory>> {
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('page', page.toString());
+    params.set('size', size.toString());
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/activities/");
+    return this.http.get(resourceUrl, {search: params})
+      .map((resp: Response) => <PageableData<ActivityHistory>>(resp.json()))
+      .catch(this.exceptionService.handleError);
   }
 }
