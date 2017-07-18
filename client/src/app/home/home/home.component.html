@@ -2,10 +2,12 @@
   <div class="center-sm-left">
     <h1 class="m-n p-t-sm">
       {{ 'HOME.WELCOME_TITLE' | translate }}
+      <strong>{{providerFullName}}</strong>!
     </h1>
   </div>
 
-  <div style="padding-top: 30px" fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px" fxLayoutAlign="center">
+  <div style="padding-top: 30px" fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" fxLayoutGap="15px"
+       fxLayoutAlign="center">
     <c2s-patient-search-card></c2s-patient-search-card>
     <c2s-patient-list-card *ngIf="isProviderListCardEnabled"></c2s-patient-list-card>
   </div>
