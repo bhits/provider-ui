@@ -8,7 +8,7 @@ import {PatientSearchConfig} from "./patient-search-config.model";
 
 @Injectable()
 export class PatientSearchConfigService {
-  private umsPatientUrl: string = this.apiUrlService.getUmsBaseUrl();
+  private configBaseUrl: string = this.apiUrlService.getConfigBaseUrl();
 
   constructor(private apiUrlService: ApiUrlService,
               private exceptionService: ExceptionService,
@@ -16,7 +16,7 @@ export class PatientSearchConfigService {
   }
 
   public getPatientSearchConfig(): Observable<PatientSearchConfig> {
-    return this.http.get(this.umsPatientUrl.concat("/userSearchConfig"))
+    return this.http.get(this.configBaseUrl.concat("/userSearchConfig"))
       .map((resp: Response) => <PatientSearchConfig>(resp.json()))
       .catch(this.exceptionService.handleError);
   }
