@@ -14,8 +14,8 @@ import {ValidationService} from "../../shared/validation.service";
 import {PatientCreationLookupInfo} from "../shared/patient-creation-lookup-info.model";
 import {BasePatientCreationLookup} from "../shared/base-patient-creation-lookup.model";
 import {IdentifierSystem} from "../shared/IdentifierSystem.model";
-import {ConfigService} from "../../core/config.service";
 import {ProviderPermissions} from "../../core/provider-permissions.model";
+import {ConfigService} from "../../core/config.service";
 
 @Component({
   selector: 'c2s-patient-create-edit',
@@ -56,18 +56,18 @@ export class PatientCreateEditComponent implements OnInit {
 
   constructor(private apiUrlService: ApiUrlService,
               private confirmDialogService: ConfirmDialogService,
+              private configService: ConfigService,
               private formBuilder: FormBuilder,
               private notificationService: NotificationService,
               private route: ActivatedRoute,
               private patientService: PatientService,
               private viewContainerRef: ViewContainerRef,
-              private utilityService: UtilityService,
-              private configService: ConfigService) {
+              private utilityService: UtilityService) {
   }
 
   ngOnInit() {
     this.patientCreationLookupInfo = this.route.snapshot.data['patientCreationLookupInfo'];
-    const providerPermissions: ProviderPermissions = this.route.snapshot.data['providerPermissions'];
+    const providerPermissions: ProviderPermissions = this.configService.getConfigInSessionStorage().providerPermissions;
     this.displayActivation = providerPermissions.userActivationEnabled;
     this.displaySegmentation = providerPermissions.segmentationEnabled;
     this.duplicateCheckEnabled = providerPermissions.registration.duplicateCheckEnabled;
@@ -243,7 +243,7 @@ export class PatientCreateEditComponent implements OnInit {
   }
 
   cancel(): void {
-    this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
+    this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl());
   }
 
   canDeactivate(): Observable<boolean> | boolean {
@@ -265,7 +265,7 @@ export class PatientCreateEditComponent implements OnInit {
       this.patientService.updatePatient(this.patientId, this.prepareCreateEditPatient())
         .subscribe(
           () => {
-            this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl())
+            this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl())
           },
           err => {
             this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_UPDATE_PATIENT");
@@ -302,7 +302,7 @@ export class PatientCreateEditComponent implements OnInit {
                     this.createPatient();
                   } else {
                     // else, go back to patient search page
-                    this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl());
+                    this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl());
                   }
                 }
               );
@@ -322,7 +322,7 @@ export class PatientCreateEditComponent implements OnInit {
     this.patientService.createPatient(this.prepareCreateEditPatient())
       .subscribe(
         () => {
-          this.utilityService.navigateTo(this.apiUrlService.getPatientListUrl())
+          this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl())
         },
         err => {
           this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_CREATE_PATIENT");

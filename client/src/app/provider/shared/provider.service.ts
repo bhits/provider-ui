@@ -8,6 +8,8 @@ import {ApiUrlService} from "app/shared/api-url.service";
 import {FlattenedSmallProvider} from "../../shared/flattened-small-provider.model";
 import {FHIR_US_NPI_SYSTEM, Provider} from "app/provider/shared/provider.model";
 import {Identifier} from "app/shared/identifier.model";
+import {BasePatientCreationLookup} from "../../patient/shared/base-patient-creation-lookup.model";
+import {ProviderSearchStateCodes} from "./provider-search-state-codes.model";
 
 @Injectable()
 export class ProviderService {
@@ -105,6 +107,13 @@ export class ProviderService {
     if (requestParam != null && requestParam.length > 0) {
       return LIKE_PATTERN.concat(requestParam, LIKE_PATTERN);
     }
+  }
+
+  public getProviderStateCodes() {
+    const GET_STATE_CODE_URL = this.apiUrlService.getPlsBaseUrl().concat("/stateCodes");
+    return this.http.get(GET_STATE_CODE_URL)
+      .map((resp: Response) => <BasePatientCreationLookup[]>(resp.json()))
+      .catch(this.exceptionService.handleError);
   }
 
 }
