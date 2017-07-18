@@ -244,7 +244,7 @@
       "TITLE": "My Patients",
       "INFO": "OK! You are now ready to manage your patients.",
       "SEARCH_PATIENT_PLACEHOLDER": "Search by first and last name",
-      "CREATE_PATIENT_BUTTON": "Create a Patient Account",
+      "CREATE_PATIENT_BUTTON": "Create New Account",
       "SORT_LIST_TITLE": "Show List by",
       "NO_PATIENTS_MSG": "There are currently no patients available. Please click the 'Create a Patient Account' button to create a new patient.",
       "CARD": {
@@ -260,8 +260,11 @@
       }
     },
     "SEARCH": {
+      "TITLE": "Search Patient",
+      "INFO": "OK! You are now ready to manage your patients.",
+      "CREATE_PATIENT_BUTTON": "Create New Account",
       "CRITERIA": {
-        "LABEL": "Patient Search Criteria",
+        "LABEL": "Please complete the required fields.",
         "FIRST_NAME_PLACEHOLDER": "First Name",
         "LAST_NAME_PLACEHOLDER": "Last Name",
         "GENDER_PLACEHOLDER": "Gender",
@@ -270,7 +273,7 @@
         "CANCEL_BTN": "Cancel",
         "SEARCH_BTN": "Search"
       },
-      "SEARCH_RESULT_MSG": "Patient Search Results",
+      "SEARCH_RESULT_MSG": "Search Results",
       "NO_PATIENTS_MSG": "No results found. Please try again, or create a new patient."
     },
     "CREATE_EDIT": {

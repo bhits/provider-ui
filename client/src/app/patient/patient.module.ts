@@ -27,6 +27,7 @@ import {ActivityHistoryComponent} from "../history/activity-history/activity-his
     routedComponents,
     PatientVerificationComponent,
     SegmentPatientHealthRecordComponent,
+    SegmentDocumentComponent
     SegmentDocumentComponent,
     PatientSearchComponent,
     ActivityHistoryComponent,
