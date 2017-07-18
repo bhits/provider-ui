@@ -242,7 +242,7 @@
       "TITLE": "{spanish} My Patients",
       "INFO": "{spanish} OK! You are now ready to manage your patients.",
       "SEARCH_PATIENT_PLACEHOLDER": "{spanish} Search by first and last name",
-      "CREATE_PATIENT_BUTTON": "{spanish} Create a Patient Account",
+      "CREATE_PATIENT_BUTTON": "{spanish} Create New Account",
       "SORT_LIST_TITLE": "{spanish} Show List by",
       "NO_PATIENTS_MSG": "{spanish} There are currently no patients available. Please click the 'Create a Patient Account' button to create a new patient.",
       "CARD": {
@@ -262,7 +262,7 @@
       "INFO": "{spanish} OK! You are now ready to manage your patients.",
       "CREATE_PATIENT_BUTTON": "{spanish} Create a Patient Account",
       "CRITERIA": {
-        "LABEL": "{spanish} Patient Search Criteria",
+        "LABEL": "{spanish} Please complete the required fields.",
         "FIRST_NAME_PLACEHOLDER": "{spanish}First Name",
         "LAST_NAME_PLACEHOLDER": "{spanish}Last Name",
         "GENDER_PLACEHOLDER": "{spanish}Gender",
@@ -271,7 +271,7 @@
         "CANCEL_BTN": "{spanish}Cancel",
         "SEARCH_BTN": "{spanish}Search"
       },
-      "SEARCH_RESULT_MSG": "{spanish}Patient Search Results",
+      "SEARCH_RESULT_MSG": "{spanish}Search Results",
       "NO_PATIENTS_MSG": "{spanish}No results found. Please try again, or create a new patient."
     },
     "CREATE_EDIT": {
