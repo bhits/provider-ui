@@ -16,14 +16,13 @@
   },
   "HOME": {
     "WELCOME_TITLE": "{spanish} Welcome to Consent2Share!",
-    "WELCOME_SUB_TITLE": "{spanish} You are now ready to manage your patients.",
     "PATIENT_SEARCH_CARD": {
-      "TITLE": "{Spanish} Search <span class=\"font-weight700\">Patients</span>",
-      "DESCRIPTION": "{Spanish} Begin by creating the patients."
+      "TITLE": "{Spanish} <span class=\"font-weight700\">Search</span> a Patient",
+      "DESCRIPTION": "{Spanish} Search a patient in my organization."
     },
     "PATIENT_LIST_CARD": {
-      "TITLE": "{Spanish} List <span class=\"font-weight700\">Patients</span>",
-      "DESCRIPTION": "{Spanish} To view all creating patients.",
+      "TITLE": "{Spanish} <span class=\"font-weight700\">View</span> Patient List",
+      "DESCRIPTION": "{Spanish} View all patients in my organization.",
       "SINGULAR": "{Spanish} Patient",
       "PLURAL": "{Spanish} Patients"
     },
@@ -243,7 +242,7 @@
   },
   "PATIENT": {
     "LIST": {
-      "TITLE": "{spanish} My Patients",
+      "TITLE": "{spanish} Patient List",
       "NO_PATIENTS_MSG": "{spanish} There are currently no patients available. Please create a new patient.",
       "CARD": {
         "CONTENT": {
