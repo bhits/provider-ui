@@ -192,7 +192,8 @@
         "CONTINUE_BTN": "Continue"
       },
       "COMPLETE_DIALOG": {
-        "TITLE": "Successfully Signed the Consent on behalf of the patient.",
+        "TITLE": "Successfully Signed the Consent on behalf of the Patient",
+        "CLICK_TO_DOWNLOAD_MSG": "Click to download the signed consent",
         "DOWNLOAD_BTN": "Download the Signed Consent",
         "CONTINUE_BTN": "Continue"
       },
@@ -212,7 +213,8 @@
         "CONTINUE_BTN": "Continue"
       },
       "COMPLETE_DIALOG": {
-        "TITLE": "Successfully Revoked the Consent",
+        "TITLE": "Successfully Revoked the Consent on behalf of the Patient",
+        "CLICK_TO_DOWNLOAD_MSG": "Click to download the signed consent revocation",
         "DOWNLOAD_BTN": "Download the Signed Consent Revocation",
         "CONTINUE_BTN": "Continue"
       },
@@ -259,9 +261,9 @@
     "SEARCH": {
       "TITLE": "Search Patient",
       "INFO": "OK! You are now ready to manage your patients.",
-      "CREATE_PATIENT_BUTTON": "Create a Patient Account",
+      "CREATE_PATIENT_BUTTON": "Create New Account",
       "CRITERIA": {
-        "LABEL": "Patient Search Criteria",
+        "LABEL": "Please complete the required fields.",
         "FIRST_NAME_PLACEHOLDER": "First Name",
         "LAST_NAME_PLACEHOLDER": "Last Name",
         "GENDER_PLACEHOLDER": "Gender",
@@ -270,7 +272,7 @@
         "CANCEL_BTN": "Cancel",
         "SEARCH_BTN": "Search"
       },
-      "SEARCH_RESULT_MSG": "Patient Search Results",
+      "SEARCH_RESULT_MSG": "Search Results",
       "NO_PATIENTS_MSG": "No results found. Please try again, or create a new patient."
     },
     "CREATE_EDIT": {

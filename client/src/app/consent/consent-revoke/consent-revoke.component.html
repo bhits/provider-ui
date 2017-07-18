@@ -65,19 +65,18 @@
     <md2-dialog #completeRevokeAttestation (onClose)="navigateTo()">
       <md2-dialog-title>{{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.TITLE' | translate }}</md2-dialog-title>
       <div fxLayout="column" class="modalContent-centered">
-        <div class="p-b-sm">Click to download the Signed Consent Revocation.</div>
+        <div class="p-b-sm">{{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.CLICK_TO_DOWNLOAD_MSG' | translate }}</div>
         <button md-raised-button color="accent" (click)="downloadRevokedConsent()">
           {{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.DOWNLOAD_BTN' | translate }}
         </button>
       </div>
-
       <md2-dialog-footer class="bg-lite-gray-f5">
-
         <button md-raised-button color="primary" (click)="cancel()">
           {{ 'CONSENT.CONSENT_REVOKE.COMPLETE_DIALOG.CONTINUE_BTN' | translate }}
         </button>
       </md2-dialog-footer>
     </md2-dialog>
+
   </md-grid-list>
   <br>
 </div>

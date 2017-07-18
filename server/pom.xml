@@ -23,7 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Dalston.SR1</spring-cloud.version>
-        <node.version>6.9.5</node.version>
+        <node.version>6.11.1</node.version>
         <npm.version>4.1.2</npm.version>
         <frontend-maven-plugin.version>1.0</frontend-maven-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>

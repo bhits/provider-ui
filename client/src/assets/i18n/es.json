@@ -193,6 +193,7 @@
       },
       "COMPLETE_DIALOG": {
         "TITLE": "El éxito en el consentimiento firmado creado",
+        "CLICK_TO_DOWNLOAD_MSG": "{spanish} Click to download the signed consent",
         "DOWNLOAD_BTN": "Descargar el consentimiento firmado",
         "CONTINUE_BTN": "Continuar"
       },
@@ -201,9 +202,9 @@
     },
     "CONSENT_REVOKE": {
       "TITLE": "{spanish} Revocation of Consent to Share My Health Information",
-      "REFERENCE_NUMBER": "Consent Reference Number",
-      "PATIENT_NAME": "Patient Name",
-      "PATIENT_DOB": "Patient DOB",
+      "REFERENCE_NUMBER": "{spanish} Consent Reference Number",
+      "PATIENT_NAME": "{spanish} Patient Name",
+      "PATIENT_DOB": "{spanish} Patient DOB",
       "CONFIRM_DIALOG": {
         "TITLE": "Por favor, autentifique",
         "CONTENT": "Proporcione su contraseña de cuenta para autenticar y complete la firma electrónica",
@@ -213,6 +214,7 @@
       },
       "COMPLETE_DIALOG": {
         "TITLE": "{spanish} Successfully Revoked Consent",
+        "CLICK_TO_DOWNLOAD_MSG": "{spanish} Click to download the signed consent revocation",
         "DOWNLOAD_BTN": "{spanish} Download Signed Consent Revocation",
         "CONTINUE_BTN": "Continue"
       },
@@ -261,7 +263,7 @@
       "INFO": "{spanish} OK! You are now ready to manage your patients.",
       "CREATE_PATIENT_BUTTON": "{spanish} Create a Patient Account",
       "CRITERIA": {
-        "LABEL": "{spanish} Patient Search Criteria",
+        "LABEL": "{spanish} Please complete the required fields.",
         "FIRST_NAME_PLACEHOLDER": "{spanish}First Name",
         "LAST_NAME_PLACEHOLDER": "{spanish}Last Name",
         "GENDER_PLACEHOLDER": "{spanish}Gender",
@@ -270,7 +272,7 @@
         "CANCEL_BTN": "{spanish}Cancel",
         "SEARCH_BTN": "{spanish}Search"
       },
-      "SEARCH_RESULT_MSG": "{spanish}Patient Search Results",
+      "SEARCH_RESULT_MSG": "{spanish}Search Results",
       "NO_PATIENTS_MSG": "{spanish}No results found. Please try again, or create a new patient."
     },
     "CREATE_EDIT": {
