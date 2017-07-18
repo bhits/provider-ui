@@ -234,7 +234,8 @@
       "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent. Please try again later.",
       "SUCCESS_DELETE_CONSENT": "Successfully deleted the consent on behalf of the patient.",
       "FAILED_DELETE_CONSENT": "Failed to delete the consent. Please try again later.",
-      "FAILED_APPLY_TRY_POLICY": "Failed to try this consent setting against the patient medical record. Please try again later."
+      "FAILED_APPLY_TRY_POLICY": "Failed to try this consent setting against the patient medical record. Please try again later.",
+      "DUPLICATE_CONSENT": "Failed to add new consent. Duplicate consent created."
     }
   },
   "PATIENT": {

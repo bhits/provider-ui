@@ -76,7 +76,7 @@ export class ConsentService {
       .concat("/patients/" + patientMrn + "/consents/");
     return this.http.post(resourceUrl, consent)
       .map(() => null)
-      .catch(this.exceptionService.handleError);
+      .catch(this.exceptionService.handleErrorWithErrorCode);
   }
 
   public updateConsent(patientMrn: string, consent: Consent): Observable<void> {
@@ -191,5 +191,11 @@ export class ConsentService {
       }
     }
     return null;
+  }
+
+  handleCreateConsentError(err: any){
+    if(err == "409"){
+      this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.DUPLICATE_CONSENT");
+    }
   }
 }

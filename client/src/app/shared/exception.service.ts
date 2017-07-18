@@ -20,4 +20,15 @@ export class ExceptionService {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
+
+  public handleErrorWithErrorCode(error: Response | any){
+    let errCode: string;
+    if (error instanceof Response) {
+      errCode = `${error.status}`;
+    }else {
+      errCode = error.message ? error.message : error.toString();
+    }
+    return Observable.throw(errCode);
+  }
+
 }
