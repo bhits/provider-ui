@@ -167,7 +167,7 @@
           <md2-dialog-title>{{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.TITLE' | translate }}</md2-dialog-title>
           <div fxLayout="column" class="modalContent-centered">
             <div class="p-b-sm">{{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.CLICK_TO_DOWNLOAD_MSG' | translate }}</div>
-            <button md-raised-button color="accent" (click)="downloadRevokedConsent()">
+            <button md-raised-button color="accent" (click)="getSignedConsentPdf()">
               {{ 'CONSENT.CONSENT_SIGN.COMPLETE_DIALOG.DOWNLOAD_BTN' | translate }}
             </button>
           </div>
