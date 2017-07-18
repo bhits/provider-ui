@@ -371,6 +371,7 @@
     "ACTIVITY_HISTORY": {
       "SECTION_TITLE": "Activity History",
       "COMPONENT_TITLE": "(Consent) Activity History",
+      "NO_ACTIVITY_HISTORY": "No activity history to display",
       "TABLE": {
         "DATE": "Date",
         "ACTION": "Action",
