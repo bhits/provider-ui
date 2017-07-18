@@ -5,43 +5,38 @@
         {{ 'PATIENT.VERIFICATION.ACCORDION_HEADER' | translate }}
       </md-card-title>
     </md2-accordion-header>
-    <md-card class="verification-card">
-      <md-card-header>
-        <div class="md-card-title flexcontainer row" fxLayoutAlign="center center">
-          <div class="fa fa-2x fa-patient-plus"></div>
-          <div class="m-l-xs font-weight700">
-            {{ 'PATIENT.VERIFICATION.CARD.TITLE' | translate }}
+
+    <div class="p-l p-r" class.gt-sm="p-l-lg p-r-lg">
+      <div fxLayout="column">
+        <div fxLayoutAlign="center">
+          <div class="m-t-sm p-b-sm border-bottom-purple-thin" fxFlex="1 1 auto" fxLayoutAlign="flex-start center">
+            <div class="font-size20 font-weight300">{{ 'PATIENT.VERIFICATION.CARD.TITLE' | translate }}</div>
           </div>
         </div>
-      </md-card-header>
-      <md-card-content class="p-t p-b p-l-md p-r-md">
-        <div class="flexcontainer row" fxLayoutWrap="wrap">
-          <div fxFlex>
-            <div class="m-t-xs flexcontainer column">
-              <div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-t">
+          <div fxFlex="48%" class="m-b-sm">
+            <div fxLAyout="column">
                 <div class="font-size20">
                   {{ 'PATIENT.VERIFICATION.CARD.CONTENT.LABEL' | translate }}
                 </div>
                 <div class="font-size18"><strong>{{patient | patient: 'fullName'}}</strong></div>
-              </div>
             </div>
           </div>
-          <div fxFlex>
-            <div class="m-t-xs flexcontainer column">
-              <div fxLayout="column" *ngIf="!verified">
-                <div class="font-size20">
-                  {{ 'PATIENT.VERIFICATION.CARD.CONTENT.VERIFICATION_CODE_LABEL' | translate }}
-                </div>
-                <div class="font-size18" *ngIf="verificationCode; else hyphenSymbol">
-                  <strong>{{verificationCode}}</strong>
-                </div>
-                <ng-template #hyphenSymbol>
-                  <strong class="font-size20">---</strong>
-                </ng-template>
+          <div fxFlex="48%" class="m-b-sm">
+            <div fxLayout="column" *ngIf="!verified">
+              <div class="font-size20">
+                {{ 'PATIENT.VERIFICATION.CARD.CONTENT.VERIFICATION_CODE_LABEL' | translate }}
               </div>
+              <div class="font-size18" *ngIf="verificationCode; else hyphenSymbol">
+                <strong>{{verificationCode}}</strong>
+              </div>
+              <ng-template #hyphenSymbol>
+                <strong class="font-size20">---</strong>
+              </ng-template>
             </div>
           </div>
         </div>
+        <div class="p-r-lg">
         <div *ngIf="verificationCode; else sentVerificationCode">
           <div *ngIf="verified; else resentEmailTemplate"></div>
           <ng-template #resentEmailTemplate>
@@ -51,43 +46,46 @@
         <ng-template #sentVerificationCode>
           <p class="font-size16" [innerHTML]="'PATIENT.VERIFICATION.CARD.CONTENT.SENT_VERIFICATION_CODE_MSG' | translate"></p>
         </ng-template>
-        <hr>
-      </md-card-content>
-      <md-card-footer>
-        <div fxLayout="row" style="padding: 10px">
-          <div fxFlex>
-            <i class="fa fa-2x fa-tags">
+        </div>
+
+        <div class="m-t-sm p-b-sm border-top-thinBlack" >
+          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between">
+          <div class="m-t-sm m-b-sm font-size18">
               {{ 'PATIENT.VERIFICATION.CARD.FOOTER.ACCOUNT_STATUS_LABEL' | translate }}
-            </i>
-            <div class="font-size18">
+            <div class="">
               <strong>{{accountStatusText | translate}}</strong>
             </div>
           </div>
-          <div fxFlex fxLayoutAlign="end" *ngIf="verified; else sendVerificationEmailTemplate">
-            <div *ngIf="isAccountDisabled; else enableAccountTemplate">
-              <button md-raised-button color="primary" (click)="enableAccount()">
-                <strong>
-                  {{ 'PATIENT.VERIFICATION.CARD.FOOTER.ENABLE_ACCOUNT_BTN' | translate }}
-                </strong>
-              </button>
+          <div class="m-t">
+            <div fxFlex fxLayoutAlign="end" *ngIf="verified; else sendVerificationEmailTemplate">
+              <div *ngIf="isAccountDisabled; else enableAccountTemplate">
+                <button md-raised-button color="primary" (click)="enableAccount()">
+                  <strong>
+                    {{ 'PATIENT.VERIFICATION.CARD.FOOTER.ENABLE_ACCOUNT_BTN' | translate }}
+                  </strong>
+                </button>
+              </div>
+              <ng-template #enableAccountTemplate>
+                <button md-raised-button color="primary" (click)="disableAccount()">
+                  <strong>
+                    {{ 'PATIENT.VERIFICATION.CARD.FOOTER.DISABLE_ACCOUNT_BTN' | translate }}
+                  </strong>
+                </button>
+              </ng-template>
             </div>
-            <ng-template #enableAccountTemplate>
-              <button md-raised-button color="primary" (click)="disableAccount()">
+            <ng-template #sendVerificationEmailTemplate>
+              <button md-raised-button color="primary" (click)="sendVerificationEmail()">
                 <strong>
-                  {{ 'PATIENT.VERIFICATION.CARD.FOOTER.DISABLE_ACCOUNT_BTN' | translate }}
+                  {{ 'PATIENT.VERIFICATION.CARD.FOOTER.SEND_EMAIL_BTN' | translate }}
                 </strong>
               </button>
             </ng-template>
           </div>
-          <ng-template #sendVerificationEmailTemplate>
-            <button md-raised-button color="primary" (click)="sendVerificationEmail()">
-              <strong>
-                {{ 'PATIENT.VERIFICATION.CARD.FOOTER.SEND_EMAIL_BTN' | translate }}
-              </strong>
-            </button>
-          </ng-template>
+          </div>
         </div>
-      </md-card-footer>
-    </md-card>
+
+      </div>
+    </div>
+
   </md2-accordion-tab>
 </md2-accordion>
