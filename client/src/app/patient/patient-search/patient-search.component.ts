@@ -70,29 +70,29 @@ export class PatientSearchComponent implements OnInit {
   }
 
   createFirstNameValidators(): any {
-    return this.patientSearchConfig.firstNameSearchEnabled ?
+    return this.patientSearchConfig.firstNameRequired ?
       [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH), Validators.required] :
       [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)];
   }
 
   createLastNameValidators(): any {
-    return this.patientSearchConfig.lastNameSearchEnabled ?
+    return this.patientSearchConfig.lastNameRequired ?
       [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH), Validators.required] :
       [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.maxLength(ValidationRules.NAME_MAX_LENGTH)];
   }
 
   createDateOfBirthValidators(): any {
-    return this.patientSearchConfig.dateOfBirthSearchEnabled ?
+    return this.patientSearchConfig.dateOfBirthRequired ?
       [ValidationService.pastDateValidator, Validators.required] :
       [ValidationService.pastDateValidator];
   }
 
   createGenderValidators(): any {
-    return this.patientSearchConfig.genderSearchEnabled ? [Validators.required] : [];
+    return this.patientSearchConfig.genderRequired ? [Validators.required] : [];
   }
 
   createMRNValidators(): any {
-    return this.patientSearchConfig.patientIdSearchEnabled ?
+    return this.patientSearchConfig.patientIdRequired ?
       [Validators.minLength(ValidationRules.NAME_MIN_LENGTH), Validators.required] :
       [Validators.minLength(ValidationRules.NAME_MIN_LENGTH)];
   }

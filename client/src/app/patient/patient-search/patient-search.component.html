@@ -13,7 +13,7 @@
           <div fxFlex="48%">
             <md-input-container class="full-width font-size18">
               <input mdInput
-                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.FIRST_NAME_PLACEHOLDER' | translate }}{{getRequiredAsterix('firstNameSearchEnabled')}} "
+                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.FIRST_NAME_PLACEHOLDER' | translate }}{{getRequiredAsterix('firstNameRequired')}} "
                      formControlName="firstName">
             </md-input-container>
             <c2s-control-validation-error-message
@@ -23,7 +23,7 @@
           <div fxFlex="48%">
             <md-input-container class="full-width font-size18">
               <input mdInput
-                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.LAST_NAME_PLACEHOLDER' | translate }}{{getRequiredAsterix('lastNameSearchEnabled')}}"
+                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.LAST_NAME_PLACEHOLDER' | translate }}{{getRequiredAsterix('lastNameRequired')}}"
                      formControlName="lastName">
             </md-input-container>
             <c2s-control-validation-error-message
@@ -34,7 +34,7 @@
         <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between">
           <div fxFlex="48%" class="m-b-sm dob-modify">
             <md2-datepicker class="full-width font-size18"
-                            placeholder="{{ 'PATIENT.SEARCH.CRITERIA.DOB_PLACEHOLDER' | translate }}{{getRequiredAsterix('dateOfBirthSearchEnabled')}}"
+                            placeholder="{{ 'PATIENT.SEARCH.CRITERIA.DOB_PLACEHOLDER' | translate }}{{getRequiredAsterix('dateOfBirthRequired')}}"
                             [openOnFocus]="isOpenOnFocus" [format]="FORMAT"
                             formControlName="birthDate">
             </md2-datepicker>
@@ -43,7 +43,7 @@
             </c2s-control-validation-error-message>
           </div>
           <div fxFlex="48%">
-            <md-select placeholder="{{ 'PATIENT.SEARCH.CRITERIA.GENDER_PLACEHOLDER' | translate }}{{getRequiredAsterix('genderSearchEnabled')}}"
+            <md-select placeholder="{{ 'PATIENT.SEARCH.CRITERIA.GENDER_PLACEHOLDER' | translate }}{{getRequiredAsterix('genderRequired')}}"
                        formControlName="genderCode"
                        class="full-width font-size18 p-t-md">
               <md-option *ngFor="let gender of genders" [value]="gender.code">
@@ -59,7 +59,7 @@
           <div fxFlex="48%">
             <md-input-container class="full-width font-size18">
               <input mdInput
-                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.MRN_PLACEHOLDER' | translate }}{{getRequiredAsterix('patientIdSearchEnabled')}}"
+                     placeholder="{{ 'PATIENT.SEARCH.CRITERIA.MRN_PLACEHOLDER' | translate }}{{getRequiredAsterix('patientIdRequired')}}"
                      formControlName="mrn">
             </md-input-container>
             <c2s-control-validation-error-message
