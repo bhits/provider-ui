@@ -31,6 +31,8 @@
               nextLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.NEXT' | translate }}"
               (pageChange)="getPage($event)">
             </pagination-controls>
+          </div>
+          <div fxLayoutAlign="center">
             <md-spinner *ngIf="loading"></md-spinner>
           </div>
           <c2s-consent-card
