@@ -1,7 +1,7 @@
 export class PatientSearchConfig {
-  public firstNameSearchEnabled: boolean;
-  public lastNameSearchEnabled: boolean;
-  public dateOfBirthSearchEnabled: boolean;
-  public genderSearchEnabled: boolean;
-  public patientIdSearchEnabled: boolean;
+  public firstNameRequired: boolean;
+  public lastNameRequired: boolean;
+  public dateOfBirthRequired: boolean;
+  public genderRequired: boolean;
+  public patientIdRequired: boolean;
 }
