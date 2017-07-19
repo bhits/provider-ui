@@ -365,7 +365,8 @@
         "CANCEL_BTN": "{spanish} Cancel",
         "DOWNLOAD_BTN": "{spanish} Download document"
       },
-      "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI..."
+      "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI...",
+      "DOCUMENT_NOT_FOUND_NOTIFICATION_MSG": "{spanish} Document Not Found."
     },
     "NOTIFICATION_MSG": {
       "SUCCESS_SENT_EMAIL": "{spanish}Successfully sent the email.",

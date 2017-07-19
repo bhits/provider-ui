@@ -366,7 +366,8 @@
         "CANCEL_BTN": "Cancel",
         "DOWNLOAD_BTN": "Download document"
       },
-      "GET_PROVIDER_NOTIFICATION_MSG": "Failed to get provider by NPI..."
+      "GET_PROVIDER_NOTIFICATION_MSG": "Failed to get provider by NPI...",
+      "DOCUMENT_NOT_FOUND_NOTIFICATION_MSG": "Document Not Found."
     },
     "NOTIFICATION_MSG": {
       "SUCCESS_SENT_EMAIL": "Successfully sent the email.",
