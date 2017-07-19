@@ -28,7 +28,7 @@ import {SegmentedDocumentReponse} from "../shared/segmented-document-response";
 })
 export class SegmentDocumentComponent implements OnInit {
 
-  @Input() patient:Patient;
+  @Input() patient: Patient;
   public segmentationFrom: FormGroup;
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
@@ -55,7 +55,6 @@ export class SegmentDocumentComponent implements OnInit {
               private tokenService: TokenService,
               private providerService: ProviderService,
               private notificationService: NotificationService,
-              private validationService: ValidationService,
               private patientService: PatientService,
               private utilityService: UtilityService) {
     // local uploading files array
@@ -163,6 +162,7 @@ export class SegmentDocumentComponent implements OnInit {
         this.segmentedDocument = output.file.response.segmentedDocument;
         segmentDocumentDialog.open();
       } else {
+        this.notificationService.i18nShow("PATIENT.SEGMENT_DOCUMENT.DOCUMENT_NOT_FOUND_NOTIFICATION_MSG");
         console.log("Missing segmented document");
       }
     }
@@ -185,16 +185,16 @@ export class SegmentDocumentComponent implements OnInit {
     return segmentationRequest;
   }
 
-  private getPatientIds(){
+  private getPatientIds() {
     let patientIdRoot = null;
     let patientIdExtension = null;
     let result = {
       root: "",
-      extension:""
+      extension: ""
     };
 
-    this.patient.identifiers.forEach(id =>{
-      if(id.system === this.patientService.getDefaultPatientIdentifierSystem()){
+    this.patient.identifiers.forEach(id => {
+      if (id.system === this.patientService.getDefaultPatientIdentifierSystem()) {
         result.root = id.system;
         result.extension = id.value;
 
