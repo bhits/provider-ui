@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Patient} from "../../patient/shared/patient.model";
-import {Observable} from "rxjs/Observable";
 import {ActivityHistory} from "../../consent/shared/activity-history.model";
 import {ConsentService} from "../../consent/shared/consent.service";
 import {ActivatedRoute} from "@angular/router";
-import {PageableData} from "../../shared/pageable-data.model";
-
 
 @Component({
   selector: 'c2s-activity-history',
@@ -20,7 +17,7 @@ export class ActivityHistoryComponent implements OnInit {
   public itemsPerPage: number = 10;
   public noActivityHistory: boolean = true;
   public loading: boolean = true;
-  public asyncConsents: Observable<ActivityHistory[]>;
+  public asyncActivityHistory: ActivityHistory[];
 
   constructor(private consentService: ConsentService,
               private route: ActivatedRoute) {
@@ -33,14 +30,14 @@ export class ActivityHistoryComponent implements OnInit {
 
   public getPage(page: number) {
     this.loading = true;
-    this.asyncConsents = this.consentService.getActivityHistory(this.selectedPatient.mrn, page - 1, this.itemsPerPage)
-      .do((activityList: PageableData<ActivityHistory>) => {
-        this.noActivityHistory = activityList.totalElements === 0;
-        this.totalItems = activityList.totalElements;
-        this.currentPage = activityList.number + 1;
+    this.consentService.getActivityHistory(this.selectedPatient.mrn, page - 1, this.itemsPerPage)
+      .subscribe(resp => {
+        this.asyncActivityHistory = resp.content;
+        this.noActivityHistory = resp.totalElements === 0;
+        this.totalItems = resp.totalElements;
+        this.currentPage = resp.number + 1;
         this.loading = false;
-      })
-      .map(pageableConsent => pageableConsent.content);
+      });
   }
 
 }
