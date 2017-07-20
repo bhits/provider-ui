@@ -1,8 +1,7 @@
 export class ActivityHistory {
-  activityId: number;
-  changedDateTime: Date;
-  action: string;
   consentReferenceId: string;
-  changedBy: string;
+  actionType: string;
+  updatedBy: string;
+  updatedDateTime: Date;
   role: string;
 }
