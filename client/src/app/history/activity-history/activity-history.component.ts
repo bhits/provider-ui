@@ -39,5 +39,4 @@ export class ActivityHistoryComponent implements OnInit {
         this.loading = false;
       });
   }
-
 }
