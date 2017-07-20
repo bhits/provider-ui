@@ -30,7 +30,22 @@
             <md-spinner *ngIf="loading"></md-spinner>
           </div>
           <div>
-            <pre>{{asyncActivityHistory}}</pre>
+            <table>
+              <tr>
+                <th>{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.DATE' | translate }}</th>
+                <th>{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CONSENT_REFERENCE_ID' | translate }}</th>
+                <th>{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ACTION' | translate }}</th>
+                <th>{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CHANGED_BY' | translate }}</th>
+                <th>{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ROLE' | translate }}</th>
+              </tr>
+              <tr *ngFor="let activity of asyncActivityHistory">
+                <td>{{activity.updatedDateTime}}</td>
+                <td>{{activity.consentReferenceId}}</td>
+                <td>{{activity.actionType}}</td>
+                <td>{{activity.updatedBy}}</td>
+                <td>{{activity.role}}</td>
+              </tr>
+            </table>
           </div>
 
           <div fxLayoutAlign="center">
