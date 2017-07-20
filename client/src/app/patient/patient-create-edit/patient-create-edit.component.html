@@ -307,8 +307,15 @@
       </md2-accordion-header>
 
       <div class="p-l p-r" class.gt-sm="p-l-lg p-r-lg">
-        <h2 class="m-t-none m-b-xs">Consent Activity History</h2>
-        <div fxLayout="column" fxLayout.gt-xs="row" fxHide fxHide.gt-xs="false" class="p-xs">
+
+        <div>
+          <div class="m-t-xs m-b-sm p-b-sm border-bottom-purple-thin" fxFlex="1 1 auto" fxLayoutAlign="flex-start center">
+            <div class="font-size20 font-weight300"> {{ 'PATIENT.SEGMENT_DOCUMENT.COMPONENT_TITLE' | translate }}</div>
+          </div>
+        </div>
+
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxHide fxHide.gt-xs="false" class="m-t p-sm bg-dark-bluegrey white">
           <div fxFlex class="font-size15 font-weight500">Date</div>
           <div fxFlex class="font-size15 font-weight500">Action</div>
           <div fxFlex class="font-size15 font-weight500">Consent Reference ID</div>
@@ -316,60 +323,39 @@
           <div fxFlex class="font-size15 font-weight500">Role</div>
         </div>
 
-        <div fxLayout="column" fxLayout.gt-xs="row" class="p-xs bg-lite-blue">
+        <div fxLayout="column" fxLayout.gt-xs="row" class="stripedRows p-sm p-t p-b">
           <div fxFlex>
-            <div fxLayout="row" fxLayoutGap="20px" fxLayout.gt-sm="column">
+            <div fxLayout="row" fxLayoutGap="20px">
               <div fxHide.gt-xs="true" class="font-size15">Date</div>
               <div class="font-size15 font-weight500">June 4, 2017</div>
             </div>
           </div>
-
           <div fxFlex>
-            <div fxLayout="row" fxLayout.gt-sm="column" fxLayoutAlign.xs="start center">
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign.xs="start center">
               <div fxHide.gt-xs="true" class="font-size15">Action</div>
               <div class="font-size15 font-weight500">Create Consent</div>
             </div>
           </div>
-
           <div fxFlex>
-            <div fxHide.gt-xs="true" class="font-size15">Consent Reference ID</div>
-            <div class="font-size15 font-weight500">CGuK7WwnGt</div>
-          </div>
-          <div fxFlex>
-            <div fxHide.gt-xs="true" class="font-size15">Changed By</div>
-            <div class="font-size15 font-weight500">Provider Bob</div>
-          </div>
-          <div fxFlex>
-            <div fxHide.gt-xs="true" class="font-size15">Role</div>
-            <div class="font-size15 font-weight500">Administrator</div>
-          </div>
-        </div>
-
-
-        <div fxLayout="column" fxLayout.gt-xs="row" class="p-xs bg-lite-gray-f5">
-          <div fxFlex>
-            <div fxLayout="row" fxLayout.gt-xs="column" fxLayoutGap="10px">
-              <div class="font-size15">Date</div>
-              <div class="font-size15 font-weight500">July 14, 2017</div>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign.xs="start center">
+              <div fxHide.gt-xs="true" class="font-size15">Consent Reference ID</div>
+              <div class="font-size15 font-weight500">CGuK7WwnGt</div>
             </div>
           </div>
           <div fxFlex>
-            <div class="font-size15">Action</div>
-            <div class="font-size15 font-weight500">Edit Consent</div>
-          </div>
-          <div fxFlex>
-            <div class="font-size15">Consent Reference ID</div>
-            <div class="font-size15 font-weight500">CGuK7WwnGt</div>
-          </div>
-          <div fxFlex>
-            <div class="font-size15">Changed By</div>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign.xs="start center">
+            <div fxHide.gt-xs="true" class="font-size15">Changed By</div>
             <div class="font-size15 font-weight500">Provider Bob</div>
+            </div>
           </div>
           <div fxFlex>
-            <div class="font-size15">Role</div>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign.xs="start center">
+            <div fxHide.gt-xs="true" class="font-size15">Role</div>
             <div class="font-size15 font-weight500">Administrator</div>
+            </div>
           </div>
         </div>
+
       </div>
     </md2-accordion-tab>
   </md2-accordion>
