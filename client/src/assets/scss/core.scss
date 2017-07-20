@@ -107,6 +107,12 @@ body {
   padding: 2em 2em 2em 2em;
 }
 
+.stripedRows {
+  &:nth-of-type(odd) {
+  background-color: #e7edef;
+  }
+  &:hover {background-color: #fffdce;}
+}
 
 
 // ------------------------------------------------------------- create consent styling -------------//
