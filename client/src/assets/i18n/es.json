@@ -321,7 +321,7 @@
       }
     },
     "VERIFICATION": {
-      "ACCORDION_HEADER": "{spanish} Account Activation/Verification Code",
+      "ACCORDION_HEADER": "{spanish} Account Activation / Verification Code",
       "CARD": {
         "TITLE": "{spanish} Account Activation / Verification Code",
         "CONTENT": {
