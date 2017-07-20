@@ -199,7 +199,7 @@ export class ConsentService {
     params.set('page', page.toString());
     params.set('size', size.toString());
     const resourceUrl = this.apiUrlService.getPcmBaseUrl()
-      .concat("/patients/" + patientMrn + "/activities/");
+      .concat("/patients/" + patientMrn + "/consent-activities/");
     return this.http.get(resourceUrl, {search: params})
       .map((resp: Response) => <PageableData<ActivityHistory>>(resp.json()))
       .catch(this.exceptionService.handleError);
