@@ -1,3 +1,11 @@
 export class MenuItem {
-  constructor(public text: string, public routerLink: string, public key:string){}
+  public key: string;
+  public routerLink: string;
+  public text: string;
+
+  constructor(key: string, routerLink: string, text: string) {
+    this.key = key;
+    this.routerLink = routerLink;
+    this.text = text;
+  }
 }

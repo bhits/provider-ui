@@ -15,19 +15,22 @@
     }
   },
   "HOME": {
-    "WELCOME_TITLE": "Welcome to Consent2Share!",
-    "WELCOME_SUB_TITLE": "You are now ready to manage your patients.",
-    "PATIENT_CARD": {
-      "TITLE": "My <span class=\"font-weight700\">Patients</span>",
-      "STEP": "Step 1.",
-      "TEXT": "Begin by creating the patients.",
+    "WELCOME_TITLE": "Welcome back",
+    "PATIENT_SEARCH_CARD": {
+      "TITLE": "<span class=\"font-weight700\">Search</span> a Patient",
+      "DESCRIPTION": "Search a patient in my organization."
+    },
+    "PATIENT_LIST_CARD": {
+      "TITLE": "<span class=\"font-weight700\">View</span> Patient List",
+      "DESCRIPTION": "View all patients in my organization.",
       "SINGULAR": "Patient",
       "PLURAL": "Patients"
     },
     "MENU": {
       "TITLE": "Menu",
       "HOME": "Home",
-      "PATIENTS": "Patients",
+      "PATIENT_LIST": "Patient List",
+      "PATIENT_SEARCH": "Patient Search",
       "LOGOUT": "Logout"
     }
   },
@@ -236,17 +239,14 @@
       "FAILED_DOWNLOAD_REVOKED_CONSENT": "Failed to download the revoked consent. Please try again later.",
       "SUCCESS_DELETE_CONSENT": "Successfully deleted the consent on behalf of the patient.",
       "FAILED_DELETE_CONSENT": "Failed to delete the consent. Please try again later.",
-      "FAILED_APPLY_TRY_POLICY": "Failed to try this consent setting against the patient medical record. Please try again later."
+      "FAILED_APPLY_TRY_POLICY": "Failed to try this consent setting against the patient medical record. Please try again later.",
+      "DUPLICATE_CONSENT": "Failed to add new consent. Duplicate consent created."
     }
   },
   "PATIENT": {
     "LIST": {
-      "TITLE": "My Patients",
-      "INFO": "OK! You are now ready to manage your patients.",
-      "SEARCH_PATIENT_PLACEHOLDER": "Search by first and last name",
-      "CREATE_PATIENT_BUTTON": "Create New Account",
-      "SORT_LIST_TITLE": "Show List by",
-      "NO_PATIENTS_MSG": "There are currently no patients available. Please click the 'Create a Patient Account' button to create a new patient.",
+      "TITLE": "Patient List",
+      "NO_PATIENTS_MSG": "There are currently no patients available. Please create a new patient.",
       "CARD": {
         "CONTENT": {
           "CONTACT_NUMBER": "Contact Number",
@@ -313,7 +313,7 @@
         "TITLE": "Confirm Navigation",
         "CONTENT": "You will lose all unsaved work. Are you sure you want to leave this page?"
       },
-      "DUPLICATE_CHECK_CONFIRM_DIALOG" : {
+      "DUPLICATE_CHECK_CONFIRM_DIALOG": {
         "TITLE": "Confirm Account Creation",
         "CONTENT": "<strong>ATTENTION</strong> – An account with similar information already exists. Please confirm the accuracy of the account information entered and select to either \"Continue and Create\" or go \"Back to Search\" screen and try again.",
         "OK_BTN": "Continue and Create",
@@ -366,7 +366,8 @@
         "CANCEL_BTN": "Cancel",
         "DOWNLOAD_BTN": "Download document"
       },
-      "GET_PROVIDER_NOTIFICATION_MSG": "Failed to get provider by NPI..."
+      "GET_PROVIDER_NOTIFICATION_MSG": "Failed to get provider by NPI...",
+      "DOCUMENT_NOT_FOUND_NOTIFICATION_MSG": "Document Not Found."
     },
     "ACTIVITY_HISTORY": {
       "SECTION_TITLE": "Activity History",

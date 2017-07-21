@@ -15,19 +15,22 @@
     }
   },
   "HOME": {
-    "WELCOME_TITLE": "{spanish} Welcome to Consent2Share!",
-    "WELCOME_SUB_TITLE": "{spanish} You are now ready to manage your patients.",
-    "PATIENT_CARD": {
-      "TITLE": "{Spanish} My <span class=\"font-weight700\">Patients</span>",
-      "STEP": "{Spanish} Step 1.",
-      "TEXT": "{Spanish} Begin by creating the patients.",
+    "WELCOME_TITLE": "{spanish} Welcome back",
+    "PATIENT_SEARCH_CARD": {
+      "TITLE": "{Spanish} <span class=\"font-weight700\">Search</span> a Patient",
+      "DESCRIPTION": "{Spanish} Search a patient in my organization."
+    },
+    "PATIENT_LIST_CARD": {
+      "TITLE": "{Spanish} <span class=\"font-weight700\">View</span> Patient List",
+      "DESCRIPTION": "{Spanish} View all patients in my organization.",
       "SINGULAR": "{Spanish} Patient",
       "PLURAL": "{Spanish} Patients"
     },
     "MENU": {
       "TITLE": "{Spanish} Menu",
       "HOME": "{Spanish} Home",
-      "PATIENTS": "{Spanish} Patients",
+      "PATIENT_LIST": "{Spanish} Patient List",
+      "PATIENT_SEARCH": "{Spanish} Patient Search",
       "LOGOUT": "{Spanish} Logout"
     }
   },
@@ -241,12 +244,8 @@
   },
   "PATIENT": {
     "LIST": {
-      "TITLE": "{spanish} My Patients",
-      "INFO": "{spanish} OK! You are now ready to manage your patients.",
-      "SEARCH_PATIENT_PLACEHOLDER": "{spanish} Search by first and last name",
-      "CREATE_PATIENT_BUTTON": "{spanish} Create New Account",
-      "SORT_LIST_TITLE": "{spanish} Show List by",
-      "NO_PATIENTS_MSG": "{spanish} There are currently no patients available. Please click the 'Create a Patient Account' button to create a new patient.",
+      "TITLE": "{spanish} Patient List",
+      "NO_PATIENTS_MSG": "{spanish} There are currently no patients available. Please create a new patient.",
       "CARD": {
         "CONTENT": {
           "CONTACT_NUMBER": "{spanish} Contact Number",
@@ -366,7 +365,8 @@
         "CANCEL_BTN": "{spanish} Cancel",
         "DOWNLOAD_BTN": "{spanish} Download document"
       },
-      "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI..."
+      "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI...",
+      "DOCUMENT_NOT_FOUND_NOTIFICATION_MSG": "{spanish} Document Not Found."
     },
     "ACTIVITY_HISTORY": {
       "SECTION_TITLE": "Historia de Actividades",

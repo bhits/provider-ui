@@ -1,0 +1,20 @@
+<md-card class="patient-list-card" (click)="navigateTo()">
+  <md-card-header class="middle">
+    <md-card-title>
+      <div class="m-n" [innerHTML]="'HOME.PATIENT_LIST_CARD.TITLE' | translate "></div>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content class="p-md">
+    <h2 class="m-t-xs">
+      {{ 'HOME.PATIENT_LIST_CARD.DESCRIPTION' | translate }}
+    </h2>
+    <div class="center middle">
+      <img md-card-image src="assets/img/contacts.svg" [ngStyle]="{'width': '75%'}">
+    </div>
+  </md-card-content>
+  <md-card-footer class="p-md">
+    <div class="p-t-xs font-size12"><span class="font-weight700 font-size16">{{numberOfPatients}}</span>
+      {{ numberOfPatients | i18nPlural: patientsMapping | translate :{count: numberOfPatients} }}
+    </div>
+  </md-card-footer>
+</md-card>
