@@ -19,47 +19,61 @@
               nextLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.NEXT' | translate }}"
               (pageChange)="getPage($event)">
             </pagination-controls>
-          </div>
-          <div fxLayoutAlign="center">
             <md-spinner *ngIf="loading"></md-spinner>
           </div>
 
-          <div fxLayout="row" fxLayoutAlign="start center" fxHide fxHide.gt-xs="false" class="m-t p-sm bg-dark-bluegrey white">
+          <div fxLayout="row" fxLayoutAlign="start center" fxHide fxHide.gt-xs="false"
+               class="m-t p-sm bg-dark-bluegrey white">
             <div fxFlex class="font-size15 font-weight500">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.DATE' | translate }}</div>
-            <div fxFlex class="font-size15 font-weight500">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ACTION' | translate }}</div>
-            <div fxFlex class="font-size15 font-weight500">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CONSENT_REFERENCE_ID' | translate }}</div>
-            <div fxFlex class="font-size15 font-weight500">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CHANGED_BY' | translate }}</div>
+            <div fxFlex class="font-size15 font-weight500">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ACTION' | translate }}
+            </div>
+            <div fxFlex class="font-size15 font-weight500">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CONSENT_REFERENCE_ID' |
+              translate }}
+            </div>
+            <div fxFlex class="font-size15 font-weight500">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CHANGED_BY' | translate
+              }}
+            </div>
             <div fxFlex class="font-size15 font-weight500">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ROLE' | translate }}</div>
           </div>
 
-          <div *ngFor="let activity of asyncActivityHistory | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }" fxLayout="column" fxLayout.gt-xs="row" class="stripedRows p-sm p-t p-b">
+          <div
+            *ngFor="let activity of asyncActivityHistory | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
+            fxLayout="column" fxLayout.gt-xs="row" class="stripedRows p-sm p-t p-b">
             <div fxFlex>
               <div fxLayout="row" fxLayoutGap="20px">
-                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.DATE' | translate }}</div>
-                <div class="font-size15 font-weight500">{{activity.updatedDateTime | date:"MMM, dd yyyy HH:mm:ss"}}</div>
+                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.DATE' | translate }}
+                </div>
+                <div class="font-size15 font-weight500">{{activity.updatedDateTime | date:"MMM, dd yyyy HH:mm:ss"}}
+                </div>
               </div>
             </div>
             <div fxFlex>
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign.xs="start center">
-                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ACTION' | translate }}</div>
+                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ACTION' | translate }}
+                </div>
                 <div class="font-size15 font-weight500">{{activity.actionType}}</div>
               </div>
             </div>
             <div fxFlex>
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign.xs="start center">
-                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CONSENT_REFERENCE_ID' | translate }}</div>
+                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CONSENT_REFERENCE_ID' |
+                  translate }}
+                </div>
                 <div class="font-size15 font-weight500">{{activity.consentReferenceId}}</div>
               </div>
             </div>
             <div fxFlex>
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign.xs="start center">
-                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CHANGED_BY' | translate }}</div>
+                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.CHANGED_BY' | translate
+                  }}
+                </div>
                 <div class="font-size15 font-weight500">{{activity.updatedBy}}</div>
               </div>
             </div>
             <div fxFlex>
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign.xs="start center">
-                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ROLE' | translate }}</div>
+                <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ROLE' | translate }}
+                </div>
                 <div class="font-size15 font-weight500">{{activity.role.name}}</div>
               </div>
             </div>
