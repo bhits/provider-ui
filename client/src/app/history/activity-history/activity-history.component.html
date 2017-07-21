@@ -7,12 +7,6 @@
         </md-card-title>
       </md2-accordion-header>
       <div class="p-l p-r" class.gt-sm="p-l-lg p-r-lg">
-        <div fxLayoutAlign="center">
-          <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
-               fxLayoutGap="10px">
-            <div class="font-size20 font-weight300">{{ 'PATIENT.ACTIVITY_HISTORY.COMPONENT_TITLE' | translate }}</div>
-          </div>
-        </div>
         <div style="padding-top: 20px;" *ngIf="noActivityHistory; else hasActivityHistory">
           <div style="background-color: #DEBCC9" class="p-md font-size18 font-weight center-sm-left">
             {{ 'PATIENT.ACTIVITY_HISTORY.NO_ACTIVITY_HISTORY' | translate }}
