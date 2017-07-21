@@ -32,7 +32,7 @@
             <div fxFlex class="font-size15 font-weight500">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.ROLE' | translate }}</div>
           </div>
 
-          <div *ngFor="let activity of asyncActivityHistory" fxLayout="column" fxLayout.gt-xs="row" class="stripedRows p-sm p-t p-b">
+          <div *ngFor="let activity of asyncActivityHistory | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }" fxLayout="column" fxLayout.gt-xs="row" class="stripedRows p-sm p-t p-b">
             <div fxFlex>
               <div fxLayout="row" fxLayoutGap="20px">
                 <div fxHide.gt-xs="true" class="font-size15">{{ 'PATIENT.ACTIVITY_HISTORY.TABLE.DATE' | translate }}</div>
