@@ -196,6 +196,8 @@ export class ConsentService {
   handleCreateConsentError(err: any){
     if(err == "409"){
       this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.DUPLICATE_CONSENT");
+    }else{
+      this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.FAILED_CREATING_CONSENT");
     }
   }
 }
