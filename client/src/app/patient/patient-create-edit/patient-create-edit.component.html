@@ -16,137 +16,136 @@
         </md-card-title>
       </md2-accordion-header>
       <div class="p-l p-r">
-        <div>
-          <div style="background-color: #BCDEDB;" class="p-md font-size18 font-weight center-sm-left">
-            {{ 'PATIENT.CREATE_EDIT.INFO' | translate }}
+      <div>
+        <div style="background-color: #BCDEDB;" class="p-md font-size18 font-weight center-sm-left">
+          {{ 'PATIENT.CREATE_EDIT.INFO' | translate }}
+        </div>
+      </div>
+      <form [formGroup]="createEditPatientForm" class="create-edit-patient-form" novalidate>
+        <h2 fxLayout="column" fxLayout.gt-sm="row" *ngIf="isEditMode">
+          <label class="m-r-md" for="patient-mrn"><strong>{{ 'PATIENT.CREATE_EDIT.MRN_LABEL' | translate }}</strong></label>
+          <span id="patient-mrn">{{patient?.mrn}}</span>
+        </h2>
+        <h2>
+          {{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.LABEL' | translate }}
+        </h2>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-b-sm">
+          <div fxFlex="48%" class="m-b-md">
+            <md-select multiple
+                       placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.ROLE_PLACEHOLDER' | translate }}"
+                       formControlName="roles"
+                       (change)="onRoleChange($event)"
+                       class="full-width font-size18">
+              <md-option *ngFor="let role of roles; let i = index;" [value]="role.code"
+                         [disabled]="role.code === disabledRoles[i-1]">
+                {{ role.name }}
+              </md-option>
+            </md-select>
+            <c2s-control-validation-error-message
+              [control]="createEditPatientForm.controls.roles">
+            </c2s-control-validation-error-message>
+          </div>
+          <div fxFlex="48%">
+            <md-select placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.LOCALE_PLACEHOLDER' | translate }}"
+                       formControlName="locale"
+                       class="full-width font-size18">
+              <md-option *ngFor="let locale of locales" [value]="locale.code">
+                {{ locale.displayName }}
+              </md-option>
+            </md-select>
+            <c2s-control-validation-error-message
+              [control]="createEditPatientForm.controls.locale">
+            </c2s-control-validation-error-message>
           </div>
         </div>
-        <form [formGroup]="createEditPatientForm" class="create-edit-patient-form" novalidate>
-          <h2 fxLayout="column" fxLayout.gt-sm="row" *ngIf="isEditMode">
-            <label class="m-r-md" for="patient-mrn"><strong>{{ 'PATIENT.CREATE_EDIT.MRN_LABEL' | translate
-              }}</strong></label>
-            <span id="patient-mrn">{{patient?.mrn}}</span>
-          </h2>
-          <h2>
-            {{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.LABEL' | translate }}
-          </h2>
-          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-b-sm">
-            <div fxFlex="48%" class="m-b-md">
-              <md-select multiple
-                         placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.ROLE_PLACEHOLDER' | translate }}"
-                         formControlName="roles"
-                         (change)="onRoleChange($event)"
-                         class="full-width font-size18">
-                <md-option *ngFor="let role of roles; let i = index;" [value]="role.code"
-                           [disabled]="role.code === disabledRoles[i-1]">
-                  {{ role.name }}
-                </md-option>
-              </md-select>
-              <c2s-control-validation-error-message
-                [control]="createEditPatientForm.controls.roles">
-              </c2s-control-validation-error-message>
-            </div>
-            <div fxFlex="48%">
-              <md-select placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.LOCALE_PLACEHOLDER' | translate }}"
-                         formControlName="locale"
-                         class="full-width font-size18">
-                <md-option *ngFor="let locale of locales" [value]="locale.code">
-                  {{ locale.displayName }}
-                </md-option>
-              </md-select>
-              <c2s-control-validation-error-message
-                [control]="createEditPatientForm.controls.locale">
-              </c2s-control-validation-error-message>
-            </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-b-sm">
+          <div fxFlex="48%" class="m-b-sm">
+            <md-input-container class="full-width font-size18">
+              <input mdInput
+                     placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.FIRST_NAME_PLACEHOLDER' | translate }}"
+                     formControlName="firstName">
+            </md-input-container>
+            <c2s-control-validation-error-message
+              [control]="createEditPatientForm.controls.firstName">
+            </c2s-control-validation-error-message>
           </div>
-          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-b-sm">
-            <div fxFlex="48%" class="m-b-sm">
-              <md-input-container class="full-width font-size18">
-                <input mdInput
-                       placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.FIRST_NAME_PLACEHOLDER' | translate }}"
-                       formControlName="firstName">
-              </md-input-container>
-              <c2s-control-validation-error-message
-                [control]="createEditPatientForm.controls.firstName">
-              </c2s-control-validation-error-message>
-            </div>
-            <div fxFlex="48%">
-              <md-input-container class="full-width font-size18">
-                <input mdInput
-                       placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.MIDDLE_NAME_PLACEHOLDER' | translate }}"
-                       formControlName="middleName">
-              </md-input-container>
-              <c2s-control-validation-error-message
-                [control]="createEditPatientForm.controls.middleName">
-              </c2s-control-validation-error-message>
-            </div>
+          <div fxFlex="48%">
+            <md-input-container class="full-width font-size18">
+              <input mdInput
+                     placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.MIDDLE_NAME_PLACEHOLDER' | translate }}"
+                     formControlName="middleName">
+            </md-input-container>
+            <c2s-control-validation-error-message
+              [control]="createEditPatientForm.controls.middleName">
+            </c2s-control-validation-error-message>
           </div>
-          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-b-sm">
-            <div fxFlex="48%" class="m-b-sm">
-              <md-input-container class="full-width font-size18 m-b-none">
-                <input mdInput
-                       placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.LAST_NAME_PLACEHOLDER' | translate }}"
-                       formControlName="lastName">
-              </md-input-container>
-              <c2s-control-validation-error-message
-                [control]="createEditPatientForm.controls.lastName">
-              </c2s-control-validation-error-message>
-            </div>
-            <div fxFlex="48%">
-              <md-input-container class="full-width font-size18">
-                <input mdInput
-                       placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.EMAIL_PLACEHOLDER' | translate }}"
-                       formControlName="homeEmail">
-              </md-input-container>
-              <c2s-control-validation-error-message
-                [customMessage]="emailErrorMessage"
-                [control]="createEditPatientForm.controls.homeEmail">
-              </c2s-control-validation-error-message>
-              <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
-                {{oneEmailRequiredMessage | translate}}
-              </md-hint>
-            </div>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-b-sm">
+          <div fxFlex="48%" class="m-b-sm">
+            <md-input-container class="full-width font-size18 m-b-none">
+              <input  mdInput
+                     placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.LAST_NAME_PLACEHOLDER' | translate }}"
+                     formControlName="lastName">
+            </md-input-container>
+            <c2s-control-validation-error-message
+              [control]="createEditPatientForm.controls.lastName">
+            </c2s-control-validation-error-message>
           </div>
-          <div fxLayout="column" fxLayout.gt-sm="row" class="m-b-sm">
-            <div fxFlex="48%">
-              <md-input-container class="full-width font-size18">
-                <input mdInput
-                       placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.REG_PURPOSE_EMAIL_PLACEHOLDER' | translate }}"
-                       formControlName="registrationPurposeEmail">
-              </md-input-container>
-              <c2s-control-validation-error-message
-                [customMessage]="emailErrorMessage"
-                [control]="createEditPatientForm.controls.registrationPurposeEmail">
-              </c2s-control-validation-error-message>
-              <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
-                {{oneEmailRequiredMessage | translate}}
-              </md-hint>
-            </div>
+          <div fxFlex="48%">
+            <md-input-container class="full-width font-size18">
+              <input mdInput
+                     placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.EMAIL_PLACEHOLDER' | translate }}"
+                     formControlName="homeEmail">
+            </md-input-container>
+            <c2s-control-validation-error-message
+              [customMessage]="emailErrorMessage"
+              [control]="createEditPatientForm.controls.homeEmail">
+            </c2s-control-validation-error-message>
+            <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')&&(createEditPatientForm.controls.homeEmail.dirty||createEditPatientForm.controls.homeEmail.touched||createEditPatientForm.controls.registrationPurposeEmail.dirty||createEditPatientForm.controls.registrationPurposeEmail.touched)">
+              {{oneEmailRequiredMessage | translate}}
+            </md-hint>
           </div>
-          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-b-sm">
-            <div fxFlex="48%" class="m-b-sm">
-              <md-select placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.GENDER_PLACEHOLDER' | translate }}"
-                         formControlName="genderCode"
-                         class="full-width font-size18 p-t-md">
-                <md-option *ngFor="let gender of genders" [value]="gender.code">
-                  {{ gender.displayName }}
-                </md-option>
-              </md-select>
-              <c2s-control-validation-error-message
-                [control]="createEditPatientForm.controls.genderCode">
-              </c2s-control-validation-error-message>
-            </div>
-            <div fxFlex="48%" class="dob-modify">
-              <md2-datepicker class="full-width font-size18"
-                              placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.DOB_PLACEHOLDER' | translate }}"
-                              [openOnFocus]="isOpenOnFocus" [format]="FORMAT"
-                              formControlName="birthDate">
-              </md2-datepicker>
-              <c2s-control-validation-error-message
-                [control]="createEditPatientForm.controls.birthDate">
-              </c2s-control-validation-error-message>
-            </div>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" class="m-b-sm">
+          <div fxFlex="48%">
+            <md-input-container class="full-width font-size18">
+              <input mdInput
+                     placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.REG_PURPOSE_EMAIL_PLACEHOLDER' | translate }}"
+                     formControlName="registrationPurposeEmail">
+            </md-input-container>
+            <c2s-control-validation-error-message
+              [customMessage]="emailErrorMessage"
+              [control]="createEditPatientForm.controls.registrationPurposeEmail">
+            </c2s-control-validation-error-message>
+            <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')&&(createEditPatientForm.controls.registrationPurposeEmail.dirty||createEditPatientForm.controls.registrationPurposeEmail.touched||createEditPatientForm.controls.homeEmail.dirty||createEditPatientForm.controls.homeEmail.touched)">
+              {{oneEmailRequiredMessage | translate}}
+            </md-hint>
           </div>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-b-sm">
+          <div fxFlex="48%" class="m-b-sm">
+            <md-select placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.GENDER_PLACEHOLDER' | translate }}"
+                       formControlName="genderCode"
+                       class="full-width font-size18 p-t-md">
+              <md-option *ngFor="let gender of genders" [value]="gender.code">
+                {{ gender.displayName }}
+              </md-option>
+            </md-select>
+            <c2s-control-validation-error-message
+              [control]="createEditPatientForm.controls.genderCode">
+            </c2s-control-validation-error-message>
+          </div>
+          <div fxFlex="48%" class="dob-modify">
+            <md2-datepicker class="full-width font-size18"
+                            placeholder="{{ 'PATIENT.CREATE_EDIT.REQUIRED_INFORMATION.DOB_PLACEHOLDER' | translate }}"
+                            [openOnFocus]="isOpenOnFocus" [format]="FORMAT"
+                            formControlName="birthDate">
+            </md2-datepicker>
+            <c2s-control-validation-error-message
+              [control]="createEditPatientForm.controls.birthDate">
+            </c2s-control-validation-error-message>
+          </div>
+        </div>
 
           <div formGroupName="identifier" *ngIf="isIdentifiersEnabled()">
             <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" class="m-b-sm">

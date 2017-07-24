@@ -514,7 +514,7 @@
       "REQUIRED_ERROR_MESSAGE": "{spanish} This field is required.",
       "REQUIRED_TRUE_ERROR_MESSAGE": "{spanish} This field value must be true.",
       "INVALID_PAST_DATE_ERROR_MESSAGE": "{spanish} Selected date must be earlier than today.",
-      "ONE_EMAIL_REQUIRED_MESSAGE": "{spanish} At least one email address needed.",
+      "ONE_EMAIL_REQUIRED_MESSAGE": "{spanish} At least one valid email address needed.",
       "NPI_NUMBER_MESSAGE": "{spanish} Must be a number.",
       "NPIS_MATCH_MESSAGE": "{spanish} Authorize and disclose NPIs must be different.",
       "INVALID_FILE_TYPE_MESSAGE": "{spanish} Invalid file type."
