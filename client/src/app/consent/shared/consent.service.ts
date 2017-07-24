@@ -15,6 +15,7 @@ import {Provider} from "app/provider/shared/provider.model";
 import {VssSensitivityCategory} from "app/consent/shared/vss-sensitivity-category.model";
 import {ConsentTerms} from "./consent-terms.model";
 import {ConsentRevocation} from "./consent-revocation.model";
+import {ActivityHistory} from "./activity-history.model";
 
 @Injectable()
 export class ConsentService {
@@ -197,5 +198,16 @@ export class ConsentService {
     if(err == "409"){
       this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.DUPLICATE_CONSENT");
     }
+  }
+
+  public getActivityHistory(patientMrn: string, page: number, size: number): Observable<PageableData<ActivityHistory>> {
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('page', page.toString());
+    params.set('size', size.toString());
+    const resourceUrl = this.apiUrlService.getPcmBaseUrl()
+      .concat("/patients/" + patientMrn + "/consent-activities/");
+    return this.http.get(resourceUrl, {search: params})
+      .map((resp: Response) => <PageableData<ActivityHistory>>(resp.json()))
+      .catch(this.exceptionService.handleError);
   }
 }

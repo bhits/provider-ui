@@ -14,6 +14,7 @@ import {AppRoutingModule} from "app/app-routing.module";
 import {ConsentModule} from "app/consent/consent.module";
 import {ProviderModule} from "./provider/provider.module";
 import {createTranslateLoader, CustomTranslateService} from "./core/custom-translate.service";
+import {HistoryModule} from "./history/history.module";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {createTranslateLoader, CustomTranslateService} from "./core/custom-trans
     LayoutModule,
     PatientModule,
     ProviderModule,
+    HistoryModule,
     AppRoutingModule // Order matters, this must in the end
   ],
   providers: [
