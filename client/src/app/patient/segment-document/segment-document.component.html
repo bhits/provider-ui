@@ -72,11 +72,11 @@
                 [control]="segmentationFrom.controls.recipientNpi">
               </c2s-control-validation-error-message>
 
-              <div *ngIf="discloseProvider && discloseProvider.firstName && discloseProvider.lastName">
+              <div *ngIf="checkIfProviderFirstAndLastNameExists(discloseProvider)">
                 <label>{{ "PATIENT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
                 <span>{{ discloseProvider.firstName }} {{ discloseProvider.lastName }}</span>
               </div>
-              <div *ngIf="discloseProvider && discloseProvider.organizationName">
+              <div *ngIf="checkIfProviderOrganizationNameExists(discloseProvider)">
                 <label>{{ "PATIENT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
                 <span>{{ discloseProvider.organizationName }}</span>
               </div>
@@ -95,7 +95,8 @@
 
           <div fxLayout="column">
 
-            <md-select class="m-b-xs" placeholder='{{"PATIENT.SEGMENT_DOCUMENT.PURPOSE_OF_USE_PLACEHOLDER" | translate }}'
+            <md-select class="m-b-xs"
+                       placeholder='{{"PATIENT.SEGMENT_DOCUMENT.PURPOSE_OF_USE_PLACEHOLDER" | translate }}'
                        formControlName="purposeOfUse" [required]="true">
               <md-option *ngFor="let purposeOfUse of purposeOfUses" [value]="purposeOfUse.identifier.value">
                 {{ purposeOfUse.display }}
@@ -115,7 +116,8 @@
             <div fxLayout="row" fxLayoutAlign="center">
               <div fxFlex>
                 <label class="upload-button">
-                  <input class="font-size16" type="file" ngFileSelect (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)"
+                  <input class="font-size16" type="file" ngFileSelect
+                         (uploadOutput)="onUploadOutput($event, segmentDocumentDialog)"
                          formControlName="document"
                          (change)="validateFile($event)"
                          [uploadInput]="uploadInput">
