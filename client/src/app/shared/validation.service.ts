@@ -60,19 +60,18 @@ export class ValidationService {
 
   static oneEmailRequired(homeEmailKey: string, registrationPurposeEmailKey: string) {
     return (group: FormGroup): { [key: string]: any } => {
-      let homeEmail = group.controls[homeEmailKey];
-      let registrationPurposeEmail = group.controls[registrationPurposeEmailKey];
+      let homeEmailControl = group.controls[homeEmailKey];
+      let registrationPurposeEmailControl = group.controls[registrationPurposeEmailKey];
 
-      if (homeEmail.value === '') homeEmail.setValue(null);
-      if (registrationPurposeEmail.value === '') registrationPurposeEmail.setValue(null);
+      if (homeEmailControl && homeEmailControl.value === '') homeEmailControl.setValue(null);
+      if (registrationPurposeEmailControl.value === '') registrationPurposeEmailControl.setValue(null);
 
-      if ((homeEmail.touched || homeEmail.dirty )&&(registrationPurposeEmail.dirty || registrationPurposeEmail.touched)) {
-        if (homeEmail.value == null && registrationPurposeEmail.value == null) {
-          return {
-            oneEmailRequired: true
-          }
-        }
+      if((homeEmailControl && homeEmailControl.value && homeEmailControl.valid)|| (registrationPurposeEmailControl && registrationPurposeEmailControl.value && registrationPurposeEmailControl.valid)){
+        return null;
+      } else {
+        return {oneEmailRequired: true}
       }
+
     }
   }
 
