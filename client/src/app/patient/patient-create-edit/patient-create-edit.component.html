@@ -101,7 +101,7 @@
               [customMessage]="emailErrorMessage"
               [control]="createEditPatientForm.controls.homeEmail">
             </c2s-control-validation-error-message>
-            <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
+            <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')&&(createEditPatientForm.controls.homeEmail.dirty||createEditPatientForm.controls.homeEmail.touched||createEditPatientForm.controls.registrationPurposeEmail.dirty||createEditPatientForm.controls.registrationPurposeEmail.touched)">
               {{oneEmailRequiredMessage | translate}}
             </md-hint>
           </div>
@@ -117,7 +117,7 @@
               [customMessage]="emailErrorMessage"
               [control]="createEditPatientForm.controls.registrationPurposeEmail">
             </c2s-control-validation-error-message>
-            <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')">
+            <md-hint class="has-error font-size16" *ngIf="createEditPatientForm.hasError('oneEmailRequired')&&(createEditPatientForm.controls.registrationPurposeEmail.dirty||createEditPatientForm.controls.registrationPurposeEmail.touched||createEditPatientForm.controls.homeEmail.dirty||createEditPatientForm.controls.homeEmail.touched)">
               {{oneEmailRequiredMessage | translate}}
             </md-hint>
           </div>
