@@ -7,6 +7,7 @@ import {Oauth2Client} from "app/core/oauth2-client.model";
 import {SessionStorageService} from "app/security/shared/session-storage.service";
 import {Config} from "app/core/config.model";
 import {NotificationService} from "app/shared/notification.service";
+import {TokenService} from "../security/shared/token.service";
 
 @Injectable()
 export class ConfigService {
@@ -16,6 +17,7 @@ export class ConfigService {
               private exceptionService: ExceptionService,
               private http: Http,
               private notificationService: NotificationService,
+              private tokenService: TokenService,
               private sessionStorageService: SessionStorageService) {
   }
 
@@ -39,7 +41,20 @@ export class ConfigService {
     if (config != null) {
       return config;
     } else {
-      this.notificationService.i18nShow("SHARED.CONFIGURATION_SERVICE_ERROR");
+      // If logged in using master-ui then get config
+      if(this.tokenService.getProfileToken() && this.tokenService.getAccessToken()){
+        // Get config data once login
+        this.getConfig().subscribe(
+          (config: Config) => {
+            this.setConfigInSessionStorage(config);
+          },
+          (err) => {
+            this.notificationService.i18nShow("SHARED.CONFIGURATION_SERVICE_ERROR");
+          }
+        );
+      }else{
+        this.notificationService.i18nShow("SHARED.CONFIGURATION_SERVICE_ERROR");
+      }
     }
   }
 
