@@ -15,6 +15,10 @@ export class UtilityService {
     this.router.navigate([url]);
   }
 
+  redirectInSameTab(url: string) {
+    window.location.replace( url);
+  }
+
   public formatZipCode(zipCode: string): string {
     if (zipCode.length > 5) {
       zipCode = zipCode.slice(0, 5) + "-" + zipCode.slice(5);
