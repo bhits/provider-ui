@@ -61,8 +61,4 @@ export class ConfigService {
   public setConfigInSessionStorage(config: Config): void {
     this.sessionStorageService.store(this.C2S_CONFIG_KEY, config);
   }
-
-  public deleteConfigInSessionStorage() {
-    this.sessionStorageService.clear(this.C2S_CONFIG_KEY);
-  }
 }

@@ -29,19 +29,6 @@ export class ProfileService {
     return this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY);
   }
 
-  public deleteProfileFromSessionStorage() {
-    this.sessionStorageService.clear(this.UMS_PROFILE_KEY);
-  }
-
-  getUserName(): String {
-    let umsProfile: UmsProfile = this.getProfileFromSessionStorage();
-    if (umsProfile) {
-      return umsProfile.userName;
-    } else {
-      return "";
-    }
-  }
-
   public getFullName(): string {
     let umsProfile: UmsProfile = this.getProfileFromSessionStorage();
     if (umsProfile) {

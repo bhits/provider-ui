@@ -57,10 +57,6 @@ export class TokenService {
     return this.sessionStorageService.retrieve(this.USER_PROFILE_KEY);
   }
 
-  public deleteUserProfile(): void {
-    this.sessionStorageService.clear(this.USER_PROFILE_KEY);
-  }
-
   public createProfileObject(uaaProfile: any): Profile {
     let profile = new Profile();
     profile.email = uaaProfile.email;
@@ -79,10 +75,6 @@ export class TokenService {
 
   public getProviderCount() {
     return this.sessionStorageService.retrieve(this.PROVIDER_COUNT_KEY);
-  }
-
-  public deleteProviderCount() {
-    this.sessionStorageService.clear(this.PROVIDER_COUNT_KEY);
   }
 
   getMasterUiLoginUrl(): string{

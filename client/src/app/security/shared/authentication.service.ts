@@ -67,19 +67,14 @@ export class AuthenticationService {
   }
 
   public logout(): void {
-    this.tokenService.deleteAccessToken();
-    this.tokenService.deleteUserProfile();
-    this.tokenService.deleteProviderCount();
-    this.profileService.deleteProfileFromSessionStorage();
-    this.configService.deleteConfigInSessionStorage();
     this.globalEventManagementService.setShowHeader(false);
-    this.goToLogin();
+    this.clearSessionStorgeAndRedirectToLogin();
   }
 
-  private goToLogin(){
+  private clearSessionStorgeAndRedirectToLogin(){
     let masterUiLoginUrl = this.tokenService.getMasterUiLoginUrl();
+    sessionStorage.clear();
     if(masterUiLoginUrl){
-      this.tokenService.deleteMasterUiLoginUrl();
       this.utilityService.redirectInSameTab(masterUiLoginUrl);
     }else{
       this.utilityService.navigateTo(this.apiUrlService.getLoginUrl());
