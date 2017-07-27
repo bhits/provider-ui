@@ -21,12 +21,12 @@ export class TryPolicyService {
       .catch(this.exceptionService.handleError);
   }
 
-  public applyTryPolicyUseSampleDoc(patientMrn: string, consentId: number, documentId: number, purposeOfUseCode: string): Observable<TryPolicyResponse> {
+  public applyTryPolicyUseSampleDoc(patientMrn: string, consentId: number, documentId: string, purposeOfUseCode: string): Observable<TryPolicyResponse> {
     const resourceUrl = this.apiUrlService.getTryPolicyBaseUrl()
-      .concat("/tryPolicySampleXHTML/" + patientMrn);
+      .concat("/tryPolicyXHTML/" + patientMrn);
     let params: URLSearchParams = new URLSearchParams();
     params.set('consentId', consentId.toString());
-    params.set('documentId', documentId.toString());
+    params.set('documentId', documentId);
     params.set('purposeOfUseCode', purposeOfUseCode);
 
     return this.http.get(resourceUrl, {search: params})
