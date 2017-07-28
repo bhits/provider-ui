@@ -153,14 +153,14 @@
 <!--- BODY --------------------------->
       <div class="p-l p-r">
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
-          <div fxFlex *ngIf="hasDoNotShareSensitivityPolicyCodes(); else doShareSensitivityPolicy">
+          <div fxFlex="65" *ngIf="hasDoNotShareSensitivityPolicyCodes(); else doShareSensitivityPolicy">
             <h3 class="m-t-none m-b-xs font-size16">
               <strong>
                 {{ 'CONSENT.CARD.MEDICAL_INFORMATION_DISCLOSED' | translate }}
               </strong>
             </h3>
             <md-chip-list>
-              <md-chip class="consents" style="margin: 5px !important;"
+              <md-chip class="consents"
                        *ngFor="let shareSensitivityCategory of consent.shareSensitivityCategories"
                        color="accent" selected="true">
                 <md-icon>check_circle</md-icon>
@@ -169,7 +169,7 @@
             </md-chip-list>
           </div>
           <ng-template #doShareSensitivityPolicy>
-            <div fxFlex>
+            <div fxFlex="65">
               <h3 class="m-t-none m-b-xs font-size16">
                 <strong>
                   {{ 'CONSENT.CARD.SHARE_ALL' | translate }}
@@ -186,7 +186,7 @@
             </div>
           </ng-template>
           <div fxFlex>
-            <h3 class="m-b-xs">
+            <h3 class="m-t-none m-b-xs font-size16">
               <strong>
                 {{ 'CONSENT.CARD.SHARE_PURPOSE_OF_USES' | translate }}
               </strong>
