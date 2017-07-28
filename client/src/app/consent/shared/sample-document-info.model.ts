@@ -1,5 +1,5 @@
 export class SampleDocumentInfo {
+  id: number;
   documentName: string;
-  fileName: string;
-  contentType: string;
+  sampleDocument: boolean;
 }

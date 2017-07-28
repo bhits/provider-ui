@@ -141,7 +141,7 @@
           <md-select formControlName="sampleDocument" class="medium-width font-size20"
                      placeholder="{{ 'CONSENT.CARD.APPLY_TRY_POLICY_DIALOG.CONTENT.DOCUMENT_PLACEHOLDER' | translate }}">
             <md-option *ngFor="let sampleDocument of sampleDocuments"
-                       [value]="sampleDocuments.indexOf(sampleDocument)">
+                       [value]="sampleDocument.id">
               {{ sampleDocument.documentName }}
             </md-option>
           </md-select>

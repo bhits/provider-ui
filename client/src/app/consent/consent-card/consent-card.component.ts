@@ -157,7 +157,7 @@ export class ConsentCardComponent implements OnInit {
   public applyTryPolicy(applyTryPolicyDialog: any): void {
     applyTryPolicyDialog.close();
     const formModel = this.applyTryPolicyForm.value;
-    this.tryPolicyService.applyTryPolicyUseSampleDoc(this.selectedPatient.mrn, this.consent.id, formModel.purposeOfUse, formModel.sampleDocument)
+    this.tryPolicyService.applyTryPolicyUseSampleDoc(this.selectedPatient.mrn, this.consent.id, formModel.sampleDocument, formModel.purposeOfUse)
       .subscribe(
         (tryPolicyResponse) => {
           this.tryPolicyService.handleApplyTryPolicySuccess(tryPolicyResponse);
