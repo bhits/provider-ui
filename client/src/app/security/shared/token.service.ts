@@ -81,7 +81,4 @@ export class TokenService {
     return this.sessionStorageService.retrieve(this.MASTER_UI_LOGIN);
   }
 
-  deleteMasterUiLoginUrl(){
-    this.sessionStorageService.clear(this.MASTER_UI_LOGIN);
-  }
 }
