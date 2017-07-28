@@ -27,6 +27,7 @@
         <ng-template #hasConsent>
           <div fxLayoutAlign="center">
             <pagination-controls
+              id="consent-paginate"
               previousLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.PREVIOUS' | translate }}"
               nextLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.NEXT' | translate }}"
               (pageChange)="getPage($event)">
@@ -36,17 +37,10 @@
             <md-spinner *ngIf="loading"></md-spinner>
           </div>
           <c2s-consent-card
-            *ngFor="let consent of asyncConsents | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
+            *ngFor="let consent of asyncConsents | async | paginate: {id: 'consent-paginate', itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
             [consent]="consent"
             (deleteConsent)="onDeleteConsent($event)">
           </c2s-consent-card>
-          <div fxLayoutAlign="center">
-            <pagination-controls
-              previousLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.PREVIOUS' | translate }}"
-              nextLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.NEXT' | translate }}"
-              (pageChange)="getPage($event)">
-            </pagination-controls>
-          </div>
         </ng-template>
       </div>
     </div>

@@ -19,7 +19,7 @@ export class ProviderCardListComponent implements OnInit {
   public providers: Provider[];
   public noProvider: boolean = false;
   public paginationConfig: PaginationInstance = {
-    id: "provider-list",
+    id: "provider-paginate",
     itemsPerPage: 8,
     currentPage: 1
   };

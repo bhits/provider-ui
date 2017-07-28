@@ -36,10 +36,10 @@ export class ConsentCardListComponent implements OnInit {
   public getPage(page: number) {
     this.loading = true;
     this.asyncConsents = this.consentService.getConsents(this.selectedPatient.mrn, page - 1, this.itemsPerPage)
-      .do((patients: PageableData<DetailedConsent>) => {
-        this.noConsent = patients.totalElements === 0;
-        this.totalItems = patients.totalElements;
-        this.currentPage = patients.number + 1;
+      .do((consents: PageableData<DetailedConsent>) => {
+        this.noConsent = consents.totalElements === 0;
+        this.totalItems = consents.totalElements;
+        this.currentPage = consents.number + 1;
         this.loading = false;
       })
       .map(pageableConsent => pageableConsent.content);
