@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {humanizeBytes, UploadFile, UploadInput, UploadOutput} from "ngx-uploader";
-
 import {TokenService} from "../../security/shared/token.service";
 import {SharePurpose} from "app/consent/shared/share-purpose.model";
 import {UploadOutputType} from "../../consent/shared/upload-output-type.enum";
@@ -227,4 +226,20 @@ export class SegmentDocumentComponent implements OnInit {
     segmentDocumentDialog.close();
   }
 
+  public checkIfProviderFirstAndLastNameExists(provider: FlattenedSmallProvider): boolean {
+    if (provider && provider.firstName && provider.lastName) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  public checkIfProviderOrganizationNameExists(provider: FlattenedSmallProvider): boolean {
+    if (provider && provider.organizationName) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

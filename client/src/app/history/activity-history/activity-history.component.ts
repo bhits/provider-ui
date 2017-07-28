@@ -17,7 +17,7 @@ export class ActivityHistoryComponent implements OnInit {
   public itemsPerPage: number = 10;
   public noActivityHistory: boolean = true;
   public loading: boolean = true;
-  public asyncActivityHistory: ActivityHistory[];
+  public activityHistories: ActivityHistory[];
 
   constructor(private consentService: ConsentService,
               private route: ActivatedRoute) {
@@ -32,7 +32,7 @@ export class ActivityHistoryComponent implements OnInit {
     this.loading = true;
     this.consentService.getActivityHistory(this.selectedPatient.mrn, page - 1, this.itemsPerPage)
       .subscribe(resp => {
-        this.asyncActivityHistory = resp.content;
+        this.activityHistories = resp.content;
         this.noActivityHistory = resp.totalElements === 0;
         this.totalItems = resp.totalElements;
         this.currentPage = resp.number + 1;
