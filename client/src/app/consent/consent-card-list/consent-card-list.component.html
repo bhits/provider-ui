@@ -16,7 +16,7 @@
         <div fxLayoutAlign="center">
           <div class="m-t-lg p-b-sm border-bottom-purple-thin" fxFlex="1 0 auto" fxLayoutAlign="flex-start center"
                fxLayoutGap="10px">
-            <div class="font-size20 font-weight300">Current Consent List</div>
+            <div class="font-size20 font-weight300">{{ 'CONSENT.CARD_LIST.CURRENT_LIST' | translate }}</div>
           </div>
         </div>
         <div style="padding-top: 20px;" *ngIf="noConsent; else hasConsent">
@@ -27,24 +27,20 @@
         <ng-template #hasConsent>
           <div fxLayoutAlign="center">
             <pagination-controls
+              id="consent-paginate"
               previousLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.PREVIOUS' | translate }}"
               nextLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.NEXT' | translate }}"
               (pageChange)="getPage($event)">
             </pagination-controls>
+          </div>
+          <div fxLayoutAlign="center">
             <md-spinner *ngIf="loading"></md-spinner>
           </div>
           <c2s-consent-card
-            *ngFor="let consent of asyncConsents | async | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
+            *ngFor="let consent of asyncConsents | async | paginate: {id: 'consent-paginate', itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
             [consent]="consent"
             (deleteConsent)="onDeleteConsent($event)">
           </c2s-consent-card>
-          <div fxLayoutAlign="center">
-            <pagination-controls
-              previousLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.PREVIOUS' | translate }}"
-              nextLabel="{{ 'CONSENT.CARD_LIST.PAGINATION.NEXT' | translate }}"
-              (pageChange)="getPage($event)">
-            </pagination-controls>
-          </div>
         </ng-template>
       </div>
     </div>

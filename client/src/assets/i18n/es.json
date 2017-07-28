@@ -37,6 +37,7 @@
   "CONSENT": {
     "CARD_LIST": {
       "ACCORDION_HEADER": "{spanish} Patient's Consents",
+      "CURRENT_LIST": "{Spanish} Current Consent List",
       "ADD_CONSENT_BUTTON": "Añadir un consentimiento",
       "NO_CONSENTS_MSG": "Actualmente no hay consentimientos disponibles. Haga clic en el botón Añadir un consentimiento para crear un nuevo consentimiento.",
       "PAGINATION": {
@@ -320,7 +321,7 @@
       }
     },
     "VERIFICATION": {
-      "ACCORDION_HEADER": "{spanish} Account Activation/Verification Code",
+      "ACCORDION_HEADER": "{spanish} Account Activation / Verification Code",
       "CARD": {
         "TITLE": "{spanish} Account Activation / Verification Code",
         "CONTENT": {
@@ -368,6 +369,18 @@
       "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI...",
       "DOCUMENT_NOT_FOUND_NOTIFICATION_MSG": "{spanish} Document Not Found."
     },
+    "ACTIVITY_HISTORY": {
+      "SECTION_TITLE": "Historia de Actividades",
+      "COMPONENT_TITLE": "{spanish}(Consent) Historia de Actividades",
+      "NO_ACTIVITY_HISTORY": "{spanish}No activity history to display",
+      "TABLE": {
+        "DATE": "Día",
+        "ACTION": "Acción",
+        "CONSENT_REFERENCE_ID": "{spanish}Consent Reference ID",
+        "CHANGED_BY": "Cambiado por",
+        "ROLE": "{spanish}Role"
+      }
+    },
     "NOTIFICATION_MSG": {
       "SUCCESS_SENT_EMAIL": "{spanish}Successfully sent the email.",
       "FAILED_SENT_EMAIL": "{spanish}Failed to send email. Please try again later.",
@@ -382,11 +395,12 @@
   },
   "PROVIDER": {
     "CARD_LIST": {
-      "ACCORDION_HEADER": "{spanish} Patient's Providers",
+      "ACCORDION_HEADER": "{Spanish} Patient's Providers",
+      "CURRENT_LIST": "{Spanish} Current Provider List",
       "WARNING": "¡DE ACUERDO! Debe agregar al menos dos contactos antes de compartir su información de salud.",
       "ADD_PROVIDER_BUTTON": "Agregar un proveedor de servicios de salud",
       "SORT_LIST_TITLE": "Mostrar lista por",
-      "NO_PROVIDERS_MSG": "{spanish} There are currently no providers available. Please click the 'Add a Health Provider' button to create a new provider.",
+      "NO_PROVIDERS_MSG": "{Spanish} There are currently no providers available. Please click the 'Add a Health Provider' button to create a new provider.",
       "PAGINATION": {
         "PREVIOUS": "Anterior",
         "NEXT": "Siguiente"
