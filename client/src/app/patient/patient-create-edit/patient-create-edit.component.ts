@@ -325,7 +325,7 @@ export class PatientCreateEditComponent implements OnInit {
           this.utilityService.navigateTo(this.apiUrlService.getPatientSearchUrl())
         },
         err => {
-          this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_CREATE_PATIENT");
+          this.patientService.handleIdentifierSystemError(err);
           console.log(err);
         }
       );

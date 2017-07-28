@@ -390,7 +390,8 @@
       "FAILED_DISABLE_ACCOUNT": "{spanish}Failed to disable account. Please try again later.",
       "FAILED_SEARCH_PATIENT": "{spanish}Failed to search patient. Please try again later.",
       "FAILED_CREATE_PATIENT": "{spanish}Failed to create patient. Please try again later.",
-      "FAILED_UPDATE_PATIENT": "{spanish}Failed to update patient. Please try again later."
+      "FAILED_UPDATE_PATIENT": "{spanish}Failed to update patient. Please try again later.",
+      "IDENTIFIER_VALUE_DUPLICATE": "{spanish}This identifier number has already been assigned. Please try a different identifier number."
     }
   },
   "PROVIDER": {
