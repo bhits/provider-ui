@@ -66,7 +66,7 @@ export class HttpInterceptorService extends Http {
       options = new RequestOptions({});
     }
 
-    let token = this.tokenService.getOauthToken();
+    let token = this.tokenService.getAccessToken();
 
     if (token && token['access_token']) {
 

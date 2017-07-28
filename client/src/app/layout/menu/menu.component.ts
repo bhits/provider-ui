@@ -19,7 +19,12 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isProviderListCardEnabled = this.configService.getConfigInSessionStorage().providerPermissions.patientListCardEnabled;
+    let config:any = this.configService.getConfigInSessionStorage();
+    if(config){
+      this.isProviderListCardEnabled = config.providerPermissions.patientListCardEnabled;
+    } else {
+      console.log("Cannot get config from session!")
+    }
   }
 
   public getEnabledMenuItems(): MenuItem[] {

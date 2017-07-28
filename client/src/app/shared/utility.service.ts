@@ -15,6 +15,18 @@ export class UtilityService {
     this.router.navigate([url]);
   }
 
+  redirectInSameTab(path: string) {
+    let url:string = this.composeUrl().concat(path);
+    window.location.replace(url);
+  }
+
+  private composeUrl():string{
+    let protocol:string = window.location.protocol;
+    let host:string = window.location.host;
+    let port:string = window.location.port;
+    return protocol.concat("//").concat(host).concat( port? ":".concat(port).concat("/"): "/");
+  }
+
   public formatZipCode(zipCode: string): string {
     if (zipCode.length > 5) {
       zipCode = zipCode.slice(0, 5) + "-" + zipCode.slice(5);

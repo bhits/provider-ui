@@ -4,7 +4,7 @@ import {TranslateService} from "@ngx-translate/core/src/translate.service";
 
 @Injectable()
 export class NotificationService {
-  private duration: number = 4000;
+  private duration: number = 5000;
 
   constructor(private toast: Md2Toast, private translate: TranslateService) {
   }
