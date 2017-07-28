@@ -154,7 +154,7 @@
       <div class="p-l p-r">
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
           <div fxFlex *ngIf="hasDoNotShareSensitivityPolicyCodes(); else doShareSensitivityPolicy">
-            <h3 class="m-b-xs">
+            <h3 class="m-t-none m-b-xs font-size16">
               <strong>
                 {{ 'CONSENT.CARD.MEDICAL_INFORMATION_DISCLOSED' | translate }}
               </strong>
@@ -170,7 +170,7 @@
           </div>
           <ng-template #doShareSensitivityPolicy>
             <div fxFlex>
-              <h3 class="m-b-xs">
+              <h3 class="m-t-none m-b-xs font-size16">
                 <strong>
                   {{ 'CONSENT.CARD.SHARE_ALL' | translate }}
                 </strong>
