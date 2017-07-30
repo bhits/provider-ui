@@ -142,6 +142,16 @@ body {
 
 
 // ------------------------------------------------------------- create consent styling -------------//
+.md2-accordion-header {
+  white-space: inherit !important;
+  padding: 15px 40px 15px 15px !important;
+  line-height: inherit !important;
+}
+
+.consent-accordion {
+  .md2-accordion-header {white-space: inherit !important;}
+}
+
 
   .lineHeight20 {
     line-height: 20px !important;

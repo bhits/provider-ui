@@ -1,119 +1,9 @@
-<md-card class="c2s-consent p-8 m-b">
-  <md-card-content>
-    <div fxLayout="column">
-      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px"
-           class="consent-card-header" (click)="toggleDetailsVisible(el)">
-        <div fxFlex="1 1 35%">
-          <div fxLayout="column">
-            <div class="font-size11 font-weight600 m-b-xs">
-              {{ 'CONSENT.CARD.AUTHORIZED_TO_SHARE' | translate }}
-            </div>
-            <div class="font-size12" *ngFor="let fromProvider of consent.fromProviders">
-              {{fromProvider | provider: 'name'}}
-            </div>
-          </div>
-        </div>
-        <div fxFlex="1 1 35%">
-          <div fxLAyout="column">
-            <div class="font-size11 font-weight600 m-b-xs">
-              {{ 'CONSENT.CARD.SHARING_WITH' | translate }}
-            </div>
-            <div class="font-size12" *ngFor="let toProvider of consent.toProviders">
-              {{toProvider | provider: 'name'}}
-            </div>
-          </div>
-        </div>
-        <div fxFlex="1 auto">
-          <div fxLayout="column">
-            <div class="font-size11 font-weight600">
-              {{ 'CONSENT.CARD.EFFECTIVE_DATE' | translate }}
-            </div>
-            <div class="font-size12">{{consent.startDate | date}} - {{consent.endDate | date}}</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="transition" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
-           (window:resize)="onResize($event, el)"
-           [style.height]="getHeightPx()" #el>
-        <div fxFlex *ngIf="hasDoNotShareSensitivityPolicyCodes(); else doShareSensitivityPolicy">
-          <h3 class="m-b-xs">
-            <strong>
-              {{ 'CONSENT.CARD.MEDICAL_INFORMATION_DISCLOSED' | translate }}
-            </strong>
-          </h3>
-          <md-chip-list>
-            <md-chip class="consents" style="margin: 5px !important;"
-                     *ngFor="let shareSensitivityCategory of consent.shareSensitivityCategories"
-                     color="accent" selected="true">
-              <md-icon>check_circle</md-icon>
-              <span class="md-chip-icon-text">{{shareSensitivityCategory | sensitivityCategory: 'display'}}</span>
-            </md-chip>
-          </md-chip-list>
-        </div>
-        <ng-template #doShareSensitivityPolicy>
-          <div fxFlex>
-            <h3 class="m-b-xs">
-              <strong>
-                {{ 'CONSENT.CARD.SHARE_ALL' | translate }}
-              </strong>
-            </h3>
-            <md-chip-list>
-              <md-chip class="consents" color="accent" selected="true">
-                <md-icon>check_circle</md-icon>
-                <span class="md-chip-icon-text">
-                  {{ 'CONSENT.CARD.SHARE_ALL_MEDICAL_INFORMATION' | translate }}
-                </span>
-              </md-chip>
-            </md-chip-list>
-          </div>
-        </ng-template>
-        <div fxFlex>
-          <h3 class="m-b-xs">
-            <strong>
-              {{ 'CONSENT.CARD.SHARE_PURPOSE_OF_USES' | translate }}
-            </strong>
-          </h3>
-          <md-chip-list>
-            <md-chip class="consents" *ngFor="let sharePurpose of consent.sharePurposes"
-                     color="accent" selected="true">
-              <md-icon>check_circle</md-icon>
-              <span class="md-chip-icon-text">{{sharePurpose | sharePurpose: 'display'}}</span>
-            </md-chip>
-          </md-chip-list>
-        </div>
-      </div>
-    </div>
-  </md-card-content>
-  <md-card-actions>
-    <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center stretch"
-         fxLayoutAlign.gt-xs="space-between center"
-         class="p-sm bg-xlite-teal">
-      <div fxFlex="1 auto">
-        <div class="font-size14">
-          {{ 'CONSENT.CARD.CONSENT_STATE' | translate }}
-          <md-chip class="consents" color="{{consent.consentStage | consentStage: 'color'}}" selected="true">
-            <md-icon>{{consent.consentStage | consentStage: 'icon'}}</md-icon>
-            <span
-              class="md-chip-icon-text"><strong>{{consent.consentStage | consentStage: 'text' | translate}} </strong></span>
-          </md-chip>
-        </div>
-      </div>
-      <button class="m-t-none" class.xs="m-t-sm" fxFlex="1 0 auto" md-raised-button color="primary"
-              (click)="consentOptionsDialog.open()">
-        {{ 'CONSENT.CARD.MANAGE_CONSENT_BUTTON_TEXT' | translate }}
-      </button>
-    </div>
-  </md-card-actions>
-</md-card>
 <!--------- ACCORDION ------------------------------------------>
 <div class="m-t-lg">
   <md2-accordion class="consent-accordion p-sm m-b-sm bg-white" multiple="false">
     <md2-accordion-tab>
       <md2-accordion-header class="">
         <md-card-title>
-
-          <!--Patient's Consents - Experimental-->
 
           <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px"
                class="consent-card-header" (click)="toggleDetailsVisible(el)">
@@ -147,13 +37,12 @@
             </div>
           </div>
 
-
         </md-card-title>
       </md2-accordion-header>
 <!--- BODY --------------------------->
       <div class="p-l p-r">
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
-          <div fxFlex="65" *ngIf="hasDoNotShareSensitivityPolicyCodes(); else doShareSensitivityPolicy">
+          <div class="m-b-xs" fxFlex="65" *ngIf="hasDoNotShareSensitivityPolicyCodes(); else doShareSensitivityPolicy">
             <h3 class="m-t-none m-b-xs font-size16">
               <strong>
                 {{ 'CONSENT.CARD.MEDICAL_INFORMATION_DISCLOSED' | translate }}
@@ -169,7 +58,7 @@
             </md-chip-list>
           </div>
           <ng-template #doShareSensitivityPolicy>
-            <div fxFlex="65">
+            <div class="m-b-xs" fxFlex="65">
               <h3 class="m-t-none m-b-xs font-size16">
                 <strong>
                   {{ 'CONSENT.CARD.SHARE_ALL' | translate }}
@@ -204,31 +93,12 @@
 <!--- END BODY --------------------------->
     </md2-accordion-tab>
 
-    <!--<div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center stretch"-->
-         <!--fxLayoutAlign.gt-xs="space-between center"-->
-         <!--class="p-sm bg-xlite-teal">-->
-      <!--<div fxFlex="1 auto">-->
-        <!--<div class="font-size14">-->
-          <!--{{ 'CONSENT.CARD.CONSENT_STATE' | translate }}-->
-          <!--<md-chip class="consents" color="{{consent.consentStage | consentStage: 'color'}}" selected="true">-->
-            <!--<md-icon>{{consent.consentStage | consentStage: 'icon'}}</md-icon>-->
-          <!--</md-chip>-->
-          <!--<span-->
-            <!--class="md-chip-icon-text"><strong>{{consent.consentStage | consentStage: 'text' | translate}} </strong></span>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<button class="m-t-none" class.xs="m-t-sm" fxFlex="1 0 auto" md-raised-button color="primary"-->
-              <!--(click)="consentOptionsDialog.open()">-->
-        <!--{{ 'CONSENT.CARD.MANAGE_CONSENT_BUTTON_TEXT' | translate }}-->
-      <!--</button>-->
-    <!--</div>-->
-
     <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center stretch"
          fxLayoutAlign.gt-xs="space-between center"
          class="p-sm bg-xlite-teal">
       <div fxFlex="1 auto">
         <div fxLayout="row" fxLayoutAlign="start center">
-          <md-chip class="consents" color="{{consent.consentStage | consentStage: 'color'}}" selected="true">
+          <md-chip color="{{consent.consentStage | consentStage: 'color'}}" selected="true">
             <md-icon>{{consent.consentStage | consentStage: 'icon'}}</md-icon>
           </md-chip>
           <div fxLayout="column" class="font-size14">
@@ -243,26 +113,6 @@
         {{ 'CONSENT.CARD.MANAGE_CONSENT_BUTTON_TEXT' | translate }}
       </button>
     </div>
-
-    <!--<div class="">-->
-    <!--<div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center stretch"-->
-    <!--fxLayoutAlign.gt-xs="space-between center"-->
-    <!--class="p-sm bg-xlite-teal">-->
-    <!--<div fxFlex="1 auto">-->
-    <!--<div class="font-size14">-->
-    <!--STATE-->
-    <!--<md-chip class="consents" color="primary" selected="true">-->
-    <!--<md-icon>home</md-icon>-->
-    <!--<span-->
-    <!--class="md-chip-icon-text"><strong>Chip Text </strong></span>-->
-    <!--</md-chip>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<button class="m-t-none" class.xs="m-t-sm" fxFlex="1 0 auto" md-raised-button color="primary">-->
-    <!--Button-->
-    <!--</button>-->
-    <!--</div>-->
-    <!--</div>-->
 
   </md2-accordion>
 </div>
