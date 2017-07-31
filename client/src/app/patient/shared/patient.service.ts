@@ -7,6 +7,7 @@ import {ApiUrlService} from "app/shared/api-url.service";
 import {PatientActivationResponse} from "app/patient/shared/patient-activation-response.model";
 import {PageableData} from "../../shared/pageable-data.model";
 import {PatientSearchQuery} from "./patient-search-query.model";
+import {NotificationService} from "app/shared/notification.service";
 
 @Injectable()
 export class PatientService {
@@ -16,6 +17,7 @@ export class PatientService {
 
   constructor(private apiUrlService: ApiUrlService,
               private exceptionService: ExceptionService,
+              private notificationService: NotificationService,
               private http: Http) {
   }
 
@@ -66,7 +68,7 @@ export class PatientService {
     const CREATE_PATIENT_URL = this.umsPatientUrl;
     return this.http.post(CREATE_PATIENT_URL, patient)
       .map(() => null)
-      .catch(this.exceptionService.handleError);
+      .catch(this.exceptionService.handleErrorWithErrorCode);
   }
 
   public getPatient(patientId: number): Observable<Patient> {
@@ -109,5 +111,13 @@ export class PatientService {
     return this.http.put(PATIENT_DISABLED_URL, {})
       .map(() => null)
       .catch(this.exceptionService.handleError);
+  }
+
+  handleIdentifierSystemError(err: any){
+    if(err == "409"){
+      this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.IDENTIFIER_VALUE_DUPLICATE");
+    }else{
+      this.notificationService.i18nShow("PATIENT.NOTIFICATION_MSG.FAILED_CREATE_PATIENT");
+    }
   }
 }

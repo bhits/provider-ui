@@ -5,27 +5,28 @@ import {Profile} from "../../core/profile.model";
 
 @Injectable()
 export class TokenService {
-  private OAUTH_TOKEN_KEY: string = 'c2s-oauth-token';
+  private ACCESS_TOKEN_KEY: string = 'c2s-access-token';
   private USER_PROFILE_KEY: string = 'c2s-user-profile-token';
   private PROVIDER_COUNT_KEY: string = 'c2s-patient-provider-count';
+  private MASTER_UI_LOGIN: string = 'c2s-master-ui-login';
 
   constructor(private sessionStorageService: SessionStorageService) {
   }
 
-  public getOauthToken(): AuthorizationResponse {
-    return this.sessionStorageService.retrieve(this.OAUTH_TOKEN_KEY);
+  public getAccessToken(): AuthorizationResponse {
+    return this.sessionStorageService.retrieve(this.ACCESS_TOKEN_KEY);
   }
 
-  public setOauthToken(authorizationResponse: AuthorizationResponse): void {
-    this.sessionStorageService.store(this.OAUTH_TOKEN_KEY, authorizationResponse);
+  public setAccessToken(authorizationResponse: AuthorizationResponse): void {
+    this.sessionStorageService.store(this.ACCESS_TOKEN_KEY, authorizationResponse);
   }
 
   public deleteAccessToken(): void {
-    this.sessionStorageService.clear(this.OAUTH_TOKEN_KEY);
+    this.sessionStorageService.clear(this.ACCESS_TOKEN_KEY);
   }
 
   public createAuthorizationHeaderObject() {
-    let token = this.getOauthToken();
+    let token = this.getAccessToken();
     let customHeaders = {};
     if (token && token['access_token']) {
       let access_token = token['access_token'];
@@ -41,8 +42,8 @@ export class TokenService {
   }
 
   public hasScope(scope: string): boolean {
-    if (this.getOauthToken()) {
-      const uaaToken: AuthorizationResponse = this.getOauthToken();
+    if (this.getAccessToken()) {
+      const uaaToken: AuthorizationResponse = this.getAccessToken();
       return uaaToken.scope.includes(scope);
     }
     return false;
@@ -54,10 +55,6 @@ export class TokenService {
 
   public getProfileToken(): Profile {
     return this.sessionStorageService.retrieve(this.USER_PROFILE_KEY);
-  }
-
-  public deleteUserProfile(): void {
-    this.sessionStorageService.clear(this.USER_PROFILE_KEY);
   }
 
   public createProfileObject(uaaProfile: any): Profile {
@@ -80,7 +77,8 @@ export class TokenService {
     return this.sessionStorageService.retrieve(this.PROVIDER_COUNT_KEY);
   }
 
-  public deleteProviderCount() {
-    this.sessionStorageService.clear(this.PROVIDER_COUNT_KEY);
+  getMasterUiLoginUrl(): string{
+    return this.sessionStorageService.retrieve(this.MASTER_UI_LOGIN);
   }
+
 }

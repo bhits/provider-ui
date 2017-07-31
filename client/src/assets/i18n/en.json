@@ -392,7 +392,8 @@
       "FAILED_DISABLE_ACCOUNT": "Failed to disable account. Please try again later.",
       "FAILED_SEARCH_PATIENT": "Failed to search patient. Please try again later.",
       "FAILED_CREATE_PATIENT": "Failed to create patient. Please try again later.",
-      "FAILED_UPDATE_PATIENT": "Failed to update patient. Please try again later."
+      "FAILED_UPDATE_PATIENT": "Failed to update patient. Please try again later.",
+      "IDENTIFIER_VALUE_DUPLICATE": "This identifier number has already been assigned. Please try a different identifier number."
     }
   },
   "PROVIDER": {

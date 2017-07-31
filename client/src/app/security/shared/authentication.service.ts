@@ -53,7 +53,7 @@ export class AuthenticationService {
   }
 
   public onLoggedIn(response: AuthorizationResponse): void {
-    this.tokenService.setOauthToken(response);
+    this.tokenService.setAccessToken(response);
 
     // Get config data once login
     this.configService.getConfig().subscribe(
@@ -67,14 +67,20 @@ export class AuthenticationService {
   }
 
   public logout(): void {
-    this.tokenService.deleteAccessToken();
-    this.tokenService.deleteUserProfile();
-    this.tokenService.deleteProviderCount();
-    this.profileService.deleteProfileFromSessionStorage();
-    this.configService.deleteConfigInSessionStorage();
     this.globalEventManagementService.setShowHeader(false);
-    this.utilityService.navigateTo(this.apiUrlService.getLoginUrl());
+    this.clearSessionStorgeAndRedirectToLogin();
   }
+
+  private clearSessionStorgeAndRedirectToLogin(){
+    let masterUiLoginUrl = this.tokenService.getMasterUiLoginUrl();
+    sessionStorage.clear();
+    if(masterUiLoginUrl){
+      this.utilityService.redirectInSameTab(masterUiLoginUrl);
+    }else{
+      this.utilityService.navigateTo(this.apiUrlService.getLoginUrl());
+    }
+  }
+
 
   public onGetUserProfileSuccess(profile: Profile) {
     this.globalEventManagementService.setProfile(profile);
