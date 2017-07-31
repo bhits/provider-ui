@@ -114,7 +114,7 @@ body {
 }
 
 
-  .mat-select-trigger {font-size: 18px !important;}
+  //.mat-select-trigger {font-size: 18px !important;}
 
 //#myPatient {
   div.md2-datepicker-input {
@@ -309,29 +309,42 @@ body {
   // provider-search styles -------------------------------------- provider search //
 
   .provider-search-card {
-    &.mat-card {
-      padding: 0;
-    }
-    md2-accordion-tab .md2-accordion-header {
-      color: white !important;
-      //background-color: #243852;
-      background-color: #2f526d;
-      padding: 10px;
-      max-height: inherit;
-    }
-    .mat-card-title {
-      margin: 0;
-      padding-left: 15px;
-    }
-    .md2-accordion-header-icon {
-      border-color: white !important;
-      right: 20px;
-      top: 23px !important;
-    }
-    .md2-accordion-tab-active .md2-accordion-header-icon {
-      border-color: white !important;
-      top: 27px !important;
-    }
+      padding: 10px !important;
+      md-card-header {
+        background-color: #24a69a;
+        border-radius: 3px;
+        color:white;
+        padding: 15px;
+        margin: 0;
+        line-height: 4em;
+        md-card-title {
+          font-size: 2.6em !important;
+          margin: 0;
+        }
+      }
+    //&.mat-card {
+    //  padding: 0;
+    //}
+    //md2-accordion-tab .md2-accordion-header {
+    //  color: white !important;
+    //  //background-color: #243852;
+    //  background-color: #2f526d;
+    //  padding: 10px;
+    //  max-height: inherit;
+    //}
+    //.mat-card-title {
+    //  margin: 0;
+    //  padding-left: 15px;
+    //}
+    //.md2-accordion-header-icon {
+    //  border-color: white !important;
+    //  right: 20px;
+    //  top: 23px !important;
+    //}
+    //.md2-accordion-tab-active .md2-accordion-header-icon {
+    //  border-color: white !important;
+    //  top: 27px !important;
+    //}
 
   }
 
