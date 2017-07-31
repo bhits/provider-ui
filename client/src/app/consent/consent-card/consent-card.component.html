@@ -43,7 +43,7 @@
       <div class="p-l p-r">
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
           <div class="m-b-xs" fxFlex="65" *ngIf="hasDoNotShareSensitivityPolicyCodes(); else doShareSensitivityPolicy">
-            <h3 class="m-t-none m-b-xs font-size16">
+            <h3 class="m-t-none m-b-sm font-size16">
               <strong>
                 {{ 'CONSENT.CARD.MEDICAL_INFORMATION_DISCLOSED' | translate }}
               </strong>
@@ -59,7 +59,7 @@
           </div>
           <ng-template #doShareSensitivityPolicy>
             <div class="m-b-xs" fxFlex="65">
-              <h3 class="m-t-none m-b-xs font-size16">
+              <h3 class="m-t-none m-b-sm font-size16">
                 <strong>
                   {{ 'CONSENT.CARD.SHARE_ALL' | translate }}
                 </strong>
@@ -75,7 +75,7 @@
             </div>
           </ng-template>
           <div fxFlex>
-            <h3 class="m-t-none m-b-xs font-size16">
+            <h3 class="m-t-none m-b-sm font-size16">
               <strong>
                 {{ 'CONSENT.CARD.SHARE_PURPOSE_OF_USES' | translate }}
               </strong>
