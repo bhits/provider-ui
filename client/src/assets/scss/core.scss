@@ -60,11 +60,12 @@ body {
 .dob-modify {
   margin-right: -10px;
 }
+
 .patientRecord-accordion {
   border: thin solid #94b9af;
   &:hover {border: 1px solid #448866;}
   div.md2-accordion-header {
-    padding: 15px;
+    padding: 10px 15px;
     background-color: #b0d6cf;
     border: none !important;
     //box-shadow: 0 1px 0 #cecece !important;
@@ -72,12 +73,37 @@ body {
     &:hover {background-color: #71cbb5;}
     md-card-title {margin-bottom: 0 !important;}
     .md2-accordion-header-icon {
-      top: 28px !important;
+      top: 24px !important;
       right: 25px !important;
       border-width: 0 4px 4px 0 !important;
     }
   }
 }
+
+.consent-accordion {
+  border: thin solid #94b9af;
+  &:hover {border: 1px solid #448866;}
+  div.md2-accordion-header {
+    padding: 10px 15px;
+    line-height: inherit;
+
+    background-color: #b0d6cf;
+    border: none !important;
+    //box-shadow: 0 1px 0 #cecece !important;
+    box-shadow: none !important;
+    &:hover {background-color: #71cbb5;}
+    md-card-title {
+      margin-bottom: 0 !important;
+      font-size: 14px;
+    }
+    .md2-accordion-header-icon {
+      top: 24px !important;
+      right: 25px !important;
+      border-width: 0 4px 4px 0 !important;
+    }
+  }
+}
+
 .form-boundary {
   width: 70%;
   margin-left: auto;
@@ -88,7 +114,7 @@ body {
 }
 
 
-  .mat-select-trigger {font-size: 18px !important;}
+  //.mat-select-trigger {font-size: 18px !important;}
 
 //#myPatient {
   div.md2-datepicker-input {
@@ -116,6 +142,16 @@ body {
 
 
 // ------------------------------------------------------------- create consent styling -------------//
+.md2-accordion-header {
+  white-space: inherit !important;
+  padding: 15px 40px 15px 15px !important;
+  line-height: inherit !important;
+}
+
+.consent-accordion {
+  .md2-accordion-header {white-space: inherit !important;}
+}
+
 
   .lineHeight20 {
     line-height: 20px !important;
@@ -128,9 +164,10 @@ body {
   md-chip {
     margin: 5px;
     border-radius: 4px !important;
-    font-size: 1em !important;
+    //font-size: 1em !important;
     padding: 4px 8px !important;
     &.consents {
+      margin: 0 5px 5px 0 !important;
     }
     &.medInfo {
       background-color: #8a1004 !important;
@@ -272,29 +309,42 @@ body {
   // provider-search styles -------------------------------------- provider search //
 
   .provider-search-card {
-    &.mat-card {
-      padding: 0;
-    }
-    md2-accordion-tab .md2-accordion-header {
-      color: white !important;
-      //background-color: #243852;
-      background-color: #2f526d;
-      padding: 10px;
-      max-height: inherit;
-    }
-    .mat-card-title {
-      margin: 0;
-      padding-left: 15px;
-    }
-    .md2-accordion-header-icon {
-      border-color: white !important;
-      right: 20px;
-      top: 23px !important;
-    }
-    .md2-accordion-tab-active .md2-accordion-header-icon {
-      border-color: white !important;
-      top: 27px !important;
-    }
+      padding: 10px !important;
+      md-card-header {
+        background-color: #24a69a;
+        border-radius: 3px;
+        color:white;
+        padding: 15px;
+        margin: 0;
+        line-height: 4em;
+        md-card-title {
+          font-size: 2.6em !important;
+          margin: 0;
+        }
+      }
+    //&.mat-card {
+    //  padding: 0;
+    //}
+    //md2-accordion-tab .md2-accordion-header {
+    //  color: white !important;
+    //  //background-color: #243852;
+    //  background-color: #2f526d;
+    //  padding: 10px;
+    //  max-height: inherit;
+    //}
+    //.mat-card-title {
+    //  margin: 0;
+    //  padding-left: 15px;
+    //}
+    //.md2-accordion-header-icon {
+    //  border-color: white !important;
+    //  right: 20px;
+    //  top: 23px !important;
+    //}
+    //.md2-accordion-tab-active .md2-accordion-header-icon {
+    //  border-color: white !important;
+    //  top: 27px !important;
+    //}
 
   }
 

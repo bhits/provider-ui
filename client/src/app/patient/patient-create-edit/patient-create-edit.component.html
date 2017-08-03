@@ -4,6 +4,7 @@
     <i class="material-icons md-36 ribbon-blue">perm_contact_calendar</i>
     <h2>{{editingPatient | patient: 'fullName'}}</h2>
   </div>
+
   <div *ngIf="isEditMode">
     <c2s-patient-verification [patient]="editingPatient" *ngIf="displayActivation"></c2s-patient-verification>
   </div>
@@ -297,4 +298,8 @@
     <c2s-segment-patient-health-record  [patient]="editingPatient"  *ngIf="displaySegmentation"></c2s-segment-patient-health-record>
     <c2s-activity-history></c2s-activity-history>
   </div>
+
+
+
+
 </div>

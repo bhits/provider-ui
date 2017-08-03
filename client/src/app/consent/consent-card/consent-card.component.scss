@@ -5,6 +5,7 @@
       margin: 0;
       padding: 10px;
       background-color: #bcdedb;
+      white-space: inherit !important;
     }
 
     .consent-card-header:hover {
@@ -22,7 +23,7 @@
       padding: 0;
     }
     md-chip {
-      margin: 5px !important;
+      margin: 0 5px 5px 0 !important;
       &:last-of-type {margin-bottom: 10px !important;}
     }
 

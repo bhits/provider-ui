@@ -4,16 +4,16 @@
   <md-card class="provider-search-card">
     <div class="containerX">
       <form [formGroup]="searchProviderFrom" novalidate>
-        <md2-accordion multiple="false" (open)="resetAccordionTab()">
-          <md2-accordion-tab [active]="accordionTab">
+        <!--<md2-accordion multiple="false" (open)="resetAccordionTab()">-->
+          <!--<md2-accordion-tab [active]="accordionTab">-->
 
-            <md2-accordion-header>
-              <md-card-title align="start"><i class="material-icons middle m-r-xs">search</i>
+            <md-card-header>
+              <md-card-title align="start"><i class="material-icons md-36 middle m-r-xs">search</i>
                 {{ 'PROVIDER.SEARCH.ACCORDION_HEADER' | translate }}
               </md-card-title>
-            </md2-accordion-header>
+            </md-card-header>
 
-            <md-card-content class="m-l-sm m-r-sm">
+            <md-card-content class="m-15">
               <div class="section-border hover p-xs">
                 <md-toolbar class="toolbar-base">
                   <button md-mini-fab aria-label="Step 1">
@@ -238,7 +238,7 @@
                 </div>
               </div>
             </md-card-content>
-            <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="15px" class="p-r">
+            <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="15px" class="p-r p-b-md">
               <button md-raised-button color="primary" (click)="clearForm()" [disabled]="searchProviderFrom.pristine">
                 <strong>
                   {{ 'PROVIDER.SEARCH.BUTTON.CLEAR_ALL' | translate }}
@@ -251,8 +251,8 @@
                 </strong>
               </button>
             </div>
-          </md2-accordion-tab>
-        </md2-accordion>
+          <!--</md2-accordion-tab>-->
+        <!--</md2-accordion>-->
       </form>
       <!--<div [hidden]="!hasSearchResult" [ngStyle]="{'padding-top': '30px'}">-->
         <!--<c2s-provider-search-result [providerResult]="searchResponse"></c2s-provider-search-result>-->
