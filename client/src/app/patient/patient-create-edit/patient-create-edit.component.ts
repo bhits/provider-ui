@@ -94,6 +94,16 @@ export class PatientCreateEditComponent implements OnInit {
     //Set English as default locale
     this.createEditPatientForm.controls['locale'].setValue(this.locales.filter(locale => locale.code === "en").pop().code);
 
+    // Pre-populate the form with search criteria
+    this.route.queryParams.subscribe(
+      (params: Patient) => {
+        this.createEditPatientForm.controls['firstName'].patchValue(params.firstName || null);
+        this.createEditPatientForm.controls['lastName'].patchValue(params.lastName || null);
+        this.createEditPatientForm.controls['genderCode'].patchValue(params.genderCode || null);
+        this.createEditPatientForm.controls['birthDate'].patchValue(params.birthDate && new Date(params.birthDate) || null);
+      }
+    );
+
     this.route.params
       .subscribe(
         params => {
