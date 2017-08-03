@@ -146,4 +146,21 @@ export class PatientSearchComponent implements OnInit {
   public cancel(): void {
     this.utilityService.navigateTo(this.apiUrlService.getHomeUrl())
   }
+
+  public getCreatePatientQueryParams(): Patient{
+    const params : Patient = new Patient();
+    if(this.searchPatientForm.value.firstName){
+      params.firstName =this.searchPatientForm.value.firstName;
+    }
+    if(this.searchPatientForm.value.lastName){
+      params.lastName =this.searchPatientForm.value.lastName;
+    }
+    if(this.searchPatientForm.value.genderCode){
+      params.genderCode =this.searchPatientForm.value.genderCode;
+    }
+    if(this.searchPatientForm.value.birthDate){
+      params.birthDate = new Date(this.searchPatientForm.value.birthDate);
+    }
+    return params;
+  }
 }

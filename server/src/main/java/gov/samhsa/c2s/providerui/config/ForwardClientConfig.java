@@ -1,4 +1,4 @@
-package gov.samhsa.c2s.providerui;
+package gov.samhsa.c2s.providerui.config;
 
 import org.springframework.boot.autoconfigure.web.ErrorViewResolver;
 import org.springframework.context.annotation.Bean;
