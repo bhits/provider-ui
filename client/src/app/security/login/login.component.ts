@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  login() {
+  public login(): void {
     const formModel = this.loginFrom.value;
     const username: string = formModel.username;
     const password: string = formModel.password;
@@ -55,18 +55,17 @@ export class LoginComponent implements OnInit {
                 this.getUMSProfileAndSetDefaultLanguage(profile);
               }
               ,
-              (error) => this.handleLoginError
+              () => this.authenticationService.onGetUserProfileFailure()
             );
         },
         err => {
           this.unauthorized = true;
           this.loginFrom.reset();
-          console.log(err);
         }
       );
   }
 
-  getUMSProfileAndSetDefaultLanguage(uaaProfile: Profile) {
+  public getUMSProfileAndSetDefaultLanguage(uaaProfile: Profile): void {
     this.profileService.getUMSProfile().subscribe(
       (profile: UmsProfile) => {
         let localesCode: string[] = this.utilityService.getSupportedLocaleCode(profile.supportedLocales);
@@ -75,16 +74,11 @@ export class LoginComponent implements OnInit {
         this.profileService.setProfileInSessionStorage(profile);
         this.authenticationService.onGetUserProfileSuccess(uaaProfile);
       },
-      this.handleLoginError
+      () => this.authenticationService.onGetUserProfileFailure()
     )
   }
 
-  handleLoginError(error: any) {
-    this.tokenService.deleteAccessToken();
-    this.unauthorized = true;
-  }
-
-  public getInputType(inputType: string) {
+  public getInputType(inputType: string): void {
     this.passwordInputType = inputType;
   }
 }

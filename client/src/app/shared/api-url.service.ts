@@ -20,7 +20,7 @@ export class ApiUrlService {
       ["tryPolicyBaseUrl", "/provider-ui-api/try-policy"],
       ["UmsBaseUrl", "/provider-ui-api/ums"],
       ["VssBaseUrl", "/provider-ui-api/vss"],
-      ["uaaTokenUrl", "/uaa/oauth/token"],
+      ["uaaBaseUrl", "/provider-ui-api/uaa"],
       ["uaaUserInfoUrl", "/uaa/userinfo"]
     ]
   );
@@ -80,8 +80,8 @@ export class ApiUrlService {
     return this.urls.get('VssBaseUrl');
   }
 
-  getUaaTokenUrl(): string {
-    return this.urls.get('uaaTokenUrl');
+  getUaaBaseUrl(): string {
+    return this.urls.get('uaaBaseUrl');
   }
 
   getUaaUserInfoUrl(): string {
