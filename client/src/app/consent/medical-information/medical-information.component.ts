@@ -16,8 +16,6 @@ export class MedicalInformationComponent implements OnInit {
   public readonly notShareAllValue: number = 0;
   public sensitivityCategories: VssSensitivityCategory[];
   public selectedSensitivityCategories: string[];
-  public tempSelectedSenstivityCategories: string[];
-  public sensitivityCategoryCodes: string[] = [];
   public isShareAll: number;
   public isSelectOneSensitivityCategory: boolean;
   public isInvalidNotShareAll: boolean = false;
@@ -51,7 +49,7 @@ export class MedicalInformationComponent implements OnInit {
     this.setRadioButton();
   }
 
-  public setRadioButton() : void {
+  public setRadioButton(): void {
     if (this.selectedSensitivityCategories.length === 0) {
       this.isShareAll = null;
     } else {
@@ -67,10 +65,10 @@ export class MedicalInformationComponent implements OnInit {
   }
 
   public onSelectDoNotShareAll(dialog: any, value: number) {
-    if (this.isShareAll === null || this.isShareAll ===1 ) {
+    if (this.isShareAll === null || this.isShareAll === 1) {
       // Set all categories Unchecked
       this.isSelectOneSensitivityCategory = false;
-      this.medicalInformationService.setSensitivityPoliciesStatusToUnChecked(this.sensitivityCategories);   
+      this.medicalInformationService.setSensitivityPoliciesStatusToUnChecked(this.sensitivityCategories);
     } else {
       this.medicalInformationService.setSelectedSensitivityPoliciesStatusToChecked(this.patientConsent, this.sensitivityCategories);
     }
@@ -102,14 +100,14 @@ export class MedicalInformationComponent implements OnInit {
   }
 
   public isAbleToSave(): boolean {
-    return !this.isSelectOneSensitivityCategory || this.isInvalidNotShareAll ;
+    return !this.isSelectOneSensitivityCategory || this.isInvalidNotShareAll;
   }
 
   private checkAllCategoriesSelected(): void {
     this.isInvalidNotShareAll = this.medicalInformationService.isCheckedAll(this.sensitivityCategories);
   }
 
-  public hasSelectedSensitivityCategories(): boolean{
+  public hasSelectedSensitivityCategories(): boolean {
     return this.selectedSensitivityCategories && this.selectedSensitivityCategories.length > 0;
   }
 }
