@@ -22,7 +22,7 @@
         <input [type]="passwordInputType" class="font-size15" mdInput placeholder="Password" formControlName="password">
         <c2s-show-hide-password (setInputType)="getInputType($event)"></c2s-show-hide-password>
       </div>
-      <md-hint class="has-error" *ngIf="unauthorized">
+      <md-hint class="has-error font-size16" *ngIf="unauthorized">
         {{ 'SECURITY.LOG_IN.NO_PERMISSION_MSG' | translate }}
       </md-hint>
     </md-input-container>
