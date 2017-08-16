@@ -17,7 +17,8 @@ import {TranslateService} from "@ngx-translate/core";
 export class LoginComponent implements OnInit {
   public loginFrom: FormGroup;
   public passwordInputType: string = "password";
-  public unauthorized: boolean = false;
+  public showBadCredentialError: boolean = false;
+  public showAccountLockedError: boolean = false;
 
   constructor(private authenticationService: AuthenticationService,
               private profileService: ProfileService,
@@ -45,7 +46,8 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(username, password)
       .subscribe(
         (res) => {
-          this.unauthorized = false;
+          this.showBadCredentialError = false;
+          this.showAccountLockedError = false;
           this.authenticationService.onLoggedIn(res);
           this.authenticationService.getUserProfile()
             .subscribe(
@@ -57,10 +59,17 @@ export class LoginComponent implements OnInit {
               ,
               () => this.authenticationService.onGetUserProfileFailure()
             );
-        },
-        err => {
-          this.unauthorized = true;
-          this.loginFrom.reset();
+        },(error)=>{
+              let message:string = error.json()['message'];
+              if(this.authenticationService.isAccountLocked(message)){
+                this.showAccountLockedError = true;
+                this.showBadCredentialError = false;
+                console.log(message);
+              }else if(this.authenticationService.isBadCredendials(message)){
+                this.showBadCredentialError = true;
+                this.showAccountLockedError = false;
+                console.log(message);
+              }
         }
       );
   }
