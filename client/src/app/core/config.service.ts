@@ -33,7 +33,7 @@ export class ConfigService {
       return config;
     } else {
       // If logged in using master-ui then get config
-      if (this.tokenService.getProfileToken() && this.tokenService.getAccessToken()) {
+      if (this.tokenService.getAccessToken()) {
         // Get config data once login
         this.getConfig().subscribe(
           (config: Config) => {

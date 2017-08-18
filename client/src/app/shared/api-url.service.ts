@@ -13,78 +13,73 @@ export class ApiUrlService {
       ["patientConsentsCreateUrl", "/consents/create"],
 
       // External api Url maps
-      ["ConfigBaseUrl", "/provider-ui-api/config"],
-      ["PlsBaseUrl", "/provider-ui-api/pls"],
-      ["PcmBaseUrl", "/provider-ui-api/pcm"],
+      ["configBaseUrl", "/provider-ui-api/config"],
+      ["plsBaseUrl", "/provider-ui-api/pls"],
+      ["pcmBaseUrl", "/provider-ui-api/pcm"],
       ["pepBaseUrl", "/provider-ui-api/pep"],
       ["tryPolicyBaseUrl", "/provider-ui-api/try-policy"],
-      ["UmsBaseUrl", "/provider-ui-api/ums"],
-      ["VssBaseUrl", "/provider-ui-api/vss"],
-      ["uaaBaseUrl", "/provider-ui-api/uaa"],
-      ["uaaUserInfoUrl", "/uaa/userinfo"]
+      ["umsBaseUrl", "/provider-ui-api/ums"],
+      ["vssBaseUrl", "/provider-ui-api/vss"],
+      ["uaaBaseUrl", "/provider-ui-api/uaa"]
     ]
   );
 
   constructor() {
   }
 
-  getLoginUrl(): string {
+  public getLoginUrl(): string {
     return this.urls.get('loginUrl');
   }
 
-  getHomeUrl(): string {
+  public getHomeUrl(): string {
     return this.urls.get('homeUrl');
   }
 
-  getPatientListUrl(): string {
+  public getPatientListUrl(): string {
     return this.urls.get('patientListUrl');
   }
 
-  getPatientSearchUrl(): string {
+  public getPatientSearchUrl(): string {
     return this.urls.get('patientSearchUrl');
   }
 
-  getPatientProvidersSearchUrl(): string {
+  public getPatientProvidersSearchUrl(): string {
     return this.urls.get('patientProvidersSearchUrl');
   }
 
-  getPatientConsentsCreateUrl(): string {
+  public getPatientConsentsCreateUrl(): string {
     return this.urls.get('patientConsentsCreateUrl');
   }
 
-  getConfigBaseUrl(): string {
-    return this.urls.get("ConfigBaseUrl");
+  public getConfigBaseUrl(): string {
+    return this.urls.get("configBaseUrl");
   }
 
-  getPcmBaseUrl(): string {
-    return this.urls.get("PcmBaseUrl");
+  public getPcmBaseUrl(): string {
+    return this.urls.get("pcmBaseUrl");
   }
 
-  getPepUrl(): string {
+  public getPepUrl(): string {
     return this.urls.get('pepBaseUrl');
   }
 
-  getPlsBaseUrl(): string {
-    return this.urls.get("PlsBaseUrl");
+  public getPlsBaseUrl(): string {
+    return this.urls.get("plsBaseUrl");
   }
 
-  getTryPolicyBaseUrl(): string {
+  public getTryPolicyBaseUrl(): string {
     return this.urls.get("tryPolicyBaseUrl");
   }
 
-  getUmsBaseUrl(): string {
-    return this.urls.get('UmsBaseUrl');
+  public getUmsBaseUrl(): string {
+    return this.urls.get('umsBaseUrl');
   }
 
-  getVssBaseUrl(): string {
-    return this.urls.get('VssBaseUrl');
+  public getVssBaseUrl(): string {
+    return this.urls.get('vssBaseUrl');
   }
 
-  getUaaBaseUrl(): string {
+  public getUaaBaseUrl(): string {
     return this.urls.get('uaaBaseUrl');
-  }
-
-  getUaaUserInfoUrl(): string {
-    return this.urls.get('uaaUserInfoUrl');
   }
 }

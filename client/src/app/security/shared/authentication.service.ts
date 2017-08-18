@@ -6,7 +6,6 @@ import {AuthorizationResponse} from "app/security/shared/authorization-response.
 import {TokenService} from "./token.service";
 import {UtilityService} from "../../shared/utility.service";
 import {GlobalEventManagementService} from "../../core/global-event-management.service";
-import {Profile} from "../../core/profile.model";
 import {ConfigService} from "../../core/config.service";
 import {NotificationService} from "../../shared/notification.service";
 import {Config} from "../../core/config.model";
@@ -14,7 +13,7 @@ import {LoginRequest} from "./login-request.model";
 
 @Injectable()
 export class AuthenticationService {
-  private ACCOUNT_LOCKED_MESSAGE:string = "Your account has been locked because of too many failed attempts to login.";
+  private ACCOUNT_LOCKED_MESSAGE: string = "Your account has been locked because of too many failed attempts to login.";
   private BAD_CREDENTIAL_MESSAGE = "Bad credential Exception.";
 
   constructor(private apiUrlService: ApiUrlService,
@@ -45,6 +44,10 @@ export class AuthenticationService {
     );
   }
 
+  public onGetUserProfileSuccess(): void {
+    this.utilityService.navigateTo(this.apiUrlService.getHomeUrl());
+  }
+
   public onGetUserProfileFailure(): void {
     this.globalEventManagementService.setShowHeader(false);
     this.tokenService.deleteAccessToken();
@@ -65,22 +68,11 @@ export class AuthenticationService {
     }
   }
 
-  public onGetUserProfileSuccess(profile: Profile): void {
-    this.globalEventManagementService.setProfile(profile);
-    this.utilityService.navigateTo(this.apiUrlService.getHomeUrl());
-  }
-
-  public getUserProfile() {
-    return this.http.get(this.apiUrlService.getUaaUserInfoUrl())
-      .map((resp: Response) => <any>(resp.json()));
-  }
-
-  isAccountLocked(msg: string): boolean {
+  public isAccountLocked(msg: string): boolean {
     return msg === this.ACCOUNT_LOCKED_MESSAGE;
   }
 
-  isBadCredendials(msg: string): boolean {
+  public isBadCredentials(msg: string): boolean {
     return msg === this.BAD_CREDENTIAL_MESSAGE;
   }
-
 }
