@@ -3,7 +3,6 @@ import {Http, Response} from "@angular/http";
 import {ApiUrlService} from "../shared/api-url.service";
 import {ExceptionService} from "../shared/exception.service";
 import {Observable} from "rxjs/Observable";
-import {Oauth2Client} from "app/core/oauth2-client.model";
 import {SessionStorageService} from "app/security/shared/session-storage.service";
 import {Config} from "app/core/config.model";
 import {NotificationService} from "app/shared/notification.service";
@@ -28,21 +27,13 @@ export class ConfigService {
       .catch(this.exceptionService.handleError);
   }
 
-  public getBasicAuthorizationHeader(): Observable<string> {
-    const resourceUrl = this.apiUrlService.getConfigBaseUrl().concat("/basicAuthorizationHeader");
-    return this.http.get(resourceUrl)
-      .map((resp: Response) => <Oauth2Client>(resp.json()))
-      .map(oauth2Client => oauth2Client.client.basicAuthorizationHeader)
-      .catch(this.exceptionService.handleError);
-  }
-
   public getConfigInSessionStorage(): Config {
     let config: Config = this.sessionStorageService.retrieve(this.C2S_CONFIG_KEY);
     if (config != null) {
       return config;
     } else {
       // If logged in using master-ui then get config
-      if(this.tokenService.getProfileToken() && this.tokenService.getAccessToken()){
+      if (this.tokenService.getAccessToken()) {
         // Get config data once login
         this.getConfig().subscribe(
           (config: Config) => {
@@ -52,7 +43,7 @@ export class ConfigService {
             this.notificationService.i18nShow("SHARED.CONFIGURATION_SERVICE_ERROR");
           }
         );
-      }else{
+      } else {
         this.notificationService.i18nShow("SHARED.CONFIGURATION_SERVICE_ERROR");
       }
     }

@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {SessionStorageService} from "./session-storage.service";
 import {ApiUrlService} from "../../shared/api-url.service";
 import {UmsProfile} from "./ums-profile.model";
+import {ExceptionService} from "../../shared/exception.service";
 
 @Injectable()
 export class ProfileService {
@@ -13,12 +14,14 @@ export class ProfileService {
 
   constructor(private http: Http,
               private apiUrlService: ApiUrlService,
+              private exceptionService: ExceptionService,
               private sessionStorageService: SessionStorageService) {
   }
 
   public getUMSProfile(): Observable<UmsProfile> {
     return this.http.get(this.umsProfileUrl)
-      .map((resp: Response) => <any>(resp.json()));
+      .map((resp: Response) => <any>(resp.json()))
+      .catch(this.exceptionService.handleError);
   }
 
   public setProfileInSessionStorage(profile: UmsProfile) {
@@ -31,31 +34,23 @@ export class ProfileService {
 
   public getFullName(): string {
     let umsProfile: UmsProfile = this.getProfileFromSessionStorage();
-    if (umsProfile) {
+    if (umsProfile != null) {
       return umsProfile.firstName + " " + umsProfile.lastName;
     } else {
       return "";
     }
   }
 
-  //Todo: Change it when current user can manage multiple patients
-  public getUserMrn(): string {
-    let umsProfile: UmsProfile = this.sessionStorageService.retrieve(this.UMS_PROFILE_KEY);
-    if (umsProfile != null) {
-      return umsProfile.mrn;
-    }
-  }
-
-  public getMRN() {
+  public getUsername(): string {
     let umsProfile: UmsProfile = this.getProfileFromSessionStorage();
-    if (umsProfile) {
-      return umsProfile.mrn;
+    if (umsProfile != null) {
+      return umsProfile.username;
     } else {
       return "";
     }
   }
 
-  public getUserLocale() {
+  public getUserLocale(): string {
     let umsProfile: UmsProfile = this.getProfileFromSessionStorage();
     if (umsProfile) {
       return umsProfile.userLocale;

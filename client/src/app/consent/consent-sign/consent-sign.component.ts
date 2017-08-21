@@ -1,15 +1,14 @@
 import {Component, OnInit} from "@angular/core";
-import {Profile} from "../../core/profile.model";
 import {AuthenticationService} from "../../security/shared/authentication.service";
 import {ConsentService} from "../shared/consent.service";
 import {NotificationService} from "../../shared/notification.service";
 import {ActivatedRoute} from "@angular/router";
 import {UtilityService} from "../../shared/utility.service";
-import {TokenService} from "../../security/shared/token.service";
 import {Patient} from "../../patient/shared/patient.model";
 import {BinaryFile} from "../../shared/binary-file.model";
 import {ConsentTerms} from "../shared/consent-terms.model";
 import {DetailedConsent} from "../shared/detailed-consent.model";
+import {ProfileService} from "../../security/shared/profile.service";
 
 @Component({
   selector: 'c2s-consent-sign',
@@ -19,21 +18,21 @@ import {DetailedConsent} from "../shared/detailed-consent.model";
 export class ConsentSignComponent implements OnInit {
   public title: string = "eSignature";
   public consent: DetailedConsent;
-  public profile: Profile;
   public attestationTermsWithNames: string;
   public checked: boolean = false;
   public isAuthenticated: boolean = false;
   public password: string;
   public inValid: boolean;
-  username: any;
+  public usernameTranslateParam: any;
   public selectedPatientName: any;
+  public userFullName: string;
   public selectedPatient: Patient;
   private consentListUrl: string;
 
   constructor(private authenticationService: AuthenticationService,
               private consentService: ConsentService,
               private notificationService: NotificationService,
-              private tokenService: TokenService,
+              private profileService: ProfileService,
               private route: ActivatedRoute,
               private utilityService: UtilityService) {
   }
@@ -49,9 +48,8 @@ export class ConsentSignComponent implements OnInit {
         this.consent = this.route.snapshot.data['consent'];
       }
     });
-    this.profile = this.tokenService.getProfileToken();
-    let userNameFromProfile = this.utilityService.toTitleCase(this.profile.name);
-    this.username = {name: userNameFromProfile};
+    this.userFullName = this.profileService.getFullName();
+    this.usernameTranslateParam = {name: this.userFullName};
     this.attestationTermsWithNames = this.replaceConsentAttestationTermsWithNames(this.route.snapshot.data['consentTerms']);
   }
 
@@ -59,31 +57,34 @@ export class ConsentSignComponent implements OnInit {
     this.utilityService.navigateTo(this.consentListUrl);
   }
 
-  navigateTo() {
+  public navigateTo(): void {
     this.utilityService.navigateTo(this.consentListUrl);
   }
 
-  clearCheckbox() {
+  public clearCheckbox(): void {
     if (this.isAuthenticated != true) {
       this.checked = false;
       this.inValid = false;
     }
   }
 
-  toAuthenticate(dialog: any) {
-    const username: string = this.profile.userName;
-    this.authenticationService.login(username, this.password).toPromise()
-      .then(() => {
-        this.inValid = false;
-        this.isAuthenticated = true;
-        dialog.close();
-      }).catch(() => {
-      this.inValid = true;
-      this.password = null;
-    });
+  public toAuthenticate(dialog: any): void {
+    const username: string = this.profileService.getUsername();
+    this.authenticationService.login(username, this.password)
+      .subscribe(
+        () => {
+          this.inValid = false;
+          this.isAuthenticated = true;
+          dialog.close();
+        },
+        () => {
+          this.inValid = true;
+          this.password = null;
+        }
+      );
   }
 
-  attestConsent(dialog: any) {
+  public attestConsent(dialog: any): void {
     this.consentService.attestConsent(this.selectedPatient.mrn, this.consent.id)
       .subscribe(
         () => {
@@ -96,7 +97,7 @@ export class ConsentSignComponent implements OnInit {
       );
   }
 
-  getSignedConsentPdf() {
+  public getSignedConsentPdf(): void {
     const namePrefix: string = "Signed_Consent";
     this.consentService.getSignedConsentPdf(this.selectedPatient.mrn, this.consent.id)
       .subscribe(
@@ -119,7 +120,7 @@ export class ConsentSignComponent implements OnInit {
     termsWithProviderAndPatientNames = terms.replace(patientNameKey, this.selectedPatientName.name);
 
     if (termsWithProviderAndPatientNames.includes(providerNameKey)) {
-      termsWithProviderAndPatientNames = termsWithProviderAndPatientNames.replace(providerNameKey, this.username.name);
+      termsWithProviderAndPatientNames = termsWithProviderAndPatientNames.replace(providerNameKey, this.userFullName);
     }
     return termsWithProviderAndPatientNames;
   }

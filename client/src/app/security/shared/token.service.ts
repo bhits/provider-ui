@@ -1,12 +1,10 @@
 import {Injectable} from "@angular/core";
 import {SessionStorageService} from "./session-storage.service";
 import {AuthorizationResponse} from "./authorization-response.model";
-import {Profile} from "../../core/profile.model";
 
 @Injectable()
 export class TokenService {
   private ACCESS_TOKEN_KEY: string = 'c2s-access-token';
-  private USER_PROFILE_KEY: string = 'c2s-user-profile-token';
   private PROVIDER_COUNT_KEY: string = 'c2s-patient-provider-count';
   private MASTER_UI_LOGIN: string = 'c2s-master-ui-login';
 
@@ -49,26 +47,6 @@ export class TokenService {
     return false;
   }
 
-  public storeUserProfile(userProfile: any) {
-    this.sessionStorageService.store(this.USER_PROFILE_KEY, userProfile);
-  }
-
-  public getProfileToken(): Profile {
-    return this.sessionStorageService.retrieve(this.USER_PROFILE_KEY);
-  }
-
-  public createProfileObject(uaaProfile: any): Profile {
-    let profile = new Profile();
-    profile.email = uaaProfile.email;
-    profile.userName = uaaProfile.user_name;
-    profile.givenName = uaaProfile.given_name;
-    profile.familyName = uaaProfile.family_name;
-    profile.name = uaaProfile.name;
-    profile.userId = uaaProfile.user_id;
-
-    return profile;
-  }
-
   public storeProviderCount(count: Number) {
     this.sessionStorageService.store(this.PROVIDER_COUNT_KEY, count);
   }
@@ -77,8 +55,7 @@ export class TokenService {
     return this.sessionStorageService.retrieve(this.PROVIDER_COUNT_KEY);
   }
 
-  getMasterUiLoginUrl(): string{
+  public getMasterUiLoginUrl(): string {
     return this.sessionStorageService.retrieve(this.MASTER_UI_LOGIN);
   }
-
 }
