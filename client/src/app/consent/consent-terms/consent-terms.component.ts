@@ -11,6 +11,7 @@ import {UtilityService} from "../../shared/utility.service";
 export class ConsentTermsComponent implements OnInit {
   public startDate: Date;
   public endDate: Date;
+  public today: Date = new Date();
   public isOpenOnFocus: boolean = true;
   public FORMAT: string = "MM/dd/y";
   public isStartDatePastDate: boolean = false;
@@ -32,6 +33,20 @@ export class ConsentTermsComponent implements OnInit {
       //Consent Edit Mode
       this.startDate = this.patientConsent.startDate;
       this.endDate = this.patientConsent.endDate;
+      if(this.startDate[0] < this.today.getFullYear()){
+        console.log("year");
+        this.patientConsent.startDate = null;
+        this.isStartDatePastDate = true;
+      } else if (this.startDate[1] < (this.today.getMonth() + 1)){
+       console.log("month");
+       this.patientConsent.startDate = null;
+       this.isStartDatePastDate = true;
+      } else if(this.startDate[2] < this.today.getDate()) {
+       console.log("date");
+       this.patientConsent.startDate = null;
+       this.isStartDatePastDate = true;
+      }
+
     } else {
       // Consent Create Mode
       this.startDate = new Date();
