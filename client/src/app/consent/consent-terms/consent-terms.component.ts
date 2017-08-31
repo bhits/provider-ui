@@ -42,7 +42,6 @@ export class ConsentTermsComponent implements OnInit {
        this.patientConsent.startDate = null;
        this.isStartDatePastDate = true;
       } else if(this.startDate[2] < this.today.getDate()) {
-       console.log("date");
        this.patientConsent.startDate = null;
        this.isStartDatePastDate = true;
       }
@@ -57,6 +56,8 @@ export class ConsentTermsComponent implements OnInit {
   }
 
   public onStartDateChanged() {
+    this.startDate = new Date(this.startDate);
+    this.endDate = new Date(this.endDate);
     this.isStartDatePastDate = this.utilityService.isPastDate(this.startDate);
     this.isStartDateAfterEndDate = !(this.utilityService.isFirstDateBeforeSecondDate(this.startDate, this.endDate));
 
@@ -71,6 +72,8 @@ export class ConsentTermsComponent implements OnInit {
   }
 
   public onEndDateChanged() {
+    this.startDate = new Date(this.startDate);
+    this.endDate = new Date(this.endDate);
     this.isEndDatePastDate = this.utilityService.isPastDate(this.endDate);
     this.isStartDateAfterEndDate = !(this.utilityService.isFirstDateBeforeSecondDate(this.startDate, this.endDate));
     if (this.isConsentTermsValid(this.startDate, this.endDate)) {
