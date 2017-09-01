@@ -5,16 +5,28 @@ import {UtilityService} from "app/shared/utility.service";
 import {ApiUrlService} from "../../shared/api-url.service";
 import {NotificationService} from "app/shared/notification.service";
 import {TokenService} from "app/security/shared/token.service";
+import {PlatformLocation} from "@angular/common";
+import {GlobalEventManagementService} from "../../core/global-event-management.service";
 
 @Injectable()
 export class CanActivateAuthGuardService implements CanActivate, CanActivateChild {
+  private LOGIN_PATH: string = "/provider-ui/login";
 
   constructor(private apiUrlService: ApiUrlService,
               private authorizationService: AuthorizationService,
               private notificationService: NotificationService,
               private router: Router,
               private tokenService: TokenService,
-              private utilityService: UtilityService) {
+              private utilityService: UtilityService,
+              private location: PlatformLocation,
+              private globalEventManagementService: GlobalEventManagementService) {
+
+    location.onPopState(() => {
+      if(window.location.pathname === this.LOGIN_PATH){
+        this.globalEventManagementService.setShowHeader(false);
+        sessionStorage.clear();
+      }
+    });
   }
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
