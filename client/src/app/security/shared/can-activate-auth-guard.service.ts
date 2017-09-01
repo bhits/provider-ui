@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, RouterStateSnapshot} from "@angular/router";
+import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from "@angular/router";
 import {AuthorizationService} from "app/security/shared/authorization.service";
 import {UtilityService} from "app/shared/utility.service";
 import {ApiUrlService} from "../../shared/api-url.service";
@@ -15,6 +15,7 @@ export class CanActivateAuthGuardService implements CanActivate, CanActivateChil
   constructor(private apiUrlService: ApiUrlService,
               private authorizationService: AuthorizationService,
               private notificationService: NotificationService,
+              private router: Router,
               private tokenService: TokenService,
               private utilityService: UtilityService,
               private location: PlatformLocation,
@@ -35,7 +36,7 @@ export class CanActivateAuthGuardService implements CanActivate, CanActivateChil
       }
       return true;
     } else {
-      this.utilityService.navigateTo(this.apiUrlService.getLoginUrl());
+      this.router.navigate([this.apiUrlService.getLoginUrl()], {queryParams: {redirectUrl: state.url}});
       return false;
     }
   }

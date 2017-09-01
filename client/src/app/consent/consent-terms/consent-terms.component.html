@@ -11,16 +11,22 @@
         <td>
           <span>
             {{ 'CONSENT.TERMS.START_DATE' | translate }}
-            <md2-datepicker [(ngModel)]="startDate" (change)="onStartDateChanged()"
-                            [openOnFocus]="isOpenOnFocus" [format]="FORMAT">
+            <md2-datepicker [(ngModel)]="startDate"
+                            [min]="today"
+                            (change)="onStartDateChanged()"
+                            [openOnFocus]="isOpenOnFocus"
+                            [format]="FORMAT">
             </md2-datepicker>
           </span>
         </td>
         <td>
           <span>
             {{ 'CONSENT.TERMS.END_DATE' | translate }}
-            <md2-datepicker [(ngModel)]="endDate" (change)="onEndDateChanged()"
-                            [openOnFocus]="isOpenOnFocus" [format]="FORMAT">
+            <md2-datepicker [(ngModel)]="endDate"
+                            [min]="today"
+                            (change)="onEndDateChanged()"
+                            [openOnFocus]="isOpenOnFocus"
+                            [format]="FORMAT">
             </md2-datepicker>
           </span>
         </td>
