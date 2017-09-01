@@ -11,6 +11,7 @@ import {UtilityService} from "../../shared/utility.service";
 export class ConsentTermsComponent implements OnInit {
   public startDate: Date;
   public endDate: Date;
+  public today: Date = new Date();
   public isOpenOnFocus: boolean = true;
   public FORMAT: string = "MM/dd/y";
   public isStartDatePastDate: boolean = false;
@@ -32,6 +33,16 @@ export class ConsentTermsComponent implements OnInit {
       //Consent Edit Mode
       this.startDate = this.patientConsent.startDate;
       this.endDate = this.patientConsent.endDate;
+      if (this.startDate[0] < this.today.getFullYear()) {
+        this.patientConsent.startDate = null;
+        this.isStartDatePastDate = true;
+      } else if (this.startDate[1] < (this.today.getMonth() + 1)) {
+        this.patientConsent.startDate = null;
+        this.isStartDatePastDate = true;
+      } else if (this.startDate[2] < this.today.getDate()) {
+        this.patientConsent.startDate = null;
+        this.isStartDatePastDate = true;
+      }
     } else {
       // Consent Create Mode
       this.startDate = new Date();
@@ -42,6 +53,8 @@ export class ConsentTermsComponent implements OnInit {
   }
 
   public onStartDateChanged() {
+    this.startDate = new Date(this.startDate);
+    this.endDate = new Date(this.endDate);
     this.isStartDatePastDate = this.utilityService.isPastDate(this.startDate);
     this.isStartDateAfterEndDate = !(this.utilityService.isFirstDateBeforeSecondDate(this.startDate, this.endDate));
 
@@ -56,6 +69,8 @@ export class ConsentTermsComponent implements OnInit {
   }
 
   public onEndDateChanged() {
+    this.startDate = new Date(this.startDate);
+    this.endDate = new Date(this.endDate);
     this.isEndDatePastDate = this.utilityService.isPastDate(this.endDate);
     this.isStartDateAfterEndDate = !(this.utilityService.isFirstDateBeforeSecondDate(this.startDate, this.endDate));
     if (this.isConsentTermsValid(this.startDate, this.endDate)) {
