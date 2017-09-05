@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "app/security/shared/authentication.service";
 import {ProfileService} from "../shared/profile.service";
@@ -13,6 +14,7 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  private redirectUrl: string;
   public loginFrom: FormGroup;
   public passwordInputType: string = "password";
   public showBadCredentialError: boolean = false;
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
               private utilityService: UtilityService,
               private customTranslateService: CustomTranslateService,
               private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
               private translate: TranslateService) {
     // Set default language for login page
     const DEFAULT_LANGUAGE = "en";
@@ -30,6 +33,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    // get redirect url from route parameters
+    this.redirectUrl = this.route.snapshot.queryParams['redirectUrl'];
     this.loginFrom = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -70,7 +75,7 @@ export class LoginComponent implements OnInit {
         this.customTranslateService.addSupportedLanguages(localesCode);
         this.customTranslateService.setDefaultLanguage(profile.userLocale);
         this.profileService.setProfileInSessionStorage(profile);
-        this.authenticationService.onGetUserProfileSuccess();
+        this.authenticationService.onGetUserProfileSuccess(this.redirectUrl);
       },
       () => this.authenticationService.onGetUserProfileFailure()
     )
