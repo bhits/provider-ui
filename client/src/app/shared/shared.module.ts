@@ -21,6 +21,8 @@ import {BrowserService} from "app/shared/browser.service";
 import {PatientPipe} from "./patient.pipe";
 import {TranslateModule} from "@ngx-translate/core";
 import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
+import { SocialSecurityMaskDirective } from './social-security-mask.directive';
+import { SocialSecurityPipe } from './social-security.pipe';
 
 @NgModule({
   imports: [
@@ -35,7 +37,9 @@ import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
     ShowHidePasswordComponent,
     ProviderPipe,
     PatientPipe,
-    FlattenedSmallProviderPipe
+    FlattenedSmallProviderPipe,
+    SocialSecurityMaskDirective,
+    SocialSecurityPipe
   ],
   entryComponents: [ConfirmDialogComponent],
   providers: [
@@ -46,7 +50,8 @@ import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
     NotificationService,
     UtilityService,
     ValidationService,
-    DatePipe
+    DatePipe,
+    SocialSecurityPipe
   ],
   exports: [
     ControlValidationErrorMessageComponent,
@@ -61,7 +66,9 @@ import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
     PatientPipe,
     TranslateModule,
     FlattenedSmallProviderPipe,
-    UsPhoneNumberPipe
+    UsPhoneNumberPipe,
+    SocialSecurityMaskDirective,
+    SocialSecurityPipe
   ]
 })
 export class SharedModule {
