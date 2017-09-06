@@ -254,7 +254,8 @@
               <md-input-container class="full-width font-size18">
                 <input mdInput
                        placeholder="{{ 'PATIENT.CREATE_EDIT.ADDITIONAL_INFORMATION.SSN_PLACEHOLDER' | translate }}"
-                       formControlName="socialSecurityNumber">
+                       formControlName="socialSecurityNumber"
+                       c2sSocialSecurityMask >
               </md-input-container>
               <c2s-control-validation-error-message
                 [customMessage]="ssnErrorMessage"
