@@ -51,3 +51,15 @@
   width: 80%;
 }
 
+//<---------------------------- Dialog ----------------------------->
+.consent-option-text {
+  text-align: left;
+  white-space: normal;
+  line-height: 18px;
+}
+// CHECK ABOUT THIS CODE. WILL NOT WORK FROM THIS STYLESHEET. DUPLICATED IN CORE.SCSS
+.mat-list-item-content {
+  height: auto !important;
+  padding: 3px 16px !important;
+}
+
