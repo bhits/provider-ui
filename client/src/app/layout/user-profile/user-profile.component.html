@@ -1,8 +1,14 @@
-<div fxLayout="row" fxLayoutAlign="start center">
-  <div fxflex class="avatar-header p-l">
-    <img alt="User profile photo"
-         class="img-circle"
-         src="assets/img/admin-avatar.ico"/>
-    <span class="font-size18 font-weight300 middle">{{userName}}</span>
+
+ <div fxLayout="row" fxLayoutAlign="start center">
+    <div fxflex class="avatar-header p-l p-r-sm">
+      <img alt="User profile photo"
+           class="img-circle"
+           src="assets/img/generic-avatar.png"/>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="start space-around">
+      <div fxFlex class="p-t-xxs font-size18 font-weight300 middle">{{userName}}</div>
+      <c2s-multi-language class="m-r-sm"></c2s-multi-language>
+    </div>
   </div>
-</div>
+
+
