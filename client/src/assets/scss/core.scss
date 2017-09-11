@@ -142,6 +142,11 @@ body {
 
 
 // ------------------------------------------------------------- create consent styling -------------//
+.mat-list-item-content {
+  height: auto !important;
+  padding: 3px 16px !important;
+}
+
 .md2-accordion-header {
   white-space: inherit !important;
   padding: 15px 40px 15px 15px !important;
