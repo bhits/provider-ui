@@ -77,24 +77,24 @@
             </button>
           </div>
           <ng-template #clearSearchButton>
-            <button md-button (click)="cancel()">
+            <button class="button-text" md-button (click)="cancel()">
               <strong>
                 {{ 'PATIENT.SEARCH.CRITERIA.CANCEL_BTN' | translate }}
               </strong>
             </button>
           </ng-template>
 
-          <a md-raised-button fxFlex="0 1 190px" *ngIf="hasSearchResult" routerLink="/patients/create" [queryParams]="getCreatePatientQueryParams()" color="primary"
+          <a md-raised-button fxFlex="0 1 190px" class="button-text" *ngIf="hasSearchResult" routerLink="/patients/create" [queryParams]="getCreatePatientQueryParams()" color="primary"
              [disabled]="!hasSearchResult">
-            <md-icon class="font-weight700">add</md-icon>
+            <md-icon fxHide fxHide.gt-sm="false" class="font-weight700">add</md-icon>
             {{ 'PATIENT.SEARCH.CREATE_PATIENT_BUTTON' | translate }}
           </a>
-          <a md-raised-button fxFlex="0 1 190px" *ngIf="!hasSearchResult" color="primary" [disabled]="!hasSearchResult">
-            <md-icon class="font-weight700">add</md-icon>
+          <a md-raised-button fxFlex="0 1 190px" class="button-text" *ngIf="!hasSearchResult" color="primary" [disabled]="!hasSearchResult">
+            <md-icon fxHide fxHide.gt-sm="false" class="font-weight700">add</md-icon>
             {{ 'PATIENT.SEARCH.CREATE_PATIENT_BUTTON' | translate }}
           </a>
 
-          <button md-raised-button color="primary" (click)="searchPatient()"
+          <button class="button-text" md-raised-button color="primary" (click)="searchPatient()"
                   [disabled]="searchPatientForm.invalid">
             <strong>
               {{ 'PATIENT.SEARCH.CRITERIA.SEARCH_BTN' | translate }}
