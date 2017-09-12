@@ -108,3 +108,12 @@ md-list-item {
   width: 80%;
   cursor: text;
 }
+
+.button-text {
+  @media (max-width: 599px) {
+    font-size: 12px;
+    line-height: inherit;
+    white-space: normal;
+    padding: 8px;
+  }
+}
