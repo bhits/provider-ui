@@ -215,7 +215,7 @@ export class SegmentDocumentComponent implements OnInit {
     return uploadInput;
   }
 
-  downloadSegementedDocument(segmentDocumentDialog: any) {
+  downloadSegmentedDocument(segmentDocumentDialog: any) {
     let filename = "segmented-".concat(this.segmentedDocumentName);
     let documentFormat = "text/xml";
     this.utilityService.downloadFile(this.segmentedDocument, filename, documentFormat);
