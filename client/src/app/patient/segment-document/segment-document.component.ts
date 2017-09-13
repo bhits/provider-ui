@@ -222,6 +222,14 @@ export class SegmentDocumentComponent implements OnInit {
     segmentDocumentDialog.close();
   }
 
+  viewSegmentedDocument(segmentDocumentDialog: any) {
+    let filename = "segmented-".concat(this.segmentedDocumentName);
+    let documentFormat = "text/xml";
+    this.utilityService.downloadFile(this.segmentedDocument, filename, documentFormat);
+    segmentDocumentDialog.close();
+  }
+
+
   closeDialog(segmentDocumentDialog: any) {
     segmentDocumentDialog.close();
   }

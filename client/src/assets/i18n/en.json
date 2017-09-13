@@ -363,9 +363,10 @@
       "PURPOSE_OF_USE_PLACEHOLDER": "Select One",
       "SEGMENTATION_BTN": "Segment Document",
       "DOWNLOAD_DIALOG": {
-        "TITLE": "Download Segmented Document",
+        "TITLE": "Download/View Segmented Document",
         "CANCEL_BTN": "Cancel",
-        "DOWNLOAD_BTN": "Download document"
+        "DOWNLOAD_BTN": "Download document",
+        "VIEW_BTN": "View Document"
       },
       "GET_PROVIDER_NOTIFICATION_MSG": "Failed to get provider by NPI...",
       "DOCUMENT_NOT_FOUND_NOTIFICATION_MSG": "Document Not Found."
