@@ -364,8 +364,8 @@
       "DOWNLOAD_DIALOG": {
         "TITLE": "{Spanish} Download/View Segmented Document",
         "CANCEL_BTN": "{Spanish} Cancel",
-        "DOWNLOAD_BTN": "{Spanish} Download document",
-        "VIEW_BTN": "{Spanish} View Document"
+        "DOWNLOAD_BTN": "{Spanish} Download",
+        "VIEW_BTN": "{Spanish} View"
       },
       "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI...",
       "DOCUMENT_NOT_FOUND_NOTIFICATION_MSG": "{spanish} Document Not Found."
