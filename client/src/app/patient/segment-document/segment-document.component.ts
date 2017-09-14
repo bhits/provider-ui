@@ -34,6 +34,7 @@ export class SegmentDocumentComponent implements OnInit {
   public humanizeBytes: Function;
   public segmentedDocument: SegmentedDocumentReponse;
   public segmentedDocumentName: string;
+  public segmentedDocumentAsHTML: string;
   public purposeOfUses: SharePurpose[] = [];
 
   public authorizeProvider: FlattenedSmallProvider;
@@ -159,6 +160,7 @@ export class SegmentDocumentComponent implements OnInit {
       if (output && output.file && output.file.response && output.file.response.segmentedDocument) {
         this.segmentedDocumentName = output.file.name;
         this.segmentedDocument = output.file.response.segmentedDocument;
+        this.segmentedDocumentAsHTML = output.file.response.segmentedDocumentAsHTML;
         segmentDocumentDialog.open();
       } else {
         this.notificationService.i18nShow("PATIENT.SEGMENT_DOCUMENT.DOCUMENT_NOT_FOUND_NOTIFICATION_MSG");
@@ -223,10 +225,16 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   viewSegmentedDocument(segmentDocumentDialog: any) {
-    let filename = "segmented-".concat(this.segmentedDocumentName);
-    let documentFormat = "text/xml";
-    this.utilityService.downloadFile(this.segmentedDocument, filename, documentFormat);
+    let decodedDocument = this.based64DecodedUnicode(this.segmentedDocumentAsHTML);
+    let viewer = window.open('', '_blank');
+    viewer.document.open().write(decodedDocument);
     segmentDocumentDialog.close();
+  }
+  // Deal with non-ASCII characters of Spanish
+  private based64DecodedUnicode(str): string {
+    return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
   }
 
 
