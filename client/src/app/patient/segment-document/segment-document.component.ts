@@ -17,7 +17,7 @@ import {Observable} from "rxjs/Observable";
 import {NpiValidation} from "../../shared/npi-validation";
 import {Patient} from "../shared/patient.model";
 import {PatientService} from "../shared/patient.service";
-import {SegmentedDocumentReponse} from "../shared/segmented-document-response";
+import {SegmentedDocumentResponse} from "../shared/segmented-document-response";
 
 
 @Component({
@@ -32,7 +32,7 @@ export class SegmentDocumentComponent implements OnInit {
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
   public humanizeBytes: Function;
-  public segmentedDocument: SegmentedDocumentReponse;
+  public segmentedDocument: SegmentedDocumentResponse;
   public segmentedDocumentName: string;
   public segmentedDocumentAsHTML: string;
   public purposeOfUses: SharePurpose[] = [];
