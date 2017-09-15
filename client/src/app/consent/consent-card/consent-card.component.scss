@@ -63,3 +63,8 @@
   padding: 3px 16px !important;
 }
 
+
+// To fix the md-select inside md-dialog bug
+.md-select-menu-container {
+  z-index: 99999 !important;
+}
