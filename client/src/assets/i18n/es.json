@@ -427,6 +427,7 @@
       "ACCORDION_HEADER": "Buscar",
       "STEP_1": {
         "TITLE": "Paso 1. Ingrese el proveedor Estado y Ciudad o Código Postal.",
+        "NUMBER": "1",
         "LABEL": "(SPANISH)PLEASE CHOOSE ONE.",
         "STATE_AND_CITY": {
           "LABEL": "Introduzca el estado y la ciudad",
@@ -441,6 +442,7 @@
       },
       "STEP_2": {
         "TITLE": "Paso 2. Ingrese el nombre del proveedor o el nombre del proveedor y otros criterios.",
+        "NUMBER": "2",
         "LABEL": "(SPANISH)PLEASE CHOOSE ONE.",
         "PROVIDER_NAME_AND_OTHERS": {
           "LABEL": "Introduzca el nombre del proveedor y otros criterios",
