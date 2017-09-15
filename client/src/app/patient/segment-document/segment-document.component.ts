@@ -1,3 +1,4 @@
+///<reference path="../../provider/shared/provider.service.ts"/>
 import {Component, EventEmitter, Input, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {humanizeBytes, UploadFile, UploadInput, UploadOutput} from "ngx-uploader";
@@ -188,9 +189,8 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   private getPatientIds() {
-    let patientIdRoot = null;
-    let patientIdExtension = null;
-    let result = {
+    let result: { root: string; extension: string };
+    result = {
       root: "",
       extension: ""
     };
@@ -224,7 +224,7 @@ export class SegmentDocumentComponent implements OnInit {
     segmentDocumentDialog.close();
   }
 
-  viewSegmentedDocument(segmentDocumentDialog: any) {
+  viewSegmentedDocument() {
     let decodedDocument = this.based64DecodedUnicode(this.segmentedDocumentAsHTML);
     let viewer = window.open('', '_blank');
     viewer.document.open().write(decodedDocument);
@@ -242,13 +242,13 @@ export class SegmentDocumentComponent implements OnInit {
     segmentDocumentDialog.close();
   }
 
-  public checkIfProviderFirstAndLastNameExists(provider: FlattenedSmallProvider): boolean {
+  public providerFirstAndLastNameExists(provider: FlattenedSmallProvider): boolean {
     if (provider && provider.firstName && provider.lastName) {
       return true;
     } else return false;
   }
 
-  public checkIfProviderOrganizationNameExists(provider: FlattenedSmallProvider): boolean {
+  public providerOrganizationNameExists(provider: FlattenedSmallProvider): boolean {
     if (provider && provider.organizationName) {
       return true;
     } else return false;
