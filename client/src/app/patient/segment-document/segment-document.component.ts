@@ -147,7 +147,8 @@ export class SegmentDocumentComponent implements OnInit {
 
   onUploadOutput(output: UploadOutput, segmentDocumentDialog: any): void {
     if (output.type === UploadOutputType.ADDED_TO_QUEUE.toString()) {
-      this.files.push(output.file); // add file to array when added
+      // add file to array when added
+      this.files.push(output.file);
     } else if (output.type === UploadOutputType.UPLOADING.toString()) {
       // update current data in files array for uploading file
       const index = this.files.findIndex(file => file.id === output.file.id);
@@ -156,7 +157,7 @@ export class SegmentDocumentComponent implements OnInit {
       // remove file from array when removed
       this.files = this.files.filter((file: UploadFile) => file !== output.file);
     } else if (output.type === UploadOutputType.DONE.toString()) {
-      // Handle download of filed
+      // Handle download of file
       if (output && output.file && output.file.response && output.file.response.segmentedDocument) {
         this.segmentedDocumentName = output.file.name;
         this.segmentedDocument = output.file.response.segmentedDocument;
@@ -198,7 +199,6 @@ export class SegmentDocumentComponent implements OnInit {
       if (id.system === this.patientService.getDefaultPatientIdentifierSystem()) {
         result.root = id.system;
         result.extension = id.value;
-
       }
     });
     return result;
@@ -211,7 +211,7 @@ export class SegmentDocumentComponent implements OnInit {
       url: this.consentService.getPepSegmentationDocumentUrl(),
       method: 'POST',
       data: this.prepareSegmentationRequestObject(formModel),
-      concurrency: 1, // set sequential uploading of files with concurrency 1
+      concurrency: 1, // set sequential uploading of files with concurrency = 1
       headers: this.tokenService.createAuthorizationHeaderObject()
     };
     return uploadInput;
@@ -230,13 +230,13 @@ export class SegmentDocumentComponent implements OnInit {
     viewer.document.open().write(decodedDocument);
     // Do not segmentDocumentDialog.close() immediately, as the Provider may want to download the XML soon after viewing
   }
+
   // Deal with non-ASCII characters of Spanish
   private based64DecodedUnicode(str): string {
     return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
   }
-
 
   closeDialog(segmentDocumentDialog: any) {
     segmentDocumentDialog.close();
@@ -245,22 +245,17 @@ export class SegmentDocumentComponent implements OnInit {
   public checkIfProviderFirstAndLastNameExists(provider: FlattenedSmallProvider): boolean {
     if (provider && provider.firstName && provider.lastName) {
       return true;
-    }
-    else {
-      return false;
-    }
+    } else return false;
   }
+
   public checkIfProviderOrganizationNameExists(provider: FlattenedSmallProvider): boolean {
     if (provider && provider.organizationName) {
       return true;
-    }
-    else {
-      return false;
-    }
+    } else return false;
   }
 
-  public segmentedDocHTMLExists(): boolean{
-    if(this.segmentedDocumentAsHTML && (Object.keys(this.segmentedDocumentAsHTML ).length > 0)){
+  public segmentedDocHTMLExists(): boolean {
+    if (this.segmentedDocumentAsHTML && (Object.keys(this.segmentedDocumentAsHTML).length > 0)) {
       return true;
     } else return false;
 
