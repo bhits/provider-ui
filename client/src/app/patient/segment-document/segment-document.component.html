@@ -155,7 +155,7 @@
       <button md-raised-button color="primary" (click)="downloadSegmentedDocument(segmentDocumentDialog)">
         {{ 'PATIENT.SEGMENT_DOCUMENT.DOWNLOAD_DIALOG.DOWNLOAD_BTN' | translate }}
       </button>
-      <button md-raised-button color="primary" (click)="viewSegmentedDocument(segmentDocumentDialog)">
+      <button md-raised-button color="primary" [disabled]="!segmentedDocHTMLExists()" (click)="viewSegmentedDocument(segmentDocumentDialog)">
         {{ 'PATIENT.SEGMENT_DOCUMENT.DOWNLOAD_DIALOG.VIEW_BTN' | translate }}
       </button>
     </div>

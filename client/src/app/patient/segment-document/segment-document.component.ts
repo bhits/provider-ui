@@ -258,4 +258,12 @@ export class SegmentDocumentComponent implements OnInit {
       return false;
     }
   }
+
+  public segmentedDocHTMLExists(): boolean{
+    if(this.segmentedDocumentAsHTML && (Object.keys(this.segmentedDocumentAsHTML ).length > 0)){
+      return true;
+    } else return false;
+
+  }
+
 }
