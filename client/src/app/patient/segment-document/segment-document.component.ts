@@ -234,21 +234,15 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   public providerFirstAndLastNameExists(provider: FlattenedSmallProvider): boolean {
-    if (provider && provider.firstName && provider.lastName) {
-      return true;
-    } else return false;
+    return !!(provider && provider.firstName && provider.lastName);
   }
 
   public providerOrganizationNameExists(provider: FlattenedSmallProvider): boolean {
-    if (provider && provider.organizationName) {
-      return true;
-    } else return false;
+    return !!(provider && provider.organizationName);
   }
 
   public segmentedDocHTMLExists(): boolean {
-    if (this.segmentedDocumentAsHTML && (Object.keys(this.segmentedDocumentAsHTML).length > 0)) {
-      return true;
-    } else return false;
+    return !!(this.segmentedDocumentAsHTML && (Object.keys(this.segmentedDocumentAsHTML).length > 0));
 
   }
 
