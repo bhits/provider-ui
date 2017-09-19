@@ -133,4 +133,17 @@ export class UtilityService {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
   }
+
+  public viewDocumentInNewTab(base64EncodedStr : string) {
+    let decodedDocument = this.decodeBase64Unicode(base64EncodedStr);
+    let viewer = window.open('', '_blank');
+    viewer.document.open().write(decodedDocument);
+  }
+
+  // Deal with non-ASCII characters of Spanish
+  private decodeBase64Unicode(base64EncodedStr): string {
+    return decodeURIComponent(Array.prototype.map.call(atob(base64EncodedStr), function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+  }
 }

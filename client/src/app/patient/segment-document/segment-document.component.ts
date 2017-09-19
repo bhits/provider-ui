@@ -225,17 +225,8 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   viewSegmentedDocument() {
-    let decodedDocument = this.based64DecodedUnicode(this.segmentedDocumentAsHTML);
-    let viewer = window.open('', '_blank');
-    viewer.document.open().write(decodedDocument);
+    this.utilityService.viewDocumentInNewTab(this.segmentedDocumentAsHTML);
     // Do not segmentDocumentDialog.close() immediately, as the Provider may want to download the XML soon after viewing
-  }
-
-  // Deal with non-ASCII characters of Spanish
-  private based64DecodedUnicode(str): string {
-    return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
   }
 
   closeDialog(segmentDocumentDialog: any) {

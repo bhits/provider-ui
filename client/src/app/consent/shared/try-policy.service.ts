@@ -5,13 +5,15 @@ import {ExceptionService} from "../../shared/exception.service";
 import {Observable} from "rxjs/Observable";
 import {SampleDocumentInfo} from "./sample-document-info.model";
 import {TryPolicyResponse} from "./try-policy-response.model";
+import {UtilityService} from "app/shared/utility.service";
 
 @Injectable()
 export class TryPolicyService {
 
   constructor(private http: Http,
               private apiUrlService: ApiUrlService,
-              private exceptionService: ExceptionService,) {
+              private exceptionService: ExceptionService,
+              private utilityService: UtilityService) {
   }
 
   public getSampleDocuments(): Observable<SampleDocumentInfo[]> {
@@ -35,15 +37,6 @@ export class TryPolicyService {
   }
 
   public handleApplyTryPolicySuccess(tryPolicyResponse: TryPolicyResponse): void {
-    let decodedDocument = this.based64DecodedUnicode(tryPolicyResponse.document);
-    let viewer = window.open('', '_blank');
-    viewer.document.open().write(decodedDocument);
-  }
-
-  // Deal with non-ASCII characters of Spanish
-  private based64DecodedUnicode(str): string {
-    return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
+    this.utilityService.viewDocumentInNewTab(tryPolicyResponse.document);
   }
 }
