@@ -1,4 +1,3 @@
-///<reference path="../../provider/shared/provider.service.ts"/>
 import {Component, EventEmitter, Input, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {humanizeBytes, UploadFile, UploadInput, UploadOutput} from "ngx-uploader";
