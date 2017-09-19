@@ -6,12 +6,6 @@
       </div>
     </div>
 
-
-    <!--<h1>-->
-    <!--{{ 'PATIENT.SEGMENT_DOCUMENT.COMPONENT_TITLE' | translate }}-->
-    <!--</h1>-->
-
-
     <form [formGroup]="segmentationFrom" novalidate class="form_width_80">
       <div>
         <div class="m-t-lg m-b-sm p-b-sm border-bottom-purple-thin" fxFlex="1 1 auto" fxLayoutAlign="flex-start center">
@@ -72,11 +66,11 @@
                 [control]="segmentationFrom.controls.recipientNpi">
               </c2s-control-validation-error-message>
 
-              <div *ngIf="checkIfProviderFirstAndLastNameExists(discloseProvider)">
+              <div *ngIf="providerFirstAndLastNameExists(discloseProvider)">
                 <label>{{ "PATIENT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
                 <span>{{ discloseProvider.firstName }} {{ discloseProvider.lastName }}</span>
               </div>
-              <div *ngIf="checkIfProviderOrganizationNameExists(discloseProvider)">
+              <div *ngIf="providerOrganizationNameExists(discloseProvider)">
                 <label>{{ "PATIENT.SEGMENT_DOCUMENT.AUTHORIZE_PROVIDER_NAME_LABEL" | translate}}:</label>
                 <span>{{ discloseProvider.organizationName }}</span>
               </div>
@@ -152,7 +146,11 @@
       <button md-raised-button (click)="closeDialog(segmentDocumentDialog)">
         {{ 'PATIENT.SEGMENT_DOCUMENT.DOWNLOAD_DIALOG.CANCEL_BTN' | translate }}
       </button>
-      <button md-raised-button color="primary" (click)="downloadSegementedDocument(segmentDocumentDialog)">
+      <button md-raised-button color="primary" [disabled]="!segmentedDocHTMLExists()"
+              (click)="viewSegmentedDocument()">
+        {{ 'PATIENT.SEGMENT_DOCUMENT.DOWNLOAD_DIALOG.VIEW_BTN' | translate }}
+      </button>
+      <button md-raised-button color="primary" (click)="downloadSegmentedDocument(segmentDocumentDialog)">
         {{ 'PATIENT.SEGMENT_DOCUMENT.DOWNLOAD_DIALOG.DOWNLOAD_BTN' | translate }}
       </button>
     </div>

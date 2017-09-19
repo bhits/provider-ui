@@ -17,7 +17,7 @@ import {Observable} from "rxjs/Observable";
 import {NpiValidation} from "../../shared/npi-validation";
 import {Patient} from "../shared/patient.model";
 import {PatientService} from "../shared/patient.service";
-import {SegmentedDocumentReponse} from "../shared/segmented-document-response";
+import {SegmentedDocumentResponse} from "../shared/segmented-document-response";
 
 
 @Component({
@@ -32,8 +32,9 @@ export class SegmentDocumentComponent implements OnInit {
   public files: UploadFile[];
   public uploadInput: EventEmitter<UploadInput>;
   public humanizeBytes: Function;
-  public segmentedDocument: SegmentedDocumentReponse;
+  public segmentedDocument: SegmentedDocumentResponse;
   public segmentedDocumentName: string;
+  public segmentedDocumentAsHTML: string;
   public purposeOfUses: SharePurpose[] = [];
 
   public authorizeProvider: FlattenedSmallProvider;
@@ -146,7 +147,8 @@ export class SegmentDocumentComponent implements OnInit {
 
   onUploadOutput(output: UploadOutput, segmentDocumentDialog: any): void {
     if (output.type === UploadOutputType.ADDED_TO_QUEUE.toString()) {
-      this.files.push(output.file); // add file to array when added
+      // add file to array when added
+      this.files.push(output.file);
     } else if (output.type === UploadOutputType.UPLOADING.toString()) {
       // update current data in files array for uploading file
       const index = this.files.findIndex(file => file.id === output.file.id);
@@ -155,10 +157,11 @@ export class SegmentDocumentComponent implements OnInit {
       // remove file from array when removed
       this.files = this.files.filter((file: UploadFile) => file !== output.file);
     } else if (output.type === UploadOutputType.DONE.toString()) {
-      // Handle download of filed
+      // Handle download of file
       if (output && output.file && output.file.response && output.file.response.segmentedDocument) {
         this.segmentedDocumentName = output.file.name;
         this.segmentedDocument = output.file.response.segmentedDocument;
+        this.segmentedDocumentAsHTML = output.file.response.segmentedDocumentAsHTML;
         segmentDocumentDialog.open();
       } else {
         this.notificationService.i18nShow("PATIENT.SEGMENT_DOCUMENT.DOCUMENT_NOT_FOUND_NOTIFICATION_MSG");
@@ -185,9 +188,8 @@ export class SegmentDocumentComponent implements OnInit {
   }
 
   private getPatientIds() {
-    let patientIdRoot = null;
-    let patientIdExtension = null;
-    let result = {
+    let result: { root: string; extension: string };
+    result = {
       root: "",
       extension: ""
     };
@@ -196,7 +198,6 @@ export class SegmentDocumentComponent implements OnInit {
       if (id.system === this.patientService.getDefaultPatientIdentifierSystem()) {
         result.root = id.system;
         result.extension = id.value;
-
       }
     });
     return result;
@@ -209,37 +210,39 @@ export class SegmentDocumentComponent implements OnInit {
       url: this.consentService.getPepSegmentationDocumentUrl(),
       method: 'POST',
       data: this.prepareSegmentationRequestObject(formModel),
-      concurrency: 1, // set sequential uploading of files with concurrency 1
+      concurrency: 1, // set sequential uploading of files with concurrency = 1
       headers: this.tokenService.createAuthorizationHeaderObject()
     };
     return uploadInput;
   }
 
-  downloadSegementedDocument(segmentDocumentDialog: any) {
+  downloadSegmentedDocument(segmentDocumentDialog: any) {
     let filename = "segmented-".concat(this.segmentedDocumentName);
     let documentFormat = "text/xml";
     this.utilityService.downloadFile(this.segmentedDocument, filename, documentFormat);
     segmentDocumentDialog.close();
   }
 
+  viewSegmentedDocument() {
+    this.utilityService.viewDocumentInNewTab(this.segmentedDocumentAsHTML);
+    // Do not segmentDocumentDialog.close() immediately,
+    // as the Provider may want to download the XML soon after viewing
+  }
+
   closeDialog(segmentDocumentDialog: any) {
     segmentDocumentDialog.close();
   }
 
-  public checkIfProviderFirstAndLastNameExists(provider: FlattenedSmallProvider): boolean {
-    if (provider && provider.firstName && provider.lastName) {
-      return true;
-    }
-    else {
-      return false;
-    }
+  public providerFirstAndLastNameExists(provider: FlattenedSmallProvider): boolean {
+    return !!(provider && provider.firstName && provider.lastName);
   }
-  public checkIfProviderOrganizationNameExists(provider: FlattenedSmallProvider): boolean {
-    if (provider && provider.organizationName) {
-      return true;
-    }
-    else {
-      return false;
-    }
+
+  public providerOrganizationNameExists(provider: FlattenedSmallProvider): boolean {
+    return !!(provider && provider.organizationName);
   }
+
+  public segmentedDocHTMLExists(): boolean {
+    return !!(this.segmentedDocumentAsHTML && (Object.keys(this.segmentedDocumentAsHTML).length > 0));
+  }
+
 }

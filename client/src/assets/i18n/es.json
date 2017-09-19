@@ -362,9 +362,10 @@
       "PURPOSE_OF_USE_PLACEHOLDER": "{spanish} Select One",
       "SEGMENTATION_BTN": "{spanish} Choose File To Upload",
       "DOWNLOAD_DIALOG": {
-        "TITLE": "{spanish} Download Segmented Document",
-        "CANCEL_BTN": "{spanish} Cancel",
-        "DOWNLOAD_BTN": "{spanish} Download document"
+        "TITLE": "{Spanish} Download/View Segmented Document",
+        "CANCEL_BTN": "{Spanish} Cancel",
+        "DOWNLOAD_BTN": "{Spanish} Download",
+        "VIEW_BTN": "{Spanish} View"
       },
       "GET_PROVIDER_NOTIFICATION_MSG": "{spanish} Failed to get provider by NPI...",
       "DOCUMENT_NOT_FOUND_NOTIFICATION_MSG": "{spanish} Document Not Found."
