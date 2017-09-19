@@ -226,7 +226,8 @@ export class SegmentDocumentComponent implements OnInit {
 
   viewSegmentedDocument() {
     this.utilityService.viewDocumentInNewTab(this.segmentedDocumentAsHTML);
-    // Do not segmentDocumentDialog.close() immediately, as the Provider may want to download the XML soon after viewing
+    // Do not segmentDocumentDialog.close() immediately,
+    // as the Provider may want to download the XML soon after viewing
   }
 
   closeDialog(segmentDocumentDialog: any) {
@@ -243,7 +244,6 @@ export class SegmentDocumentComponent implements OnInit {
 
   public segmentedDocHTMLExists(): boolean {
     return !!(this.segmentedDocumentAsHTML && (Object.keys(this.segmentedDocumentAsHTML).length > 0));
-
   }
 
 }
