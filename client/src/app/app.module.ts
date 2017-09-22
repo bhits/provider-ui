@@ -15,6 +15,8 @@ import {ConsentModule} from "app/consent/consent.module";
 import {ProviderModule} from "./provider/provider.module";
 import {createTranslateLoader, CustomTranslateService} from "./core/custom-translate.service";
 import {HistoryModule} from "./history/history.module";
+import {getBaseHref} from "./shared/common-functions";
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,11 @@ import {HistoryModule} from "./history/history.module";
   ],
   providers: [
     TranslateService,
-    CustomTranslateService
+    CustomTranslateService,
+    {
+      provide: APP_BASE_HREF,
+      useFactory: getBaseHref
+    }
   ],
   bootstrap: [AppComponent]
 })
