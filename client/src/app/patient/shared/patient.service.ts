@@ -8,6 +8,8 @@ import {PatientActivationResponse} from "app/patient/shared/patient-activation-r
 import {PageableData} from "../../shared/pageable-data.model";
 import {PatientSearchQuery} from "./patient-search-query.model";
 import {NotificationService} from "app/shared/notification.service";
+import {ConfigService} from "../../core/config.service";
+import {Config} from "../../core/config.model";
 
 @Injectable()
 export class PatientService {
@@ -18,11 +20,13 @@ export class PatientService {
   constructor(private apiUrlService: ApiUrlService,
               private exceptionService: ExceptionService,
               private notificationService: NotificationService,
+              private configService: ConfigService,
               private http: Http) {
   }
 
   public getDefaultPatientIdentifierSystem() {
-    return this.defaultPatientIdentifierSystem;
+    const config: Config = this.configService.getConfigInSessionStorage();
+    return config.defaultPatientIdentifierSystem;
   }
 
   public getPatients(page: number): Observable<PageableData<Patient>> {
