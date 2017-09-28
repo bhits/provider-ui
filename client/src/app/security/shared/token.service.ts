@@ -39,6 +39,19 @@ export class TokenService {
     return customHeaders;
   }
 
+  public getAccessTokenString(): string{
+    let token = this.getAccessToken();
+    if (token && token['access_token']) {
+      let access_token = token['access_token'];
+      let access_token_string = 'Bearer ' + access_token;
+      return access_token_string;
+    } else {
+      // FIXME: Replace this with proper error handling.
+      throw new Error("token variable check failed");
+    }
+
+  }
+
   public hasScope(scope: string): boolean {
     if (this.getAccessToken()) {
       const uaaToken: AuthorizationResponse = this.getAccessToken();

@@ -18,7 +18,7 @@ import {NpiValidation} from "../../shared/npi-validation";
 import {Patient} from "../shared/patient.model";
 import {PatientService} from "../shared/patient.service";
 import {SegmentedDocumentResponse} from "../shared/segmented-document-response";
-
+import {ProfileService} from "../../security/shared/profile.service";
 
 @Component({
   selector: 'c2s-segment-document',
@@ -56,7 +56,8 @@ export class SegmentDocumentComponent implements OnInit {
               private providerService: ProviderService,
               private notificationService: NotificationService,
               private patientService: PatientService,
-              private utilityService: UtilityService) {
+              private utilityService: UtilityService,
+              private profileService: ProfileService) {
     // local uploading files array
     this.files = [];
     // input events, we use this to emit data to ngx-uploader
@@ -211,7 +212,8 @@ export class SegmentDocumentComponent implements OnInit {
       method: 'POST',
       data: this.prepareSegmentationRequestObject(formModel),
       concurrency: 1, // set sequential uploading of files with concurrency = 1
-      headers: this.tokenService.createAuthorizationHeaderObject()
+      headers: {'Authorization': this.tokenService.getAccessTokenString(),
+                'Accept-Language': this.profileService.getUserLocale() }
     };
     return uploadInput;
   }
