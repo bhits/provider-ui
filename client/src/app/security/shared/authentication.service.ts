@@ -10,6 +10,7 @@ import {ConfigService} from "../../core/config.service";
 import {NotificationService} from "../../shared/notification.service";
 import {Config} from "../../core/config.model";
 import {LoginRequest} from "./login-request.model";
+import {PatientIdentifierSystem} from "../../core/PatientIdentifierSystem.model";
 
 @Injectable()
 export class AuthenticationService {
@@ -39,6 +40,14 @@ export class AuthenticationService {
         this.configService.setConfigInSessionStorage(config);
       },
       () => {
+        this.notificationService.i18nShow("SHARED.CONFIGURATION_SERVICE_ERROR");
+      }
+    );
+
+    this.configService.getMrnCodeSystem().subscribe(
+      (response:PatientIdentifierSystem)=>{
+        this.configService.setMrnCodeSystemInSessionStorage(response);
+      },()=>{
         this.notificationService.i18nShow("SHARED.CONFIGURATION_SERVICE_ERROR");
       }
     );

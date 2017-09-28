@@ -25,8 +25,7 @@ export class PatientService {
   }
 
   public getDefaultPatientIdentifierSystem() {
-    const config: Config = this.configService.getConfigInSessionStorage();
-    return config.defaultPatientIdentifierSystem;
+    return this.configService.getMrnCodeSystemFromSessionStorage();
   }
 
   public getPatients(page: number): Observable<PageableData<Patient>> {
