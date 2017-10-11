@@ -15,6 +15,13 @@
     }
   },
   "HOME": {
+    "WARNING_DIALOG": {
+      "TITLE": "DEMONSTRATION DATA ONLY",
+      "DESCRIPTION": "<strong>NOTICE</strong>:  The purpose of this system is to demonstrate the features of Consent2Share, using <strong>TEST DATA ONLY</strong>.  Any use of <strong>REAL PATIENT DATA</strong> and/or patient identifying information will be a violation of state and federal privacy laws, specifically 42 CFR Part 2, HIPAA, and Title 38 and the user(s) may be subject to fines and/or imprisonment as defined under the enforcement rules of Office of Civil Rights.",
+      "CHECKBOX": "Check",
+      "CONTINUE_BTN": "CONTINUE",
+      "LOGOUT_BTN": "LOG OUT"
+    },
     "WELCOME_TITLE": "Welcome back",
     "PATIENT_SEARCH_CARD": {
       "TITLE": "<span class=\"font-weight700\">Search</span> a Patient",

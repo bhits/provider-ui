@@ -5,12 +5,13 @@ import {SharedModule} from "../shared/shared.module";
 import {HomeRoutingModule} from "./home-routing.module";
 import {PatientListCardComponent} from "./patient-list-card/patient-list-card.component";
 import { PatientSearchCardComponent } from './patient-search-card/patient-search-card.component';
-
+import {FormsModule} from "@angular/forms";
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    FormsModule,
   ],
   declarations: [
     HomeComponent,
