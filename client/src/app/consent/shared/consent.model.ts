@@ -12,9 +12,9 @@ export class Consent {
   endDate: Date;
 
   constructor() {
-    this.fromProviders = new Identifiers([new Identifier(null, null)]);
-    this.toProviders = new Identifiers([new Identifier(null, null)]);
-    this.shareSensitivityCategories = new Identifiers([new Identifier(null, null)]);
+    this.fromProviders = new Identifiers([]);
+    this.toProviders = new Identifiers([]);
+    this.shareSensitivityCategories = new Identifiers([]);
     this.sharePurposes = new Identifiers([new Identifier(PURPOSE_OF_USE_SYSTEM, "TREAT")]);
     this.startDate = new Date;
     this.endDate = new Date;
