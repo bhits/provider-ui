@@ -15,6 +15,7 @@ import {ConsentModule} from "app/consent/consent.module";
 import {ProviderModule} from "./provider/provider.module";
 import {createTranslateLoader, CustomTranslateService} from "./core/custom-translate.service";
 import {HistoryModule} from "./history/history.module";
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {HistoryModule} from "./history/history.module";
     // Angular Modules
     BrowserAnimationsModule,
     BrowserModule,
+    HttpModule,
 
     // Third Party Modules
     TranslateModule.forRoot({
