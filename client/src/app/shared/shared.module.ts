@@ -22,7 +22,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
 import { SocialSecurityMaskDirective } from './social-security-mask.directive';
 import { SocialSecurityPipe } from './social-security.pipe';
-import {MaterialModule} from "./material.module";
+import {MaterialModule} from "@angular/material";
 
 @NgModule({
   imports: [
