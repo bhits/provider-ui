@@ -13,16 +13,21 @@
   </div>
 
   <md2-dialog #warningDialog>
-    <md2-dialog-title>{{ 'HOME.WARNING_DIALOG.TITLE' | translate }}</md2-dialog-title>
-    <div class="m-t-xs">
-      <span [innerHTML]="'HOME.WARNING_DIALOG.DESCRIPTION' | translate"></span>
+    <md2-dialog-title class="p-l-lg p-r-lg">{{ 'HOME.WARNING_DIALOG.TITLE' | translate }}</md2-dialog-title>
+    <div class="m-t-xs p-l-sm p-r-sm">
+      <div>
+        <span [innerHTML]="'HOME.WARNING_DIALOG.DESCRIPTION' | translate"></span>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start start" class="m-t">
+        <md-checkbox [(ngModel)]="disabled" class="m-t-xxs m-r-xs"></md-checkbox>
+        <div>
+          <span [innerHTML]="'HOME.WARNING_DIALOG.CHECKBOX' | translate"></span>
+        </div>
+      </div>
     </div>
-    <br>
-    <div>
-      <md-checkbox [(ngModel)]="disabled">{{ 'HOME.WARNING_DIALOG.CHECKBOX' | translate }}</md-checkbox>
-    </div>
-    <md2-dialog-footer>
-      <button type="button" color="primary" md-raised-button
+
+    <md2-dialog-footer class="bg-xlite-blue p-r-md">
+      <button type="button" md-button
               (click)="logout(warningDialog)">
         {{ 'HOME.WARNING_DIALOG.LOGOUT_BTN' | translate }}
       </button>

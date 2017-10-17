@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit, ViewChild, ViewEncapsulation} from "@angular/core";
 import {ConfigService} from "../../core/config.service";
 import {ProfileService} from "../../security/shared/profile.service";
 
@@ -8,7 +8,8 @@ import {AuthenticationService} from "../../security/shared/authentication.servic
 @Component({
   selector: 'c2s-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
   public isProviderListCardEnabled: boolean;
