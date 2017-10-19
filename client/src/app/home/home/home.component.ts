@@ -5,6 +5,8 @@ import {ProfileService} from "../../security/shared/profile.service";
 import {Md2Dialog, Md2DialogConfig} from "md2/dialog/dialog";
 import {SessionStorageService} from "../../security/shared/session-storage.service";
 import {AuthenticationService} from "../../security/shared/authentication.service";
+import {SessionStorageKey} from "../../core/provider-constant";
+
 @Component({
   selector: 'c2s-home',
   templateUrl: './home.component.html',
@@ -16,7 +18,6 @@ export class HomeComponent implements OnInit {
   public providerFullName: string;
   @ViewChild('warningDialog') warningDialog: Md2Dialog;
   public disabled : boolean =false;
-  private readonly DEMO_DISCLAIMER_DISABLED: string = 'demoDisclaimerDisabled';
 
   constructor(private configService: ConfigService,
               private sessionStorageService: SessionStorageService,
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     if(this.configService.getConfigInSessionStorage().features.demoDisclaimerEnabled){
-      if(!this.sessionStorageService.retrieve(this.DEMO_DISCLAIMER_DISABLED)){
+      if(!this.sessionStorageService.retrieve(SessionStorageKey.TERMS_OF_USE_AGREEMENT)){
         let config = new Md2DialogConfig();
         config.disableClose = true;
         this.warningDialog.open(config);
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit {
 
   public continue(dialog: any): void {
     dialog.close();
-    this.sessionStorageService.store(this.DEMO_DISCLAIMER_DISABLED,true);
+    this.sessionStorageService.store(SessionStorageKey.TERMS_OF_USE_AGREEMENT,true);
   }
 
   public logout(dialog: any): void {
