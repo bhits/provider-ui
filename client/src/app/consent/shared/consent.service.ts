@@ -16,6 +16,9 @@ import {VssSensitivityCategory} from "app/consent/shared/vss-sensitivity-categor
 import {ConsentTerms} from "./consent-terms.model";
 import {ConsentRevocation} from "./consent-revocation.model";
 import {ActivityHistory} from "./activity-history.model";
+import {Identifier} from "../../shared/identifier.model";
+import {ConsentProvider} from "app/shared/consent-provider.model";
+import {Identifiers} from "../../shared/identifiers.model";
 
 @Injectable()
 export class ConsentService {
@@ -185,15 +188,6 @@ export class ConsentService {
       .catch(this.exceptionService.handleError);
   }
 
-  public getProviderByNPI(patientProviders: Provider[], selectedProviderNpi: string) {
-    for (let provider of patientProviders) {
-      if (provider.identifiers[0].value === selectedProviderNpi) {
-        return provider;
-      }
-    }
-    return null;
-  }
-
   handleCreateConsentError(err: any){
     if(err == "409"){
       this.notificationService.i18nShow("CONSENT.NOTIFICATION_MSG.DUPLICATE_CONSENT");
@@ -211,5 +205,42 @@ export class ConsentService {
     return this.http.get(resourceUrl, {search: params})
       .map((resp: Response) => <PageableData<ActivityHistory>>(resp.json()))
       .catch(this.exceptionService.handleError);
+  }
+
+  isInList(currentIdentifiers: Identifier[], selectedIdentifiers: Identifier[]): boolean {
+    let selected = false;
+    selectedIdentifiers.forEach(selectedIdentifier=>{
+      currentIdentifiers.forEach(currentIdentifier =>{
+        if(currentIdentifier.value === selectedIdentifier.value){
+          selected =  true;
+        }
+      });
+    });
+    return selected;
+  }
+
+  createListOfIdentifiers(providers: ConsentProvider[]) :Identifiers{
+    let listOfIdentifiers:Identifiers = new Identifiers([new Identifier(null, null)]);
+    let identifies: Identifier[] = [];
+    providers.forEach(provider=>{
+      if(provider['selected']){
+        identifies.push(new Identifier(provider.identifiers[0].system, provider.identifiers[0].value));
+      }
+    });
+    listOfIdentifiers.identifiers = identifies;
+    return listOfIdentifiers;
+  }
+
+  markSelectedProvidersAsChecked(providers:ConsentProvider[], selectedIdentifiers: Identifier[]){
+    providers.forEach(provider => {
+      let tempProvider = provider;
+      provider.identifiers.forEach(identifier=>{
+        selectedIdentifiers.forEach(selectedIdentifier => {
+          if(selectedIdentifier.value ===identifier.value){
+            provider.selected = true;
+          }
+        });
+      });
+    });
   }
 }

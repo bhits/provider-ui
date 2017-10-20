@@ -1,7 +1,6 @@
 import {NgModule} from "@angular/core";
 import {CommonModule, DatePipe} from "@angular/common";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {MaterialModule} from "@angular/material";
 import {UsPhoneNumberPipe} from "./us-phone-number.pipe";
 import {ControlValidationErrorMessageComponent} from "app/shared/control-validation-error-message/control-validation-error-message.component";
 import {ConfirmDialogComponent} from "./confirm-dialog/confirm-dialog.component";
@@ -23,6 +22,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {FlattenedSmallProviderPipe} from "./flattened-small-provider.pipe";
 import { SocialSecurityMaskDirective } from './social-security-mask.directive';
 import { SocialSecurityPipe } from './social-security.pipe';
+import {MaterialModule} from "@angular/material";
 
 @NgModule({
   imports: [

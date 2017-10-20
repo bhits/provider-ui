@@ -3,7 +3,14 @@
     <md-card-title>{{title}}</md-card-title>
   </md-card-header>
   <md-card-content>
-    <h4>{{ consentProvider | provider : 'name'}}</h4>
+    <md-list>
+      <div *ngFor="let provider of selectedProviders">
+        <md-list-item *ngIf="provider.selected">
+          <strong>{{ provider | consentProvider : 'name'}}</strong>
+        </md-list-item>
+      </div>
+    </md-list>
+
   </md-card-content>
 </md-card>
 
@@ -14,28 +21,28 @@
       {{ 'CONSENT.SELECT_PROVIDER.DESCRIPTION' | translate }}
     </md-card-title>
     <md-card-content class="p-l-sm p-r-sm p-b-md">
-      <md-radio-group [(ngModel)]="selectedProviderNpi">
+      <button type="button" md-raised-button color="primary" (click)="deselectAll()">
+        {{ 'CONSENT.PURPOSE_OF_USE.DIALOG.DESELECT_BTN' | translate }}
+      </button>
         <h3>
           {{ 'CONSENT.SELECT_PROVIDER.IND_PROVIDER_LABEL' | translate }}
         </h3>
-        <div *ngFor="let provider of patientProviders">
-          <md-radio-button *ngIf="provider.providerType === 'PRACTITIONER'"
-                           [value]="provider?.identifiers[0]?.value"
-                           [disabled]="isSelectedProvider(provider?.identifiers[0]?.value)">
-            {{provider | provider : 'name'}}
-          </md-radio-button>
+        <div *ngFor="let provider of localeProviders">
+          <md-checkbox  *ngIf="provider.providerType === 'PRACTITIONER'"
+                        [(ngModel)]="provider['selected']"
+                        [disabled]="isDisabled(provider)"
+          >{{provider | consentProvider : 'name'}}</md-checkbox>
+
         </div>
         <h3>
           {{ 'CONSENT.SELECT_PROVIDER.ORG_PROVIDER_LABEL' | translate }}
         </h3>
-        <div *ngFor="let provider of patientProviders">
-          <md-radio-button *ngIf="provider.providerType === 'ORGANIZATION'"
-                           [value]="provider?.identifiers[0]?.value"
-                           [disabled]="isSelectedProvider(provider?.identifiers[0]?.value)">
-            {{provider | provider : 'name'}}
-          </md-radio-button>
+        <div *ngFor="let provider of localeProviders">
+          <md-checkbox  *ngIf="provider.providerType === 'ORGANIZATION'"
+                        [(ngModel)]="provider['selected']"
+                        [disabled]="isDisabled(provider)"
+          >{{provider | consentProvider : 'name'}}</md-checkbox>
         </div>
-      </md-radio-group>
     </md-card-content>
   </md-card>
   <md2-dialog-footer>

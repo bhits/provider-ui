@@ -13,7 +13,7 @@
                   {{ 'CONSENT.CARD.AUTHORIZED_TO_SHARE' | translate }}
                 </div>
                 <div class="font-size12" *ngFor="let fromProvider of consent.fromProviders">
-                  {{fromProvider | provider: 'name'}}
+                  - {{fromProvider | provider: 'name'}}
                 </div>
               </div>
             </div>
@@ -23,7 +23,7 @@
                   {{ 'CONSENT.CARD.SHARING_WITH' | translate }}
                 </div>
                 <div class="font-size12" *ngFor="let toProvider of consent.toProviders">
-                  {{toProvider | provider: 'name'}}
+                  - {{toProvider | provider: 'name'}}
                 </div>
               </div>
             </div>

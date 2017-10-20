@@ -146,4 +146,8 @@ export class UtilityService {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
   }
+
+  copyObject(data:any){
+    return  JSON.parse(JSON.stringify(data));
+  }
 }
