@@ -77,7 +77,7 @@ export class SelectProviderComponent implements OnInit {
     return false;
   }
 
-  deSelectAll(){
+  deselectAll(){
     this.localeProviders.forEach(provider =>{
       provider['selected'] = false;
     })
